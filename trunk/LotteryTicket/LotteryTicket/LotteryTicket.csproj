@@ -1,0 +1,69 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{0E0705A3-789A-4D95-9293-C605171AF53C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LotteryTicket</RootNamespace>
+    <AssemblyName>LotteryTicket</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\Administrator\Application Data\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <ItemGroup>
+    <Reference Include="Maticsoft.DBUtility">
+      <HintPath>..\Lib\Maticsoft.DBUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:\Program Files\NUnit 2.5.9\bin\net-2.0\framework\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseLotTickClass.cs" />
+    <Compile Include="Base\IndexNameType.cs" />
+    <Compile Include="Base\LotTickType.cs" />
+    <Compile Include="CalcuteStatics\FiltrateGroupData.cs" />
+    <Compile Include="CalcuteStatics\IndexCalculate.cs" />
+    <Compile Include="CalcuteStatics\IndexStatics.cs" />
+    <Compile Include="DataProcess.cs" />
+    <Compile Include="LotTickClass\TwoColorBall.cs" />
+    <Compile Include="PredictMethods\PredictMethodsValidate.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\LotteryTest.cs" />
+    <None Include="TestData\AllDataCalculateData.txt" />
+    <None Include="TestData\PredictValidateData.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LotteryTicketData\LotteryTicketData.csproj">
+      <Project>{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}</Project>
+      <Name>LotteryTicketData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\PerIndexCalculateDataAB.txt" />
+  </ItemGroup>
+</Project>
