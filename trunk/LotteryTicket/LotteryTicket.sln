@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotteryTicket", "LotteryTicket\LotteryTicket.csproj", "{0E0705A3-789A-4D95-9293-C605171AF53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zedDataProcess", "zedDataProcess\zedDataProcess.csproj", "{FF030E0F-EABB-45DA-8C72-5143950E817A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotteryTicketData", "LotteryTicketData\LotteryTicketData.csproj", "{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotteryTicketSoft", "LotteryTicketSoft\LotteryTicketSoft.csproj", "{ED0CA2E7-8790-4A29-86E9-7BC854C981D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Tools", "..\DotNet.Tools\DotNet.Tools\DotNet.Tools.csproj", "{C56F4793-6746-4E12-BC43-91B9D08101DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductPrice", "..\ProductPrice\ProductPrice\ProductPrice.csproj", "{ED1CA4E9-F82D-4962-BA3A-F168E848DDD9}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E0705A3-789A-4D95-9293-C605171AF53C}.Debug|x86.ActiveCfg = Debug|x86
+		{0E0705A3-789A-4D95-9293-C605171AF53C}.Debug|x86.Build.0 = Debug|x86
+		{0E0705A3-789A-4D95-9293-C605171AF53C}.Release|x86.ActiveCfg = Release|x86
+		{0E0705A3-789A-4D95-9293-C605171AF53C}.Release|x86.Build.0 = Release|x86
+		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Debug|x86.Build.0 = Debug|Any CPU
+		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Release|x86.Build.0 = Release|Any CPU
+		{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}.Debug|x86.ActiveCfg = Debug|x86
+		{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}.Debug|x86.Build.0 = Debug|x86
+		{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}.Release|x86.ActiveCfg = Release|x86
+		{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}.Release|x86.Build.0 = Release|x86
+		{ED0CA2E7-8790-4A29-86E9-7BC854C981D8}.Debug|x86.ActiveCfg = Debug|x86
+		{ED0CA2E7-8790-4A29-86E9-7BC854C981D8}.Debug|x86.Build.0 = Debug|x86
+		{ED0CA2E7-8790-4A29-86E9-7BC854C981D8}.Release|x86.ActiveCfg = Release|x86
+		{ED0CA2E7-8790-4A29-86E9-7BC854C981D8}.Release|x86.Build.0 = Release|x86
+		{C56F4793-6746-4E12-BC43-91B9D08101DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C56F4793-6746-4E12-BC43-91B9D08101DC}.Debug|x86.Build.0 = Debug|Any CPU
+		{C56F4793-6746-4E12-BC43-91B9D08101DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{C56F4793-6746-4E12-BC43-91B9D08101DC}.Release|x86.Build.0 = Release|Any CPU
+		{ED1CA4E9-F82D-4962-BA3A-F168E848DDD9}.Debug|x86.ActiveCfg = Debug|x86
+		{ED1CA4E9-F82D-4962-BA3A-F168E848DDD9}.Debug|x86.Build.0 = Debug|x86
+		{ED1CA4E9-F82D-4962-BA3A-F168E848DDD9}.Release|x86.ActiveCfg = Release|x86
+		{ED1CA4E9-F82D-4962-BA3A-F168E848DDD9}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
