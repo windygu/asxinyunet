@@ -58,12 +58,12 @@ namespace LotteryTicketData
 					TableTag tabTag = (TableTag )(htmlNodes [0] as TableTag ) ;
 					for (int j = 2; j < tabTag.RowCount - 1 ; j ++)//前2行与后一行舍去
 					{
-						//Console.WriteLine ("当前状态：页面:"+i.ToString ()+"  ; 记录:"+j.ToString ()) ;
+//						Console.WriteLine ("当前状态：页面:"+i.ToString ()+"  ; 记录:"+j.ToString ()) ;
 						//复制
 						TableRow tb =tabTag.Rows [j ] ;
 						mdoel .开奖日期 = Convert.ToDateTime (tb.Columns [0].ToPlainTextString ().Trim ()) ;
 						mdoel .期号     = Convert.ToInt32(tb.Columns [1].ToPlainTextString ().Trim ()) ;
-						if (bll.Exists (mdoel.期号))
+						if (!bll.Exists (mdoel.期号))
 						{
 							tempNo = tb.Columns [2].ToPlainTextString ().Replace (" ","")
 								.Trim ().Replace ("\r\n\r\n","|").Split('|') ;

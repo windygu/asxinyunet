@@ -21,7 +21,9 @@ namespace LotteryTicketData
 	{
 		public static void Main(string[] args)
 		{
-			
+			string conStr = "Provider=Microsoft.Jet.OleDb.4.0;Data Source=LotteryTicket.mdb" ;
+			GetSSQDataFromWeb data = new GetSSQDataFromWeb (conStr ) ;
+			data.UpdateRecentData (5) ;
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
