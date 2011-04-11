@@ -15,7 +15,7 @@ namespace LotteryTicket
 	/// 每期指标计算静态类
 	/// </summary>
 	public class PerNoIndexCalculate
-	{
+	{				
 		#region 自身数据
 		public static object C_SelfNumber(object args)
 		{
@@ -23,7 +23,7 @@ namespace LotteryTicket
 		}
 		#endregion
 				
-		#region 和值		
+		#region 和值与数据密度		
 		/// <summary>
 		/// 计算和值
 		/// </summary>
@@ -34,6 +34,14 @@ namespace LotteryTicket
 			foreach(double a in data )
 				sum += a ;
 			return sum ;
+		}
+		
+		/// <summary>
+		/// 数据密度:和值/极差
+		/// </summary>
+		public static object A_DataDensity(object args)
+		{
+			return ((double )A_Sum(args ))/((double )A_MaxSpan(args )) ;
 		}
 		#endregion
 		
@@ -90,6 +98,16 @@ namespace LotteryTicket
 			foreach (double a in res )
 				sum += a ;
 			return sum ;
+		}
+		
+		/// <summary>
+		/// 跨度密度:跨度和/最大跨度
+		/// </summary>
+		public static object A_SpanDensity(object args)
+		{
+			double spansum =(double ) A_SpanSum (args ) ;
+			double max = (double ) A_MaxSpan (args ) ;
+			return spansum /max ;
 		}
 		#endregion
 		

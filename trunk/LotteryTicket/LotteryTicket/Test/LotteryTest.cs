@@ -21,7 +21,7 @@ namespace LotteryTicket.Test
 	public class LotteryTest
 	{		
 		
-        #region  单期数据指标计算测试  A B
+       #region  单期数据指标计算测试  A C 
 		/// <summary>
 		/// 单期数据指标计算测试:返回值都是object类型,需要手动进行转换
 		/// </summary>
@@ -76,15 +76,15 @@ namespace LotteryTicket.Test
 		}	
 		#endregion
 	
-		#region 单期数据指标计算测试  C D 
-		[Test]
+		#region 单期数据指标计算测试  B D 
+		//[Test]
 		public void PerIndexCalculateTestCD()
 		{
 			
 		}
 		#endregion
 		
-		#region 多期数据指标的计算测试  A B
+		#region 多期数据指标的计算测试  A
 		[Test]
 		public void AllDataCalculateTest()
 		{

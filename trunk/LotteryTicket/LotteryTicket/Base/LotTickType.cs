@@ -31,12 +31,7 @@ namespace LotteryTicket
 
 	//计算委托类型
 	public delegate object CalculateHandler(int[][] args);
-	
-//	interface IFilter
-//	{
-//		bool IsSatisfy(int[] data , params object[] Conditons) ;
-//	}
-	
+
 	/// <summary>
 	/// 得到每组号码指标接口,单一指标
 	/// </summary>

@@ -10,12 +10,12 @@
  * 
  * TODO:1.完善B D类测试数据与测试程序;
  *      2.对测试程序中的相关方法进行改进,重构,例如:获取整理测试数据方法,根据字符串获取测试数据等
- *      3.测试中的A B C D类型处理模糊,重新理一下
  * 
  * 
  * 
  * 彩票处理程序类库
  * 
+ * 2011-04-05 完成与修改测试程序小错误,以及预测方法的改进,可以自定义输入对比条件,简化某些指标的验证过程
  * 2011-03-24 完成所有预测方法数据的计算与正确率对比,修改程序与测试,同通过第一个单元测试
  * 2011-03-21 完成单个指标所有数据计算的测试,主要是AC类,完成测试框架和测试数据格式
  * 2011-03-19 完成单个指标计算的测试,主要是AC类别。完成测试框架,测试数据格式等
@@ -40,20 +40,10 @@
  */
 
 
-
-
-
-
-
-
-
-
-
-
-
 using System;
 using System.Reflection ;
 using System.IO ;
+using LotteryTicket.ValidateResult ;
 
 
 namespace LotteryTicket
@@ -62,6 +52,7 @@ namespace LotteryTicket
 	{
 		public static void Main(string[] args)
 		{	
+			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}

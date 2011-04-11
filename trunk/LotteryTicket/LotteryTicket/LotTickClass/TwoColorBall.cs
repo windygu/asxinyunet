@@ -17,7 +17,7 @@ namespace LotteryTicket
 	/// </summary>
 	public class TwoColorBall :BaseLotTickClass,IRedLotTick
 	{
-		public TwoColorBall (int[][] Data)
+		public TwoColorBall () //double[][] Data
 		{
 			this.lotTickType = LotTickType.Range ;
 			this.lotTickName = "彩票名称" ;
@@ -27,19 +27,19 @@ namespace LotteryTicket
 			this.BlueBallNumber = 1 ;
 			this.RedNumRangeLimite = 32 ;
 			this.BlueNumRangeLimite = 12 ;			
-			this.LotTickDatas = Data ;
-			this.CurrentDataNumbers = Data.Length ;//默认计算期数
+//			this.LotTickDatas = Data ;
+			//this.CurrentDataNumbers = Data.Length ;//默认计算期数
 			//过滤到期号及日期，得到处理前的数据
-			int length = Data[0].Length -2-BlueBallNumber ;//红球号码个数
-			this.redlotTickNoAfterFilt = new int[Data.Length ][] ;
-			for (int i = 0 ; i <Data.Length ;i ++ )
-			{
-				redlotTickNoAfterFilt [i ] = new int[length ] ;
-				for (int j = 2 ; j<length +2 ;j ++)
-				{
-					redlotTickNoAfterFilt [i][j-2 ] = Data [i][j ] ;
-				}
-			}
+//			int length = Data[0].Length -2-BlueBallNumber ;//红球号码个数
+//			this.redlotTickNoAfterFilt = new int[Data.Length ][] ;
+//			for (int i = 0 ; i <Data.Length ;i ++ )
+//			{
+//				redlotTickNoAfterFilt [i ] = new int[length ] ;
+//				for (int j = 2 ; j<length +2 ;j ++)
+//				{
+//					redlotTickNoAfterFilt [i][j-2 ] = Data [i][j ] ;
+//				}
+//			}
 		}
 		
 		/// <summary>
@@ -64,69 +64,69 @@ namespace LotteryTicket
 		/// </summary>
 		/// <param name="length">最近的期数</param>
 		/// <returns>交错数组数据</returns>
-		public static int[][] GetRedBallData()
+		public static double[][] GetRedBallData()
 		{
 			//获取数据 order by  desc 降序排列, asc 升序
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			int[][] res = new int[dt.Rows.Count ][] ;
+			double[][] res = new double[dt.Rows.Count ][] ;
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
-				res [i ] = new int[6 ] ;
+				res [i ] = new double[6 ] ;
 				for (int j = 0 ; j <res [i ].Length ; j ++)
 				{
-					res [i ][j ] =Convert.ToInt32 (dt.Rows [i ][2+j ].ToString ()) ; ;
+					res [i ][j ] =Convert.ToDouble(dt.Rows [i ][2+j ].ToString ()) ; ;
 				}
 			}
 			return res ;
 		}		
-		public static int[][] GetRedBallData(int length)
+		public static double[][] GetRedBallData(int length)
 		{
 			//获取数据
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			int[][] res = new int[length ][] ;
+			double[][] res = new double[length ][] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
-				res [i ] = new int[6 ] ;
+				res [i ] = new double[6 ] ;
 				for (int j = 0 ; j < res[i ].Length ; j ++)
 				{
-					res [i ][j ] =Convert.ToInt32 (dt.Rows [k + i][2+j ].ToString ()) ; ;
+					res [i ][j ] =Convert.ToDouble(dt.Rows [k + i][2+j ].ToString ()) ; ;
 				}
 			}
 			return res ;
 		}
 		
-		public static int[] GetBlueBallData()
+		public static double[] GetBlueBallData()
 		{
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			int[] res = new int[dt.Rows.Count ] ;
+			double[] res = new double[dt.Rows.Count ] ;
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
-				res [i ] = Convert.ToInt32 (dt.Rows [i ][8].ToString ()) ;
+				res [i ] = Convert.ToDouble(dt.Rows [i ][8].ToString ()) ;
 			}
 			return res ;
 		}
 		
-		public static int[] GetBlueBallData(int length)
+		public static double[] GetBlueBallData(int length)
 		{
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			int[] res = new int[length ] ;
+			double[] res = new double[length ] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
-				res [i ] = Convert.ToInt32 (dt.Rows [k + i][8].ToString ()) ;
+				res [i ] = Convert.ToDouble(dt.Rows [k + i][8].ToString ()) ;
 			}
 			return res ;
 		}

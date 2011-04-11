@@ -91,5 +91,44 @@ namespace LotteryTicket
 			else{}
 			return res ;
 		}
+		
+		//直接传入对比条件,用于一些特殊的规律预测
+		public static bool[] PredictValidate(double[][] args ,IndexNameType origIndexType,
+		                                     double[] Conditions, 
+		                                     FilterRuleType ruleType,int needCounts)
+		{
+			bool[] res ;
+			Type t = typeof (IndexCalculate ) ;
+			MethodInfo origMi = t.GetMethod ("CalculateAllData") ;
+			//比较的双方数据肯定是数组
+			//TODO:需要 考虑指标为字符串时的对比情况
+			//TODO:A,C类型的指标计算只得到单个数据			
+			//根据预测指标的类型,可能数据长度不一致;B、D类型要根据当前所需行数来进行一个判断转换			
+			res = new bool[args.Length -needCounts  ] ;			
+			char origCt = origIndexType.ToString ()[0];
+			object origData = origMi.Invoke(null ,new object []{args ,origIndexType,new int[]{needCounts}}) ;
+			MethodInfo mi1 = typeof (BaseRuleCompare ).GetMethod ("RuleCompare") ;
+			if ((origCt == 'A')||(origCt == 'B'))//A B
+			{
+				double[] orig = (double[])origData ;				
+				for (int i = 0 ; i < res .Length -1; i ++ )
+				{
+					res[i ]=(bool )mi1.Invoke (null,new object []{ruleType,
+					                                       	new double[]{orig[i]},Conditions});
+				}
+			} 
+			else if((origCt == 'C')||(origCt == 'D'))
+			{
+				double[] orig = (double[])origData ;			
+				for (int i = 0 ; i < res .Length -1; i ++ )
+				{
+					res[i ]=(bool )mi1.Invoke (null,new object []{ruleType,
+					                                       	new double[]{orig[i]},
+					                                       	Conditions}) ;
+				}
+			}			
+			else{}
+			return res ;
+		}
 	}
 }
