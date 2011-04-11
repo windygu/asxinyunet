@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using LotteryTicketSoft.GraphForm ;
 using System.Windows.Forms;
 
 namespace LotteryTicketSoft
@@ -24,7 +25,7 @@ namespace LotteryTicketSoft
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			Application.Run(new DataPredict ());
 		}
 		
 	}

@@ -36,84 +36,113 @@ namespace LotteryTicketSoft
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
-			this.button1 = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
+			this.StausShow = new DotNet.Tools.Controls.StausInfoShow();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.基本指标计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.规律预测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.选号过滤ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.数据更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.常规参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// zedGraphControl1
+			// StausShow
 			// 
-			this.zedGraphControl1.Location = new System.Drawing.Point(34, 105);
-			this.zedGraphControl1.Name = "zedGraphControl1";
-			this.zedGraphControl1.ScrollGrace = 0;
-			this.zedGraphControl1.ScrollMaxX = 0;
-			this.zedGraphControl1.ScrollMaxY = 0;
-			this.zedGraphControl1.ScrollMaxY2 = 0;
-			this.zedGraphControl1.ScrollMinX = 0;
-			this.zedGraphControl1.ScrollMinY = 0;
-			this.zedGraphControl1.ScrollMinY2 = 0;
-			this.zedGraphControl1.Size = new System.Drawing.Size(657, 489);
-			this.zedGraphControl1.TabIndex = 0;
+			this.StausShow.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.StausShow.Location = new System.Drawing.Point(0, 590);
+			this.StausShow.Name = "StausShow";
+			this.StausShow.Size = new System.Drawing.Size(759, 24);
+			this.StausShow.TabIndex = 0;
 			// 
-			// button1
+			// menuStrip1
 			// 
-			this.button1.Location = new System.Drawing.Point(34, 28);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.Button1Click);
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.基本指标计算ToolStripMenuItem,
+									this.规律预测ToolStripMenuItem,
+									this.选号过滤ToolStripMenuItem,
+									this.系统设置ToolStripMenuItem,
+									this.帮助ToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(759, 24);
+			this.menuStrip1.TabIndex = 2;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// textBox1
+			// 基本指标计算ToolStripMenuItem
 			// 
-			this.textBox1.Location = new System.Drawing.Point(115, 28);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(378, 21);
-			this.textBox1.TabIndex = 2;
+			this.基本指标计算ToolStripMenuItem.Name = "基本指标计算ToolStripMenuItem";
+			this.基本指标计算ToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+			this.基本指标计算ToolStripMenuItem.Text = "基本指标计算";
 			// 
-			// button2
+			// 规律预测ToolStripMenuItem
 			// 
-			this.button2.Location = new System.Drawing.Point(34, 67);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 3;
-			this.button2.Text = "button2";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.Button2Click);
+			this.规律预测ToolStripMenuItem.Name = "规律预测ToolStripMenuItem";
+			this.规律预测ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+			this.规律预测ToolStripMenuItem.Text = "数据趋势";
 			// 
-			// button3
+			// 选号过滤ToolStripMenuItem
 			// 
-			this.button3.Location = new System.Drawing.Point(179, 67);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 4;
-			this.button3.Text = "button3";
-			this.button3.UseVisualStyleBackColor = true;
-			this.button3.Click += new System.EventHandler(this.Button3Click);
+			this.选号过滤ToolStripMenuItem.Name = "选号过滤ToolStripMenuItem";
+			this.选号过滤ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+			this.选号过滤ToolStripMenuItem.Text = "选号过滤";
+			// 
+			// 系统设置ToolStripMenuItem
+			// 
+			this.系统设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.数据更新ToolStripMenuItem,
+									this.常规参数设置ToolStripMenuItem});
+			this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
+			this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+			this.系统设置ToolStripMenuItem.Text = "系统设置";
+			// 
+			// 帮助ToolStripMenuItem
+			// 
+			this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
+			this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+			this.帮助ToolStripMenuItem.Text = "帮助";
+			// 
+			// 数据更新ToolStripMenuItem
+			// 
+			this.数据更新ToolStripMenuItem.Name = "数据更新ToolStripMenuItem";
+			this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.数据更新ToolStripMenuItem.Text = "数据更新";
+			// 
+			// 常规参数设置ToolStripMenuItem
+			// 
+			this.常规参数设置ToolStripMenuItem.Name = "常规参数设置ToolStripMenuItem";
+			this.常规参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.常规参数设置ToolStripMenuItem.Text = "常规参数设置";
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(731, 606);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.textBox1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.zedGraphControl1);
+			this.ClientSize = new System.Drawing.Size(759, 614);
+			this.Controls.Add(this.StausShow);
+			this.Controls.Add(this.menuStrip1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+			this.IsMdiContainer = true;
+			this.MainMenuStrip = this.menuStrip1;
+			this.MaximizeBox = false;
 			this.Name = "MainForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "LotteryTicketSoft";
+			this.Load += new System.EventHandler(this.MainFormLoad);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Button button1;
-		private ZedGraph.ZedGraphControl zedGraphControl1;
+		private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 常规参数设置ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 数据更新ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 系统设置ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 选号过滤ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 规律预测ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 基本指标计算ToolStripMenuItem;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private DotNet.Tools.Controls.StausInfoShow StausShow;
 	}
 }
