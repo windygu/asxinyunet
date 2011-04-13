@@ -44,33 +44,43 @@
  */
 
 using System;
-using System.Reflection ;
-using System.IO ;
-using LotteryTicket.ValidateResult ;
-using DotNet.Tools ;
-
+using System.Collections.Generic;
+using System.Reflection;
+using System.IO;
+using LotteryTicket.ValidateResult;
+using DotNet.Tools;
 
 namespace LotteryTicket
 {
 	class Program
 	{
 		public static void Main(string[] args)
-		{
-			double[][] data= TwoColorBall.GetRedBallData (1000) ;
+		{			
+			double[][] data= TwoColorBall.GetRedBallData (100) ;
+			double[][] sections = new double[5][] ;
+			sections [0] = new double[] {1,2,3,4,5,6,7};
+			sections [1] = new double[] {8,9,10,11,12,13,14};
+			sections [2] = new double[] {15,16,17,18,19,20,21};
+			sections [3] = new double[] {22,23,24,25,26,27,28};
+			sections [4] = new double[] {29,30,31,32,33};
+//			double[] res = StaticsResult.SectionMathchRate (data,sections ) ;
+			double[] res = StaticsResult.Frequency (data ) ;
+			foreach (double   element in res ) {
+				Console.WriteLine (element.ToString ()) ;
+			}
 //			double[][] result = (double[][])IndexCalculate.CalculateAllData (data,IndexNameType.D_ManyNosList,
-//			                                 new int[]{2 }) ;
-			
+//			                                 new int[]{2 }) ;			
 //			double[][] res = StaticsResult.CalcateRepeateNumber (data ,2) ;
 			//Console.WriteLine (ValidateMethods.LatestValidate (data)) ;
 //			Console.Write("Press any key to continue . . . ");
 			while (true )
 			{
-				Console.Write ("输入条件：") ;
-				double[] condition = Console.ReadLine ().ConvertStrToDoubleList (',') ;
-				double res = PredictMethodsValidate.GetValidateResult
-					(data,condition,IndexNameType.B_ManyNoOfNewCount  ,FilterRuleType.RangeLimite,4) ;
-				Console.WriteLine ("结果："+res.ToString ()) ;
-			}			
+//				Console.Write ("输入条件：") ;
+//				double[] condition = Console.ReadLine ().ConvertStrToDoubleList (',') ;
+//				double res = PredictMethodsValidate.GetValidateResult
+//					(data,condition,IndexNameType.B_ManyNoOfNewCount  ,FilterRuleType.RangeLimite,4) ;
+//				Console.WriteLine ("结果："+res.ToString ()) ;
+			}
 			Console.ReadKey(true);
 		}
 	}
