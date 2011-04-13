@@ -71,6 +71,10 @@
     <None Include="TestData\PredictValidateData.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LotteryTicketData\LotteryTicketData.csproj">
       <Project>{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}</Project>
       <Name>LotteryTicketData</Name>

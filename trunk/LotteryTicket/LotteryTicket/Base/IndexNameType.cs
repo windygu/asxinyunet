@@ -47,7 +47,7 @@ namespace LotteryTicket
 		/// 跨度列表,返回1个double[]类型
 		/// </summary>
 		C_SpanList ,
-		
+				
 		/// <summary>
 		/// 跨度和值,返回1个double类型
 		/// </summary>
@@ -71,7 +71,17 @@ namespace LotteryTicket
 		/// <summary>
 		/// 多期中不相同号码个数,返回1个double类型
 		/// </summary>
-		B_ManyNoCounts
+		B_ManyNoCounts ,
+		
+		/// <summary>
+		/// 多期中最后一期与前几期相比,旧号出现的个数
+		/// </summary>
+		B_ManyNoOfNewCount ,
+		
+		/// <summary>
+		/// 多期号码中相同的号码列表
+		/// </summary>
+		D_ManyNosList 
 	}
 	#endregion
 }

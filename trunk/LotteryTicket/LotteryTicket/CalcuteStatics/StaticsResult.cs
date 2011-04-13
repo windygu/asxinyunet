@@ -7,6 +7,7 @@
  * 统计结果计算,根据框架内指标或者对个别不在框架内的特殊,重新实现
  */
 using System;
+using System.Collections;
 
 namespace LotteryTicket
 {
@@ -15,11 +16,11 @@ namespace LotteryTicket
 	/// </summary>
 	public class StaticsResult
 	{	
-		//和值在一定区间的概率
-//		public static double SumInLimite(double[][] data,double[] Conditions)
-//		{
-//			
-//		}
-		
+		//多期内相同数字列表,计算重复的周期
+		public static void CalcateRepeateNumber(double[][] data,int needLength)
+		{
+			double[][] result = (double[][])IndexCalculate.CalculateAllData (data,IndexNameType.D_ManyNosList,
+			                                 new int[]{needLength }) ;
+		}		
 	}
 }

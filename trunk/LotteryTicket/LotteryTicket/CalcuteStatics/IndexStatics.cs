@@ -135,7 +135,7 @@ namespace LotteryTicket
 		}
 		#endregion
 		
-		#region 多期号码总数
+		#region 多期号码
 		public static object B_ManyNoCounts(object args)
 		{
 			double[][] data = (double[][])args ;//多期数据
@@ -144,13 +144,64 @@ namespace LotteryTicket
 			{
 				for (int j=0 ; j <data[0].Length ; j ++)
 				{
-					if (al.Contains (data[i][j]))
+					if (!al.Contains(data[i][j]))
 					{
 						al.Add (data[i][j]);
 					}
 				}
 			}
 			return (double )al.Count ;
+		}
+		//多期中旧号出现的个数
+		public static object B_ManyNoOfNewCount(object args)
+		{
+			double[][] data = (double[][])args ;//多期数据
+			ArrayList al = new ArrayList ();
+			for (int i = 0 ; i <data.Length -1 ; i ++)
+			{
+				for (int j=0 ; j <data[0].Length ; j ++)
+				{
+					if (!al.Contains (data[i][j]))
+					{
+						al.Add (data[i][j]);
+					}
+				}
+			}
+			int count = 0 ;
+			for (int i = 0; i < data[0].Length ; i++)
+			{
+				if (al.Contains (data[data.Length -1][i ]))
+				{
+					count ++ ;
+				}
+			}
+			return (double )count ;
+		}
+		//多期相同的数据列表
+		public static object D_ManyNosList(object args)
+		{
+			double[][] data = (double[][])args ;//多期数据
+			ArrayList al = new ArrayList ();
+			for (int i = 0 ; i <data.Length -1 ; i ++)
+			{
+				for (int j=0 ; j <data[0].Length ; j ++)
+				{
+					if (!al.Contains (data[i][j]))
+					{
+						al.Add (data[i][j]);
+					}
+				}
+			}
+			ArrayList resList = new ArrayList () ;
+			for (int i = 0; i < data[0].Length ; i++)
+			{
+				if (al.Contains (data[data.Length -1][i ]))
+				{
+					resList .Add (data[data.Length -1][i ]) ;
+				}
+			}
+			double[] d = (double[])resList.ToArray(typeof (double )) ;
+			return d ;
 		}
 		#endregion
 		

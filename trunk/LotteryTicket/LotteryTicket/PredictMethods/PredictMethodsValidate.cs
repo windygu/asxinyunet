@@ -130,5 +130,31 @@ namespace LotteryTicket
 			else{}
 			return res ;
 		}
+	
+	
+		public static double GetValidateResult(double[][] data,double[] conditions,IndexNameType indexType,
+		                                       FilterRuleType ruleType,int needLength)
+		{
+			bool[] res = PredictMethodsValidate .PredictValidate 
+				(data , indexType ,conditions,ruleType,needLength) ;
+			return GetRateReuslt (res ) ;
+		}
+			#region 公共方法		
+		/// <summary>
+		/// 统计bool数组中True的比例,即正确率
+		/// </summary>		
+		public static double GetRateReuslt(bool[] result)
+		{
+			int sum = 0 ;
+			foreach (bool element in result ) 
+			{
+				if (element ) 
+				{
+					sum ++ ;
+				}
+			}
+			return ((double)sum)/((double)result.Length ) ;
+		}
+		#endregion
 	}
 }

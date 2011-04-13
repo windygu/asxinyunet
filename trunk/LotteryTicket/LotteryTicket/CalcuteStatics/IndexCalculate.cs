@@ -68,7 +68,7 @@ namespace LotteryTicket
 					double[][] sn = new double[needRows ][] ;
 					for (int j = 0 ; j <sn.Length ; j ++)
 					{
-						sn [j ] = args [min +j ] ;
+						sn [j ] = args [i +j ] ;
 					}
 					res [i ] = (double) mi.Invoke (null ,new object []{sn }) ;
 				}
@@ -83,7 +83,7 @@ namespace LotteryTicket
 					double[][] sn = new double[needRows ][] ;
 					for (int j = 0 ; j <sn.Length ; j ++)
 					{
-						sn [j ] = args [min +j ] ;
+						sn [j ] = args [i +j ] ;
 					}
 					res [i ] = (double[]) mi.Invoke (null ,new object []{sn }) ;
 				}
