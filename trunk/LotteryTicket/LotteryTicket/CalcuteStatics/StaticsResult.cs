@@ -8,6 +8,9 @@
  */
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel ;
+using System.Security.Cryptography ;
 
 namespace LotteryTicket
 {
@@ -88,9 +91,9 @@ namespace LotteryTicket
 		#endregion
 		
 		#region 数据频率
-		public static double[] Frequency(double[][] data)
+		public static double[] Frequency(double[][] data,int numbers)
 		{
-			int[] count = new int[33] ;
+			int[] count = new int[numbers ] ;
 			for (int i = 0; i < data.Length ; i++)
 			{
 				for (int j = 0; j < data [i].Length ; j++) 
@@ -103,6 +106,68 @@ namespace LotteryTicket
 				res [i ] = ((double )count [i ])/((double )data.Length*6 ) ;
 			}
 			return res ;
+		}
+		#endregion
+		
+		#region 动态进行模式的筛选
+		/// <summary>
+		/// 验证所有的随机模式,进行匹配，得到结果
+		/// </summary>
+		/// <param name="data"></param>
+		/// <param name="numbers"></param>
+		public static void  ValidateAllSections(double[][] data,int numbers)
+		{
+			RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider () ;
+			byte[] curLocate = new Byte[1] ;
+		}
+		
+		public static void  GetDynamicSections(double[][] data,int numbers)
+		{
+			//先将所有组合存储到SortedDictionary中
+			SortedDictionary<string , int> allComb = new SortedDictionary<string ,int> () ;
+			for (int i = 1; i <= numbers -1 ; i++) {
+				for (int j = i +1; j <= numbers ; j++) {
+					allComb.Add (((int)i).ToString ()+"-"+((int )j ).ToString (),0) ;
+				}
+			}
+			for (int i = 0; i < data.Length ; i++) {
+				for (int j = 0 ; j < data[i].Length -1 ; j++) {
+					for (int k = j +1 ; k <data [i ].Length ; k++) {
+						string sn = ((int)data [i][j]).ToString ()+"-"+((int)data [i ][k ]).ToString () ;
+						allComb[sn ] = allComb[sn ]+1 ;
+					}
+				}
+			}
+			//对结果进行排序,每次找出一个最大值,删除,再进行
+			System.Collections.Generic.SortedList<int,CombFrequce> sortRes = 
+				new System.Collections.Generic.SortedList <int,CombFrequce>();
+			for (int i = 0; i < allComb.Count -80 ; i++) 
+			{
+				foreach (DictionaryEntry  element in allcom) {
+					
+				}
+			}
+		}
+		public class CombFrequce
+		{
+			private string combName ;
+			
+			public string CombName {
+				get { return combName; }
+				set { combName = value; }
+			}
+			private int combCount ;
+			
+			public int CombCount {
+				get { return combCount; }
+				set { combCount = value; }
+			}
+			public CombFrequce (string name,int count)
+			{
+				combName = name ;
+				combCount = count ;
+			}
+		
 		}
 		#endregion
 		
