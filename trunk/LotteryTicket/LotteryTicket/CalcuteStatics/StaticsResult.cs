@@ -9,8 +9,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel ;
-using System.Security.Cryptography ;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace LotteryTicket
 {
@@ -40,7 +41,7 @@ namespace LotteryTicket
 			{
 				for (int j = 0; j < sections[i ].Length ; j++) 
 				{
-					ht.Add (sections[i ][j ],i ) ;//以号码为key，对应的段号位值
+					ht.Add (sections[i ][j ],i ) ;//以号码为key，对应的段号为值
 				}				
 			}
 			//记录结果数组,存储每一期出现的对应段的个数
@@ -56,20 +57,24 @@ namespace LotteryTicket
 			return res ;
 		}
 		
+		//得到数据匹配的结果,每一期中分配到段的个数
 		public static int[] SectionMathchResult(double[][] data,double[][] sections)
 		{
 			int[][] matchRes = SectionMathch (data,sections ) ;
 			//寻找零的个数
 			int[] res = new int[data.Length ] ;
-			for (int i = 0; i < matchRes.Length ; i++) {
+			for (int i = 0; i < matchRes.Length ; i++) 
+			{
 				int count = 0 ;
-				for (int j = 0; j < matchRes[i].Length ; j++) {
+				for (int j = 0; j < matchRes[i].Length ; j++) 
+				{
 					//统计0的个数
-					if (matchRes[i][j]==0) {
+					if (matchRes[i][j]==0)
+					{
 						count ++ ;
-					}
-					res [i ] = sections.Length - count ;
+					}	
 				}
+				res [i ] = sections.Length - count ;
 			}
 			return res ;
 		}
@@ -80,10 +85,12 @@ namespace LotteryTicket
 			int[] mathRes = SectionMathchResult (data,sections ) ;
 			double[] res = new double[sections.Length ] ;
 			int[] resCount = new int[sections.Length ] ;
-			for (int i = 0; i < mathRes.Length ; i++) {
+			for (int i = 0; i < mathRes.Length ; i++)
+			{
 				resCount [mathRes [i ]-1] ++ ;
 			}
-			for (int j = 0; j < resCount.Length ; j++) {
+			for (int j = 0; j < resCount.Length ; j++)
+			{
 				res[j ] = ((double )resCount [j ])/( (double )data .Length  ) ;
 			}
 			return res ;
@@ -110,15 +117,61 @@ namespace LotteryTicket
 		#endregion
 		
 		#region 动态进行模式的筛选
+		public static void ValidateRandomSections(double[][] data,int[] kCount,int numbers)
+		{
+			//for (int i = 0; i <1000; i++) {
+			while (true ){
+				double[][] section = GetRandomSections (kCount ,numbers ) ;
+				double[] res = SectionMathchRate (data,section ) ;				
+				if ((res [res.Length -1]>0.282)&&((res [res.Length -2])>0.45))
+				{
+					using(StreamWriter sw = new StreamWriter("a.txt",true ))
+					{
+						sw.WriteLine (res[res.Length -1].ToString () + ","+res [res.Length -2].ToString ()+","
+						              +(res [res.Length -1]+res [res.Length -2]).ToString ()) ;
+						
+						for (int i = 0; i < section.Length ; i++) {
+							string str= section [i][0].ToString () ;
+							for (int j = 1; j < section[i].Length ; j++) {
+								str += ("," + section [i][j ]) ;
+							}
+							sw.WriteLine (str ) ;
+						}
+						sw.WriteLine ("---------------------------");
+					}
+//					Console.WriteLine (res[res.Length -1].ToString () + ","+(res [res.Length -1]+res [res.Length -2]).ToString ()) ;
+				}
+			}			
+		}
+		
 		/// <summary>
-		/// 验证所有的随机模式,进行匹配，得到结果
+		/// 验证所有的随机模式,进行匹配，得到结果，kCount为分配的段数集合,numbers为号码的范围
 		/// </summary>
-		/// <param name="data"></param>
-		/// <param name="numbers"></param>
-		public static void  ValidateAllSections(double[][] data,int numbers)
+		public static double[][]  GetRandomSections(int[] kCount , int numbers)
+		{
+			double[][] res = new double[kCount.Length ][] ;
+			List<double > curlist = new List<double >() ;
+			for (int i = 0; i <numbers ; i++) {
+				curlist.Add (i +1) ;
+			}
+			for (int i = 0; i <kCount.Length -1 ; i++) {
+				res[i ] = GetList (kCount [i ],curlist ) ;
+			}
+			res [kCount.Length  -1] = curlist.ToArray () ;
+			return res ;
+		}
+		public static double[] GetList(int count ,List<double > curList)
 		{
 			RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider () ;
 			byte[] curLocate = new Byte[1] ;
+			double[] res = new double[count ]  ;
+			for (int i = 0; i < count ; i++) {
+				rng.GetBytes (curLocate ) ;
+				int temp = (int )((curLocate[0])%curList.Count) ;
+				res [i ] = curList[temp ] ;
+				curList.RemoveAt (temp ) ;
+			}
+			return res ;
 		}
 		
 		public static void  GetDynamicSections(double[][] data,int numbers)
@@ -141,12 +194,12 @@ namespace LotteryTicket
 			//对结果进行排序,每次找出一个最大值,删除,再进行
 			System.Collections.Generic.SortedList<int,CombFrequce> sortRes = 
 				new System.Collections.Generic.SortedList <int,CombFrequce>();
-			for (int i = 0; i < allComb.Count -80 ; i++) 
-			{
-				foreach (DictionaryEntry  element in allcom) {
-					
-				}
-			}
+//			for (int i = 0; i < allComb.Count -80 ; i++) 
+//			{
+//				foreach (DictionaryEntry  element in allcom) {
+//					
+//				}
+//			}
 		}
 		public class CombFrequce
 		{
@@ -169,7 +222,6 @@ namespace LotteryTicket
 			}
 		
 		}
-		#endregion
-		
+		#endregion	
 	}
 }
