@@ -82,6 +82,7 @@ namespace LotteryTicket
 			}
 			return res ;
 		}		
+		
 		public static double[][] GetRedBallData(int length)
 		{
 			//获取数据
@@ -127,6 +128,46 @@ namespace LotteryTicket
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
 				res [i ] = Convert.ToDouble(dt.Rows [k + i][8].ToString ()) ;
+			}
+			return res ;
+		}
+		
+		public static double[][] GetAllData()
+		{
+				//获取数据
+			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
+				"Persist Security Info=False" ;
+			DbHelperOleDb.connectionString = con ;
+			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+			double[][] res = new double[length ][] ;
+			int k = dt.Rows.Count - length ;
+			for (int i = 0 ; i <res.Length ; i ++)
+			{
+				res [i ] = new double[7 ] ;
+				for (int j = 0 ; j < res[i ].Length ; j ++)
+				{
+					res [i ][j ] =Convert.ToDouble(dt.Rows [k + i][2+j ].ToString ()) ; ;
+				}
+			}
+			return res ;
+		}
+		
+		public static double[][] GetAllData(int length)
+		{
+			//获取数据
+			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
+				"Persist Security Info=False" ;
+			DbHelperOleDb.connectionString = con ;
+			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+			double[][] res = new double[length ][] ;
+			int k = dt.Rows.Count - length ;
+			for (int i = 0 ; i <res.Length ; i ++)
+			{
+				res [i ] = new double[7 ] ;
+				for (int j = 0 ; j < res[i ].Length ; j ++)
+				{
+					res [i ][j ] =Convert.ToDouble(dt.Rows [k + i][2+j ].ToString ()) ; ;
+				}
 			}
 			return res ;
 		}

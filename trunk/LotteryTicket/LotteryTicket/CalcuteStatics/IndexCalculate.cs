@@ -30,7 +30,7 @@ namespace LotteryTicket
 			return  mi.Invoke (null ,new object []{data }) ;
 		}
 	    #endregion
-	    
+	   
 		#region	计算所有数据集指标的值
 		public static object CalculateAllData(object data,IndexNameType typeName ,params int[] needRows)
 		{
