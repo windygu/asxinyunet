@@ -18,10 +18,10 @@ namespace LotteryTicket.CalcuteStatics
 		/// <summary>
 		/// 计算一定期数内大号和小号的个数,
 		/// </summary>
-		public static int[] BigAndSmallNumbCount(double[][] data,int lastNum)
-		{
-			
-		}
+//		public static int[] BigAndSmallNumbCount(double[][] data,int lastNum)
+//		{
+//			
+//		}
 		//TODO:计算一定期内奇数与偶数的个数
 		//一定期数内不重复的次数
 	}

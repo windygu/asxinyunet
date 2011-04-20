@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Kw.Combinatorics;
+using DotNet.Tools ;
 
 namespace LotteryTicket
 {
@@ -18,10 +19,36 @@ namespace LotteryTicket
 	/// </summary>
 	public class DataFilter
 	{
-		public static void GetPredictData(string filePath)
+		//根据预测规则文件,进行数据过滤,得到预测数据,并保持到文件
+		public static void GetPredictDataByRule(string ruleFilePath,string saveFilePath)
 		{
+			List<string >  ruleArr = new List<string > () ;
+			
+			#region 读取数据 并 处理
+			//读取测试规则列表,将规则保存到字符串数组中
+			using(StreamReader sr = new StreamReader (ruleFilePath ))
+			{
+				string str = "" ;
+				while ((str =sr.ReadLine ())!=null )
+				{
+					if (!str.StartsWith ("#")) {
+						//不是以#开头的为规则
+						ruleArr.Add (str ) ;//添加
+					}
+				}
+			}
+			string[][] ruleStr = new string[ruleArr.Count ][] ;//存储规则名称,2列
+			double[][] ruleParmas = new double[ruleArr.Count ][] ;//存储对应规则的参数列表
+			int count = 0 ;
+			foreach (string  element in ruleArr ) {
+				string[] temp = element.Split (':') ;
+				ruleStr [count ] = new string[]{temp [0],temp[1]} ;
+				ruleParmas [count ] = temp [2].ConvertStrToDoubleList (',') ;
+			}
+			#endregion
+			
 			//保存到数据文件,每行一组
-			Combination com = new Combination(33,6) ;			
+			Combination com = new Combination(33,6) ;
 			var res = com.Rows ;
 			foreach (var s in res )
 			{
@@ -35,22 +62,31 @@ namespace LotteryTicket
 		}
 		
 		//验证实际预测结果的收获
-		public static void ValidatePrizes(string dataFilePath,string ruleFilePath)
+		public static void ValidatePrizes(string dataFilePath , double[] prizedata)
 		{
 			//规则类似测试文件,读取，方便更改
+			List<string >  dataArr = new List<string >() ;		
 			
-			//首先读取测试的数据文件结果,保存到数据:每一行一期,蓝号放在最后 " ," 为分隔符
-			List<var>  dataArr = new List<double >() ;
-			double[][] testData ;
+			#region  读取数据 并 处理
+		   //首先读取测试的数据文件结果,保存到数据:每一行一期,蓝号放在最后 " ," 为分隔符
 			using(StreamReader sr = new StreamReader (dataFilePath ))
 			{
 				string str = "" ;
 				while ((str =sr.ReadLine ())!=null )
 				{
-					
+					if (str !="") {
+						dataArr .Add (str ) ;//添加测试数据
+					}
 				}
-			}
-			//读取测试规则列表,将规则保存到字符串数组中
+			}			
+			double[][] testData = new double[dataArr.Count ][] ;;
+			int count = 0 ;
+			foreach (string element in dataArr ) {
+				testData [count ++] = element.ConvertStrToDoubleList (',') ;
+			}			
+			#endregion
+			
+			//TODO:循环数据 与 正确号码进行对比,确定奖等级
 		}
 	}
 }

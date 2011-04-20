@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphForm\BaseGraphClass.cs" />
-    <Compile Include="GraphForm\DataPredict.cs" />
+    <Compile Include="GraphForm\DataPredict.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GraphForm\DataPredict.Designer.cs">
       <DependentUpon>DataPredict.cs</DependentUpon>
     </Compile>

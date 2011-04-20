@@ -7,7 +7,11 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Data ;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Net.Cache;
+using System.Threading;
 using Maticsoft.DBUtility;
 
 namespace LotteryTicket
@@ -17,6 +21,19 @@ namespace LotteryTicket
 	/// </summary>
 	public class TwoColorBall :BaseLotTickClass,IRedLotTick
 	{
+		private string conStr ;
+		
+		/// <summary>
+		/// 设置数据库连接字符串
+		/// </summary>
+		public string ConStr {
+			get { return conStr; }
+			set { conStr = value; }
+		}	
+		//相应的奖金
+		private static double[] prizeReward = new double[7] {0,5000000,200000,3000,200,10,5};
+	
+		
 		public TwoColorBall () //double[][] Data
 		{
 			this.lotTickType = LotTickType.Range ;
@@ -26,20 +43,9 @@ namespace LotteryTicket
 			this.RedBallNumber = 7 ;
 			this.BlueBallNumber = 1 ;
 			this.RedNumRangeLimite = 32 ;
-			this.BlueNumRangeLimite = 12 ;			
-//			this.LotTickDatas = Data ;
-			//this.CurrentDataNumbers = Data.Length ;//默认计算期数
-			//过滤到期号及日期，得到处理前的数据
-//			int length = Data[0].Length -2-BlueBallNumber ;//红球号码个数
-//			this.redlotTickNoAfterFilt = new int[Data.Length ][] ;
-//			for (int i = 0 ; i <Data.Length ;i ++ )
-//			{
-//				redlotTickNoAfterFilt [i ] = new int[length ] ;
-//				for (int j = 2 ; j<length +2 ;j ++)
-//				{
-//					redlotTickNoAfterFilt [i][j-2 ] = Data [i][j ] ;
-//				}
-//			}
+			this.BlueNumRangeLimite = 12 ;	
+          this.conStr =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
+          	"Persist Security Info=False" ;
 		}
 		
 		/// <summary>
@@ -63,33 +69,14 @@ namespace LotteryTicket
 		/// 从数据库获取指定期数红球数据
 		/// </summary>
 		/// <param name="length">最近的期数</param>
-		/// <returns>交错数组数据</returns>
-		public static double[][] GetRedBallData()
+		public static double[][] GetRedBallData(int  selectLength = -1)
 		{
 			//获取数据 order by  desc 降序排列, asc 升序
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			double[][] res = new double[dt.Rows.Count ][] ;
-			for (int i = 0 ; i <res.Length ; i ++)
-			{
-				res [i ] = new double[6 ] ;
-				for (int j = 0 ; j <res [i ].Length ; j ++)
-				{
-					res [i ][j ] =Convert.ToDouble(dt.Rows [i ][2+j ].ToString ()) ; ;
-				}
-			}
-			return res ;
-		}		
-		
-		public static double[][] GetRedBallData(int length)
-		{
-			//获取数据
-			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-				"Persist Security Info=False" ;
-			DbHelperOleDb.connectionString = con ;
-			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
@@ -103,26 +90,17 @@ namespace LotteryTicket
 			return res ;
 		}
 		
-		public static double[] GetBlueBallData()
+		/// <summary>
+		/// 获取所有的蓝球数据,单独
+		/// </summary>
+		/// <param name="length">指定的期数据,最近期开始,默认为-1,代表期所有的数据</param>
+		public static double[] GetBlueBallData(int selectLength = -1 )
 		{
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			double[] res = new double[dt.Rows.Count ] ;
-			for (int i = 0 ; i <res.Length ; i ++)
-			{
-				res [i ] = Convert.ToDouble(dt.Rows [i ][8].ToString ()) ;
-			}
-			return res ;
-		}
-		
-		public static double[] GetBlueBallData(int length)
-		{
-			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-				"Persist Security Info=False" ;
-			DbHelperOleDb.connectionString = con ;
-			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[] res = new double[length ] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
@@ -132,13 +110,18 @@ namespace LotteryTicket
 			return res ;
 		}
 		
-		public static double[][] GetAllData()
+		/// <summary>
+		/// 获取指定期的数据：所有历史数据，红号+蓝号
+		/// </summary>
+		/// <param name="length">指定的期数据,最近期开始,默认为-1,代表所有期的数据</param>
+		public static double[][] GetAllData(int selectLength = -1 )
 		{
-				//获取数据
+			//获取数据
 			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
 				"Persist Security Info=False" ;
 			DbHelperOleDb.connectionString = con ;
 			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
@@ -151,25 +134,83 @@ namespace LotteryTicket
 			}
 			return res ;
 		}
+		#endregion
 		
-		public static double[][] GetAllData(int length)
+		#region 奖项对比
+		/// <summary>
+		/// 对比单期号码与中奖号码,确定中奖等级
+		/// </summary>
+		/// <param name="prizeNo">中奖号码</param>
+		/// <param name="testNo">需要测试对比的号码</param>
+		/// <returns>中奖等级.</returns>
+		public int GetPrizeGrade(double[] prizeNo,double[] testNo)
 		{
-			//获取数据
-			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-				"Persist Security Info=False" ;
-			DbHelperOleDb.connectionString = con ;
-			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
-			double[][] res = new double[length ][] ;
-			int k = dt.Rows.Count - length ;
-			for (int i = 0 ; i <res.Length ; i ++)
-			{
-				res [i ] = new double[7 ] ;
-				for (int j = 0 ; j < res[i ].Length ; j ++)
-				{
-					res [i ][j ] =Convert.ToDouble(dt.Rows [k + i][2+j ].ToString ()) ; ;
+			//循环的方式，蓝球分开，直接对比最后一位
+			int countR = 0 ;
+			for (int i = 0; i < testNo .Length -1 ; i++) {
+				for (int j = 0; j < prizeNo.Length -1 ; j++) {
+					if (testNo [i ]==prizeNo [j ]) {
+						countR ++ ;
+						break ;//跳出当前循环,进入下一次迭代对比
+					}
 				}
 			}
+			int countN = prizeNo [prizeNo.Length -1] == testNo [testNo.Length -1] ? 1:0 ;
+			string str = countR.ToString ()+"-"+countN.ToString () ;//奖项特征
+			if("0-0,1-0".Contains (str ))
+			{
+				return 0 ;
+			}
+			else if ("1-1,0-1,2-1".Contains (str )) {
+				return 6 ;
+			}
+			else if ("3-1,4-0".Contains (str )) {
+				return 5 ;
+			}
+			else if ("4-1,5-0".Contains (str )) {
+				return 4 ;
+			}
+			else if ("5-1".Contains (str )) {
+				return 3 ;
+			}
+			else if ("6-0".Contains (str )) {
+				return 2 ;
+			}
+			else if ("6-1".Contains (str )) {
+				return 1 ;
+			}
+			else 
+				return 0 ;
+		}
+		
+		/// <summary>
+		/// 一次测试多个号码的等级，最终返回各个等级中奖号码的个数
+		/// </summary>
+		/// <param name="prizeNo"></param>
+		/// <param name="testNoes"></param>
+		/// <returns></returns>
+		public int[] GetPrizeGrade(double[] prizeNo,double[][] testNoes)
+		{
+			int[] grades = new int[testNoes.Length ] ;
+			for (int i = 0; i < testNoes.Length ; i++) {
+				grades [i ] = GetPrizeGrade (prizeNo,testNoes[i ]) ;
+			}
+			//统计结果
+			int[] res = new int[7] ;
+			for (int i = 0; i < grades.Length ; i++) {
+				res [grades[i ]] ++ ; //奖项大小的在对应位置加1
+			}
 			return res ;
+		}
+		//根据测试号码和中奖号码，统计总共的中奖金额
+		public double GetAllPrizeReward(double[] prizeNo,double[][] testNoes)
+		{
+			int[] gradeNum = GetPrizeGrade (prizeNo,testNoes ) ;
+			double sum = 0 ;
+			for (int i = 0; i < gradeNum.Length ; i++) {
+				sum += gradeNum [i ]* prizeReward [i ] ;//次数*单次的金额,并累加
+			}
+			return sum ;
 		}
 		#endregion
 	}
