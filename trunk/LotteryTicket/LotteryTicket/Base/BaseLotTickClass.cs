@@ -27,33 +27,7 @@ namespace LotteryTicket
 		//考虑增加一个控制开关和属性，可以动态调整计算的期数
 		//比如，只计算最近的50期的和值，但是计算所有期的数字频率
 		public bool IsAllDataUsed = true ;//是否计算所有数据,默认为true
-		public int CurrentDataNumbers ; //当前所计算的数据期数，最近	
-		/// <summary>
-		/// 获取当前计算的数据
-		/// </summary>
-		public int[][] CurrentData 
-		{
-			get 
-			{
-				if (IsAllDataUsed ) //全部数据
-				{
-					return redlotTickNoAfterFilt ;
-				}
-				else
-				{
-					//取出指定最近的数据
-					int[][] res = new int[CurrentDataNumbers ][] ;
-					for (int i = redlotTickNoAfterFilt.Length -CurrentDataNumbers  ;
-					     i <redlotTickNoAfterFilt.Length  ; i ++)
-					{
-						res[i -redlotTickNoAfterFilt .Length ] = redlotTickNoAfterFilt [i ] ;
-					}
-					//计算后还原到原模式
-					this.IsAllDataUsed = true ;
-					return res ;
-				}
-			}
-		}
+		public int CurrentDataNumbers ; //当前所计算的数据期数，最近		
 	}
 	#endregion
 }

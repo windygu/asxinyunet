@@ -61,13 +61,14 @@ namespace LotteryTicket
 			Console.WriteLine (com.Rank .ToString ());
 		}
 		
-		//验证实际预测结果的收获
-		public static void ValidatePrizes(string dataFilePath , double[] prizedata)
+		//从文件读取预测数据
+		//TODO:文件验证，文件名唯一，需要验证
+		public static double[][] GetPredictDataFormFile(string dataFilePath)
 		{
 			//规则类似测试文件,读取，方便更改
 			List<string >  dataArr = new List<string >() ;		
 			
-			#region  读取数据 并 处理
+			// 读取数据 并 处理
 		   //首先读取测试的数据文件结果,保存到数据:每一行一期,蓝号放在最后 " ," 为分隔符
 			using(StreamReader sr = new StreamReader (dataFilePath ))
 			{
@@ -83,10 +84,17 @@ namespace LotteryTicket
 			int count = 0 ;
 			foreach (string element in dataArr ) {
 				testData [count ++] = element.ConvertStrToDoubleList (',') ;
-			}			
-			#endregion
-			
+			}
+			return testData ;
+		}
+		
+		//验证实际预测结果的收获
+		public static double ValidatePrizes(string dataFilePath , double[] prizedata)
+		{			
 			//TODO:循环数据 与 正确号码进行对比,确定奖等级
+			//直接调用彩票类的兑奖计算		
+			double[][] data = GetPredictDataFormFile (dataFilePath ) ;
+			return TwoColorBall.GetAllPrizeReward (prizedata,data ) ;
 		}
 	}
 }

@@ -17,17 +17,16 @@ namespace LotteryTicket
 		//  B   [][]  --->  1个结果
 		//  C   []  --->  []多个结果	
 		//  D   [][]  --->[]  多个结果		
-		//    F 统计规律常熟类指标
+		//  F   统计规律常数类指标
 		
 		/// <summary>
 		/// 自身数字,只支持[] -->[],主要用于胆号和杀号
 		/// </summary>
-		C_SelfNumber ,
-		
+		C_SelfNumber ,		
+	
 		A_PM001 ,
-		
 		A_PM002 ,
-		
+			
 		/// <summary>
 		/// 和值,返回1个double类型
 		/// </summary>
@@ -84,4 +83,23 @@ namespace LotteryTicket
 		D_ManyNosList 
 	}
 	#endregion
+	
+	#region 彩票类型枚举
+	/// <summary>
+	/// 彩票类型
+	/// </summary>
+	public enum LotTickType
+	{
+		/// <summary>
+		/// 排列型,如32选5，选出几个数字，没有顺序
+		/// </summary>
+		Range ,
+		
+		/// <summary>
+		/// 数字型,如3D，选出一个整数，号码不能变顺序
+		/// </summary>
+		Number
+	}
+	#endregion	
+	
 }

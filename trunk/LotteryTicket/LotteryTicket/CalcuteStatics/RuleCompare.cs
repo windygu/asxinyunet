@@ -23,32 +23,32 @@ namespace LotteryTicket
 		EqualSingle ,
 		
 		/// <summary>
-		/// 相等匹配：匹配队列中的所有元素,即完全匹配
+		/// 相等匹配：匹配参数队列中的所有元素,即完全匹配
 		/// </summary>
 		EqualAll ,
 		
 		/// <summary>
-		/// 不相等匹配：不和队列中的任何一个相同
+		/// 不相等匹配：不和参数队列中的任何一个相同
 		/// </summary>
 		NotEqual ,
 		
 		/// <summary>
-		/// 一定范围内,上下限
+		/// 一定范围内,上下限:[a,b]
 		/// </summary>
 		RangeLimite ,
 		
 		/// <summary>
-		/// 不在范围内
+		/// 不在范围内 <a,>b
 		/// </summary>
 		NotInRangeLimite ,
 		
 		/// <summary>
-		/// 小于一个数
+		/// 小于一个数 <= a
 		/// </summary>
 		LessThanLimite,
 		
 		/// <summary>
-		/// 大于一个数
+		/// 大于一个数 >=b
 		/// </summary>
 		GreaterThanLimite,
 		
@@ -218,6 +218,13 @@ namespace LotteryTicket
 		}
 		#endregion
 		
+		/// <summary>
+		/// 根据指定的规则将数据 与 指定参数进行对比，确定是否满足条件
+		/// </summary>
+		/// <param name="typeName">过滤规则名称</param>
+		/// <param name="data">需要对比的数据</param>
+		/// <param name="Conditons">参数列表</param>
+		/// <returns>是否满足</returns>
 		public static bool RuleCompare(FilterRuleType typeName,object data ,double[] Conditons)
 		{
 			//根据名称，采用反射调用,data为Arraylist数组

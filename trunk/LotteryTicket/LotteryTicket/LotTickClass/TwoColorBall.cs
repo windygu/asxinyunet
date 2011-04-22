@@ -19,8 +19,9 @@ namespace LotteryTicket
 	/// <summary>
 	/// 双色球彩票类型
 	/// </summary>
-	public class TwoColorBall :BaseLotTickClass,IRedLotTick
+	public class TwoColorBall :BaseLotTickClass
 	{
+		#region 初始化,属性		
 		private string conStr ;
 		
 		/// <summary>
@@ -32,8 +33,7 @@ namespace LotteryTicket
 		}	
 		//相应的奖金
 		private static double[] prizeReward = new double[7] {0,5000000,200000,3000,200,10,5};
-	
-		
+			
 		public TwoColorBall () //double[][] Data
 		{
 			this.lotTickType = LotTickType.Range ;
@@ -42,7 +42,7 @@ namespace LotteryTicket
 			this.allBallNumber = 8 ;
 			this.RedBallNumber = 7 ;
 			this.BlueBallNumber = 1 ;
-			this.RedNumRangeLimite = 32 ;
+			this.RedNumRangeLimite = 33 ;
 			this.BlueNumRangeLimite = 12 ;	
           this.conStr =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
           	"Persist Security Info=False" ;
@@ -56,13 +56,7 @@ namespace LotteryTicket
 			IsAllDataUsed = false ;
 			this.CurrentDataNumbers = setLength ;
 		}
-		
-		public object Calculate(CalculateHandler calc )
-		{
-			//根据红球个数，args应该在传入前过滤掉期号及日期数据,只剩下号码
-			//动态获取当前需要计算的数据,可在外部程序中调整期数
-			return calc(this.CurrentData ) ;
-		}
+		#endregion
 		
 		#region 获取双色球计算数据		
 		/// <summary>
@@ -142,8 +136,8 @@ namespace LotteryTicket
 		/// </summary>
 		/// <param name="prizeNo">中奖号码</param>
 		/// <param name="testNo">需要测试对比的号码</param>
-		/// <returns>中奖等级.</returns>
-		public int GetPrizeGrade(double[] prizeNo,double[] testNo)
+		/// <returns>中奖等级</returns>
+		public static int GetPrizeGrade(double[] prizeNo,double[] testNo)
 		{
 			//循环的方式，蓝球分开，直接对比最后一位
 			int countR = 0 ;
@@ -186,10 +180,10 @@ namespace LotteryTicket
 		/// <summary>
 		/// 一次测试多个号码的等级，最终返回各个等级中奖号码的个数
 		/// </summary>
-		/// <param name="prizeNo"></param>
-		/// <param name="testNoes"></param>
-		/// <returns></returns>
-		public int[] GetPrizeGrade(double[] prizeNo,double[][] testNoes)
+		/// <param name="prizeNo">中奖号码</param>
+		/// <param name="testNoes">需要测试对比的号码</param>
+		/// <returns>中奖等级</returns>
+		public static int[] GetPrizeGrade(double[] prizeNo,double[][] testNoes)
 		{
 			int[] grades = new int[testNoes.Length ] ;
 			for (int i = 0; i < testNoes.Length ; i++) {
@@ -203,7 +197,7 @@ namespace LotteryTicket
 			return res ;
 		}
 		//根据测试号码和中奖号码，统计总共的中奖金额
-		public double GetAllPrizeReward(double[] prizeNo,double[][] testNoes)
+		public static double GetAllPrizeReward(double[] prizeNo,double[][] testNoes)
 		{
 			int[] gradeNum = GetPrizeGrade (prizeNo,testNoes ) ;
 			double sum = 0 ;

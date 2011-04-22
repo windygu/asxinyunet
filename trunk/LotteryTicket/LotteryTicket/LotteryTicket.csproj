@@ -57,14 +57,13 @@
   <ItemGroup>
     <Compile Include="Base\BaseLotTickClass.cs" />
     <Compile Include="Base\IndexNameType.cs" />
-    <Compile Include="Base\LotTickType.cs" />
-    <Compile Include="CalcuteStatics\BlueCalculate.cs" />
-    <Compile Include="CalcuteStatics\FiltrateGroupData.cs" />
+    <Compile Include="CalcuteStatics\RuleCompare.cs" />
     <Compile Include="CalcuteStatics\IndexCalculate.cs" />
     <Compile Include="CalcuteStatics\IndexStatics.cs" />
-    <Compile Include="CalcuteStatics\StaticsResult.cs" />
+    <Compile Include="CalcuteStatics\StaticsTest.cs" />
     <Compile Include="DataFilter.cs" />
     <Compile Include="DataProcess.cs" />
+    <Compile Include="LotTickClass\LotTickData.cs" />
     <Compile Include="LotTickClass\TwoColorBall.cs" />
     <Compile Include="PredictMethods\PredictMethodsValidate.cs" />
     <Compile Include="Program.cs" />
