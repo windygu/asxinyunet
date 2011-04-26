@@ -18,7 +18,10 @@
  * 		       //一定期数内不重复的次数
  * 
  * 彩票处理程序类库
- * 2011-04-26 数据库操作由动软代码生成器改为新生命组件
+ * 
+ * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
+ * 
+ * 2011-04-26 数据库操作由动软代码生成器改为新生命组件；重新改写数据采集方法，采用HtmlAgilityPack采集数据
  * 2011-04-25 测试NewLife数据组件，完成基本的数据库操作
  * 2011-04-21 重构代码,便于新的需求和测试,并对类库框架进行进一步重构,方便处理其他类型
  * 2011-04-20 开始增加结果验证方法以及数据过滤器,根据规则文件依次进行过滤;采用.NET 4.0的默认参数特性,重构重载方法
@@ -57,6 +60,13 @@ using System.Reflection;
 using System.IO;
 using LotteryTicket.ValidateResult;
 using DotNet.Tools;
+using XCode;
+using NewLife.Reflection;
+using XCode.DataAccessLayer;
+using NewLife.CommonEntity;
+using LotteryTicket.Data;
+
+
 
 namespace LotteryTicket
 {
@@ -64,15 +74,20 @@ namespace LotteryTicket
 	{
 		public static void Main(string[] args)
 		{			
-			double[][] data= TwoColorBall.GetRedBallData (200) ;
+            //double[][] data= TwoColorBall.GetRedBallData (200) ;
 			double[][] sections = new double[5][] ;
 			sections [0] = new double[] {1,2,3,4,5,6,7};
 			sections [1] = new double[] {8,9,10,11,12,13,14};
 			sections [2] = new double[] {15,16,17,18,19,20,21};
 			sections [3] = new double[] {22,23,24,25,26,27,28};
 			sections [4] = new double[] {29,30,31,32,33};
+            String connStr = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=LotteryTicket.mdb;Persist Security Info=False;OLE DB Services=-1";
+            DAL.AddConnStr("LotTick", connStr, null, "access");
+            GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
+            gs.GetAllHistoryData(59);
+            //LotteryTicket.Data.LotTickData.GetSSQDataFromWeb.GetAllHistoryData (2);
 //			double[][] res = StaticsResult.ValidateAllSections  ( ; double[] res = 
-			StaticsResult.ValidateRandomSections (data,new int[5]{7,6,7,6,7},33) ;
+            //StaticsResult.ValidateRandomSections (data,new int[5]{7,6,7,6,7},33) ;
 //			double[] res = StaticsResult.Frequency (data,33 ) ;
 //			foreach (double   element in res ) {
 //				Console.WriteLine (element.ToString ()) ;

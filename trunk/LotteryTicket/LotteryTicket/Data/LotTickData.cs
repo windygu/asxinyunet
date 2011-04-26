@@ -8,31 +8,23 @@
  */
 using System;
 using LotTickEntity.Entities ;
-using Winista.Text.HtmlParser.Data;
-using Winista.Text.HtmlParser.Filters;
-using Winista.Text.HtmlParser.Lex;
-using Winista.Text.HtmlParser.Nodes;
-using Winista.Text.HtmlParser.Tags;
-using Winista.Text.HtmlParser.Util;
-using Winista.Text.HtmlParser;
 using System.Text;
 using System.IO;
 using System.Net;
 using XCode;
+using NewLife.Reflection;
+using XCode.DataAccessLayer;
+using NewLife.CommonEntity;
 using DotNet.Tools.Web;
-using NewLife;
+using HtmlAgilityPack;
+using DotNet.Tools;
 
 namespace LotteryTicket.Data
-{
-	/// <summary>
-	/// 获取数据类
-	/// </summary>
-	public class LotTickData
-	{
+{	
 		/// <summary>
 		/// 从网页获取双色球数据，并添加到数据库中
 		/// </summary>
-		public class GetSSQDataFromWeb:BaseGetLotTicData ,IGetWebLotTickData
+    public class GetSSQDataFromWeb : IGetWebLotTickData
 		{
 			//七乐彩数据：http://kaijiang.zhcw.com/zhcw/html/qlc/list_1.html
 			//双色球数据：http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html
@@ -42,53 +34,52 @@ namespace LotteryTicket.Data
 			/// <summary>
 			///网址:http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html
 			/// </summary>
-			/// <param name="connStr"></param>
-			public void GetAllHistoryData(int pages)
+			public  void GetAllHistoryData(int pages)
 			{
-				string website ;//动态获取的网址
-				string[] tempNo ;
+				string website ;//动态获取的网址				
                 ssq model = new ssq();				
 				for (int i =1 ; i <= pages ; i ++)
 				{
-					//福彩
+                    //福彩 /html[1]/body[1]/table[1]/tr[7]
 					website = @"http://kaijiang.zhcw.com/zhcw/html/ssq/list_"+i.ToString ()+".html" ;
-                    string txt = WebBasic.GetHtmlEx(website, Encoding.UTF8);
-					Lexer lexer = new Lexer(txt );//获取源文件
-					Parser parser = new Parser(lexer);
-					//过滤
-					TagNameFilter tab = new TagNameFilter ("TABLE");
-					NodeList htmlNodes = parser.Parse(tab ) ;
-					
-					if (htmlNodes.Count > 0 )
-					{
-						TableTag tabTag = (TableTag )(htmlNodes [0] as TableTag ) ;
-						for (int j = 2; j < tabTag.RowCount - 1 ; j ++)//前2行与后一行舍去
-						{
-//						Console.WriteLine ("当前状态：页面:"+i.ToString ()+"  ; 记录:"+j.ToString ()) ;
-							//复制
-							TableRow tb =tabTag.Rows [j ] ;
-                            model.开奖日期 = Convert.ToDateTime(tb.Columns[0].ToPlainTextString().Trim());
-                            model.期号 = Convert.ToInt32(tb.Columns[1].ToPlainTextString().Trim());
-						
-								tempNo = tb.Columns [2].ToPlainTextString ().Replace (" ","")
-									.Trim ().Replace ("\r\n\r\n","|").Split('|') ;
-                                model.号码1 = Convert.ToInt32(tempNo[0]);
-                                model.号码2 = Convert.ToInt32(tempNo[1]);
-                                model.号码3 = Convert.ToInt32(tempNo[2]);
-                                model.号码4 = Convert.ToInt32(tempNo[3]);
-                                model.号码5 = Convert.ToInt32(tempNo[4]);
-                                model.号码6 = Convert.ToInt32(tempNo[5]);
-                                model.红球 = Convert.ToInt32(tempNo[6]);
-                                model.Save();//自动判断是否存在                                
-							
-						}
-					}
+                    HtmlWeb web = new HtmlWeb();
+                    HtmlDocument doc = web.Load(website);
+                    HtmlNodeCollection hc = doc.DocumentNode.SelectNodes(@"/html[1]/body[1]/table[1]")[0].SelectNodes(@"tr");
+                    for (int j  = 2; j <hc.Count -1; j ++)
+                    {
+                        HtmlNodeCollection hc1 = hc[j ].SelectNodes(@"td");
+                        model.开奖日期 = Convert.ToDateTime(hc1[0].InnerText.Trim ());
+                        model.期号 = Convert.ToInt32(hc1[1].InnerText.Trim());
+                        double[] tempNo = hc1[2].InnerText.Replace("\r\n", "").Trim().ConvertStrToDoubleList(' ');                     
+                        model.号码1 = Convert.ToInt32(tempNo[0]);
+                        model.号码2 = Convert.ToInt32(tempNo[1]);
+                        model.号码3 = Convert.ToInt32(tempNo[2]);
+                        model.号码4 = Convert.ToInt32(tempNo[3]);
+                        model.号码5 = Convert.ToInt32(tempNo[4]);
+                        model.号码6 = Convert.ToInt32(tempNo[5]);
+                        model.红球  = Convert.ToInt32(tempNo[6]);
+                        model.Save();//自动判断是否存在         
+                        Console.WriteLine("第 " + i.ToString() + "页，第 " + j.ToString() + " 条");
+                    }                 
 				}
 			}
-			public void UpdateRecentData(int pages)
+            public void UpdateRecentData(int pages)
 			{
 				GetAllHistoryData(pages) ;
 			}
 		}
-	}
+
+    /// <summary>
+    /// 获取3D数据,并更新好数据库
+    /// </summary>
+    public class GetThreeDataFromWeb : IGetWebLotTickData
+    {
+        public void GetAllHistoryData(int pages)
+        {
+        }
+        public void UpdateRecentData(int pages)
+        {
+            GetAllHistoryData(pages);
+        }
+    }
 }
