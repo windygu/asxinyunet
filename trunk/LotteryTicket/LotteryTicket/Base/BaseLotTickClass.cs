@@ -30,4 +30,21 @@ namespace LotteryTicket
 		public int CurrentDataNumbers ; //当前所计算的数据期数，最近		
 	}
 	#endregion
+	
+	/// <summary>
+	/// 获取网络彩票数据接口
+	/// </summary>
+	interface IGetWebLotTickData
+	{
+		void GetAllHistoryData(int pages) ;//获取所有历史数据
+		void UpdateRecentData (int pages) ;//更新最新数据
+	}
+	
+	/// <summary>
+	/// 获取彩票数据类基类
+	/// </summary>
+	public class BaseGetLotTicData
+	{
+	    
+	}
 }

@@ -35,8 +35,11 @@
     <Reference Include="KwCombinatorics">
       <HintPath>..\..\DotNet.Tools\DotNet.Tools\Dll\KwCombinatorics.dll</HintPath>
     </Reference>
-    <Reference Include="Maticsoft.DBUtility">
-      <HintPath>..\Lib\Maticsoft.DBUtility.dll</HintPath>
+    <Reference Include="NewLife.CommonEntity">
+      <HintPath>..\Lib\NewLife.CommonEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:\Program Files\NUnit 2.5.9\bin\net-2.0\framework\nunit.framework.dll</HintPath>
@@ -53,6 +56,12 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Winista.HtmlParser">
+      <HintPath>..\Lib\Winista.HtmlParser.dll</HintPath>
+    </Reference>
+    <Reference Include="XCode">
+      <HintPath>..\Lib\XCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseLotTickClass.cs" />
@@ -63,6 +72,7 @@
     <Compile Include="CalcuteStatics\StaticsTest.cs" />
     <Compile Include="DataFilter.cs" />
     <Compile Include="DataProcess.cs" />
+    <Compile Include="Data\LotTickData.cs" />
     <Compile Include="LotTickClass\LotTickData.cs" />
     <Compile Include="LotTickClass\TwoColorBall.cs" />
     <Compile Include="PredictMethods\PredictMethodsValidate.cs" />
@@ -80,15 +90,13 @@
       <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
       <Name>DotNet.Tools</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LotteryTicketData\LotteryTicketData.csproj">
-      <Project>{6ABD0D8B-82E4-49A6-82A9-9839D35F06DE}</Project>
-      <Name>LotteryTicketData</Name>
+    <ProjectReference Include="..\LotTickEntity\LotTickEntity.csproj">
+      <Project>{4C54A65B-A6BB-45FD-9EFD-8842D561138D}</Project>
+      <Name>LotTickEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestData\PerIndexCalculateDataAB.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ValidateResult" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

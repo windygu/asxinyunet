@@ -12,7 +12,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Net.Cache;
 using System.Threading;
-using Maticsoft.DBUtility;
+using LotTickEntity.Entities;
+using XCode ;
 
 namespace LotteryTicket
 {
@@ -20,18 +21,9 @@ namespace LotteryTicket
 	/// 双色球彩票类型
 	/// </summary>
 	public class TwoColorBall :BaseLotTickClass
-	{
-		#region 初始化,属性		
-		private string conStr ;
-		
-		/// <summary>
-		/// 设置数据库连接字符串
-		/// </summary>
-		public string ConStr {
-			get { return conStr; }
-			set { conStr = value; }
-		}	
-		//相应的奖金
+    {
+        #region 初始化
+        //相应的奖金
 		private static double[] prizeReward = new double[7] {0,5000000,200000,3000,200,10,5};
 			
 		public TwoColorBall () //double[][] Data
@@ -43,9 +35,7 @@ namespace LotteryTicket
 			this.RedBallNumber = 7 ;
 			this.BlueBallNumber = 1 ;
 			this.RedNumRangeLimite = 33 ;
-			this.BlueNumRangeLimite = 12 ;	
-          this.conStr =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-          	"Persist Security Info=False" ;
+			this.BlueNumRangeLimite = 12 ;	        
 		}
 		
 		/// <summary>
@@ -65,11 +55,10 @@ namespace LotteryTicket
 		/// <param name="length">最近的期数</param>
 		public static double[][] GetRedBallData(int  selectLength = -1)
 		{
-			//获取数据 order by  desc 降序排列, asc 升序
-			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-				"Persist Security Info=False" ;
-			DbHelperOleDb.connectionString = con ;
-			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+			//获取数据 order by  desc 降序排列, asc 升序		
+			ssq model = new ssq () ;//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+		    EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");
+            DataTable dt = list.ToDataTable () ;
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
 			int k = dt.Rows.Count - length ;
@@ -90,10 +79,9 @@ namespace LotteryTicket
 		/// <param name="length">指定的期数据,最近期开始,默认为-1,代表期所有的数据</param>
 		public static double[] GetBlueBallData(int selectLength = -1 )
 		{
-			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-				"Persist Security Info=False" ;
-			DbHelperOleDb.connectionString = con ;
-			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            ssq model = new ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");
+            DataTable dt = list.ToDataTable();
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[] res = new double[length ] ;
 			int k = dt.Rows.Count - length ;
@@ -111,10 +99,9 @@ namespace LotteryTicket
 		public static double[][] GetAllData(int selectLength = -1 )
 		{
 			//获取数据
-			string con =@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LotteryTicket.mdb;"+
-				"Persist Security Info=False" ;
-			DbHelperOleDb.connectionString = con ;
-			DataTable dt = DbHelperOleDb.Query ("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            ssq model = new ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");
+            DataTable dt = list.ToDataTable();
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
 			int k = dt.Rows.Count - length ;
