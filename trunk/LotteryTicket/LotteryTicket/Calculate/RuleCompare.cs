@@ -217,8 +217,9 @@ namespace LotteryTicket
 			return true ;			
 		}
 		#endregion
-		
-		/// <summary>
+
+        #region 综合比较       
+        /// <summary>
 		/// 根据指定的规则将数据 与 指定参数进行对比，确定是否满足条件
 		/// </summary>
 		/// <param name="typeName">过滤规则名称</param>
@@ -243,6 +244,7 @@ namespace LotteryTicket
 				//invoke,传入数组参数
 				return (bool ) mi.Invoke (null ,new object []{(double[])data ,Conditons }) ;
 			}
-		}
-	}	
+        }
+        #endregion
+    }	
 }

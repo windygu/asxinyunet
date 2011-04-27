@@ -85,8 +85,8 @@ namespace LotteryTicket
             DAL.AddConnStr("LotTick", connStr, null, "access");
             GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
             gs.GetAllHistoryData(59);
-            //LotteryTicket.Data.LotTickData.GetSSQDataFromWeb.GetAllHistoryData (2);
-//			double[][] res = StaticsResult.ValidateAllSections  ( ; double[] res = 
+//                        LotteryTicket.Data.LotTickData.GetSSQDataFromWeb.GetAllHistoryData (2);
+//		        double[][] res = StaticsResult.ValidateAllSections  ( ; double[] res = 
             //StaticsResult.ValidateRandomSections (data,new int[5]{7,6,7,6,7},33) ;
 //			double[] res = StaticsResult.Frequency (data,33 ) ;
 //			foreach (double   element in res ) {
