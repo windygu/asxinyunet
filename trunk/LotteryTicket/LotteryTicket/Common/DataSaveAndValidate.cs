@@ -12,12 +12,12 @@ using System.IO;
 using Kw.Combinatorics;
 using DotNet.Tools ;
 
-namespace LotteryTicket
+namespace LotteryTicket.Common
 {
 	/// <summary>
 	/// 数据过滤与数据分析保存
 	/// </summary>
-	public class Common
+	public class DataSaveAndValidate
 	{
 
         /// <summary>

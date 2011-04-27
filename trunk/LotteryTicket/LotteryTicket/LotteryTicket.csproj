@@ -76,6 +76,7 @@
     <Compile Include="Calculate\StaticsTest.cs" />
     <Compile Include="Common\DataSaveAndValidate.cs" />
     <Compile Include="Common\DataProcess.cs" />
+    <Compile Include="Common\TxtParse.cs" />
     <Compile Include="Data\LotTickData.cs" />
     <Compile Include="LotTickClass\TwoColorBall.cs" />
     <Compile Include="Forecast\PredictMethodsValidate.cs" />

@@ -7,7 +7,11 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using Microsoft.SqlServer.Server;
+using LotteryTicket.Common;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
 
 namespace LotteryTicket.ValidateResult
 {
@@ -15,9 +19,10 @@ namespace LotteryTicket.ValidateResult
 	/// 预测方法验证
 	/// </summary>
 	public static class ValidateMethods
-	{
-		#region 公共方法		
-		/// <summary>
+    {
+        #region  其他方法      
+        #region 公共方法
+        /// <summary>
 		/// 统计bool数组中True的比例,即正确率
 		/// </summary>		
 		public static double GetRateReuslt(bool[] result)
@@ -104,5 +109,31 @@ namespace LotteryTicket.ValidateResult
 			return ((double )(data[0].Length -count) )/((double )data[0].Length ) ;
 		}
 		#endregion		
-	}
+        #endregion
+
+        #region 文本解释规则进行验证
+        /// <summary>
+        /// 根据文本规则进行方法验证,并将结果输入到文本中
+        /// </summary>
+        /// <param name="ruleFilePath">规则文件路径</param>
+        public static void ValidateRuleFile(string ruleFilePath)
+        {
+            List<string> ruleList = TxtParse.GetRuleListFormFile(ruleFilePath);//原始规则
+            string[][] ruleStr = TxtParse.ParseRuleList(ruleList);//解析后的规则字符串,每行一个规则,没列为参数列表
+            using (StreamWriter sw = new StreamWriter(DateTime.Now.ToShortDateString (),false ))
+            {
+                //调用方法进行计算
+                for (int i = 0; i < ruleStr.Length; i++)
+                {
+                    //基本参数的转化,类型不同
+
+                    //依次计算,并写入结果
+                    sw.WriteLine(TxtParse.CombStringArr (ruleStr [i ]));
+                    //结果
+                    sw.WriteLine();
+                }
+            }
+        }        
+        #endregion
+    }
 }

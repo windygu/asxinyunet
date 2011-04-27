@@ -9,7 +9,7 @@
 using System;
 using System.IO ;
 
-namespace LotteryTicket
+namespace LotteryTicket.Common
 {
 	/// <summary>
 	///数据的预处理
