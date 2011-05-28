@@ -85,26 +85,6 @@ namespace LotteryTicket
             DAL.AddConnStr("LotTick", connStr, null, "access");
             GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
             gs.GetAllHistoryData(59);
-//                        LotteryTicket.Data.LotTickData.GetSSQDataFromWeb.GetAllHistoryData (2);
-//		        double[][] res = StaticsResult.ValidateAllSections  ( ; double[] res = 
-            //StaticsResult.ValidateRandomSections (data,new int[5]{7,6,7,6,7},33) ;
-//			double[] res = StaticsResult.Frequency (data,33 ) ;
-//			foreach (double   element in res ) {
-//				Console.WriteLine (element.ToString ()) ;
-//			}
-//			double[][] result = (double[][])IndexCalculate.CalculateAllData (data,IndexNameType.D_ManyNosList,
-//			                                 new int[]{2 }) ;			
-//			double[][] res = StaticsResult.CalcateRepeateNumber (data ,2) ;
-			//Console.WriteLine (ValidateMethods.LatestValidate (data)) ;
-//			Console.Write("Press any key to continue . . . ");
-//			while (true )
-//			{
-//				Console.Write ("输入条件：") ;
-//				double[] condition = Console.ReadLine ().ConvertStrToDoubleList (',') ;
-//				double res = PredictMethodsValidate.GetValidateResult
-//					(data,condition,IndexNameType.B_ManyNoOfNewCount  ,FilterRuleType.RangeLimite,4) ;
-//				Console.WriteLine ("结果："+res.ToString ()) ;
-//			}
 			Console.ReadKey(true);
 		}
 	}

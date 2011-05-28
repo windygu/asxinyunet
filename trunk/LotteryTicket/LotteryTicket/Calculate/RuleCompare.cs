@@ -73,7 +73,7 @@ namespace LotteryTicket
 		
 		public static readonly double Precision = 0.001 ;
 		
-		#region 数值比较		
+		#region 数值比较           
 		public static bool EqualSingle(double[] data ,double[] Conditons)
 		{
 			//相等匹配:只匹配队列中一种即可,全部转换为double进行计算,差小于0.001即认为相等
