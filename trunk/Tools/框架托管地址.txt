@@ -1,0 +1,3 @@
+http://pixysoft-os.googlecode.com/svn/trunk/
+
+http://asxinyunet.googlecode.com/svn
