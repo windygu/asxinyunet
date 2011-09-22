@@ -1,5 +1,0 @@
-D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceEntity\bin\Debug\ResouceEntity.dll
-D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceEntity\bin\Debug\ResouceEntity.pdb
-D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceEntity\obj\Debug\ResolveAssemblyReference.cache
-D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceEntity\obj\Debug\ResouceEntity.dll
-D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceEntity\obj\Debug\ResouceEntity.pdb
