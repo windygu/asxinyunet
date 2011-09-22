@@ -1,0 +1,22 @@
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\CustomerEntity.dll
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\CustomerEntity.pdb
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\NewLife.Core.dll
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\XCode.dll
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\NewLife.Core.pdb
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\NewLife.Core.xml
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\XCode.pdb
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\bin\Debug\XCode.xml
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\obj\x86\Debug\CustomerEntity.dll
+d:\我的文档\桌面\CustomerCollector\CustomerEntity\obj\x86\Debug\CustomerEntity.pdb
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\CustomerEntity.dll
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\CustomerEntity.pdb
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\NewLife.Core.dll
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\XCode.dll
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\NewLife.Core.pdb
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\NewLife.Core.xml
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\XCode.pdb
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\bin\Debug\XCode.xml
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\obj\x86\Debug\CustomerEntity.dll
+D:\我的文档\SharpDevelop Projects\CustomerCollector\CustomerEntity\obj\x86\Debug\CustomerEntity.pdb

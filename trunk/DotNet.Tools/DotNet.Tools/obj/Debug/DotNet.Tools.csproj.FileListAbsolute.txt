@@ -1,0 +1,68 @@
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.pdb
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\Interop.Excel.dll
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\NPOI.dll
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\ResolveAssemblyReference.cache
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.pdb
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.CicleLevel.resources
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.StausInfoShow.resources
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.read.1.tlog
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.write.1.tlog
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.dll
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.xml
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.pdb
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\Interop.Excel.dll
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\NPOI.dll
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.dll
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.xml
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\ResolveAssemblyReference.cache
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.CicleLevel.resources
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.StausInfoShow.resources
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.read.1.tlog
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.write.1.tlog
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.pdb
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.exe
+L:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.exe
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.exe
+K:\DevelopProject\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.exe
+J:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.exe
+J:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.pdb
+J:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\Interop.Excel.dll
+J:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\NPOI.dll
+J:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.dll
+J:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.xml
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\ResolveAssemblyReference.cache
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.CicleLevel.resources
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.StausInfoShow.resources
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.read.1.tlog
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.write.1.tlog
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.exe
+J:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.pdb
+L:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.dll
+L:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.pdb
+L:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\Interop.Excel.dll
+L:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\NPOI.dll
+L:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.dll
+L:\Code Project\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.xml
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\ResolveAssemblyReference.cache
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.CicleLevel.resources
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.StausInfoShow.resources
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.dll
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.pdb
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.read.1.tlog
+L:\Code Project\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.write.1.tlog
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\App.config
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\app.xml
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.pdb
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\Interop.Excel.dll
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\NPOI.dll
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.dll
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\nunit.framework.xml
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.CicleLevel.resources
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.Controls.StausInfoShow.resources
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.read.1.tlog
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\GenerateResource.write.1.tlog
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.pdb
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.dll.config
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\bin\Debug\DotNet.Tools.dll
+D:\我的文档\SharpDevelop Projects\DotNet.Tools\DotNet.Tools\obj\Debug\DotNet.Tools.dll

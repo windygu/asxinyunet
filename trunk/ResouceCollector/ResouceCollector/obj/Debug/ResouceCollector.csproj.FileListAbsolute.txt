@@ -1,0 +1,9 @@
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\bin\Debug\App.config
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\bin\Debug\ResouceCollector.exe.config
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\bin\Debug\ResouceCollector.exe
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\bin\Debug\ResouceCollector.pdb
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\bin\Debug\ResouceEntity.dll
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\bin\Debug\ResouceEntity.pdb
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\obj\Debug\ResouceCollector.exe
+D:\我的文档\SharpDevelop Projects\DotNet\ResouceCollector\ResouceCollector\obj\Debug\ResouceCollector.pdb

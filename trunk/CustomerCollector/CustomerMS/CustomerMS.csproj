@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{49172054-C7AE-4993-AAE6-1BDD453F0345}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CustomerMS</RootNamespace>
+    <AssemblyName>CustomerMS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ApplicationIcon>Log.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CustomerCollector\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Kenny.Controls.WinForm">
+      <HintPath>..\..\..\桌面\Kenny.Controls.WinForm\Kenny.Controls.WinForm.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.CommonEntity">
+      <HintPath>..\CustomerCollector\Lib\NewLife.CommonEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\CustomerCollector\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="XCode, Version=7.13.4210.21100, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CustomerCollector\Lib\XCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicForm\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicForm\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicForm\IndustryListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicForm\IndustryListForm.Designer.cs">
+      <DependentUpon>IndustryListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicForm\GetIndustryListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicForm\GetIndustryListForm.Designer.cs">
+      <DependentUpon>GetIndustryListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicForm\ParseIndustryInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicForm\ParseIndustryInfo.Designer.cs">
+      <DependentUpon>ParseIndustryInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerControl\CustomerInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerControl\CustomerInfo.Designer.cs">
+      <DependentUpon>CustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerControl\GetIndustryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerControl\GetIndustryList.Designer.cs">
+      <DependentUpon>GetIndustryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerControl\ParseIndustry.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerControl\ParseIndustry.Designer.cs">
+      <DependentUpon>ParseIndustry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BasicForm\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicForm\IndustryListForm.resx">
+      <DependentUpon>IndustryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicForm\GetIndustryListForm.resx">
+      <DependentUpon>GetIndustryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicForm\ParseIndustryInfo.resx">
+      <DependentUpon>ParseIndustryInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerControl\CustomerInfo.resx">
+      <DependentUpon>CustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerControl\GetIndustryList.resx">
+      <DependentUpon>GetIndustryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerControl\ParseIndustry.resx">
+      <DependentUpon>ParseIndustry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomerCollector\CustomerCollector.csproj">
+      <Project>{74873755-0C7B-44A1-B717-82458432A894}</Project>
+      <Name>CustomerCollector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomerEntity\CustomerEntity.csproj">
+      <Project>{D5C128FC-B929-4DEF-92F6-3CBE5D6F466E}</Project>
+      <Name>CustomerEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

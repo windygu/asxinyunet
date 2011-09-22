@@ -1,0 +1,24 @@
+L:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.exe
+L:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.pdb
+L:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\KwCombinatorics.dll
+L:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\ResolveAssemblyReference.cache
+L:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.exe
+L:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.pdb
+K:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.exe
+K:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.pdb
+K:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\KwCombinatorics.dll
+K:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\ResolveAssemblyReference.cache
+K:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.exe
+K:\DevelopProject\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.pdb
+J:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.exe
+J:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.pdb
+J:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.exe
+J:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.pdb
+J:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\KwCombinatorics.dll
+J:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\ResolveAssemblyReference.cache
+L:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.exe
+L:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\CodePlexTools.pdb
+L:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\bin\Debug\KwCombinatorics.dll
+L:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\ResolveAssemblyReference.cache
+L:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.exe
+L:\Code Project\DotNet.Tools\CodePlexProjectTest\CodePlexTools\obj\x86\Debug\CodePlexTools.pdb

@@ -1,0 +1,16 @@
+d:\我的文档\SharpDevelop Projects\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\IDCardNumber.exe
+d:\我的文档\SharpDevelop Projects\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\IDCardNumber.pdb
+d:\我的文档\SharpDevelop Projects\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\ResolveAssemblyReference.cache
+d:\我的文档\SharpDevelop Projects\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\IDCardNumber.exe
+d:\我的文档\SharpDevelop Projects\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\IDCardNumber.pdb
+K:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\IDCardNumber.exe
+K:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\IDCardNumber.pdb
+K:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\ResolveAssemblyReference.cache
+K:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\IDCardNumber.exe
+K:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\IDCardNumber.pdb
+L:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\ResolveAssemblyReference.cache
+L:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\IDCardNumber.exe
+L:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\obj\Debug\IDCardNumber.pdb
+L:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\IDCardNumber.exe
+L:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\IDCardNumber.pdb
+L:\DevelopProject\DotNet.Tools\IDCardNumber\IDCardNumber\bin\Debug\System.Data.SQLite.dll
