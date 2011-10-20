@@ -99,8 +99,12 @@
     <Reference Include="XCode">
       <HintPath>..\..\Lib\XCode.dll</HintPath>
     </Reference>
+    <Reference Include="XCode">
+      <HintPath>Resouces\Lib\XCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authority\Entity\管理员.cs" />
     <Compile Include="BaseUtilities\AppMessage.cs" />
     <Compile Include="BaseUtilities\Convertor.cs" />
     <Compile Include="BaseUtilities\EnumHelper.cs" />
@@ -319,7 +323,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Authority\Entity" />
     <Folder Include="WinForm\" />
+    <Folder Include="Authority" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
