@@ -58,7 +58,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputPath>..\..\代码生成\DotNet\YoungRunLab\</OutputPath>
+    <OutputPath>..\..\..\代码生成\YoungRunLab\</OutputPath>
+    <DocumentationFile>..\..\..\代码生成\YoungRunLab\YoungRunLab.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kenny.Controls.WinForm">
