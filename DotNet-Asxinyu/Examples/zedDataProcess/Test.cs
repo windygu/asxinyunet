@@ -20,7 +20,7 @@ namespace zedDataProcess
 
 		public static string BytesToBits(byte[] bytes) //byte数组转换为二进制序列方法
 		{
-			string str="";
+			string str="";  //
 			string strTemp;
 			foreach (byte i in bytes)
 			{
