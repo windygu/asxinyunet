@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{0E0705A3-789A-4D95-9293-C605171AF53C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>LotteryTicket</RootNamespace>
+    <AssemblyName>LotteryTicket</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\Administrator\Application Data\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="KwCombinatorics">
+      <HintPath>..\..\DotNet.Tools\DotNet.Tools\Dll\KwCombinatorics.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.CommonEntity">
+      <HintPath>..\Lib\NewLife.CommonEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:\Program Files\NUnit 2.5.9\bin\net-2.0\framework\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Winista.HtmlParser">
+      <HintPath>..\Lib\Winista.HtmlParser.dll</HintPath>
+    </Reference>
+    <Reference Include="XCode">
+      <HintPath>..\Lib\XCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseLotTickClass.cs" />
+    <Compile Include="Base\IndexNameType.cs" />
+    <Compile Include="Calculate\RuleCompare.cs" />
+    <Compile Include="Calculate\IndexCalculate.cs" />
+    <Compile Include="Calculate\PerNoIndexCalculate.cs" />
+    <Compile Include="Calculate\StaticsTest.cs" />
+    <Compile Include="Common\DataSaveAndValidate.cs" />
+    <Compile Include="Common\DataProcess.cs" />
+    <Compile Include="Common\TxtParse.cs" />
+    <Compile Include="Data\LotTickData.cs" />
+    <Compile Include="LotTickClass\TwoColorBall.cs" />
+    <Compile Include="Forecast\PredictMethodsValidate.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\LotteryTest.cs" />
+    <Compile Include="Test\TestData.cs" />
+    <Compile Include="Forecast\ValidateMethods.cs" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="RuleFile.txt" />
+    <None Include="TestData\AllDataCalculateData.txt" />
+    <None Include="TestData\PredictValidateData.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LotTickEntity\LotTickEntity.csproj">
+      <Project>{4C54A65B-A6BB-45FD-9EFD-8842D561138D}</Project>
+      <Name>LotTickEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\PerIndexCalculateDataAB.txt" />
+  </ItemGroup>
+  <ItemGroup />
+</Project>
