@@ -491,13 +491,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Controls\Resources\PageBg.png" />
-    <None Include="EntLib.Controls.WinForm\obj\x86\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntLib.Controls.WinForm\bin\Debug\" />
-    <Folder Include="EntLib.Controls.WinForm\bin\Release\" />
-    <Folder Include="EntLib.Controls.WinForm\obj\x86\Debug\TempPE\" />
-    <Folder Include="EntLib.Controls.WinForm\obj\x86\Release\TempPE\" />
     <Folder Include="Test\" />
   </ItemGroup>
   <ItemGroup>
