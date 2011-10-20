@@ -60,12 +60,6 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="NewLife.CommonEntity">
-      <HintPath>Lib\NewLife.CommonEntity.dll</HintPath>
-    </Reference>
-    <Reference Include="NewLife.Core">
-      <HintPath>Lib\NewLife.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -78,9 +72,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="XCode">
-      <HintPath>Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
