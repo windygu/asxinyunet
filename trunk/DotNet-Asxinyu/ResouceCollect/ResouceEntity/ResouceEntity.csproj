@@ -57,12 +57,6 @@
     <DocumentationFile>..\..\..\代码生成\ResouceEntity\ResouceEntity.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NewLife.CommonEntity">
-      <HintPath>..\ResouceCollector\Lib\NewLife.CommonEntity.dll</HintPath>
-    </Reference>
-    <Reference Include="NewLife.Core">
-      <HintPath>..\ResouceCollector\Lib\NewLife.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,9 +64,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="XCode">
-      <HintPath>..\ResouceCollector\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
