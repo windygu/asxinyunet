@@ -37,11 +37,8 @@
     <OutputPath>..\..\..\代码生成\LotTickEntity\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NewLife.CommonEntity">
-      <HintPath>..\Lib\NewLife.CommonEntity.dll</HintPath>
-    </Reference>
     <Reference Include="NewLife.Core">
-      <HintPath>..\Lib\NewLife.Core.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -56,7 +53,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="XCode">
-      <HintPath>..\Lib\XCode.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
