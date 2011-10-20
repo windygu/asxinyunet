@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using DotNet.Authority.Forms;
 using DotNet.Tools.Controls;
 using YoungRunEntity ;
 using NewLife.Configuration ;
@@ -30,8 +29,7 @@ namespace YoungRunLab
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AuthMainForm auth = new AuthMainForm();
-            auth.Show();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
