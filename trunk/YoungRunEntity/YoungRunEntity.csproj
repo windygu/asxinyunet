@@ -56,7 +56,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputPath>..\..\代码生成\DotNet\YoungRunEntity\</OutputPath>
+    <OutputPath>..\..\..\代码生成\YoungRunEntity\</OutputPath>
+    <DocumentationFile>..\..\..\代码生成\YoungRunEntity\YoungRunEntity.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
