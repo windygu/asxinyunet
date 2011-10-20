@@ -65,17 +65,14 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="Kenny.Controls.WinForm">
-      <HintPath>..\..\Lib\Kenny.Controls.WinForm.dll</HintPath>
-    </Reference>
     <Reference Include="NewLife.CommonEntity">
-      <HintPath>..\..\Lib\NewLife.CommonEntity.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.CommonEntity.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Core">
-      <HintPath>..\..\Lib\NewLife.Core.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Net">
-      <HintPath>..\..\Lib\NewLife.Net.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -92,16 +89,13 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="XAgent">
-      <HintPath>..\..\Lib\XAgent.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XAgent.dll</HintPath>
     </Reference>
     <Reference Include="XCode">
-      <HintPath>..\..\Lib\XCode.dll</HintPath>
-    </Reference>
-    <Reference Include="XControl">
-      <HintPath>..\..\Lib\XControl.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XCode.dll</HintPath>
     </Reference>
     <Reference Include="XTemplate">
-      <HintPath>..\..\Lib\XTemplate.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XTemplate.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
