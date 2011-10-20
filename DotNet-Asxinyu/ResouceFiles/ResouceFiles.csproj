@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{C089A44B-47CC-4811-B51F-B4A2C916C0C4}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ResouceFiles</RootNamespace>
+    <AssemblyName>ResouceFiles</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="DesignFiles\永润数据字典-1019.doc" />
+    <None Include="Images\application.ico" />
+    <None Include="Images\apply.ico" />
+    <None Include="Images\create.ico" />
+    <None Include="Images\e-mail.ico" />
+    <None Include="Images\exit.ico" />
+    <None Include="Images\key.ico" />
+    <None Include="Images\lock.ico" />
+    <None Include="Images\message.ico" />
+    <None Include="Images\modify.ico" />
+    <None Include="Images\new document.ico" />
+    <None Include="Images\OK.ico" />
+    <None Include="Images\search.ico" />
+    <None Include="Images\table.ico" />
+    <None Include="Images\target.ico" />
+    <None Include="Images\text.ico" />
+    <None Include="Images\Thumbs.db" />
+    <None Include="Images\turn off.ico" />
+    <None Include="Images\user group.ico" />
+    <None Include="Images\view.ico" />
+    <None Include="Images\yes.ico" />
+    <None Include="Lib\HtmlAgilityPack.dll" />
+    <None Include="Lib\HtmlAgilityPack.pdb" />
+    <None Include="Lib\HtmlAgilityPack.XML" />
+    <None Include="Lib\Kenny.Controls.WinForm.dll" />
+    <None Include="Lib\Log.ico" />
+    <None Include="Lib\NewLife.CommonEntity.dll" />
+    <None Include="Lib\NewLife.CommonEntity.pdb" />
+    <None Include="Lib\NewLife.CommonEntity.XML" />
+    <None Include="Lib\NewLife.Core.dll" />
+    <None Include="Lib\NewLife.Core.pdb" />
+    <None Include="Lib\NewLife.Core.xml" />
+    <None Include="Lib\NewLife.Net.dll" />
+    <None Include="Lib\NewLife.Net.pdb" />
+    <None Include="Lib\NewLife.Net.xml" />
+    <None Include="Lib\NPOI.dll" />
+    <None Include="Lib\obj\Debug\GenerateResource.read.434.tlog" />
+    <None Include="Lib\obj\Debug\GenerateResource.write.433.tlog" />
+    <None Include="Lib\obj\Debug\GenerateResource.write.434.tlog" />
+    <None Include="Lib\XAgent.dll" />
+    <None Include="Lib\XAgent.pdb" />
+    <None Include="Lib\XAgent.XML" />
+    <None Include="Lib\XCode.dll" />
+    <None Include="Lib\XCode.pdb" />
+    <None Include="Lib\XCode.xml" />
+    <None Include="Lib\XControl.dll" />
+    <None Include="Lib\XControl.pdb" />
+    <None Include="Lib\XControl.XML" />
+    <None Include="Lib\XTemplate.dll" />
+    <None Include="Lib\XTemplate.pdb" />
+    <None Include="Lib\XTemplate.xml" />
+    <None Include="Lib\X组件手册.chm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DesignFiles" />
+    <Folder Include="Images" />
+    <Folder Include="Lib" />
+    <Folder Include="Lib\obj" />
+    <Folder Include="Lib\obj\Debug" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>
