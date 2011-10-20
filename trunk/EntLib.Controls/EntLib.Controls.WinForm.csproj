@@ -29,7 +29,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\代码生成\DotNet\Entilib\</OutputPath>
+    <OutputPath>..\..\..\..\代码生成\EntLib.Controls.WinForm\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <DefineConstants>TRACE</DefineConstants>
