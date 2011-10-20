@@ -17,7 +17,7 @@ namespace YoungRunTest
 	internal sealed class Program
 	{
 		/// <summary>
-		/// Program entry point.
+		/// Program entry point.的淡淡的
 		/// </summary>
 		[STAThread]
 		private static void Main(string[] args)
