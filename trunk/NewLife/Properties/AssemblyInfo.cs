@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("新生命核心库")]
+[assembly: AssemblyTitle("通用实体库")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("新生命开发团队")]
-[assembly: AssemblyProduct("NewLife.Core")]
+[assembly: AssemblyProduct("NewLife.CommonEntity")]
 [assembly: AssemblyCopyright("\x00a92002-2011 新生命开发团队")]
 [assembly: AssemblyTrademark("四叶草")]
 [assembly: AssemblyCulture("")]
@@ -19,9 +20,10 @@ using System.Runtime.InteropServices;
 // 则将该类型上的 ComVisible 特性设置为 true。
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(true)]
+[assembly: Dependency("XCode,", LoadHint.Always)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("5536479f-1b04-410a-adf2-49df6e629060")]
+[assembly: Guid("6affe219-9235-49dc-8032-a0dc9f10f887")]
 
 // 程序集的版本信息由下面四个值组成:
 //
@@ -33,74 +35,44 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.0.*")]
-[assembly: AssemblyFileVersion("3.0.2011.0922")]
+[assembly: AssemblyVersion("2.4.*")]
+[assembly: AssemblyFileVersion("2.4.2011.0908")]
 
 /*
- * v3.0.2011.0922   增加扩展方法特性，支持在vs2008和vs2010上编写.Net2.0时使用扩展方法
- *                  增加Enumerable，利用扩展方法扩展IEnumerable
+ * v2.4.2011.0908   支持XCode v8.0，重新生成实体类
  * 
- * v2.9.2011.0915   XTrace增加写当前线程MiniDump方法WriteMiniDump
- *                  XTrace增加写异常信息的方法WriteException和WriteExceptionWhenDebug
- *                  ThreadPoolX增加多个QueueUserWorkItem方法，作为系统ThreadPool.QueueUserWorkItem的封装，省去每次使用线程池都要做异常处理的麻烦，同时支持无参数委托
+ * v2.3.2011.0628   管理员类和页面基类，增加根据权限名称来控制权限的方法
+ *                  调整CommonEntity.EntityForm中对自定义控件的处理
  * 
- * v2.8.2011.0901   修正TypeX.GetType中识别一维数组时的一个错误，如TypeX.GetType("Byte[]")会被错误识别为Byte[*]
+ * v2.2.2011.0621   增加序列、设置、用户配置等三个实体类
  * 
- * v2.7.2011.0815   增加鸭子类型DuckTyping，但不对外公开，通过TypeX.ChangeType来使用！
- *                  增加ServiceProvider等服务模型
+ * v2.1.2011.0607   WebPageBase中增加ViewState压缩功能
  * 
- * v2.6.2011.0725   修正TypeX中计算内嵌类型会重复计算的BUG
+ * v2.0.2011.0512   完善附件上传、附件下载、图片附件展示、图片缩略图等相关功能
  * 
- * v2.5.2011.0701   增加可重入计时器TimerX
+ * v2.0.2011.0509   解决多个菜单具有相同权限名的问题，尝试返回当前页面所在菜单，如果无法确定，则返回第一个，并写日志。
  * 
- * v2.4.2011.0625   重写日志模块，拆分出来TextFileLog，以便于多种日志用途
+ * v2.0.2011.0507   核心类库实现IoC，配合接口变成弥补泛型基类带来的不足，实体类升级支持
  * 
- * v2.3.2011.0623   增加证书类Certificate，用于创建自签名X509证书
+ * v1.6.2011.0313   更新EntityForm，屏蔽SetNotAllowNull中可能出现的异常
  * 
- * v2.2.2011.0610   增加IO操作工具类IOHelper，支持数据流复制CopyTo，支持数据流压缩（Deflate压缩更小一点），支持单文件GZip压缩（WinRar可解压），支持多文件GZip压缩（自定义格式）
- *                  增加增强版Web客户端WebClientX，支持Cookie，默认增加若干请求头
+ * v1.6.2011.0303   调整实体类数据初始化架构，统一由XCode支持
  * 
- * v2.1.2011.0607   实现Http压缩模块CompressionModule，减少网络传输大小
+ * v1.5.2011.0117   增加表单页基类EntityForm
  * 
- * v2.0.2011.0507   反序列化框架NewLife.Serialization命名空间，默认实现二进制、Xml和Json
- *                  轻量级IoC，实现类型解析器TypeResolver，配合接口变成来解决泛型基类所带来的不足
- *                  快速反射，AssemblyX增加一个FindAllPlugins(Type type, Boolean isLoadAssembly)方法
- *                  快速反射，PropertyInfoX的Create，在无法找到属性时递归处理基类，类似字段的处理方式
- *                  快速反射，修正TypeX的GetType方法没有使用isLoadAssembly参数的BUG
+ * v1.4.2011.0110   Edit:修改WebPageBase中的一些验证权限和输出执行时间的行为
+ *                  Fixed:修改各个实体类中存在的BUG
  * 
- * v1.9.2011.0423   增加跟踪数据流TraceStream，用于跟踪各种数据流操作
+ * v1.3.2010.1220   增加统计和附件实体类
+ *                  修改角色和菜单实体，增加操作权限项，细分添加、修改、删除等权限
+ *                  优化各个实体类，增加写日志的功能（通过接口和HttpState调用管理员的写日志功能）
+ *                  Role中增加方法ClearRoleMenu，清理无效的权限项，由Role静态构造函数调用
  * 
- * v1.8.2011.0412   修改获取硬件信息时如果获取某项发生异常时,只有在NewLife.Debug开关打开时才输出异常信息
+ * v1.2.2010.1018   修改地区实体和菜单实体，增加实体树的操作
  * 
- * v1.8.2011.0401   增加Json类
+ * v1.1.2010.0909   再次抽象管理员实体和角色实体，各增加一层泛型基类
+ *                  增加常用页面基类WebPageBase，同时增加一个指定了管理员类的泛型基类。支持输出页面执行时间和页面权限验证
  * 
- * v1.7.2011.0330   增加泛型列表基类ListBase
- * 
- * v1.6.2011.0313   扩展字段缓存DictionaryCache，增加几个支持更多参数的GetItem重载
- * 
- * v1.6.2011.0311   优化TypeX.GetType，增加缓存功能
- * 
- * v1.5.2011.0303   修改二进制读写器和二进制访问器，在读取数据时允许指定目标数据类型
- * 
- * v1.5.2011.0222   修正读写锁的BUG，简化处理，任意读操作阻塞写操作，任意写操作阻塞所有其它读写操作
- * 
- * v1.5.2011.0212   TypeX增加GetType方法，用于根据类型名获取类型，可自动加载未加载程序集
- *                  二进制读写器BinaryReaderX和BinaryWriterX支持对Type的读写，以FullName的方式存在以节省空间
- *                  调整数据流总线模型，增加数据流客户端，用于向远端数据流处理器发送数据
- *                  增加远程调用框架Remoting（未完成），基于消息模型和快速反射模型设计
- * 
- * v1.4.2011.0113   快速反射中增加静态的（指定目标对象和成员名称即可）快速赋值取值和快速调用等方法
- *                  增加控件助手类ControlHelper
- * 
- * v1.3.2010.1215   修正FieldInfoX处理值类型时没有考虑拆箱的问题
- * 
- * v1.2.2010.1209   增强快速反射功能
- * 
- * v1.1.2010.1201   增加数据流总线模型和消息总线模型
- *                  增加原子读写锁ReadWriteLock
- * 
- * v1.0.2010.1115   创建核心库
- *                  合并日志组件XLog
- *                  合并多线程组件XThread
- *                  合并序列化组件NewLife.Serialization
-*/
+ * v1.0.2010.0903   创建通用实体库
+ *
+**/
