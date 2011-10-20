@@ -111,331 +111,80 @@
     <Compile Include="BaseUtilities\StringHelper.cs" />
     <Compile Include="BaseUtilities\Validator.cs" />
     <Compile Include="Image\ImageHelper.cs" />
-    <Compile Include="OrderWater\Commons\AppConfig.cs" />
-    <Compile Include="OrderWater\Commons\ArgumentValidation.cs" />
-    <Compile Include="OrderWater\Commons\AudioHelper.cs" />
-    <Compile Include="OrderWater\Commons\AudioPlayMode.cs" />
-    <Compile Include="OrderWater\Commons\Base64Util.cs" />
-    <Compile Include="OrderWater\Commons\ByteImageConvertor.cs" />
-    <Compile Include="OrderWater\Commons\BytesTools.cs" />
-    <Compile Include="OrderWater\Commons\Cache.cs" />
-    <Compile Include="OrderWater\Commons\CallCtrlWithThreadSafety.cs" />
-    <Compile Include="OrderWater\Commons\Camera.cs" />
-    <Compile Include="OrderWater\Commons\CCalendar.cs" />
-    <Compile Include="OrderWater\Commons\CellOwnerDrawEventHandler.cs" />
-    <Compile Include="OrderWater\Commons\CheckBoxListUtil.cs" />
-    <Compile Include="OrderWater\Commons\ChildWinManagement.cs" />
-    <Compile Include="OrderWater\Commons\ChineseCalendar.cs" />
-    <Compile Include="OrderWater\Commons\ClipboardHepler.cs" />
-    <Compile Include="OrderWater\Commons\CMYK.cs" />
-    <Compile Include="OrderWater\Commons\Collections\Dictionary!2.cs" />
-    <Compile Include="OrderWater\Commons\Collections\ICloneable!1.cs" />
-    <Compile Include="OrderWater\Commons\Collections\List!1.cs" />
-    <Compile Include="OrderWater\Commons\Collections\OrderedDictionary!2.cs" />
-    <Compile Include="OrderWater\Commons\Collections\OrderedDictionaryEnumerator!2.cs" />
-    <Compile Include="OrderWater\Commons\CommandArgs.cs" />
-    <Compile Include="OrderWater\Commons\CommandLine.cs" />
-    <Compile Include="OrderWater\Commons\Computer.cs" />
-    <Compile Include="OrderWater\Commons\ConvertHelper.cs" />
-    <Compile Include="OrderWater\Commons\CookieManger.cs" />
-    <Compile Include="OrderWater\Commons\CoolPrintPreviewDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\CrcUtils.cs" />
-    <Compile Include="OrderWater\Commons\CRegex.cs" />
-    <Compile Include="OrderWater\Commons\CSocket.cs" />
-    <Compile Include="OrderWater\Commons\CString.cs" />
-    <Compile Include="OrderWater\Commons\CSVHelper.cs" />
-    <Compile Include="OrderWater\Commons\CText.cs" />
-    <Compile Include="OrderWater\Commons\CultureInfoUtil.cs" />
-    <Compile Include="OrderWater\Commons\DatabaseInfo.cs" />
-    <Compile Include="OrderWater\Commons\DatabaseType.cs" />
-    <Compile Include="OrderWater\Commons\DataTableHelper.cs" />
-    <Compile Include="OrderWater\Commons\DateTimeHelper.cs" />
-    <Compile Include="OrderWater\Commons\DGVCellDrawingEventArgs.cs" />
-    <Compile Include="OrderWater\Commons\DGVPrinter.cs" />
-    <Compile Include="OrderWater\Commons\DirectoryUtil.cs" />
-    <Compile Include="OrderWater\Commons\EncodeHelper.cs" />
-    <Compile Include="OrderWater\Commons\EnumHelper.cs" />
-    <Compile Include="OrderWater\Commons\ExcelHelper.cs" />
-    <Compile Include="OrderWater\Commons\Export2Excel.cs" />
-    <Compile Include="OrderWater\Commons\ExRichTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\ExRichTextBoxPrintHelper.cs" />
-    <Compile Include="OrderWater\Commons\ExtensionAttachUtil.cs" />
-    <Compile Include="OrderWater\Commons\Extensions.cs" />
-    <Compile Include="OrderWater\Commons\FileAssociationsHelper.cs" />
-    <Compile Include="OrderWater\Commons\FileDialogHelper.cs" />
-    <Compile Include="OrderWater\Commons\FingerprintHelper.cs" />
-    <Compile Include="OrderWater\Commons\FormAnimator.cs" />
-    <Compile Include="OrderWater\Commons\FreezeWindowsUtil.cs" />
-    <Compile Include="OrderWater\Commons\FTPHelper.cs" />
-    <Compile Include="OrderWater\Commons\FullscreenHelper.cs" />
-    <Compile Include="OrderWater\Commons\GDI.cs" />
-    <Compile Include="OrderWater\Commons\GZipUtil.cs" />
-    <Compile Include="OrderWater\Commons\HardwareInfoHelper.cs" />
-    <Compile Include="OrderWater\Commons\Hooks.cs" />
-    <Compile Include="OrderWater\Commons\HSB.cs" />
-    <Compile Include="OrderWater\Commons\HttpHelper.cs" />
-    <Compile Include="OrderWater\Commons\HttpWebRequestHelper.cs" />
-    <Compile Include="OrderWater\Commons\IconReaderHelper.cs" />
-    <Compile Include="OrderWater\Commons\IDCardHelper.cs" />
-    <Compile Include="OrderWater\Commons\IdentifyEncoding.cs" />
-    <Compile Include="OrderWater\Commons\ImageHelper.cs" />
-    <Compile Include="OrderWater\Commons\ImagePrintHelper.cs" />
-    <Compile Include="OrderWater\Commons\ImeHelper.cs" />
-    <Compile Include="OrderWater\Commons\INIFileUtil.cs" />
-    <Compile Include="OrderWater\Commons\IsolatedStorageHelper.cs" />
-    <Compile Include="OrderWater\Commons\JetAccessUtil.cs" />
-    <Compile Include="OrderWater\Commons\KeyboardHelper.cs" />
-    <Compile Include="OrderWater\Commons\KeyboardHook.cs" />
-    <Compile Include="OrderWater\Commons\LogHelper.cs" />
-    <Compile Include="OrderWater\Commons\LogTextHelper.cs" />
-    <Compile Include="OrderWater\Commons\MD5Util.cs" />
-    <Compile Include="OrderWater\Commons\MessageUtil.cs" />
-    <Compile Include="OrderWater\Commons\MouseHelper.cs" />
-    <Compile Include="OrderWater\Commons\MouseHook.cs" />
-    <Compile Include="OrderWater\Commons\MP3Helper.cs" />
-    <Compile Include="OrderWater\Commons\MyColor.cs" />
-    <Compile Include="OrderWater\Commons\MyColors.cs" />
-    <Compile Include="OrderWater\Commons\MyDateTime.cs" />
-    <Compile Include="OrderWater\Commons\MyFileSystemWatcher.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\NativeMethods.cs" />
-    <Compile Include="OrderWater\Commons\NetworkUtil.cs" />
-    <Compile Include="OrderWater\Commons\NotifyIconHelper.cs" />
-    <Compile Include="OrderWater\Commons\OleDbHelper.cs" />
-    <Compile Include="OrderWater\Commons\PagerHelper.cs" />
-    <Compile Include="OrderWater\Commons\PinYinUtil.cs" />
-    <Compile Include="OrderWater\Commons\POSPrinter.cs" />
-    <Compile Include="OrderWater\Commons\PrintDGV.cs" />
-    <Compile Include="OrderWater\Commons\PrintOptions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\ProgressEventArgs.cs" />
-    <Compile Include="OrderWater\Commons\ProxyHelper.cs" />
-    <Compile Include="OrderWater\Commons\ProxySettingEntity.cs" />
-    <Compile Include="OrderWater\Commons\QQEncryptUtil.cs" />
-    <Compile Include="OrderWater\Commons\RandomChinese.cs" />
-    <Compile Include="OrderWater\Commons\Reflect!1.cs" />
-    <Compile Include="OrderWater\Commons\ReflectionUtil.cs" />
-    <Compile Include="OrderWater\Commons\RegistryHelper.cs" />
-    <Compile Include="OrderWater\Commons\ResourceHelper.cs" />
-    <Compile Include="OrderWater\Commons\RGB.cs" />
-    <Compile Include="OrderWater\Commons\RMBUtil.cs" />
-    <Compile Include="OrderWater\Commons\RSASecurityHelper.cs" />
-    <Compile Include="OrderWater\Commons\RtfColor.cs" />
-    <Compile Include="OrderWater\Commons\RTFUtility.cs" />
-    <Compile Include="OrderWater\Commons\SafeStatusStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\SafeToolStripLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\ScaleHelper.cs" />
-    <Compile Include="OrderWater\Commons\SearchCondition.cs" />
-    <Compile Include="OrderWater\Commons\SearchInfo.cs" />
-    <Compile Include="OrderWater\Commons\Serializer.cs" />
-    <Compile Include="OrderWater\Commons\ShellIcon.cs" />
-    <Compile Include="OrderWater\Commons\SimpleExcelExport.cs" />
-    <Compile Include="OrderWater\Commons\SmartDataReader.cs" />
-    <Compile Include="OrderWater\Commons\SortableListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\SortHelper.cs" />
-    <Compile Include="OrderWater\Commons\SpecialDirectories.cs" />
-    <Compile Include="OrderWater\Commons\SQLInjectionHelper.cs" />
-    <Compile Include="OrderWater\Commons\SqlOperator.cs" />
-    <Compile Include="OrderWater\Commons\SqlScriptHelper.cs" />
-    <Compile Include="OrderWater\Commons\StartupHelper.cs" />
-    <Compile Include="OrderWater\Commons\StringConstants.cs" />
-    <Compile Include="OrderWater\Commons\StringUtil.cs" />
-    <Compile Include="OrderWater\Commons\SysTray.cs" />
-    <Compile Include="OrderWater\Commons\TestEntity.cs" />
-    <Compile Include="OrderWater\Commons\ThreadHelper.cs" />
-    <Compile Include="OrderWater\Commons\Threading\AbortableThreadPool.cs" />
-    <Compile Include="OrderWater\Commons\Threading\DelegateHelper.cs" />
-    <Compile Include="OrderWater\Commons\Threading\DisposableObject.cs" />
-    <Compile Include="OrderWater\Commons\Threading\DisposeState.cs" />
-    <Compile Include="OrderWater\Commons\Threading\ProcessingMode.cs" />
-    <Compile Include="OrderWater\Commons\Threading\QueuedBackgroundWorker.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\Threading\QueuedWorkerCompletedEventArgs.cs" />
-    <Compile Include="OrderWater\Commons\Threading\QueuedWorkerDoWorkEventArgs.cs" />
-    <Compile Include="OrderWater\Commons\Threading\QueuedWorkerDoWorkEventHandler.cs" />
-    <Compile Include="OrderWater\Commons\Threading\QueueServer!1.cs" />
-    <Compile Include="OrderWater\Commons\Threading\RunQueuedWorkerCompletedEventHandler.cs" />
-    <Compile Include="OrderWater\Commons\Threading\ThreadPoolHelper.cs" />
-    <Compile Include="OrderWater\Commons\Threading\ThreadSafeObjectProvider!1.cs" />
-    <Compile Include="OrderWater\Commons\Threading\Timer.cs" />
-    <Compile Include="OrderWater\Commons\Threading\WorkItem.cs" />
-    <Compile Include="OrderWater\Commons\Threading\WorkItemStatus.cs" />
-    <Compile Include="OrderWater\Commons\TimerHelper.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OrderWater\Commons\TimerState.cs" />
-    <Compile Include="OrderWater\Commons\UIConstants.cs" />
-    <Compile Include="OrderWater\Commons\UnCodebase.cs" />
-    <Compile Include="OrderWater\Commons\UnicodeHelper.cs" />
-    <Compile Include="OrderWater\Commons\Util.cs" />
-    <Compile Include="OrderWater\Commons\ValidateUtil.cs" />
-    <Compile Include="OrderWater\Commons\WebPageCapture.cs" />
-    <Compile Include="OrderWater\Commons\WebPreview.cs" />
-    <Compile Include="OrderWater\Commons\WebPreviewBase.cs" />
-    <Compile Include="OrderWater\Commons\Win32Window.cs" />
-    <Compile Include="OrderWater\Commons\WindowMessage.cs" />
-    <Compile Include="OrderWater\Commons\WindowsExitHelper.cs" />
-    <Compile Include="OrderWater\Commons\WordCombineUtil.cs" />
-    <Compile Include="OrderWater\Commons\XmlConvertor.cs" />
-    <Compile Include="OrderWater\Commons\XmlHelper.cs" />
-    <Compile Include="OrderWater\Commons\XmlUtils.cs" />
     <Compile Include="Other.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempCode\TempCode.cs" />
-    <Compile Include="Utils\AccessHelper.cs" />
-    <Compile Include="Utils\AssemblyHelper.cs" />
-    <Compile Include="Utils\CacheHelper.cs" />
-    <Compile Include="Utils\ConfigHelper.cs" />
-    <Compile Include="Utils\ConvertHelper.cs" />
-    <Compile Include="Utils\CookiesHelper.cs" />
-    <Compile Include="Utils\DateTimeHelper.cs" />
-    <Compile Include="Utils\DbFactory.cs" />
-    <Compile Include="Utils\DumpHelper.cs" />
-    <Compile Include="Utils\EmailHelper.cs" />
-    <Compile Include="Utils\EncyptHelper.cs" />
-    <Compile Include="Utils\EventLogHelper.cs" />
-    <Compile Include="Utils\ExcelHelper.cs" />
-    <Compile Include="Utils\FilesHelper.cs" />
-    <Compile Include="Utils\GUIDHelper.cs" />
-    <Compile Include="Utils\GZipHelper.cs" />
-    <Compile Include="Utils\IniHelper.cs" />
-    <Compile Include="Utils\JSONHelper.cs" />
-    <Compile Include="Utils\MathHelper.cs" />
-    <Compile Include="Utils\MessageHelper.cs" />
-    <Compile Include="Utils\MssqlHelper.cs" />
-    <Compile Include="Utils\NetWorkHelper.cs" />
-    <Compile Include="Utils\OracleHelper.cs" />
-    <Compile Include="Utils\OtherHelper.cs" />
-    <Compile Include="Utils\QQWryIpHelper.cs" />
-    <Compile Include="Utils\RegistryHelper.cs" />
-    <Compile Include="Utils\RMBHelper.cs" />
-    <Compile Include="Utils\SerializerHelper.cs" />
-    <Compile Include="Utils\SessionHelper.cs" />
-    <Compile Include="Utils\StringHelper.cs" />
-    <Compile Include="Utils\WebServiceHelper.cs" />
     <Compile Include="Web\Cookie.cs" />
     <Compile Include="Web\Request.cs" />
     <Compile Include="Web\WebBasic.cs" />
     <Compile Include="Web\WebScript.cs" />
-    <Compile Include="WinForms\DataEditBaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\DataGridViewEx.cs" />
-    <Compile Include="WinForms\DataGridViewExportHelper.cs" />
-    <Compile Include="WinForms\ExcelHelper.cs" />
-    <Compile Include="WinForms\ExportHelper.cs" />
-    <Compile Include="WinForms\ExtTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WinForms\libNavigate.cs">
+    <Compile Include="Controls\CicleLevel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForms\LoadFormAndShow.cs" />
-    <Compile Include="WinForms\LoadGUI.cs" />
-    <Compile Include="WinForms\mapBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinForms\RealBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WinForms\Resource.cs" />
-    <Compile Include="WinForms\RightTreeNode.cs" />
-    <Compile Include="WinForms\SetDockStyle.cs" />
-    <Compile Include="WinForms\ToolClass.cs" />
-    <Compile Include="WinForms\Uc_Datetime.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinForms\UserTxtIP.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinForms\ValidateCode.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinForms\WinFormHelper.cs" />
-    <Compile Include="WinForms\WinFormPager.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinForms\XMLConfigure.cs" />
-    <Compile Include="WinForm\Controls\CicleLevel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinForm\Controls\CicleLevel.Designer.cs">
+    <Compile Include="Controls\CicleLevel.Designer.cs">
       <DependentUpon>CicleLevel.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\ConfigForm.cs">
+    <Compile Include="Controls\ConfigForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\ConfigForm.Designer.cs">
+    <Compile Include="Controls\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\DataManage.cs">
+    <Compile Include="Controls\DataManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\DataManage.Designer.cs">
+    <Compile Include="Controls\DataManage.Designer.cs">
       <DependentUpon>DataManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\DataManageForm.cs">
+    <Compile Include="Controls\DataManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\DataManageForm.Designer.cs">
+    <Compile Include="Controls\DataManageForm.Designer.cs">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\EntityFormPager.cs">
+    <Compile Include="Controls\EntityFormPager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\EntityFormPager.designer.cs">
+    <Compile Include="Controls\EntityFormPager.designer.cs">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\Resource.Designer.cs">
+    <Compile Include="Controls\Resource.Designer.cs">
       <DependentUpon>Resource.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="WinForm\Controls\SearchCondition.cs">
+    <Compile Include="Controls\SearchCondition.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\SearchCondition.Designer.cs">
+    <Compile Include="Controls\SearchCondition.Designer.cs">
       <DependentUpon>SearchCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\SearchConditionForm.cs">
+    <Compile Include="Controls\SearchConditionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\SearchConditionForm.Designer.cs">
+    <Compile Include="Controls\SearchConditionForm.Designer.cs">
       <DependentUpon>SearchConditionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\StausInfoShow.cs">
+    <Compile Include="Controls\StausInfoShow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\StausInfoShow.Designer.cs">
+    <Compile Include="Controls\StausInfoShow.Designer.cs">
       <DependentUpon>StausInfoShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\ValidateCode.cs">
+    <Compile Include="Controls\ValidateCode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\ValidateCode.Designer.cs">
+    <Compile Include="Controls\ValidateCode.Designer.cs">
       <DependentUpon>ValidateCode.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\Controls\WinFormPager.cs">
+    <Compile Include="Controls\WinFormPager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\Controls\WinFormPager.designer.cs">
+    <Compile Include="Controls\WinFormPager.designer.cs">
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinForm\WinFormHelper.cs">
+    <Compile Include="Controls\WinFormHelper.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -516,7 +265,7 @@
     <None Include="Resouces\Lib\XTemplate.pdb" />
     <None Include="Resouces\Lib\XTemplate.xml" />
     <None Include="Resouces\Lib\X组件手册.chm" />
-    <None Include="WinForm\Controls\Resources\PageBg.png" />
+    <None Include="Controls\Resources\PageBg.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YoungRun\YoungRunEntity\YoungRunEntity.csproj">
@@ -525,49 +274,52 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WinForm\Controls\CicleLevel.resx">
+    <EmbeddedResource Include="Controls\CicleLevel.resx">
       <DependentUpon>CicleLevel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\ConfigForm.resx">
+    <EmbeddedResource Include="Controls\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\DataManage.resx">
+    <EmbeddedResource Include="Controls\DataManage.resx">
       <DependentUpon>DataManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\DataManageForm.resx">
+    <EmbeddedResource Include="Controls\DataManageForm.resx">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\EntityFormPager.resx">
+    <EmbeddedResource Include="Controls\EntityFormPager.resx">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\EntityFormPager.sq.resx">
+    <EmbeddedResource Include="Controls\EntityFormPager.sq.resx">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\Resource.resx">
+    <EmbeddedResource Include="Controls\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\Resources\Icon\Pager.ico" />
-    <EmbeddedResource Include="WinForm\Controls\Resources\Icon\ValidateCode.ico" />
-    <EmbeddedResource Include="WinForm\Controls\Resources\Images\Pager\PageBg.png" />
-    <EmbeddedResource Include="WinForm\Controls\SearchCondition.resx">
+    <EmbeddedResource Include="Controls\Resources\Icon\Pager.ico" />
+    <EmbeddedResource Include="Controls\Resources\Icon\ValidateCode.ico" />
+    <EmbeddedResource Include="Controls\Resources\Images\Pager\PageBg.png" />
+    <EmbeddedResource Include="Controls\SearchCondition.resx">
       <DependentUpon>SearchCondition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\SearchConditionForm.resx">
+    <EmbeddedResource Include="Controls\SearchConditionForm.resx">
       <DependentUpon>SearchConditionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\StausInfoShow.resx">
+    <EmbeddedResource Include="Controls\StausInfoShow.resx">
       <DependentUpon>StausInfoShow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\ValidateCode.resx">
+    <EmbeddedResource Include="Controls\ValidateCode.resx">
       <DependentUpon>ValidateCode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\WinFormPager.resx">
+    <EmbeddedResource Include="Controls\WinFormPager.resx">
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForm\Controls\WinFormPager.sq.resx">
+    <EmbeddedResource Include="Controls\WinFormPager.sq.resx">
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WinForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
