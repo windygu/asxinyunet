@@ -47,10 +47,10 @@
       <HintPath>..\..\DotNet.Tools\DotNet.Tools\Dll\KwCombinatorics.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.CommonEntity">
-      <HintPath>..\Lib\NewLife.CommonEntity.dll</HintPath>
+      <HintPath>..\..\Lib\NewLife.CommonEntity.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Core">
-      <HintPath>..\Lib\NewLife.Core.dll</HintPath>
+      <HintPath>..\..\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:\Program Files\NUnit 2.5.9\bin\net-2.0\framework\nunit.framework.dll</HintPath>
@@ -67,11 +67,8 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Winista.HtmlParser">
-      <HintPath>..\Lib\Winista.HtmlParser.dll</HintPath>
-    </Reference>
     <Reference Include="XCode">
-      <HintPath>..\Lib\XCode.dll</HintPath>
+      <HintPath>..\..\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
