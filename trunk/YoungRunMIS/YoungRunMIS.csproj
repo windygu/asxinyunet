@@ -58,7 +58,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputPath>..\..\代码生成\DotNet\YoungRunMIS\</OutputPath>
+    <OutputPath>..\..\..\代码生成\YoungRunMIS\</OutputPath>
+    <DocumentationFile>..\..\..\代码生成\YoungRunMIS\YoungRunMIS.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
