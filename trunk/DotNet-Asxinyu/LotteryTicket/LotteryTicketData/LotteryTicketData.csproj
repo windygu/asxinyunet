@@ -39,15 +39,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
-    <Reference Include="LTP.Common">
-      <HintPath>..\Lib\LTP.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="LTP.Utility">
-      <HintPath>..\Lib\LTP.Utility.dll</HintPath>
-    </Reference>
-    <Reference Include="Maticsoft.DBUtility">
-      <HintPath>..\Lib\Maticsoft.DBUtility.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -59,9 +50,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="Winista.HtmlParser">
-      <HintPath>..\Lib\Winista.HtmlParser.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
