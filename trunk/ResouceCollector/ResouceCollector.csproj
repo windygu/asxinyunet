@@ -53,7 +53,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputPath>..\..\代码生成\DotNet\ResouceCollector\</OutputPath>
+    <OutputPath>..\..\..\代码生成\ResouceCollector\</OutputPath>
+    <DocumentationFile>..\..\..\代码生成\ResouceCollector\ResouceCollector.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
