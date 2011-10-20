@@ -23,15 +23,8 @@ namespace YoungRunTest
 	public partial class MainForm : Form
 	{
 		public MainForm()
-		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
+		{			
+			InitializeComponent();			
 		}
 		
 		void Button1Click(object sender, EventArgs e)
