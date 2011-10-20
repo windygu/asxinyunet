@@ -53,7 +53,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputPath>..\..\代码生成\DotNet\ResouceEntity\</OutputPath>
+    <OutputPath>..\..\..\代码生成\ResouceEntity\</OutputPath>
+    <DocumentationFile>..\..\..\代码生成\ResouceEntity\ResouceEntity.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NewLife.CommonEntity">
