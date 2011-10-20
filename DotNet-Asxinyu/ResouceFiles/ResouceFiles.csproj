@@ -65,7 +65,6 @@
     <None Include="Images\table.ico" />
     <None Include="Images\target.ico" />
     <None Include="Images\text.ico" />
-    <None Include="Images\Thumbs.db" />
     <None Include="Images\turn off.ico" />
     <None Include="Images\user group.ico" />
     <None Include="Images\view.ico" />
@@ -102,12 +101,6 @@
     <None Include="Lib\XTemplate.xml" />
     <None Include="Lib\X组件手册.chm" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DesignFiles" />
-    <Folder Include="Images" />
-    <Folder Include="Lib" />
-    <Folder Include="Lib\obj" />
-    <Folder Include="Lib\obj\Debug" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
