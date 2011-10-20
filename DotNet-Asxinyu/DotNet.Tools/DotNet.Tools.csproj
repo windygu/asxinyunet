@@ -110,72 +110,72 @@
     <Compile Include="BaseUtilities\RandomHelper.cs" />
     <Compile Include="BaseUtilities\StringHelper.cs" />
     <Compile Include="BaseUtilities\Validator.cs" />
-    <Compile Include="Controls\CicleLevel.cs">
+    <Compile Include="WinForm\Controls\CicleLevel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\CicleLevel.Designer.cs">
+    <Compile Include="WinForm\Controls\CicleLevel.Designer.cs">
       <DependentUpon>CicleLevel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ConfigForm.cs">
+    <Compile Include="WinForm\Controls\ConfigForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ConfigForm.Designer.cs">
+    <Compile Include="WinForm\Controls\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Resource.Designer.cs">
+    <Compile Include="WinForm\Controls\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SearchCondition.cs">
+    <Compile Include="WinForm\Controls\SearchCondition.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SearchCondition.Designer.cs">
+    <Compile Include="WinForm\Controls\SearchCondition.Designer.cs">
       <DependentUpon>SearchCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SearchConditionForm.cs">
+    <Compile Include="WinForm\Controls\SearchConditionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\SearchConditionForm.Designer.cs">
+    <Compile Include="WinForm\Controls\SearchConditionForm.Designer.cs">
       <DependentUpon>SearchConditionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\StausInfoShow.cs">
+    <Compile Include="WinForm\Controls\StausInfoShow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\StausInfoShow.Designer.cs">
+    <Compile Include="WinForm\Controls\StausInfoShow.Designer.cs">
       <DependentUpon>StausInfoShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DataManage.cs">
+    <Compile Include="WinForm\Controls\DataManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\DataManage.Designer.cs">
+    <Compile Include="WinForm\Controls\DataManage.Designer.cs">
       <DependentUpon>DataManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DataManageForm.cs">
+    <Compile Include="WinForm\Controls\DataManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\DataManageForm.Designer.cs">
+    <Compile Include="WinForm\Controls\DataManageForm.Designer.cs">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ValidateCode.cs">
+    <Compile Include="WinForm\Controls\ValidateCode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ValidateCode.Designer.cs">
+    <Compile Include="WinForm\Controls\ValidateCode.Designer.cs">
       <DependentUpon>ValidateCode.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EntityFormPager.cs">
+    <Compile Include="WinForm\Controls\EntityFormPager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EntityFormPager.designer.cs">
+    <Compile Include="WinForm\Controls\EntityFormPager.designer.cs">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WinFormPager.cs">
+    <Compile Include="WinForm\Controls\WinFormPager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\WinFormPager.designer.cs">
+    <Compile Include="WinForm\Controls\WinFormPager.designer.cs">
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WinFormHelper.cs" />
+    <Compile Include="WinForm\WinFormHelper.cs" />
     <Compile Include="Image\ImageHelper.cs" />
     <Compile Include="OrderWater\Commons\AppConfig.cs" />
     <Compile Include="OrderWater\Commons\ArgumentValidation.cs" />
@@ -397,86 +397,86 @@
     <Compile Include="Web\Request.cs" />
     <Compile Include="Web\WebBasic.cs" />
     <Compile Include="Web\WebScript.cs" />
-    <Compile Include="WinForm\DataEditBaseForm.cs">
+    <Compile Include="WinForms\DataEditBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForm\DataGridViewEx.cs" />
-    <Compile Include="WinForm\DataGridViewExportHelper.cs" />
-    <Compile Include="WinForm\ExcelHelper.cs" />
-    <Compile Include="WinForm\ExportHelper.cs" />
-    <Compile Include="WinForm\ExtTextBox.cs">
+    <Compile Include="WinForms\DataGridViewEx.cs" />
+    <Compile Include="WinForms\DataGridViewExportHelper.cs" />
+    <Compile Include="WinForms\ExcelHelper.cs" />
+    <Compile Include="WinForms\ExportHelper.cs" />
+    <Compile Include="WinForms\ExtTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinForm\libNavigate.cs">
+    <Compile Include="WinForms\libNavigate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\LoadFormAndShow.cs" />
-    <Compile Include="WinForm\LoadGUI.cs" />
-    <Compile Include="WinForm\mapBase.cs">
+    <Compile Include="WinForms\LoadFormAndShow.cs" />
+    <Compile Include="WinForms\LoadGUI.cs" />
+    <Compile Include="WinForms\mapBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\RealBox.cs">
+    <Compile Include="WinForms\RealBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinForm\Resource.cs" />
-    <Compile Include="WinForm\RightTreeNode.cs" />
-    <Compile Include="WinForm\SetDockStyle.cs" />
-    <Compile Include="WinForm\ToolClass.cs" />
-    <Compile Include="WinForm\Uc_Datetime.cs">
+    <Compile Include="WinForms\Resource.cs" />
+    <Compile Include="WinForms\RightTreeNode.cs" />
+    <Compile Include="WinForms\SetDockStyle.cs" />
+    <Compile Include="WinForms\ToolClass.cs" />
+    <Compile Include="WinForms\Uc_Datetime.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\UserTxtIP.cs">
+    <Compile Include="WinForms\UserTxtIP.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\ValidateCode.cs">
+    <Compile Include="WinForms\ValidateCode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\WinFormHelper.cs" />
-    <Compile Include="WinForm\WinFormPager.cs">
+    <Compile Include="WinForms\WinFormHelper.cs" />
+    <Compile Include="WinForms\WinFormPager.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinForm\XMLConfigure.cs" />
-    <EmbeddedResource Include="Controls\CicleLevel.resx">
+    <Compile Include="WinForms\XMLConfigure.cs" />
+    <EmbeddedResource Include="WinForm\Controls\CicleLevel.resx">
       <DependentUpon>CicleLevel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ConfigForm.resx">
+    <EmbeddedResource Include="WinForm\Controls\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Resource.resx">
+    <EmbeddedResource Include="WinForm\Controls\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Resources\Icon\Pager.ico" />
-    <EmbeddedResource Include="Controls\Resources\Icon\ValidateCode.ico" />
-    <EmbeddedResource Include="Controls\Resources\Images\Pager\PageBg.png" />
-    <EmbeddedResource Include="Controls\SearchCondition.resx">
+    <EmbeddedResource Include="WinForm\Controls\Resources\Icon\Pager.ico" />
+    <EmbeddedResource Include="WinForm\Controls\Resources\Icon\ValidateCode.ico" />
+    <EmbeddedResource Include="WinForm\Controls\Resources\Images\Pager\PageBg.png" />
+    <EmbeddedResource Include="WinForm\Controls\SearchCondition.resx">
       <DependentUpon>SearchCondition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SearchConditionForm.resx">
+    <EmbeddedResource Include="WinForm\Controls\SearchConditionForm.resx">
       <DependentUpon>SearchConditionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\StausInfoShow.resx">
+    <EmbeddedResource Include="WinForm\Controls\StausInfoShow.resx">
       <DependentUpon>StausInfoShow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DataManage.resx">
+    <EmbeddedResource Include="WinForm\Controls\DataManage.resx">
       <DependentUpon>DataManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DataManageForm.resx">
+    <EmbeddedResource Include="WinForm\Controls\DataManageForm.resx">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ValidateCode.resx">
+    <EmbeddedResource Include="WinForm\Controls\ValidateCode.resx">
       <DependentUpon>ValidateCode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EntityFormPager.resx">
+    <EmbeddedResource Include="WinForm\Controls\EntityFormPager.resx">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EntityFormPager.sq.resx">
+    <EmbeddedResource Include="WinForm\Controls\EntityFormPager.sq.resx">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WinFormPager.resx">
+    <EmbeddedResource Include="WinForm\Controls\WinFormPager.resx">
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WinFormPager.sq.resx">
+    <EmbeddedResource Include="WinForm\Controls\WinFormPager.sq.resx">
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -506,7 +506,7 @@
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Controls\Resources\PageBg.png" />
+    <None Include="WinForm\Controls\Resources\PageBg.png" />
     <None Include="Resouces\Images\application.ico" />
     <None Include="Resouces\Images\apply.ico" />
     <None Include="Resouces\Images\create.ico" />
