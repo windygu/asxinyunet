@@ -50,6 +50,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <OutputPath>..\..\代码生成\DotNet\Customer\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
