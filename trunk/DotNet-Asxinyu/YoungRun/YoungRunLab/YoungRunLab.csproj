@@ -63,13 +63,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kenny.Controls.WinForm">
-      <HintPath>..\..\Lib\Kenny.Controls.WinForm.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\Kenny.Controls.WinForm.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.CommonEntity">
-      <HintPath>..\..\Lib\NewLife.CommonEntity.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.CommonEntity.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Core">
-      <HintPath>..\..\Lib\NewLife.Core.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -86,7 +86,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="XCode">
-      <HintPath>..\..\Lib\XCode.dll</HintPath>
+      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -387,10 +387,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNet.Authority\DotNet.Authority\DotNet.Authority.csproj">
-      <Project>{80CDB54A-D1F5-4CA3-93A9-F41F0C53E6B1}</Project>
-      <Name>DotNet.Authority</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
       <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
       <Name>DotNet.Tools</Name>
