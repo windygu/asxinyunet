@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C56F4793-6746-4E12-BC43-91B9D08101DC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNet.Tools</RootNamespace>
+    <AssemblyName>DotNet.Tools</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\董斌辉\Application Data\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/DotNet.Tools/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\代码生成\CustomerMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NewLife.CommonEntity">
+      <HintPath>..\..\Lib\NewLife.CommonEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>Dll\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="XCode">
+      <HintPath>..\..\Lib\XCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseUtilities\AppMessage.cs" />
+    <Compile Include="BaseUtilities\Convertor.cs" />
+    <Compile Include="BaseUtilities\EnumHelper.cs" />
+    <Compile Include="BaseUtilities\ExtendProperty.cs" />
+    <Compile Include="BaseUtilities\FileHelper.cs" />
+    <Compile Include="BaseUtilities\DateHelper.cs" />
+    <Compile Include="BaseUtilities\RandomHelper.cs" />
+    <Compile Include="BaseUtilities\StringHelper.cs" />
+    <Compile Include="BaseUtilities\Validator.cs" />
+    <Compile Include="Controls\CicleLevel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CicleLevel.Designer.cs">
+      <DependentUpon>CicleLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfigForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchCondition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchCondition.Designer.cs">
+      <DependentUpon>SearchCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchConditionForm.Designer.cs">
+      <DependentUpon>SearchConditionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StausInfoShow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StausInfoShow.Designer.cs">
+      <DependentUpon>StausInfoShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataManage.Designer.cs">
+      <DependentUpon>DataManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\DataManageForm.Designer.cs">
+      <DependentUpon>DataManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ValidateCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ValidateCode.Designer.cs">
+      <DependentUpon>ValidateCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EntityFormPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EntityFormPager.designer.cs">
+      <DependentUpon>EntityFormPager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WinFormPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WinFormPager.designer.cs">
+      <DependentUpon>WinFormPager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WinFormHelper.cs" />
+    <Compile Include="Image\ImageHelper.cs" />
+    <Compile Include="OrderWater\Commons\AppConfig.cs" />
+    <Compile Include="OrderWater\Commons\ArgumentValidation.cs" />
+    <Compile Include="OrderWater\Commons\AudioHelper.cs" />
+    <Compile Include="OrderWater\Commons\AudioPlayMode.cs" />
+    <Compile Include="OrderWater\Commons\Base64Util.cs" />
+    <Compile Include="OrderWater\Commons\ByteImageConvertor.cs" />
+    <Compile Include="OrderWater\Commons\BytesTools.cs" />
+    <Compile Include="OrderWater\Commons\Cache.cs" />
+    <Compile Include="OrderWater\Commons\CallCtrlWithThreadSafety.cs" />
+    <Compile Include="OrderWater\Commons\Camera.cs" />
+    <Compile Include="OrderWater\Commons\CCalendar.cs" />
+    <Compile Include="OrderWater\Commons\CellOwnerDrawEventHandler.cs" />
+    <Compile Include="OrderWater\Commons\CheckBoxListUtil.cs" />
+    <Compile Include="OrderWater\Commons\ChildWinManagement.cs" />
+    <Compile Include="OrderWater\Commons\ChineseCalendar.cs" />
+    <Compile Include="OrderWater\Commons\ClipboardHepler.cs" />
+    <Compile Include="OrderWater\Commons\CMYK.cs" />
+    <Compile Include="OrderWater\Commons\Collections\Dictionary!2.cs" />
+    <Compile Include="OrderWater\Commons\Collections\ICloneable!1.cs" />
+    <Compile Include="OrderWater\Commons\Collections\List!1.cs" />
+    <Compile Include="OrderWater\Commons\Collections\OrderedDictionary!2.cs" />
+    <Compile Include="OrderWater\Commons\Collections\OrderedDictionaryEnumerator!2.cs" />
+    <Compile Include="OrderWater\Commons\CommandArgs.cs" />
+    <Compile Include="OrderWater\Commons\CommandLine.cs" />
+    <Compile Include="OrderWater\Commons\Computer.cs" />
+    <Compile Include="OrderWater\Commons\ConvertHelper.cs" />
+    <Compile Include="OrderWater\Commons\CookieManger.cs" />
+    <Compile Include="OrderWater\Commons\CoolPrintPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\CrcUtils.cs" />
+    <Compile Include="OrderWater\Commons\CRegex.cs" />
+    <Compile Include="OrderWater\Commons\CSocket.cs" />
+    <Compile Include="OrderWater\Commons\CString.cs" />
+    <Compile Include="OrderWater\Commons\CSVHelper.cs" />
+    <Compile Include="OrderWater\Commons\CText.cs" />
+    <Compile Include="OrderWater\Commons\CultureInfoUtil.cs" />
+    <Compile Include="OrderWater\Commons\DatabaseInfo.cs" />
+    <Compile Include="OrderWater\Commons\DatabaseType.cs" />
+    <Compile Include="OrderWater\Commons\DataTableHelper.cs" />
+    <Compile Include="OrderWater\Commons\DateTimeHelper.cs" />
+    <Compile Include="OrderWater\Commons\DGVCellDrawingEventArgs.cs" />
+    <Compile Include="OrderWater\Commons\DGVPrinter.cs" />
+    <Compile Include="OrderWater\Commons\DirectoryUtil.cs" />
+    <Compile Include="OrderWater\Commons\EncodeHelper.cs" />
+    <Compile Include="OrderWater\Commons\EnumHelper.cs" />
+    <Compile Include="OrderWater\Commons\ExcelHelper.cs" />
+    <Compile Include="OrderWater\Commons\Export2Excel.cs" />
+    <Compile Include="OrderWater\Commons\ExRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\ExRichTextBoxPrintHelper.cs" />
+    <Compile Include="OrderWater\Commons\ExtensionAttachUtil.cs" />
+    <Compile Include="OrderWater\Commons\Extensions.cs" />
+    <Compile Include="OrderWater\Commons\FileAssociationsHelper.cs" />
+    <Compile Include="OrderWater\Commons\FileDialogHelper.cs" />
+    <Compile Include="OrderWater\Commons\FingerprintHelper.cs" />
+    <Compile Include="OrderWater\Commons\FormAnimator.cs" />
+    <Compile Include="OrderWater\Commons\FreezeWindowsUtil.cs" />
+    <Compile Include="OrderWater\Commons\FTPHelper.cs" />
+    <Compile Include="OrderWater\Commons\FullscreenHelper.cs" />
+    <Compile Include="OrderWater\Commons\GDI.cs" />
+    <Compile Include="OrderWater\Commons\GZipUtil.cs" />
+    <Compile Include="OrderWater\Commons\HardwareInfoHelper.cs" />
+    <Compile Include="OrderWater\Commons\Hooks.cs" />
+    <Compile Include="OrderWater\Commons\HSB.cs" />
+    <Compile Include="OrderWater\Commons\HttpHelper.cs" />
+    <Compile Include="OrderWater\Commons\HttpWebRequestHelper.cs" />
+    <Compile Include="OrderWater\Commons\IconReaderHelper.cs" />
+    <Compile Include="OrderWater\Commons\IDCardHelper.cs" />
+    <Compile Include="OrderWater\Commons\IdentifyEncoding.cs" />
+    <Compile Include="OrderWater\Commons\ImageHelper.cs" />
+    <Compile Include="OrderWater\Commons\ImagePrintHelper.cs" />
+    <Compile Include="OrderWater\Commons\ImeHelper.cs" />
+    <Compile Include="OrderWater\Commons\INIFileUtil.cs" />
+    <Compile Include="OrderWater\Commons\IsolatedStorageHelper.cs" />
+    <Compile Include="OrderWater\Commons\JetAccessUtil.cs" />
+    <Compile Include="OrderWater\Commons\KeyboardHelper.cs" />
+    <Compile Include="OrderWater\Commons\KeyboardHook.cs" />
+    <Compile Include="OrderWater\Commons\LogHelper.cs" />
+    <Compile Include="OrderWater\Commons\LogTextHelper.cs" />
+    <Compile Include="OrderWater\Commons\MD5Util.cs" />
+    <Compile Include="OrderWater\Commons\MessageUtil.cs" />
+    <Compile Include="OrderWater\Commons\MouseHelper.cs" />
+    <Compile Include="OrderWater\Commons\MouseHook.cs" />
+    <Compile Include="OrderWater\Commons\MP3Helper.cs" />
+    <Compile Include="OrderWater\Commons\MyColor.cs" />
+    <Compile Include="OrderWater\Commons\MyColors.cs" />
+    <Compile Include="OrderWater\Commons\MyDateTime.cs" />
+    <Compile Include="OrderWater\Commons\MyFileSystemWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\NativeMethods.cs" />
+    <Compile Include="OrderWater\Commons\NetworkUtil.cs" />
+    <Compile Include="OrderWater\Commons\NotifyIconHelper.cs" />
+    <Compile Include="OrderWater\Commons\OleDbHelper.cs" />
+    <Compile Include="OrderWater\Commons\PagerHelper.cs" />
+    <Compile Include="OrderWater\Commons\PinYinUtil.cs" />
+    <Compile Include="OrderWater\Commons\POSPrinter.cs" />
+    <Compile Include="OrderWater\Commons\PrintDGV.cs" />
+    <Compile Include="OrderWater\Commons\PrintOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\ProgressEventArgs.cs" />
+    <Compile Include="OrderWater\Commons\ProxyHelper.cs" />
+    <Compile Include="OrderWater\Commons\ProxySettingEntity.cs" />
+    <Compile Include="OrderWater\Commons\QQEncryptUtil.cs" />
+    <Compile Include="OrderWater\Commons\RandomChinese.cs" />
+    <Compile Include="OrderWater\Commons\Reflect!1.cs" />
+    <Compile Include="OrderWater\Commons\ReflectionUtil.cs" />
+    <Compile Include="OrderWater\Commons\RegistryHelper.cs" />
+    <Compile Include="OrderWater\Commons\ResourceHelper.cs" />
+    <Compile Include="OrderWater\Commons\RGB.cs" />
+    <Compile Include="OrderWater\Commons\RMBUtil.cs" />
+    <Compile Include="OrderWater\Commons\RSASecurityHelper.cs" />
+    <Compile Include="OrderWater\Commons\RtfColor.cs" />
+    <Compile Include="OrderWater\Commons\RTFUtility.cs" />
+    <Compile Include="OrderWater\Commons\SafeStatusStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\SafeToolStripLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\ScaleHelper.cs" />
+    <Compile Include="OrderWater\Commons\SearchCondition.cs" />
+    <Compile Include="OrderWater\Commons\SearchInfo.cs" />
+    <Compile Include="OrderWater\Commons\Serializer.cs" />
+    <Compile Include="OrderWater\Commons\ShellIcon.cs" />
+    <Compile Include="OrderWater\Commons\SimpleExcelExport.cs" />
+    <Compile Include="OrderWater\Commons\SmartDataReader.cs" />
+    <Compile Include="OrderWater\Commons\SortableListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\SortHelper.cs" />
+    <Compile Include="OrderWater\Commons\SpecialDirectories.cs" />
+    <Compile Include="OrderWater\Commons\SQLInjectionHelper.cs" />
+    <Compile Include="OrderWater\Commons\SqlOperator.cs" />
+    <Compile Include="OrderWater\Commons\SqlScriptHelper.cs" />
+    <Compile Include="OrderWater\Commons\StartupHelper.cs" />
+    <Compile Include="OrderWater\Commons\StringConstants.cs" />
+    <Compile Include="OrderWater\Commons\StringUtil.cs" />
+    <Compile Include="OrderWater\Commons\SysTray.cs" />
+    <Compile Include="OrderWater\Commons\TestEntity.cs" />
+    <Compile Include="OrderWater\Commons\ThreadHelper.cs" />
+    <Compile Include="OrderWater\Commons\Threading\AbortableThreadPool.cs" />
+    <Compile Include="OrderWater\Commons\Threading\DelegateHelper.cs" />
+    <Compile Include="OrderWater\Commons\Threading\DisposableObject.cs" />
+    <Compile Include="OrderWater\Commons\Threading\DisposeState.cs" />
+    <Compile Include="OrderWater\Commons\Threading\ProcessingMode.cs" />
+    <Compile Include="OrderWater\Commons\Threading\QueuedBackgroundWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\Threading\QueuedWorkerCompletedEventArgs.cs" />
+    <Compile Include="OrderWater\Commons\Threading\QueuedWorkerDoWorkEventArgs.cs" />
+    <Compile Include="OrderWater\Commons\Threading\QueuedWorkerDoWorkEventHandler.cs" />
+    <Compile Include="OrderWater\Commons\Threading\QueueServer!1.cs" />
+    <Compile Include="OrderWater\Commons\Threading\RunQueuedWorkerCompletedEventHandler.cs" />
+    <Compile Include="OrderWater\Commons\Threading\ThreadPoolHelper.cs" />
+    <Compile Include="OrderWater\Commons\Threading\ThreadSafeObjectProvider!1.cs" />
+    <Compile Include="OrderWater\Commons\Threading\Timer.cs" />
+    <Compile Include="OrderWater\Commons\Threading\WorkItem.cs" />
+    <Compile Include="OrderWater\Commons\Threading\WorkItemStatus.cs" />
+    <Compile Include="OrderWater\Commons\TimerHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderWater\Commons\TimerState.cs" />
+    <Compile Include="OrderWater\Commons\UIConstants.cs" />
+    <Compile Include="OrderWater\Commons\UnCodebase.cs" />
+    <Compile Include="OrderWater\Commons\UnicodeHelper.cs" />
+    <Compile Include="OrderWater\Commons\Util.cs" />
+    <Compile Include="OrderWater\Commons\ValidateUtil.cs" />
+    <Compile Include="OrderWater\Commons\WebPageCapture.cs" />
+    <Compile Include="OrderWater\Commons\WebPreview.cs" />
+    <Compile Include="OrderWater\Commons\WebPreviewBase.cs" />
+    <Compile Include="OrderWater\Commons\Win32Window.cs" />
+    <Compile Include="OrderWater\Commons\WindowMessage.cs" />
+    <Compile Include="OrderWater\Commons\WindowsExitHelper.cs" />
+    <Compile Include="OrderWater\Commons\WordCombineUtil.cs" />
+    <Compile Include="OrderWater\Commons\XmlConvertor.cs" />
+    <Compile Include="OrderWater\Commons\XmlHelper.cs" />
+    <Compile Include="OrderWater\Commons\XmlUtils.cs" />
+    <Compile Include="Other.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempCode\TempCode.cs" />
+    <Compile Include="Utils\AccessHelper.cs" />
+    <Compile Include="Utils\AssemblyHelper.cs" />
+    <Compile Include="Utils\CacheHelper.cs" />
+    <Compile Include="Utils\ConfigHelper.cs" />
+    <Compile Include="Utils\ConvertHelper.cs" />
+    <Compile Include="Utils\CookiesHelper.cs" />
+    <Compile Include="Utils\DateTimeHelper.cs" />
+    <Compile Include="Utils\DbFactory.cs" />
+    <Compile Include="Utils\DumpHelper.cs" />
+    <Compile Include="Utils\EmailHelper.cs" />
+    <Compile Include="Utils\EncyptHelper.cs" />
+    <Compile Include="Utils\EventLogHelper.cs" />
+    <Compile Include="Utils\ExcelHelper.cs" />
+    <Compile Include="Utils\FilesHelper.cs" />
+    <Compile Include="Utils\GUIDHelper.cs" />
+    <Compile Include="Utils\GZipHelper.cs" />
+    <Compile Include="Utils\IniHelper.cs" />
+    <Compile Include="Utils\JSONHelper.cs" />
+    <Compile Include="Utils\MathHelper.cs" />
+    <Compile Include="Utils\MessageHelper.cs" />
+    <Compile Include="Utils\MssqlHelper.cs" />
+    <Compile Include="Utils\NetWorkHelper.cs" />
+    <Compile Include="Utils\OracleHelper.cs" />
+    <Compile Include="Utils\OtherHelper.cs" />
+    <Compile Include="Utils\QQWryIpHelper.cs" />
+    <Compile Include="Utils\RegistryHelper.cs" />
+    <Compile Include="Utils\RMBHelper.cs" />
+    <Compile Include="Utils\SerializerHelper.cs" />
+    <Compile Include="Utils\SessionHelper.cs" />
+    <Compile Include="Utils\StringHelper.cs" />
+    <Compile Include="Utils\WebServiceHelper.cs" />
+    <Compile Include="Web\Cookie.cs" />
+    <Compile Include="Web\Request.cs" />
+    <Compile Include="Web\WebBasic.cs" />
+    <Compile Include="Web\WebScript.cs" />
+    <Compile Include="WinForm\DataEditBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm\DataGridViewEx.cs" />
+    <Compile Include="WinForm\DataGridViewExportHelper.cs" />
+    <Compile Include="WinForm\ExcelHelper.cs" />
+    <Compile Include="WinForm\ExportHelper.cs" />
+    <Compile Include="WinForm\ExtTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForm\libNavigate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForm\LoadFormAndShow.cs" />
+    <Compile Include="WinForm\LoadGUI.cs" />
+    <Compile Include="WinForm\mapBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForm\RealBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinForm\Resource.cs" />
+    <Compile Include="WinForm\RightTreeNode.cs" />
+    <Compile Include="WinForm\SetDockStyle.cs" />
+    <Compile Include="WinForm\ToolClass.cs" />
+    <Compile Include="WinForm\Uc_Datetime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForm\UserTxtIP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForm\ValidateCode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForm\WinFormHelper.cs" />
+    <Compile Include="WinForm\WinFormPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForm\XMLConfigure.cs" />
+    <EmbeddedResource Include="Controls\CicleLevel.resx">
+      <DependentUpon>CicleLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Resources\Icon\Pager.ico" />
+    <EmbeddedResource Include="Controls\Resources\Icon\ValidateCode.ico" />
+    <EmbeddedResource Include="Controls\Resources\Images\Pager\PageBg.png" />
+    <EmbeddedResource Include="Controls\SearchCondition.resx">
+      <DependentUpon>SearchCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SearchConditionForm.resx">
+      <DependentUpon>SearchConditionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StausInfoShow.resx">
+      <DependentUpon>StausInfoShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DataManage.resx">
+      <DependentUpon>DataManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DataManageForm.resx">
+      <DependentUpon>DataManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ValidateCode.resx">
+      <DependentUpon>ValidateCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EntityFormPager.resx">
+      <DependentUpon>EntityFormPager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EntityFormPager.sq.resx">
+      <DependentUpon>EntityFormPager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WinFormPager.resx">
+      <DependentUpon>WinFormPager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WinFormPager.sq.resx">
+      <DependentUpon>WinFormPager.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Controls\Resources\PageBg.png" />
+    <None Include="Resouces\Images\application.ico" />
+    <None Include="Resouces\Images\apply.ico" />
+    <None Include="Resouces\Images\create.ico" />
+    <None Include="Resouces\Images\e-mail.ico" />
+    <None Include="Resouces\Images\exit.ico" />
+    <None Include="Resouces\Images\key.ico" />
+    <None Include="Resouces\Images\lock.ico" />
+    <None Include="Resouces\Images\message.ico" />
+    <None Include="Resouces\Images\modify.ico" />
+    <None Include="Resouces\Images\new document.ico" />
+    <None Include="Resouces\Images\OK.ico" />
+    <None Include="Resouces\Images\search.ico" />
+    <None Include="Resouces\Images\table.ico" />
+    <None Include="Resouces\Images\target.ico" />
+    <None Include="Resouces\Images\text.ico" />
+    <None Include="Resouces\Images\Thumbs.db" />
+    <None Include="Resouces\Images\turn off.ico" />
+    <None Include="Resouces\Images\user group.ico" />
+    <None Include="Resouces\Images\view.ico" />
+    <None Include="Resouces\Images\yes.ico" />
+    <None Include="Resouces\Lib\HtmlAgilityPack.dll" />
+    <None Include="Resouces\Lib\HtmlAgilityPack.pdb" />
+    <None Include="Resouces\Lib\HtmlAgilityPack.XML" />
+    <None Include="Resouces\Lib\Kenny.Controls.WinForm.dll" />
+    <None Include="Resouces\Lib\Log.ico" />
+    <None Include="Resouces\Lib\NewLife.CommonEntity.dll" />
+    <None Include="Resouces\Lib\NewLife.CommonEntity.pdb" />
+    <None Include="Resouces\Lib\NewLife.CommonEntity.XML" />
+    <None Include="Resouces\Lib\NewLife.Core.dll" />
+    <None Include="Resouces\Lib\NewLife.Core.pdb" />
+    <None Include="Resouces\Lib\NewLife.Core.xml" />
+    <None Include="Resouces\Lib\NewLife.Net.dll" />
+    <None Include="Resouces\Lib\NewLife.Net.pdb" />
+    <None Include="Resouces\Lib\NewLife.Net.xml" />
+    <None Include="Resouces\Lib\NPOI.dll" />
+    <None Include="Resouces\Lib\obj\Debug\GenerateResource.read.434.tlog" />
+    <None Include="Resouces\Lib\obj\Debug\GenerateResource.write.433.tlog" />
+    <None Include="Resouces\Lib\obj\Debug\GenerateResource.write.434.tlog" />
+    <None Include="Resouces\Lib\XAgent.dll" />
+    <None Include="Resouces\Lib\XAgent.pdb" />
+    <None Include="Resouces\Lib\XAgent.XML" />
+    <None Include="Resouces\Lib\XCode.dll" />
+    <None Include="Resouces\Lib\XCode.pdb" />
+    <None Include="Resouces\Lib\XCode.xml" />
+    <None Include="Resouces\Lib\XControl.dll" />
+    <None Include="Resouces\Lib\XControl.pdb" />
+    <None Include="Resouces\Lib\XControl.XML" />
+    <None Include="Resouces\Lib\XTemplate.dll" />
+    <None Include="Resouces\Lib\XTemplate.pdb" />
+    <None Include="Resouces\Lib\XTemplate.xml" />
+    <None Include="Resouces\Lib\X组件手册.chm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YoungRun\YoungRunEntity\YoungRunEntity.csproj">
+      <Project>{2CC9DC3D-DF15-491F-86F0-2D3EA819B1B3}</Project>
+      <Name>YoungRunEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

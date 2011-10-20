@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LotteryTicket.BaseLotTickClass">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAIAAQBAgAEAAAIBgAAAAAAAAAAAgCI=</HashCode>
+      <FileName>Base\BaseLotTickClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.BaseGetLotTicData" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\BaseLotTickClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.IndexCalculate">
+    <Position X="5.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEEAAAAAAIAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Calculate\IndexCalculate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.PerNoIndexCalculate">
+    <Position X="1" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAABAAAAAEEABAAAASBAAACARAAAAAAAgCAA=</HashCode>
+      <FileName>Calculate\PerNoIndexCalculate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.BaseRuleCompare">
+    <Position X="5.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CIAgQIgAAAABAAAAAAAAAAAAAAAAAAAAAAAABAQIEAA=</HashCode>
+      <FileName>Calculate\RuleCompare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.StaticsResult">
+    <Position X="7.5" Y="2.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="LotteryTicket.StaticsResult.CombFrequce" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Calculate\StaticsTest.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEAACIAACAAAAQAAAAAAAQAIAAAAQAAAAAAAAAAAI=</HashCode>
+      <FileName>Calculate\StaticsTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.DataProcess" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\DataProcess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.Common">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAgAAAEAAEAAAAAAACAAAA=</HashCode>
+      <FileName>Common\DataSaveAndValidate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.PredictMethodsValidate">
+    <Position X="2.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAgAAAABAAAAAAAAA=</HashCode>
+      <FileName>Forecast\PredictMethodsValidate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.TwoColorBall">
+    <Position X="0.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAIAAEAAQAAACAAAIAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>LotTickClass\TwoColorBall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.Program">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.TestData">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Test\TestData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.Data.GetSSQDataFromWeb" BaseTypeListCollapsed="true">
+    <Position X="3" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Data\LotTickData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LotteryTicket.Data.GetThreeDataFromWeb" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Data\LotTickData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LotteryTicket.ValidateResult.ValidateMethods">
+    <Position X="3" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAFAAABFAAAA=</HashCode>
+      <FileName>Forecast\ValidateMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotteryTicket.Test.LotteryTest">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAI=</HashCode>
+      <FileName>Test\LotteryTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LotteryTicket.IGetWebLotTickData">
+    <Position X="3" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Base\BaseLotTickClass.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="LotteryTicket.IndexNameType">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAABAAAAAEAABAAAASBAAACABAAAAAAAgCAA=</HashCode>
+      <FileName>Base\IndexNameType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LotteryTicket.LotTickType">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\IndexNameType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LotteryTicket.FilterRuleType">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAgQIgAAAABAAAAAAAAAAAAAAAAAAAAAAAABAQAAAA=</HashCode>
+      <FileName>Calculate\RuleCompare.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>
