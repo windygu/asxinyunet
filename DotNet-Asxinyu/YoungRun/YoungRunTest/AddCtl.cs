@@ -28,8 +28,6 @@ using DotNet.Tools.Controls ;
 
 namespace YoungRunMISTest
 {
-
-	
 	public class AddBttestdata: UserControl
 	{
 		#region 自动生成代码
@@ -88,314 +86,361 @@ namespace YoungRunMISTest
 		#region 组件设计器生成的代码
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBttestdata));
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
-			
-			this.lblID = new System.Windows.Forms.Label() ;
-			this.lblID.AutoSize = true;
-			this.lblID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblID.Name = "lblID";
-			this.lblID.Size = new System.Drawing.Size(10,16);
-			this.lblID.TabIndex = 200 ;
-			this.lblID.Text = "数据编号";
-			this.Controls.Add(this.lblID) ;
-			
-			this.lblProductName = new System.Windows.Forms.Label() ;
-			this.lblProductName.AutoSize = true;
-			this.lblProductName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblProductName.Name = "lblProductName";
-			this.lblProductName.Size = new System.Drawing.Size(10,16);
-			this.lblProductName.TabIndex = 200 ;
-			this.lblProductName.Text = "产品名称";
-			this.Controls.Add(this.lblProductName) ;
-			
-			this.lblV40 = new System.Windows.Forms.Label() ;
-			this.lblV40.AutoSize = true;
-			this.lblV40.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblV40.Name = "lblV40";
-			this.lblV40.Size = new System.Drawing.Size(10,16);
-			this.lblV40.TabIndex = 200 ;
-			this.lblV40.Text = "V40";
-			this.Controls.Add(this.lblV40) ;
-			
-			this.lblV100 = new System.Windows.Forms.Label() ;
-			this.lblV100.AutoSize = true;
-			this.lblV100.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblV100.Name = "lblV100";
-			this.lblV100.Size = new System.Drawing.Size(10,16);
-			this.lblV100.TabIndex = 200 ;
-			this.lblV100.Text = "V100";
-			this.Controls.Add(this.lblV100) ;
-			
-			this.lblVI = new System.Windows.Forms.Label() ;
-			this.lblVI.AutoSize = true;
-			this.lblVI.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblVI.Name = "lblVI";
-			this.lblVI.Size = new System.Drawing.Size(10,16);
-			this.lblVI.TabIndex = 200 ;
-			this.lblVI.Text = "粘度指数";
-			this.Controls.Add(this.lblVI) ;
-			
-			this.lblAV = new System.Windows.Forms.Label() ;
-			this.lblAV.AutoSize = true;
-			this.lblAV.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblAV.Name = "lblAV";
-			this.lblAV.Size = new System.Drawing.Size(10,16);
-			this.lblAV.TabIndex = 200 ;
-			this.lblAV.Text = "酸值";
-			this.Controls.Add(this.lblAV) ;
-			
-			this.lblASTM = new System.Windows.Forms.Label() ;
-			this.lblASTM.AutoSize = true;
-			this.lblASTM.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblASTM.Name = "lblASTM";
-			this.lblASTM.Size = new System.Drawing.Size(10,16);
-			this.lblASTM.TabIndex = 200 ;
-			this.lblASTM.Text = "色度";
-			this.Controls.Add(this.lblASTM) ;
-			
-			this.lblGetSampleTime = new System.Windows.Forms.Label() ;
-			this.lblGetSampleTime.AutoSize = true;
-			this.lblGetSampleTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblGetSampleTime.Name = "lblGetSampleTime";
-			this.lblGetSampleTime.Size = new System.Drawing.Size(10,16);
-			this.lblGetSampleTime.TabIndex = 200 ;
-			this.lblGetSampleTime.Text = "采样时间";
-			this.Controls.Add(this.lblGetSampleTime) ;
-			
-			this.lblGetSamLocation = new System.Windows.Forms.Label() ;
-			this.lblGetSamLocation.AutoSize = true;
-			this.lblGetSamLocation.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblGetSamLocation.Name = "lblGetSamLocation";
-			this.lblGetSamLocation.Size = new System.Drawing.Size(10,16);
-			this.lblGetSamLocation.TabIndex = 200 ;
-			this.lblGetSamLocation.Text = "采样地点";
-			this.Controls.Add(this.lblGetSamLocation) ;
-			
-			this.lblGetSampPerson = new System.Windows.Forms.Label() ;
-			this.lblGetSampPerson.AutoSize = true;
-			this.lblGetSampPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblGetSampPerson.Name = "lblGetSampPerson";
-			this.lblGetSampPerson.Size = new System.Drawing.Size(10,16);
-			this.lblGetSampPerson.TabIndex = 200 ;
-			this.lblGetSampPerson.Text = "采样人";
-			this.Controls.Add(this.lblGetSampPerson) ;
-			
-			this.lblTestPerson = new System.Windows.Forms.Label() ;
-			this.lblTestPerson.AutoSize = true;
-			this.lblTestPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblTestPerson.Name = "lblTestPerson";
-			this.lblTestPerson.Size = new System.Drawing.Size(10,16);
-			this.lblTestPerson.TabIndex = 200 ;
-			this.lblTestPerson.Text = "检测人";
-			this.Controls.Add(this.lblTestPerson) ;
-			
-			this.lblUpdateTime = new System.Windows.Forms.Label() ;
-			this.lblUpdateTime.AutoSize = true;
-			this.lblUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblUpdateTime.Name = "lblUpdateTime";
-			this.lblUpdateTime.Size = new System.Drawing.Size(10,16);
-			this.lblUpdateTime.TabIndex = 200 ;
-			this.lblUpdateTime.Text = "更新时间";
-			this.Controls.Add(this.lblUpdateTime) ;
-			
-			this.lblRemark = new System.Windows.Forms.Label() ;
-			this.lblRemark.AutoSize = true;
-			this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblRemark.Name = "lblRemark";
-			this.lblRemark.Size = new System.Drawing.Size(10,16);
-			this.lblRemark.TabIndex = 200 ;
-			this.lblRemark.Text = "备注";
-			this.Controls.Add(this.lblRemark) ;
-			
-			this.lblID.Location = new System.Drawing.Point(6, 10);
-			
-			this.txtID = new System.Windows.Forms.TextBox() ;
-			this.txtID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtID.Location = new System.Drawing.Point(158, 10);
-			this.txtID.Name = "txtID";
-			this.txtID.Size = new System.Drawing.Size(150,22);
-			this.txtID.TabIndex = 0 ;
-			this.Controls.Add(this.txtID) ;
-			
-			this.lblProductName.Location = new System.Drawing.Point(6, 37);
-			
-			this.txtProductName = new System.Windows.Forms.TextBox() ;
-			this.txtProductName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtProductName.Location = new System.Drawing.Point(158, 37);
-			this.txtProductName.Name = "txtProductName";
-			this.txtProductName.Size = new System.Drawing.Size(150,22);
-			this.txtProductName.TabIndex = 2 ;
-			this.Controls.Add(this.txtProductName) ;
-			
-			this.lblV40.Location = new System.Drawing.Point(6, 64);
-			
-			this.txtV40 = new System.Windows.Forms.TextBox() ;
-			this.txtV40.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtV40.Location = new System.Drawing.Point(158, 64);
-			this.txtV40.Name = "txtV40";
-			this.txtV40.Size = new System.Drawing.Size(150,22);
-			this.txtV40.TabIndex = 4 ;
-			this.Controls.Add(this.txtV40) ;
-			this.txtV40.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-			
-			this.lblV100.Location = new System.Drawing.Point(6, 91);
-			
-			this.txtV100 = new System.Windows.Forms.TextBox() ;
-			this.txtV100.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtV100.Location = new System.Drawing.Point(158, 91);
-			this.txtV100.Name = "txtV100";
-			this.txtV100.Size = new System.Drawing.Size(150,22);
-			this.txtV100.TabIndex = 6 ;
-			this.Controls.Add(this.txtV100) ;
-			this.txtV100.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-			
-			this.lblVI.Location = new System.Drawing.Point(6, 118);
-			
-			this.txtVI = new System.Windows.Forms.TextBox() ;
-			this.txtVI.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtVI.Location = new System.Drawing.Point(158, 118);
-			this.txtVI.Name = "txtVI";
-			this.txtVI.Size = new System.Drawing.Size(150,22);
-			this.txtVI.TabIndex = 8 ;
-			this.Controls.Add(this.txtVI) ;
-			this.txtVI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-			
-			this.lblAV.Location = new System.Drawing.Point(6, 145);
-			
-			this.txtAV = new System.Windows.Forms.TextBox() ;
-			this.txtAV.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtAV.Location = new System.Drawing.Point(158, 145);
-			this.txtAV.Name = "txtAV";
-			this.txtAV.Size = new System.Drawing.Size(150,22);
-			this.txtAV.TabIndex = 10 ;
-			this.Controls.Add(this.txtAV) ;
-			this.txtAV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-			
-			this.lblASTM.Location = new System.Drawing.Point(6, 172);
-			
-			this.txtASTM = new System.Windows.Forms.TextBox() ;
-			this.txtASTM.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtASTM.Location = new System.Drawing.Point(158, 172);
-			this.txtASTM.Name = "txtASTM";
-			this.txtASTM.Size = new System.Drawing.Size(150,22);
-			this.txtASTM.TabIndex = 12 ;
-			this.Controls.Add(this.txtASTM) ;
-			
-			this.lblGetSampleTime.Location = new System.Drawing.Point(6, 199);
-			
-			this.dtGetSampleTime = new System.Windows.Forms.DateTimePicker() ;
-			this.dtGetSampleTime.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.dtGetSampleTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.dtGetSampleTime.Location = new System.Drawing.Point(158, 199);
-			this.dtGetSampleTime.Name = "dtGetSampleTime";
-			this.dtGetSampleTime.Size = new System.Drawing.Size(150,22);
-			this.dtGetSampleTime.TabIndex = 14 ;
-			this.Controls.Add(this.dtGetSampleTime) ;
-			
-			this.lblGetSamLocation.Location = new System.Drawing.Point(6, 226);
-			
-			this.txtGetSamLocation = new System.Windows.Forms.TextBox() ;
-			this.txtGetSamLocation.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtGetSamLocation.Location = new System.Drawing.Point(158, 226);
-			this.txtGetSamLocation.Name = "txtGetSamLocation";
-			this.txtGetSamLocation.Size = new System.Drawing.Size(150,22);
-			this.txtGetSamLocation.TabIndex = 16 ;
-			this.Controls.Add(this.txtGetSamLocation) ;
-			
-			this.lblGetSampPerson.Location = new System.Drawing.Point(6, 253);
-			
-			this.txtGetSampPerson = new System.Windows.Forms.TextBox() ;
-			this.txtGetSampPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtGetSampPerson.Location = new System.Drawing.Point(158, 253);
-			this.txtGetSampPerson.Name = "txtGetSampPerson";
-			this.txtGetSampPerson.Size = new System.Drawing.Size(150,22);
-			this.txtGetSampPerson.TabIndex = 18 ;
-			this.Controls.Add(this.txtGetSampPerson) ;
-			
-			this.lblTestPerson.Location = new System.Drawing.Point(6, 280);
-			
-			this.txtTestPerson = new System.Windows.Forms.TextBox() ;
-			this.txtTestPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtTestPerson.Location = new System.Drawing.Point(158, 280);
-			this.txtTestPerson.Name = "txtTestPerson";
-			this.txtTestPerson.Size = new System.Drawing.Size(150,22);
-			this.txtTestPerson.TabIndex = 20 ;
-			this.Controls.Add(this.txtTestPerson) ;
-			
-			this.lblUpdateTime.Location = new System.Drawing.Point(6, 307);
-			
-			this.dtUpdateTime = new System.Windows.Forms.DateTimePicker() ;
-			this.dtUpdateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.dtUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.dtUpdateTime.Location = new System.Drawing.Point(158, 307);
-			this.dtUpdateTime.Name = "dtUpdateTime";
-			this.dtUpdateTime.Size = new System.Drawing.Size(150,22);
-			this.dtUpdateTime.TabIndex = 22 ;
-			this.Controls.Add(this.dtUpdateTime) ;
-			
-			this.lblRemark.Location = new System.Drawing.Point(6, 334);
-			
-			this.txtRemark = new System.Windows.Forms.TextBox() ;
-			this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtRemark.Location = new System.Drawing.Point(158, 334);
-			this.txtRemark.Name = "txtRemark";
-			this.txtRemark.Size = new System.Drawing.Size(150,22);
-			this.txtRemark.TabIndex = 24 ;
-			this.Controls.Add(this.txtRemark) ;
-			
-			#region 添加按钮
-			this.btnOK = new System.Windows.Forms.Button();
-			this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.btnOK.Location = new System.Drawing.Point(26, 381);
-			this.btnOK.Name = "btnOK";
-			this.btnOK.Size = new System.Drawing.Size(78, 27);
-			this.btnOK.TabIndex = 26;
-			this.btnOK.Text = "保存";
-			this.btnOK.UseVisualStyleBackColor = true;
-			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-			this.Controls.Add(this.btnOK);
-			this.btnCancle = new System.Windows.Forms.Button();
-			this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.btnCancle.Location = new System.Drawing.Point(106, 381);
-			this.btnCancle.Name = "btnCancle";
-			this.btnCancle.Size = new System.Drawing.Size(78, 27);
-			this.btnCancle.TabIndex = 28;
-			this.btnCancle.Text = "取消";
-			this.btnCancle.UseVisualStyleBackColor = true;
-			this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
-			this.Controls.Add(this.btnCancle);
-			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-			this.errorProvider1.ContainerControl = this;
+            this.components = new System.ComponentModel.Container();
+            this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
+            this.lblID = new System.Windows.Forms.Label();
+            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblV40 = new System.Windows.Forms.Label();
+            this.lblV100 = new System.Windows.Forms.Label();
+            this.lblVI = new System.Windows.Forms.Label();
+            this.lblAV = new System.Windows.Forms.Label();
+            this.lblASTM = new System.Windows.Forms.Label();
+            this.lblGetSampleTime = new System.Windows.Forms.Label();
+            this.lblGetSamLocation = new System.Windows.Forms.Label();
+            this.lblGetSampPerson = new System.Windows.Forms.Label();
+            this.lblTestPerson = new System.Windows.Forms.Label();
+            this.lblUpdateTime = new System.Windows.Forms.Label();
+            this.lblRemark = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.txtV40 = new System.Windows.Forms.TextBox();
+            this.txtV100 = new System.Windows.Forms.TextBox();
+            this.txtVI = new System.Windows.Forms.TextBox();
+            this.txtAV = new System.Windows.Forms.TextBox();
+            this.txtASTM = new System.Windows.Forms.TextBox();
+            this.dtGetSampleTime = new System.Windows.Forms.DateTimePicker();
+            this.txtGetSamLocation = new System.Windows.Forms.TextBox();
+            this.txtGetSampPerson = new System.Windows.Forms.TextBox();
+            this.txtTestPerson = new System.Windows.Forms.TextBox();
+            this.dtUpdateTime = new System.Windows.Forms.DateTimePicker();
+            this.txtRemark = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // FormPager
+            // 
+            this.FormPager.AutoSize = true;
+            this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FormPager.BackColor = System.Drawing.Color.Transparent;
+            this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.FormPager.Location = new System.Drawing.Point(10, 411);
+            this.FormPager.Name = "FormPager";
+            this.FormPager.RecordCount = 0;
+            this.FormPager.Size = new System.Drawing.Size(256, 29);
+            this.FormPager.TabIndex = 100;
+            this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblID.Location = new System.Drawing.Point(6, 10);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(63, 14);
+            this.lblID.TabIndex = 200;
+            this.lblID.Text = "数据编号";
+            // 
+            // lblProductName
+            // 
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblProductName.Location = new System.Drawing.Point(6, 37);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(63, 14);
+            this.lblProductName.TabIndex = 200;
+            this.lblProductName.Text = "产品名称";
+            // 
+            // lblV40
+            // 
+            this.lblV40.AutoSize = true;
+            this.lblV40.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblV40.Location = new System.Drawing.Point(6, 64);
+            this.lblV40.Name = "lblV40";
+            this.lblV40.Size = new System.Drawing.Size(28, 14);
+            this.lblV40.TabIndex = 200;
+            this.lblV40.Text = "V40";
+            // 
+            // lblV100
+            // 
+            this.lblV100.AutoSize = true;
+            this.lblV100.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblV100.Location = new System.Drawing.Point(6, 91);
+            this.lblV100.Name = "lblV100";
+            this.lblV100.Size = new System.Drawing.Size(35, 14);
+            this.lblV100.TabIndex = 200;
+            this.lblV100.Text = "V100";
+            // 
+            // lblVI
+            // 
+            this.lblVI.AutoSize = true;
+            this.lblVI.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblVI.Location = new System.Drawing.Point(6, 118);
+            this.lblVI.Name = "lblVI";
+            this.lblVI.Size = new System.Drawing.Size(63, 14);
+            this.lblVI.TabIndex = 200;
+            this.lblVI.Text = "粘度指数";
+            // 
+            // lblAV
+            // 
+            this.lblAV.AutoSize = true;
+            this.lblAV.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblAV.Location = new System.Drawing.Point(6, 145);
+            this.lblAV.Name = "lblAV";
+            this.lblAV.Size = new System.Drawing.Size(35, 14);
+            this.lblAV.TabIndex = 200;
+            this.lblAV.Text = "酸值";
+            // 
+            // lblASTM
+            // 
+            this.lblASTM.AutoSize = true;
+            this.lblASTM.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblASTM.Location = new System.Drawing.Point(6, 172);
+            this.lblASTM.Name = "lblASTM";
+            this.lblASTM.Size = new System.Drawing.Size(35, 14);
+            this.lblASTM.TabIndex = 200;
+            this.lblASTM.Text = "色度";
+            // 
+            // lblGetSampleTime
+            // 
+            this.lblGetSampleTime.AutoSize = true;
+            this.lblGetSampleTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblGetSampleTime.Location = new System.Drawing.Point(6, 199);
+            this.lblGetSampleTime.Name = "lblGetSampleTime";
+            this.lblGetSampleTime.Size = new System.Drawing.Size(63, 14);
+            this.lblGetSampleTime.TabIndex = 200;
+            this.lblGetSampleTime.Text = "采样时间";
+            // 
+            // lblGetSamLocation
+            // 
+            this.lblGetSamLocation.AutoSize = true;
+            this.lblGetSamLocation.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblGetSamLocation.Location = new System.Drawing.Point(6, 226);
+            this.lblGetSamLocation.Name = "lblGetSamLocation";
+            this.lblGetSamLocation.Size = new System.Drawing.Size(63, 14);
+            this.lblGetSamLocation.TabIndex = 200;
+            this.lblGetSamLocation.Text = "采样地点";
+            // 
+            // lblGetSampPerson
+            // 
+            this.lblGetSampPerson.AutoSize = true;
+            this.lblGetSampPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblGetSampPerson.Location = new System.Drawing.Point(6, 253);
+            this.lblGetSampPerson.Name = "lblGetSampPerson";
+            this.lblGetSampPerson.Size = new System.Drawing.Size(49, 14);
+            this.lblGetSampPerson.TabIndex = 200;
+            this.lblGetSampPerson.Text = "采样人";
+            // 
+            // lblTestPerson
+            // 
+            this.lblTestPerson.AutoSize = true;
+            this.lblTestPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTestPerson.Location = new System.Drawing.Point(6, 280);
+            this.lblTestPerson.Name = "lblTestPerson";
+            this.lblTestPerson.Size = new System.Drawing.Size(49, 14);
+            this.lblTestPerson.TabIndex = 200;
+            this.lblTestPerson.Text = "检测人";
+            // 
+            // lblUpdateTime
+            // 
+            this.lblUpdateTime.AutoSize = true;
+            this.lblUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblUpdateTime.Location = new System.Drawing.Point(6, 307);
+            this.lblUpdateTime.Name = "lblUpdateTime";
+            this.lblUpdateTime.Size = new System.Drawing.Size(63, 14);
+            this.lblUpdateTime.TabIndex = 200;
+            this.lblUpdateTime.Text = "更新时间";
+            // 
+            // lblRemark
+            // 
+            this.lblRemark.AutoSize = true;
+            this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblRemark.Location = new System.Drawing.Point(6, 334);
+            this.lblRemark.Name = "lblRemark";
+            this.lblRemark.Size = new System.Drawing.Size(35, 14);
+            this.lblRemark.TabIndex = 200;
+            this.lblRemark.Text = "备注";
+            // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtID.Location = new System.Drawing.Point(158, 10);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(150, 23);
+            this.txtID.TabIndex = 0;
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtProductName.Location = new System.Drawing.Point(158, 37);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(150, 23);
+            this.txtProductName.TabIndex = 2;
+            // 
+            // txtV40
+            // 
+            this.txtV40.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtV40.Location = new System.Drawing.Point(158, 64);
+            this.txtV40.Name = "txtV40";
+            this.txtV40.Size = new System.Drawing.Size(150, 23);
+            this.txtV40.TabIndex = 4;
+            this.txtV40.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
+            // 
+            // txtV100
+            // 
+            this.txtV100.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtV100.Location = new System.Drawing.Point(158, 91);
+            this.txtV100.Name = "txtV100";
+            this.txtV100.Size = new System.Drawing.Size(150, 23);
+            this.txtV100.TabIndex = 6;
+            this.txtV100.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
+            // 
+            // txtVI
+            // 
+            this.txtVI.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtVI.Location = new System.Drawing.Point(158, 118);
+            this.txtVI.Name = "txtVI";
+            this.txtVI.Size = new System.Drawing.Size(150, 23);
+            this.txtVI.TabIndex = 8;
+            this.txtVI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
+            // 
+            // txtAV
+            // 
+            this.txtAV.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtAV.Location = new System.Drawing.Point(158, 145);
+            this.txtAV.Name = "txtAV";
+            this.txtAV.Size = new System.Drawing.Size(150, 23);
+            this.txtAV.TabIndex = 10;
+            this.txtAV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
+            // 
+            // txtASTM
+            // 
+            this.txtASTM.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtASTM.Location = new System.Drawing.Point(158, 172);
+            this.txtASTM.Name = "txtASTM";
+            this.txtASTM.Size = new System.Drawing.Size(150, 23);
+            this.txtASTM.TabIndex = 12;
+            // 
+            // dtGetSampleTime
+            // 
+            this.dtGetSampleTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dtGetSampleTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtGetSampleTime.Location = new System.Drawing.Point(158, 199);
+            this.dtGetSampleTime.Name = "dtGetSampleTime";
+            this.dtGetSampleTime.Size = new System.Drawing.Size(150, 23);
+            this.dtGetSampleTime.TabIndex = 14;
+            // 
+            // txtGetSamLocation
+            // 
+            this.txtGetSamLocation.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGetSamLocation.Location = new System.Drawing.Point(158, 226);
+            this.txtGetSamLocation.Name = "txtGetSamLocation";
+            this.txtGetSamLocation.Size = new System.Drawing.Size(150, 23);
+            this.txtGetSamLocation.TabIndex = 16;
+            // 
+            // txtGetSampPerson
+            // 
+            this.txtGetSampPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGetSampPerson.Location = new System.Drawing.Point(158, 253);
+            this.txtGetSampPerson.Name = "txtGetSampPerson";
+            this.txtGetSampPerson.Size = new System.Drawing.Size(150, 23);
+            this.txtGetSampPerson.TabIndex = 18;
+            // 
+            // txtTestPerson
+            // 
+            this.txtTestPerson.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTestPerson.Location = new System.Drawing.Point(158, 280);
+            this.txtTestPerson.Name = "txtTestPerson";
+            this.txtTestPerson.Size = new System.Drawing.Size(150, 23);
+            this.txtTestPerson.TabIndex = 20;
+            // 
+            // dtUpdateTime
+            // 
+            this.dtUpdateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.dtUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtUpdateTime.Location = new System.Drawing.Point(158, 307);
+            this.dtUpdateTime.Name = "dtUpdateTime";
+            this.dtUpdateTime.Size = new System.Drawing.Size(150, 23);
+            this.dtUpdateTime.TabIndex = 22;
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtRemark.Location = new System.Drawing.Point(158, 334);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(150, 23);
+            this.txtRemark.TabIndex = 24;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOK.Location = new System.Drawing.Point(26, 381);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(78, 27);
+            this.btnOK.TabIndex = 26;
+            this.btnOK.Text = "保存";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancle
+            // 
+            this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancle.Location = new System.Drawing.Point(106, 381);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(78, 27);
+            this.btnCancle.TabIndex = 28;
+            this.btnCancle.Text = "取消";
+            this.btnCancle.UseVisualStyleBackColor = true;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // AddBttestdata
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.lblProductName);
+            this.Controls.Add(this.lblV40);
+            this.Controls.Add(this.lblV100);
+            this.Controls.Add(this.lblVI);
+            this.Controls.Add(this.lblAV);
+            this.Controls.Add(this.lblASTM);
+            this.Controls.Add(this.lblGetSampleTime);
+            this.Controls.Add(this.lblGetSamLocation);
+            this.Controls.Add(this.lblGetSampPerson);
+            this.Controls.Add(this.lblTestPerson);
+            this.Controls.Add(this.lblUpdateTime);
+            this.Controls.Add(this.lblRemark);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.txtProductName);
+            this.Controls.Add(this.txtV40);
+            this.Controls.Add(this.txtV100);
+            this.Controls.Add(this.txtVI);
+            this.Controls.Add(this.txtAV);
+            this.Controls.Add(this.txtASTM);
+            this.Controls.Add(this.dtGetSampleTime);
+            this.Controls.Add(this.txtGetSamLocation);
+            this.Controls.Add(this.txtGetSampPerson);
+            this.Controls.Add(this.txtTestPerson);
+            this.Controls.Add(this.dtUpdateTime);
+            this.Controls.Add(this.txtRemark);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.FormPager);
+            this.Name = "AddBttestdata";
+            this.Size = new System.Drawing.Size(350, 500);
+            this.Load += new System.EventHandler(this.AddAddBttestdataLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
-			this.FormPager.AutoSize = true;
-			this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.FormPager.BackColor = System.Drawing.Color.Transparent;
-			this.FormPager.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FormPager.BackgroundImage")));
-			this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-			this.FormPager.Location = new System.Drawing.Point(10, 411);
-			this.FormPager.Name = "FormPager";
-			this.FormPager.RecordCount = 0;
-			this.FormPager.Size = new System.Drawing.Size(256, 29);
-			this.FormPager.TabIndex = 100;
-			this.Controls.Add(this.FormPager);
-			this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
-			#endregion
-			#region 窗体
-			this.Name = "AddBttestdata";
-			this.Size = new System.Drawing.Size(350, 500);
-			this.Load += new System.EventHandler(this.AddAddBttestdataLoad);
-			this.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
-			#endregion
 		}
 		#endregion
 		#endregion
