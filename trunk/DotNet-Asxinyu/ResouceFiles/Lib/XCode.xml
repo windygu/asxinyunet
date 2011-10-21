@@ -389,7 +389,7 @@
         </member>
         <member name="M:XCode.IDataRowEntityAccessor.LoadData(System.Data.DataTable)">
             <summary>
-            加载数据表
+            加载数据表。无数据时返回空集合而不是null。
             </summary>
             <param name="dt">数据表</param>
             <returns>实体数组</returns>
@@ -403,7 +403,7 @@
         </member>
         <member name="M:XCode.IDataRowEntityAccessor.LoadData(System.Data.IDataReader)">
             <summary>
-            从数据读写器加载数据
+            从数据读写器加载数据。无数据时返回空集合而不是null。
             </summary>
             <param name="dr">数据读写器</param>
             <returns>实体数组</returns>
@@ -422,9 +422,26 @@
             <param name="entity">实体对象</param>
             <param name="dr">数据行</param>
         </member>
+        <member name="T:XCode.IDataRowEntityAccessorProvider">
+            <summary>在数据行和实体类之间映射数据接口的提供者</summary>
+        </member>
+        <member name="M:XCode.IDataRowEntityAccessorProvider.CreateDataRowEntityAccessor(System.Type)">
+            <summary>
+            创建实体类的数据行访问器
+            </summary>
+            <param name="entityType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataRowEntityAccessorProvider.CreateDataRowEntityAccessor(System.Type)">
+            <summary>
+            创建实体类的数据行访问器
+            </summary>
+            <param name="entityType"></param>
+            <returns></returns>
+        </member>
         <member name="M:XCode.DataRowEntityAccessor.LoadData(System.Data.DataTable)">
             <summary>
-            加载数据表
+            加载数据表。无数据时返回空集合而不是null。
             </summary>
             <param name="dt">数据表</param>
             <returns>实体数组</returns>
@@ -438,7 +455,7 @@
         </member>
         <member name="M:XCode.DataRowEntityAccessor.LoadData(System.Data.IDataReader)">
             <summary>
-            从数据读写器加载数据
+            从数据读写器加载数据。无数据时返回空集合而不是null。
             </summary>
             <param name="dr">数据读写器</param>
             <returns>实体数组</returns>
@@ -483,7 +500,10 @@
         </member>
         <member name="T:XCode.DataAccessLayer.IDataRelation">
             <summary>
-            数据关系。一个表如果有多个数据关系，表明是多对多的关系表；如果只有一个关系，需要看是否唯一，它决定是一对一还是一对多。并可根据关系，生成对应的数据索引。
+            数据关系。
+            一个表如果有多个数据关系，表明是多对多的关系表；如果只有一个关系，需要看是否唯一，它决定是一对一还是一对多。并可根据关系，生成对应的数据索引。
+            可根据数据关系生成扩展属性。
+            正向工程将会为所有数据关系建立相对应的索引。
             </summary>
         </member>
         <member name="M:XCode.DataAccessLayer.IDataRelation.Clone(XCode.DataAccessLayer.IDataTable)">
@@ -586,6 +606,13 @@
             <summary>
             创建元数据对象
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.IDatabase.Support(System.String)">
+            <summary>
+            是否支持该提供者所描述的数据库
+            </summary>
+            <param name="providerName">提供者</param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.PageSplit(System.String,System.Int32,System.Int32,System.String)">
@@ -693,7 +720,7 @@
             长文本长度
             </summary>
         </member>
-        <member name="M:XCode.DataAccessLayer.DbBase.Dispose(System.Boolean)">
+        <member name="M:XCode.DataAccessLayer.DbBase.OnDispose(System.Boolean)">
             <summary>
             销毁资源时，回滚未提交事务，并关闭数据库连接
             </summary>
@@ -755,6 +782,13 @@
             </summary>
             <param name="assemblyFile"></param>
             <param name="className"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.DbBase.Support(System.String)">
+            <summary>
+            是否支持该提供者所描述的数据库
+            </summary>
+            <param name="providerName">提供者</param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.DbBase.PageSplit(System.String,System.Int32,System.Int32,System.String)">
@@ -1667,12 +1701,12 @@
         </member>
         <member name="F:XCode.ModelCheckModes.CheckAllTablesWhenInit">
             <summary>
-            初始化时检查所有表
+            初始化时检查所有表。默认值。具有最好性能。
             </summary>
         </member>
         <member name="F:XCode.ModelCheckModes.CheckTableWhenFirstUse">
             <summary>
-            第一次使用时检查表
+            第一次使用时检查表。常用于通用实体类等存在大量实体类但不会同时使用所有实体类的场合，避免反向工程生成没有使用到的实体类的数据表。
             </summary>
         </member>
         <member name="T:XCode.ModelCheckModeAttribute">
@@ -1695,32 +1729,6 @@
         </member>
         <member name="P:XCode.ModelCheckModeAttribute.Mode">
             <summary>模式</summary>
-        </member>
-        <member name="T:XCode.Model.IService">
-            <summary>
-            XCode服务对象提供者接口。暂时不稳定，外部请不要急于使用。
-            </summary>
-        </member>
-        <member name="M:XCode.Model.IService.CreateTable">
-            <summary>
-            创建模型数据表
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.Model.IService.CreateDataRowEntityAccessor(System.Type)">
-            <summary>
-            创建实体类的数据行访问器
-            </summary>
-            <param name="entityType"></param>
-            <returns></returns>
-        </member>
-        <member name="T:XCode.Model.XCodeService">
-            <summary>
-            XCode服务对象提供者
-            </summary>
-        </member>
-        <member name="P:XCode.Model.XCodeService.Instance">
-            <summary>提供者实例</summary>
         </member>
         <member name="T:XCode.BindRelationAttribute">
             <summary>
@@ -2000,6 +2008,24 @@
             <summary>
             SqlCe元数据
             </summary>
+        </member>
+        <member name="T:XCode.Model.XCodeService">
+            <summary>
+            XCode服务对象提供者
+            </summary>
+        </member>
+        <member name="M:XCode.Model.XCodeService.CreateTable">
+            <summary>
+            创建模型数据表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Model.XCodeService.CreateDataRowEntityAccessor(System.Type)">
+            <summary>
+            创建实体类的数据行访问器
+            </summary>
+            <param name="entityType"></param>
+            <returns></returns>
         </member>
         <member name="T:XCode.IEntityOperate">
             <summary>
@@ -2549,16 +2575,6 @@
             <param name="key"></param>
             <param name="value"></param>
         </member>
-        <member name="E:XCode.EntityBase.System#ComponentModel#INotifyPropertyChanging#PropertyChanging">
-            <summary>
-            属性将更改
-            </summary>
-        </member>
-        <member name="E:XCode.EntityBase.System#ComponentModel#INotifyPropertyChanged#PropertyChanged">
-            <summary>
-            属性已更改
-            </summary>
-        </member>
         <member name="P:XCode.EntityBase.Dirtys">
             <summary>脏属性。存储哪些属性的数据被修改过了。</summary>
         </member>
@@ -2586,20 +2602,20 @@
         </member>
         <member name="M:XCode.Entity`1.CreateInstance">
             <summary>
-            创建实体
+            创建实体。可以重写改方法以实现实体对象的一些初始化工作。
             </summary>
             <returns></returns>
         </member>
         <member name="M:XCode.Entity`1.LoadData(System.Data.DataSet)">
             <summary>
-            加载记录集
+            加载记录集。无数据时返回空集合而不是null。
             </summary>
             <param name="ds">记录集</param>
             <returns>实体数组</returns>
         </member>
         <member name="M:XCode.Entity`1.LoadData(System.Data.DataTable)">
             <summary>
-            加载数据表
+            加载数据表。无数据时返回空集合而不是null。
             </summary>
             <param name="dt">数据表</param>
             <returns>实体数组</returns>
@@ -2612,7 +2628,7 @@
         </member>
         <member name="M:XCode.Entity`1.LoadData(System.Data.IDataReader)">
             <summary>
-            加载数据读写器
+            加载数据读写器。无数据时返回空集合而不是null。
             </summary>
             <param name="dr">数据读写器</param>
             <returns>实体数组</returns>
@@ -2704,6 +2720,14 @@
             </summary>
             <param name="names">属性名称集合</param>
             <param name="values">属性值集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Entity`1.FindUnique(System.String)">
+            <summary>
+            根据条件查找唯一的单个实体，因为是唯一的，所以不需要分页和排序。
+            如果不确定是否唯一，一定不要调用该方法，否则会返回大量的数据。
+            </summary>
+            <param name="whereClause">查询条件</param>
             <returns></returns>
         </member>
         <member name="M:XCode.Entity`1.Find(System.String)">
@@ -3330,6 +3354,9 @@
         <member name="P:XCode.Entity`1.Meta.Count">
             <summary>总记录数，小于1000时是精确的，大于1000时缓存10分钟</summary>
         </member>
+        <member name="P:XCode.Entity`1.Meta.LongCount">
+            <summary>总记录数，小于1000时是精确的，大于1000时缓存10分钟</summary>
+        </member>
         <member name="M:XCode.Entity`1.EntityOperate.Create">
             <summary>
             创建一个实体对象
@@ -3343,7 +3370,7 @@
             <param name="ds">记录集</param>
             <returns>实体数组</returns>
         </member>
-        <member name="M:XCode.Entity`1.EntityOperate.ToList(System.Collections.ICollection)">
+        <member name="M:XCode.Entity`1.EntityOperate.ToList(XCode.IEntityList)">
             <summary>
             把一个FindAll返回的集合转为实体接口列表集合
             </summary>
@@ -4106,65 +4133,6 @@
             MySql元数据
             </summary>
         </member>
-        <member name="T:XCode.DataAccessLayer.ModelHelper">
-            <summary>
-            模块助手
-            </summary>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetColumn(XCode.DataAccessLayer.IDataTable,System.String)">
-            <summary>
-            根据字段名获取字段
-            </summary>
-            <param name="table"></param>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetColumns(XCode.DataAccessLayer.IDataTable,System.String[])">
-            <summary>
-            根据字段名数组获取字段数组
-            </summary>
-            <param name="table"></param>
-            <param name="names"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.Connect(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
-            <summary>
-            连接两个表，实际上是猜测它们之间的关系
-            </summary>
-            <param name="table1"></param>
-            <param name="table2"></param>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.Fix(XCode.DataAccessLayer.IDataTable)">
-            <summary>
-            修正数据
-            </summary>
-            <param name="table"></param>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetIndex(XCode.DataAccessLayer.IDataTable,System.String[])">
-            <summary>
-            根据字段名找索引
-            </summary>
-            <param name="table"></param>
-            <param name="columnNames"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetAlias(System.String)">
-            <summary>
-            获取别名
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.FixWord(System.String)">
-            <summary>
-            自动处理大小写
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="P:XCode.DataAccessLayer.ModelHelper.CGS">
-            <summary>代码生成器</summary>
-        </member>
         <member name="T:XCode.WhereExpression">
             <summary>
             条件表达式
@@ -4579,7 +4547,7 @@
         </member>
         <member name="M:XCode.DataAccessLayer.DAL.Create(System.String)">
             <summary>
-            创建一个数据访问层对象。以null作为参数可获得当前默认对象
+            创建一个数据访问层对象。
             </summary>
             <param name="connName">配置名，或链接字符串</param>
             <returns>对应于指定链接的全局唯一的数据访问层对象</returns>
@@ -4590,12 +4558,6 @@
             <param name="connStr">连接字符串</param>
             <param name="type">实现了IDatabase接口的数据库类型</param>
             <param name="provider">数据库提供者，如果没有指定数据库类型，则有提供者判断使用哪一种内置类型</param>
-        </member>
-        <member name="M:XCode.DataAccessLayer.DAL.GetTypeFromConn(System.String,System.String)">
-            <summary>从提供者和连接字符串猜测数据库处理器</summary>
-            <param name="connStr"></param>
-            <param name="provider"></param>
-            <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.DAL.Export">
             <summary>导出模型</summary>
@@ -4814,9 +4776,6 @@
             </summary>
             <remarks>如果不存在缓存，则获取后返回；否则使用线程池线程获取，而主线程返回缓存</remarks>
             <returns></returns>
-        </member>
-        <member name="P:XCode.DataAccessLayer.DAL.Container">
-            <summary>容器</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.DAL.EnableCache">
             <summary>
@@ -5053,6 +5012,34 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:XCode.Configuration.FieldItem.In(System.String)">
+            <summary>
+            In操作
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Configuration.FieldItem.In(System.Collections.IEnumerable)">
+            <summary>
+            In操作
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Configuration.FieldItem.NotIn(System.String)">
+            <summary>
+            NotIn操作
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Configuration.FieldItem.NotIn(System.Collections.IEnumerable)">
+            <summary>
+            NotIn操作
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
         <member name="M:XCode.Configuration.FieldItem.op_GreaterThan(XCode.Configuration.FieldItem,System.Object)">
             <summary>
             大于
@@ -5205,12 +5192,6 @@
             <summary>
             外部数据库
             </summary>
-        </member>
-        <member name="T:XCode.Common.HashSet`1">
-            <summary>
-            哈希集合
-            </summary>
-            <typeparam name="T"></typeparam>
         </member>
         <member name="T:XCode.Test.MyEntity`1">
             <summary>我的基类</summary>
@@ -5730,7 +5711,7 @@
         </member>
         <member name="T:XCode.BindTableAttribute">
             <summary>
-            用于指定数据类所绑定到的数据表的表名
+            指定实体类所绑定的数据表信息。
             </summary>
         </member>
         <member name="M:XCode.BindTableAttribute.#ctor(System.String)">
@@ -5754,16 +5735,27 @@
             <returns></returns>
         </member>
         <member name="P:XCode.BindTableAttribute.Name">
-            <summary>表名</summary>
+            <summary>
+            表名。
+            可以在配置文件中通过XCode.ConnMaps把实体映射到别的数据表上
+            </summary>
         </member>
         <member name="P:XCode.BindTableAttribute.Description">
             <summary>描述</summary>
         </member>
         <member name="P:XCode.BindTableAttribute.ConnName">
-            <summary>连接名</summary>
+            <summary>
+            连接名。
+            实体类的所有数据库操作，将发生在该连接名指定的数据库连接上。
+            此外，可动态修改实体类在当前线程上的连接名（改Meta.ConnName）；
+            也可以在配置文件中通过XCode.ConnMaps把连接名映射到别的连接上。
+            </summary>
         </member>
         <member name="P:XCode.BindTableAttribute.DbType">
-            <summary>数据库类型</summary>
+            <summary>
+            数据库类型。
+            仅用于记录实体类由何种类型数据库生成，当且仅当目标数据库同为该数据库类型时，采用实体属性信息上的RawType作为反向工程的目标字段类型，以期获得开发和生产的最佳兼容。
+            </summary>
         </member>
         <member name="T:XCode.Test.EntityTest">
             <summary>实体测试</summary>
@@ -5880,7 +5872,9 @@
         </member>
         <member name="T:XCode.DataAccessLayer.IDataIndex">
             <summary>
-            数据索引。可根据索引生成查询方法，是否唯一决定该索引返回的是单个实体还是实体集合。
+            数据索引。
+            可根据索引生成查询方法，是否唯一决定该索引返回的是单个实体还是实体集合。
+            正向工程将会为所有一对一索引建立关系。
             </summary>
         </member>
         <member name="M:XCode.DataAccessLayer.IDataIndex.Clone(XCode.DataAccessLayer.IDataTable)">
@@ -5911,7 +5905,7 @@
         </member>
         <member name="P:XCode.DataAccessLayer.IDataIndex.Computed">
             <summary>
-            是否计算出来的，而不是数据库内置的
+            是否计算出来的，而不是数据库内置的。主要供反向工程识别该索引是否由计算产生，反向工程会要求数据库拥有真正的索引。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataIndex.Table">
@@ -5955,6 +5949,91 @@
         </member>
         <member name="P:XCode.DataAccessLayer.XIndex.Table">
             <summary>表</summary>
+        </member>
+        <member name="T:XCode.DataAccessLayer.ModelHelper">
+            <summary>
+            数据模型扩展。
+            </summary>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetColumn(XCode.DataAccessLayer.IDataTable,System.String)">
+            <summary>
+            根据字段名获取字段
+            </summary>
+            <param name="table"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetColumns(XCode.DataAccessLayer.IDataTable,System.String[])">
+            <summary>
+            根据字段名数组获取字段数组
+            </summary>
+            <param name="table"></param>
+            <param name="names"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetIndex(XCode.DataAccessLayer.IDataTable,System.String[])">
+            <summary>
+            根据字段名找索引
+            </summary>
+            <param name="table"></param>
+            <param name="columnNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetRelation(XCode.DataAccessLayer.IDataTable,System.String)">
+            <summary>
+            根据字段从指定表中查找关系
+            </summary>
+            <param name="table"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetRelation(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataRelation)">
+            <summary>
+            根据字段、关联表、关联字段从指定表中查找关系
+            </summary>
+            <param name="table"></param>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetRelation(XCode.DataAccessLayer.IDataTable,System.String,System.String,System.String)">
+            <summary>
+            根据字段、关联表、关联字段从指定表中查找关系
+            </summary>
+            <param name="table"></param>
+            <param name="columnName"></param>
+            <param name="rtableName"></param>
+            <param name="rcolumnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.Connect(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
+            <summary>
+            连接两个表，实际上是猜测它们之间的关系，根据一个字段名是否等于另一个表的表名加某个字段名来判断是否存在关系。
+            </summary>
+            <param name="table"></param>
+            <param name="rtable"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.Fix(XCode.DataAccessLayer.IDataTable)">
+            <summary>
+            修正数据
+            </summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.GetAlias(System.String)">
+            <summary>
+            获取别名
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.FixWord(System.String)">
+            <summary>
+            自动处理大小写
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.DataAccessLayer.ModelHelper.CGS">
+            <summary>代码生成器</summary>
         </member>
         <member name="M:XCode.DataAccessLayer.Firebird.OnCreateSession">
             <summary>
@@ -6048,7 +6127,7 @@
         </member>
         <member name="T:XCode.BindColumnAttribute">
             <summary>
-            用于指定数据类属性所绑定到的数据表的字段名
+            指定实体类属性所绑定数据字段信息。
             </summary>
         </member>
         <member name="M:XCode.BindColumnAttribute.#ctor">
@@ -6104,7 +6183,10 @@
             <summary>默认值</summary>
         </member>
         <member name="P:XCode.BindColumnAttribute.RawType">
-            <summary>原始数据类型</summary>
+            <summary>
+            原始数据类型。
+            当且仅当目标数据库同为该数据库类型时，采用实体属性信息上的RawType作为反向工程的目标字段类型，以期获得开发和生产的最佳兼容。
+            </summary>
         </member>
         <member name="P:XCode.BindColumnAttribute.Precision">
             <summary>精度</summary>
@@ -6140,6 +6222,13 @@
             </summary>
             <param name="name">属性名</param>
             <param name="value">属性值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Cache.IEntityCache.FindAll(System.Predicate{XCode.IEntity})">
+            <summary>
+            检索与指定谓词定义的条件匹配的所有元素。
+            </summary>
+            <param name="match">条件</param>
             <returns></returns>
         </member>
         <member name="P:XCode.Cache.IEntityCache.Entities">
@@ -6186,6 +6275,13 @@
             </summary>
             <param name="name">属性名</param>
             <param name="value">属性值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Cache.EntityCache`1.FindAll(System.Predicate{XCode.IEntity})">
+            <summary>
+            检索与指定谓词定义的条件匹配的所有元素。
+            </summary>
+            <param name="match">条件</param>
             <returns></returns>
         </member>
         <member name="P:XCode.Cache.EntityCache`1.Entities">
@@ -6278,7 +6374,7 @@
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.Alias">
             <summary>
-            别名
+            别名。实际上用作类名。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.Owner">
@@ -6288,7 +6384,8 @@
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.DbType">
             <summary>
-            数据库类型
+            数据库类型。
+            仅用于记录实体类由何种类型数据库生成，当且仅当目标数据库同为该数据库类型时，采用实体属性信息上的RawType作为反向工程的目标字段类型，以期获得开发和生产的最佳兼容。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.IsView">
@@ -6302,16 +6399,16 @@
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.Columns">
-            <summary>数据列集合</summary>
+            <summary>数据列集合。可以是空集合，但不能为null。</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.Relations">
-            <summary>数据关系集合</summary>
+            <summary>数据关系集合。可以是空集合，但不能为null。</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.Indexes">
-            <summary>数据索引集合</summary>
+            <summary>数据索引集合。可以是空集合，但不能为null。</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataTable.PrimaryKeys">
-            <summary>主键集合</summary>
+            <summary>主键集合。可以是空集合，但不能为null。</summary>
         </member>
         <member name="M:XCode.DataAccessLayer.XTable.#ctor">
             <summary>
@@ -6449,21 +6546,21 @@
         </member>
         <member name="P:XCode.DataAccessLayer.XTable.Columns">
             <summary>
-            字段集合。
+            字段集合。可以是空集合，但不能为null。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.XTable.Relations">
             <summary>
-            关系集合。
+            关系集合。可以是空集合，但不能为null。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.XTable.Indexes">
             <summary>
-            索引集合。
+            索引集合。可以是空集合，但不能为null。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.XTable.PrimaryKeys">
-            <summary>主键集合</summary>
+            <summary>主键集合。可以是空集合，但不能为null。</summary>
         </member>
         <member name="T:XCode.DataAccessLayer.SelectBuilder">
             <summary>
@@ -7069,7 +7166,8 @@
         </member>
         <member name="P:XCode.DataAccessLayer.IDataColumn.RawType">
             <summary>
-            原始数据类型
+            原始数据类型。
+            当且仅当目标数据库同为该数据库类型时，采用实体属性信息上的RawType作为反向工程的目标字段类型，以期获得开发和生产的最佳兼容。
             </summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDataColumn.Identity">
@@ -7427,21 +7525,24 @@
             数据库工厂
             </summary>
         </member>
-        <member name="F:XCode.DataAccessLayer.DbFactory.dbs">
-            <summary>内建数据库</summary>
-        </member>
-        <member name="M:XCode.DataAccessLayer.DbFactory.Register(XCode.DataAccessLayer.DatabaseType,XCode.DataAccessLayer.IDatabase)">
-            <summary>
-            注册数据库提供者
-            </summary>
-            <param name="dbType"></param>
-            <param name="db"></param>
-        </member>
         <member name="M:XCode.DataAccessLayer.DbFactory.Create(XCode.DataAccessLayer.DatabaseType)">
             <summary>
             根据数据库类型创建提供者
             </summary>
             <param name="dbType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.DbFactory.GetDefault(System.String)">
+            <summary>
+            根据名称获取默认提供者
+            </summary>
+            <param name="providerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.DbFactory.GetProviderType(System.String,System.String)">
+            <summary>从提供者和连接字符串猜测数据库处理器</summary>
+            <param name="connStr"></param>
+            <param name="provider"></param>
             <returns></returns>
         </member>
         <member name="T:XCode.DataAccessLayer.XDbConnectionStringBuilder">
