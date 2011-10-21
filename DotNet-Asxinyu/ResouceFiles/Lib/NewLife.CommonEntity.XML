@@ -4,6 +4,132 @@
         <name>NewLife.CommonEntity</name>
     </assembly>
     <members>
+        <member name="T:NewLife.CommonEntity.User`1">
+            <summary>用户</summary>
+            <summary>用户</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.IUser">
+            <summary>用户接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUser.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUser.Account">
+            <summary>账号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUser.Password">
+            <summary>密码</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUser.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.CommonEntity.IManageUser">
+            <summary>用户接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManageUser.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManageUser.Account">
+            <summary>账号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManageUser.Password">
+            <summary>密码</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.User`1.FindByKeyForEdit(System.Int32)">
+            <summary>
+            根据主键查询一个用户实体对象用于表单编辑
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.User`1.FindByAccount(System.String)">
+            <summary>
+            根据账号查找
+            </summary>
+            <param name="account">账号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.User`1.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.User`1.InitData">
+            <summary>
+            首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.User`1.SearchWhere(System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.User`1.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.Account">
+            <summary>账号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.Password">
+            <summary>密码</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.HttpState">
+            <summary>
+            Http状态，子类可以重新给HttpState赋值，以控制保存Http状态的过程
+            </summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.Current">
+            <summary>当前登录用户</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.CurrentNoAutoLogin">
+            <summary>当前登录用户，不带自动登录</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.NewLife#CommonEntity#IManageUser#ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.NewLife#CommonEntity#IManageUser#Account">
+            <summary>账号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.User`1.NewLife#CommonEntity#IManageUser#Password">
+            <summary>密码</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.User`1._">
+            <summary>取得用户字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.User`1._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.User`1._.Account">
+            <summary>账号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.User`1._.Password">
+            <summary>密码</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.UserProfile">
             <summary>
             用户配置
@@ -893,6 +1019,11 @@
             代码
             </summary>
         </member>
+        <member name="P:NewLife.CommonEntity.IArea.OldCode">
+            <summary>
+            旧版本代码
+            </summary>
+        </member>
         <member name="P:NewLife.CommonEntity.IArea.Name">
             <summary>
             名称
@@ -992,6 +1123,11 @@
             代码
             </summary>
         </member>
+        <member name="P:NewLife.CommonEntity.Area`1.OldCode">
+            <summary>
+            旧版本代码
+            </summary>
+        </member>
         <member name="P:NewLife.CommonEntity.Area`1.Name">
             <summary>
             名称
@@ -1024,6 +1160,9 @@
         </member>
         <member name="F:NewLife.CommonEntity.Area`1._.Code">
             <summary>代码</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Area`1._.OldCode">
+            <summary>旧版本代码 </summary>
         </member>
         <member name="F:NewLife.CommonEntity.Area`1._.Name">
             <summary>名称</summary>
@@ -1267,11 +1406,6 @@
             已重载。
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.RoleMenu`1.InitData">
-            <summary>
-            首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法
-            </summary>
         </member>
         <member name="M:NewLife.CommonEntity.RoleMenu`1.CheckNonePerssion(System.Int32)">
             <summary>
@@ -1727,14 +1861,10 @@
             </summary>
         </member>
         <member name="T:NewLife.CommonEntity.Role`3">
-            <summary>
-            角色
-            </summary>
+            <summary>角色</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Role`1">
-            <summary>
-            角色
-            </summary>
+            <summary>角色</summary>
             <typeparam name="TEntity"></typeparam>
             <summary>
             角色
@@ -1872,7 +2002,7 @@
             删除RoleMenu中无效的RoleID和无效的MenuID
             </summary>
         </member>
-        <member name="M:NewLife.CommonEntity.Role`3.Delete">
+        <member name="M:NewLife.CommonEntity.Role`3.OnDelete">
             <summary>
             已重载。关联删除权限项。
             </summary>
@@ -2065,6 +2195,12 @@
             首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法
             </summary>
         </member>
+        <member name="M:NewLife.CommonEntity.Administrator`1.Valid(System.Boolean)">
+            <summary>
+            验证
+            </summary>
+            <param name="isNew"></param>
+        </member>
         <member name="M:NewLife.CommonEntity.Administrator`1.FindByKeyForEdit(System.Int32)">
             <summary>
             根据主键查询一个管理员实体对象用于表单编辑
@@ -2245,6 +2381,15 @@
             角色名
             </summary>
         </member>
+        <member name="P:NewLife.CommonEntity.Administrator`1.NewLife#CommonEntity#IManageUser#ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Administrator`1.NewLife#CommonEntity#IManageUser#Account">
+            <summary>账号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Administrator`1.NewLife#CommonEntity#IManageUser#Password">
+            <summary>密码</summary>
+        </member>
         <member name="P:NewLife.CommonEntity.Administrator`1.ID">
             <summary>
             编号
@@ -2372,6 +2517,71 @@
         </member>
         <member name="P:NewLife.CommonEntity.Administrator`5.RoleInternal">
             <summary>角色</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.IManageProvider">
+            <summary>管理提供者接口</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManageProvider.FindByID(System.Object)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManageProvider.FindByAccount(System.String)">
+            <summary>
+            根据用户帐号查找
+            </summary>
+            <param name="account"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManageProvider.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManageProvider.ManageUserType">
+            <summary>管理用户类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManageProvider.Current">
+            <summary>当前用户</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ManageProvider">
+            <summary>管理提供者</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.FindByID(System.Object)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.FindByAccount(System.String)">
+            <summary>
+            根据用户帐号查找
+            </summary>
+            <param name="account"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManageProvider.Provider">
+            <summary>当前提供者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManageProvider.ManageUserType">
+            <summary>管理用户类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManageProvider.Current">
+            <summary>当前用户</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Attachment`1">
             <summary>
@@ -2661,9 +2871,7 @@
             <summary>
             菜单
             </summary>
-            <summary>
-            菜单
-            </summary>
+            <summary>菜单</summary>
         </member>
         <member name="T:NewLife.CommonEntity.IMenu">
             <summary>
@@ -2928,9 +3136,7 @@
             <returns></returns>
         </member>
         <member name="P:NewLife.CommonEntity.Menu`1.ParentMenuName">
-            <summary>
-            父菜单名
-            </summary>
+            <summary>父菜单名</summary>
         </member>
         <member name="P:NewLife.CommonEntity.Menu`1.Current">
             <summary>
@@ -3180,6 +3386,52 @@
         <member name="P:NewLife.CommonEntity.Web.ShowPicture.Height">
             <summary>高度</summary>
         </member>
+        <member name="T:NewLife.CommonEntity.Exceptions.EntityException">
+            <summary>
+            实体异常d
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor(System.String)">
+            <summary>
+            初始化
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor(System.String,System.Object[])">
+            <summary>
+            初始化
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor(System.String,System.Exception)">
+            <summary>
+            初始化
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor(System.Exception)">
+            <summary>
+            初始化
+            </summary>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            初始化
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:NewLife.CommonEntity.User">
+            <summary>用户</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.Administrator">
             <summary>
             管理员
@@ -3230,6 +3482,152 @@
         </member>
         <member name="P:NewLife.CommonEntity.Attachment`2.Stat">
             <summary>统计</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ICommonManageProvider">
+            <summary>通用实体类管理提供者接口</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.ICommonManageProvider.FindByID(System.Object)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ICommonManageProvider.FindByAccount(System.String)">
+            <summary>
+            根据用户帐号查找
+            </summary>
+            <param name="account"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ICommonManageProvider.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.AdminstratorType">
+            <summary>管理员类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.LogType">
+            <summary>日志类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.MenuType">
+            <summary>菜单类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.RoleType">
+            <summary>角色类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.RoleMenuType">
+            <summary>权限类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.Current">
+            <summary>当前用户</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.CommonManageProvider">
+            <summary>通用实体类管理提供者</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.CommonManageProvider`1">
+            <summary>通用实体类管理提供者</summary>
+            <typeparam name="TAdministrator">管理员类</typeparam>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#FindByID(System.Object)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#FindByAccount(System.String)">
+            <summary>
+            根据用户帐号查找
+            </summary>
+            <param name="account"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#FindByID(System.Object)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#FindByAccount(System.String)">
+            <summary>
+            根据用户帐号查找
+            </summary>
+            <param name="account"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.FindByID(System.Int32)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.FindByAccount(System.String)">
+            <summary>
+            根据用户帐号查找
+            </summary>
+            <param name="account"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.Provider">
+            <summary>当前提供者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#ManageUserType">
+            <summary>管理用户类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#Current">
+            <summary>当前用户</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.AdminstratorType">
+            <summary>管理员类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.LogType">
+            <summary>日志类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.MenuType">
+            <summary>菜单类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.RoleType">
+            <summary>角色类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.RoleMenuType">
+            <summary>权限类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#Current">
+            <summary>当前用户</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.Current">
+            <summary>当前用户</summary>
         </member>
     </members>
 </doc>

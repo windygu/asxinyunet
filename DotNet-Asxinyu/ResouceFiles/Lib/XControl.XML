@@ -1142,18 +1142,21 @@
             已重载。加上未添加到列表的项。
             </summary>
         </member>
+        <member name="T:XControl.ScriptHelper">
+            <summary>
+            脚本助手
+            </summary>
+        </member>
         <member name="M:XControl.ScriptHelper.RegisterScript(System.String)">
             <summary>
             向当前页面注册客户端脚本
             </summary>
-            <param name="page"></param>
             <param name="script"></param>
         </member>
         <member name="M:XControl.ScriptHelper.RegisterScript(System.String,System.String)">
             <summary>
             向当前页面注册客户端脚本
             </summary>
-            <param name="page"></param>
             <param name="key"></param>
             <param name="script"></param>
         </member>
@@ -1169,7 +1172,6 @@
             <summary>
             使用键和 URL 向 System.Web.UI.Page 对象注册客户端脚本。
             </summary>
-            <param name="page"></param>
             <param name="key"></param>
             <param name="url"></param>
             <param name="ieVer"></param>
@@ -1457,6 +1459,11 @@
         <member name="P:XControl.DecimalBox.Value">
             <summary>
             当前值
+            </summary>
+        </member>
+        <member name="P:XControl.DecimalBox.Text">
+            <summary>
+            重新包装Text属性，数据转换以及格式化部分在Text内完成
             </summary>
         </member>
         <member name="T:XControl.MailBox">
