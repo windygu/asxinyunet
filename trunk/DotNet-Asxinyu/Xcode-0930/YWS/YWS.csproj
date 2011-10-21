@@ -54,113 +54,153 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebSite1\Admin\Advance\WebConfig.aspx.cs">
       <DependentUpon>WebConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Advance\WebDb.aspx.cs">
       <DependentUpon>WebDb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Advance\WebLog.aspx.cs">
       <DependentUpon>WebLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Ascx\SelectAdmin.ascx.cs">
       <DependentUpon>SelectAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Frame\Left.aspx.cs">
       <DependentUpon>Left.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\AdminForm.aspx.cs">
       <DependentUpon>AdminForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\AdminInfo.aspx.cs">
       <DependentUpon>AdminInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\Log.aspx.cs">
       <DependentUpon>Log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\MenuForm.aspx.cs">
       <DependentUpon>MenuForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\RoleMenu.aspx.cs">
       <DependentUpon>RoleMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Admin\System\SelectAdmin.aspx.cs">
       <DependentUpon>SelectAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebSite1\App_Code\EntityForm.cs" />
-    <Compile Include="WebSite1\App_Code\PageBase.cs" />
+    <Compile Include="WebSite1\App_Code\EntityForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebSite1\App_Code\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="WebSite1\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Custom\Customer.aspx.cs">
       <DependentUpon>Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Custom\CustomerForm.aspx.cs">
       <DependentUpon>CustomerForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Custom\CustomerType.aspx.cs">
       <DependentUpon>CustomerType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Custom\CustomerTypeForm.aspx.cs">
       <DependentUpon>CustomerTypeForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\Feedliquor.aspx.cs">
       <DependentUpon>Feedliquor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\FeedliquorForm.aspx.cs">
       <DependentUpon>FeedliquorForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\Machine.aspx.cs">
       <DependentUpon>Machine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\MachineForm.aspx.cs">
       <DependentUpon>MachineForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\Maintenance.aspx.cs">
       <DependentUpon>Maintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\MaintenanceForm.aspx.cs">
       <DependentUpon>MaintenanceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\Record.aspx.cs">
       <DependentUpon>Record.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\RecordForm.aspx.cs">
       <DependentUpon>RecordForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\SelectCustomer.aspx.cs">
       <DependentUpon>SelectCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\SelectFeedliquor.aspx.cs">
       <DependentUpon>SelectFeedliquor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\SelectMachine.aspx.cs">
       <DependentUpon>SelectMachine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\MacDoc\Mac\SimulateData.aspx.cs">
       <DependentUpon>SimulateData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebSite1\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="YWSManageProvider.cs" />
   </ItemGroup>
@@ -340,7 +380,9 @@
     <Content Include="WebSite1\Default.aspx" />
     <Content Include="WebSite1\Global.asax" />
     <Content Include="WebSite1\index.htm" />
-    <Content Include="WebSite1\MacDoc\Custom\Customer.aspx" />
+    <Content Include="WebSite1\MacDoc\Custom\Customer.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="WebSite1\MacDoc\Custom\CustomerForm.aspx" />
     <Content Include="WebSite1\MacDoc\Custom\CustomerType.aspx" />
     <Content Include="WebSite1\MacDoc\Custom\CustomerTypeForm.aspx" />
@@ -359,7 +401,9 @@
     <Content Include="WebSite1\MacDoc\Mac\SimulateData.aspx" />
     <Content Include="WebSite1\Scripts\adminstyle.js" />
     <Content Include="WebSite1\Scripts\jquery-1.4.1.min.js" />
-    <Content Include="WebSite1\Test.aspx" />
+    <Content Include="WebSite1\Test.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewLife.CommonEntity\NewLife.CommonEntity.csproj">
