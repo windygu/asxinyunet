@@ -158,7 +158,20 @@ namespace ProteidCalculate
             return count;
         }
         #endregion
-      
+
+        #region WaccAndACF 2011-10-21修改版
+        public static double[][] NewGetAllWaccAndACFvalue(string text, int strLength, char desChar, int M, out string[] subText, out int[] Pos)
+        {
+            subText = GetCentrlString(text, strLength, desChar, out Pos);
+            double[][] res = new double[subText.Length][];
+            for (int i = 0; i < subText.Length; i++)
+            {
+                res[i ] = GetOneWaccAndACFvalue(subText[i ], M);
+            }
+            return res;
+        }
+        #endregion
+
         #region WACC与自相关 GetAllWaccAndACFvalue
         /// <summary>
         /// 提取所有输入序列的wacc特征值及自相关值
@@ -510,12 +523,13 @@ namespace ProteidCalculate
             subText = GetCentrlString(text, strLength, desChar,out Pos );//截取序列          
             double[][] res = new double[subText.Length ][];
             int count = 0;
+            int L =(int )((strLength -1)*0.5 ) ;
                 for (int j = 0; j < subText.Length; j++)
                 {
                     //计算 结果        			
                     double[] temp2, temp3;
                     temp2 = GetAttributeCode(subText[j]);//氨基酸属性分组编码
-                    temp3 = WACC_OneSeqence(subText[j]);//位置权重        			
+                    temp3 = NewWacc_OneSeqence(subText[j],L );//位置权重        			
                     double[] temp1 = new double[temp2.Length + temp3.Length];
                     Array.Copy(temp2, 0, temp1, 0, temp2.Length);
                     Array.Copy(temp3, 0, temp1, temp2.Length, temp3.Length);
@@ -583,7 +597,39 @@ namespace ProteidCalculate
         	return res ;
         }
         #endregion
-      
+
+        #region 2011-10-19 改进位置权重算法   
+        public static double[] NewGetOneGroupAttribute(string strSeqence, int L)
+        {            
+            //计算 结果
+            double[] temp2, temp3;
+            temp2 = GetAttributeCode(strSeqence);//氨基酸属性分组编码
+            temp3 = NewWacc_OneSeqence(strSeqence,L );//位置权重
+            double[] temp1 = new double[temp2.Length + temp3.Length];
+            Array.Copy(temp2, 0, temp1, 0, temp2.Length);
+            Array.Copy(temp3, 0, temp1, temp2.Length, temp3.Length);
+            return temp1;
+        }
+
+        public static double[] NewWacc_OneSeqence(string strSeqence, int L)
+        {
+            double[] res = new double[NormalSeqence.Length];
+            for (int i = 0; i < res.Length; i++)
+            {
+                double temp = 0;
+                for (int j = -L; j <= L; j++)
+                {
+                    if (NormalSeqence[i] == strSeqence[j + L])
+                    {
+                        temp += (j + Math.Abs(j) /(double)L);
+                    }
+                }
+                res[i] = temp /(double) (L * (L + 1));
+            }
+            return res;
+        }
+        #endregion
+
         #region 位置权重和分组重量编码 DLMLA
         /// <summary>
         /// 位置权重和分组重量编码
