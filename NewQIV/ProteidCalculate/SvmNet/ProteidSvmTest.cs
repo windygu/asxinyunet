@@ -184,7 +184,30 @@ namespace SvmNet
             output += "</td></tr>";
             return output;
         }
+        /// <summary>
+        /// 增加一行数据的Html代码
+        /// </summary>
+        /// <param name="cutStrName">列名</param>
+        /// <param name="Pos">位置</param>
+        /// <param name="sequences">序列</param>
+        /// <param name="probValue">概率值</param>
+        /// <param name="color">颜色代码</param>
         public static string GetHtmlResultDisplayCode(string cutStrName, string Pos, string sequences, string probValue, string color)
+        {
+            string output = "<tr><td align='center' style=\"border:1px solid #333;\">";
+            output += cutStrName;
+            output += "</td><td align='center' style=\"border:1px solid #333;\">";
+            output += Pos;
+            output += "</td><td align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
+            output += GetHtmlCodeByString(sequences, color);
+            output += "</td><td align='center' style=\"border:1px solid #333;\">";
+            output += probValue;
+            output += "</td></tr>";
+            return output;
+        }
+
+        public static string GetHtmlResultDisplayCode(string cutStrName, string Pos, string sequences,
+            string probValue, string color, string resultName)
         {
             string output = "<tr><td align='center' style=\"border:1px solid #333;\">";
             output += cutStrName;
@@ -204,6 +227,17 @@ namespace SvmNet
         {
             string output = "<table cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse:collapse; border:1px solid #333;\">";
             output += "<tr><td width='200' align='center' style=\"border:1px solid #333;\">Protein name</td><td width='200' align='center' style=\"border:1px solid #333;\">Position of site</td><td width='300' align='center' style=\"border:1px solid #333;\">Flanking residues</td>";
+            output += "<td width='200' align='center' style=\"border:1px solid #333;\">SVM Probability</td></tr>";
+            return output;
+        }
+        /// <summary>
+        /// 增加列的名称
+        /// </summary>       
+        public static string GetTableHeaderOfAddOne()
+        {
+            string output = "<table cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse:collapse; border:1px solid #333;\">";
+            output += "<tr><td width='200' align='center' style=\"border:1px solid #333;\">Protein name</td><td width='200' align='center' style=\"border:1px solid #333;\">Position of site</td><td width='300' align='center' style=\"border:1px solid #333;\">Flanking residues</td>";
+            output += "<td width='200' align='center' style=\"border:1px solid #333;\">Predicted result</td>";
             output += "<td width='200' align='center' style=\"border:1px solid #333;\">SVM Probability</td></tr>";
             return output;
         }
