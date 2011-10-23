@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73F82F07-D85B-4636-BDF7-5C66C4E41577}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewQIV</RootNamespace>
+    <AssemblyName>NewQIV</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\代码生成\WebUI\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <DocumentationFile>
+    </DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NewDebug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>..\..\代码生成\WebUI\NewQIV.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CalcuteWave, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CalcuteWave.dll</HintPath>
+    </Reference>
+    <Reference Include="CuteEditor, Version=6.1.0.0, Culture=neutral, PublicKeyToken=3858aa6802b1223a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CuteEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CuteEditor.ImageEditor, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2bb6cdd4237de7bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CuteEditor.ImageEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>uploads\bin\DotNet.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTree, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Library.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.10.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.20561, Culture=neutral, PublicKeyToken=318b389f0db66e46">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core, Version=3.0.4287.35957, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>uploads\bin\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\article\article_add.aspx" />
+    <Content Include="admin\article\article_list.aspx" />
+    <Content Include="admin\article\article_modify.aspx" />
+    <Content Include="admin\config\config.aspx" />
+    <Content Include="admin\Default.aspx" />
+    <Content Include="admin\images\Blue\bottom.jpg" />
+    <Content Include="admin\images\Blue\left_bg.jpg" />
+    <Content Include="admin\images\Blue\top1.jpg" />
+    <Content Include="admin\images\Blue\top1.png" />
+    <Content Include="admin\images\Blue\top2.jpg" />
+    <Content Include="admin\images\Blue\top_bg.jpg" />
+    <Content Include="admin\images\Keyboard.js" />
+    <Content Include="admin\images\lgline.gif" />
+    <Content Include="admin\images\login.jpg" />
+    <Content Include="admin\images\loginok.gif" />
+    <Content Include="admin\images\loginre.gif" />
+    <Content Include="admin\login.aspx" />
+    <Content Include="admin\login.htm" />
+    <Content Include="admin\logout.aspx" />
+    <Content Include="admin\main.aspx" />
+    <Content Include="admin\system\admin_add.aspx" />
+    <Content Include="admin\system\admin_list.aspx" />
+    <Content Include="admin\system\admin_modify.aspx" />
+    <Content Include="admin\system\info_modify.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="inquiries_GetGroupAttributeCode.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\article\article_add.aspx.cs">
+      <DependentUpon>article_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\article\article_add.aspx.designer.cs">
+      <DependentUpon>article_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\article\article_list.aspx.cs">
+      <DependentUpon>article_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\article\article_list.aspx.designer.cs">
+      <DependentUpon>article_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\article\article_modify.aspx.cs">
+      <DependentUpon>article_modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\article\article_modify.aspx.designer.cs">
+      <DependentUpon>article_modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\config\config.aspx.cs">
+      <DependentUpon>config.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\config\config.aspx.designer.cs">
+      <DependentUpon>config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\main.aspx.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\main.aspx.designer.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\system\admin_add.aspx.cs">
+      <DependentUpon>admin_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\system\admin_add.aspx.designer.cs">
+      <DependentUpon>admin_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\system\admin_list.aspx.cs">
+      <DependentUpon>admin_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\system\admin_list.aspx.designer.cs">
+      <DependentUpon>admin_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\system\admin_modify.aspx.cs">
+      <DependentUpon>admin_modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\system\admin_modify.aspx.designer.cs">
+      <DependentUpon>admin_modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\system\info_modify.aspx.cs">
+      <DependentUpon>info_modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\system\info_modify.aspx.designer.cs">
+      <DependentUpon>info_modify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries.aspx.cs">
+      <DependentUpon>inquiries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries.aspx.designer.cs">
+      <DependentUpon>inquiries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries2.aspx.cs">
+      <DependentUpon>inquiries2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries2.aspx.designer.cs">
+      <DependentUpon>inquiries2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_Ace_Pred.aspx.cs">
+      <DependentUpon>inquiries_Ace_Pred.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_Ace_Pred.aspx.designer.cs">
+      <DependentUpon>inquiries_Ace_Pred.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_DLMLA.aspx.cs">
+      <DependentUpon>inquiries_DLMLA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_DLMLA.aspx.designer.cs">
+      <DependentUpon>inquiries_DLMLA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_GetAllSeqCharacter.aspx.cs">
+      <DependentUpon>inquiries_GetAllSeqCharacter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_GetAllSeqCharacter.aspx.designer.cs">
+      <DependentUpon>inquiries_GetAllSeqCharacter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_GetAllWaccAndACFvalue.aspx.cs">
+      <DependentUpon>inquiries_GetAllWaccAndACFvalue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_GetAllWaccAndACFvalue.aspx.designer.cs">
+      <DependentUpon>inquiries_GetAllWaccAndACFvalue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_GetGroupAttributeCode.aspx.cs">
+      <DependentUpon>inquiries_GetGroupAttributeCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_GetGroupAttributeCode.aspx.designer.cs">
+      <DependentUpon>inquiries_GetGroupAttributeCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_PredSulSite.aspx.cs">
+      <DependentUpon>inquiries_PredSulSite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_PredSulSite.aspx.designer.cs">
+      <DependentUpon>inquiries_PredSulSite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inquiries_SvmTest.aspx.cs">
+      <DependentUpon>inquiries_SvmTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inquiries_SvmTest.aspx.designer.cs">
+      <DependentUpon>inquiries_SvmTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LabNews.aspx.cs">
+      <DependentUpon>LabNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LabNews.aspx.designer.cs">
+      <DependentUpon>LabNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Library\check.cs" />
+    <Compile Include="Library\DatabaseCommon.cs" />
+    <Compile Include="Library\FuncCommon.cs" />
+    <Compile Include="Library\Original.cs" />
+    <Compile Include="Members.aspx.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members.aspx.designer.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsDetail.aspx.cs">
+      <DependentUpon>NewsDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsDetail.aspx.designer.cs">
+      <DependentUpon>NewsDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResearchNews.aspx.designer.cs">
+      <DependentUpon>ResearchNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultNews.aspx.cs">
+      <DependentUpon>ResultNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultNews.aspx.designer.cs">
+      <DependentUpon>ResultNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="services.aspx.cs">
+      <DependentUpon>services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="services.aspx.designer.cs">
+      <DependentUpon>services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ace_Pred.aspx.cs">
+      <DependentUpon>Ace_Pred.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ace_Pred.aspx.designer.cs">
+      <DependentUpon>Ace_Pred.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\Web.config" />
+    <Content Include="App_Themes\Blue\common.css" />
+    <Content Include="App_Themes\Blue\FileManage.css" />
+    <Content Include="App_Themes\Blue\InsertPage.css" />
+    <Content Include="App_Themes\Blue\SearchPanel.css" />
+    <Content Include="App_Themes\style1\StyleSheet.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Blue\Common.skin" />
+    <Content Include="App_Themes\Blue\FileManage.skin" />
+    <Content Include="App_Themes\Blue\InsertPage.skin" />
+    <Content Include="App_Themes\Blue\SearchPanel.skin" />
+    <Content Include="css\basic.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AboutUs.aspx" />
+    <None Include="WebUI.csproj.pdsync" />
+    <None Include="WebUI.csproj.pdsyncu" />
+    <Content Include="download.aspx" />
+    <Content Include="ex.aspx" />
+    <Content Include="images\a1.jpg" />
+    <Content Include="images\a2.jpg" />
+    <Content Include="images\a3.jpg" />
+    <Content Include="images\a4.jpg" />
+    <Content Include="images\a5.jpg" />
+    <Content Include="images\a6.jpg" />
+    <Content Include="images\About_r10_c2.jpg" />
+    <Content Include="images\About_r11_c2.jpg" />
+    <Content Include="images\About_r12_c1.jpg" />
+    <Content Include="images\About_r13_c1.jpg" />
+    <Content Include="images\About_r14_c1.jpg" />
+    <Content Include="images\About_r1_c1.jpg" />
+    <Content Include="images\About_r2_c1.jpg" />
+    <Content Include="images\About_r3_c1.jpg" />
+    <Content Include="images\About_r3_c2.jpg" />
+    <Content Include="images\About_r3_c6.jpg" />
+    <Content Include="images\About_r4_c1.jpg" />
+    <Content Include="images\About_r4_c2.jpg" />
+    <Content Include="images\About_r4_c4.jpg" />
+    <Content Include="images\About_r5_c4.jpg" />
+    <Content Include="images\About_r5_c5.jpg" />
+    <Content Include="images\About_r6_c4.jpg" />
+    <Content Include="images\About_r7_c1.jpg" />
+    <Content Include="images\About_r8_c1.jpg" />
+    <Content Include="images\About_r8_c2.jpg" />
+    <Content Include="images\About_r8_c3.jpg" />
+    <Content Include="images\About_r9_c2.jpg" />
+    <Content Include="images\admin_r1_c1.jpg" />
+    <Content Include="images\admin_r2_c1.jpg" />
+    <Content Include="images\admin_r3_c1.jpg" />
+    <Content Include="images\admin_r3_c2.jpg" />
+    <Content Include="images\admin_r3_c3.jpg" />
+    <Content Include="images\admin_r4_c2.jpg" />
+    <Content Include="images\admin_r5_c2.jpg" />
+    <Content Include="images\admin_r6_c1.jpg" />
+    <Content Include="images\admin_r7_c1.jpg" />
+    <Content Include="images\down.jpg" />
+    <Content Include="images\head_r1_c1.jpg" />
+    <Content Include="images\head_r1_c3.jpg" />
+    <Content Include="images\head_r2_c1.jpg" />
+    <Content Include="images\head_r2_c5.jpg" />
+    <Content Include="images\head_r2_c6.jpg" />
+    <Content Include="images\head_r3_c1.jpg" />
+    <Content Include="images\head_r3_c10.jpg" />
+    <Content Include="images\head_r3_c11.jpg" />
+    <Content Include="images\head_r3_c4.jpg" />
+    <Content Include="images\head_r3_c6.jpg" />
+    <Content Include="images\head_r3_c7.jpg" />
+    <Content Include="images\head_r3_c8.jpg" />
+    <Content Include="images\head_r3_c9.jpg" />
+    <Content Include="images\head_r4_c1.jpg" />
+    <Content Include="images\head_r4_c2.jpg" />
+    <Content Include="images\index_r1_c1.jpg" />
+    <Content Include="images\index_r2_c1.jpg" />
+    <Content Include="images\index_r3_c1.jpg" />
+    <Content Include="images\index_r3_c2.jpg" />
+    <Content Include="images\index_r3_c3.jpg" />
+    <Content Include="images\index_r4_c1.jpg" />
+    <Content Include="images\index_r5_c1.jpg" />
+    <Content Include="images\index_r6_c1.jpg" />
+    <Content Include="images\index_r7_c1.jpg" />
+    <Content Include="images\index_r8_c1.jpg" />
+    <Content Include="images\Members_r1_c1.gif" />
+    <Content Include="images\Members_r2_c1.gif" />
+    <Content Include="images\Members_r3_c1.gif" />
+    <Content Include="images\Members_r4_c1.gif" />
+    <Content Include="images\Members_r4_c3.gif" />
+    <Content Include="images\Members_r4_c5.gif" />
+    <Content Include="images\Members_r5_c1.gif" />
+    <Content Include="images\Members_r6_c5.gif" />
+    <Content Include="images\Members_r7_c1.gif" />
+    <Content Include="images\Members_r7_c4.gif" />
+    <Content Include="images\Members_r8_c1.gif" />
+    <Content Include="images\Members_r8_c2.jpg" />
+    <Content Include="images\news_r10_c1.jpg" />
+    <Content Include="images\news_r10_c6.jpg" />
+    <Content Include="images\news_r11_c1.jpg" />
+    <Content Include="images\news_r11_c2.jpg" />
+    <Content Include="images\news_r1_c1.jpg" />
+    <Content Include="images\news_r2_c1.jpg" />
+    <Content Include="images\news_r2_c3.jpg" />
+    <Content Include="images\news_r3_c1.jpg" />
+    <Content Include="images\news_r3_c3.jpg" />
+    <Content Include="images\news_r3_c4.jpg" />
+    <Content Include="images\news_r3_c5.jpg" />
+    <Content Include="images\news_r3_c7.jpg" />
+    <Content Include="images\news_r4_c3.jpg" />
+    <Content Include="images\news_r4_c4.jpg" />
+    <Content Include="images\news_r4_c7.jpg" />
+    <Content Include="images\news_r5_c3.jpg" />
+    <Content Include="images\news_r5_c7.jpg" />
+    <Content Include="images\news_r6_c1.jpg" />
+    <Content Include="images\news_r7_c1.jpg" />
+    <Content Include="images\news_r8_c1.jpg" />
+    <Content Include="images\news_r9_c3.jpg" />
+    <Content Include="images\news_r9_c4.jpg" />
+    <Content Include="images\news_r9_c5.jpg" />
+    <Content Include="images\Services_ptm_1.jpg" />
+    <Content Include="images\Services_ptm_2.jpg" />
+    <Content Include="images\Services_ptm_3.jpg" />
+    <Content Include="images\Services_ptm_4.jpg" />
+    <Content Include="images\Services_ptm_5.jpg" />
+    <Content Include="images\Services_r10_c1.jpg" />
+    <Content Include="images\Services_r10_c4.jpg" />
+    <Content Include="images\Services_r11_c1.jpg" />
+    <Content Include="images\Services_r11_c2.jpg" />
+    <Content Include="images\Services_r1_c1.jpg" />
+    <Content Include="images\Services_r2_c1.jpg" />
+    <Content Include="images\Services_r3_c1.jpg" />
+    <Content Include="images\Services_r3_c3.jpg" />
+    <Content Include="images\Services_r4_c1.jpg" />
+    <Content Include="images\Services_r5_c3.jpg" />
+    <Content Include="images\Services_r6_c3.jpg" />
+    <Content Include="images\Services_r7_c3.jpg" />
+    <Content Include="images\Services_r8_c3.jpg" />
+    <Content Include="images\Services_r9_c1.jpg" />
+    <Content Include="images\spacer.gif" />
+    <Content Include="inquiries.aspx" />
+    <Content Include="inquiries2.aspx" />
+    <Content Include="inquiries_Ace_Pred.aspx" />
+    <Content Include="inquiries_DLMLA.aspx" />
+    <Content Include="inquiries_GetAllSeqCharacter.aspx" />
+    <Content Include="inquiries_GetAllSeqCharacter1.aspx" />
+    <Content Include="inquiries_GetAllWaccAndACFvalue.aspx" />
+    <Content Include="inquiries_PredSulSite.aspx" />
+    <Content Include="inquiries_SvmTest.aspx" />
+    <Content Include="js\basic.js" />
+    <Content Include="LabNews.aspx" />
+    <Content Include="Members.aspx" />
+    <Content Include="NewsDetail.aspx" />
+    <Content Include="ooo\Ace-Pred.html" />
+    <Content Include="ooo\DLMLA.html" />
+    <Content Include="ooo\example.html" />
+    <Content Include="ooo\PMeS.html" />
+    <Content Include="ooo\SulSite.html" />
+    <Content Include="ooo\WSM-Plam.html" />
+    <Content Include="ResearchNews.aspx" />
+    <Content Include="ResultNews.aspx" />
+    <Content Include="services-ptm.aspx" />
+    <Content Include="services.aspx" />
+    <Content Include="Services_r3_c3.jpg" />
+    <Content Include="Services_r4_c1.jpg" />
+    <Content Include="Services_r5_c3.jpg" />
+    <Content Include="Services_r6_c3.jpg" />
+    <Content Include="Services_r7_c3.jpg" />
+    <Content Include="Services_r8_c3.jpg" />
+    <Content Include="WebUI.Publish.xml" />
+    <Content Include="Ace_Pred.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProteidCalculate\ProteidCalculate\ProteidCalculate.csproj">
+      <Project>{80BEB472-2C33-40F9-8FA8-9C7C263C0498}</Project>
+      <Name>ProteidCalculate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProteidCalculate\SvmNet\SvmNet.csproj">
+      <Project>{4C86177A-4FD7-404B-8712-A5133154C2AC}</Project>
+      <Name>SvmNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProteidCalculate\SVM\SVM.csproj">
+      <Project>{2A381CBB-8291-435C-A8E3-BBF3B590B2B6}</Project>
+      <Name>SVM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3995</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
