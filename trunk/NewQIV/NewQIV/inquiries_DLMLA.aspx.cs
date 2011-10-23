@@ -13,38 +13,35 @@ using SVM;
 namespace WebUI
 {
     public partial class inquiries_DLMLA : System.Web.UI.Page
-    {
-        Model cutModelM;
-        Model cutModelA;
+    {       
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Test();//计算特征值
-            //Calculate();    
-            //if (rdbA.Checked )
-            //{
-            //    Calculate(cutModelA);
-            //}
-            //else if (rdbM.Checked )
-            //{
-            //    Calculate(cutModelM);
-            //}
-            //else if (rdbMA.Checked )
-            //{
-            //    CalculateMA;
-            //}
+            Test();//计算特征值      M 4 A 5      
+            if (rdbA.Checked)
+            {
+                Calculate(_default.modelList[5], "acetyllysine");
+            }
+            else if (rdbM.Checked)
+            {
+                Calculate(_default.modelList[4], "methylated lysine");
+            }
+            else if (rdbMA.Checked)
+            {
+                CalculateMA();
+            }
         }
 
-        private void Calculate(Model model)
+        private void Calculate(Model model,string name)
         {
             //  double[][] t = ProteidCharacter.GetOneDLMLA(sequences[j], 13, 5);
             double thold = double.Parse(thresholdValue.Text.Trim());
             string[] strNames;
             string[] serials = ProteidCharacter.SplitStringsByEnter(txtInput.Text, out strNames);
-            string output = ProteidSvmTest.GetTableHeader();
+            string output = ProteidSvmTest.GetTableHeaderOfAddOne();
             for (int i = 0; i < serials.Length; i++)
             {
                 int[] pos;              
@@ -57,7 +54,7 @@ namespace WebUI
                     if (probValue[j] >= thold)
                     {
                         output += ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], pos[j].ToString(),
-                            sequences[j], probValue[j].ToString("F6"));
+                            sequences[j], probValue[j].ToString("F6"), "330099", name);
                     }
                 }
             }
@@ -77,13 +74,13 @@ namespace WebUI
                 string[] sequencesK;//截取的子序列
                 double[] probValueK;//概率值
                 double[][] CharacterValueK = ProteidCharacter.NewDLMLA(serials[i], 13, 'K',5, out sequencesK, out posK);
-                double totalResultK = ProteidSvmTest.GetSvmPredictResult(cutModelM, CharacterValueK, out probValueK);
+                double totalResultK = ProteidSvmTest.GetSvmPredictResult(_default.modelList[4], CharacterValueK, out probValueK);
                 //同时计算R
                 int[] posR;//目标字符串所在在位置
                 string[] sequencesR;//截取的子序列
                 double[] probValueR;//概率值
                 double[][] CharacterValueR = ProteidCharacter.NewDLMLA(serials[i], 15, 'K',5, out sequencesR, out posR);
-                double totalResultR = ProteidSvmTest.GetSvmPredictResult(cutModelA, CharacterValueR, out probValueR);
+                double totalResultR = ProteidSvmTest.GetSvmPredictResult(_default.modelList[5], CharacterValueR, out probValueR);
 
                 //先对结果进行过滤，然后排序
                 List<int> cutOutput = new List<int>();
@@ -93,7 +90,7 @@ namespace WebUI
                     if (probValueK[j] >= thold)
                     {
                         string temp = ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], posK[j].ToString(),
-                           sequencesK[j], probValueK[j].ToString("F6"));
+                           sequencesK[j], probValueK[j].ToString("F6"), "330099", "methylated lysine");
                         cutOutput.Add(posK[j]);
                         dic.Add(posK[j], temp);
                     }
@@ -104,7 +101,7 @@ namespace WebUI
                     if (probValueR[j] >= thold)
                     {
                         string temp = ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], posR[j].ToString(),
-                         sequencesR[j], probValueR[j].ToString("F6"), "009933");
+                         sequencesR[j], probValueR[j].ToString("F6"), "009933", "acetyllysine");
                         cutOutput.Add(posR[j]);
                         dic.Add(posR[j], temp);
                     }

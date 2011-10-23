@@ -19,7 +19,6 @@ namespace WebUI
         //SVM.NET类库的测试
         void SvmTest()
         {
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)

@@ -14,10 +14,10 @@ namespace WebUI
 {
     public partial class inquiries_GetGroupAttributeCode : System.Web.UI.Page
     {
-        Model cutModelK;
-        Model cutModelR;
-        string trainDataFileK = @"C:\DataSet\Ace-Pred-train.txt";
-        string trainDataFileR = @"C:\DataSet\Ace-Pred-train.txt";
+        //Model cutModelK;
+        //Model cutModelR;
+        //string trainDataFileK = @"C:\DataSet\Ace-Pred-train.txt";
+        //string trainDataFileR = @"C:\DataSet\Ace-Pred-train.txt";
         protected void Page_Load(object sender, EventArgs e)
         {
             //cutModelK = ProteidSvmTest.GetTrainingModel(trainDataFileK, 32768, 1);
@@ -25,19 +25,20 @@ namespace WebUI
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Test();
-            //if (rdbK.Checked )
-            //{
-            //    CalculateK();
-            //}
-            //else if (rdbR .Checked )
-            //{
-            //    CalculateR();
-            //}
-            //else if (rdbKR .Checked )
-            //{
-            //    CalculateKR();
-            //}
+            //Test();
+            if (rdbK.Checked)
+            {
+                CalculateK();
+            }
+            else if (rdbR.Checked)
+            {
+                CalculateR();
+            }
+            else if (rdbKR.Checked)
+            {
+                CalculateKR();
+            }
+            //R 2  k3
         }
 
         #region R
@@ -56,7 +57,7 @@ namespace WebUI
                 string[] sequences;//截取的子序列 = ProteidCharacter.GetCentrlString(serials[i], 15, Convert.ToChar(testChar), out pos);
                 double[] probValue;//概率值
                 double[][] CharacterValue = ProteidCharacter.NewGetGroupAttributeCode(serials[i], 15, 'R', out sequences, out pos);
-                double totalResult = ProteidSvmTest.GetSvmPredictResult(cutModelR, CharacterValue, out probValue);
+                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[2], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
                     if (probValue[j] >= thold)
@@ -87,7 +88,7 @@ namespace WebUI
                 string[] sequences;
                 double[] probValue;//概率值
                 double[][] CharacterValue = ProteidCharacter.NewGetGroupAttributeCode(serials[i], 15, 'K', out sequences, out pos);
-                double totalResult = ProteidSvmTest.GetSvmPredictResult(cutModelK, CharacterValue, out probValue);
+                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[3], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
                     if (probValue[j] >= thold)
@@ -115,13 +116,13 @@ namespace WebUI
                 string[] sequencesK;//截取的子序列
                 double[] probValueK;//概率值
                 double[][] CharacterValueK = ProteidCharacter.NewGetGroupAttributeCode(serials[i], 15, 'K', out sequencesK, out posK);
-                double totalResultK = ProteidSvmTest.GetSvmPredictResult(cutModelK, CharacterValueK, out probValueK);
+                double totalResultK = ProteidSvmTest.GetSvmPredictResult(_default.modelList[3], CharacterValueK, out probValueK);
                 //同时计算R
                 int[] posR;//目标字符串所在在位置
                 string[] sequencesR;//截取的子序列
                 double[] probValueR;//概率值
                 double[][] CharacterValueR = ProteidCharacter.NewGetGroupAttributeCode(serials[i], 15, 'R', out sequencesR, out posR);
-                double totalResultR = ProteidSvmTest.GetSvmPredictResult(cutModelR, CharacterValueR, out probValueR);
+                double totalResultR = ProteidSvmTest.GetSvmPredictResult(_default.modelList[2], CharacterValueR, out probValueR);
 
                 //先对结果进行过滤，然后排序
                 List<int> cutOutput = new List<int>();
@@ -172,12 +173,12 @@ namespace WebUI
 
             for (int i = 0; i < allText.Length; i++)
             {
-                if (!allText[i].Contains("APPGAKAGEKIFK"))
-                {
+                //if (!allText[i].Contains("APPGAKAGEKIFK"))
+                //{
                     res[i] = ProteidCharacter.NewGetOneGroupAttribute(allText[i], 7);
-                }                
+                //}                
             }
-            DotNet.Tools.ConverterAlgorithm.ConvertToExcel<double>(res, @"D:\test888.xls", "test");
+            DotNet.Tools.ConverterAlgorithm.ConvertToExcel<double>(res, @"D:\PMeS-.xls", "test");
         }
         #endregion
 

@@ -14,16 +14,16 @@ namespace WebUI
 {
     public partial class inquiries_GetAllWaccAndACFvalue : System.Web.UI.Page
     {
-        Model cutModel;
-        string trainDataFile = @"C:\DataSet\Ace-Pred-train.txt";
+        //Model cutModel;
+        //string trainDataFile = @"C:\DataSet\Ace-Pred-train.txt";
         protected void Page_Load(object sender, EventArgs e)
         {
             //cutModel = ProteidSvmTest.GetTrainingModel(trainDataFile, 32768, 0.5);
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //Calculate();
-            test();
+            Calculate();
+            //test();
         }
         void test ()
         {
@@ -48,7 +48,7 @@ namespace WebUI
                 string[] sequences;
                 double[] probValue;
                 double[][] CharacterValue = ProteidCharacter.NewGetAllWaccAndACFvalue(text, 19, 'C', 8, out sequences, out pos);
-                double totalResult = ProteidSvmTest.GetSvmPredictResult(cutModel, CharacterValue, out probValue);
+                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[1], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
                     if (probValue[j] >= thold)
