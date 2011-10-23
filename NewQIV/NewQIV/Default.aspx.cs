@@ -12,6 +12,16 @@ namespace WebUI
 {
     public partial class _default : System.Web.UI.Page
     {
+        /// <summary>
+        /// 顺序：
+        /// 0:WSM-Plam
+        /// 1:Ace-Pred-train
+        /// 2:PMeS-R
+        /// 3:PMeS-K
+        /// 4:DLMLA-M
+        /// 5:DLMLA-A
+        /// 6:PredSulSite
+        /// </summary>
         public static Model[] modelList = ProteidSvmTest.GetAllSvmTestMode();
 
         protected void Page_Load(object sender, EventArgs e)

@@ -15,12 +15,12 @@ namespace WebUI
 {
     public partial class inquiries_Ace_Pred : System.Web.UI.Page
     {
-        Model cutModel;
-        string trainDataFile = @"C:\DataSet\Ace-Pred-train.txt";
+        //Model cutModel;
+        //string trainDataFile = @"C:\DataSet\Ace-Pred-train.txt";
         int[] arrList = new int[] { 2, 3, 4, 5, 7, 9, 10, 12, 14, 15, 17, 19, 20, 21 };
         protected void Page_Load(object sender, EventArgs e)
         {
-            cutModel = ProteidSvmTest.GetTrainingModel(trainDataFile, 32768, 1);
+            //cutModel = ProteidSvmTest.GetTrainingModel(trainDataFile, 32768, 1);
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -32,16 +32,14 @@ namespace WebUI
             string text = txtInput.Text;
             string[] strNames;
             string[] serials = ProteidCharacter.SplitStringsByEnter(text, out strNames);
-            string output = "<table cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse:collapse; border:1px solid #333;\">";
-            output += "<tr><td width='200' align='center' style=\"border:1px solid #333;\">Protein name</td><td width='200' align='center' style=\"border:1px solid #333;\">Position of site</td><td width='300' align='center' style=\"border:1px solid #333;\">Flanking residues</td>";
-            output += "<td width='200' align='center' style=\"border:1px solid #333;\">SVM Probability</td></tr>";
+            string output = ProteidSvmTest.GetTableHeader();
             for (int i = 0; i < serials.Length; i++)
             {
                 int[] pos; int[] pos2;
                 double[] probValue; string[] tempStr;
                 string[] sequencesK = ProteidCharacter.GetCentrlString(serials[i], 21, 'K', out pos);
                 double[][] CharacterValue = ProteidCharacter.NewAcePred(serials[i], 15, 'K', 5, out tempStr, out pos2);//计算得到特征值
-                double totalResult = ProteidSvmTest.GetSvmPredictResult(cutModel, CharacterValue, out probValue);
+                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList [1], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
                     if (probValue[j] >= thold)
@@ -63,9 +61,7 @@ namespace WebUI
                     }
                 }
             }
-            output += "</table>";
-            output += "<br />";
-            output += "<br />";
+            output += ProteidSvmTest.GetTableTail();
             ltlResult.Text = output;
         }
 
