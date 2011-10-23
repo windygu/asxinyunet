@@ -111,7 +111,7 @@ namespace ProteidCalculate
             {
                 if (subStr[i] != "")
                 {
-                    res[count++] = subStr[i].ToUpper ().Replace ("B","").Replace ("J","").Replace ("O","").Replace ("U","").Replace ("X","").Replace ("Z","").ToString ().Replace (" ","").Replace ("<","") ;                    
+                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", ""); //.Replace ("O","") 解除限制o
                 }
             }
             //剔除不是字母的元素
@@ -169,7 +169,7 @@ namespace ProteidCalculate
             {
                 if (subStr[i] != "")
                 {
-                    res[count++] = subStr[i].ToUpper ().Replace ("B","").Replace ("J","").Replace ("O","").Replace ("U","").Replace ("X","").Replace ("Z","").ToString ().Replace (" ","").Replace ("<","") ;                    
+                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", "");//.Replace ("O","")                   
                 }
             }
             //剔除不是字母的元素
