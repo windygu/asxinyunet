@@ -80,13 +80,13 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
     <Reference Include="DotNet.Tools">
-      <HintPath>dll\DotNet.Tools.dll</HintPath>
+      <HintPath>..\ProtendCalculateForm\DotNet.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTree">
+      <HintPath>..\ProtendCalculateForm\KdTree.dll</HintPath>
     </Reference>
     <Reference Include="MWArray">
-      <HintPath>dll\MWArray.dll</HintPath>
-    </Reference>
-    <Reference Include="ProteidCalculate">
-      <HintPath>dll\ProteidCalculate.dll</HintPath>
+      <HintPath>..\ProtendCalculateForm\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,12 +109,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QIV\WebUI.csproj">
-      <Project>{D873240B-D591-437A-B3A6-3A9F747EC9B7}</Project>
-      <Name>WebUI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -130,5 +124,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProteidCalculate\ProteidCalculate.csproj">
+      <Project>{80BEB472-2C33-40F9-8FA8-9C7C263C0498}</Project>
+      <Name>ProteidCalculate</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

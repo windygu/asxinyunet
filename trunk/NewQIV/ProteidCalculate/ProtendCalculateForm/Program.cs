@@ -16,7 +16,7 @@ namespace ProtendCalculateForm
             Application.SetCompatibleTextRenderingDefault(false);
 //            if ((DateTime.Now.Year==2011)&&(DateTime.Now.Month ==1)&&(DateTime.Now.Day <15))
 //            {
-                Application.Run(new CalcuteForm ());
+                Application.Run(new GetTrainResultForm  ());//CalcuteForm
 //            }            
         }
     }

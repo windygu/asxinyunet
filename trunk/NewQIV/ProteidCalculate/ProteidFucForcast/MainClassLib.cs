@@ -249,8 +249,8 @@ namespace ProteidFucForcast
 			
 			//ConverterAlgorithm.ConvertToExcel<double>(test ,dataFolder +@"\test.xls","测试集");
 			ConverterAlgorithm.ConvertToExcel<double>(train,dataFolder +@"\train.xls","训练集");
-			double result =100- ProteidCharacter.SvmTestForcast(dataFolder +@"\train.xls",test) ;
-			return result ;
+            //double result =100- ProteidCharacter.SvmTestForcast(dataFolder +@"\train.xls",test) ;
+			return 0 ;
 		}
 		#endregion
 		
@@ -300,8 +300,8 @@ namespace ProteidFucForcast
 			train [train.Length -1] = testValue ;
 			//ConverterAlgorithm.ConvertToExcel<double>(test ,dataFolder +@"\test.xls","测试集");
 			ConverterAlgorithm.ConvertToExcel<double>(train,dataFolder +@"\train.xls","训练集");
-			double result =100- ProteidCharacter.SvmTestForcast(dataFolder +@"\train.xls",test) ;
-			return result ;
+            //double result =100- ProteidCharacter.SvmTestForcast(dataFolder +@"\train.xls",test) ;
+			return 0 ;
 		}
 		#endregion
 		
