@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -17,6 +11,7 @@ namespace YoungRunEntity
     [Serializable]
     [DataObject]
     [Description("油品全套指标")]
+    [BindIndex("PRIMARY", true, "ID")]
     [BindTable("tb_oildata", Description = "油品全套指标", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_oildata : Itb_oildata
     
@@ -34,16 +29,16 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
         }
 
-        private String _OilName;
+        private String _OilNameTP;
         /// <summary>油品名称</summary>
         [DisplayName("油品名称")]
         [Description("油品名称")]
         [DataObjectField(false, false, false, 30)]
-        [BindColumn(2, "OilName", "油品名称", null, "varchar(30)", 0, 0, false)]
-        public String OilName
+        [BindColumn(2, "OilNameTP", "油品名称", null, "varchar(30)", 0, 0, false)]
+        public String OilNameTP
         {
-            get { return _OilName; }
-            set { if (OnPropertyChanging("OilName", value)) { _OilName = value; OnPropertyChanged("OilName"); } }
+            get { return _OilNameTP; }
+            set { if (OnPropertyChanging("OilNameTP", value)) { _OilNameTP = value; OnPropertyChanged("OilNameTP"); } }
         }
 
         private Double _V40;
@@ -135,7 +130,7 @@ namespace YoungRunEntity
         [DisplayName("色度")]
         [Description("色度")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(10, "ASTM", "色度", null, "varchar(10)", 0, 0, false)]
+        [BindColumn(10, "ASTM", "色度", "", "varchar(10)", 0, 0, false)]
         public String ASTM
         {
             get { return _ASTM; }
@@ -183,7 +178,7 @@ namespace YoungRunEntity
         [DisplayName("水溶性酸碱")]
         [Description("水溶性酸碱")]
         [DataObjectField(false, false, true, 15)]
-        [BindColumn(14, "WAA", "水溶性酸碱", null, "varchar(15)", 0, 0, false)]
+        [BindColumn(14, "WAA", "水溶性酸碱", "", "varchar(15)", 0, 0, false)]
         public String WAA
         {
             get { return _WAA; }
@@ -195,7 +190,7 @@ namespace YoungRunEntity
         [DisplayName("低温运动粘度")]
         [Description("低温运动粘度")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(15, "V", "低温运动粘度", null, "varchar(50)", 0, 0, false)]
+        [BindColumn(15, "V", "低温运动粘度", "", "varchar(50)", 0, 0, false)]
         public String V
         {
             get { return _V; }
@@ -207,7 +202,7 @@ namespace YoungRunEntity
         [DisplayName("馏程")]
         [Description("馏程")]
         [DataObjectField(false, false, true, 60)]
-        [BindColumn(16, "Distillation", "馏程", null, "varchar(60)", 0, 0, false)]
+        [BindColumn(16, "Distillation", "馏程", "", "varchar(60)", 0, 0, false)]
         public String Distillation
         {
             get { return _Distillation; }
@@ -219,7 +214,7 @@ namespace YoungRunEntity
         [DisplayName("旋转氧弹")]
         [Description("旋转氧弹")]
         [DataObjectField(false, false, true, 20)]
-        [BindColumn(17, "XZQD", "旋转氧弹", null, "varchar(20)", 0, 0, false)]
+        [BindColumn(17, "XZQD", "旋转氧弹", "", "varchar(20)", 0, 0, false)]
         public String XZQD
         {
             get { return _XZQD; }
@@ -238,23 +233,23 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("Other", value)) { _Other = value; OnPropertyChanged("Other"); } }
         }
 
-        private String _TestPerson;
+        private String _TestPersonTP;
         /// <summary>检测人</summary>
         [DisplayName("检测人")]
         [Description("检测人")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(19, "TestPerson", "检测人", null, "varchar(20)", 0, 0, false)]
-        public String TestPerson
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(19, "TestPersonTP", "检测人", null, "varchar(20)", 0, 0, false)]
+        public String TestPersonTP
         {
-            get { return _TestPerson; }
-            set { if (OnPropertyChanging("TestPerson", value)) { _TestPerson = value; OnPropertyChanged("TestPerson"); } }
+            get { return _TestPersonTP; }
+            set { if (OnPropertyChanging("TestPersonTP", value)) { _TestPersonTP = value; OnPropertyChanged("TestPersonTP"); } }
         }
 
         private String _RecordType;
         /// <summary>记录类型</summary>
         [DisplayName("记录类型")]
         [Description("记录类型")]
-        [DataObjectField(false, false, true, 16)]
+        [DataObjectField(false, false, false, 16)]
         [BindColumn(20, "RecordType", "记录类型", null, "varchar(16)", 0, 0, false)]
         public String RecordType
         {
@@ -266,7 +261,7 @@ namespace YoungRunEntity
         /// <summary>测试时间</summary>
         [DisplayName("测试时间")]
         [Description("测试时间")]
-        [DataObjectField(false, false, true, 0)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn(21, "TestDateTime", "测试时间", null, "datetime", 0, 0, false)]
         public DateTime TestDateTime
         {
@@ -302,7 +297,7 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : return _ID;
-                    case "OilName" : return _OilName;
+                    case "OilNameTP" : return _OilNameTP;
                     case "V40" : return _V40;
                     case "V100" : return _V100;
                     case "VI" : return _VI;
@@ -319,7 +314,7 @@ namespace YoungRunEntity
                     case "Distillation" : return _Distillation;
                     case "XZQD" : return _XZQD;
                     case "Other" : return _Other;
-                    case "TestPerson" : return _TestPerson;
+                    case "TestPersonTP" : return _TestPersonTP;
                     case "RecordType" : return _RecordType;
                     case "TestDateTime" : return _TestDateTime;
                     case "Remark" : return _Remark;
@@ -331,7 +326,7 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : _ID = Convert.ToString(value); break;
-                    case "OilName" : _OilName = Convert.ToString(value); break;
+                    case "OilNameTP" : _OilNameTP = Convert.ToString(value); break;
                     case "V40" : _V40 = Convert.ToDouble(value); break;
                     case "V100" : _V100 = Convert.ToDouble(value); break;
                     case "VI" : _VI = Convert.ToInt32(value); break;
@@ -348,7 +343,7 @@ namespace YoungRunEntity
                     case "Distillation" : _Distillation = Convert.ToString(value); break;
                     case "XZQD" : _XZQD = Convert.ToString(value); break;
                     case "Other" : _Other = Convert.ToString(value); break;
-                    case "TestPerson" : _TestPerson = Convert.ToString(value); break;
+                    case "TestPersonTP" : _TestPersonTP = Convert.ToString(value); break;
                     case "RecordType" : _RecordType = Convert.ToString(value); break;
                     case "TestDateTime" : _TestDateTime = Convert.ToDateTime(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
@@ -366,7 +361,7 @@ namespace YoungRunEntity
             public static readonly FieldItem ID = Meta.Table.FindByName("ID");
 
             ///<summary>油品名称</summary>
-            public static readonly FieldItem OilName = Meta.Table.FindByName("OilName");
+            public static readonly FieldItem OilNameTP = Meta.Table.FindByName("OilNameTP");
 
             ///<summary>V40</summary>
             public static readonly FieldItem V40 = Meta.Table.FindByName("V40");
@@ -417,7 +412,7 @@ namespace YoungRunEntity
             public static readonly FieldItem Other = Meta.Table.FindByName("Other");
 
             ///<summary>检测人</summary>
-            public static readonly FieldItem TestPerson = Meta.Table.FindByName("TestPerson");
+            public static readonly FieldItem TestPersonTP = Meta.Table.FindByName("TestPersonTP");
 
             ///<summary>记录类型</summary>
             public static readonly FieldItem RecordType = Meta.Table.FindByName("RecordType");
@@ -439,7 +434,7 @@ namespace YoungRunEntity
         String ID { get; set; }
 
         /// <summary>油品名称</summary>
-        String OilName { get; set; }
+        String OilNameTP { get; set; }
 
         /// <summary>V40</summary>
         Double V40 { get; set; }
@@ -490,7 +485,7 @@ namespace YoungRunEntity
         String Other { get; set; }
 
         /// <summary>检测人</summary>
-        String TestPerson { get; set; }
+        String TestPersonTP { get; set; }
 
         /// <summary>记录类型</summary>
         String RecordType { get; set; }

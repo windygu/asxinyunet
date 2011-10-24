@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -38,6 +32,22 @@ namespace YoungRunEntity
             return entity;
         }
 
+
+        /// <summary>
+        /// 根据数据编号查找
+        /// </summary>
+        /// <param name="id">数据编号</param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static tb_kqtestdata FindByID(String id)
+        {
+            if (Meta.Count >= 1000)
+                return Find(new String[] { _.ID }, new Object[] { id });
+            else // 实体缓存
+                return Meta.Cache.Entities.Find(_.ID, id);
+            // 单对象缓存
+            //return Meta.SingleCache[id];
+        }
         #endregion
 
         #region 对象操作

@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -25,12 +19,12 @@ namespace YoungRunEntity
         /// <summary>
         /// 根据主键查询一个产品配方信息实体对象用于表单编辑
         /// </summary>
-        /// <param name="productname">产品名称</param>
+        /// <param name="productnametp">产品名称</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_productformule FindByKeyForEdit(String productname)
+        public static tb_productformule FindByKeyForEdit(String productnametp)
         {
-            tb_productformule entity = Find(new String[] { _.ProductName }, new Object[] { productname });
+            tb_productformule entity = Find(new String[] { _.ProductNameTP }, new Object[] { productnametp });
             if (entity == null)
             {
                 entity = new tb_productformule();
@@ -38,6 +32,22 @@ namespace YoungRunEntity
             return entity;
         }
 
+
+        /// <summary>
+        /// 根据产品名称查找
+        /// </summary>
+        /// <param name="productnametp">产品名称</param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static tb_productformule FindByProductNameTP(String productnametp)
+        {
+            if (Meta.Count >= 1000)
+                return Find(new String[] { _.ProductNameTP }, new Object[] { productnametp });
+            else // 实体缓存
+                return Meta.Cache.Entities.Find(_.ProductNameTP, productnametp);
+            // 单对象缓存
+            //return Meta.SingleCache[productnametp];
+        }
         #endregion
 
         #region 对象操作

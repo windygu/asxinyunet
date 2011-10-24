@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -17,6 +11,7 @@ namespace YoungRunEntity
     [Serializable]
     [DataObject]
     [Description("糠醛车间检测数据")]
+    [BindIndex("PRIMARY", true, "ID")]
     [BindTable("tb_kqtestdata", Description = "糠醛车间检测数据", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_kqtestdata : Itb_kqtestdata
     
@@ -34,28 +29,28 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
         }
 
-        private String _RawName;
+        private String _RawNameTP;
         /// <summary>原料名称</summary>
         [DisplayName("原料名称")]
         [Description("原料名称")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(2, "RawName", "原料名称", null, "varchar(20)", 0, 0, false)]
-        public String RawName
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(2, "RawNameTP", "原料名称", null, "varchar(20)", 0, 0, false)]
+        public String RawNameTP
         {
-            get { return _RawName; }
-            set { if (OnPropertyChanging("RawName", value)) { _RawName = value; OnPropertyChanged("RawName"); } }
+            get { return _RawNameTP; }
+            set { if (OnPropertyChanging("RawNameTP", value)) { _RawNameTP = value; OnPropertyChanged("RawNameTP"); } }
         }
 
-        private String _JQIsHaveKQ;
+        private String _JQIsHaveKQTP;
         /// <summary>精油含醛</summary>
         [DisplayName("精油含醛")]
         [Description("精油含醛")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(3, "JQIsHaveKQ", "精油含醛", null, "varchar(10)", 0, 0, false)]
-        public String JQIsHaveKQ
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(3, "JQIsHaveKQTP", "精油含醛", "", "varchar(10)", 0, 0, false)]
+        public String JQIsHaveKQTP
         {
-            get { return _JQIsHaveKQ; }
-            set { if (OnPropertyChanging("JQIsHaveKQ", value)) { _JQIsHaveKQ = value; OnPropertyChanged("JQIsHaveKQ"); } }
+            get { return _JQIsHaveKQTP; }
+            set { if (OnPropertyChanging("JQIsHaveKQTP", value)) { _JQIsHaveKQTP = value; OnPropertyChanged("JQIsHaveKQTP"); } }
         }
 
         private Double _AV;
@@ -70,35 +65,35 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("AV", value)) { _AV = value; OnPropertyChanged("AV"); } }
         }
 
-        private String _CYIsHaveKQ;
+        private String _CYIsHaveKQTP;
         /// <summary>抽油含醛</summary>
         [DisplayName("抽油含醛")]
         [Description("抽油含醛")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(5, "CYIsHaveKQ", "抽油含醛", null, "varchar(10)", 0, 0, false)]
-        public String CYIsHaveKQ
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(5, "CYIsHaveKQTP", "抽油含醛", "", "varchar(10)", 0, 0, false)]
+        public String CYIsHaveKQTP
         {
-            get { return _CYIsHaveKQ; }
-            set { if (OnPropertyChanging("CYIsHaveKQ", value)) { _CYIsHaveKQ = value; OnPropertyChanged("CYIsHaveKQ"); } }
+            get { return _CYIsHaveKQTP; }
+            set { if (OnPropertyChanging("CYIsHaveKQTP", value)) { _CYIsHaveKQTP = value; OnPropertyChanged("CYIsHaveKQTP"); } }
         }
 
-        private String _T8WIsHaveKQ;
+        private String _T8WIsHaveKQTP;
         /// <summary>塔8水含醛</summary>
         [DisplayName("塔8水含醛")]
         [Description("塔8水含醛")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(6, "T8WIsHaveKQ", "塔8水含醛", null, "varchar(10)", 0, 0, false)]
-        public String T8WIsHaveKQ
+        [BindColumn(6, "T8WIsHaveKQTP", "塔8水含醛", "", "varchar(10)", 0, 0, false)]
+        public String T8WIsHaveKQTP
         {
-            get { return _T8WIsHaveKQ; }
-            set { if (OnPropertyChanging("T8WIsHaveKQ", value)) { _T8WIsHaveKQ = value; OnPropertyChanged("T8WIsHaveKQ"); } }
+            get { return _T8WIsHaveKQTP; }
+            set { if (OnPropertyChanging("T8WIsHaveKQTP", value)) { _T8WIsHaveKQTP = value; OnPropertyChanged("T8WIsHaveKQTP"); } }
         }
 
         private String _ASTM;
         /// <summary>色度</summary>
         [DisplayName("色度")]
         [Description("色度")]
-        [DataObjectField(false, false, true, 10)]
+        [DataObjectField(false, false, false, 10)]
         [BindColumn(7, "ASTM", "色度", "-1", "varchar(10)", 0, 0, false)]
         public String ASTM
         {
@@ -110,7 +105,7 @@ namespace YoungRunEntity
         /// <summary>采样时间</summary>
         [DisplayName("采样时间")]
         [Description("采样时间")]
-        [DataObjectField(false, false, true, 0)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn(8, "GetSampleTime", "采样时间", null, "datetime", 0, 0, false)]
         public DateTime GetSampleTime
         {
@@ -118,47 +113,47 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("GetSampleTime", value)) { _GetSampleTime = value; OnPropertyChanged("GetSampleTime"); } }
         }
 
-        private String _GetSampPerson;
+        private String _GetSampPersonTP;
         /// <summary>采样人</summary>
         [DisplayName("采样人")]
         [Description("采样人")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(9, "GetSampPerson", "采样人", null, "varchar(20)", 0, 0, false)]
-        public String GetSampPerson
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(9, "GetSampPersonTP", "采样人", null, "varchar(20)", 0, 0, false)]
+        public String GetSampPersonTP
         {
-            get { return _GetSampPerson; }
-            set { if (OnPropertyChanging("GetSampPerson", value)) { _GetSampPerson = value; OnPropertyChanged("GetSampPerson"); } }
+            get { return _GetSampPersonTP; }
+            set { if (OnPropertyChanging("GetSampPersonTP", value)) { _GetSampPersonTP = value; OnPropertyChanged("GetSampPersonTP"); } }
         }
 
-        private String _TestPerson;
+        private String _TestPersonTP;
         /// <summary>检测人</summary>
         [DisplayName("检测人")]
         [Description("检测人")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(10, "TestPerson", "检测人", null, "varchar(20)", 0, 0, false)]
-        public String TestPerson
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(10, "TestPersonTP", "检测人", null, "varchar(20)", 0, 0, false)]
+        public String TestPersonTP
         {
-            get { return _TestPerson; }
-            set { if (OnPropertyChanging("TestPerson", value)) { _TestPerson = value; OnPropertyChanged("TestPerson"); } }
+            get { return _TestPersonTP; }
+            set { if (OnPropertyChanging("TestPersonTP", value)) { _TestPersonTP = value; OnPropertyChanged("TestPersonTP"); } }
         }
 
-        private String _GetSampLocation;
+        private String _GetSampLocationTP;
         /// <summary>采样地点</summary>
         [DisplayName("采样地点")]
         [Description("采样地点")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(11, "GetSampLocation", "采样地点", null, "varchar(10)", 0, 0, false)]
-        public String GetSampLocation
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(11, "GetSampLocationTP", "采样地点", null, "varchar(10)", 0, 0, false)]
+        public String GetSampLocationTP
         {
-            get { return _GetSampLocation; }
-            set { if (OnPropertyChanging("GetSampLocation", value)) { _GetSampLocation = value; OnPropertyChanged("GetSampLocation"); } }
+            get { return _GetSampLocationTP; }
+            set { if (OnPropertyChanging("GetSampLocationTP", value)) { _GetSampLocationTP = value; OnPropertyChanged("GetSampLocationTP"); } }
         }
 
         private DateTime _UpdateTime;
         /// <summary>更新时间</summary>
         [DisplayName("更新时间")]
         [Description("更新时间")]
-        [DataObjectField(false, false, true, 0)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn(12, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
         public DateTime UpdateTime
         {
@@ -194,16 +189,16 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : return _ID;
-                    case "RawName" : return _RawName;
-                    case "JQIsHaveKQ" : return _JQIsHaveKQ;
+                    case "RawNameTP" : return _RawNameTP;
+                    case "JQIsHaveKQTP" : return _JQIsHaveKQTP;
                     case "AV" : return _AV;
-                    case "CYIsHaveKQ" : return _CYIsHaveKQ;
-                    case "T8WIsHaveKQ" : return _T8WIsHaveKQ;
+                    case "CYIsHaveKQTP" : return _CYIsHaveKQTP;
+                    case "T8WIsHaveKQTP" : return _T8WIsHaveKQTP;
                     case "ASTM" : return _ASTM;
                     case "GetSampleTime" : return _GetSampleTime;
-                    case "GetSampPerson" : return _GetSampPerson;
-                    case "TestPerson" : return _TestPerson;
-                    case "GetSampLocation" : return _GetSampLocation;
+                    case "GetSampPersonTP" : return _GetSampPersonTP;
+                    case "TestPersonTP" : return _TestPersonTP;
+                    case "GetSampLocationTP" : return _GetSampLocationTP;
                     case "UpdateTime" : return _UpdateTime;
                     case "Remark" : return _Remark;
                     default: return base[name];
@@ -214,16 +209,16 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : _ID = Convert.ToString(value); break;
-                    case "RawName" : _RawName = Convert.ToString(value); break;
-                    case "JQIsHaveKQ" : _JQIsHaveKQ = Convert.ToString(value); break;
+                    case "RawNameTP" : _RawNameTP = Convert.ToString(value); break;
+                    case "JQIsHaveKQTP" : _JQIsHaveKQTP = Convert.ToString(value); break;
                     case "AV" : _AV = Convert.ToDouble(value); break;
-                    case "CYIsHaveKQ" : _CYIsHaveKQ = Convert.ToString(value); break;
-                    case "T8WIsHaveKQ" : _T8WIsHaveKQ = Convert.ToString(value); break;
+                    case "CYIsHaveKQTP" : _CYIsHaveKQTP = Convert.ToString(value); break;
+                    case "T8WIsHaveKQTP" : _T8WIsHaveKQTP = Convert.ToString(value); break;
                     case "ASTM" : _ASTM = Convert.ToString(value); break;
                     case "GetSampleTime" : _GetSampleTime = Convert.ToDateTime(value); break;
-                    case "GetSampPerson" : _GetSampPerson = Convert.ToString(value); break;
-                    case "TestPerson" : _TestPerson = Convert.ToString(value); break;
-                    case "GetSampLocation" : _GetSampLocation = Convert.ToString(value); break;
+                    case "GetSampPersonTP" : _GetSampPersonTP = Convert.ToString(value); break;
+                    case "TestPersonTP" : _TestPersonTP = Convert.ToString(value); break;
+                    case "GetSampLocationTP" : _GetSampLocationTP = Convert.ToString(value); break;
                     case "UpdateTime" : _UpdateTime = Convert.ToDateTime(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -240,19 +235,19 @@ namespace YoungRunEntity
             public static readonly FieldItem ID = Meta.Table.FindByName("ID");
 
             ///<summary>原料名称</summary>
-            public static readonly FieldItem RawName = Meta.Table.FindByName("RawName");
+            public static readonly FieldItem RawNameTP = Meta.Table.FindByName("RawNameTP");
 
             ///<summary>精油含醛</summary>
-            public static readonly FieldItem JQIsHaveKQ = Meta.Table.FindByName("JQIsHaveKQ");
+            public static readonly FieldItem JQIsHaveKQTP = Meta.Table.FindByName("JQIsHaveKQTP");
 
             ///<summary>酸值</summary>
             public static readonly FieldItem AV = Meta.Table.FindByName("AV");
 
             ///<summary>抽油含醛</summary>
-            public static readonly FieldItem CYIsHaveKQ = Meta.Table.FindByName("CYIsHaveKQ");
+            public static readonly FieldItem CYIsHaveKQTP = Meta.Table.FindByName("CYIsHaveKQTP");
 
             ///<summary>塔8水含醛</summary>
-            public static readonly FieldItem T8WIsHaveKQ = Meta.Table.FindByName("T8WIsHaveKQ");
+            public static readonly FieldItem T8WIsHaveKQTP = Meta.Table.FindByName("T8WIsHaveKQTP");
 
             ///<summary>色度</summary>
             public static readonly FieldItem ASTM = Meta.Table.FindByName("ASTM");
@@ -261,13 +256,13 @@ namespace YoungRunEntity
             public static readonly FieldItem GetSampleTime = Meta.Table.FindByName("GetSampleTime");
 
             ///<summary>采样人</summary>
-            public static readonly FieldItem GetSampPerson = Meta.Table.FindByName("GetSampPerson");
+            public static readonly FieldItem GetSampPersonTP = Meta.Table.FindByName("GetSampPersonTP");
 
             ///<summary>检测人</summary>
-            public static readonly FieldItem TestPerson = Meta.Table.FindByName("TestPerson");
+            public static readonly FieldItem TestPersonTP = Meta.Table.FindByName("TestPersonTP");
 
             ///<summary>采样地点</summary>
-            public static readonly FieldItem GetSampLocation = Meta.Table.FindByName("GetSampLocation");
+            public static readonly FieldItem GetSampLocationTP = Meta.Table.FindByName("GetSampLocationTP");
 
             ///<summary>更新时间</summary>
             public static readonly FieldItem UpdateTime = Meta.Table.FindByName("UpdateTime");
@@ -286,19 +281,19 @@ namespace YoungRunEntity
         String ID { get; set; }
 
         /// <summary>原料名称</summary>
-        String RawName { get; set; }
+        String RawNameTP { get; set; }
 
         /// <summary>精油含醛</summary>
-        String JQIsHaveKQ { get; set; }
+        String JQIsHaveKQTP { get; set; }
 
         /// <summary>酸值</summary>
         Double AV { get; set; }
 
         /// <summary>抽油含醛</summary>
-        String CYIsHaveKQ { get; set; }
+        String CYIsHaveKQTP { get; set; }
 
         /// <summary>塔8水含醛</summary>
-        String T8WIsHaveKQ { get; set; }
+        String T8WIsHaveKQTP { get; set; }
 
         /// <summary>色度</summary>
         String ASTM { get; set; }
@@ -307,13 +302,13 @@ namespace YoungRunEntity
         DateTime GetSampleTime { get; set; }
 
         /// <summary>采样人</summary>
-        String GetSampPerson { get; set; }
+        String GetSampPersonTP { get; set; }
 
         /// <summary>检测人</summary>
-        String TestPerson { get; set; }
+        String TestPersonTP { get; set; }
 
         /// <summary>采样地点</summary>
-        String GetSampLocation { get; set; }
+        String GetSampLocationTP { get; set; }
 
         /// <summary>更新时间</summary>
         DateTime UpdateTime { get; set; }

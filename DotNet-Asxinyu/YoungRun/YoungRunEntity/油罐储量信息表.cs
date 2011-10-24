@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -17,33 +11,46 @@ namespace YoungRunEntity
     [Serializable]
     [DataObject]
     [Description("油罐储量信息表")]
+    [BindIndex("PRIMARY", true, "ID")]
     [BindTable("tb_oiltankst", Description = "油罐储量信息表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_oiltankst : Itb_oiltankst
     
     {
         #region 属性
-        private String _TankId;
+        private UInt32 _ID;
+        /// <summary>编号</summary>
+        [DisplayName("编号")]
+        [Description("编号")]
+        [DataObjectField(true, true, false, 10)]
+        [BindColumn(1, "ID", "编号", null, "int(10) unsigned", 10, 0, false)]
+        public UInt32 ID
+        {
+            get { return _ID; }
+            set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
+        }
+
+        private String _TankIdTP;
         /// <summary>罐号</summary>
         [DisplayName("罐号")]
         [Description("罐号")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(1, "TankId", "罐号", null, "varchar(10)", 0, 0, false)]
-        public String TankId
+        [BindColumn(2, "TankIdTP", "罐号", null, "varchar(10)", 0, 0, false)]
+        public String TankIdTP
         {
-            get { return _TankId; }
-            set { if (OnPropertyChanging("TankId", value)) { _TankId = value; OnPropertyChanged("TankId"); } }
+            get { return _TankIdTP; }
+            set { if (OnPropertyChanging("TankIdTP", value)) { _TankIdTP = value; OnPropertyChanged("TankIdTP"); } }
         }
 
-        private String _ProductName;
+        private String _ProductNameTP;
         /// <summary>油品名称</summary>
         [DisplayName("油品名称")]
         [Description("油品名称")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(2, "ProductName", "油品名称", null, "varchar(20)", 0, 0, false)]
-        public String ProductName
+        [BindColumn(3, "ProductNameTP", "油品名称", null, "varchar(20)", 0, 0, false)]
+        public String ProductNameTP
         {
-            get { return _ProductName; }
-            set { if (OnPropertyChanging("ProductName", value)) { _ProductName = value; OnPropertyChanged("ProductName"); } }
+            get { return _ProductNameTP; }
+            set { if (OnPropertyChanging("ProductNameTP", value)) { _ProductNameTP = value; OnPropertyChanged("ProductNameTP"); } }
         }
 
         private Double _LiquidLevel;
@@ -51,7 +58,7 @@ namespace YoungRunEntity
         [DisplayName("液位")]
         [Description("液位")]
         [DataObjectField(false, false, false, 22)]
-        [BindColumn(3, "LiquidLevel", "液位", null, "double", 22, 0, false)]
+        [BindColumn(4, "LiquidLevel", "液位", null, "double", 22, 0, false)]
         public Double LiquidLevel
         {
             get { return _LiquidLevel; }
@@ -63,7 +70,7 @@ namespace YoungRunEntity
         [DisplayName("当前体积")]
         [Description("当前体积")]
         [DataObjectField(false, false, false, 22)]
-        [BindColumn(4, "CurVolume", "当前体积", null, "double", 22, 0, false)]
+        [BindColumn(5, "CurVolume", "当前体积", null, "double", 22, 0, false)]
         public Double CurVolume
         {
             get { return _CurVolume; }
@@ -75,11 +82,23 @@ namespace YoungRunEntity
         [DisplayName("存储重量")]
         [Description("存储重量")]
         [DataObjectField(false, false, false, 22)]
-        [BindColumn(5, "CurWeigth", "存储重量", null, "double", 22, 0, false)]
+        [BindColumn(6, "CurWeigth", "存储重量", null, "double", 22, 0, false)]
         public Double CurWeigth
         {
             get { return _CurWeigth; }
             set { if (OnPropertyChanging("CurWeigth", value)) { _CurWeigth = value; OnPropertyChanged("CurWeigth"); } }
+        }
+
+        private Double _D20;
+        /// <summary>密度</summary>
+        [DisplayName("密度")]
+        [Description("密度")]
+        [DataObjectField(false, false, false, 22)]
+        [BindColumn(7, "D20", "密度", "0.91", "double", 22, 0, false)]
+        public Double D20
+        {
+            get { return _D20; }
+            set { if (OnPropertyChanging("D20", value)) { _D20 = value; OnPropertyChanged("D20"); } }
         }
 
         private Double _CurTemperature;
@@ -87,7 +106,7 @@ namespace YoungRunEntity
         [DisplayName("温度")]
         [Description("温度")]
         [DataObjectField(false, false, true, 22)]
-        [BindColumn(6, "CurTemperature", "温度", "30", "double", 22, 0, false)]
+        [BindColumn(8, "CurTemperature", "温度", "20", "double", 22, 0, false)]
         public Double CurTemperature
         {
             get { return _CurTemperature; }
@@ -99,7 +118,7 @@ namespace YoungRunEntity
         [DisplayName("计量时间")]
         [Description("计量时间")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn(7, "RecordTime", "计量时间", null, "datetime", 0, 0, false)]
+        [BindColumn(9, "RecordTime", "计量时间", null, "datetime", 0, 0, false)]
         public DateTime RecordTime
         {
             get { return _RecordTime; }
@@ -111,23 +130,11 @@ namespace YoungRunEntity
         [DisplayName("更新时间")]
         [Description("更新时间")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn(8, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
+        [BindColumn(10, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
         public DateTime UpdateTime
         {
             get { return _UpdateTime; }
             set { if (OnPropertyChanging("UpdateTime", value)) { _UpdateTime = value; OnPropertyChanged("UpdateTime"); } }
-        }
-
-        private Double _D20;
-        /// <summary>密度</summary>
-        [DisplayName("密度")]
-        [Description("密度")]
-        [DataObjectField(false, false, false, 22)]
-        [BindColumn(9, "D20", "密度", "0.91", "double", 22, 0, false)]
-        public Double D20
-        {
-            get { return _D20; }
-            set { if (OnPropertyChanging("D20", value)) { _D20 = value; OnPropertyChanged("D20"); } }
         }
 
         private String _Remark;
@@ -135,23 +142,11 @@ namespace YoungRunEntity
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 30)]
-        [BindColumn(10, "Remark", "备注", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(11, "Remark", "备注", null, "varchar(30)", 0, 0, false)]
         public String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
-        }
-
-        private UInt32 _ID;
-        /// <summary>编号</summary>
-        [DisplayName("编号")]
-        [Description("编号")]
-        [DataObjectField(true, true, false, 10)]
-        [BindColumn(11, "ID", "编号", null, "int(10) unsigned", 10, 0, false)]
-        public UInt32 ID
-        {
-            get { return _ID; }
-            set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
         }
 		#endregion
 
@@ -169,17 +164,17 @@ namespace YoungRunEntity
             {
                 switch (name)
                 {
-                    case "TankId" : return _TankId;
-                    case "ProductName" : return _ProductName;
+                    case "ID" : return _ID;
+                    case "TankIdTP" : return _TankIdTP;
+                    case "ProductNameTP" : return _ProductNameTP;
                     case "LiquidLevel" : return _LiquidLevel;
                     case "CurVolume" : return _CurVolume;
                     case "CurWeigth" : return _CurWeigth;
+                    case "D20" : return _D20;
                     case "CurTemperature" : return _CurTemperature;
                     case "RecordTime" : return _RecordTime;
                     case "UpdateTime" : return _UpdateTime;
-                    case "D20" : return _D20;
                     case "Remark" : return _Remark;
-                    case "ID" : return _ID;
                     default: return base[name];
                 }
             }
@@ -187,17 +182,17 @@ namespace YoungRunEntity
             {
                 switch (name)
                 {
-                    case "TankId" : _TankId = Convert.ToString(value); break;
-                    case "ProductName" : _ProductName = Convert.ToString(value); break;
+                    case "ID" : _ID = Convert.ToUInt32(value); break;
+                    case "TankIdTP" : _TankIdTP = Convert.ToString(value); break;
+                    case "ProductNameTP" : _ProductNameTP = Convert.ToString(value); break;
                     case "LiquidLevel" : _LiquidLevel = Convert.ToDouble(value); break;
                     case "CurVolume" : _CurVolume = Convert.ToDouble(value); break;
                     case "CurWeigth" : _CurWeigth = Convert.ToDouble(value); break;
+                    case "D20" : _D20 = Convert.ToDouble(value); break;
                     case "CurTemperature" : _CurTemperature = Convert.ToDouble(value); break;
                     case "RecordTime" : _RecordTime = Convert.ToDateTime(value); break;
                     case "UpdateTime" : _UpdateTime = Convert.ToDateTime(value); break;
-                    case "D20" : _D20 = Convert.ToDouble(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
-                    case "ID" : _ID = Convert.ToUInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -208,11 +203,14 @@ namespace YoungRunEntity
         /// <summary>取得油罐储量信息表字段信息的快捷方式</summary>
         public class _
         {
+            ///<summary>编号</summary>
+            public static readonly FieldItem ID = Meta.Table.FindByName("ID");
+
             ///<summary>罐号</summary>
-            public static readonly FieldItem TankId = Meta.Table.FindByName("TankId");
+            public static readonly FieldItem TankIdTP = Meta.Table.FindByName("TankIdTP");
 
             ///<summary>油品名称</summary>
-            public static readonly FieldItem ProductName = Meta.Table.FindByName("ProductName");
+            public static readonly FieldItem ProductNameTP = Meta.Table.FindByName("ProductNameTP");
 
             ///<summary>液位</summary>
             public static readonly FieldItem LiquidLevel = Meta.Table.FindByName("LiquidLevel");
@@ -223,6 +221,9 @@ namespace YoungRunEntity
             ///<summary>存储重量</summary>
             public static readonly FieldItem CurWeigth = Meta.Table.FindByName("CurWeigth");
 
+            ///<summary>密度</summary>
+            public static readonly FieldItem D20 = Meta.Table.FindByName("D20");
+
             ///<summary>温度</summary>
             public static readonly FieldItem CurTemperature = Meta.Table.FindByName("CurTemperature");
 
@@ -232,14 +233,8 @@ namespace YoungRunEntity
             ///<summary>更新时间</summary>
             public static readonly FieldItem UpdateTime = Meta.Table.FindByName("UpdateTime");
 
-            ///<summary>密度</summary>
-            public static readonly FieldItem D20 = Meta.Table.FindByName("D20");
-
             ///<summary>备注</summary>
             public static readonly FieldItem Remark = Meta.Table.FindByName("Remark");
-
-            ///<summary>编号</summary>
-            public static readonly FieldItem ID = Meta.Table.FindByName("ID");
         }
         #endregion
     }
@@ -248,11 +243,14 @@ namespace YoungRunEntity
     public partial interface Itb_oiltankst
     {
         #region 属性
+        /// <summary>编号</summary>
+        UInt32 ID { get; set; }
+
         /// <summary>罐号</summary>
-        String TankId { get; set; }
+        String TankIdTP { get; set; }
 
         /// <summary>油品名称</summary>
-        String ProductName { get; set; }
+        String ProductNameTP { get; set; }
 
         /// <summary>液位</summary>
         Double LiquidLevel { get; set; }
@@ -263,6 +261,9 @@ namespace YoungRunEntity
         /// <summary>存储重量</summary>
         Double CurWeigth { get; set; }
 
+        /// <summary>密度</summary>
+        Double D20 { get; set; }
+
         /// <summary>温度</summary>
         Double CurTemperature { get; set; }
 
@@ -272,14 +273,8 @@ namespace YoungRunEntity
         /// <summary>更新时间</summary>
         DateTime UpdateTime { get; set; }
 
-        /// <summary>密度</summary>
-        Double D20 { get; set; }
-
         /// <summary>备注</summary>
         String Remark { get; set; }
-
-        /// <summary>编号</summary>
-        UInt32 ID { get; set; }
         #endregion
 
         #region 获取/设置 字段值
