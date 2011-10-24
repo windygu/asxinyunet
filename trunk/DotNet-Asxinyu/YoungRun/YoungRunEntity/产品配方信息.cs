@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -17,21 +11,22 @@ namespace YoungRunEntity
     [Serializable]
     [DataObject]
     [Description("产品配方信息")]
+    [BindIndex("PRIMARY", true, "ProductNameTP")]
     [BindTable("tb_productformule", Description = "产品配方信息", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_productformule : Itb_productformule
     
     {
         #region 属性
-        private String _ProductName;
+        private String _ProductNameTP;
         /// <summary>产品名称</summary>
         [DisplayName("产品名称")]
         [Description("产品名称")]
         [DataObjectField(true, false, false, 20)]
-        [BindColumn(1, "ProductName", "产品名称", null, "varchar(20)", 0, 0, false)]
-        public String ProductName
+        [BindColumn(1, "ProductNameTP", "产品名称", null, "varchar(20)", 0, 0, false)]
+        public String ProductNameTP
         {
-            get { return _ProductName; }
-            set { if (OnPropertyChanging("ProductName", value)) { _ProductName = value; OnPropertyChanged("ProductName"); } }
+            get { return _ProductNameTP; }
+            set { if (OnPropertyChanging("ProductNameTP", value)) { _ProductNameTP = value; OnPropertyChanged("ProductNameTP"); } }
         }
 
         private Double _BtCount;
@@ -121,7 +116,7 @@ namespace YoungRunEntity
             {
                 switch (name)
                 {
-                    case "ProductName" : return _ProductName;
+                    case "ProductNameTP" : return _ProductNameTP;
                     case "BtCount" : return _BtCount;
                     case "T501Count" : return _T501Count;
                     case "T602Count" : return _T602Count;
@@ -135,7 +130,7 @@ namespace YoungRunEntity
             {
                 switch (name)
                 {
-                    case "ProductName" : _ProductName = Convert.ToString(value); break;
+                    case "ProductNameTP" : _ProductNameTP = Convert.ToString(value); break;
                     case "BtCount" : _BtCount = Convert.ToDouble(value); break;
                     case "T501Count" : _T501Count = Convert.ToDouble(value); break;
                     case "T602Count" : _T602Count = Convert.ToDouble(value); break;
@@ -153,7 +148,7 @@ namespace YoungRunEntity
         public class _
         {
             ///<summary>产品名称</summary>
-            public static readonly FieldItem ProductName = Meta.Table.FindByName("ProductName");
+            public static readonly FieldItem ProductNameTP = Meta.Table.FindByName("ProductNameTP");
 
             ///<summary>白土用量</summary>
             public static readonly FieldItem BtCount = Meta.Table.FindByName("BtCount");
@@ -181,7 +176,7 @@ namespace YoungRunEntity
     {
         #region 属性
         /// <summary>产品名称</summary>
-        String ProductName { get; set; }
+        String ProductNameTP { get; set; }
 
         /// <summary>白土用量</summary>
         Double BtCount { get; set; }

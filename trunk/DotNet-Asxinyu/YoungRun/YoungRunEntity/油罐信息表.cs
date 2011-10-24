@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -17,6 +11,7 @@ namespace YoungRunEntity
     [Serializable]
     [DataObject]
     [Description("油罐信息表")]
+    [BindIndex("PRIMARY", true, "TankId")]
     [BindTable("tb_oiltankinfo", Description = "油罐信息表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_oiltankinfo : Itb_oiltankinfo
     
@@ -70,16 +65,16 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("PerCmVolume", value)) { _PerCmVolume = value; OnPropertyChanged("PerCmVolume"); } }
         }
 
-        private String _ProductName;
+        private String _ProductNameTP;
         /// <summary>油品名称</summary>
         [DisplayName("油品名称")]
         [Description("油品名称")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(5, "ProductName", "油品名称", null, "varchar(20)", 0, 0, false)]
-        public String ProductName
+        [BindColumn(5, "ProductNameTP", "油品名称", null, "varchar(20)", 0, 0, false)]
+        public String ProductNameTP
         {
-            get { return _ProductName; }
-            set { if (OnPropertyChanging("ProductName", value)) { _ProductName = value; OnPropertyChanged("ProductName"); } }
+            get { return _ProductNameTP; }
+            set { if (OnPropertyChanging("ProductNameTP", value)) { _ProductNameTP = value; OnPropertyChanged("ProductNameTP"); } }
         }
 
         private String _StrogeType;
@@ -99,7 +94,7 @@ namespace YoungRunEntity
         [DisplayName("用途")]
         [Description("用途")]
         [DataObjectField(false, false, true, 30)]
-        [BindColumn(7, "Purpose", "用途", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(7, "Purpose", "用途", "", "varchar(30)", 0, 0, false)]
         public String Purpose
         {
             get { return _Purpose; }
@@ -111,7 +106,7 @@ namespace YoungRunEntity
         [DisplayName("警戒高度")]
         [Description("警戒高度")]
         [DataObjectField(false, false, false, 22)]
-        [BindColumn(8, "AlarmHeight", "警戒高度", null, "double", 22, 0, false)]
+        [BindColumn(8, "AlarmHeight", "警戒高度", "0.8", "double", 22, 0, false)]
         public Double AlarmHeight
         {
             get { return _AlarmHeight; }
@@ -173,7 +168,7 @@ namespace YoungRunEntity
                     case "Height" : return _Height;
                     case "Volume" : return _Volume;
                     case "PerCmVolume" : return _PerCmVolume;
-                    case "ProductName" : return _ProductName;
+                    case "ProductNameTP" : return _ProductNameTP;
                     case "StrogeType" : return _StrogeType;
                     case "Purpose" : return _Purpose;
                     case "AlarmHeight" : return _AlarmHeight;
@@ -191,7 +186,7 @@ namespace YoungRunEntity
                     case "Height" : _Height = Convert.ToDouble(value); break;
                     case "Volume" : _Volume = Convert.ToDouble(value); break;
                     case "PerCmVolume" : _PerCmVolume = Convert.ToDouble(value); break;
-                    case "ProductName" : _ProductName = Convert.ToString(value); break;
+                    case "ProductNameTP" : _ProductNameTP = Convert.ToString(value); break;
                     case "StrogeType" : _StrogeType = Convert.ToString(value); break;
                     case "Purpose" : _Purpose = Convert.ToString(value); break;
                     case "AlarmHeight" : _AlarmHeight = Convert.ToDouble(value); break;
@@ -221,7 +216,7 @@ namespace YoungRunEntity
             public static readonly FieldItem PerCmVolume = Meta.Table.FindByName("PerCmVolume");
 
             ///<summary>油品名称</summary>
-            public static readonly FieldItem ProductName = Meta.Table.FindByName("ProductName");
+            public static readonly FieldItem ProductNameTP = Meta.Table.FindByName("ProductNameTP");
 
             ///<summary>存储类型</summary>
             public static readonly FieldItem StrogeType = Meta.Table.FindByName("StrogeType");
@@ -261,7 +256,7 @@ namespace YoungRunEntity
         Double PerCmVolume { get; set; }
 
         /// <summary>油品名称</summary>
-        String ProductName { get; set; }
+        String ProductNameTP { get; set; }
 
         /// <summary>存储类型</summary>
         String StrogeType { get; set; }

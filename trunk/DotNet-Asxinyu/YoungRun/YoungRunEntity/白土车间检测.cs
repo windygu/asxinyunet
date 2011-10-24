@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -35,16 +29,16 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
         }
 
-        private String _ProductName;
+        private String _ProductNameTP;
         /// <summary>产品名称</summary>
         [DisplayName("产品名称")]
         [Description("产品名称")]
-        [DataObjectField(false, false, true, 30)]
-        [BindColumn(2, "ProductName", "产品名称", null, "varchar(30)", 0, 0, false)]
-        public String ProductName
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(2, "ProductNameTP", "产品名称", null, "varchar(20)", 0, 0, false)]
+        public String ProductNameTP
         {
-            get { return _ProductName; }
-            set { if (OnPropertyChanging("ProductName", value)) { _ProductName = value; OnPropertyChanged("ProductName"); } }
+            get { return _ProductNameTP; }
+            set { if (OnPropertyChanging("ProductNameTP", value)) { _ProductNameTP = value; OnPropertyChanged("ProductNameTP"); } }
         }
 
         private Double _V40;
@@ -111,7 +105,7 @@ namespace YoungRunEntity
         /// <summary>采样时间</summary>
         [DisplayName("采样时间")]
         [Description("采样时间")]
-        [DataObjectField(false, false, true, 0)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn(8, "GetSampleTime", "采样时间", null, "datetime", 0, 0, false)]
         public DateTime GetSampleTime
         {
@@ -119,47 +113,47 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("GetSampleTime", value)) { _GetSampleTime = value; OnPropertyChanged("GetSampleTime"); } }
         }
 
-        private String _GetSamLocation;
+        private String _GetSamLocationTP;
         /// <summary>采样地点</summary>
         [DisplayName("采样地点")]
         [Description("采样地点")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(9, "GetSamLocation", "采样地点", null, "varchar(10)", 0, 0, false)]
-        public String GetSamLocation
+        [BindColumn(9, "GetSamLocationTP", "采样地点", "", "varchar(10)", 0, 0, false)]
+        public String GetSamLocationTP
         {
-            get { return _GetSamLocation; }
-            set { if (OnPropertyChanging("GetSamLocation", value)) { _GetSamLocation = value; OnPropertyChanged("GetSamLocation"); } }
+            get { return _GetSamLocationTP; }
+            set { if (OnPropertyChanging("GetSamLocationTP", value)) { _GetSamLocationTP = value; OnPropertyChanged("GetSamLocationTP"); } }
         }
 
-        private String _GetSampPerson;
+        private String _GetSampPersonTP;
         /// <summary>采样人</summary>
         [DisplayName("采样人")]
         [Description("采样人")]
         [DataObjectField(false, false, true, 20)]
-        [BindColumn(10, "GetSampPerson", "采样人", null, "varchar(20)", 0, 0, false)]
-        public String GetSampPerson
+        [BindColumn(10, "GetSampPersonTP", "采样人", "", "varchar(20)", 0, 0, false)]
+        public String GetSampPersonTP
         {
-            get { return _GetSampPerson; }
-            set { if (OnPropertyChanging("GetSampPerson", value)) { _GetSampPerson = value; OnPropertyChanged("GetSampPerson"); } }
+            get { return _GetSampPersonTP; }
+            set { if (OnPropertyChanging("GetSampPersonTP", value)) { _GetSampPersonTP = value; OnPropertyChanged("GetSampPersonTP"); } }
         }
 
-        private String _TestPerson;
+        private String _TestPersonTP;
         /// <summary>检测人</summary>
         [DisplayName("检测人")]
         [Description("检测人")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(11, "TestPerson", "检测人", null, "varchar(20)", 0, 0, false)]
-        public String TestPerson
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(11, "TestPersonTP", "检测人", "", "varchar(20)", 0, 0, false)]
+        public String TestPersonTP
         {
-            get { return _TestPerson; }
-            set { if (OnPropertyChanging("TestPerson", value)) { _TestPerson = value; OnPropertyChanged("TestPerson"); } }
+            get { return _TestPersonTP; }
+            set { if (OnPropertyChanging("TestPersonTP", value)) { _TestPersonTP = value; OnPropertyChanged("TestPersonTP"); } }
         }
 
         private DateTime _UpdateTime;
         /// <summary>更新时间</summary>
         [DisplayName("更新时间")]
         [Description("更新时间")]
-        [DataObjectField(false, false, true, 0)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn(12, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
         public DateTime UpdateTime
         {
@@ -195,16 +189,16 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : return _ID;
-                    case "ProductName" : return _ProductName;
+                    case "ProductNameTP" : return _ProductNameTP;
                     case "V40" : return _V40;
                     case "V100" : return _V100;
                     case "VI" : return _VI;
                     case "AV" : return _AV;
                     case "ASTM" : return _ASTM;
                     case "GetSampleTime" : return _GetSampleTime;
-                    case "GetSamLocation" : return _GetSamLocation;
-                    case "GetSampPerson" : return _GetSampPerson;
-                    case "TestPerson" : return _TestPerson;
+                    case "GetSamLocationTP" : return _GetSamLocationTP;
+                    case "GetSampPersonTP" : return _GetSampPersonTP;
+                    case "TestPersonTP" : return _TestPersonTP;
                     case "UpdateTime" : return _UpdateTime;
                     case "Remark" : return _Remark;
                     default: return base[name];
@@ -215,16 +209,16 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : _ID = Convert.ToString(value); break;
-                    case "ProductName" : _ProductName = Convert.ToString(value); break;
+                    case "ProductNameTP" : _ProductNameTP = Convert.ToString(value); break;
                     case "V40" : _V40 = Convert.ToDouble(value); break;
                     case "V100" : _V100 = Convert.ToDouble(value); break;
                     case "VI" : _VI = Convert.ToInt32(value); break;
                     case "AV" : _AV = Convert.ToDouble(value); break;
                     case "ASTM" : _ASTM = Convert.ToString(value); break;
                     case "GetSampleTime" : _GetSampleTime = Convert.ToDateTime(value); break;
-                    case "GetSamLocation" : _GetSamLocation = Convert.ToString(value); break;
-                    case "GetSampPerson" : _GetSampPerson = Convert.ToString(value); break;
-                    case "TestPerson" : _TestPerson = Convert.ToString(value); break;
+                    case "GetSamLocationTP" : _GetSamLocationTP = Convert.ToString(value); break;
+                    case "GetSampPersonTP" : _GetSampPersonTP = Convert.ToString(value); break;
+                    case "TestPersonTP" : _TestPersonTP = Convert.ToString(value); break;
                     case "UpdateTime" : _UpdateTime = Convert.ToDateTime(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -241,7 +235,7 @@ namespace YoungRunEntity
             public static readonly FieldItem ID = Meta.Table.FindByName("ID");
 
             ///<summary>产品名称</summary>
-            public static readonly FieldItem ProductName = Meta.Table.FindByName("ProductName");
+            public static readonly FieldItem ProductNameTP = Meta.Table.FindByName("ProductNameTP");
 
             ///<summary>V40</summary>
             public static readonly FieldItem V40 = Meta.Table.FindByName("V40");
@@ -262,13 +256,13 @@ namespace YoungRunEntity
             public static readonly FieldItem GetSampleTime = Meta.Table.FindByName("GetSampleTime");
 
             ///<summary>采样地点</summary>
-            public static readonly FieldItem GetSamLocation = Meta.Table.FindByName("GetSamLocation");
+            public static readonly FieldItem GetSamLocationTP = Meta.Table.FindByName("GetSamLocationTP");
 
             ///<summary>采样人</summary>
-            public static readonly FieldItem GetSampPerson = Meta.Table.FindByName("GetSampPerson");
+            public static readonly FieldItem GetSampPersonTP = Meta.Table.FindByName("GetSampPersonTP");
 
             ///<summary>检测人</summary>
-            public static readonly FieldItem TestPerson = Meta.Table.FindByName("TestPerson");
+            public static readonly FieldItem TestPersonTP = Meta.Table.FindByName("TestPersonTP");
 
             ///<summary>更新时间</summary>
             public static readonly FieldItem UpdateTime = Meta.Table.FindByName("UpdateTime");
@@ -287,7 +281,7 @@ namespace YoungRunEntity
         String ID { get; set; }
 
         /// <summary>产品名称</summary>
-        String ProductName { get; set; }
+        String ProductNameTP { get; set; }
 
         /// <summary>V40</summary>
         Double V40 { get; set; }
@@ -308,13 +302,13 @@ namespace YoungRunEntity
         DateTime GetSampleTime { get; set; }
 
         /// <summary>采样地点</summary>
-        String GetSamLocation { get; set; }
+        String GetSamLocationTP { get; set; }
 
         /// <summary>采样人</summary>
-        String GetSampPerson { get; set; }
+        String GetSampPersonTP { get; set; }
 
         /// <summary>检测人</summary>
-        String TestPerson { get; set; }
+        String TestPersonTP { get; set; }
 
         /// <summary>更新时间</summary>
         DateTime UpdateTime { get; set; }

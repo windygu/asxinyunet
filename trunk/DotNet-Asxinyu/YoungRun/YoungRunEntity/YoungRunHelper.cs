@@ -405,7 +405,7 @@ namespace YoungRunEntity
 				int allSubCount = 0 ;
 				for (int r = 0; r < subDicTypes.Count ; r++) {
 					List <tb_oiltankst> cutSub = cutST.FindAll (delegate (tb_oiltankst st){
-					                                            	return st.ProductName == subDicTypes[r ].Value ? true:false ;
+					                                            	return st.ProductNameTP  == subDicTypes[r ].Value ? true:false ;
 					                                            }) ;
 					allSubCount += cutSub.Count ;
 				}
@@ -424,7 +424,7 @@ namespace YoungRunEntity
 				{
 					//根据油罐储量信息表存储的信息为准，因为储罐信息表是当前的信息，不能代表过去的信息
 					List <tb_oiltankst> cutSubTypeTanks = cutST.FindAll (delegate (tb_oiltankst st){
-					                                                     	return st.ProductName == subDicTypes[j ].Value ? true:false ;
+					                                                     	return st.ProductNameTP == subDicTypes[j ].Value ? true:false ;
 					                                                     }) ;
 					#region 写入每一个子类的信息
 					//合并单元格，设置居中，文字大小，文字方向按照换行解决
@@ -449,10 +449,10 @@ namespace YoungRunEntity
 					{
 						sum += cutSubTypeTanks[k ].CurWeigth ;
 						newSheet.GetRow (curRow).Height = 500 ;
-						newSheet.GetRow (curRow ).CreateCell (2).SetCellValue (GetRichText (hssfworkbook,cutSubTypeTanks[k].TankId.Replace ("罐","")
-						                                                                                           +"   "+tb_oiltankinfo.Find (tb_oiltankinfo._.TankId ,cutSubTypeTanks[k].TankId).Volume.ToString ()+"m3"));//设置油罐号
+						newSheet.GetRow (curRow ).CreateCell (2).SetCellValue (GetRichText (hssfworkbook,cutSubTypeTanks[k].TankIdTP.Replace ("罐","")
+						                                                                                           +"   "+tb_oiltankinfo.Find (tb_oiltankinfo._.TankId ,cutSubTypeTanks[k].TankIdTP ).Volume.ToString ()+"m3"));//设置油罐号
 						newSheet.GetRow (curRow ).CreateCell (3).SetCellValue (GetRichTextForSize (hssfworkbook,cutSubTypeTanks[k].LiquidLevel.ToString ("F2")+
-						                                                                    "   "+tb_oiltankinfo.Find (tb_oiltankinfo._.TankId ,cutSubTypeTanks[k].TankId).Height.ToString ()+"m"));//设置液位
+						                                                                    "   "+tb_oiltankinfo.Find (tb_oiltankinfo._.TankId ,cutSubTypeTanks[k].TankIdTP ).Height.ToString ()+"m"));//设置液位
 						newSheet.GetRow (curRow ).CreateCell (4).SetCellValue ( cutSubTypeTanks[k].CurWeigth.ToString ("F2"));//设置液位
 						newSheet.GetRow (curRow ).CreateCell (5).SetCellValue ("");//汇总
 						newSheet.GetRow (curRow ).CreateCell (6).SetCellValue ( cutSubTypeTanks[k].Remark);//备注

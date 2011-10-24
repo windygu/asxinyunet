@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-07 13:25:05
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -17,6 +11,7 @@ namespace YoungRunEntity
     [Serializable]
     [DataObject]
     [Description("油样检测数据表")]
+    [BindIndex("PRIMARY", true, "ID")]
     [BindTable("tb_oilsampletest", Description = "油样检测数据表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_oilsampletest : Itb_oilsampletest
     
@@ -38,7 +33,7 @@ namespace YoungRunEntity
         /// <summary>记录类型</summary>
         [DisplayName("记录类型")]
         [Description("记录类型")]
-        [DataObjectField(false, false, true, 16)]
+        [DataObjectField(false, false, false, 16)]
         [BindColumn(2, "RecordType", "记录类型", null, "varchar(16)", 0, 0, false)]
         public String RecordType
         {
@@ -46,28 +41,28 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("RecordType", value)) { _RecordType = value; OnPropertyChanged("RecordType"); } }
         }
 
-        private String _OilName;
+        private String _OilNameTP;
         /// <summary>油品名称</summary>
         [DisplayName("油品名称")]
         [Description("油品名称")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(3, "OilName", "油品名称", null, "varchar(20)", 0, 0, false)]
-        public String OilName
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(3, "OilNameTP", "油品名称", null, "varchar(20)", 0, 0, false)]
+        public String OilNameTP
         {
-            get { return _OilName; }
-            set { if (OnPropertyChanging("OilName", value)) { _OilName = value; OnPropertyChanged("OilName"); } }
+            get { return _OilNameTP; }
+            set { if (OnPropertyChanging("OilNameTP", value)) { _OilNameTP = value; OnPropertyChanged("OilNameTP"); } }
         }
 
-        private String _Provider;
+        private String _ProviderTP;
         /// <summary>供应方</summary>
         [DisplayName("供应方")]
         [Description("供应方")]
-        [DataObjectField(false, false, true, 20)]
-        [BindColumn(4, "Provider", "供应方", null, "varchar(20)", 0, 0, false)]
-        public String Provider
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(4, "ProviderTP", "供应方", null, "varchar(20)", 0, 0, false)]
+        public String ProviderTP
         {
-            get { return _Provider; }
-            set { if (OnPropertyChanging("Provider", value)) { _Provider = value; OnPropertyChanged("Provider"); } }
+            get { return _ProviderTP; }
+            set { if (OnPropertyChanging("ProviderTP", value)) { _ProviderTP = value; OnPropertyChanged("ProviderTP"); } }
         }
 
         private String _DataID;
@@ -86,7 +81,7 @@ namespace YoungRunEntity
         /// <summary>送样人</summary>
         [DisplayName("送样人")]
         [Description("送样人")]
-        [DataObjectField(false, false, true, 20)]
+        [DataObjectField(false, false, false, 20)]
         [BindColumn(6, "SendPerson", "送样人", null, "varchar(20)", 0, 0, false)]
         public String SendPerson
         {
@@ -98,7 +93,7 @@ namespace YoungRunEntity
         /// <summary>送样时间</summary>
         [DisplayName("送样时间")]
         [Description("送样时间")]
-        [DataObjectField(false, false, true, 0)]
+        [DataObjectField(false, false, false, 0)]
         [BindColumn(7, "SendDateTime", "送样时间", null, "datetime", 0, 0, false)]
         public DateTime SendDateTime
         {
@@ -135,8 +130,8 @@ namespace YoungRunEntity
                 {
                     case "ID" : return _ID;
                     case "RecordType" : return _RecordType;
-                    case "OilName" : return _OilName;
-                    case "Provider" : return _Provider;
+                    case "OilNameTP" : return _OilNameTP;
+                    case "ProviderTP" : return _ProviderTP;
                     case "DataID" : return _DataID;
                     case "SendPerson" : return _SendPerson;
                     case "SendDateTime" : return _SendDateTime;
@@ -150,8 +145,8 @@ namespace YoungRunEntity
                 {
                     case "ID" : _ID = Convert.ToString(value); break;
                     case "RecordType" : _RecordType = Convert.ToString(value); break;
-                    case "OilName" : _OilName = Convert.ToString(value); break;
-                    case "Provider" : _Provider = Convert.ToString(value); break;
+                    case "OilNameTP" : _OilNameTP = Convert.ToString(value); break;
+                    case "ProviderTP" : _ProviderTP = Convert.ToString(value); break;
                     case "DataID" : _DataID = Convert.ToString(value); break;
                     case "SendPerson" : _SendPerson = Convert.ToString(value); break;
                     case "SendDateTime" : _SendDateTime = Convert.ToDateTime(value); break;
@@ -173,10 +168,10 @@ namespace YoungRunEntity
             public static readonly FieldItem RecordType = Meta.Table.FindByName("RecordType");
 
             ///<summary>油品名称</summary>
-            public static readonly FieldItem OilName = Meta.Table.FindByName("OilName");
+            public static readonly FieldItem OilNameTP = Meta.Table.FindByName("OilNameTP");
 
             ///<summary>供应方</summary>
-            public static readonly FieldItem Provider = Meta.Table.FindByName("Provider");
+            public static readonly FieldItem ProviderTP = Meta.Table.FindByName("ProviderTP");
 
             ///<summary>数据编号</summary>
             public static readonly FieldItem DataID = Meta.Table.FindByName("DataID");
@@ -204,10 +199,10 @@ namespace YoungRunEntity
         String RecordType { get; set; }
 
         /// <summary>油品名称</summary>
-        String OilName { get; set; }
+        String OilNameTP { get; set; }
 
         /// <summary>供应方</summary>
-        String Provider { get; set; }
+        String ProviderTP { get; set; }
 
         /// <summary>数据编号</summary>
         String DataID { get; set; }
