@@ -8,7 +8,6 @@ using System.IO;
 using System.Windows.Forms;
 using ProteidCalculate;
 using System.Threading;
-using Excel;
 using DotNet.Tools ;
 
 namespace ProtendCalculateForm
