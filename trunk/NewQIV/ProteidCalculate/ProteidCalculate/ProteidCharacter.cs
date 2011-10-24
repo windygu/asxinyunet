@@ -245,14 +245,14 @@ namespace ProteidCalculate
             double[] SeqenceValue = GetValuesOfSequence(StrSeqence);
             double[] res = new double[M];
             double temp;
-            for (int i = 0; i < M; i++)
+            for (int i = 1; i <= M; i++)
             {
                 temp = 0;
-                for (int j = 0; j < SeqenceValue.Length - i; j++)
+                for (int j = 1; j <= SeqenceValue.Length - i; j++)
                 {
-                    temp += SeqenceValue[j] * SeqenceValue[j + i];
+                    temp += SeqenceValue[j-1] * SeqenceValue[j + i-1];
                 }
-                res[i] = temp / (SeqenceValue.Length - i);
+                res[i-1] = temp / (SeqenceValue.Length - i);
             }
             return res;
         }
@@ -315,7 +315,7 @@ namespace ProteidCalculate
             int L;
             for (int i = 0; i < length; i++)
             {
-                L = (int)Math.Floor((double)((i + 1) * seqData.Length / length));
+                L = (int)Math.Round (((double)((i + 1) * (double )seqData.Length / (double )length)),0);
                 tempStr = seqData.Substring(0, L);
                 res[i] = GetWeigthOfString(tempStr); //正规重量
             }
