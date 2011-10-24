@@ -13,17 +13,14 @@ using SvmNet;
 namespace WebUI
 {
     public partial class inquiries_GetAllWaccAndACFvalue : System.Web.UI.Page
-    {
-        //Model cutModel;
-        //string trainDataFile = @"C:\DataSet\Ace-Pred-train.txt";
+    {   
         protected void Page_Load(object sender, EventArgs e)
-        {
-            //cutModel = ProteidSvmTest.GetTrainingModel(trainDataFile, 32768, 0.5);
+        {           
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Calculate();
-            //test();
+            //Calculate();
+            test();
         }
         void test ()
         {
