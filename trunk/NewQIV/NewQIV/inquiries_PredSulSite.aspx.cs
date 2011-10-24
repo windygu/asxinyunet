@@ -53,14 +53,7 @@ namespace WebUI
             ltlResult.Text = output;
         }
 
-        //计算特征值并存到Excel中
-        private void GetCharcter()
-        {
-            string FilePath = @"D:\PredSulSite.xls";                               
-            double[][] res = ProteidCharacter.PredSulSite(txtInput.Text, 9,'Y', 5);
-            DotNet.Tools.ConverterAlgorithm.ConvertToExcel<double>(res, FilePath, "特征值");
-        }
-
+        //计算特征值并存到Excel中       
         private void Test()
         {
             string[] allText = ProteidCharacter.SplitStringsByEnter(txtInput.Text);//输入分割

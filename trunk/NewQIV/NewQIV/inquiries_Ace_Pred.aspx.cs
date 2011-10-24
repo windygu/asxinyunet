@@ -14,17 +14,27 @@ using NewLife.Threading;
 namespace WebUI
 {
     public partial class inquiries_Ace_Pred : System.Web.UI.Page
-    {
-        //Model cutModel;
-        //string trainDataFile = @"C:\DataSet\Ace-Pred-train.txt";
+    {        
         int[] arrList = new int[] { 2, 3, 4, 5, 7, 9, 10, 12, 14, 15, 17, 19, 20, 21 };
         protected void Page_Load(object sender, EventArgs e)
-        {
-            //cutModel = ProteidSvmTest.GetTrainingModel(trainDataFile, 32768, 1);
+        {           
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Calculate();
+            //Calculate();
+            Test();
+        }
+
+        private void Test()
+        {
+            string[] allText = ProteidCharacter.SplitStringsByEnter(txtInput.Text);//输入分割
+            double[][] res = new double[allText.Length][];
+            for (int i = 0; i < allText.Length; i++)
+            {
+                res[i] = ProteidCharacter.NewGetOneAcePred(allText[i],5)[0];
+            }
+            DotNet.Tools.ConverterAlgorithm.ConvertToExcel<double>(res, @"D:\Ace.xls", "test");
         }
         private void Calculate() //进行计算
         {
