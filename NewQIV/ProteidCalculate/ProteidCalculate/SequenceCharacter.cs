@@ -80,7 +80,7 @@ namespace ProteidCalculate
         public static string[] SplitStringsByEnter(string text)
         {
             //分割方法：从头到尾检索，遇到>检索遇到\r\n(由<替换)则删掉           
-            text = text.Replace ("\r\n","<").Replace ("\n","<").Replace(" ","").Replace (".","") ;//过滤掉空格小数点等非法字符
+            text = text.Replace ("\r\n","<").Replace ("\n","<") ;//过滤掉空格小数点等非法字符
             // 查找> < 分别出现的位置
             int[] firstLocation = IndexOfcharPosition(text, '>');//>出现的位置
             int[] secLocation = IndexOfcharPosition(text, '<');//换行符出现的位置
