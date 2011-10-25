@@ -251,6 +251,9 @@ namespace SvmNet
         #endregion
 
         #region 得到网站项目所使用的模型
+        /// <summary>
+        /// 获得网站中所有的SVM变量
+        /// </summary>
         public static Model[] GetAllSvmTestMode()
         {
             string folder = @"C:\DataSet\"; //存放训练的目录
