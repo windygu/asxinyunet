@@ -34,6 +34,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CalcuteWave">
+      <HintPath>..\NewQIV\Library\CalcuteWave.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNet.Tools">
+      <HintPath>..\NewQIV\Library\DotNet.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTree">
+      <HintPath>..\NewQIV\Library\KdTree.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray">
+      <HintPath>..\NewQIV\Library\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\NewQIV\Library\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,11 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BioinfoHelper.cs" />
+    <Compile Include="FeatureExtraction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SequenceProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="计划进度.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Library\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
