@@ -70,10 +70,10 @@ namespace ProteidCalculate
         	return  GetAllSeqCharacter(text,"bior2.4") ;
         }
         #endregion
-        
-        #region 将字符串进行分割：按照换行确定
+
+        #region 将字符串进行分割：按照换行确定 ---已转移---
         /// <summary>
-        /// 对文本块进行分割，按照换行符和>识别
+        /// 对文本块进行分割，按照换行符和>识别  ---已转移---
         /// </summary>
         /// <param name="text">文本块</param>
         /// <returns>标志的字符串数组</returns>

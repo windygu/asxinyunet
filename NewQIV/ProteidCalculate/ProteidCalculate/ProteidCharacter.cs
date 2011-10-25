@@ -21,7 +21,7 @@ namespace ProteidCalculate
         //"A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"
         #endregion
 
-        #region 指定中心元素截取
+        #region 指定中心元素截取  ---已转移---
         /// <summary>
         /// 获取以指定元素为中心，指定长度的字符序列，不足补O
         /// </summary>
