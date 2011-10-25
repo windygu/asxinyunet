@@ -32,13 +32,12 @@ namespace ProtendCalculateForm
         {
            
         }
-
         private void btnAllOK_Click(object sender, EventArgs e)
         {
             if (txtFolderPath.Text != "")
             {
                 //计算
-                Calculate();
+                Calculate() ;
             }
         }
 
@@ -73,15 +72,15 @@ namespace ProtendCalculateForm
                 else if (combName.Text.Contains("PMeS"))
                 {
                     for (int j = 0; j < allText.Length; j++)
-                    {
-                        res[j ] = ProteidCharacter.GetOnePredSulsite(allText[j ], 9, 5)[0];
+                    {                      
+                        res[j] = ProteidCharacter.NewGetOneGroupAttribute(allText[i], 7);
                     }
                 }
                 else if (combName.Text.Contains("PredSulSite"))
                 {
+
                     for (int j = 0; j < allText.Length; j++)
-                    {
-                        //res[j ] = ProteidCharacter.NewGetOneGroupAttribute(allText[j ], 7);
+                    {                        
                         res[j ] = ProteidCharacter.GetOnePredSulsite(allText[j ], 9, 5)[0];
                     }
                 }
