@@ -73,7 +73,7 @@ namespace ProteidCalculate
         public static string[] GetCentrlString(string seqData, int AllLength, char desChar, out int[] pos)
         {
             //首先进行转换
-            seqData = seqData.ToUpper();
+            seqData = seqData.ToUpper().Replace(" ", "").Replace(".", "") ;
             int strLength = Convert.ToInt32((AllLength - 1) * 0.5);//单边的截取长度
             //检测是否包含其他非规定字符：B、J、O、U、X,并剔除
             seqData = seqData.Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace("\r\n", "");
