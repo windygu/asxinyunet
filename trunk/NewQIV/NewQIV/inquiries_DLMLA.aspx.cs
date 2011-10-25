@@ -20,19 +20,19 @@ namespace WebUI
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Test();//计算特征值      M 4 A 5      
-            //if (rdbA.Checked)
-            //{
-            //    Calculate(_default.modelList[5], "acetyllysine");
-            //}
-            //else if (rdbM.Checked)
-            //{
-            //    Calculate(_default.modelList[4], "methylated lysine");
-            //}
-            //else if (rdbMA.Checked)
-            //{
-            //    CalculateMA();
-            //}
+            //Test();//计算特征值      M 4 A 5      
+            if (rdbA.Checked)
+            {
+                Calculate(_default.modelList[5], "acetyllysine");
+            }
+            else if (rdbM.Checked)
+            {
+                Calculate(_default.modelList[4], "methylated lysine");
+            }
+            else if (rdbMA.Checked)
+            {
+                CalculateMA();
+            }
         }
 
         private void Calculate(Model model,string name)

@@ -19,8 +19,8 @@ namespace WebUI
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //Calculate();
-            test();
+            Calculate();
+            //test();
         }
         void test ()
         {

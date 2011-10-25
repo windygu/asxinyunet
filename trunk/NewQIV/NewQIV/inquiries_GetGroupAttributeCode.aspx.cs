@@ -13,15 +13,9 @@ using SvmNet;
 namespace WebUI
 {
     public partial class inquiries_GetGroupAttributeCode : System.Web.UI.Page
-    {
-        //Model cutModelK;
-        //Model cutModelR;
-        //string trainDataFileK = @"C:\DataSet\Ace-Pred-train.txt";
-        //string trainDataFileR = @"C:\DataSet\Ace-Pred-train.txt";
+    {       
         protected void Page_Load(object sender, EventArgs e)
         {
-            //cutModelK = ProteidSvmTest.GetTrainingModel(trainDataFileK, 32768, 1);
-            //cutModelR = ProteidSvmTest.GetTrainingModel(trainDataFileR, 32768, 1);
         }
         protected void Button1_Click(object sender, EventArgs e)
         {

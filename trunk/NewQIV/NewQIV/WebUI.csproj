@@ -28,7 +28,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\代码生成\WebUI\</OutputPath>
+    <OutputPath>Bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -91,10 +91,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
-    <Reference Include="NewLife.Core, Version=3.0.4287.35957, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NewLife.Core.dll</HintPath>
-    </Reference>
     <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>uploads\bin\NPOI.dll</HintPath>
@@ -139,6 +135,22 @@
     <Content Include="admin\system\info_modify.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="inquiries_GetGroupAttributeCode.aspx" />
+    <Content Include="Library\App_Licenses.dll" />
+    <Content Include="Library\CalcuteWave.dll" />
+    <Content Include="Library\CuteEditor.dll" />
+    <Content Include="Library\CuteEditor.ImageEditor.dll" />
+    <Content Include="Library\DotNet.Tools.dll" />
+    <Content Include="Library\DotNet.Tools.pdb" />
+    <Content Include="Library\KdTree.dll" />
+    <Content Include="Library\Library.dll" />
+    <Content Include="Library\Library.pdb" />
+    <Content Include="Library\MWArray.dll" />
+    <Content Include="Library\NetSpell.SpellChecker.dll" />
+    <Content Include="Library\NewQIV.dll" />
+    <Content Include="Library\NewQIV.pdb" />
+    <Content Include="Library\NPOI.dll" />
+    <Content Include="Library\ProteidCalculate.dll" />
+    <Content Include="Library\ProteidCalculate.pdb" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -310,10 +322,18 @@
     <Compile Include="LabNews.aspx.designer.cs">
       <DependentUpon>LabNews.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Library\check.cs" />
-    <Compile Include="Library\DatabaseCommon.cs" />
-    <Compile Include="Library\FuncCommon.cs" />
-    <Compile Include="Library\Original.cs" />
+    <Compile Include="Library\check.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Library\DatabaseCommon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Library\FuncCommon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Library\Original.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Members.aspx.cs">
       <DependentUpon>Members.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -371,6 +391,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <None Include="Library\CuteEditor.lic" />
+    <None Include="Library\ManagedCPPAPI.netmodule" />
     <None Include="WebUI.csproj.pdsync" />
     <None Include="WebUI.csproj.pdsyncu" />
     <Content Include="download.aspx" />
