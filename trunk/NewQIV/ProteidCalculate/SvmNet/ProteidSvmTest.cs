@@ -252,15 +252,16 @@ namespace SvmNet
 
         #region 得到网站项目所使用的模型
         public static Model[] GetAllSvmTestMode()
-        {         
+        {
             string folder = @"C:\DataSet\"; //存放训练的目录
-            string[] filesName = new string[] { "WSM-Plam.txt", "Ace-Pred-train.txt", "PMeS-R.txt", "PMeS-K.txt", "DLMLA-M.txt", "DLMLA-A.txt","PredSulSite.txt" };
-            double[] Param_C = new double[filesName.Length ];//参数列表
-            double[] Param_G = new double[filesName.Length];//参数列表
+            string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
+                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
+            double[] Param_C = new double[] { 32768, 32768, 32768, 32768, 32768 ,64,8.0};//参数列表
+            double[] Param_G = new double[] { 0.5, 1, 0.5, 0.5, 1, 0.0110485 ,0.5};//参数列表
             Model[] modelList = new Model[filesName.Length];//返回的模型
             for (int i = 0; i < filesName.Length  ; i++)
             {
-                //modelList[i] = ProteidSvmTest.GetTrainingModel(folder+filesName [i ],Param_C [i],Param_G[i ]);
+                modelList[i] = ProteidSvmTest.GetTrainingModel(folder + filesName[i], Param_C[i], Param_G[i]);
             }
             return modelList;
         }
