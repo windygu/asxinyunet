@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVM", "ProteidCalculate\SVM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProteidFucForcast", "ProteidCalculate\ProteidFucForcast\ProteidFucForcast.csproj", "{0E0EC864-5A1E-4007-865F-FA00FED9D521}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioinfoLibrary", "BioinfoLibrary\BioinfoLibrary.csproj", "{CC63219E-4F62-4F5A-8658-17DD2EB60071}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -122,6 +124,21 @@ Global
 		{0E0EC864-5A1E-4007-865F-FA00FED9D521}.Release|Mixed Platforms.Build.0 = Release|x86
 		{0E0EC864-5A1E-4007-865F-FA00FED9D521}.Release|x86.ActiveCfg = Release|x86
 		{0E0EC864-5A1E-4007-865F-FA00FED9D521}.Release|x86.Build.0 = Release|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Debug|x86.ActiveCfg = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Debug|x86.Build.0 = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.NewDebug|Any CPU.ActiveCfg = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.NewDebug|Mixed Platforms.ActiveCfg = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.NewDebug|Mixed Platforms.Build.0 = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.NewDebug|x86.ActiveCfg = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.NewDebug|x86.Build.0 = Debug|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Release|Any CPU.ActiveCfg = Release|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Release|Mixed Platforms.Build.0 = Release|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Release|x86.ActiveCfg = Release|x86
+		{CC63219E-4F62-4F5A-8658-17DD2EB60071}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
