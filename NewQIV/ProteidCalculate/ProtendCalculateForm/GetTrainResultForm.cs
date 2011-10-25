@@ -73,7 +73,7 @@ namespace ProtendCalculateForm
                 {
                     for (int j = 0; j < allText.Length; j++)
                     {                      
-                        res[j] = ProteidCharacter.NewGetOneGroupAttribute(allText[i], 7);
+                        res[j] = ProteidCharacter.NewGetOneGroupAttribute(allText[j ], 7);
                     }
                 }
                 else if (combName.Text.Contains("PredSulSite"))
