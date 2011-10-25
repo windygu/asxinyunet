@@ -133,6 +133,13 @@
     <Content Include="admin\system\admin_list.aspx" />
     <Content Include="admin\system\admin_modify.aspx" />
     <Content Include="admin\system\info_modify.aspx" />
+    <Content Include="DataSet\Ace-Pred-Train.txt" />
+    <Content Include="DataSet\DLMLA-acetyllysine-Train.txt" />
+    <Content Include="DataSet\DLMLA-methyllysine-Train.txt" />
+    <Content Include="DataSet\PMeS-K-Train.txt" />
+    <Content Include="DataSet\PMeS-R-Train.txt" />
+    <Content Include="DataSet\PredSulSite-Train.txt" />
+    <Content Include="DataSet\WSM-Plam-Train.txt" />
     <Content Include="Default.aspx" />
     <Content Include="inquiries_GetGroupAttributeCode.aspx" />
     <Content Include="Library\App_Licenses.dll" />
@@ -391,6 +398,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <None Include="DataSet\所有页面的训练集参数.docx" />
     <None Include="Library\CuteEditor.lic" />
     <None Include="Library\ManagedCPPAPI.netmodule" />
     <None Include="WebUI.csproj.pdsync" />
