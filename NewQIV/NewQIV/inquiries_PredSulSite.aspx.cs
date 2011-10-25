@@ -13,12 +13,9 @@ using SVM;
 namespace WebUI
 {
     public partial class inquiries_PredSulSite : System.Web.UI.Page
-    {
-        Model cutModel;
-        string trainDataFile = @"C:\DataSet\PredSulSite.txt";
+    {       
         protected void Page_Load(object sender, EventArgs e)
-        {
-            cutModel = ProteidSvmTest.GetTrainingModel(trainDataFile, 8, 0.125);
+        {         
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -40,7 +37,7 @@ namespace WebUI
                 double[] probValue;
                 double[][] CharacterValue = ProteidCharacter.NewPredSulSiteForOneSeq(serials[i], 9, 'Y', 5, 
                     out sequences,out pos);
-                double totalResult = ProteidSvmTest.GetSvmPredictResult(cutModel, CharacterValue, out probValue);
+                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[6], CharacterValue, out probValue);
                 for (int j = 0; j <probValue.Length ;j ++)
                 {                  
                     if (probValue[j] >= thold) {

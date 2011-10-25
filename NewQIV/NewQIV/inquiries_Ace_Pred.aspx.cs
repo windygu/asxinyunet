@@ -9,7 +9,6 @@ using ProteidCalculate;
 using cn.buddy;
 using SvmNet;
 using SVM;
-using NewLife.Threading;
 
 namespace WebUI
 {
@@ -22,8 +21,8 @@ namespace WebUI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //Calculate();
-            Test();
+            Calculate();
+            //Test();
         }
 
         private void Test()
