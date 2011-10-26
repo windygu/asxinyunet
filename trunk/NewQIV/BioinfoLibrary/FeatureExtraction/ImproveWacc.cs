@@ -8,14 +8,14 @@ namespace BioinfoLibrary
     /// <summary>
     /// 改进位置权重
     /// </summary>
-    public class ImproveWacc
+    public class ImproveWacc : BaseBioinfo
     {
-        #region 位置权重特征提取算法-Wacc
+        #region 改进位置权重特征提取算法-ImproveWacc
         /// <summary>
-        /// 位置权重特征提取算法获取一条序列的特征
+        /// 改进位置权重特征提取算法获取一条序列的特征
         /// </summary>
         /// <param name="strSequence">序列</param>
-        /// <param name="paramsVlue">第一个参数为:小波变换名称</param>
+        /// <param name="paramsVlue">第一个参数为:长度L</param>
         /// <returns>当前序列的特征值</returns>
         public override double[] GetOneSequenceFeature(string strSequence, params object[] paramsVlue)
         {
