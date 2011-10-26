@@ -59,14 +59,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACF.cs" />
+    <Compile Include="FeatureExtraction\ACF.cs" />
     <Compile Include="BaseBioinfo.cs" />
     <Compile Include="BioinfoHelper.cs" />
     <Compile Include="FeatureExtraction.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupWeight.cs" />
-    <Compile Include="ImproveWacc.cs" />
+    <Compile Include="FeatureExtraction\GroupWeight.cs" />
+    <Compile Include="FeatureExtraction\ImproveWacc.cs" />
     <Compile Include="KdTreeDetection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
