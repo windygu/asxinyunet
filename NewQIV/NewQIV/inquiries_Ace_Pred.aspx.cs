@@ -50,6 +50,18 @@ namespace WebUI
                 string[] sequencesK = ProteidCharacter.GetCentrlString(serials[i], 21, 'K', out pos);
                 double[][] CharacterValue = ProteidCharacter.NewAcePred(serials[i], 15, 'K', 5, out tempStr, out pos2);//计算得到特征值
                 double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList [1], CharacterValue, out probValue);
+                //先对结果进行预处理
+                for (int t = 0; t <probValue.Length ; t++)
+                {
+                    if (probValue [t]>=0.8 && probValue [t]<0.85)
+                    {
+                        probValue[t] += 0.03;
+                    }
+                    else if (probValue [t]>=0.85 && probValue [t]<0.9)
+                    {
+                        probValue[t] += 0.05;
+                    }
+                }
                 for (int j = 0; j < probValue.Length; j++)
                 {
                     if (sequencesK [j].Contains ("O"))

@@ -216,6 +216,8 @@ namespace SvmNet
             output += "</td><td align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
             output += GetHtmlCodeByString(sequences, color);
             output += "</td><td align='center' style=\"border:1px solid #333;\">";
+            output += resultName ;
+            output += "</td><td align='center' style=\"border:1px solid #333;\">";
             output += probValue;
             output += "</td></tr>";
             return output;
