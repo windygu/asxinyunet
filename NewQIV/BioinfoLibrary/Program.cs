@@ -8,7 +8,7 @@ namespace BioinfoLibrary
     class Program
     {
         static void Main(string[] args)
-        {
+        {            
         }
     }
 }
