@@ -3,3 +3,4 @@
            1.着手将所有基础类库统一转移到BioinfoLibrary项目中；
 		   2.进一步整理网站结构，分模块，整理需求和功能；
 		   3.初步分为SequenceProcess(序列处理类)、FeatureExtraction(特征提取类)、BioinfoHelper(帮助类)、SVM.NET测试类
+2011-10-26 整理特征提取基类，将大部分功能封装到基类中，便于模型进行继承和灵活处理

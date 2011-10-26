@@ -34,7 +34,7 @@ namespace BioinfoLibrary
         ImproveWacc
     }
     #endregion
-
+       
     #region 特征提取基类
     /// <summary>
     /// 基类,封装所有基础的功能代码 
@@ -46,8 +46,15 @@ namespace BioinfoLibrary
         /// 获取一条序列的特征值
         /// </summary>
         /// <param name="strSequence">序列</param>
+        /// <param name="paramsVlue">其他参数设置</param>
         /// <returns>特征值</returns>
-        public abstract static double[] GetOneSequenceFeature(string strSequence);
+        public virtual double[] GetOneSequenceFeature(string strSequence, params object[] paramsVlue) { return null; }
+        /// <summary>
+        /// 获取一条序列的特征值
+        /// </summary>
+        /// <param name="strSequence">序列</param>
+        /// <returns>特征值</returns>
+        public virtual double[] GetOneSequenceFeature(string strSequence) { return null ; }
         #endregion
 
         #region 提取多条序列的特征
@@ -55,15 +62,16 @@ namespace BioinfoLibrary
         /// 提取多条序列的特征值
         /// </summary>
         /// <param name="strSequence">多条序列数组</param>
+        /// <param name="paramsVlue">其他参数设置</param>
         /// <returns>多条序列特征值</returns>
-        public static double[][] GetMultiSequenceFeature(string[] strSequence)
+        public double[][] GetMultiSequenceFeature(string[] strSequence, params object[] paramsVlue)
         {
             double[][] res = new double[strSequence.Length][];
             for (int i = 0; i < strSequence.Length; i++)
             {
-                res[i] = GetOneSequenceFeature(strSequence[i]);//逐一提取特征
+                res[i] = GetOneSequenceFeature(strSequence[i],paramsVlue);//逐一提取特征
             }
-            return res;
+            return res ;
         }
         #endregion
 
@@ -73,7 +81,7 @@ namespace BioinfoLibrary
         /// </summary>
         /// <param name="textBlock">文本块</param>
         /// <returns>整个文本块的特征值</returns>
-        public static double[][] GetTextBlockFeature(string textBlock)
+        public double[][] GetTextBlockFeature(string textBlock)
         {
             return GetMultiSequenceFeature (SplitTextBlock (textBlock )) ;
         }
@@ -84,7 +92,7 @@ namespace BioinfoLibrary
         /// <param name="textBlock">文本块</param>
         /// <param name="strNames">返回对应序列的名称</param>
         /// <returns>整个文本块的特征值</returns>
-        public static double[][] GetTextBlockFeature(string textBlock, out string[] strNames)
+        public double[][] GetTextBlockFeature(string textBlock, out string[] strNames)
         {
             return GetMultiSequenceFeature (SplitTextBlock (textBlock,out strNames)) ;
         }
@@ -93,7 +101,7 @@ namespace BioinfoLibrary
         /// </summary>
         /// <param name="fileName">序列所在的文件名</param>
         /// <returns>整个文件中所有序列的特征值</returns>
-        public static double[][] GetTextBlockFeatureByFile(string fileName)
+        public double[][] GetTextBlockFeatureByFile(string fileName)
         {
             using(StreamReader sr = new StreamReader (fileName ))
             {
@@ -107,7 +115,7 @@ namespace BioinfoLibrary
         /// <param name="fileName">序列所在的文件名</param>
         /// <param name="strNames">对应序列的名称</param>
         /// <returns>整个文件中所有序列的特征值</returns>
-        public static double[][] GetTextBlockFeatureByFile(string fileName,out string[] strNames)
+        public double[][] GetTextBlockFeatureByFile(string fileName,out string[] strNames)
         {
             using (StreamReader sr = new StreamReader(fileName))
             {
@@ -122,7 +130,7 @@ namespace BioinfoLibrary
         /// </summary>
         /// <param name="textBlock">序列文本块</param>
         /// <returns>分割后的序列集合</returns>
-        public static string[] SplitTextBlock(string textBlock)
+        public string[] SplitTextBlock(string textBlock)
         {
             return SequenceProcess.SplitStringsByEnter(textBlock);
         }
@@ -132,7 +140,7 @@ namespace BioinfoLibrary
         /// <param name="textBlock">序列文本块</param>
         /// <param name="strNames">对应序列的名称</param>
         /// <returns>分割后的序列集合</returns>
-        public static string[] SplitTextBlock(string textBlock, out string[] strNames)
+        public string[] SplitTextBlock(string textBlock, out string[] strNames)
         {
             return SequenceProcess.SplitStringsByEnter(textBlock, out strNames);
         }
@@ -146,7 +154,7 @@ namespace BioinfoLibrary
         /// <param name="allLength">截取的总长度</param>
         /// <param name="desChar">截取目标字符串</param>
         /// <returns>截取序列集合</returns>
-        public static string[] PickOffSequence(string strSequence, int allLength, char desChar)
+        public string[] PickOffSequence(string strSequence, int allLength, char desChar)
         {
             return SequenceProcess.GetCentrlString(strSequence, allLength, desChar);
         }
@@ -158,7 +166,7 @@ namespace BioinfoLibrary
         /// <param name="desChar">截取目标字符串</param>
         /// <param name="pos">指定字符出现的位置</param>
         /// <returns>截取序列集合</returns>
-        public static string[] PickOffSequence(string strSequence, int allLength, char desChar, out int[] pos)
+        public string[] PickOffSequence(string strSequence, int allLength, char desChar, out int[] pos)
         {
             return SequenceProcess.GetCentrlString(strSequence, allLength, desChar, out pos);
         }

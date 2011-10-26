@@ -75,8 +75,9 @@ namespace BioinfoLibrary
 
         public static double SvmTest(string testFilePath, string text, string waveName)
         {
-            double[][] res = FeatureExtraction.GetAllSeqCharacter(text, waveName);
-            return SvmTest(testFilePath, res, 10, 4);
+            //double[][] res = FeatureExtraction.GetAllSeqCharacter(text, waveName);
+            //return SvmTest(testFilePath, res, 10, 4);
+            return 0 ; 
         }
         #endregion
     }
