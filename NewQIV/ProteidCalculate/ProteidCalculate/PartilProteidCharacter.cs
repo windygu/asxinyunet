@@ -29,50 +29,6 @@ namespace ProteidCalculate
         {
             return GetSeqCharactersBySeqs(texts, "bior2.4");
         }
-
-        /// <summary>
-        /// 根据输入文本块得到自相关数组
-        /// </summary>
-        /// <param name="text">文本块</param>
-        /// <returns>自相关数组</returns>
-        //public static double[,] GetTextACFValue(string text,int M)
-        //{
-        //    string[] strArray = SplitStringsByEnter(text);
-        //    double[,] res = new double [strArray.GetLength (0),M ] ;
-        //    double[] temp,temp1;
-        //    for (int i = 0; i < strArray.Length ; i++)
-        //    {
-        //        temp = GetValuesOfSequence(strArray[i]);//量化序列
-        //        temp1 = AutoCorrFunction(temp, M);//计算自相关
-        //        for (int j = 0; j < temp1.Length ; j++)
-        //        {
-        //            res[i, j] = temp1[j];
-        //        }
-        //    }
-        //    return res ;
-        //}
-
-        /// <summary>
-        /// 计算多条序列的特征值,从文本框获取的原始数据  位置权重氨基酸组分计算-
-        /// </summary>
-        /// <param name="text">多条序列,输入格式固定</param>
-        /// <returns>特征值数组</returns>
-        //public static double[,] WACC_AllSeqence(string text)
-        //{            
-        //    string[] str = SplitStringsByEnter(text);//分割
-        //    double[,] res = new double[str.Length, NormalSeqence.Length];
-        //    double[] temp ;
-        //    for (int i = 0; i < str.Length ; i++)
-        //    {
-        //        temp = WACC_OneSeqence(str[i]);
-        //        for (int j = 0; j <temp.Length ; j++)
-        //        {
-        //            res[i, j] = temp[j];
-        //        }
-        //    }
-        //    return res ;
-        //}
-
         private static int XIPCalculate(string str, int i, int p)
         {
             if (str[p] == NormalSeqence[i])
@@ -84,9 +40,6 @@ namespace ProteidCalculate
                 return 0;
             }
         }
-
-    
-     
         /// <summary>
         /// 根据序列得到对应的数字序列
         /// </summary>
