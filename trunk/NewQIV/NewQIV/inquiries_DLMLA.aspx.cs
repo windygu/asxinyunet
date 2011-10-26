@@ -9,6 +9,7 @@ using ProteidCalculate;
 using cn.buddy;
 using SvmNet;
 using SVM;
+using System.Collections;
 
 namespace WebUI
 {
@@ -16,7 +17,7 @@ namespace WebUI
     {       
         protected void Page_Load(object sender, EventArgs e)
         {
-            thresholdValue.SelectedIndex = 1;
+           
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -71,7 +72,7 @@ namespace WebUI
             double thold = double.Parse(thresholdValue.Text.Trim());
             string[] strNames;//序列的名称
             string[] serials = ProteidCharacter.SplitStringsByEnter(txtInput.Text, out strNames);
-            string output = ProteidSvmTest.GetTableHeader();
+            string output = ProteidSvmTest.GetTableHeaderOfAddOne();
             for (int i = 0; i < serials.Length; i++)
             {
                 int[] posK;//目标字符串所在在位置
@@ -87,8 +88,9 @@ namespace WebUI
                 double totalResultR = ProteidSvmTest.GetSvmPredictResult(_default.modelList[5], CharacterValueR, out probValueR);
 
                 //先对结果进行过滤，然后排序
-                List<int> cutOutput = new List<int>();
+                //List<int> cutOutput = new List<int>();
                 Dictionary<int, string> dic = new Dictionary<int, string>();
+                Hashtable ht = new Hashtable();//存储存在的位置编号
                 for (int j = 0; j < probValueK.Length; j++)
                 {
                     if (sequencesK[j].Contains("O"))
@@ -99,11 +101,16 @@ namespace WebUI
                     {
                         string temp = ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], posK[j].ToString(),
                            sequencesK[j], probValueK[j].ToString("F6"), "330099", "methylated lysine");
-                        cutOutput.Add(posK[j]);
+                        //cutOutput.Add(posK[j]);
                         dic.Add(posK[j], temp);
+                        if (!ht.ContainsKey(posK[j]))
+                        {
+                            ht.Add(posK[j], "");//添加
+                        }
                     }
-                }
-                //
+                }                             
+                //List<int> cutOutputR = new List<int>();
+                Dictionary<int, string> dicR = new Dictionary<int, string>();               
                 for (int j = 0; j < probValueR.Length; j++)
                 {
                     if (sequencesR[j].Contains("O"))
@@ -114,15 +121,33 @@ namespace WebUI
                     {
                         string temp = ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], posR[j].ToString(),
                          sequencesR[j], probValueR[j].ToString("F6"), "009933", "acetyllysine");
-                        cutOutput.Add(posR[j]);
-                        dic.Add(posR[j], temp);
+                        //cutOutputR.Add(posR[j]);
+                        dicR.Add(posR[j], temp);
+                        if (!ht.ContainsKey (posR [j ]))
+                        {
+                            ht.Add(posR[j], "");//添加
+                        }
                     }
                 }
                 //对结果进行处理
-                cutOutput.Sort();//先排序
-                for (int r = 0; r < cutOutput.Count; r++)
+                //cutOutput.Sort();//先排序
+                //cutOutputR.Sort();//先排序
+                List<int> allLocation = new List<int>();
+                foreach (DictionaryEntry  item in ht )
                 {
-                    output += dic[cutOutput[r]];
+                    allLocation.Add((int)item.Key);
+                }
+                allLocation.Sort();//排序              
+                for (int r = 0; r <allLocation.Count ; r++)
+                {
+                    if (dic.ContainsKey (allLocation[r ]))
+                    {
+                        output += dic[allLocation [r ]];
+                    }
+                    if (dicR .ContainsKey (allLocation [r]))
+                    {
+                        output += dicR [allLocation[r]];
+                    }
                 }
             }
             output += ProteidSvmTest.GetTableTail();

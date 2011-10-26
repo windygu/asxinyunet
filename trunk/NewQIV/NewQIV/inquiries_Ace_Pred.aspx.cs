@@ -17,7 +17,7 @@ namespace WebUI
         int[] arrList = new int[] { 2, 3, 4, 5, 7, 9, 10, 12, 14, 15, 17, 19, 20, 21 };
         protected void Page_Load(object sender, EventArgs e)
         {
-            thresholdValue.SelectedIndex = 1;
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)

@@ -262,7 +262,7 @@ namespace SvmNet
             string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
                 "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
             double[] Param_C = new double[] { 32768, 32768, 32768, 32768, 32768 ,64,8.0};//参数列表
-            double[] Param_G = new double[] { 0.5, 1, 0.5, 0.5, 1, 0.0110485 ,0.5};//参数列表
+            double[] Param_G = new double[] { 0.5, 1, 0.5, 0.5, 1, 0.0110485, 0.001953125 };//参数列表
             Model[] modelList = new Model[filesName.Length];//返回的模型
             for (int i = 0; i < filesName.Length  ; i++)
             {

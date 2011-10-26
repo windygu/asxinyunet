@@ -11,8 +11,8 @@ namespace BioinfoLibrary.PredictionModel
     public class BasicPredictionModel
     {
         //能够让预测模型之间自由组合,计算特征值
-
         //计算特征值后，进行预测，也是一致的
+
     }
 
     /// <summary>

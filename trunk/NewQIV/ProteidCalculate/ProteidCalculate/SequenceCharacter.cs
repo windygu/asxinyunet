@@ -71,9 +71,9 @@ namespace ProteidCalculate
         }
         #endregion
 
-        #region 将字符串进行分割：按照换行确定 ---已转移---
+        #region 将字符串进行分割：按照换行确定
         /// <summary>
-        /// 对文本块进行分割，按照换行符和>识别  ---已转移---
+        /// 对文本块进行分割，按照换行符和>识别  
         /// </summary>
         /// <param name="text">文本块</param>
         /// <returns>标志的字符串数组</returns>
@@ -81,6 +81,8 @@ namespace ProteidCalculate
         {
             //分割方法：从头到尾检索，遇到>检索遇到\r\n(由<替换)则删掉           
             text = text.Replace ("\r\n","<").Replace ("\n","<") ;//过滤掉空格小数点等非法字符
+            //删除前面的空行
+            while (text[0] == '<') { text = text.Remove(0, 1); };
             // 查找> < 分别出现的位置
             int[] firstLocation = IndexOfcharPosition(text, '>');//>出现的位置
             int[] secLocation = IndexOfcharPosition(text, '<');//换行符出现的位置
@@ -111,7 +113,7 @@ namespace ProteidCalculate
             {
                 if (subStr[i] != "")
                 {
-                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", ""); //.Replace ("O","") 解除限制o
+                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", "").Replace ("O","");// 解除限制o
                 }
             }
             //剔除不是字母的元素
@@ -128,17 +130,18 @@ namespace ProteidCalculate
                 }
             }
             return res;
-        }
-        
+        }        
         
         public static string[] SplitStringsByEnter(string text,out string[] strNames)
         {
             //分割方法：从头到尾检索，遇到>检索遇到\r\n(由<替换)则删掉           
             text = text.Replace("\r\n", "<").Replace("\n", "<").Replace(" ", "").Replace(".", "");
+            //删除前面的空行
+            while (text[0] == '<') {text = text.Remove(0, 1); };
             // 查找> < 分别出现的位置
             int[] firstLocation = IndexOfcharPosition(text, '>');//>出现的位置
             int[] secLocation = IndexOfcharPosition(text, '<');//换行符出现的位置
-            
+         
             //Queue<string > qu = new Queue<string>() ;
             Stack<string > qu = new Stack<string> () ;            
             for (int i = firstLocation.Length -1 ; i >=0 ; i-- )
@@ -169,9 +172,18 @@ namespace ProteidCalculate
             {
                 if (subStr[i] != "")
                 {
-                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", "");//.Replace ("O","")                   
+                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("O", "").Replace("<", "");//
+                    //StringBuilder temp = new StringBuilder();
+                    //foreach (char  item in res [count ])
+                    //{
+                    //    if ((int)item >64 ||(int)item <91)
+                    //    {
+                    //        temp.Append(item);
+                    //    }
+                    //}
+                    //res[count++] = temp.ToString ();
                 }
-            }
+            }            
             //剔除不是字母的元素
             int temp;
             for (int i = 0; i < res.Length ; i++)

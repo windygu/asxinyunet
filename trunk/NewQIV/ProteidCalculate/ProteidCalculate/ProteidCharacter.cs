@@ -21,7 +21,7 @@ namespace ProteidCalculate
         //"A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"
         #endregion
 
-        #region 指定中心元素截取  ---已转移---
+        #region 指定中心元素截取 
         /// <summary>
         /// 获取以指定元素为中心，指定长度的字符序列，不足补O
         /// </summary>
@@ -420,6 +420,7 @@ namespace ProteidCalculate
                 res[count++] = temp1;
             }
             return res;
+
             #region 废弃代码
             //string[] allText = SplitStringsByEnter(text);//输入分割
             //string[][] subText = new string[allText.Length][];
@@ -500,7 +501,6 @@ namespace ProteidCalculate
             }
             double[][] res = new double[sum][];
             int count = 0;
-
             for (int i = 0; i < allText.Length; i++)
             {
                 for (int j = 0; j < subText[i].Length; j++)

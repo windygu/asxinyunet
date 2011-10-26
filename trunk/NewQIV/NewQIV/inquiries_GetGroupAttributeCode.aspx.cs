@@ -16,7 +16,7 @@ namespace WebUI
     {       
         protected void Page_Load(object sender, EventArgs e)
         {
-            thresholdValue.SelectedIndex = 1;
+           
         }
         protected void Button1_Click(object sender, EventArgs e)
         {

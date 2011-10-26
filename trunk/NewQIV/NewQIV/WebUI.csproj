@@ -62,41 +62,42 @@
     <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'cutDebug|AnyCPU'">
+    <OutputPath>Bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NewBug|AnyCPU'">
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalcuteWave, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\CalcuteWave.dll</HintPath>
+    <Reference Include="App_Licenses">
+      <HintPath>..\dll\App_Licenses.dll</HintPath>
     </Reference>
-    <Reference Include="CuteEditor, Version=6.1.0.0, Culture=neutral, PublicKeyToken=3858aa6802b1223a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\CuteEditor.dll</HintPath>
+    <Reference Include="CalcuteWave">
+      <HintPath>..\dll\CalcuteWave.dll</HintPath>
     </Reference>
-    <Reference Include="CuteEditor.ImageEditor, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2bb6cdd4237de7bf, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\CuteEditor.ImageEditor.dll</HintPath>
+    <Reference Include="CuteEditor">
+      <HintPath>..\dll\CuteEditor.dll</HintPath>
     </Reference>
-    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>uploads\bin\DotNet.Tools.dll</HintPath>
+    <Reference Include="CuteEditor.ImageEditor">
+      <HintPath>..\dll\CuteEditor.ImageEditor.dll</HintPath>
     </Reference>
-    <Reference Include="KdTree, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Library.dll</HintPath>
+    <Reference Include="DotNet.Tools">
+      <HintPath>..\dll\DotNet.Tools.dll</HintPath>
     </Reference>
-    <Reference Include="MWArray, Version=2.10.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\MWArray.dll</HintPath>
+    <Reference Include="KdTree">
+      <HintPath>..\dll\KdTree.dll</HintPath>
     </Reference>
-    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.20561, Culture=neutral, PublicKeyToken=318b389f0db66e46">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NetSpell.SpellChecker.dll</HintPath>
+    <Reference Include="Library">
+      <HintPath>..\dll\Library.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+    <Reference Include="MWArray, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>uploads\bin\NPOI.dll</HintPath>
+      <HintPath>..\dll\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="NetSpell.SpellChecker">
+      <HintPath>..\dll\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\dll\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -145,22 +146,6 @@
     <Content Include="DataSet\WSM-Plam-Train.txt" />
     <Content Include="Default.aspx" />
     <Content Include="inquiries_GetGroupAttributeCode.aspx" />
-    <Content Include="Library\App_Licenses.dll" />
-    <Content Include="Library\CalcuteWave.dll" />
-    <Content Include="Library\CuteEditor.dll" />
-    <Content Include="Library\CuteEditor.ImageEditor.dll" />
-    <Content Include="Library\DotNet.Tools.dll" />
-    <Content Include="Library\DotNet.Tools.pdb" />
-    <Content Include="Library\KdTree.dll" />
-    <Content Include="Library\Library.dll" />
-    <Content Include="Library\Library.pdb" />
-    <Content Include="Library\MWArray.dll" />
-    <Content Include="Library\NetSpell.SpellChecker.dll" />
-    <Content Include="Library\NewQIV.dll" />
-    <Content Include="Library\NewQIV.pdb" />
-    <Content Include="Library\NPOI.dll" />
-    <Content Include="Library\ProteidCalculate.dll" />
-    <Content Include="Library\ProteidCalculate.pdb" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -403,7 +388,6 @@
     <Content Include="AboutUs.aspx" />
     <None Include="DataSet\所有页面的训练集参数.docx" />
     <None Include="Library\CuteEditor.lic" />
-    <None Include="Library\ManagedCPPAPI.netmodule" />
     <None Include="WebUI.csproj.pdsync" />
     <None Include="WebUI.csproj.pdsyncu" />
     <Content Include="download.aspx" />
@@ -558,6 +542,13 @@
     <Content Include="Ace_Pred.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ProteidCalculate\ProteidCalculate\ProteidCalculate.csproj">
       <Project>{80BEB472-2C33-40F9-8FA8-9C7C263C0498}</Project>
       <Name>ProteidCalculate</Name>
@@ -570,13 +561,6 @@
       <Project>{2A381CBB-8291-435C-A8E3-BBF3B590B2B6}</Project>
       <Name>SVM</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -593,7 +577,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>18466</DevelopmentServerPort>
+          <DevelopmentServerPort>23759</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

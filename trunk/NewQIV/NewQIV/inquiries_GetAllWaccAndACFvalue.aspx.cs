@@ -15,8 +15,7 @@ namespace WebUI
     public partial class inquiries_GetAllWaccAndACFvalue : System.Web.UI.Page
     {   
         protected void Page_Load(object sender, EventArgs e)
-        {
-            thresholdValue.SelectedIndex = 1;
+        {          
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -44,7 +43,7 @@ namespace WebUI
                 int[] pos;
                 string[] sequences;
                 double[] probValue;
-                double[][] CharacterValue = ProteidCharacter.NewGetAllWaccAndACFvalue(text, 19, 'C', 8, out sequences, out pos);
+                double[][] CharacterValue = ProteidCharacter.NewGetAllWaccAndACFvalue(serials [i ], 19, 'C', 8, out sequences, out pos);
                 double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[1], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
