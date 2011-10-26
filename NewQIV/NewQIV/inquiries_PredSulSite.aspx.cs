@@ -15,7 +15,8 @@ namespace WebUI
     public partial class inquiries_PredSulSite : System.Web.UI.Page
     {       
         protected void Page_Load(object sender, EventArgs e)
-        {         
+        {
+            thresholdValue.SelectedIndex = 1;
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -39,7 +40,11 @@ namespace WebUI
                     out sequences,out pos);
                 double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[6], CharacterValue, out probValue);
                 for (int j = 0; j <probValue.Length ;j ++)
-                {                  
+                {
+                    if (sequences[j].Contains("O"))
+                    {
+                        continue;//屏蔽O的序列
+                    }
                     if (probValue[j] >= thold) {
                         output += ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], pos[j].ToString(), 
                             sequences[j], probValue[j].ToString("F6"));

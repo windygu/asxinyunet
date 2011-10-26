@@ -73,10 +73,10 @@ font-size:10.5000pt; font-family:'Calibri'; }
                                 <td style="width:200px" align="right">&nbsp;</td>
                                 <td align="left">
                                     <p class="p0" style="margin-bottom:0pt; margin-top:0pt; line-height:150%; ">
-                                        <span style="mso-spacerun:'yes'; font-style:italic; font-family:'Calibri'; " 
+                                        <span style="mso-spacerun:'yes'; font-style:italic; " 
                                             class="style1">
                                         Please&nbsp;select&nbsp;which&nbsp;kind&nbsp;of&nbsp;post-translational&nbsp;modifications&nbsp;need&nbsp;to&nbsp;be&nbsp;predicted</span><span 
-                                            style="mso-spacerun:'yes'; font-family:'宋体'; " class="style1">：</span>&nbsp;</p>
+                                            style="mso-spacerun:'yes'; " class="style1">：</span>&nbsp;</p>
 <span class="style2">
                                     <asp:RadioButton ID="rdbM" runat="server" Checked="True" Text="methylated lysine" 
                                         GroupName="ab" CssClass="style2" />                                         

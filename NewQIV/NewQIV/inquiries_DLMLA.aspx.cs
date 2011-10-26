@@ -16,7 +16,7 @@ namespace WebUI
     {       
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            thresholdValue.SelectedIndex = 1;
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -51,6 +51,10 @@ namespace WebUI
                 double totalResult = ProteidSvmTest.GetSvmPredictResult(model, CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
+                    if (sequences[j].Contains("O"))
+                    {
+                        continue;//屏蔽O的序列
+                    }
                     if (probValue[j] >= thold)
                     {
                         output += ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], pos[j].ToString(),
@@ -79,7 +83,7 @@ namespace WebUI
                 int[] posR;//目标字符串所在在位置
                 string[] sequencesR;//截取的子序列
                 double[] probValueR;//概率值
-                double[][] CharacterValueR = ProteidCharacter.NewDLMLA(serials[i], 15, 'K',5, out sequencesR, out posR);
+                double[][] CharacterValueR = ProteidCharacter.NewDLMLA(serials[i], 13, 'K',5, out sequencesR, out posR);
                 double totalResultR = ProteidSvmTest.GetSvmPredictResult(_default.modelList[5], CharacterValueR, out probValueR);
 
                 //先对结果进行过滤，然后排序
@@ -87,6 +91,10 @@ namespace WebUI
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 for (int j = 0; j < probValueK.Length; j++)
                 {
+                    if (sequencesK[j].Contains("O"))
+                    {
+                        continue;//屏蔽O的序列
+                    }
                     if (probValueK[j] >= thold)
                     {
                         string temp = ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], posK[j].ToString(),
@@ -98,6 +106,10 @@ namespace WebUI
                 //
                 for (int j = 0; j < probValueR.Length; j++)
                 {
+                    if (sequencesR[j].Contains("O"))
+                    {
+                        continue ; //屏蔽O的序列
+                    }
                     if (probValueR[j] >= thold)
                     {
                         string temp = ProteidSvmTest.GetHtmlResultDisplayCode(strNames[i], posR[j].ToString(),

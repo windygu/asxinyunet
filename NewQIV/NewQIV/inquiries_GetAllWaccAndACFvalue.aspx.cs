@@ -15,12 +15,12 @@ namespace WebUI
     public partial class inquiries_GetAllWaccAndACFvalue : System.Web.UI.Page
     {   
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            thresholdValue.SelectedIndex = 1;
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Calculate();
-            //test();
+            Calculate();          
         }
         void test ()
         {

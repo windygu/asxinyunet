@@ -16,7 +16,8 @@ namespace WebUI
     {        
         int[] arrList = new int[] { 2, 3, 4, 5, 7, 9, 10, 12, 14, 15, 17, 19, 20, 21 };
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            thresholdValue.SelectedIndex = 1;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -51,6 +52,10 @@ namespace WebUI
                 double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList [1], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
+                    if (sequencesK [j].Contains ("O"))
+                    {
+                        continue;//屏蔽O的序列
+                    }
                     if (probValue[j] >= thold)
                     {
                         output += "<tr>";
@@ -64,7 +69,7 @@ namespace WebUI
                         output += ProteidSvmTest.GetHtmlCodeByString(sequencesK[j], "009933", "CC3333", "000000", arrList);
                         output += "</td>";
                         output += "<td align='center' style=\"border:1px solid #333;\">";
-                        output += probValue[j].ToString("F4");
+                        output += probValue[j].ToString("F6");
                         output += "</td>";
                         output += "</tr>";
                     }
