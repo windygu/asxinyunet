@@ -8,7 +8,7 @@ namespace BioinfoLibrary
     /// <summary>
     /// 分组重量编码
     /// </summary>
-    public class GroupWeight
+    public class GroupWeight : BaseBioinfo
     {
         #region 分组重量编码特征提取算法-Wacc
         /// <summary>

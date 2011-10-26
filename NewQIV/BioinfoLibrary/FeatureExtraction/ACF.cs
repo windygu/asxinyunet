@@ -8,7 +8,7 @@ namespace BioinfoLibrary
     /// <summary>
     /// 自相关特征提取算法
     /// </summary>
-    public class ACF
+    public class ACF : BaseBioinfo
     {
         #region 自相关特征提取算法-ACF
         /// <summary>
