@@ -275,5 +275,27 @@ namespace BioinfoLibrary
             return count;
         }
         #endregion
+
+        #region 根据序列得到对应的数字序列
+        /// <summary>
+        /// 根据序列得到对应的数字序列
+        /// </summary>
+        /// <param name="strSeqence">序列</param>
+        /// <returns>对应的数字序列</returns>
+        public static double[] GetValuesOfSequence(string strSeqence)
+        {
+            //检测是否包含其他非规定字符：B、J、O、U、X,Z,并剔除
+            strSeqence = strSeqence.ToUpper().Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString();
+            //键值转换数组,不包含的字符也赋值，但不影响最终结果
+            double[] changArray = new double[] { 1.8, 2.1, 2.5, -3.5, -3.5, 2.8, -0.4, -3.2, 4.5, 10.1, -3.9, 3.8, 1.9,
+                -3.5, 15, -1.6, -3.5, -4.5, -0.8, -0.7, 21, 4.2, -0.9, 24, -1.3, 26.1 };
+            double[] cValue = new double[strSeqence.Length];
+            for (int i = 0; i < strSeqence.Length; i++)
+            {
+                cValue[i] = changArray[Convert.ToInt32(strSeqence[i]) - 65];//进行键值转换
+            }
+            return cValue;
+        }
+        #endregion
     }
 }

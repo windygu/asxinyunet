@@ -57,8 +57,9 @@ namespace BioinfoLibrary
         /// <returns>分类结果,第一个为第一类，第二个为第二类</returns>
         public static double[] KdTreeTest(string testFilePath, string text, string waveName)
         {
-            double[][] res = FeatureExtraction.GetAllSeqCharacter(text, waveName);
-            return KdTreeTest(testFilePath, res);
+            //double[][] res = FeatureExtraction.GetAllSeqCharacter(text, waveName);
+            //return KdTreeTest(testFilePath, res);
+            return null; 
         }
         #endregion
     }

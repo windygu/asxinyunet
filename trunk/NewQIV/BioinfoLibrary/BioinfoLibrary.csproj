@@ -59,20 +59,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACF.cs" />
     <Compile Include="BaseBioinfo.cs" />
     <Compile Include="BioinfoHelper.cs" />
-    <Compile Include="FeatureExtraction.cs" />
+    <Compile Include="FeatureExtraction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GroupWeight.cs" />
+    <Compile Include="ImproveWacc.cs" />
     <Compile Include="KdTreeDetection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SequenceProcess.cs" />
     <Compile Include="SvmNetDetection.cs" />
+    <Compile Include="FeatureExtraction\Wacc.cs" />
+    <Compile Include="FeatureExtraction\WaveLet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Library\计划进度.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Library\平台搭建计划.doc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

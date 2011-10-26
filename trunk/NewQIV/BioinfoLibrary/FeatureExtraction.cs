@@ -13,27 +13,6 @@ namespace BioinfoLibrary
     /// </summary>
     public class FeatureExtraction
     {
-        #region 小波变换获取蛋白质序列特征-Wavelet
-        /// <summary>
-        /// 获取一条蛋白质序列的特征
-        /// </summary>
-        /// <param name="seqData">蛋白质序列数据</param>
-        /// <param name="waveName" >小波变换名称</param>
-        /// <returns>特征向量</returns>
-        public static double[] GetSequenceCharacter(string seqData, string waveName)
-        {          
-            KdTreeDataPro cwf = new KdTreeDataPro();
-            MWNumericArray nmarray = (MWNumericArray)cwf.CalcuteWave((MWArray)seqData, waveName);
-            double[,] resultT = (double[,])nmarray.ToArray();
-            double[] result = new double[20];
-            for (int i = 0; i < 20; i++)
-            {
-                result[i] = resultT[0, i];
-            }
-            return result;
-        }
-        #endregion
-
         #region	获取多条蛋白质序列的特征:public static double[][] GetAllSeqCharacter
         /// <summary>
         /// 小波变换获取多条蛋白质序列的特征
@@ -47,19 +26,7 @@ namespace BioinfoLibrary
             return GetSeqCharactersBySeqs(str, waveName);//计算结果
         }
         #endregion
-
-        #region 获取多条蛋白质序列的特征 采用默认的小波变换
-        /// <summary>
-        /// 采用默认的小波变换 bior2.4进行运算
-        /// </summary>
-        /// <param name="text">>多条蛋白质的原始序列</param>
-        /// <returns>特征向量数组,每一行为一条结果</returns>
-        public static double[][] GetAllSeqCharacter(string text)
-        {
-            return GetAllSeqCharacter(text, "bior2.4");
-        }
-        #endregion
-
+        
         #region WaccAndACF 2011-10-21修改版
         public static double[][] NewGetAllWaccAndACFvalue(string text, int strLength, char desChar, int M, out string[] subText, out int[] Pos)
         {
@@ -112,28 +79,7 @@ namespace BioinfoLibrary
             Array.Copy(wacc, 0, res, 0, wacc.Length);
             Array.Copy(acf, 0, res, wacc.Length, acf.Length);
             return res;
-        }
-
-        /// <summary>
-        /// 计算一条序列的WACC特征值
-        /// </summary>
-        /// <param name="strSeqence">氨基酸序列</param>
-        /// <returns>特征值</returns>
-        public static double[] WACC_OneSeqence(string strSeqence)
-        {
-            double[] res = new double[NormalSeqence.Length];
-            double temp;
-            for (int i = 0; i < res.Length; i++)
-            {
-                temp = 0;
-                for (int j = 0; j < strSeqence.Length; j++)
-                {
-                    temp += XIPCalculate(strSeqence, i, j) * (j + 1);
-                }
-                res[i] = temp / strSeqence.Length;
-            }
-            return res;
-        }
+        }     
 
         /// <summary>
         /// 计算一条输入序列计算其自相关函数
@@ -154,89 +100,6 @@ namespace BioinfoLibrary
                     temp += SeqenceValue[j - 1] * SeqenceValue[j + i - 1];
                 }
                 res[i - 1] = temp / (SeqenceValue.Length - i);
-            }
-            return res;
-        }
-        #endregion
-
-        #region 分组编码特征
-        //特征分类 分别为C1 C2 C3 C4
-        static int[] groupValue = {1,0,2,3,3,1,1,  //A-G
-                                   4,1,0,4,1,1,2,  //H-N
-                                   0,1,2,4,2,2,0,1,1,0,2,0};//O-Z
-        static char firFlag = '1';
-        static char secFlag = '0';
-
-        /// <summary>
-        /// 获取一条序列的分组特征编码,三条,注意输入前要剔除不合法字符
-        /// </summary>
-        /// <param name="seqData">输入序列</param>
-        /// <returns>特征编码</returns>
-        static string[] GetGroupCodeString(string seqData)
-        {
-            seqData = seqData.ToUpper().Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString(); ;
-            string[] restr = new string[3];
-            restr[0] = "";
-            restr[1] = "";
-            restr[2] = "";
-            int temp;
-            for (int i = 0; i < seqData.Length; i++)
-            {
-                temp = groupValue[Convert.ToInt32(seqData[i]) - 65];
-                restr[0] += ((temp <= 2) ? firFlag : secFlag);
-                restr[1] += (((temp % 2) == 1) ? firFlag : secFlag);
-                restr[2] += (((temp == 1) || (temp == 4)) ? firFlag : secFlag);
-            }
-            return restr;
-        }
-        //获取一条序列的正规重量
-        static double GetWeigthOfString(string seqData)
-        {
-            int sum = 0;
-            for (int i = 0; i < seqData.Length; i++)
-            {
-                if (seqData[i] == firFlag)
-                {
-                    sum++;
-                }
-            }
-            return (double)((double)sum / seqData.Length);
-        }
-
-        /// <summary>
-        /// 获取一条特征序列的分组重量编码
-        /// </summary>
-        /// <param name="seqData">序列</param>
-        /// <param name="length">划分长度</param>
-        /// <returns>分组重量编码</returns>
-        static double[] GetGroupWeightCodeOfCharcter(string seqData, int length)
-        {
-            string tempStr = "";
-            double[] res = new double[length];
-            int L;
-            for (int i = 0; i < length; i++)
-            {
-                L = (int)Math.Round(((double)((i + 1) * (double)seqData.Length / (double)length)), 0);
-                tempStr = seqData.Substring(0, L);
-                res[i] = GetWeigthOfString(tempStr); //正规重量
-            }
-            return res;
-        }
-
-        /// <summary>
-        /// 获取一条蛋白质序列的分组重量编码
-        /// </summary>
-        /// <param name="seqData"></param>
-        /// <param name="length"></param>
-        /// <returns></returns>
-        public static double[] GetOneProteinSeqCode(string seqData, int length)
-        {
-            string[] restr = GetGroupCodeString(seqData);
-            double[] res = new double[3 * length];
-            for (int i = 0; i < restr.Length; i++)
-            {
-                double[] t1 = GetGroupWeightCodeOfCharcter(restr[i], length);
-                Array.Copy(t1, 0, res, i * length, t1.Length);
             }
             return res;
         }
@@ -804,80 +667,8 @@ namespace BioinfoLibrary
         {
             return GetSeqCharactersBySeqs(texts, "bior2.4");
         }
-
-        /// <summary>
-        /// 根据输入文本块得到自相关数组
-        /// </summary>
-        /// <param name="text">文本块</param>
-        /// <returns>自相关数组</returns>
-        //public static double[,] GetTextACFValue(string text,int M)
-        //{
-        //    string[] strArray = SplitStringsByEnter(text);
-        //    double[,] res = new double [strArray.GetLength (0),M ] ;
-        //    double[] temp,temp1;
-        //    for (int i = 0; i < strArray.Length ; i++)
-        //    {
-        //        temp = GetValuesOfSequence(strArray[i]);//量化序列
-        //        temp1 = AutoCorrFunction(temp, M);//计算自相关
-        //        for (int j = 0; j < temp1.Length ; j++)
-        //        {
-        //            res[i, j] = temp1[j];
-        //        }
-        //    }
-        //    return res ;
-        //}
-
-        /// <summary>
-        /// 计算多条序列的特征值,从文本框获取的原始数据  位置权重氨基酸组分计算-
-        /// </summary>
-        /// <param name="text">多条序列,输入格式固定</param>
-        /// <returns>特征值数组</returns>
-        //public static double[,] WACC_AllSeqence(string text)
-        //{            
-        //    string[] str = SplitStringsByEnter(text);//分割
-        //    double[,] res = new double[str.Length, NormalSeqence.Length];
-        //    double[] temp ;
-        //    for (int i = 0; i < str.Length ; i++)
-        //    {
-        //        temp = WACC_OneSeqence(str[i]);
-        //        for (int j = 0; j <temp.Length ; j++)
-        //        {
-        //            res[i, j] = temp[j];
-        //        }
-        //    }
-        //    return res ;
-        //}
-
-        private static int XIPCalculate(string str, int i, int p)
-        {
-            if (str[p] == NormalSeqence[i])
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
         
-        /// <summary>
-        /// 根据序列得到对应的数字序列
-        /// </summary>
-        /// <param name="strSeqence">序列</param>
-        /// <returns>对应的数字序列</returns>
-        private static double[] GetValuesOfSequence(string strSeqence)
-        {
-            //检测是否包含其他非规定字符：B、J、O、U、X,Z,并剔除
-            strSeqence = strSeqence.ToUpper().Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString();
-            //键值转换数组,不包含的字符也赋值，但不影响最终结果
-            double[] changArray = new double[] { 1.8, 2.1, 2.5, -3.5, -3.5, 2.8, -0.4, -3.2, 4.5, 10.1, -3.9, 3.8, 1.9,
-                -3.5, 15, -1.6, -3.5, -4.5, -0.8, -0.7, 21, 4.2, -0.9, 24, -1.3, 26.1 };
-            double[] cValue = new double[strSeqence.Length];
-            for (int i = 0; i < strSeqence.Length; i++)
-            {
-                cValue[i] = changArray[Convert.ToInt32(strSeqence[i]) - 65];//进行键值转换
-            }
-            return cValue;
-        }    
+       
+       
     }
 }
