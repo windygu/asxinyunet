@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'cutDebug|x86'">
+    <OutputPath>bin\x86\cutDebug\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CalcuteWave">
       <HintPath>..\NewQIV\Library\CalcuteWave.dll</HintPath>
