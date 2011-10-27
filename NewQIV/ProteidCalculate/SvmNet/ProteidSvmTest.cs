@@ -261,8 +261,8 @@ namespace SvmNet
             string folder = @"C:\DataSet\"; //存放训练的目录
             string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
                 "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
-            double[] Param_C = new double[] { 32768, 32768, 32768, 32768, 32768 ,64,8.0};//参数列表
-            double[] Param_G = new double[] { 0.5, 1, 0.5, 0.5, 1, 0.0110485, 0.001953125 };//参数列表
+            double[] Param_C = new double[] { 512, 32768, 32768, 32768, 32768, 64, 2.0 };//参数列表
+            double[] Param_G = new double[] { 0.00048828125, 1, 0.5, 0.5, 1, 0.0110485, 0.5 };//参数列表
             Model[] modelList = new Model[filesName.Length];//返回的模型
             for (int i = 0; i < filesName.Length  ; i++)
             {
@@ -273,6 +273,23 @@ namespace SvmNet
         #endregion
 
         #region 废弃的测试代码
+        /// <summary>
+        /// 获得网站中所有的SVM变量
+        /// </summary>
+        public static void GetAllParams()
+        {
+            string folder = @"C:\DataSet\"; //存放训练的目录
+            string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
+                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };          
+            for (int i =5; i < filesName.Length; i++)
+            {
+                double C, Gamma;
+                Parameter parameters = new Parameter();
+                Problem train = Problem.Read(folder + filesName[i]);               
+                ParameterSelection.Grid(train, parameters, "params.txt", out C, out Gamma);
+                Console.WriteLine("{0} C:{1},G:{2}",filesName[i],C,Gamma );
+            }            
+        }
         //			Problem train = Problem.Read("data.txt"); //"a2a.txt"  train.txt
         //			RangeTransform range = RangeTransform.Compute(train);
         //            train = range.Scale(train);
