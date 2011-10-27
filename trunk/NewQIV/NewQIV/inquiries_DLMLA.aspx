@@ -23,6 +23,10 @@ font-size:10.5000pt; font-family:'Calibri'; }
         {
             font-size: medium;
         }
+        .style3
+        {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -44,13 +48,10 @@ font-size:10.5000pt; font-family:'Calibri'; }
             <tr>
               <td><table width="1000">
                   <tr>
-                    <th rowspan="2"><font size="+2">BIOINFO: </font> </th>
-                    <td><font size="4pt">Prediction of modification site. </font></td>
+                    <th><font size="+2">BIOINFO: </font> </th>
+                    <td><font size="4pt">DLMLA: Distinguish lysine methylation from lysine acetylation </font></td>
                   </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-              </table></td>
+                  </table></td>
             </tr>
         </table></td>
       </tr>
@@ -130,7 +131,14 @@ font-size:10.5000pt; font-family:'Calibri'; }
         <td>&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td><br />
+        <td class="style3">
+            <br />
+            Window size -6 to +6 is employed to construct the prediction&nbsp; model&nbsp; DLMLA. 
+            Users can submit&nbsp; one or&nbsp; multiple human or other species protein sequences in 
+            FASTA format to the system and select which kind of post-translational 
+            modifications (methylated lysine or acetyllysine) need to be predicted. The 
+            system efficiently returns the predictions, including protein name, the position 
+            of site, flanking amino acids, predicted result and SVM probability.<br />
         </td>
       </tr>
       <tr>
