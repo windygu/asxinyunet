@@ -19,11 +19,7 @@ namespace SvmNet
             //List<int> list = new List<int>();
             //list.AddRange(new int[] {2,9,5,8,3,6,4 });
             //list.Sort();
-
-            int L = 3;
-            double k = 1;
-            double t = k / L;
-            Console.WriteLine(t.ToString());
+            ProteidSvmTest.GetAllParams();
 //			double[] res ;
 //			double d = ProteidSvmTest.GetSvmPredictResult ("train1.txt","test1.txt",8192,0.000488281,out res ) ;
 //			Console.WriteLine (d.ToString ()) ;
