@@ -261,14 +261,16 @@ namespace SvmNet
             string folder = @"C:\DataSet\"; //存放训练的目录
             string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
                 "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
-            double[] Param_C = new double[] { 512, 32768, 32768, 32768, 32768, 64, 2.0 };//参数列表
-            double[] Param_G = new double[] { 0.00048828125, 1, 0.5, 0.5, 1, 0.0110485, 0.5 };//参数列表
+            //double[] Param_C = new double[] { 512, 2048, 8, 8192, 32768, 8,8192 };//参数列表
+            //double[] Param_G = new double[] { 0.00048828125, 0.001953125, 0.5, 0.5, 1, 0.03125, 3.0517578125E-05 };//参数列表
+            double[] Param_C = new double[] { 512, 32768, 32768, 32768, 32768, 0.5, 2.0 };//参数列表
+            double[] Param_G = new double[] { 0.00048828125, 1, 0.5, 0.5, 1, 2, 0.5 };//参数列表
             Model[] modelList = new Model[filesName.Length];//返回的模型
             for (int i = 0; i < filesName.Length  ; i++)
             {
                 modelList[i] = ProteidSvmTest.GetTrainingModel(folder + filesName[i], Param_C[i], Param_G[i]);
             }
-            return modelList;
+            return modelList;           
         }
         #endregion
 
