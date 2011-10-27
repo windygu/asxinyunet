@@ -44,7 +44,7 @@ namespace WebUI
                 string[] sequences;
                 double[] probValue;
                 double[][] CharacterValue = ProteidCharacter.NewGetAllWaccAndACFvalue(serials [i ], 19, 'C', 8, out sequences, out pos);
-                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[1], CharacterValue, out probValue);
+                double totalResult = ProteidSvmTest.GetSvmPredictResult(_default.modelList[0], CharacterValue, out probValue);
                 for (int j = 0; j < probValue.Length; j++)
                 {
                     if (probValue[j] >= thold)
