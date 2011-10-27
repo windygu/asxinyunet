@@ -5,6 +5,7 @@ using MathWorks.MATLAB.NET.Utility;
 using MathWorks.MATLAB.NET.Arrays;
 using KdTree;
 using System.Text;
+using SVM;
 
 namespace BioinfoLibrary
 {
@@ -13,7 +14,7 @@ namespace BioinfoLibrary
     /// </summary>
     public class SvmNetDetection
     {
-        #region  老的SVM测试,混合编程实现
+        #region  老的SVM测试,混合编程实现-为了保持兼容性,暂时保留
         /// <summary>
         /// SVM测试,错误率
         /// </summary>
@@ -78,6 +79,76 @@ namespace BioinfoLibrary
             //double[][] res = FeatureExtraction.GetAllSeqCharacter(text, waveName);
             //return SvmTest(testFilePath, res, 10, 4);
             return 0 ; 
+        }
+        #endregion
+
+        #region SVM.NET类库的使用及整理
+        /// <summary>
+        /// Svm.NET计算序列预测结果，直接根据模型来计算
+        /// </summary>
+        /// <param name="C">C值</param>
+        /// <param name="Gamma">G值</param>
+        /// <param name="Probability">概率值</param>
+        /// <returns>预测值</returns>
+        public static double GetSvmPredictResult(Model trainModel, string testDataFileName, out double[] Probability)
+        {
+            Problem test = Problem.Read(testDataFileName);
+            return Prediction.Predict(test, trainModel, out Probability);
+        }
+        //直接输入数据格式
+        public static double GetSvmPredictResult(Model trainModel, double[][] testData, out double[] Probability)
+        {
+            Problem test = Problem.ReadForTestData(testData);
+            return Prediction.Predict(test, trainModel, out Probability);
+        }
+
+        /// <summary>
+        /// 根据训练集的文件路径来计算预测结果
+        /// </summary>
+        /// <param name="trainDataFileName"></param>
+        /// <param name="testDataFileName"></param>
+        /// <param name="C"></param>
+        /// <param name="Gamma"></param>
+        /// <param name="Probability"></param>
+        /// <returns></returns>
+        public static double GetSvmPredictResult(string trainDataFileName, string testDataFileName, double C, double Gamma, out double[] Probability)
+        {
+            Model trainModel = GetTrainingModel(trainDataFileName, C, Gamma);
+            Problem test = Problem.Read(testDataFileName);
+            return Prediction.Predict(test, trainModel, out Probability);
+        }
+        /// <summary>
+        /// 根据训练集，得到训练的模型，固定起来，便于加快计算速度
+        /// </summary>
+        /// <returns></returns>
+        public static Model GetTrainingModel(string trainDataFileName, double C, double Gamma)
+        {
+            Problem train = Problem.Read(trainDataFileName);
+            Parameter parameters = new Parameter();
+            parameters.C = C;
+            parameters.Gamma = Gamma;
+            parameters.Probability = true;//设置输出概率值
+            return Training.Train(train, parameters);
+        }
+        /// <summary>
+        /// 默认去掉0
+        /// </summary>
+        /// <param name="trainDataFileName"></param>
+        /// <param name="testDataFileName"></param>
+        /// <param name="C"></param>
+        /// <param name="Gamma"></param>
+        /// <param name="Probability"></param>
+        /// <returns></returns>
+        public static double TestMode(string trainDataFileName, string testDataFileName, double C, double Gamma, out double[] Probability)
+        {
+            Problem test = Problem.ReadForSpecial(testDataFileName);
+            Problem train = Problem.ReadForSpecial(trainDataFileName);
+            Parameter parameters = new Parameter();
+            parameters.C = C;
+            parameters.Gamma = Gamma;
+            parameters.Probability = true;//设置输出概率值	
+            Model trainModel = Training.Train(train, parameters);
+            return Prediction.Predict(test, trainModel, out Probability);
         }
         #endregion
     }
