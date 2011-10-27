@@ -10,6 +10,10 @@ namespace BioinfoLibrary
     /// </summary>
     public class SequenceProcess
     {
+        ///算法说明：字符串分割时，最后进行字符串过滤并全部大写，
+        ///然后在所有后续的转换中，就不用考虑这些了。以优化速度，避免重复操作。
+        
+
         #region 将字符串进行分割：按照换行确定
         /// <summary>
         /// 对文本块进行分割，按照换行符和>进行识别 
@@ -20,6 +24,8 @@ namespace BioinfoLibrary
         {
             //分割方法：从头到尾检索，遇到>检索遇到\r\n(由<替换)则删掉           
             text = text.Replace("\r\n", "<").Replace("\n", "<");//暂时不过滤掉空格小数点等非法字符
+            //删除前面的空行
+            while (text[0] == '<') { text = text.Remove(0, 1); };
             // 查找> < 分别出现的位置
             int[] firstLocation = IndexOfcharPosition(text, '>');//>出现的位置
             int[] secLocation = IndexOfcharPosition(text, '<');//换行符出现的位置
@@ -50,7 +56,7 @@ namespace BioinfoLibrary
             {
                 if (subStr[i] != "")
                 {
-                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", ""); //.Replace ("O","") 解除限制o
+                    res[count++] = subStr[i].ToUpper().Replace ("O","").Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").Replace(" ", "").Replace("<", ""); 
                 }
             }
             //剔除不是字母的元素
@@ -79,6 +85,8 @@ namespace BioinfoLibrary
         {
             //分割方法：从头到尾检索，遇到>检索遇到\r\n(由<替换)则删掉           
             text = text.Replace("\r\n", "<").Replace("\n", "<").Replace(" ", "").Replace(".", "");
+            //删除前面的空行
+            while (text[0] == '<') { text = text.Remove(0, 1); };
             // 查找> < 分别出现的位置
             int[] firstLocation = IndexOfcharPosition(text, '>');//>出现的位置
             int[] secLocation = IndexOfcharPosition(text, '<');//换行符出现的位置
@@ -113,7 +121,7 @@ namespace BioinfoLibrary
             {
                 if (subStr[i] != "")
                 {
-                    res[count++] = subStr[i].ToUpper().Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace(" ", "").Replace("<", "");//.Replace ("O","")                   
+                    res[count++] = subStr[i].ToUpper().Replace ("O","").Replace("B", "").Replace("J", "").Replace("U", "").Replace("X", "").Replace("Z", "").Replace(" ", "").Replace("<", "");
                 }
             }
             //剔除不是字母的元素
@@ -149,10 +157,10 @@ namespace BioinfoLibrary
         public static string[] GetCentrlString(string seqData, int AllLength, char desChar)
         {
             //首先进行转换
-            seqData = seqData.ToUpper();
+            //seqData = seqData.ToUpper();
             int strLength = Convert.ToInt32((AllLength - 1) * 0.5);//单边的截取长度
             //检测是否包含其他非规定字符：B、J、O、U、X,并剔除
-            seqData = seqData.Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace("\r\n", "");
+            //seqData = seqData.Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace("\r\n", "");
             int[] pos = IndexOfcharPosition(seqData, desChar);//寻找C符号出现的位置
             string[] result = new string[pos.Length];//输出结果
             for (int i = 0; i < pos.Length; i++)
@@ -190,10 +198,10 @@ namespace BioinfoLibrary
         public static string[] GetCentrlString(string seqData, int AllLength, char desChar, out int[] pos)
         {
             //首先进行转换
-            seqData = seqData.ToUpper().Replace(" ", "").Replace(".", "");
+            //seqData = seqData.Replace(" ", "").Replace(".", "");
             int strLength = Convert.ToInt32((AllLength - 1) * 0.5);//单边的截取长度
             //检测是否包含其他非规定字符：B、J、O、U、X,并剔除
-            seqData = seqData.Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace("\r\n", "");
+            //seqData = seqData.Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString().Replace("\r\n", "");
             pos = IndexOfcharPosition(seqData, desChar);//寻找符号出现的位置
             string[] result = new string[pos.Length];//输出结果
             for (int i = 0; i < pos.Length; i++)
@@ -285,7 +293,7 @@ namespace BioinfoLibrary
         public static double[] GetValuesOfSequence(string strSeqence)
         {
             //检测是否包含其他非规定字符：B、J、O、U、X,Z,并剔除
-            strSeqence = strSeqence.ToUpper().Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString();
+            //strSeqence = strSeqence.Replace("B", "").Replace("J", "").Replace("O", "").Replace("U", "").Replace("X", "").Replace("Z", "").ToString();
             //键值转换数组,不包含的字符也赋值，但不影响最终结果
             double[] changArray = new double[] { 1.8, 2.1, 2.5, -3.5, -3.5, 2.8, -0.4, -3.2, 4.5, 10.1, -3.9, 3.8, 1.9,
                 -3.5, 15, -1.6, -3.5, -4.5, -0.8, -0.7, 21, 4.2, -0.9, 24, -1.3, 26.1 };
