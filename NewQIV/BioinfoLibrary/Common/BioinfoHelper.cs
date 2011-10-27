@@ -8,6 +8,7 @@ namespace BioinfoLibrary
 {
     /// <summary>
     /// 生物信息学常规帮助类,一些变量，规则等
+    /// 另外网页结果显示、序列颜色设定等
     /// </summary>
     public class BioinfoHelper
     {
@@ -28,6 +29,32 @@ namespace BioinfoLibrary
         /// Svm测试结果显示的特殊列名称:多一列
         /// </summary>
         public static string[] SpecialSvmDisplayColumnsNames = { };
+        #endregion
+
+        #region 得到网站项目所使用的模型
+        /// <summary>
+        /// 获得网站中Svm的预测模型
+        /// </summary>
+        public static Model[] GetAllSvmTestMode()
+        {
+            string folder = @"C:\DataSet\"; //存放训练的目录
+            string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
+                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
+            //double[] Param_C = new double[] { 512, 2048, 8, 8192, 32768, 8,8192 };//参数列表
+            //double[] Param_G = new double[] { 0.00048828125, 0.001953125, 0.5, 0.5, 1, 0.03125, 3.0517578125E-05 };//参数列表
+            double[] Param_C = new double[] { 512, 32768, 32768, 32768, 32768, 0.5, 2.0 };//参数列表
+            double[] Param_G = new double[] { 0.00048828125, 1, 0.5, 0.5, 1, 2, 0.5 };//参数列表
+            Model[] modelList = new Model[filesName.Length];//返回的模型
+            for (int i = 0; i < filesName.Length; i++)
+            {
+                modelList[i] = SvmNetDetection.GetTrainingModel(folder + filesName[i], Param_C[i], Param_G[i]);
+            }
+            return modelList;
+        }
+        #endregion
+
+        #region
+
         #endregion
 
         #region 辅助代码 对序列着色突出显示,多个颜色，指定显示某个字母的颜色
@@ -60,7 +87,7 @@ namespace BioinfoLibrary
         }
 
         /// <summary>
-        /// 对字符串进行着色,中间字母突出显示
+        /// 对字符串进行着色,中间字母突出显示：常规
         /// </summary>
         /// <param name="str">字符串序列</param>
         /// <param name="color">中间字母的颜色</param>
@@ -77,13 +104,17 @@ namespace BioinfoLibrary
 
         #region 根据结果来构造Html结果显示的代码
         /// <summary>
+        /// 默认表格样式(结果显示的表格)
+        /// </summary>
+        private static string DefaultTableStyle = "<table cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse:collapse; border:1px solid #333;\">";
+        /// <summary>
         /// 默认的结果中,每一行的Html样式
         /// </summary>
-        private static string DefaultTdStyle = "<td align='center' style=\"border:1px solid #333;\">";
+        private static string DefaultTdStyle = "<td width='200' align='center' style=\"border:1px solid #333;\">";
         /// <summary>
         /// 特别的每行的样式，采用等宽字体(宋体)
         /// </summary>
-        private static string SpecialTdStyle = "<td align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
+        private static string SpecialTdStyle = "<td width='200' align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
         /// <summary>
         /// 默认颜色
         /// </summary>
@@ -94,9 +125,9 @@ namespace BioinfoLibrary
         private static string SpecialColor = "";
         
         /// <summary>
-        /// 根据结果来构造每行的Html代码:采用特殊行样式，根据当前的列总数，取输入序列的最前面
+        /// 根据结果来构造每行的Html代码:采用特殊行样式
         /// </summary>
-        /// <param name="columnsValue">行单元格的值集合</param>
+        /// <param name="columnsValue">行单元格的值集合(颜色值需要用GetHtmlCodeByString来获取)</param>
         /// <returns>每一行的Html代码</returns>
         public static string GetHtmlResultDisplayCode(string[] columnsValue)
         {
@@ -106,73 +137,28 @@ namespace BioinfoLibrary
                 output += (SpecialTdStyle + columnsValue[i] + "</td>") ;//循环添加
             }
             return output + "</tr>" ;//行结束
-        }
-
-        /// <summary>
-        /// 增加一行数据的Html代码
-        /// </summary>
-        /// <param name="cutStrName">列名</param>
-        /// <param name="Pos">位置</param>
-        /// <param name="sequences">序列</param>
-        /// <param name="probValue">概率值</param>
-        /// <param name="color">颜色代码</param>
-        public static string GetHtmlResultDisplayCode(string cutStrName, string Pos, string sequences, string probValue, string color)
-        {
-            string output = "<tr><td align='center' style=\"border:1px solid #333;\">";
-            output += cutStrName;
-            output += "</td><td align='center' style=\"border:1px solid #333;\">";
-            output += Pos;
-            output += "</td><td align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
-            output += GetHtmlCodeByString(sequences, color);
-            output += "</td><td align='center' style=\"border:1px solid #333;\">";
-            output += probValue;
-            output += "</td></tr>";
-            return output;
-        }
-
-        public static string GetHtmlResultDisplayCode(string cutStrName, string Pos, string sequences,
-            string probValue, string color, string resultName)
-        {
-            string output = "<tr><td align='center' style=\"border:1px solid #333;\">";
-            output += cutStrName;
-            output += "</td><td align='center' style=\"border:1px solid #333;\">";
-            output += Pos;
-            output += "</td><td align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
-            output += GetHtmlCodeByString(sequences, color);
-            output += "</td><td align='center' style=\"border:1px solid #333;\">";
-            output += resultName;
-            output += "</td><td align='center' style=\"border:1px solid #333;\">";
-            output += probValue;
-            output += "</td></tr>";
-            return output;
-        }
+        }      
+     
         /// <summary>
         /// 获取Table头部的Html代码
-        /// </summary>       
-        public static string GetTableHeader()
+        /// </summary>
+        /// <param name="displayColumnsNames">列的显示名称</param>
+        /// <returns>Table头部包含列名称的Html代码</returns>    
+        public static string GetTableHeader(string[] displayColumnsNames)
         {
-            string output = "<table cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse:collapse; border:1px solid #333;\">";
-            output += "<tr><td width='200' align='center' style=\"border:1px solid #333;\">Protein name</td><td width='200' align='center' style=\"border:1px solid #333;\">Position of site</td><td width='300' align='center' style=\"border:1px solid #333;\">Flanking residues</td>";
-            output += "<td width='200' align='center' style=\"border:1px solid #333;\">SVM Probability</td></tr>";
-            return output;
-        }
-        /// <summary>
-        /// 增加列的名称
-        /// </summary>       
-        public static string GetTableHeaderOfAddOne()
-        {
-            string output = "<table cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse:collapse; border:1px solid #333;\">";
-            output += "<tr><td width='200' align='center' style=\"border:1px solid #333;\">Protein name</td><td width='200' align='center' style=\"border:1px solid #333;\">Position of site</td><td width='300' align='center' style=\"border:1px solid #333;\">Flanking residues</td>";
-            output += "<td width='200' align='center' style=\"border:1px solid #333;\">Predicted result</td>";
-            output += "<td width='200' align='center' style=\"border:1px solid #333;\">SVM Probability</td></tr>";
-            return output;
-        }
+            string output = DefaultTableStyle +"<tr>";//Table开始
+            for (int i = 0; i < displayColumnsNames.Length ; i++)
+            {
+                output += (SpecialTdStyle + displayColumnsNames[i] + "</td>") ;//循环添加
+            }
+            return output + "</tr>" ;//行结束
+        }        
         /// <summary>
         /// 获取Table尾部的Html代码
         /// </summary>     
         public static string GetTableTail()
         {
-            return "</table><br />";
+            return "</table><br/>";
         }
         #endregion
     }
