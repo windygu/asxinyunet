@@ -25,11 +25,10 @@ namespace LotteryTicket
 		//多期内相同数字列表,计算重复的周期
 		public static void CalcateRepeateNumber(double[][] data,int needLength)
 		{
-			double[][] result = (double[][])IndexCalculate.CalculateAllData (data,IndexNameType.D_ManyNosList,
-			                                 new int[]{needLength }) ;
+			double[][] result = (double[][])IndexCalculate.CalculateAllData (data,IndexNameType.D_ManyNosList, needLength) ;
 		}		
 		
-		#region 分段匹配		
+		#region 分段匹配
 		/// <summary>
 		/// 分段匹配测试
 		/// </summary>

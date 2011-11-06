@@ -21,6 +21,8 @@
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
  * 
+ * 2011-11-06 采用Xcode架构，对程序结果进行重新梳理，完善注释
+ * 2011-11-05 中断半年后重新开始整理程序结构
  * 2011-04-26 数据库操作由动软代码生成器改为新生命组件；重新改写数据采集方法，采用HtmlAgilityPack采集数据
  * 2011-04-25 测试NewLife数据组件，完成基本的数据库操作
  * 2011-04-21 重构代码,便于新的需求和测试,并对类库框架进行进一步重构,方便处理其他类型
@@ -63,7 +65,6 @@ using DotNet.Tools;
 using XCode;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
-using NewLife.CommonEntity;
 using LotteryTicket.Data;
 
 

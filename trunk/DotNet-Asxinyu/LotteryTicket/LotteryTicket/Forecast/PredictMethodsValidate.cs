@@ -139,7 +139,7 @@ namespace LotteryTicket
 				(data , indexType ,conditions,ruleType,needLength) ;
 			return GetRateReuslt (res ) ;
 		}
-			#region 公共方法		
+			#region 公共方法
 		/// <summary>
 		/// 统计bool数组中True的比例,即正确率
 		/// </summary>		

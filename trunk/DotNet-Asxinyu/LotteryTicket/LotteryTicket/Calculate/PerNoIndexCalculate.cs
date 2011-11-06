@@ -23,7 +23,7 @@ namespace LotteryTicket
 		}
 		#endregion
 				
-		#region 和值与数据密度		
+		#region 和值与数据密度
 		/// <summary>
 		/// 计算和值
 		/// </summary>
@@ -45,7 +45,7 @@ namespace LotteryTicket
 		}
 		#endregion
 		
-		#region 跨度				
+		#region 跨度
 		/// <summary>
 		/// 计算最大跨度
 		/// </summary>
