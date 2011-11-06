@@ -14,7 +14,6 @@ using System.Net;
 using XCode;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
-using NewLife.CommonEntity;
 using DotNet.Tools.Web;
 using HtmlAgilityPack;
 using DotNet.Tools;

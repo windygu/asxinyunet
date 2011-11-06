@@ -48,26 +48,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lib\Template\WinForm\AddCtl类名.cs" />
-    <Compile Include="Lib\Template\WinForm\AddCtl类名.Designer.cs">
-      <DependentUpon>AddCtl类名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Template\WinForm\Ctl类名.cs" />
-    <Compile Include="Lib\Template\WinForm\Ctl类名.Designer.cs">
-      <DependentUpon>Ctl类名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Template\实体\类名.Biz.cs" />
-    <Compile Include="Lib\Template\实体\类名.cs" />
-    <Compile Include="Lib\Template\纯属性\I类名.cs" />
-    <Compile Include="Lib\Template\纯属性\类名.cs" />
-    <Compile Include="Lib\Template\董斌辉\AddCtl.cs" />
-    <Compile Include="Lib\Template\董斌辉\AddCtlForm.cs" />
-    <Compile Include="Lib\Template\页面\类名.aspx.cs">
-      <DependentUpon>类名.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Template\页面\类名Form.aspx.cs">
-      <DependentUpon>类名Form.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -111,16 +91,12 @@
     <None Include="Lib\obj\Debug\GenerateResource.read.434.tlog" />
     <None Include="Lib\obj\Debug\GenerateResource.write.433.tlog" />
     <None Include="Lib\obj\Debug\GenerateResource.write.434.tlog" />
-    <None Include="Lib\Template\实体\对象操作.xt" />
-    <None Include="Lib\Template\实体\扩展属性.xt" />
-    <None Include="Lib\Template\实体\扩展查询.xt" />
     <None Include="Lib\XAgent.dll" />
     <None Include="Lib\XAgent.pdb" />
     <None Include="Lib\XAgent.XML" />
     <None Include="Lib\XCode.dll" />
     <None Include="Lib\XCode.pdb" />
     <None Include="Lib\XCode.xml" />
-    <None Include="Lib\XCoder.exe.config" />
     <None Include="Lib\XControl.dll" />
     <None Include="Lib\XControl.pdb" />
     <None Include="Lib\XControl.XML" />
@@ -130,25 +106,10 @@
     <None Include="Lib\X组件手册.chm" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Lib\Template\董斌辉\AddCtl.resx">
-      <DependentUpon>AddCtl.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Lib\access.xml" />
-    <Content Include="Lib\EntLib.Controls.WinForm.dll" />
     <Content Include="Lib\KwCombinatorics.dll" />
-    <Content Include="Lib\mssql_Common.xml" />
-    <Content Include="Lib\MySql.Data.dll" />
-    <Content Include="Lib\ST.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Lib\System.Data.SQLite.dll" />
-    <Content Include="Lib\Template\数据字典\连接名数据字典.htm" />
-    <Content Include="Lib\Template\页面\类名.aspx" />
-    <Content Include="Lib\Template\页面\类名Form.aspx" />
-    <Content Include="Lib\XCoder.exe" />
-    <Content Include="Lib\XCoder.xml" />
+    <Content Include="Lib\nunit.framework.dll" />
+    <Content Include="Lib\nunit.framework.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>

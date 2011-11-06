@@ -100,6 +100,5 @@ namespace LotteryTicket
 		/// </summary>
 		Number
 	}
-	#endregion	
-	
+	#endregion		
 }

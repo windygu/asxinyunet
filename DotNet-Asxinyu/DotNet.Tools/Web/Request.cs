@@ -48,8 +48,7 @@ namespace DotNet.Tools.Web
                 String html = reader.ReadToEnd();
                 response.Close();
                 return html;
-            }
-        }
+            }        
 
 		#region 通过HttpWebRequest 发送请求(表单)		
 		/// <summary>

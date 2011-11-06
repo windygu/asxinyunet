@@ -52,14 +52,14 @@
       <FileName>Calculate\StaticsTest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.DataProcess" Collapsed="true">
+  <Class Name="LotteryTicket.Common.DataProcess" Collapsed="true">
     <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\DataProcess.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.Common">
+  <Class Name="LotteryTicket.Common.DataSaveAndValidate">
     <Position X="7.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAQAAAgAAAEAAEAAAAAAACAAAA=</HashCode>
@@ -103,7 +103,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="LotteryTicket.Data.GetThreeDataFromWeb" BaseTypeListCollapsed="true">
-    <Position X="2.75" Y="1.25" Width="1.5" />
+    <Position X="2.75" Y="1.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Data\LotTickData.cs</FileName>
@@ -113,7 +113,7 @@
   <Class Name="LotteryTicket.ValidateResult.ValidateMethods">
     <Position X="3" Y="4.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAFAAABFAAAA=</HashCode>
+      <HashCode>QAAAAAAAAAQAAAABAAAAAAAAAAAAAAAAAFAAABFAAAA=</HashCode>
       <FileName>Forecast\ValidateMethods.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -41,13 +41,20 @@
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\ResouceFiles\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="KwCombinatorics">
-      <HintPath>..\..\DotNet.Tools\DotNet.Tools\Dll\KwCombinatorics.dll</HintPath>
+      <HintPath>..\..\ResouceFiles\Lib\KwCombinatorics.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>C:\Program Files\NUnit 2.5.9\bin\net-2.0\framework\nunit.framework.dll</HintPath>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\ResouceFiles\Lib\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -61,6 +68,9 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="XCode">
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseLotTickClass.cs" />
@@ -73,6 +83,8 @@
     <Compile Include="Common\DataProcess.cs" />
     <Compile Include="Common\TxtParse.cs" />
     <Compile Include="Data\LotTickData.cs" />
+    <Compile Include="Entities\Ssq.Biz.cs" />
+    <Compile Include="Entities\Ssq.cs" />
     <Compile Include="LotTickClass\TwoColorBall.cs" />
     <Compile Include="Forecast\PredictMethodsValidate.cs" />
     <Compile Include="Program.cs" />
@@ -89,10 +101,6 @@
     <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
       <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
       <Name>DotNet.Tools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LotTickEntity\LotTickEntity.csproj">
-      <Project>{4C54A65B-A6BB-45FD-9EFD-8842D561138D}</Project>
-      <Name>LotTickEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

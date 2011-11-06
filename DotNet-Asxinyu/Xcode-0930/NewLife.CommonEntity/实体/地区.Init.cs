@@ -24,6 +24,7 @@ namespace NewLife.CommonEntity
             if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}地区数据……", typeof(TEntity).Name);
 
             Dictionary<Int32, String> data = new Dictionary<Int32, String>();
+
             #region 数据
             data.Add(110000, "北京市");
             data.Add(110100, "市辖区");
