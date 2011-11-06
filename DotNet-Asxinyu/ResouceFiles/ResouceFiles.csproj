@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="Lib\access.xml" />
     <Content Include="Lib\EntLib.Controls.WinForm.dll" />
+    <Content Include="Lib\KwCombinatorics.dll" />
     <Content Include="Lib\mssql_Common.xml" />
     <Content Include="Lib\MySql.Data.dll" />
     <Content Include="Lib\ST.mdb">
