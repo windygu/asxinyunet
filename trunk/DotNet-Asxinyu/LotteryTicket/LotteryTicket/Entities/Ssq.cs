@@ -10,7 +10,7 @@ using System.ComponentModel;
 using XCode;
 using XCode.DataAccessLayer;
 
-namespace LotTickEntity.Entities
+namespace LotteryTicket.Entities
 {
 	/// <summary>
 	/// 

@@ -7,7 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using LotTickEntity.Entities ;
+using LotteryTicket.Entities;
 using System.Text;
 using System.IO;
 using System.Net;

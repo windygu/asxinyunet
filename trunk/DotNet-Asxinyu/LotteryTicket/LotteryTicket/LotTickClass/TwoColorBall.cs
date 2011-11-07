@@ -12,8 +12,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Net.Cache;
 using System.Threading;
-using LotTickEntity.Entities;
 using XCode ;
+using LotteryTicket.Entities;
 
 namespace LotteryTicket
 {
