@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 
-namespace LotTickEntity.Entities
+namespace LotteryTicket.Entities
 {
 	/// <summary>
 	/// 
