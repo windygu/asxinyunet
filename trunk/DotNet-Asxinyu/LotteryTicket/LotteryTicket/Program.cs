@@ -76,16 +76,16 @@ namespace LotteryTicket
 		public static void Main(string[] args)
 		{			
             //double[][] data= TwoColorBall.GetRedBallData (200) ;
-			double[][] sections = new double[5][] ;
-			sections [0] = new double[] {1,2,3,4,5,6,7};
-			sections [1] = new double[] {8,9,10,11,12,13,14};
-			sections [2] = new double[] {15,16,17,18,19,20,21};
-			sections [3] = new double[] {22,23,24,25,26,27,28};
-			sections [4] = new double[] {29,30,31,32,33};
-            String connStr = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=LotteryTicket.mdb;Persist Security Info=False;OLE DB Services=-1";
-            DAL.AddConnStr("LotTick", connStr, null, "access");
+            //double[][] sections = new double[5][] ;
+            //sections [0] = new double[] {1,2,3,4,5,6,7};
+            //sections [1] = new double[] {8,9,10,11,12,13,14};
+            //sections [2] = new double[] {15,16,17,18,19,20,21};
+            //sections [3] = new double[] {22,23,24,25,26,27,28};
+            //sections [4] = new double[] {29,30,31,32,33};
+            //String connStr = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=LotteryTicket.mdb;Persist Security Info=False;OLE DB Services=-1";
+            //DAL.AddConnStr("LotTick", connStr, null, "access");
             GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
-            gs.GetAllHistoryData(59);
+            gs.GetAllHistoryData(64);
 			Console.ReadKey(true);
 		}
 	}
