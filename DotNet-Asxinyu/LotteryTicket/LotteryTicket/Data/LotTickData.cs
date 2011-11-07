@@ -29,11 +29,11 @@ namespace LotteryTicket.Data
 			//双色球数据：http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html
 			//福彩3D数据：http://kaijiang.zhcw.com/zhcw/html/3d/list_2.html	
 			
-			
 			/// <summary>
-			///网址:http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html
+            /// 获取所有历史数据：网址:http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html
 			/// </summary>
-			public  void GetAllHistoryData(int pages)
+			/// <param name="pages">需要获取的页数</param>
+			public void GetAllHistoryData(int pages)
 			{
 				string website ;//动态获取的网址				
                 ssq model = new ssq();				
@@ -62,6 +62,10 @@ namespace LotteryTicket.Data
                     }                 
 				}
 			}
+        /// <summary>
+        /// 获取最新的数据
+        /// </summary>
+        /// <param name="pages">需要更新的页数</param>
             public void UpdateRecentData(int pages)
 			{
 				GetAllHistoryData(pages) ;
@@ -73,6 +77,8 @@ namespace LotteryTicket.Data
     /// </summary>
     public class GetThreeDataFromWeb : IGetWebLotTickData
     {
+
+
         public void GetAllHistoryData(int pages)
         {
         }

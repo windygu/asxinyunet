@@ -18,14 +18,14 @@ namespace LotteryTicket
 	{
 	
 		/// <summary>
-		/// 验证单个方法，所有数据的预测情况
+		/// 验证单个方法与方法之间的预测情况(所有数据)
 		/// </summary>
 		/// <param name="args">所有数据</param>
 		/// <param name="origIndexType">原始数据指标类型</param>
 		/// <param name="compIndexType">说要对比的数据指标类型</param>
-		/// <param name="ruleType">对比规则</param>
+		/// <param name="ruleType">对比规则类型</param>
 		/// <param name="needCounts">所需行</param>
-		/// <returns>方法预测的正确性数组</returns>
+		/// <returns>方法预测的正确性</returns>
 		public static bool[] PredictValidate(double[][] args ,IndexNameType origIndexType,
 		                                     IndexNameType compIndexType,
 		                                     FilterRuleType ruleType,int needCounts)
@@ -92,7 +92,15 @@ namespace LotteryTicket
 			return res ;
 		}
 		
-		//直接传入对比条件,用于一些特殊的规律预测
+		/// <summary>
+        /// 直接传入对比条件,用于一些特殊的规律预测
+		/// </summary>
+        /// <param name="args">所有数据</param>
+        /// <param name="origIndexType">原始数据指标类型</param>
+		/// <param name="Conditions">指定的条件</param>
+        /// <param name="ruleType">对比规则类型</param>
+		/// <param name="needCounts">所需行</param>
+        /// <returns>方法预测的正确性</returns>
 		public static bool[] PredictValidate(double[][] args ,IndexNameType origIndexType,
 		                                     double[] Conditions, 
 		                                     FilterRuleType ruleType,int needCounts)
@@ -103,7 +111,7 @@ namespace LotteryTicket
 			//比较的双方数据肯定是数组
 			//TODO:需要 考虑指标为字符串时的对比情况
 			//TODO:A,C类型的指标计算只得到单个数据			
-			//根据预测指标的类型,可能数据长度不一致;B、D类型要根据当前所需行数来进行一个判断转换			
+			//根据预测指标的类型,可能数据长度不一致;B、D类型要根据当前所需行数来进行一个判断转换
 			res = new bool[args.Length -needCounts  ] ;			
 			char origCt = origIndexType.ToString ()[0];
 			object origData = origMi.Invoke(null ,new object []{args ,origIndexType,new int[]{needCounts}}) ;

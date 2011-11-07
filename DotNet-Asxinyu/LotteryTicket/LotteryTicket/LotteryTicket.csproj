@@ -92,6 +92,7 @@
     <Compile Include="Test\LotteryTest.cs" />
     <Compile Include="Test\TestData.cs" />
     <Compile Include="Forecast\ValidateMethods.cs" />
+    <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="RuleFile.txt" />
     <None Include="TestData\AllDataCalculateData.txt" />

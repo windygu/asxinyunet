@@ -18,7 +18,7 @@ namespace LotteryTicket.Common
         /// </summary>
         /// <param name="ruleFilePath">规则文件路径</param>
         /// <returns>规则列表</returns>
-        public static List<string>  GetRuleListFormFile(string ruleFilePath)
+        public static List<string> GetRuleListFormFile(string ruleFilePath)
         {
             List<string> ruleList = new List<string>();//规则列表
             using (StreamReader sr = new StreamReader(ruleFilePath))
