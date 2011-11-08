@@ -8,31 +8,14 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
+
     /// <summary>用户信息表</summary>
     public partial class tb_User : Entity<tb_User>
-    
     {
         #region 扩展属性
         #endregion
 
         #region 扩展查询
-        /// <summary>
-        /// 根据主键查询一个用户信息表实体对象用于表单编辑
-        /// </summary>
-        /// <param name="username">用户名</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_User FindByKeyForEdit(String username)
-        {
-            tb_User entity = Find(new String[] { _.UserName }, new Object[] { username });
-            if (entity == null)
-            {
-                entity = new tb_User();
-            }
-            return entity;
-        }
-
-
         /// <summary>
         /// 根据用户名查找
         /// </summary>

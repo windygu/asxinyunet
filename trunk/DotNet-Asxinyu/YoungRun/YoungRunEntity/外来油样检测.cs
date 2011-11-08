@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
+using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
+#pragma warning disable 3021
+#pragma warning disable 3008
 namespace YoungRunEntity
 {
     /// <summary>外来油样检测</summary>
@@ -12,7 +15,7 @@ namespace YoungRunEntity
     [DataObject]
     [Description("外来油样检测")]
     [BindIndex("PRIMARY", true, "ID")]
-    [BindTable("tb_OutSampleTest", Description = "外来油样检测", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    [BindTable("tb_OutSampleTest", Description = "外来油样检测", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_OutSampleTest : Itb_OutSampleTest
     
     {
@@ -23,7 +26,7 @@ namespace YoungRunEntity
         [Description("记录编号")]
         [DataObjectField(true, false, false, 20)]
         [BindColumn(1, "ID", "记录编号", null, "varchar(20)", 0, 0, false)]
-        public String ID
+        public virtual String ID
         {
             get { return _ID; }
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
@@ -35,7 +38,7 @@ namespace YoungRunEntity
         [Description("油品名称")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(2, "OilName", "油品名称", null, "varchar(20)", 0, 0, false)]
-        public String OilName
+        public virtual String OilName
         {
             get { return _OilName; }
             set { if (OnPropertyChanging("OilName", value)) { _OilName = value; OnPropertyChanged("OilName"); } }
@@ -47,7 +50,7 @@ namespace YoungRunEntity
         [Description("数据编号")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(3, "DataID", "数据编号", null, "varchar(20)", 0, 0, false)]
-        public String DataID
+        public virtual String DataID
         {
             get { return _DataID; }
             set { if (OnPropertyChanging("DataID", value)) { _DataID = value; OnPropertyChanged("DataID"); } }
@@ -59,7 +62,7 @@ namespace YoungRunEntity
         [Description("送样人")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(4, "SendPersonTP", "送样人", null, "varchar(20)", 0, 0, false)]
-        public String SendPersonTP
+        public virtual String SendPersonTP
         {
             get { return _SendPersonTP; }
             set { if (OnPropertyChanging("SendPersonTP", value)) { _SendPersonTP = value; OnPropertyChanged("SendPersonTP"); } }
@@ -71,7 +74,7 @@ namespace YoungRunEntity
         [Description("送样时间")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn(5, "SendDateTime", "送样时间", null, "datetime", 0, 0, false)]
-        public DateTime SendDateTime
+        public virtual DateTime SendDateTime
         {
             get { return _SendDateTime; }
             set { if (OnPropertyChanging("SendDateTime", value)) { _SendDateTime = value; OnPropertyChanged("SendDateTime"); } }
@@ -83,7 +86,7 @@ namespace YoungRunEntity
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(6, "Remark", "备注", null, "varchar(50)", 0, 0, false)]
-        public String Remark
+        public virtual String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
@@ -187,3 +190,5 @@ namespace YoungRunEntity
         #endregion
     }
 }
+#pragma warning restore 3008
+#pragma warning restore 3021

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
+using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
+#pragma warning disable 3021
+#pragma warning disable 3008
 namespace YoungRunEntity
 {
     /// <summary>白土车间检测</summary>
@@ -12,7 +15,7 @@ namespace YoungRunEntity
     [DataObject]
     [Description("白土车间检测")]
     [BindIndex("PRIMARY", true, "ID")]
-    [BindTable("tb_BtTestData", Description = "白土车间检测", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    [BindTable("tb_BtTestData", Description = "白土车间检测", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_BtTestData : Itb_BtTestData
     
     {
@@ -23,7 +26,7 @@ namespace YoungRunEntity
         [Description("数据编号")]
         [DataObjectField(true, false, false, 20)]
         [BindColumn(1, "ID", "数据编号", null, "varchar(20)", 0, 0, false)]
-        public String ID
+        public virtual String ID
         {
             get { return _ID; }
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
@@ -35,7 +38,7 @@ namespace YoungRunEntity
         [Description("产品名称")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(2, "ProductNameTP", "产品名称", null, "varchar(20)", 0, 0, false)]
-        public String ProductNameTP
+        public virtual String ProductNameTP
         {
             get { return _ProductNameTP; }
             set { if (OnPropertyChanging("ProductNameTP", value)) { _ProductNameTP = value; OnPropertyChanged("ProductNameTP"); } }
@@ -47,7 +50,7 @@ namespace YoungRunEntity
         [Description("V40")]
         [DataObjectField(false, false, true, 22)]
         [BindColumn(3, "V40", "V40", "-1", "double", 22, 0, false)]
-        public Double V40
+        public virtual Double V40
         {
             get { return _V40; }
             set { if (OnPropertyChanging("V40", value)) { _V40 = value; OnPropertyChanged("V40"); } }
@@ -59,7 +62,7 @@ namespace YoungRunEntity
         [Description("V100")]
         [DataObjectField(false, false, true, 22)]
         [BindColumn(4, "V100", "V100", "-1", "double", 22, 0, false)]
-        public Double V100
+        public virtual Double V100
         {
             get { return _V100; }
             set { if (OnPropertyChanging("V100", value)) { _V100 = value; OnPropertyChanged("V100"); } }
@@ -71,7 +74,7 @@ namespace YoungRunEntity
         [Description("粘度指数")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(5, "VI", "粘度指数", "-1", "int(10)", 10, 0, false)]
-        public Int32 VI
+        public virtual Int32 VI
         {
             get { return _VI; }
             set { if (OnPropertyChanging("VI", value)) { _VI = value; OnPropertyChanged("VI"); } }
@@ -83,7 +86,7 @@ namespace YoungRunEntity
         [Description("酸值")]
         [DataObjectField(false, false, true, 22)]
         [BindColumn(6, "AV", "酸值", "-1", "double", 22, 0, false)]
-        public Double AV
+        public virtual Double AV
         {
             get { return _AV; }
             set { if (OnPropertyChanging("AV", value)) { _AV = value; OnPropertyChanged("AV"); } }
@@ -95,7 +98,7 @@ namespace YoungRunEntity
         [Description("色度")]
         [DataObjectField(false, false, true, 20)]
         [BindColumn(7, "ASTM", "色度", null, "varchar(20)", 0, 0, false)]
-        public String ASTM
+        public virtual String ASTM
         {
             get { return _ASTM; }
             set { if (OnPropertyChanging("ASTM", value)) { _ASTM = value; OnPropertyChanged("ASTM"); } }
@@ -107,7 +110,7 @@ namespace YoungRunEntity
         [Description("采样时间")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn(8, "GetSampleTime", "采样时间", null, "datetime", 0, 0, false)]
-        public DateTime GetSampleTime
+        public virtual DateTime GetSampleTime
         {
             get { return _GetSampleTime; }
             set { if (OnPropertyChanging("GetSampleTime", value)) { _GetSampleTime = value; OnPropertyChanged("GetSampleTime"); } }
@@ -119,7 +122,7 @@ namespace YoungRunEntity
         [Description("采样地点")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(9, "GetSamLocationTP", "采样地点", "", "varchar(10)", 0, 0, false)]
-        public String GetSamLocationTP
+        public virtual String GetSamLocationTP
         {
             get { return _GetSamLocationTP; }
             set { if (OnPropertyChanging("GetSamLocationTP", value)) { _GetSamLocationTP = value; OnPropertyChanged("GetSamLocationTP"); } }
@@ -131,7 +134,7 @@ namespace YoungRunEntity
         [Description("采样人")]
         [DataObjectField(false, false, true, 20)]
         [BindColumn(10, "GetSampPersonTP", "采样人", "", "varchar(20)", 0, 0, false)]
-        public String GetSampPersonTP
+        public virtual String GetSampPersonTP
         {
             get { return _GetSampPersonTP; }
             set { if (OnPropertyChanging("GetSampPersonTP", value)) { _GetSampPersonTP = value; OnPropertyChanged("GetSampPersonTP"); } }
@@ -143,7 +146,7 @@ namespace YoungRunEntity
         [Description("检测人")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(11, "TestPersonTP", "检测人", "", "varchar(20)", 0, 0, false)]
-        public String TestPersonTP
+        public virtual String TestPersonTP
         {
             get { return _TestPersonTP; }
             set { if (OnPropertyChanging("TestPersonTP", value)) { _TestPersonTP = value; OnPropertyChanged("TestPersonTP"); } }
@@ -155,7 +158,7 @@ namespace YoungRunEntity
         [Description("更新时间")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn(12, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
-        public DateTime UpdateTime
+        public virtual DateTime UpdateTime
         {
             get { return _UpdateTime; }
             set { if (OnPropertyChanging("UpdateTime", value)) { _UpdateTime = value; OnPropertyChanged("UpdateTime"); } }
@@ -167,7 +170,7 @@ namespace YoungRunEntity
         [Description("备注")]
         [DataObjectField(false, false, true, 100)]
         [BindColumn(13, "Remark", "备注", null, "varchar(100)", 0, 0, false)]
-        public String Remark
+        public virtual String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
@@ -327,3 +330,5 @@ namespace YoungRunEntity
         #endregion
     }
 }
+#pragma warning restore 3008
+#pragma warning restore 3021

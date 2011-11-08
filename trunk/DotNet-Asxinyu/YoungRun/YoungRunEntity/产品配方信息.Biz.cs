@@ -8,31 +8,14 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
+
     /// <summary>产品配方信息</summary>
     public partial class tb_ProductFormule : Entity<tb_ProductFormule>
-    
     {
         #region 扩展属性
         #endregion
 
         #region 扩展查询
-        /// <summary>
-        /// 根据主键查询一个产品配方信息实体对象用于表单编辑
-        /// </summary>
-        /// <param name="productidtp">产品编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_ProductFormule FindByKeyForEdit(String productidtp)
-        {
-            tb_ProductFormule entity = Find(new String[] { _.ProductIdTP }, new Object[] { productidtp });
-            if (entity == null)
-            {
-                entity = new tb_ProductFormule();
-            }
-            return entity;
-        }
-
-
         /// <summary>
         /// 根据产品编号查找
         /// </summary>

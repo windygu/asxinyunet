@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
+using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
+#pragma warning disable 3021
+#pragma warning disable 3008
 namespace YoungRunEntity
 {
     /// <summary>油罐信息表</summary>
@@ -12,7 +15,7 @@ namespace YoungRunEntity
     [DataObject]
     [Description("油罐信息表")]
     [BindIndex("PRIMARY", true, "TankId")]
-    [BindTable("tb_OilTankInfo", Description = "油罐信息表", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    [BindTable("tb_OilTankInfo", Description = "油罐信息表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_OilTankInfo : Itb_OilTankInfo
     
     {
@@ -23,7 +26,7 @@ namespace YoungRunEntity
         [Description("罐号")]
         [DataObjectField(true, false, false, 10)]
         [BindColumn(1, "TankId", "罐号", null, "varchar(10)", 0, 0, false)]
-        public String TankId
+        public virtual String TankId
         {
             get { return _TankId; }
             set { if (OnPropertyChanging("TankId", value)) { _TankId = value; OnPropertyChanged("TankId"); } }
@@ -35,7 +38,7 @@ namespace YoungRunEntity
         [Description("总高度")]
         [DataObjectField(false, false, false, 22)]
         [BindColumn(2, "Height", "总高度", null, "double", 22, 0, false)]
-        public Double Height
+        public virtual Double Height
         {
             get { return _Height; }
             set { if (OnPropertyChanging("Height", value)) { _Height = value; OnPropertyChanged("Height"); } }
@@ -47,7 +50,7 @@ namespace YoungRunEntity
         [Description("体积")]
         [DataObjectField(false, false, false, 22)]
         [BindColumn(3, "Volume", "体积", null, "double", 22, 0, false)]
-        public Double Volume
+        public virtual Double Volume
         {
             get { return _Volume; }
             set { if (OnPropertyChanging("Volume", value)) { _Volume = value; OnPropertyChanged("Volume"); } }
@@ -59,7 +62,7 @@ namespace YoungRunEntity
         [Description("每1cm容量")]
         [DataObjectField(false, false, false, 22)]
         [BindColumn(4, "PerCmVolume", "每1cm容量", null, "double", 22, 0, false)]
-        public Double PerCmVolume
+        public virtual Double PerCmVolume
         {
             get { return _PerCmVolume; }
             set { if (OnPropertyChanging("PerCmVolume", value)) { _PerCmVolume = value; OnPropertyChanged("PerCmVolume"); } }
@@ -71,7 +74,7 @@ namespace YoungRunEntity
         [Description("油品名称")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(5, "ProductNameTP", "油品名称", null, "varchar(20)", 0, 0, false)]
-        public String ProductNameTP
+        public virtual String ProductNameTP
         {
             get { return _ProductNameTP; }
             set { if (OnPropertyChanging("ProductNameTP", value)) { _ProductNameTP = value; OnPropertyChanged("ProductNameTP"); } }
@@ -83,7 +86,7 @@ namespace YoungRunEntity
         [Description("存储类型")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(6, "StrogeType", "存储类型", null, "varchar(20)", 0, 0, false)]
-        public String StrogeType
+        public virtual String StrogeType
         {
             get { return _StrogeType; }
             set { if (OnPropertyChanging("StrogeType", value)) { _StrogeType = value; OnPropertyChanged("StrogeType"); } }
@@ -95,7 +98,7 @@ namespace YoungRunEntity
         [Description("用途")]
         [DataObjectField(false, false, true, 30)]
         [BindColumn(7, "Purpose", "用途", "", "varchar(30)", 0, 0, false)]
-        public String Purpose
+        public virtual String Purpose
         {
             get { return _Purpose; }
             set { if (OnPropertyChanging("Purpose", value)) { _Purpose = value; OnPropertyChanged("Purpose"); } }
@@ -107,7 +110,7 @@ namespace YoungRunEntity
         [Description("警戒高度")]
         [DataObjectField(false, false, false, 22)]
         [BindColumn(8, "AlarmHeight", "警戒高度", "0.8", "double", 22, 0, false)]
-        public Double AlarmHeight
+        public virtual Double AlarmHeight
         {
             get { return _AlarmHeight; }
             set { if (OnPropertyChanging("AlarmHeight", value)) { _AlarmHeight = value; OnPropertyChanged("AlarmHeight"); } }
@@ -119,7 +122,7 @@ namespace YoungRunEntity
         [Description("密度")]
         [DataObjectField(false, false, false, 22)]
         [BindColumn(9, "D20", "密度", "0.91", "double", 22, 0, false)]
-        public Double D20
+        public virtual Double D20
         {
             get { return _D20; }
             set { if (OnPropertyChanging("D20", value)) { _D20 = value; OnPropertyChanged("D20"); } }
@@ -131,7 +134,7 @@ namespace YoungRunEntity
         [Description("更新时间")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn(10, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
-        public DateTime UpdateTime
+        public virtual DateTime UpdateTime
         {
             get { return _UpdateTime; }
             set { if (OnPropertyChanging("UpdateTime", value)) { _UpdateTime = value; OnPropertyChanged("UpdateTime"); } }
@@ -143,7 +146,7 @@ namespace YoungRunEntity
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(11, "Remark", "备注", null, "varchar(50)", 0, 0, false)]
-        public String Remark
+        public virtual String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
@@ -287,3 +290,5 @@ namespace YoungRunEntity
         #endregion
     }
 }
+#pragma warning restore 3008
+#pragma warning restore 3021

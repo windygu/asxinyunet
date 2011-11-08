@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
+using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
+#pragma warning disable 3021
+#pragma warning disable 3008
 namespace YoungRunEntity
 {
     /// <summary>字典数据</summary>
@@ -12,7 +15,7 @@ namespace YoungRunEntity
     [DataObject]
     [Description("字典数据")]
     [BindIndex("PRIMARY", true, "ID")]
-    [BindTable("tb_DicType", Description = "字典数据", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    [BindTable("tb_DicType", Description = "字典数据", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_DicType : Itb_DicType
     
     {
@@ -23,7 +26,7 @@ namespace YoungRunEntity
         [Description("编号")]
         [DataObjectField(true, true, false, 10)]
         [BindColumn(1, "ID", "编号", null, "int(10) unsigned", 10, 0, false)]
-        public UInt32 ID
+        public virtual UInt32 ID
         {
             get { return _ID; }
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
@@ -35,7 +38,7 @@ namespace YoungRunEntity
         [Description("类型名称")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(2, "TypeName", "类型名称", null, "varchar(20)", 0, 0, false)]
-        public String TypeName
+        public virtual String TypeName
         {
             get { return _TypeName; }
             set { if (OnPropertyChanging("TypeName", value)) { _TypeName = value; OnPropertyChanged("TypeName"); } }
@@ -47,7 +50,7 @@ namespace YoungRunEntity
         [Description("数据值")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(3, "Value", "数据值", null, "varchar(20)", 0, 0, false)]
-        public String Value
+        public virtual String Value
         {
             get { return _Value; }
             set { if (OnPropertyChanging("Value", value)) { _Value = value; OnPropertyChanged("Value"); } }
@@ -59,7 +62,7 @@ namespace YoungRunEntity
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(4, "Remark", "备注", null, "varchar(50)", 0, 0, false)]
-        public String Remark
+        public virtual String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
@@ -147,3 +150,5 @@ namespace YoungRunEntity
         #endregion
     }
 }
+#pragma warning restore 3008
+#pragma warning restore 3021

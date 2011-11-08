@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
+using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
+#pragma warning disable 3021
+#pragma warning disable 3008
 namespace YoungRunEntity
 {
     /// <summary>实验任务表</summary>
@@ -12,7 +15,7 @@ namespace YoungRunEntity
     [DataObject]
     [Description("实验任务表")]
     [BindIndex("PRIMARY", true, "ID")]
-    [BindTable("tb_TestTask", Description = "实验任务表", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    [BindTable("tb_TestTask", Description = "实验任务表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_TestTask : Itb_TestTask
     
     {
@@ -23,7 +26,7 @@ namespace YoungRunEntity
         [Description("实验编号")]
         [DataObjectField(true, false, false, 20)]
         [BindColumn(1, "ID", "实验编号", null, "varchar(20)", 0, 0, false)]
-        public String ID
+        public virtual String ID
         {
             get { return _ID; }
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
@@ -35,7 +38,7 @@ namespace YoungRunEntity
         [Description("实验名称")]
         [DataObjectField(false, false, false, 30)]
         [BindColumn(2, "TestTitle", "实验名称", null, "varchar(30)", 0, 0, false)]
-        public String TestTitle
+        public virtual String TestTitle
         {
             get { return _TestTitle; }
             set { if (OnPropertyChanging("TestTitle", value)) { _TestTitle = value; OnPropertyChanged("TestTitle"); } }
@@ -47,7 +50,7 @@ namespace YoungRunEntity
         [Description("实验类型")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(3, "TestType", "实验类型", null, "varchar(20)", 0, 0, false)]
-        public String TestType
+        public virtual String TestType
         {
             get { return _TestType; }
             set { if (OnPropertyChanging("TestType", value)) { _TestType = value; OnPropertyChanged("TestType"); } }
@@ -59,7 +62,7 @@ namespace YoungRunEntity
         [Description("实验过程")]
         [DataObjectField(false, false, false, 300)]
         [BindColumn(4, "TestProcedure", "实验过程", null, "varchar(300)", 0, 0, false)]
-        public String TestProcedure
+        public virtual String TestProcedure
         {
             get { return _TestProcedure; }
             set { if (OnPropertyChanging("TestProcedure", value)) { _TestProcedure = value; OnPropertyChanged("TestProcedure"); } }
@@ -71,7 +74,7 @@ namespace YoungRunEntity
         [Description("实验结果")]
         [DataObjectField(false, false, false, 200)]
         [BindColumn(5, "TestResult", "实验结果", null, "varchar(200)", 0, 0, false)]
-        public String TestResult
+        public virtual String TestResult
         {
             get { return _TestResult; }
             set { if (OnPropertyChanging("TestResult", value)) { _TestResult = value; OnPropertyChanged("TestResult"); } }
@@ -83,7 +86,7 @@ namespace YoungRunEntity
         [Description("总结")]
         [DataObjectField(false, false, false, 200)]
         [BindColumn(6, "Summary", "总结", null, "varchar(200)", 0, 0, false)]
-        public String Summary
+        public virtual String Summary
         {
             get { return _Summary; }
             set { if (OnPropertyChanging("Summary", value)) { _Summary = value; OnPropertyChanged("Summary"); } }
@@ -95,7 +98,7 @@ namespace YoungRunEntity
         [Description("开始时间")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn(7, "StartTime", "开始时间", null, "datetime", 0, 0, false)]
-        public DateTime StartTime
+        public virtual DateTime StartTime
         {
             get { return _StartTime; }
             set { if (OnPropertyChanging("StartTime", value)) { _StartTime = value; OnPropertyChanged("StartTime"); } }
@@ -107,7 +110,7 @@ namespace YoungRunEntity
         [Description("参与人员")]
         [DataObjectField(false, false, false, 30)]
         [BindColumn(8, "InvolvedPerson", "参与人员", null, "varchar(30)", 0, 0, false)]
-        public String InvolvedPerson
+        public virtual String InvolvedPerson
         {
             get { return _InvolvedPerson; }
             set { if (OnPropertyChanging("InvolvedPerson", value)) { _InvolvedPerson = value; OnPropertyChanged("InvolvedPerson"); } }
@@ -119,7 +122,7 @@ namespace YoungRunEntity
         [Description("结束时间")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn(9, "FinishTime", "结束时间", null, "datetime", 0, 0, false)]
-        public DateTime FinishTime
+        public virtual DateTime FinishTime
         {
             get { return _FinishTime; }
             set { if (OnPropertyChanging("FinishTime", value)) { _FinishTime = value; OnPropertyChanged("FinishTime"); } }
@@ -131,7 +134,7 @@ namespace YoungRunEntity
         [Description("报告编号")]
         [DataObjectField(false, false, true, 20)]
         [BindColumn(10, "ReportID", "报告编号", null, "varchar(20)", 0, 0, false)]
-        public String ReportID
+        public virtual String ReportID
         {
             get { return _ReportID; }
             set { if (OnPropertyChanging("ReportID", value)) { _ReportID = value; OnPropertyChanged("ReportID"); } }
@@ -143,7 +146,7 @@ namespace YoungRunEntity
         [Description("备注")]
         [DataObjectField(false, false, true, 100)]
         [BindColumn(11, "Remark", "备注", null, "varchar(100)", 0, 0, false)]
-        public String Remark
+        public virtual String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
@@ -287,3 +290,5 @@ namespace YoungRunEntity
         #endregion
     }
 }
+#pragma warning restore 3008
+#pragma warning restore 3021
