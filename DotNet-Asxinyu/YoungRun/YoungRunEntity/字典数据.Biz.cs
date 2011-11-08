@@ -8,31 +8,14 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
+
     /// <summary>字典数据</summary>
     public partial class tb_DicType : Entity<tb_DicType>
-    
     {
         #region 扩展属性
         #endregion
 
         #region 扩展查询
-        /// <summary>
-        /// 根据主键查询一个字典数据实体对象用于表单编辑
-        /// </summary>
-        /// <param name="id">编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_DicType FindByKeyForEdit(UInt32 id)
-        {
-            tb_DicType entity = Find(new String[] { _.ID }, new Object[] { id });
-            if (entity == null)
-            {
-                entity = new tb_DicType();
-            }
-            return entity;
-        }
-
-
         /// <summary>
         /// 根据编号查找
         /// </summary>

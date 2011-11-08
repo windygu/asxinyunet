@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
+using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
+#pragma warning disable 3021
+#pragma warning disable 3008
 namespace YoungRunEntity
 {
     /// <summary>用户信息表</summary>
@@ -12,7 +15,7 @@ namespace YoungRunEntity
     [DataObject]
     [Description("用户信息表")]
     [BindIndex("PRIMARY", true, "UserName")]
-    [BindTable("tb_User", Description = "用户信息表", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    [BindTable("tb_User", Description = "用户信息表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
     public partial class tb_User : Itb_User
     
     {
@@ -23,7 +26,7 @@ namespace YoungRunEntity
         [Description("用户名")]
         [DataObjectField(true, false, false, 20)]
         [BindColumn(1, "UserName", "用户名", null, "varchar(20)", 0, 0, false)]
-        public String UserName
+        public virtual String UserName
         {
             get { return _UserName; }
             set { if (OnPropertyChanging("UserName", value)) { _UserName = value; OnPropertyChanged("UserName"); } }
@@ -35,7 +38,7 @@ namespace YoungRunEntity
         [Description("密码")]
         [DataObjectField(false, false, false, 60)]
         [BindColumn(2, "PassWord", "密码", null, "varchar(60)", 0, 0, false)]
-        public String PassWord
+        public virtual String PassWord
         {
             get { return _PassWord; }
             set { if (OnPropertyChanging("PassWord", value)) { _PassWord = value; OnPropertyChanged("PassWord"); } }
@@ -47,7 +50,7 @@ namespace YoungRunEntity
         [Description("部门")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(3, "DepartMent", "部门", null, "varchar(20)", 0, 0, false)]
-        public String DepartMent
+        public virtual String DepartMent
         {
             get { return _DepartMent; }
             set { if (OnPropertyChanging("DepartMent", value)) { _DepartMent = value; OnPropertyChanged("DepartMent"); } }
@@ -59,7 +62,7 @@ namespace YoungRunEntity
         [Description("姓名")]
         [DataObjectField(false, false, false, 20)]
         [BindColumn(4, "Name", "姓名", null, "varchar(20)", 0, 0, false)]
-        public String Name
+        public virtual String Name
         {
             get { return _Name; }
             set { if (OnPropertyChanging("Name", value)) { _Name = value; OnPropertyChanged("Name"); } }
@@ -71,7 +74,7 @@ namespace YoungRunEntity
         [Description("联系电话")]
         [DataObjectField(false, false, true, 30)]
         [BindColumn(5, "Tel", "联系电话", null, "varchar(30)", 0, 0, false)]
-        public String Tel
+        public virtual String Tel
         {
             get { return _Tel; }
             set { if (OnPropertyChanging("Tel", value)) { _Tel = value; OnPropertyChanged("Tel"); } }
@@ -83,7 +86,7 @@ namespace YoungRunEntity
         [Description("备注")]
         [DataObjectField(false, false, true, 65535)]
         [BindColumn(6, "Remark", "备注", null, "text", 0, 0, false)]
-        public String Remark
+        public virtual String Remark
         {
             get { return _Remark; }
             set { if (OnPropertyChanging("Remark", value)) { _Remark = value; OnPropertyChanged("Remark"); } }
@@ -187,3 +190,5 @@ namespace YoungRunEntity
         #endregion
     }
 }
+#pragma warning restore 3008
+#pragma warning restore 3021

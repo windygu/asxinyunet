@@ -8,31 +8,14 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
+
     /// <summary>油品全套指标</summary>
     public partial class tb_OilData : Entity<tb_OilData>
-    
     {
         #region 扩展属性
         #endregion
 
         #region 扩展查询
-        /// <summary>
-        /// 根据主键查询一个油品全套指标实体对象用于表单编辑
-        /// </summary>
-        /// <param name="id">数据编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_OilData FindByKeyForEdit(String id)
-        {
-            tb_OilData entity = Find(new String[] { _.ID }, new Object[] { id });
-            if (entity == null)
-            {
-                entity = new tb_OilData();
-            }
-            return entity;
-        }
-
-
         /// <summary>
         /// 根据数据编号查找
         /// </summary>

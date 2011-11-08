@@ -8,31 +8,14 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
+
     /// <summary>调配小样检测</summary>
     public partial class tb_ReseachSample : Entity<tb_ReseachSample>
-    
     {
         #region 扩展属性
         #endregion
 
         #region 扩展查询
-        /// <summary>
-        /// 根据主键查询一个调配小样检测实体对象用于表单编辑
-        /// </summary>
-        /// <param name="id">记录编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_ReseachSample FindByKeyForEdit(String id)
-        {
-            tb_ReseachSample entity = Find(new String[] { _.ID }, new Object[] { id });
-            if (entity == null)
-            {
-                entity = new tb_ReseachSample();
-            }
-            return entity;
-        }
-
-
         /// <summary>
         /// 根据记录编号查找
         /// </summary>
