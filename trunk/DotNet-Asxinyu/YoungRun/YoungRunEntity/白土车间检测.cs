@@ -104,12 +104,24 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("ASTM", value)) { _ASTM = value; OnPropertyChanged("ASTM"); } }
         }
 
+        private String _Others;
+        /// <summary>其他</summary>
+        [DisplayName("其他")]
+        [Description("其他")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(8, "Others", "其他", null, "varchar(50)", 0, 0, false)]
+        public virtual String Others
+        {
+            get { return _Others; }
+            set { if (OnPropertyChanging("Others", value)) { _Others = value; OnPropertyChanged("Others"); } }
+        }
+
         private DateTime _GetSampleTime;
         /// <summary>采样时间</summary>
         [DisplayName("采样时间")]
         [Description("采样时间")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn(8, "GetSampleTime", "采样时间", null, "datetime", 0, 0, false)]
+        [BindColumn(9, "GetSampleTime", "采样时间", null, "datetime", 0, 0, false)]
         public virtual DateTime GetSampleTime
         {
             get { return _GetSampleTime; }
@@ -121,7 +133,7 @@ namespace YoungRunEntity
         [DisplayName("采样地点")]
         [Description("采样地点")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(9, "GetSamLocationTP", "采样地点", "", "varchar(10)", 0, 0, false)]
+        [BindColumn(10, "GetSamLocationTP", "采样地点", "", "varchar(10)", 0, 0, false)]
         public virtual String GetSamLocationTP
         {
             get { return _GetSamLocationTP; }
@@ -133,7 +145,7 @@ namespace YoungRunEntity
         [DisplayName("采样人")]
         [Description("采样人")]
         [DataObjectField(false, false, true, 20)]
-        [BindColumn(10, "GetSampPersonTP", "采样人", "", "varchar(20)", 0, 0, false)]
+        [BindColumn(11, "GetSampPersonTP", "采样人", "", "varchar(20)", 0, 0, false)]
         public virtual String GetSampPersonTP
         {
             get { return _GetSampPersonTP; }
@@ -145,7 +157,7 @@ namespace YoungRunEntity
         [DisplayName("检测人")]
         [Description("检测人")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(11, "TestPersonTP", "检测人", "", "varchar(20)", 0, 0, false)]
+        [BindColumn(12, "TestPersonTP", "检测人", "", "varchar(20)", 0, 0, false)]
         public virtual String TestPersonTP
         {
             get { return _TestPersonTP; }
@@ -157,7 +169,7 @@ namespace YoungRunEntity
         [DisplayName("更新时间")]
         [Description("更新时间")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn(12, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
+        [BindColumn(13, "UpdateTime", "更新时间", null, "datetime", 0, 0, false)]
         public virtual DateTime UpdateTime
         {
             get { return _UpdateTime; }
@@ -169,7 +181,7 @@ namespace YoungRunEntity
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 100)]
-        [BindColumn(13, "Remark", "备注", null, "varchar(100)", 0, 0, false)]
+        [BindColumn(14, "Remark", "备注", null, "varchar(100)", 0, 0, false)]
         public virtual String Remark
         {
             get { return _Remark; }
@@ -198,6 +210,7 @@ namespace YoungRunEntity
                     case "VI" : return _VI;
                     case "AV" : return _AV;
                     case "ASTM" : return _ASTM;
+                    case "Others" : return _Others;
                     case "GetSampleTime" : return _GetSampleTime;
                     case "GetSamLocationTP" : return _GetSamLocationTP;
                     case "GetSampPersonTP" : return _GetSampPersonTP;
@@ -218,6 +231,7 @@ namespace YoungRunEntity
                     case "VI" : _VI = Convert.ToInt32(value); break;
                     case "AV" : _AV = Convert.ToDouble(value); break;
                     case "ASTM" : _ASTM = Convert.ToString(value); break;
+                    case "Others" : _Others = Convert.ToString(value); break;
                     case "GetSampleTime" : _GetSampleTime = Convert.ToDateTime(value); break;
                     case "GetSamLocationTP" : _GetSamLocationTP = Convert.ToString(value); break;
                     case "GetSampPersonTP" : _GetSampPersonTP = Convert.ToString(value); break;
@@ -254,6 +268,9 @@ namespace YoungRunEntity
 
             ///<summary>色度</summary>
             public static readonly FieldItem ASTM = Meta.Table.FindByName("ASTM");
+
+            ///<summary>其他</summary>
+            public static readonly FieldItem Others = Meta.Table.FindByName("Others");
 
             ///<summary>采样时间</summary>
             public static readonly FieldItem GetSampleTime = Meta.Table.FindByName("GetSampleTime");
@@ -300,6 +317,9 @@ namespace YoungRunEntity
 
         /// <summary>色度</summary>
         String ASTM { get; set; }
+
+        /// <summary>其他</summary>
+        String Others { get; set; }
 
         /// <summary>采样时间</summary>
         DateTime GetSampleTime { get; set; }
