@@ -69,7 +69,7 @@
       <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.CommonEntity.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Core">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Core.dll</HintPath>
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Net">
       <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Net.dll</HintPath>
@@ -92,7 +92,7 @@
       <HintPath>..\..\DotNet.Tools\Resouces\Lib\XAgent.dll</HintPath>
     </Reference>
     <Reference Include="XCode">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XCode.dll</HintPath>
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
     <Reference Include="XTemplate">
       <HintPath>..\..\DotNet.Tools\Resouces\Lib\XTemplate.dll</HintPath>

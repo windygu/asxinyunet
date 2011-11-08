@@ -26,11 +26,11 @@
 	using YoungRunEntity;
 	using DotNet.Tools.Controls ;
 
-	namespace <#=Config.NameSpace#>.Controls
+	namespace YoungRunControl.Controls
 	{
 
-		<# string className ="Add"+ Table.Alias.Replace ("tb_","")[0].ToString().ToUpper()+Table.Alias.Replace ("tb_","").Substring (1); #>
-			public class <#=className#>: UserControl
+		
+			public class AddUser: UserControl
 			{
 				#region 自动生成代码
 				#region Designer.cs必须代码
@@ -53,14 +53,19 @@
 				#endregion
 
 				#region 控件定义
-				<# foreach(IDataColumn Field in Table.Columns){
-					if(Field.DataType == typeof(string) && (Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
-						private System.Windows.Forms.ComboBox comb<#=Field.Alias#> ;
-					<#}else if (Field.DataType == typeof(string)) {#>private System.Windows.Forms.TextBox txt<#=Field.Alias#> ;
-					<#}else if (Field.DataType == typeof(DateTime)) {#>private System.Windows.Forms.DateTimePicker dt<#=Field.Alias#> ;
-					<#}else {#>private System.Windows.Forms.TextBox txt<#=Field.Alias#> ;
-					<#}#>private System.Windows.Forms.Label    lbl<#=Field.Alias#> ;
-				<#}#>   private System.Windows.Forms.ErrorProvider errorProvider1 ;
+				private System.Windows.Forms.TextBox txtUserName ;
+					private System.Windows.Forms.Label    lblUserName ;
+				private System.Windows.Forms.TextBox txtPassWord ;
+					private System.Windows.Forms.Label    lblPassWord ;
+				private System.Windows.Forms.TextBox txtDepartMent ;
+					private System.Windows.Forms.Label    lblDepartMent ;
+				private System.Windows.Forms.TextBox txtName ;
+					private System.Windows.Forms.Label    lblName ;
+				private System.Windows.Forms.TextBox txtTel ;
+					private System.Windows.Forms.Label    lblTel ;
+				private System.Windows.Forms.TextBox txtRemark ;
+					private System.Windows.Forms.Label    lblRemark ;
+				   private System.Windows.Forms.ErrorProvider errorProvider1 ;
 						private System.Windows.Forms.Button btnOK ;
 						private System.Windows.Forms.Button btnCancle ;
 						private DotNet.Tools.Controls.EntityFormPager FormPager;
@@ -70,88 +75,142 @@
 				private void InitializeComponent()
 				{
 					this.components = new System.ComponentModel.Container();
-					System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(<#=className#>));
+					System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
 					this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 					this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 					this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
-					<# int cutX = 6 ;int cutY = 10 ;int W = 150 ;int H = 22 ;int lblW = 10 ;int lblH = 16 ;
-					int index = 0 ;
-					foreach(IDataColumn Field in Table.Columns)
-					{#>
-						this.lbl<#=Field.Alias#> = new System.Windows.Forms.Label() ;
-						this.lbl<#=Field.Alias#>.AutoSize = true;
-						this.lbl<#=Field.Alias#>.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.lbl<#=Field.Alias#>.Name = "lbl<#=Field.Alias#>";
-						this.lbl<#=Field.Alias#>.Size = new System.Drawing.Size(<#=lblW#>,<#=lblH#>);
-						this.lbl<#=Field.Alias#>.TabIndex = <#=index + 200 #> ;
-						this.lbl<#=Field.Alias#>.Text = "<#=Field.Description#>";
-						this.Controls.Add(this.lbl<#=Field.Alias#>) ;
-					<#}#><#foreach(IDataColumn Field in Table.Columns){
-					if(Field.DataType == typeof(string) && (Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
-						this.lbl<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						<#cutX += (W+2) ;#>
-						this.comb<#=Field.Alias#> = new System.Windows.Forms.ComboBox() ;
-						this.comb<#=Field.Alias#>.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.comb<#=Field.Alias#>.FormattingEnabled = true;
-						this.comb<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						this.comb<#=Field.Alias#>.Name = "comb<#=Field.Alias#>";
-						this.comb<#=Field.Alias#>.Size = new System.Drawing.Size(<#=W#>,<#=H#>);
-						this.comb<#=Field.Alias#>.TabIndex = <#=index#> ;
-						this.Controls.Add(this.comb<#=Field.Alias#>) ;
-						<#index += 2 ;cutX -= (W+2) ;cutY += (H+5) ;}
-					else if (Field.DataType == typeof(string ))
-					{#>
-						this.lbl<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						<#cutX += (W+2) ;#>
-						this.txt<#=Field.Alias#> = new System.Windows.Forms.TextBox() ;
-						this.txt<#=Field.Alias#>.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.txt<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						this.txt<#=Field.Alias#>.Name = "txt<#=Field.Alias#>";
-						this.txt<#=Field.Alias#>.Size = new System.Drawing.Size(<#=W#>,<#=H#>);
-						this.txt<#=Field.Alias#>.TabIndex = <#=index#> ;
-						this.Controls.Add(this.txt<#=Field.Alias#>) ;
-						<# index += 2 ;cutX -= (W+2) ;cutY += (H+5) ;}
-					else if (Field.DataType == typeof(DateTime)){#>
-						this.lbl<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						<#cutX += (W+2);#>
-						this.dt<#=Field.Alias#> = new System.Windows.Forms.DateTimePicker() ;
-						this.dt<#=Field.Alias#>.Cursor = System.Windows.Forms.Cursors.IBeam;
-						this.dt<#=Field.Alias#>.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.dt<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						this.dt<#=Field.Alias#>.Name = "dt<#=Field.Alias#>";
-						this.dt<#=Field.Alias#>.Size = new System.Drawing.Size(<#=W#>,<#=H#>);
-						this.dt<#=Field.Alias#>.TabIndex = <#=index#> ;
-						this.Controls.Add(this.dt<#=Field.Alias#>) ;
-						<# index += 2 ;	cutX -= (W+2) ;cutY += (H+5);}
-					else{#>
-						this.lbl<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						<#cutX += (W+2) ;#>
-						this.txt<#=Field.Alias#> = new System.Windows.Forms.TextBox() ;
-						this.txt<#=Field.Alias#>.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.txt<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
-						this.txt<#=Field.Alias#>.Name = "txt<#=Field.Alias#>";
-						this.txt<#=Field.Alias#>.Size = new System.Drawing.Size(<#=W#>,<#=H#>);
-						this.txt<#=Field.Alias#>.TabIndex = <#=index#> ;
-						this.Controls.Add(this.txt<#=Field.Alias#>) ;
-						this.txt<#=Field.Alias#>.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-						<# index += 2 ;	cutX -= (W+2) ;cutY += (H+5) ;}}cutX += 20 ;cutY += 20 ;#>
+					
+						this.lblUserName = new System.Windows.Forms.Label() ;
+						this.lblUserName.AutoSize = true;
+						this.lblUserName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.lblUserName.Name = "lblUserName";
+						this.lblUserName.Size = new System.Drawing.Size(10,16);
+						this.lblUserName.TabIndex = 200 ;
+						this.lblUserName.Text = "用户名";
+						this.Controls.Add(this.lblUserName) ;
+					
+						this.lblPassWord = new System.Windows.Forms.Label() ;
+						this.lblPassWord.AutoSize = true;
+						this.lblPassWord.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.lblPassWord.Name = "lblPassWord";
+						this.lblPassWord.Size = new System.Drawing.Size(10,16);
+						this.lblPassWord.TabIndex = 200 ;
+						this.lblPassWord.Text = "密码";
+						this.Controls.Add(this.lblPassWord) ;
+					
+						this.lblDepartMent = new System.Windows.Forms.Label() ;
+						this.lblDepartMent.AutoSize = true;
+						this.lblDepartMent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.lblDepartMent.Name = "lblDepartMent";
+						this.lblDepartMent.Size = new System.Drawing.Size(10,16);
+						this.lblDepartMent.TabIndex = 200 ;
+						this.lblDepartMent.Text = "部门";
+						this.Controls.Add(this.lblDepartMent) ;
+					
+						this.lblName = new System.Windows.Forms.Label() ;
+						this.lblName.AutoSize = true;
+						this.lblName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.lblName.Name = "lblName";
+						this.lblName.Size = new System.Drawing.Size(10,16);
+						this.lblName.TabIndex = 200 ;
+						this.lblName.Text = "姓名";
+						this.Controls.Add(this.lblName) ;
+					
+						this.lblTel = new System.Windows.Forms.Label() ;
+						this.lblTel.AutoSize = true;
+						this.lblTel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.lblTel.Name = "lblTel";
+						this.lblTel.Size = new System.Drawing.Size(10,16);
+						this.lblTel.TabIndex = 200 ;
+						this.lblTel.Text = "联系电话";
+						this.Controls.Add(this.lblTel) ;
+					
+						this.lblRemark = new System.Windows.Forms.Label() ;
+						this.lblRemark.AutoSize = true;
+						this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.lblRemark.Name = "lblRemark";
+						this.lblRemark.Size = new System.Drawing.Size(10,16);
+						this.lblRemark.TabIndex = 200 ;
+						this.lblRemark.Text = "备注";
+						this.Controls.Add(this.lblRemark) ;
+					
+						this.lblUserName.Location = new System.Drawing.Point(6, 10);
+						
+						this.txtUserName = new System.Windows.Forms.TextBox() ;
+						this.txtUserName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.txtUserName.Location = new System.Drawing.Point(158, 10);
+						this.txtUserName.Name = "txtUserName";
+						this.txtUserName.Size = new System.Drawing.Size(150,22);
+						this.txtUserName.TabIndex = 0 ;
+						this.Controls.Add(this.txtUserName) ;
+						
+						this.lblPassWord.Location = new System.Drawing.Point(6, 37);
+						
+						this.txtPassWord = new System.Windows.Forms.TextBox() ;
+						this.txtPassWord.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.txtPassWord.Location = new System.Drawing.Point(158, 37);
+						this.txtPassWord.Name = "txtPassWord";
+						this.txtPassWord.Size = new System.Drawing.Size(150,22);
+						this.txtPassWord.TabIndex = 2 ;
+						this.Controls.Add(this.txtPassWord) ;
+						
+						this.lblDepartMent.Location = new System.Drawing.Point(6, 64);
+						
+						this.txtDepartMent = new System.Windows.Forms.TextBox() ;
+						this.txtDepartMent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.txtDepartMent.Location = new System.Drawing.Point(158, 64);
+						this.txtDepartMent.Name = "txtDepartMent";
+						this.txtDepartMent.Size = new System.Drawing.Size(150,22);
+						this.txtDepartMent.TabIndex = 4 ;
+						this.Controls.Add(this.txtDepartMent) ;
+						
+						this.lblName.Location = new System.Drawing.Point(6, 91);
+						
+						this.txtName = new System.Windows.Forms.TextBox() ;
+						this.txtName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.txtName.Location = new System.Drawing.Point(158, 91);
+						this.txtName.Name = "txtName";
+						this.txtName.Size = new System.Drawing.Size(150,22);
+						this.txtName.TabIndex = 6 ;
+						this.Controls.Add(this.txtName) ;
+						
+						this.lblTel.Location = new System.Drawing.Point(6, 118);
+						
+						this.txtTel = new System.Windows.Forms.TextBox() ;
+						this.txtTel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.txtTel.Location = new System.Drawing.Point(158, 118);
+						this.txtTel.Name = "txtTel";
+						this.txtTel.Size = new System.Drawing.Size(150,22);
+						this.txtTel.TabIndex = 8 ;
+						this.Controls.Add(this.txtTel) ;
+						
+						this.lblRemark.Location = new System.Drawing.Point(6, 145);
+						
+						this.txtRemark = new System.Windows.Forms.TextBox() ;
+						this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+						this.txtRemark.Location = new System.Drawing.Point(158, 145);
+						this.txtRemark.Name = "txtRemark";
+						this.txtRemark.Size = new System.Drawing.Size(150,22);
+						this.txtRemark.TabIndex = 10 ;
+						this.Controls.Add(this.txtRemark) ;
+						
 					#region 添加按钮
 					this.btnOK = new System.Windows.Forms.Button();
 					this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-					this.btnOK.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
+					this.btnOK.Location = new System.Drawing.Point(26, 192);
 					this.btnOK.Name = "btnOK";
 					this.btnOK.Size = new System.Drawing.Size(78, 27);
-					this.btnOK.TabIndex = <#=index#>;<#index += 2 ;#>
+					this.btnOK.TabIndex = 12;
 					this.btnOK.Text = "保存";
 					this.btnOK.UseVisualStyleBackColor = true;
 					this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-					this.Controls.Add(this.btnOK);<#cutX += 80;#>
+					this.Controls.Add(this.btnOK);
 					this.btnCancle = new System.Windows.Forms.Button();
 					this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-					this.btnCancle.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
+					this.btnCancle.Location = new System.Drawing.Point(106, 192);
 					this.btnCancle.Name = "btnCancle";
 					this.btnCancle.Size = new System.Drawing.Size(78, 27);
-					this.btnCancle.TabIndex = <#=index#>;<#index += 2 ;#>
+					this.btnCancle.TabIndex = 14;
 					this.btnCancle.Text = "取消";
 					this.btnCancle.UseVisualStyleBackColor = true;
 					this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
@@ -167,7 +226,7 @@
 					this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 					this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 					this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-					this.FormPager.Location = new System.Drawing.Point(10, <#=cutY + 30#>);
+					this.FormPager.Location = new System.Drawing.Point(10, 222);
 					this.FormPager.Name = "FormPager";
 					this.FormPager.RecordCount = 0;
 					this.FormPager.Size = new System.Drawing.Size(256, 29);
@@ -176,9 +235,9 @@
 					this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
 					#endregion
 					#region 窗体
-					this.Name = "Add<#=Table.Alias.Replace ("tb_","")[0].ToString().ToUpper()+Table.Alias.Replace ("tb_","").Substring (1)#>";
+					this.Name = "AddUser";
 					this.Size = new System.Drawing.Size(350, 500);
-					this.Load += new System.EventHandler(this.Add<#=className#>Load);
+					this.Load += new System.EventHandler(this.AddAddUserLoad);
 					this.SuspendLayout();
 					((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 					this.ResumeLayout(false);
@@ -189,12 +248,12 @@
 			#endregion
 
 			#region 构造函数 及初始化
-			public <#=className#>()
+			public AddUser()
 			{
 				InitializeComponent();
 			}
 			//控件加载事件,完成数据绑定和相关基本设置
-			void Add<#=className#>Load(object sender, EventArgs e)
+			void AddAddUserLoad(object sender, EventArgs e)
 			{				
 			}
 			/// <summary>
@@ -251,17 +310,13 @@
 						_curSeachCondition = value  ;
 					}
 					//此记录数可以在加载时固定起来,不用每次都计算
-					FormPager.RecordCount = tb_bttestdata.FindCount(CutSearchCondition,"","",0,0) ;
+					FormPager.RecordCount = tb_User.FindCount(CutSearchCondition,"","",0,0) ;
 				}
 			}
 			/// <summary>
-			/// 获取或者设置当前实体列表
+			/// 获取或者设置当前实体
 			/// </summary>
-		//	public List<<#=Table.Alias#>> CurrEntityList  //
-		//	{
-		//		get ;set ;
-		//	}
-			public tb_bttestdata CutModel
+			public tb_User CutModel
 			{
 				get ;set ;
 			}
@@ -277,18 +332,35 @@
 
 			#region 验证事件
 			bool ValidateControls()
-			{<# foreach(IDataColumn Field in Table.Columns){if(!Field.Nullable && Field.DataType != typeof(DateTime)){
-					if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
-						if(comb<#=Field.Alias#>.Text.Trim()==""){
-							errorProvider1.SetError(comb<#=Field.Alias#>,"必填项目");
+			{
+					if(txtUserName.Text.Trim()==""){
+							errorProvider1.SetError(txtUserName,"必填项目");
 							return false ;
-						} <#}else{#>
-					if(txt<#=Field.Alias#>.Text.Trim()==""){
-							errorProvider1.SetError(txt<#=Field.Alias#>,"必填项目");
+					}					
+				
+				return true ;
+				
+					if(txtPassWord.Text.Trim()==""){
+							errorProvider1.SetError(txtPassWord,"必填项目");
 							return false ;
-					}
-					return true ;
-				<#}}}#>}
+					}					
+				
+				return true ;
+				
+					if(txtDepartMent.Text.Trim()==""){
+							errorProvider1.SetError(txtDepartMent,"必填项目");
+							return false ;
+					}					
+				
+				return true ;
+				
+					if(txtName.Text.Trim()==""){
+							errorProvider1.SetError(txtName,"必填项目");
+							return false ;
+					}					
+				
+				return true ;
+				}
 			#endregion
 
 			#region 按钮事件
@@ -302,17 +374,20 @@
 			else {
 				if(((CutShowMode!= FormShowMode.ReadOnlyForAll) || (CutShowMode != FormShowMode.ReadOnlyForOne)) && ValidateControls() )
 				{
-				<#=Table.Alias#> model = new <#=Table.Alias#>();//定义当前实体
-				<# foreach(IDataColumn Field in Table.Columns){if(Field.DataType == typeof(string) && (Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
-				if(comb<#=Field.Alias#>.Text.Trim()!=""){
-					model.<#=Field.Alias#> = comb<#=Field.Alias#>.Text.Trim() ;}<#}else if (Field.DataType == typeof(string)) {#>
-					if(txt<#=Field.Alias#>.Text.Trim()!=""){
-						model.<#=Field.Alias#> = txt<#=Field.Alias#>.Text.Trim() ;}<#}
-					else if (Field.DataType == typeof(DateTime)) {#>{
-						model.<#=Field.Alias#> = dt<#=Field.Alias#>.Value ;}<#}
-					else {#>if(txt<#=Field.Alias#>.Text.Trim()!=""){
-						model.<#=Field.Alias#> =Convert.To<#=Field.DataType.ToString().Replace("System.","")#>(txt<#=Field.Alias#>.Text.Trim()) ;}
-					<#}}#>
+				tb_User model = new tb_User();//定义当前实体
+				
+					if(txtUserName.Text.Trim()!=""){
+						model.UserName = txtUserName.Text.Trim() ;}
+					if(txtPassWord.Text.Trim()!=""){
+						model.PassWord = txtPassWord.Text.Trim() ;}
+					if(txtDepartMent.Text.Trim()!=""){
+						model.DepartMent = txtDepartMent.Text.Trim() ;}
+					if(txtName.Text.Trim()!=""){
+						model.Name = txtName.Text.Trim() ;}
+					if(txtTel.Text.Trim()!=""){
+						model.Tel = txtTel.Text.Trim() ;}
+					if(txtRemark.Text.Trim()!=""){
+						model.Remark = txtRemark.Text.Trim() ;}
 					if (CutShowMode== FormShowMode.AddOne ) {
 						model.Insert () ;//添加
 						MessageBox.Show ("添加成功") ;
@@ -350,11 +425,11 @@
 			{
 			   GetData ();
 			}
-			List <<#=Table.Alias#>> modelList ;
+			List <tb_User> modelList ;
 			void GetData()
 			{				
 				//判断不为空，才能绑定				
-				modelList = <#=Table.Alias#>.FindAll(CutSearchCondition, "", "", (FormPager.PageIndex-1)*FormPager.PageSize ,FormPager.PageSize);
+				modelList = tb_User.FindAll(CutSearchCondition, "", "", (FormPager.PageIndex-1)*FormPager.PageSize ,FormPager.PageSize);
 				if (modelList !=null ) {
 					CutModel = modelList[0];					
 					BandingData();
@@ -392,9 +467,13 @@
 					btnOK.Enabled = true ;
 					btnOK.Text ="保存";
 					//设置控件清空，并且可用
-					<# foreach(IDataColumn Field in Table.Columns){if(Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
-							comb<#=Field.Alias#>.Enabled = true ;<#}else{#>txt<#=Field.Alias#>.ReadOnly = false ;
-							txt<#=Field.Alias#>.Text = string.Empty  ; <#}}}#>
+					txtUserName.ReadOnly = false ;
+							txtUserName.Text = string.Empty  ; txtPassWord.ReadOnly = false ;
+							txtPassWord.Text = string.Empty  ; txtDepartMent.ReadOnly = false ;
+							txtDepartMent.Text = string.Empty  ; txtName.ReadOnly = false ;
+							txtName.Text = string.Empty  ; txtTel.ReadOnly = false ;
+							txtTel.Text = string.Empty  ; txtRemark.ReadOnly = false ;
+							txtRemark.Text = string.Empty  ; 
 				}
 			}
 			private void SetControlEdit()
@@ -403,10 +482,12 @@
 					btnOK .Enabled = true ;
 					btnOK.Text =" 保存";
 					//控件除主键外都可读
-				<#foreach(IDataColumn Field in Table.Columns) {if(Field.PrimaryKey) {#>txt<#=Field.Alias#>.ReadOnly = true;<#continue ;}
-				TypeCode code = Type.GetTypeCode(Field.DataType);#><#if(code == TypeCode.DateTime){#>dt<#=Field.Alias#>.Enabled = true ;
-				<#}else if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>comb<#=Field.Alias#>.Enabled = true ;<#} else {#>
-					txt<#=Field.Alias#>.ReadOnly = false ;<#}}#>
+				txtUserName.ReadOnly = true;
+					txtPassWord.ReadOnly = false ;
+					txtDepartMent.ReadOnly = false ;
+					txtName.ReadOnly = false ;
+					txtTel.ReadOnly = false ;
+					txtRemark.ReadOnly = false ;
 				}
 			}
 			private void SetControlReadOnly()
@@ -419,11 +500,7 @@
 				if (CutShowMode == FormShowMode.ReadOnlyForOne || CutShowMode== FormShowMode.ReadOnlyForAll ){
 					btnOK.Enabled = false ;
 				}
-				<# foreach(IDataColumn Field in Table.Columns){if(Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
-							comb<#=Field.Alias#>.Enabled = false ;
-							<#}else{#>txt<#=Field.Alias#>.ReadOnly = true ;<#}} else {#>
-							dt<#=Field.Alias#>.Enabled = false ;
-							<#}}#>
+				txtUserName.ReadOnly = true ;txtPassWord.ReadOnly = true ;txtDepartMent.ReadOnly = true ;txtName.ReadOnly = true ;txtTel.ReadOnly = true ;txtRemark.ReadOnly = true ;
 			}
 			#endregion
 
@@ -433,13 +510,19 @@
 			/// </summary>
 			private void BandingData()
 			{
-				  <#foreach(IDataColumn Field in Table.Columns) {TypeCode code = Type.GetTypeCode(Field.DataType);#>
-				  <#if(code == TypeCode.DateTime){#>dt<#=Field.Alias#>.DataBindings.Clear () ;
-													dt<#=Field.Alias#>.DataBindings.Add ("Value",CutModel,"<#=Field.Alias#>") ;
-				<#}else if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>comb<#=Field.Alias#>.DataBindings.Clear () ;
-													comb<#=Field.Alias#>.DataBindings.Add ("Text",CutModel,"<#=Field.Alias#>") ;
-				<#} else {#>txt<#=Field.Alias#>.DataBindings.Clear();
-						   txt<#=Field.Alias#>.DataBindings.Add ("Text",CutModel,"<#=Field.Alias#>");<#}}#>
+				  
+				  txtUserName.DataBindings.Clear();
+						   txtUserName.DataBindings.Add ("Text",CutModel,"UserName");
+				  txtPassWord.DataBindings.Clear();
+						   txtPassWord.DataBindings.Add ("Text",CutModel,"PassWord");
+				  txtDepartMent.DataBindings.Clear();
+						   txtDepartMent.DataBindings.Add ("Text",CutModel,"DepartMent");
+				  txtName.DataBindings.Clear();
+						   txtName.DataBindings.Add ("Text",CutModel,"Name");
+				  txtTel.DataBindings.Clear();
+						   txtTel.DataBindings.Add ("Text",CutModel,"Tel");
+				  txtRemark.DataBindings.Clear();
+						   txtRemark.DataBindings.Add ("Text",CutModel,"Remark");
 			}
 			#endregion
 		  }

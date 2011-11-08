@@ -9,14 +9,16 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using DotNet.Tools.Controls ;
+using YoungRunControl.Controls ;
 
-namespace <#=Config.NameSpace#>.Forms
+namespace YoungRunControl.Forms
 {
- <# string className ="Add"+ Table.Alias.Replace ("tb_","")[0].ToString().ToUpper()+Table.Alias.Replace ("tb_","").Substring (1); #>
+
+ 
 	/// <summary>
-	/// <#=Table.Alias#>
+	/// tb_RawIntoFactory
 	/// </summary>
-	public partial class <#=className#>Form : Form
+	public partial class AddRawIntoFactoryForm : Form
 	{
 	        #region 自动生成的代码,窗体初始化
 			/// <summary>
@@ -45,7 +47,7 @@ namespace <#=Config.NameSpace#>.Forms
 			/// </summary>
 			private void InitializeComponent()
 			{
-				this.EntityControl = new YoungRunMISTest.<#=className#>();
+				this.EntityControl = new AddRawIntoFactory();
 			this.SuspendLayout();
 			// 
 			// EntityControl
@@ -71,9 +73,9 @@ namespace <#=Config.NameSpace#>.Forms
 			this.Text = "Form1";
 			this.ResumeLayout(false);
 		    }
-		    private YoungRunMISTest.AddBttestdata EntityControl;		
+		    private AddRawIntoFactory EntityControl;		
 		
-		public <#=className#>Form ()
+		public AddRawIntoFactoryForm ()
 		{
 			InitializeComponent();			
 		}

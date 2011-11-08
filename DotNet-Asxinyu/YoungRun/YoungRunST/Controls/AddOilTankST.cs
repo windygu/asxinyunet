@@ -75,8 +75,8 @@ namespace YoungRunST.Controls
                 // 先查找油罐信息
                 tb_oiltankinfo tankInfo = tb_oiltankinfo.FindByKey(tankList[i].TankId);
                 tb_oiltankst tankST = new tb_oiltankst();
-                tankST.TankId = tankInfo.TankId;
-                tankST.ProductName = tankInfo.ProductName;
+                tankST.TankIdTP  = tankInfo.TankId;
+                tankST.ProductNameTP = tankInfo.ProductNameTP ;
                 tankST.LiquidLevel = tankList[i].LiquidLevel;
                 tankST.CurVolume = tankList[i].LiquidLevel * 100 * tankInfo.PerCmVolume;//体积
                 tankST.CurWeigth = tankInfo.D20 * tankST.CurVolume ;
