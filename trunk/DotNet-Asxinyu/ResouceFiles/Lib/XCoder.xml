@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?><XConfig><ConnName>YoungRunMIS</ConnName><Prefix></Prefix><NameSpace>YoungRunEntity</NameSpace><TemplateName>*数据字典</TemplateName><OutputPath>YoungRunEntity</OutputPath><EntityConnName>YoungRunST</EntityConnName><BaseClass>Entity</BaseClass><RenderGenEntity>False</RenderGenEntity><AutoCutPrefix>False</AutoCutPrefix><AutoFixWord>False</AutoFixWord><UseCNFileName>True</UseCNFileName><UseHeadTemplate>False</UseHeadTemplate><HeadTemplate>/*
+﻿<?xml version="1.0" encoding="utf-8"?><XConfig><ConnName>mssql</ConnName><Prefix></Prefix><NameSpace>YoungRunEntity</NameSpace><TemplateName>*数据字典</TemplateName><OutputPath>YoungRunEntity</OutputPath><EntityConnName>YoungRunST</EntityConnName><BaseClass>Entity</BaseClass><RenderGenEntity>False</RenderGenEntity><AutoCutPrefix>False</AutoCutPrefix><AutoFixWord>False</AutoFixWord><UseCNFileName>True</UseCNFileName><UseHeadTemplate>False</UseHeadTemplate><HeadTemplate>/*
  * XCoder v&lt;#=Version#&gt;
  * 作者：&lt;#=Environment.UserName + "/" + Environment.MachineName#&gt;
  * 时间：&lt;#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#&gt;
  * 版权：版权所有 (C) 新生命开发团队 &lt;#=DateTime.Now.ToString("yyyy")#&gt;
 */
-</HeadTemplate><Debug>True</Debug><LastUpdate>2011-10-21 08:07:46</LastUpdate><LastBlogTitle>【求助】测试XCode v8.0的正向反向功能</LastBlogTitle><Items /></XConfig>
+</HeadTemplate><Debug>True</Debug><LastUpdate>2011-11-08 18:46:55</LastUpdate><LastBlogTitle>Oracle免客户端For .Net（增加分析Devart和DataDirect）</LastBlogTitle><Items /></XConfig>
