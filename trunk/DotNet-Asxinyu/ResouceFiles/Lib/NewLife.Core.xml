@@ -268,13 +268,6 @@
             <param name="member"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Reflection.MemberInfoX.SaveIL(System.Reflection.MethodInfo,System.Action{System.Reflection.Emit.ILGenerator})">
-            <summary>
-            保存IL
-            </summary>
-            <param name="method"></param>
-            <param name="action"></param>
-        </member>
         <member name="M:NewLife.Reflection.MemberInfoX.Invoke(System.Object,System.Object[])">
             <summary>
             执行方法
@@ -855,6 +848,20 @@
               <paramref name="keySelector" /> 生成的键的类型。</typeparam>
             <filterpriority>2</filterpriority>
         </member>
+        <member name="T:NewLife.Web.SystemStartModule">
+            <summary>系统启动模块</summary>
+        </member>
+        <member name="M:NewLife.Web.SystemStartModule.System#Web#IHttpModule#Init(System.Web.HttpApplication)">
+            <summary>
+            初始化模块，准备拦截请求。
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:NewLife.Web.SystemStartModule.CheckStarting">
+            <summary>
+            检查系统是否启动中，如果启动中，则显示进度条
+            </summary>
+        </member>
         <member name="T:NewLife.Security.Crc32">
              <summary>
              Generate a table for a byte-wise 32-bit CRC calculation on the polynomial:
@@ -1216,42 +1223,28 @@
             <typeparam name="TSettings">设置类</typeparam>
         </member>
         <member name="T:NewLife.Serialization.ReaderWriterBase`1">
-            <summary>
-            读写器基类
-            </summary>
+            <summary>读写器基类</summary>
         </member>
         <member name="T:NewLife.Serialization.IReaderWriter">
-            <summary>
-            读写器接口
-            </summary>
+            <summary>读写器接口</summary>
         </member>
         <member name="M:NewLife.Serialization.IReaderWriter.Reset">
-            <summary>
-            重置
-            </summary>
+            <summary>重置</summary>
         </member>
         <member name="M:NewLife.Serialization.IReaderWriter.GetMembers(System.Type,System.Object)">
-            <summary>
-            获取需要序列化的成员
-            </summary>
+            <summary>获取需要序列化的成员</summary>
             <param name="type">类型</param>
             <param name="value">对象</param>
             <returns>需要序列化的成员</returns>
         </member>
         <member name="P:NewLife.Serialization.IReaderWriter.Name">
-            <summary>
-            读写器名称
-            </summary>
+            <summary>读写器名称</summary>
         </member>
         <member name="P:NewLife.Serialization.IReaderWriter.Stream">
-            <summary>
-            数据流
-            </summary>
+            <summary>数据流</summary>
         </member>
         <member name="P:NewLife.Serialization.IReaderWriter.Settings">
-            <summary>
-            序列化设置
-            </summary>
+            <summary>序列化设置</summary>
         </member>
         <member name="P:NewLife.Serialization.IReaderWriter.Depth">
             <summary>层次深度。</summary>
@@ -1262,9 +1255,7 @@
             </summary>
         </member>
         <member name="M:NewLife.Serialization.ReaderWriterBase`1.Reset">
-            <summary>
-            重置
-            </summary>
+            <summary>重置</summary>
         </member>
         <member name="M:NewLife.Serialization.ReaderWriterBase`1.GetMembers(System.Type,System.Object)">
             <summary>
@@ -1289,12 +1280,6 @@
             <param name="value"></param>
             <param name="member"></param>
             <returns></returns>
-        </member>
-        <member name="M:NewLife.Serialization.ReaderWriterBase`1.OnDispose(System.Boolean)">
-            <summary>
-            释放资源
-            </summary>
-            <param name="disposing"></param>
         </member>
         <member name="M:NewLife.Serialization.ReaderWriterBase`1.WriteLog(System.String,System.Object[])">
             <summary>
@@ -1332,9 +1317,7 @@
             <summary>序列化设置</summary>
         </member>
         <member name="P:NewLife.Serialization.ReaderWriterBase`1.NewLife#Serialization#IReaderWriter#Settings">
-            <summary>
-            序列化设置
-            </summary>
+            <summary>序列化设置</summary>
         </member>
         <member name="P:NewLife.Serialization.ReaderWriterBase`1.Depth">
             <summary>层次深度</summary>
@@ -2742,14 +2725,14 @@
             作为约定，组件内部的服务定位全部通过该类完成，保证服务在使用前已完成了注册。
             </remarks>
         </member>
-        <member name="M:NewLife.Model.ServiceContainer`1.Register``2(System.String,System.Boolean)">
+        <member name="M:NewLife.Model.ServiceContainer`1.Register``2(System.String,System.Int32)">
             <summary>
             注册类型和名称
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <typeparam name="TImplement">实现类型</typeparam>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.ServiceContainer`1.Register``1(System.Type,System.String)">
@@ -2761,20 +2744,22 @@
             <param name="name"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ServiceContainer`1.Resolve``1(System.String)">
+        <member name="M:NewLife.Model.ServiceContainer`1.Resolve``1(System.String,System.Boolean)">
             <summary>
             解析类型指定名称的实例
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ServiceContainer`1.ResolveType``1(System.String)">
+        <member name="M:NewLife.Model.ServiceContainer`1.ResolveType``1(System.String,System.Boolean)">
             <summary>
             解析类型
             </summary>
-            <typeparam name="TInterface"></typeparam>
-            <param name="name"></param>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
         <member name="P:NewLife.Model.ServiceContainer`1.Container">
@@ -4252,6 +4237,46 @@
         <member name="P:NewLife.Collections.SingleListNode`1.Next">
             <summary>下一个节点</summary>
         </member>
+        <member name="T:NewLife.Web.RunTimeModule">
+            <summary>页面执行时间模块</summary>
+        </member>
+        <member name="M:NewLife.Web.RunTimeModule.System#Web#IHttpModule#Init(System.Web.HttpApplication)">
+            <summary>
+            初始化模块，准备拦截请求。
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:NewLife.Web.RunTimeModule.OnInit">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:NewLife.Web.RunTimeModule.WriteRunTime(System.Object,System.EventArgs)">
+            <summary>输出运行时间</summary>
+        </member>
+        <member name="M:NewLife.Web.RunTimeModule.Render">
+            <summary>输出</summary>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Web.RunTimeModule.Context">
+            <summary>上下文</summary>
+        </member>
+        <member name="P:NewLife.Web.RunTimeModule.Request">
+            <summary>请求</summary>
+        </member>
+        <member name="P:NewLife.Web.RunTimeModule.Response">
+            <summary>响应</summary>
+        </member>
+        <member name="P:NewLife.Web.RunTimeModule.IsWriteRunTime">
+            <summary>当前请求是否输出执行时间</summary>
+            <remarks>如果要所有请求不输出执行时间，则从配置中移除当前模块</remarks>
+        </member>
+        <member name="P:NewLife.Web.RunTimeModule.HasWrite">
+            <summary>当前请求是否已经输出执行时间</summary>
+        </member>
+        <member name="P:NewLife.Web.RunTimeModule.RunTimeFormat">
+            <summary>执行时间字符串</summary>
+        </member>
         <member name="T:NewLife.Log.XTrace">
             <summary>
             日志类，包含跟踪调试功能
@@ -4714,39 +4739,27 @@
             <remarks>参考了老赵（http://www.cnblogs.com/jeffreyzhao/archive/2009/03/10/codetimer.html）和eaglet（http://www.cnblogs.com/eaglet/archive/2009/03/10/1407791.html）两位的作品</remarks>
             <remarks>为了保证性能比较的公平性，采用了多种指标，并使用计时器重写等手段来避免各种不必要的损耗</remarks>
         </member>
-        <member name="M:NewLife.Log.CodeTimer.Time(System.Int32,System.Action{System.Int32})">
+        <member name="M:NewLife.Log.CodeTimer.Time(System.Int32,System.Action{System.Int32},System.Boolean)">
             <summary>
             计时
             </summary>
             <param name="times">次数</param>
             <param name="action">需要计时的委托</param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Log.CodeTimer.Time(System.Int32,System.Boolean,System.Action{System.Int32})">
-            <summary>
-            计时
-            </summary>
-            <param name="times">次数</param>
             <param name="needTimeOne">是否需要预热</param>
-            <param name="action">需要计时的委托</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Log.CodeTimer.TimeLine(System.String,System.Int32,System.Action{System.Int32})">
+        <member name="M:NewLife.Log.CodeTimer.TimeLine(System.String,System.Int32,System.Action{System.Int32},System.Boolean)">
             <summary>
             计时，并用控制台输出行
             </summary>
             <param name="title">标题</param>
             <param name="times">次数</param>
             <param name="action">需要计时的委托</param>
-        </member>
-        <member name="M:NewLife.Log.CodeTimer.TimeLine(System.String,System.Int32,System.Boolean,System.Action{System.Int32})">
-            <summary>
-            计时，并用控制台输出行
-            </summary>
-            <param name="title">标题</param>
-            <param name="times">次数</param>
             <param name="needTimeOne">是否需要预热</param>
-            <param name="action">需要计时的委托</param>
+        </member>
+        <member name="M:NewLife.Log.CodeTimer.ShowHeader(System.String)">
+            <summary>显示头部</summary>
+            <param name="title"></param>
         </member>
         <member name="M:NewLife.Log.CodeTimer.Time">
             <summary>
@@ -5205,6 +5218,118 @@
         </member>
         <member name="P:NewLife.IO.HttpStreamClient.Client">
             <summary>客户端</summary>
+        </member>
+        <member name="T:System.ReflectionExtensions">
+            <summary>反射扩展</summary>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetCustomAttribute``1(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>获取自定义属性</summary>
+            <typeparam name="TAttribute"></typeparam>
+            <param name="member"></param>
+            <param name="inherit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetCustomAttributeValue``2(System.Reflection.Assembly)">
+            <summary>获取自定义属性的值。可用于ReflectionOnly加载的程序集</summary>
+            <typeparam name="TAttribute"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetCustomAttributeValue``2(System.Type,System.Boolean)">
+            <summary>获取自定义属性的值。可用于ReflectionOnly加载的程序集</summary>
+            <typeparam name="TAttribute"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="target"></param>
+            <param name="inherit">是否递归</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.FindAllPlugins(System.Type,System.Boolean,System.Boolean)">
+            <summary>查找所有非系统程序集中的所有插件</summary>
+            <remarks>继承类所在的程序集会引用baseType所在的程序集，利用这一点可以做一定程度的性能优化。</remarks>
+            <param name="baseType">接口类型或者抽象类型基类</param>
+            <param name="isLoadAssembly">是否从未加载程序集中获取类型。使用仅反射的方法检查目标类型，如果存在，则进行常规加载</param>
+            <param name="excludeGlobalTypes">指示是否应检查来自所有引用程序集的类型。如果为 false，则检查来自所有引用程序集的类型。 否则，只检查来自非全局程序集缓存 (GAC) 引用的程序集的类型。</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.CreateInstance(System.Type,System.Object[])">
+            <summary>快速反射创建指定类型的实例</summary>
+            <param name="type"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.ChangeType(System.Object,System.Type)">
+            <summary>类型转换</summary>
+            <param name="value"></param>
+            <param name="conversionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.ChangeType``1(System.Object)">
+            <summary>类型转换</summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.Invoke(System.Object,System.String,System.Object[])">
+            <summary>快速调用成员方法</summary>
+            <param name="target"></param>
+            <param name="name"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.Invoke(System.Type,System.String,System.Object[])">
+            <summary>快速调用静态方法</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetPropertyValue(System.Type,System.String)">
+            <summary>快速获取静态属性</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.SetPropertyValue(System.Type,System.String,System.Object)">
+            <summary>静态属性快速赋值</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetPropertyValue(System.Object,System.String)">
+            <summary>快速获取成员属性</summary>
+            <param name="target"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.SetPropertyValue(System.Object,System.String,System.Object)">
+            <summary>成员属性快速赋值</summary>
+            <param name="target"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetFieldValue(System.Type,System.String)">
+            <summary>快速获取静态字段</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.SetFieldValue(System.Type,System.String,System.Object)">
+            <summary>静态字段快速赋值</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:System.ReflectionExtensions.GetFieldValue(System.Object,System.String)">
+            <summary>快速获取成员字段</summary>
+            <param name="target"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ReflectionExtensions.SetFieldValue(System.Object,System.String,System.Object)">
+            <summary>成员字段快速赋值</summary>
+            <param name="target"></param>
+            <param name="name"></param>
+            <param name="value"></param>
         </member>
         <member name="T:NewLife.Reflection.DuckTyping">
             <summary>
@@ -6016,6 +6141,9 @@
         <member name="P:NewLife.Runtime.IsConsole">
             <summary>是否控制台。用于判断是否可以执行一些控制台操作。</summary>
         </member>
+        <member name="P:NewLife.Runtime.IsWeb">
+            <summary>是否Web环境</summary>
+        </member>
         <member name="P:NewLife.Runtime.Is64BitOperatingSystem">
             <summary>确定当前操作系统是否为 64 位操作系统。</summary>
             <returns>如果操作系统为 64 位操作系统，则为 true；否则为 false。</returns>
@@ -6023,6 +6151,26 @@
         <member name="P:NewLife.Runtime.Is64BitProcess">
             <summary>确定当前进程是否为 64 位进程。</summary>
             <returns>如果进程为 64 位进程，则为 true；否则为 false。</returns>
+        </member>
+        <member name="T:NewLife.Web.CompressionModule">
+            <summary>页面压缩模块</summary>
+        </member>
+        <member name="M:NewLife.Web.CompressionModule.System#Web#IHttpModule#Init(System.Web.HttpApplication)">
+            <summary>
+            初始化模块，准备拦截请求。
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:NewLife.Web.CompressionModule.IsEncodingAccepted(System.String)">
+            <summary>
+            检查请求头，确认客户端是否支持压缩编码
+            </summary>
+        </member>
+        <member name="M:NewLife.Web.CompressionModule.SetEncoding(System.String)">
+            <summary>
+            添加压缩编码到响应头
+            </summary>
+            <param name="encoding"></param>
         </member>
         <member name="T:NewLife.Threading.ThreadPoolX">
             <summary>
@@ -6350,6 +6498,12 @@
             快速反射创建指定类型的实例
             </summary>
             <param name="type"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Reflection.TypeX.CreateInstance``1(System.Object[])">
+            <summary>快速反射创建指定类型的实例</summary>
+            <typeparam name="T"></typeparam>
             <param name="parameters"></param>
             <returns></returns>
         </member>
@@ -6929,48 +7083,6 @@
         </member>
         <member name="P:NewLife.Remoting.MethodMessage.MessageType">
             <summary>消息类型</summary>
-        </member>
-        <member name="T:NewLife.Reflection.FastTest">
-            <summary>
-            快速反射测试
-            </summary>
-        </member>
-        <member name="M:NewLife.Reflection.FastTest.Test">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:NewLife.Reflection.FastTest.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:NewLife.Reflection.FastTest.#ctor(System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="id"></param>
-        </member>
-        <member name="M:NewLife.Reflection.FastTest.#ctor(System.Int32,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="id"></param>
-            <param name="name"></param>
-        </member>
-        <member name="M:NewLife.Reflection.FastTest.GetFullName(System.Int32,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="id"></param>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="P:NewLife.Reflection.FastTest.ID">
-            <summary>编号</summary>
-        </member>
-        <member name="P:NewLife.Reflection.FastTest.Name">
-            <summary>名称</summary>
         </member>
         <member name="T:NewLife.Serialization.BinaryReaderX">
             <summary>
@@ -7710,9 +7822,7 @@
             </summary>
         </member>
         <member name="T:NewLife.Reflection.AttributeX">
-            <summary>
-            特性辅助类
-            </summary>
+            <summary>特性辅助类</summary>
         </member>
         <member name="M:NewLife.Reflection.AttributeX.GetCustomAttribute``1(System.Reflection.MemberInfo,System.Boolean)">
             <summary>
@@ -9997,6 +10107,18 @@
             <param name="name"></param>
             <param name="value"></param>
         </member>
+        <member name="M:NewLife.Reflection.PropertyInfoX.GetValue(System.Type,System.String)">
+            <summary>快速获取静态属性</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Reflection.PropertyInfoX.SetValue(System.Type,System.String,System.Object)">
+            <summary>静态属性快速赋值</summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
         <member name="M:NewLife.Reflection.PropertyInfoX.GetValue``1(System.Object,System.String)">
             <summary>
             静态快速取值
@@ -10016,9 +10138,7 @@
             <returns></returns>
         </member>
         <member name="M:NewLife.Reflection.PropertyInfoX.SetValue(System.Object,System.String,System.Object)">
-            <summary>
-            静态快速赋值
-            </summary>
+            <summary>成员属性快速赋值</summary>
             <param name="target"></param>
             <param name="name"></param>
             <param name="value"></param>
@@ -10237,7 +10357,7 @@
             4，如果有带参数构造函数，则从容器内获取各个参数的实例，最后创建对象返回。
             </remarks>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.Register(System.Type,System.Type,System.Object,System.String,System.Boolean)">
+        <member name="M:NewLife.Model.IObjectContainer.Register(System.Type,System.Type,System.Object,System.String,System.Int32)">
             <summary>
             注册类型和名称
             </summary>
@@ -10245,43 +10365,45 @@
             <param name="to">实现类型</param>
             <param name="instance">实例</param>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.Register``2(System.String,System.Boolean)">
+        <member name="M:NewLife.Model.IObjectContainer.Register``2(System.String,System.Int32)">
             <summary>
             注册类型和名称
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <typeparam name="TImplement">实现类型</typeparam>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.Register``1(System.Object,System.String,System.Boolean)">
+        <member name="M:NewLife.Model.IObjectContainer.Register``1(System.Object,System.String,System.Int32)">
             <summary>
             注册类型指定名称的实例
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="instance">实例</param>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.Resolve(System.Type,System.String)">
+        <member name="M:NewLife.Model.IObjectContainer.Resolve(System.Type,System.String,System.Boolean)">
             <summary>
             解析类型指定名称的实例
             </summary>
             <param name="from">接口类型</param>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.Resolve``1(System.String)">
+        <member name="M:NewLife.Model.IObjectContainer.Resolve``1(System.String,System.Boolean)">
             <summary>
             解析类型指定名称的实例
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.IObjectContainer.ResolveAll(System.Type)">
@@ -10298,20 +10420,22 @@
             <typeparam name="TInterface">接口类型</typeparam>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.ResolveType(System.Type,System.String)">
+        <member name="M:NewLife.Model.IObjectContainer.ResolveType(System.Type,System.String,System.Boolean)">
             <summary>
             解析接口指定名称的实现类型
             </summary>
             <param name="from">接口类型</param>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.IObjectContainer.ResolveType``1(System.String)">
+        <member name="M:NewLife.Model.IObjectContainer.ResolveType``1(System.String,System.Boolean)">
             <summary>
             解析接口指定名称的实现类型
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.IObjectContainer.ResolveAllTypes(System.Type)">
@@ -10345,6 +10469,9 @@
         </member>
         <member name="P:NewLife.Model.IObjectMap.Instance">
             <summary>对象实例</summary>
+        </member>
+        <member name="P:NewLife.Model.IObjectMap.Singleton">
+            <summary>单一实例</summary>
         </member>
         <member name="T:NewLife.IO.StreamHttpHandler">
             <summary>
@@ -10396,17 +10523,23 @@
             是否可以重用
             </summary>
         </member>
-        <member name="T:NewLife.Extension.EnumHelper">
+        <member name="T:System.EnumHelper">
             <summary>枚举类型助手类</summary>
         </member>
-        <member name="M:NewLife.Extension.EnumHelper.GetDescription(System.Enum)">
+        <member name="M:System.EnumHelper.Has(System.Enum,System.Enum)">
+            <summary>枚举变量是否包含指定标识</summary>
+            <param name="value">枚举变量</param>
+            <param name="flag">要判断的标识</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.EnumHelper.GetDescription(System.Enum)">
             <summary>
             获取枚举字段的注释
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Extension.EnumHelper.GetDescriptions``1">
+        <member name="M:System.EnumHelper.GetDescriptions``1">
             <summary>
             获取枚举类型的所有字段注释
             </summary>
@@ -10507,29 +10640,6 @@
             已重载。
             </summary>
             <returns></returns>
-        </member>
-        <member name="T:NewLife.Web.CompressionModule">
-            <summary>
-            页面压缩模块
-            </summary>
-        </member>
-        <member name="M:NewLife.Web.CompressionModule.System#Web#IHttpModule#Init(System.Web.HttpApplication)">
-            <summary>
-            初始化模块，准备拦截请求。
-            </summary>
-            <param name="context"></param>
-        </member>
-        <member name="M:NewLife.Web.CompressionModule.IsEncodingAccepted(System.String)">
-            <summary>
-            Checks the request headers to see if the specified
-            encoding is accepted by the client.
-            </summary>
-        </member>
-        <member name="M:NewLife.Web.CompressionModule.SetEncoding(System.String)">
-            <summary>
-            Adds the specified encoding to the response headers.
-            </summary>
-            <param name="encoding"></param>
         </member>
         <member name="T:NewLife.Serialization.ReadObjectEventArgs">
             <summary>
@@ -10886,7 +10996,7 @@
             初始化一个对象容器实例，自动从配置文件中加载注册
             </summary>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.Register(System.Type,System.Type,System.Object,System.String,System.Boolean)">
+        <member name="M:NewLife.Model.ObjectContainer.Register(System.Type,System.Type,System.Object,System.String,System.Int32)">
             <summary>
             注册
             </summary>
@@ -10894,43 +11004,45 @@
             <param name="to">实现类型</param>
             <param name="instance">实例</param>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.Register``2(System.String,System.Boolean)">
+        <member name="M:NewLife.Model.ObjectContainer.Register``2(System.String,System.Int32)">
             <summary>
             注册类型和名称
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <typeparam name="TImplement">实现类型</typeparam>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.Register``1(System.Object,System.String,System.Boolean)">
+        <member name="M:NewLife.Model.ObjectContainer.Register``1(System.Object,System.String,System.Int32)">
             <summary>
             注册类型指定名称的实例
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="instance">实例</param>
             <param name="name">名称</param>
-            <param name="overwrite">是否覆盖</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.Resolve(System.Type,System.String)">
+        <member name="M:NewLife.Model.ObjectContainer.Resolve(System.Type,System.String,System.Boolean)">
             <summary>
             解析类型指定名称的实例
             </summary>
             <param name="from">接口类型</param>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.Resolve``1(System.String)">
+        <member name="M:NewLife.Model.ObjectContainer.Resolve``1(System.String,System.Boolean)">
             <summary>
             解析类型指定名称的实例
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.ObjectContainer.ResolveAll(System.Type)">
@@ -10947,20 +11059,22 @@
             <typeparam name="TInterface">接口类型</typeparam>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.ResolveType(System.Type,System.String)">
+        <member name="M:NewLife.Model.ObjectContainer.ResolveType(System.Type,System.String,System.Boolean)">
             <summary>
             解析接口指定名称的实现类型
             </summary>
             <param name="from">接口类型</param>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Model.ObjectContainer.ResolveType``1(System.String)">
+        <member name="M:NewLife.Model.ObjectContainer.ResolveType``1(System.String,System.Boolean)">
             <summary>
             解析接口指定名称的实现类型
             </summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="name">名称</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.ObjectContainer.ResolveAllTypes(System.Type)">
@@ -11006,6 +11120,12 @@
         <member name="P:NewLife.Model.ObjectContainer.Map.ImplementType">
             <summary>实现类型</summary>
         </member>
+        <member name="P:NewLife.Model.ObjectContainer.Map.Singleton">
+            <summary>单一实例</summary>
+        </member>
+        <member name="P:NewLife.Model.ObjectContainer.Map.Priority">
+            <summary>优先级</summary>
+        </member>
         <member name="P:NewLife.Model.ObjectContainer.Map.Instance">
             <summary>实例</summary>
         </member>
@@ -11015,16 +11135,6 @@
         <member name="T:NewLife.Model.ObjectContainer.ModeFlags">
             <summary>
             模式标记
-            </summary>
-        </member>
-        <member name="F:NewLife.Model.ObjectContainer.ModeFlags.Singleton">
-            <summary>
-            以单例模式注册，如果注册的是类型，则new一个实例
-            </summary>
-        </member>
-        <member name="F:NewLife.Model.ObjectContainer.ModeFlags.Overwrite">
-            <summary>
-            是否覆盖已有的注册
             </summary>
         </member>
         <member name="F:NewLife.Model.ObjectContainer.ModeFlags.Extend">
@@ -12140,6 +12250,22 @@
             <param name="max">最大复制字节数</param>
             <returns>返回复制的总字节数</returns>
         </member>
+        <member name="M:NewLife.IO.IOHelper.ToArray(System.IO.Stream,System.Int32)">
+            <summary>
+            流转为字节数组
+            </summary>
+            <param name="stream">数据流</param>
+            <param name="offset">流的初始位置</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.IO.IOHelper.ToStr(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            流转换为字符串
+            </summary>
+            <param name="stream">目标流</param>
+            <param name="encoding">编码格式</param>
+            <returns></returns>
+        </member>
         <member name="T:NewLife.IO.BinaryTest">
             <summary>
             二进制操作测试
@@ -12195,6 +12321,20 @@
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.Configuration.Config.GetMutilConfig``1(``0,System.String[])">
+            <summary>依次尝试获取一批设置项，直到找到第一个为止</summary>
+            <typeparam name="T"></typeparam>
+            <param name="defaultValue"></param>
+            <param name="names"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Configuration.Config.TryGetMutilConfig``1(``0@,System.String[])">
+            <summary>依次尝试获取一批设置项，直到找到第一个为止</summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="names"></param>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Configuration.Config.GetConfig``1(System.String)">
             <summary>
             取得指定名称的设置项，并转为指定类型
@@ -12210,6 +12350,15 @@
             <typeparam name="T"></typeparam>
             <param name="name"></param>
             <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Configuration.Config.TryGetConfig``1(System.String,``0@)">
+            <summary>
+            尝试获取指定名称的设置项
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Configuration.Config.GetConfigByPrefix(System.String)">
@@ -12244,22 +12393,31 @@
         <member name="P:NewLife.Configuration.Config.ConnectionStrings">
             <summary>连接字符串设置</summary>
         </member>
-        <member name="T:NewLife.StringHelper">
+        <member name="T:System.StringHelper">
             <summary>字符串助手类</summary>
         </member>
-        <member name="M:NewLife.StringHelper.EqualIgnoreCase(System.String,System.String)">
-            <summary>
-            忽略大小写的字符串比较
-            </summary>
+        <member name="M:System.StringHelper.EqualIgnoreCase(System.String,System.String)">
+            <summary>忽略大小写的字符串比较</summary>
             <param name="value"></param>
             <param name="str"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.StringHelper.IsNullOrWhiteSpace(System.String)">
-            <summary>
-            是否空或者空白字符串
-            </summary>
+        <member name="M:System.StringHelper.IsNullOrWhiteSpace(System.String)">
+            <summary>是否空或者空白字符串</summary>
             <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringHelper.Split(System.String,System.String[])">
+            <summary>拆分字符串</summary>
+            <param name="value"></param>
+            <param name="separators"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringHelper.SplitAsDictionary(System.String,System.String,System.String[])">
+            <summary>拆分字符串成为名值字典</summary>
+            <param name="str"></param>
+            <param name="nameValueSeparator"></param>
+            <param name="separators"></param>
             <returns></returns>
         </member>
     </members>

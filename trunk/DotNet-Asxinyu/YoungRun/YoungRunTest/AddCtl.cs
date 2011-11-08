@@ -87,6 +87,7 @@ namespace YoungRunMISTest
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBttestdata));
             this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
             this.lblID = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
@@ -125,10 +126,11 @@ namespace YoungRunMISTest
             this.FormPager.AutoSize = true;
             this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FormPager.BackColor = System.Drawing.Color.Transparent;
+            this.FormPager.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FormPager.BackgroundImage")));
             this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.FormPager.Location = new System.Drawing.Point(10, 411);
+            this.FormPager.Location = new System.Drawing.Point(26, 430);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
             this.FormPager.Size = new System.Drawing.Size(256, 29);
@@ -508,7 +510,7 @@ namespace YoungRunMISTest
 					_curSeachCondition = value  ;
 				}
 				//此记录数可以在加载时固定起来,不用每次都计算
-				FormPager.RecordCount = tb_bttestdata.FindCount(CutSearchCondition,"","",0,0) ;
+                FormPager.RecordCount = tb_BtTestData.FindCount(CutSearchCondition, "", "", 0, 0);
 			}
 		}
 		/// <summary>
@@ -518,7 +520,7 @@ namespace YoungRunMISTest
 		//	{
 		//		get ;set ;
 		//	}
-		public tb_bttestdata CutModel
+		public tb_BtTestData CutModel
 		{
 			get ;set ;
 		}
@@ -546,57 +548,7 @@ namespace YoungRunMISTest
 		#region 按钮事件
 		void btnOK_Click(object sender, EventArgs e)
 		{
-			//TODO:有问题，需要根据当前的状态来更新和保存数据
-			//当前实体状态不是只读并且通过验证后才能进行操作
-			if (btnOK.Text.Contains ("修改")) {
-				SetAllTextControls(ControlStatus.Edit );
-			}
-			else {
-				if(((CutShowMode!= FormShowMode.ReadOnlyForAll) || (CutShowMode != FormShowMode.ReadOnlyForOne)) && ValidateControls() )
-				{
-					tb_bttestdata model = new tb_bttestdata();//定义当前实体
-					
-					if(txtID.Text.Trim()!=""){
-						model.ID = txtID.Text.Trim() ;}
-					if(txtProductName.Text.Trim()!=""){
-						model.ProductName = txtProductName.Text.Trim() ;}if(txtV40.Text.Trim()!=""){
-						model.V40 =Convert.ToDouble(txtV40.Text.Trim()) ;}
-					if(txtV100.Text.Trim()!=""){
-						model.V100 =Convert.ToDouble(txtV100.Text.Trim()) ;}
-					if(txtVI.Text.Trim()!=""){
-						model.VI =Convert.ToInt32(txtVI.Text.Trim()) ;}
-					if(txtAV.Text.Trim()!=""){
-						model.AV =Convert.ToDouble(txtAV.Text.Trim()) ;}
-					
-					if(txtASTM.Text.Trim()!=""){
-						model.ASTM = txtASTM.Text.Trim() ;}{
-						model.GetSampleTime = dtGetSampleTime.Value ;}
-					if(txtGetSamLocation.Text.Trim()!=""){
-						model.GetSamLocation = txtGetSamLocation.Text.Trim() ;}
-					if(txtGetSampPerson.Text.Trim()!=""){
-						model.GetSampPerson = txtGetSampPerson.Text.Trim() ;}
-					if(txtTestPerson.Text.Trim()!=""){
-						model.TestPerson = txtTestPerson.Text.Trim() ;}{
-						model.UpdateTime = dtUpdateTime.Value ;}
-					if(txtRemark.Text.Trim()!=""){
-						model.Remark = txtRemark.Text.Trim() ;}
-					if (CutShowMode== FormShowMode.AddOne ) {
-						model.Insert () ;//添加
-						MessageBox.Show ("添加成功") ;
-						this.ParentForm.DialogResult = DialogResult.OK ;
-					}
-					else if (CutShowMode== FormShowMode.ContinueAdd ) {
-						model.Insert () ;//添加
-						MessageBox.Show ("添加成功") ;
-						SetAllTextControls(ControlStatus.ReSet ) ;
-					}
-					else if (CutShowMode== FormShowMode.ContinueDisplay || CutShowMode== FormShowMode.DisplayCurrent) {
-						model.Update () ;//修改更新
-						this.btnOK.Text = "修改" ;
-						SetAllTextControls(ControlStatus.ReadOnly );
-					}
-				}
-			}
+			
 		}
 
 		void btnCancle_Click(object sender, EventArgs e)
@@ -617,11 +569,11 @@ namespace YoungRunMISTest
 		{
 			GetData ();
 		}
-		List <tb_bttestdata> modelList ;
+        List<tb_BtTestData> modelList;
 		void GetData()
 		{
 			//判断不为空，才能绑定
-			modelList = tb_bttestdata.FindAll(CutSearchCondition, "", "", (FormPager.PageIndex-1)*FormPager.PageSize ,FormPager.PageSize);
+			modelList = tb_BtTestData.FindAll(CutSearchCondition, "", "", (FormPager.PageIndex-1)*FormPager.PageSize ,FormPager.PageSize);
 			if (modelList !=null ) {
 				CutModel = modelList[0];
 				BandingData();

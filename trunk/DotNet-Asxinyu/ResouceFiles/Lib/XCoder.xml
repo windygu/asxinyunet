@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><XConfig><ConnName>mssql</ConnName><Prefix></Prefix><NameSpace>YoungRunEntity</NameSpace><TemplateName>*数据字典</TemplateName><OutputPath>YoungRunEntity</OutputPath><EntityConnName>YoungRunST</EntityConnName><BaseClass>Entity</BaseClass><RenderGenEntity>False</RenderGenEntity><AutoCutPrefix>False</AutoCutPrefix><AutoFixWord>False</AutoFixWord><UseCNFileName>True</UseCNFileName><UseHeadTemplate>False</UseHeadTemplate><HeadTemplate>/*
+﻿<?xml version="1.0" encoding="utf-8"?><XConfig><ConnName>YoungRunMIS</ConnName><Prefix></Prefix><NameSpace>YoungRunEntity</NameSpace><TemplateName>实体</TemplateName><OutputPath>YoungRunEntity</OutputPath><EntityConnName>YoungRunMIS</EntityConnName><BaseClass>Entity</BaseClass><RenderGenEntity>False</RenderGenEntity><AutoCutPrefix>False</AutoCutPrefix><AutoFixWord>False</AutoFixWord><UseCNFileName>True</UseCNFileName><UseHeadTemplate>False</UseHeadTemplate><HeadTemplate>/*
  * XCoder v&lt;#=Version#&gt;
  * 作者：&lt;#=Environment.UserName + "/" + Environment.MachineName#&gt;
  * 时间：&lt;#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#&gt;

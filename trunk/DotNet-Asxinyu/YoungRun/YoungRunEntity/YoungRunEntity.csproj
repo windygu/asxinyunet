@@ -63,11 +63,9 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="NewLife.CommonEntity">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.CommonEntity.dll</HintPath>
-    </Reference>
-    <Reference Include="NewLife.Core">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NewLife.Core.dll</HintPath>
+    <Reference Include="NewLife.Core, Version=3.0.4287.35957, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
       <HintPath>..\..\DotNet.Tools\Resouces\Lib\NPOI.dll</HintPath>
@@ -82,8 +80,9 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="XCode">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\XCode.dll</HintPath>
+    <Reference Include="XCode, Version=8.0.4287.35961, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

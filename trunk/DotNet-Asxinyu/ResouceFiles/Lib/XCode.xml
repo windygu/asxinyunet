@@ -200,6 +200,9 @@
         <member name="P:XCode.IEntity.Extends">
             <summary>扩展属性</summary>
         </member>
+        <member name="P:XCode.IEntity.IsNullKey">
+            <summary>主键是否为空</summary>
+        </member>
         <member name="T:XCode.Exceptions.XCodeException">
             <summary>
             XCode异常
@@ -579,46 +582,85 @@
         <member name="P:XCode.DataAccessLayer.XRelation.Table">
             <summary>表</summary>
         </member>
+        <member name="T:XCode.DataAccessLayer.MSPageSplit">
+            <summary>MS系列数据库分页算法</summary>
+        </member>
+        <member name="M:XCode.DataAccessLayer.MSPageSplit.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.Boolean)">
+            <summary>分页算法</summary>
+            <remarks>
+            builder里面必须含有排序，否则就要通过key指定主键，否则大部分算法不能使用，会导致逻辑数据排序不正确。
+            其实，一般数据都是按照聚集索引排序，而聚集索引刚好也就是主键。
+            所以，只要设置的Key顺序跟主键顺序一致，就没有问题。
+            如果，Key指定了跟主键不一致的顺序，那么查询语句一定要指定同样的排序。
+            </remarks>
+            <param name="builder"></param>
+            <param name="startRowIndex"></param>
+            <param name="maximumRows"></param>
+            <param name="isSql2005"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.MSPageSplit.TopNotIn(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
+            <summary>最经典的NotIn分页，通用但是效率最差。只需指定一个排序列。</summary>
+            <param name="builder">查询生成器</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>分页SQL</returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.MSPageSplit.DoubleTop(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
+            <summary>双Top分页，因为没有使用not in，性能比NotIn要好。语句必须有排序，不需额外指定排序列</summary>
+            <param name="builder"></param>
+            <param name="startRowIndex"></param>
+            <param name="maximumRows"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.MSPageSplit.MaxMin(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
+            <summary>按唯一数字最大最小分页，性能很好。必须指定一个数字型排序列。</summary>
+            <param name="builder">查询生成器</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>分页SQL</returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.MSPageSplit.RowNumber(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
+            <summary>RowNumber分页算法</summary>
+            <param name="builder">查询生成器</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns></returns>
+        </member>
         <member name="T:XCode.DataAccessLayer.FileDbBase">
             <summary>
             文件型数据库
             </summary>
         </member>
         <member name="T:XCode.DataAccessLayer.DbBase">
-            <summary>
-            数据库基类。数据库类的职责是抽象不同数据库的共同点，理应最小化，保证原汁原味，因此不做缓存等实现。
+            <summary>数据库基类</summary>
+            <remarks>
+            数据库类的职责是抽象不同数据库的共同点，理应最小化，保证原汁原味，因此不做缓存等实现。
             对于每一个连接字符串配置，都有一个数据库实例，而不是每个数据库类型一个实例，因为同类型数据库不同版本行为不同。
-            </summary>
+            </remarks>
         </member>
         <member name="T:XCode.DataAccessLayer.IDatabase">
-            <summary>
-            数据库接口。抽象数据库的功能特点。
+            <summary>数据库接口</summary>
+            <remarks>
+            抽象数据库的功能特点。
             对于每一个连接字符串配置，都有一个数据库实例，而不是每个数据库类型一个实例，因为同类型数据库不同版本行为不同。
-            </summary>
+            </remarks>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.CreateSession">
-            <summary>
-            创建数据库会话
-            </summary>
+            <summary>创建数据库会话</summary>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.CreateMetaData">
-            <summary>
-            创建元数据对象
-            </summary>
+            <summary>创建元数据对象</summary>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.Support(System.String)">
-            <summary>
-            是否支持该提供者所描述的数据库
-            </summary>
+            <summary>是否支持该提供者所描述的数据库</summary>
             <param name="providerName">提供者</param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.PageSplit(System.String,System.Int32,System.Int32,System.String)">
-            <summary>
-            构造分页SQL
-            </summary>
+            <summary>构造分页SQL</summary>
             <remarks>
             两个构造分页SQL的方法，区别就在于查询生成器能够构造出来更好的分页语句，尽可能的避免子查询。
             MS体系的分页精髓就在于唯一键，当唯一键带有Asc/Desc/Unkown等排序结尾时，就采用最大最小值分页，否则使用较次的TopNotIn分页。
@@ -630,10 +672,8 @@
             <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.IDatabase.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
-            <summary>
-            构造分页SQL
-            </summary>
+        <member name="M:XCode.DataAccessLayer.IDatabase.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
+            <summary>构造分页SQL</summary>
             <remarks>
             两个构造分页SQL的方法，区别就在于查询生成器能够构造出来更好的分页语句，尽可能的避免子查询。
             MS体系的分页精髓就在于唯一键，当唯一键带有Asc/Desc/Unkown等排序结尾时，就采用最大最小值分页，否则使用较次的TopNotIn分页。
@@ -642,83 +682,56 @@
             <param name="builder">查询生成器</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.FormatDateTime(System.DateTime)">
-            <summary>
-            格式化时间为SQL字符串
-            </summary>
+            <summary>格式化时间为SQL字符串</summary>
             <param name="dateTime">时间值</param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.FormatName(System.String)">
-            <summary>
-            格式化名称，如果是关键字，则原样返回
-            </summary>
+            <summary>格式化名称，如果不是关键字，则原样返回</summary>
             <param name="name">名称</param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.FormatValue(XCode.DataAccessLayer.IDataColumn,System.Object)">
-            <summary>
-            格式化数据为SQL数据
-            </summary>
+            <summary>格式化数据为SQL数据</summary>
             <param name="field"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDatabase.FormatIdentity(XCode.DataAccessLayer.IDataColumn,System.Object)">
-            <summary>
-            格式化标识列，返回插入数据时所用的表达式，如果字段本身支持自增，则返回空
-            </summary>
+            <summary>格式化标识列，返回插入数据时所用的表达式，如果字段本身支持自增，则返回空</summary>
             <param name="field"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.DbType">
-            <summary>
-            数据库类型
-            </summary>
+            <summary>数据库类型</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.Factory">
-            <summary>
-            工厂
-            </summary>
+            <summary>数据库提供者工厂</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.ConnName">
-            <summary>
-            链接名
-            </summary>
+            <summary>链接名</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.ConnectionString">
-            <summary>
-            链接字符串
-            </summary>
+            <summary>链接字符串</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.Owner">
-            <summary>
-            拥有者
-            </summary>
+            <summary>拥有者</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.ServerVersion">
-            <summary>
-            数据库服务器版本
-            </summary>
+            <summary>数据库服务器版本</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.DateTimeNow">
-            <summary>
-            当前时间函数
-            </summary>
+            <summary>当前时间函数</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.DateTimeMin">
-            <summary>
-            最小时间
-            </summary>
+            <summary>最小时间</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.IDatabase.LongTextLength">
-            <summary>
-            长文本长度
-            </summary>
+            <summary>长文本长度</summary>
         </member>
         <member name="M:XCode.DataAccessLayer.DbBase.OnDispose(System.Boolean)">
             <summary>
@@ -830,10 +843,8 @@
             <param name="sql"></param>
             <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.DbBase.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
-            <summary>
-            构造分页SQL
-            </summary>
+        <member name="M:XCode.DataAccessLayer.DbBase.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
+            <summary>构造分页SQL</summary>
             <remarks>
             两个构造分页SQL的方法，区别就在于查询生成器能够构造出来更好的分页语句，尽可能的避免子查询。
             MS体系的分页精髓就在于唯一键，当唯一键带有Asc/Desc/Unkown等排序结尾时，就采用最大最小值分页，否则使用较次的TopNotIn分页。
@@ -842,7 +853,6 @@
             <param name="builder">查询生成器</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
         <member name="M:XCode.DataAccessLayer.DbBase.FormatDateTime(System.DateTime)">
@@ -913,9 +923,7 @@
             <summary>拥有者</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.DbBase.ServerVersion">
-            <summary>
-            数据库服务器版本
-            </summary>
+            <summary>数据库服务器版本</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.DbBase.DateTimeNow">
             <summary>当前时间函数</summary>
@@ -935,9 +943,7 @@
             </summary>
         </member>
         <member name="T:XCode.DataAccessLayer.DbSession">
-            <summary>
-            数据库会话基类。
-            </summary>
+            <summary>数据库会话基类</summary>
         </member>
         <member name="T:XCode.DataAccessLayer.IDbSession">
             <summary>
@@ -988,14 +994,13 @@
             <param name="ps">参数</param>
             <returns>记录集</returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.IDbSession.Query(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
+        <member name="M:XCode.DataAccessLayer.IDbSession.Query(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
             <summary>
             执行SQL查询，返回记录集
             </summary>
             <param name="builder">查询生成器</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in和max/min分页</param>
             <returns>记录集</returns>
         </member>
         <member name="M:XCode.DataAccessLayer.IDbSession.Query(System.Data.Common.DbCommand)">
@@ -1182,14 +1187,13 @@
             <param name="sql">SQL语句</param>
             <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.DbSession.Query(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
+        <member name="M:XCode.DataAccessLayer.DbSession.Query(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
             <summary>
             执行SQL查询，返回记录集
             </summary>
             <param name="builder">查询生成器</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>记录集</returns>
         </member>
         <member name="M:XCode.DataAccessLayer.DbSession.Query(System.Data.Common.DbCommand)">
@@ -1636,9 +1640,7 @@
             <summary>文件</summary>
         </member>
         <member name="T:XCode.Code.EntityClass">
-            <summary>
-            实体类
-            </summary>
+            <summary>实体类</summary>
             <remarks>提供由IDataTable生成实体类的支持</remarks>
         </member>
         <member name="M:XCode.Code.EntityClass.Create">
@@ -1668,11 +1670,6 @@
             添加索引器
             </summary>
         </member>
-        <member name="M:XCode.Code.EntityClass.AddNames">
-            <summary>
-            添加字段名类
-            </summary>
-        </member>
         <member name="M:XCode.Code.EntityClass.GenerateCSharpCode">
             <summary>
             生成C#代码
@@ -1681,9 +1678,6 @@
         </member>
         <member name="P:XCode.Code.EntityClass.ClassName">
             <summary>类名</summary>
-        </member>
-        <member name="P:XCode.Code.EntityClass.FieldNames">
-            <summary>属性名</summary>
         </member>
         <member name="P:XCode.Code.EntityClass.Table">
             <summary>表</summary>
@@ -1729,6 +1723,168 @@
         </member>
         <member name="P:XCode.ModelCheckModeAttribute.Mode">
             <summary>模式</summary>
+        </member>
+        <member name="T:XCode.Accessors.HttpEntityAccessor">
+            <summary>Http实体访问器，只读不写。</summary>
+        </member>
+        <member name="T:XCode.Accessors.EntityAccessorBase">
+            <summary>实体访问器基类</summary>
+        </member>
+        <member name="T:XCode.Accessors.IEntityAccessor">
+            <summary>实体数据访问器接口</summary>
+        </member>
+        <member name="M:XCode.Accessors.IEntityAccessor.SetConfig(System.String,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.IEntityAccessor.SetConfig(XCode.Accessors.EntityAccessorOptions,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="option">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.IEntityAccessor.Read(XCode.IEntity,XCode.IEntityOperate)">
+            <summary>
+            外部=>实体，从外部读取信息并写入到实体对象
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="eop">实体操作。为空时由内部构建，但可在遍历调用访问器时由外部构造一次传入，以提高性能。</param>
+        </member>
+        <member name="M:XCode.Accessors.IEntityAccessor.Write(XCode.IEntity,XCode.IEntityOperate)">
+            <summary>
+            实体=>外部，从实体对象读取信息并写入外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="eop">实体操作。为空时由内部构建，但可在遍历调用访问器时由外部构造一次传入，以提高性能。</param>
+        </member>
+        <member name="P:XCode.Accessors.IEntityAccessor.CanRead">
+            <summary>是否支持从外部读取信息</summary>
+        </member>
+        <member name="P:XCode.Accessors.IEntityAccessor.CanWrite">
+            <summary>是否支持把信息写入到外部</summary>
+        </member>
+        <member name="E:XCode.Accessors.IEntityAccessor.OnRead">
+            <summary>从实体对象读取指定实体字段的信息后触发</summary>
+        </member>
+        <member name="E:XCode.Accessors.IEntityAccessor.OnWrite">
+            <summary>把指定实体字段的信息写入到实体对象后触发</summary>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.SetConfig(System.String,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.XCode#Accessors#IEntityAccessor#SetConfig(XCode.Accessors.EntityAccessorOptions,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="option">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.Read(XCode.IEntity,XCode.IEntityOperate)">
+            <summary>
+            外部=>实体，从外部读取信息并写入到实体对象
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="eop">实体操作。为空时由内部构建，但可在遍历调用访问器时由外部构造一次传入，以提高性能。</param>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.OnReadItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            外部=>实体，从外部读取指定实体字段的信息
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.Write(XCode.IEntity,XCode.IEntityOperate)">
+            <summary>
+            实体=>外部，从实体对象读取信息并写入外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="eop">实体操作。为空时由内部构建，但可在遍历调用访问器时由外部构造一次传入，以提高性能。</param>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.OnWriteItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            实体=>外部，把指定实体字段的信息写入到外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorBase.GetFields(XCode.IEntityOperate)">
+            <summary>
+            获取需要访问的字段
+            </summary>
+            <param name="eop"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.Accessors.EntityAccessorBase.AllFields">
+            <summary>是否所有字段</summary>
+        </member>
+        <member name="E:XCode.Accessors.EntityAccessorBase.OnRead">
+            <summary>从实体对象读取指定实体字段的信息后触发</summary>
+        </member>
+        <member name="E:XCode.Accessors.EntityAccessorBase.OnWrite">
+            <summary>把指定实体字段的信息写入到实体对象后触发</summary>
+        </member>
+        <member name="P:XCode.Accessors.EntityAccessorBase.CanRead">
+            <summary>是否支持从外部读取信息</summary>
+        </member>
+        <member name="P:XCode.Accessors.EntityAccessorBase.CanWrite">
+            <summary>是否支持把信息写入到外部</summary>
+        </member>
+        <member name="M:XCode.Accessors.HttpEntityAccessor.SetConfig(System.String,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.HttpEntityAccessor.OnReadItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            外部=>实体，从外部读取指定实体字段的信息
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="P:XCode.Accessors.HttpEntityAccessor.Request">
+            <summary>请求</summary>
+        </member>
+        <member name="P:XCode.Accessors.HttpEntityAccessor.MaxLength">
+            <summary>最大文件大小，默认10M</summary>
+        </member>
+        <member name="P:XCode.Accessors.HttpEntityAccessor.CanWrite">
+            <summary>是否支持把信息写入到外部</summary>
+        </member>
+        <member name="T:XCode.Accessors.EntityAccessorTypes">
+            <summary>实体访问器种类</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorTypes.Http">
+            <summary>Http，只读不写。</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorTypes.WebForm">
+            <summary>WebForm</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorTypes.WinForm">
+            <summary>WinForm</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorTypes.Binary">
+            <summary>二进制</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorTypes.Xml">
+            <summary>Xml</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorTypes.Json">
+            <summary>Json</summary>
         </member>
         <member name="T:XCode.BindRelationAttribute">
             <summary>
@@ -2028,14 +2184,11 @@
             <returns></returns>
         </member>
         <member name="T:XCode.IEntityOperate">
-            <summary>
-            数据实体操作接口
-            </summary>
+            <summary>数据实体操作接口</summary>
         </member>
-        <member name="M:XCode.IEntityOperate.Create">
-            <summary>
-            创建一个实体对象
-            </summary>
+        <member name="M:XCode.IEntityOperate.Create(System.Boolean)">
+            <summary>创建一个实体对象</summary>
+            <param name="forEdit">是否为了编辑而创建，如果是，可以再次做一些相关的初始化工作</param>
             <returns></returns>
         </member>
         <member name="M:XCode.IEntityOperate.LoadData(System.Data.DataSet)">
@@ -2127,6 +2280,28 @@
             <param name="orderClause">排序，不带Order By</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体数组</returns>
+        </member>
+        <member name="M:XCode.IEntityOperate.FindWithCache(System.String,System.Object)">
+            <summary>
+            根据属性以及对应的值，在缓存中查找单个实体
+            </summary>
+            <param name="name">属性名称</param>
+            <param name="value">属性值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityOperate.FindAllWithCache">
+            <summary>
+            查找所有缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityOperate.FindAllWithCache(System.String,System.Object)">
+            <summary>
+            根据属性以及对应的值，在缓存中获取所有实体对象
+            </summary>
+            <param name="name">属性</param>
+            <param name="value">值</param>
             <returns>实体数组</returns>
         </member>
         <member name="M:XCode.IEntityOperate.FindCount">
@@ -2268,29 +2443,22 @@
             <returns></returns>
         </member>
         <member name="P:XCode.IEntityOperate.Default">
-            <summary>
-            默认实体
-            </summary>
+            <summary>默认实体</summary>
         </member>
         <member name="P:XCode.IEntityOperate.Table">
-            <summary>
-            数据表元数据
-            </summary>
+            <summary>数据表元数据</summary>
         </member>
         <member name="P:XCode.IEntityOperate.AllFields">
-            <summary>
-            所有数据属性
-            </summary>
+            <summary>所有数据属性</summary>
         </member>
         <member name="P:XCode.IEntityOperate.Fields">
-            <summary>
-            所有绑定到数据表的属性
-            </summary>
+            <summary>所有绑定到数据表的属性</summary>
         </member>
         <member name="P:XCode.IEntityOperate.FieldNames">
-            <summary>
-            字段名列表
-            </summary>
+            <summary>字段名列表</summary>
+        </member>
+        <member name="P:XCode.IEntityOperate.Unique">
+            <summary>唯一键，返回第一个标识列或者唯一的主键</summary>
         </member>
         <member name="P:XCode.IEntityOperate.ConnName">
             <summary>连接名</summary>
@@ -2313,9 +2481,7 @@
             </summary>
         </member>
         <member name="T:XCode.Code.EntityAssembly">
-            <summary>
-            实体程序集
-            </summary>
+            <summary>实体程序集</summary>
         </member>
         <member name="M:XCode.Code.EntityAssembly.Create(XCode.DataAccessLayer.DAL)">
              <summary>
@@ -2415,15 +2581,28 @@
         <member name="P:XCode.BindIndexAttribute.Columns">
             <summary>数据列集合</summary>
         </member>
+        <member name="T:XCode.Web.DbRunTimeModule">
+            <summary>页面查询执行时间模块</summary>
+        </member>
+        <member name="M:XCode.Web.DbRunTimeModule.OnInit">
+            <summary>
+            初始化模块，准备拦截请求。
+            </summary>
+        </member>
+        <member name="M:XCode.Web.DbRunTimeModule.Render">
+            <summary>输出</summary>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.Web.DbRunTimeModule.DbRunTimeFormat">
+            <summary>执行时间字符串</summary>
+        </member>
         <member name="T:XCode.Entity`1">
             <summary>
             数据实体类基类。所有数据实体类都必须继承该类。
             </summary>
         </member>
         <member name="T:XCode.EntityBase">
-            <summary>
-            数据实体基类的基类
-            </summary>
+            <summary>数据实体基类的基类</summary>
         </member>
         <member name="M:XCode.EntityBase.OnPropertyChanging(System.String,System.Object)">
             <summary>
@@ -2597,13 +2776,17 @@
             是否停止扩展属性，停止扩展属性后，可以避免扩展属性自动触发获取数据的功能
             </summary>
         </member>
+        <member name="P:XCode.EntityBase.XCode#IEntity#IsNullKey">
+            <summary>主键是否为空</summary>
+        </member>
         <member name="M:XCode.Entity`1.#cctor">
             <summary>静态构造</summary>
         </member>
-        <member name="M:XCode.Entity`1.CreateInstance">
+        <member name="M:XCode.Entity`1.CreateInstance(System.Boolean)">
             <summary>
             创建实体。可以重写改方法以实现实体对象的一些初始化工作。
             </summary>
+            <param name="forEdit">是否为了编辑而创建，如果是，可以再次做一些相关的初始化工作</param>
             <returns></returns>
         </member>
         <member name="M:XCode.Entity`1.LoadData(System.Data.DataSet)">
@@ -2760,7 +2943,7 @@
         <member name="M:XCode.Entity`1.FindAll(System.String,System.String,System.String,System.Int32,System.Int32)">
             <summary>
             查询并返回实体对象集合。
-            表名以及所有字段名，请使用类名以及字段对应的属性名，方法内转换为表名和列名
+            最经典的批量查询，看这个Select @selects From Table Where @whereClause Order By @orderClause Limit @startRowIndex,@maximumRows，你就明白各参数的意思了。
             </summary>
             <param name="whereClause">条件，不带Where</param>
             <param name="orderClause">排序，不带Order By</param>
@@ -3223,14 +3406,13 @@
             <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
-        <member name="M:XCode.Entity`1.Meta.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
+        <member name="M:XCode.Entity`1.Meta.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
             <summary>
             根据条件把普通查询SQL格式化为分页SQL。
             </summary>
             <param name="builder">查询生成器</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
         <member name="F:XCode.Entity`1.Meta.hasCheckInitData">
@@ -3357,10 +3539,9 @@
         <member name="P:XCode.Entity`1.Meta.LongCount">
             <summary>总记录数，小于1000时是精确的，大于1000时缓存10分钟</summary>
         </member>
-        <member name="M:XCode.Entity`1.EntityOperate.Create">
-            <summary>
-            创建一个实体对象
-            </summary>
+        <member name="M:XCode.Entity`1.EntityOperate.Create(System.Boolean)">
+            <summary>创建一个实体对象</summary>
+            <param name="forEdit">是否为了编辑而创建，如果是，可以再次做一些相关的初始化工作</param>
             <returns></returns>
         </member>
         <member name="M:XCode.Entity`1.EntityOperate.LoadData(System.Data.DataSet)">
@@ -3459,6 +3640,28 @@
             <param name="orderClause">排序，不带Order By</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体数组</returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.FindWithCache(System.String,System.Object)">
+            <summary>
+            根据属性以及对应的值，在缓存中查找单个实体
+            </summary>
+            <param name="name">属性名称</param>
+            <param name="value">属性值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.FindAllWithCache">
+            <summary>
+            查找所有缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.FindAllWithCache(System.String,System.Object)">
+            <summary>
+            根据属性以及对应的值，在缓存中获取所有实体对象
+            </summary>
+            <param name="name">属性</param>
+            <param name="value">值</param>
             <returns>实体数组</returns>
         </member>
         <member name="M:XCode.Entity`1.EntityOperate.FindCount">
@@ -3622,6 +3825,9 @@
             字段名列表
             </summary>
         </member>
+        <member name="P:XCode.Entity`1.EntityOperate.Unique">
+            <summary>唯一键，返回第一个标识列或者唯一的主键</summary>
+        </member>
         <member name="P:XCode.Entity`1.EntityOperate.ConnName">
             <summary>连接名</summary>
         </member>
@@ -3672,36 +3878,6 @@
             <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.SqlServer.PageSplitRowNumber(System.String,System.Int32,System.Int32,System.String)">
-            <summary>
-            已重写。获取分页
-            </summary>
-            <param name="sql">SQL语句</param>
-            <param name="startRowIndex">开始行，0表示第一行</param>
-            <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">主键列。用于not in分页</param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.SqlServer.PageSplitTopNotIn(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
-            <summary>
-            构造分页SQL，优先选择max/min，然后选择not in
-            </summary>
-            <param name="builder">查询生成器</param>
-            <param name="startRowIndex">开始行，0表示第一行</param>
-            <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
-            <returns>分页SQL</returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.SqlServer.PageSplitMaxMin(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
-            <summary>
-            按唯一数字最大最小分析
-            </summary>
-            <param name="builder">查询生成器</param>
-            <param name="startRowIndex">开始行，0表示第一行</param>
-            <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
-            <returns>分页SQL</returns>
-        </member>
         <member name="M:XCode.DataAccessLayer.SqlServer.FormatDateTime(System.DateTime)">
             <summary>
             格式化时间为SQL字符串
@@ -3726,6 +3902,9 @@
         </member>
         <member name="P:XCode.DataAccessLayer.SqlServer.IsSQL2005">
             <summary>是否SQL2005及以上</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SqlServer.DataPath">
+            <summary>数据目录</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SqlServer.DateTimeNow">
             <summary>
@@ -3829,6 +4008,15 @@
         </member>
         <member name="P:XCode.DataAccessLayer.SqlServerMetaData.DescriptionSql">
             <summary>取表说明SQL</summary>
+        </member>
+        <member name="T:XCode.Accessors.EntityAccessorEventArgs">
+            <summary>实体访问器事件参数</summary>
+        </member>
+        <member name="P:XCode.Accessors.EntityAccessorEventArgs.Entity">
+            <summary>实体对象</summary>
+        </member>
+        <member name="P:XCode.Accessors.EntityAccessorEventArgs.Field">
+            <summary>字段信息</summary>
         </member>
         <member name="T:XCode.EntityTree`1">
             <summary>
@@ -4132,6 +4320,214 @@
             <summary>
             MySql元数据
             </summary>
+        </member>
+        <member name="T:XCode.Accessors.WinFormEntityAccessor">
+            <summary>
+            WinForm实体访问器
+            功能基本完成但未进行测试
+            </summary>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetConfig(System.String,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.OnReadItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            外部=>实体，从外部读取指定实体字段的信息
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetFormItem(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.Control)">
+            <summary>
+            
+            是否应考滤值转换，如列表，单选，多选其显示文字或写value不同
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetEntityItem(XCode.IEntity,XCode.Configuration.FieldItem,System.Object)">
+            <summary>
+            设置实体类值
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetTextBoxBase(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.TextBoxBase)">
+            <summary>
+            获取TextBoxBase填充实体类
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetButtonBase(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.ButtonBase)">
+            <summary>
+            获取ButtonBase填充实体类
+            支持RadioButton,CheckBox
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetDateTimePicker(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.DateTimePicker)">
+            <summary>
+            获取DateTimePicker填充实体类
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetNumericUpDown(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.NumericUpDown)">
+            <summary>
+            获取NumericUpDown填充实体类
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetListControl(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.ListControl)">
+            <summary>
+            获取ListControl填充实体类
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.GetLabel(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.Label)">
+            <summary>
+            获取Label填充实体类
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.OnWriteItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            实体=>外部，把指定实体字段的信息写入到外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetFormItem(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.Control,System.Boolean)">
+            <summary>
+            把实体成员的值设置到控件上
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetTextBoxBase(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.TextBoxBase)">
+            <summary>
+            将实体信息添充至TextBoxBase
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetButtonBase(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.ButtonBase)">
+            <summary>
+            将实体信息添充至ButtonBase
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetDateTimePicker(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.DateTimePicker)">
+            <summary>
+            将实体信息添充至DateTimePicker
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetNumericUpDown(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.NumericUpDown)">
+            <summary>
+            将实体信息添充至NumericUpDown
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetListControl(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.ListControl)">
+            <summary>
+            将实体信息添充至ListControl
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetLabel(XCode.IEntity,XCode.Configuration.FieldItem,System.Windows.Forms.Label)">
+            <summary>
+            将实体信息添充至Label
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.FindControlByField(XCode.Configuration.FieldItem)">
+            <summary>
+            查找字段对应的控件
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.FindControlInContainer(System.String)">
+            <summary>
+            在页面查找指定ID的控件
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.FindControlByName(System.Windows.Forms.Control,System.String)">
+            <summary>
+            按名称查询
+            </summary>
+            <param name="control"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.FindToolTipParentForm">
+            <summary>
+            在窗体中查询ToolTip
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetToolTip(System.Windows.Forms.Control,System.String)">
+            <summary>
+            设置ToolTip
+            </summary>
+            <param name="control"></param>
+            <param name="caption"></param>
+        </member>
+        <member name="M:XCode.Accessors.WinFormEntityAccessor.SetControlEnable(System.Windows.Forms.Control,System.Boolean)">
+            <summary>
+            设置控件Enable值
+            </summary>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="P:XCode.Accessors.WinFormEntityAccessor.Container">
+            <summary>容器</summary>
+        </member>
+        <member name="P:XCode.Accessors.WinFormEntityAccessor.ToolTip">
+            <summary>提示信息</summary>
+        </member>
+        <member name="P:XCode.Accessors.WinFormEntityAccessor.IsFindChildForm">
+            <summary>
+            是否在子窗体中查询
+            这里泛指Form嵌套Form
+            </summary>
+        </member>
+        <member name="P:XCode.Accessors.WinFormEntityAccessor.ItemPrefix">
+            <summary>前缀</summary>
         </member>
         <member name="T:XCode.WhereExpression">
             <summary>
@@ -4559,6 +4955,18 @@
             <param name="type">实现了IDatabase接口的数据库类型</param>
             <param name="provider">数据库提供者，如果没有指定数据库类型，则有提供者判断使用哪一种内置类型</param>
         </member>
+        <member name="M:XCode.DataAccessLayer.DAL.EncodeConnStr(System.String)">
+            <summary>连接字符串编码</summary>
+            <remarks>明文=>UTF8字节=>Base64</remarks>
+            <param name="connstr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.DAL.DecodeConnStr(System.String)">
+            <summary>连接字符串解码</summary>
+            <remarks>Base64=>UTF8字节=>明文</remarks>
+            <param name="connstr"></param>
+            <returns></returns>
+        </member>
         <member name="M:XCode.DataAccessLayer.DAL.Export">
             <summary>导出模型</summary>
             <returns></returns>
@@ -4576,6 +4984,11 @@
         <member name="M:XCode.DataAccessLayer.DAL.SetTables">
             <summary>
             反向工程
+            </summary>
+        </member>
+        <member name="M:XCode.DataAccessLayer.DAL.CheckTables">
+            <summary>
+            检查数据表架构，不受反向工程启用开关限制
             </summary>
         </member>
         <member name="M:XCode.DataAccessLayer.DAL.CreateOperate(System.String)">
@@ -4598,7 +5011,7 @@
             <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.DAL.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32,System.String)">
+        <member name="M:XCode.DataAccessLayer.DAL.PageSplit(XCode.DataAccessLayer.SelectBuilder,System.Int32,System.Int32)">
             <summary>
             根据条件把普通查询SQL格式化为分页SQL。
             </summary>
@@ -4609,7 +5022,6 @@
             <param name="builder">查询生成器</param>
             <param name="startRowIndex">开始行，0表示第一行</param>
             <param name="maximumRows">最大返回行数，0表示所有行</param>
-            <param name="keyColumn">唯一键。用于not in分页</param>
             <returns>分页SQL</returns>
         </member>
         <member name="M:XCode.DataAccessLayer.DAL.Select(System.String,System.String[])">
@@ -4743,6 +5155,9 @@
         <member name="P:XCode.DataAccessLayer.DAL.NegativeEnable">
             <summary>是否启用数据架构</summary>
         </member>
+        <member name="P:XCode.DataAccessLayer.DAL.NegativeCheckOnly">
+            <summary>是否只检查不操作</summary>
+        </member>
         <member name="P:XCode.DataAccessLayer.DAL.NegativeNoDelete">
             <summary>是否启用不删除字段</summary>
         </member>
@@ -4809,6 +5224,67 @@
             </summary>
             <param name="key"></param>
             <returns></returns>
+        </member>
+        <member name="M:XCode.Common.Helper.IsEntityNullKey(XCode.IEntity)">
+            <summary>
+            是否空主键的实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.SetConfig(System.String,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.Read(XCode.IEntity,XCode.IEntityOperate)">
+            <summary>
+            外部=>实体，从外部读取信息并写入到实体对象
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="eop">实体操作。为空时由内部构建，但可在遍历调用访问器时由外部构造一次传入，以提高性能。</param>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.OnReadItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            外部=>实体，从外部读取指定实体字段的信息
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.Write(XCode.IEntity,XCode.IEntityOperate)">
+            <summary>
+            实体=>外部，从实体对象读取信息并写入外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="eop">实体操作。为空时由内部构建，但可在遍历调用访问器时由外部构造一次传入，以提高性能。</param>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.OnWriteItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            实体=>外部，把指定实体字段的信息写入到外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.GetWriter">
+            <summary>
+            获取写入器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.SerializationEntityAccessorBase.GetReader">
+            <summary>
+            获取读取器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.Accessors.SerializationEntityAccessorBase.Stream">
+            <summary>数据流</summary>
+        </member>
+        <member name="P:XCode.Accessors.SerializationEntityAccessorBase.Encoding">
+            <summary>编码</summary>
         </member>
         <member name="T:XCode.InitDataHelper">
             <summary>
@@ -4885,6 +5361,12 @@
         <member name="P:XCode.DataAccessLayer.Oracle.Owner">
             <summary>拥有者</summary>
         </member>
+        <member name="P:XCode.DataAccessLayer.Oracle.DllPath">
+            <summary>OCI目录</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Oracle.OracleHome">
+            <summary>Oracle运行时主目录</summary>
+        </member>
         <member name="P:XCode.DataAccessLayer.Oracle.DateTimeNow">
             <summary>
             当前时间函数
@@ -4941,6 +5423,9 @@
         </member>
         <member name="P:XCode.DataAccessLayer.OracleMeta.Owner">
             <summary>拥有者</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.OracleMeta.IsUseOwner">
+            <summary>是否限制只能访问拥有者的信息</summary>
         </member>
         <member name="T:XCode.Configuration.FieldItem">
             <summary>
@@ -5089,7 +5574,7 @@
             <summary>数据字段特性</summary>
         </member>
         <member name="P:XCode.Configuration.FieldItem.Description">
-            <summary>数据字段特性</summary>
+            <summary>备注</summary>
         </member>
         <member name="P:XCode.Configuration.FieldItem.Name">
             <summary>属性名</summary>
@@ -5116,7 +5601,7 @@
             <summary>是否数据绑定列</summary>
         </member>
         <member name="P:XCode.Configuration.FieldItem.DisplayName">
-            <summary>显示名</summary>
+            <summary>显示名。如果备注不为空则采用备注，否则采用属性名</summary>
         </member>
         <member name="P:XCode.Configuration.FieldItem.ColumnName">
             <summary>
@@ -5192,6 +5677,23 @@
             <summary>
             外部数据库
             </summary>
+        </member>
+        <member name="T:XCode.Accessors.EntityAccessorFactory">
+            <summary>实体访问器工厂</summary>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorFactory.Create(System.String)">
+            <summary>
+            创建指定类型的实体访问器
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.EntityAccessorFactory.Create(XCode.Accessors.EntityAccessorTypes)">
+            <summary>
+            创建指定类型的实体访问器
+            </summary>
+            <param name="kind"></param>
+            <returns></returns>
         </member>
         <member name="T:XCode.Test.MyEntity`1">
             <summary>我的基类</summary>
@@ -6563,22 +7065,11 @@
             <summary>主键集合。可以是空集合，但不能为null。</summary>
         </member>
         <member name="T:XCode.DataAccessLayer.SelectBuilder">
-            <summary>
-            SQL查询语句生成器
-            </summary>
-            <remarks>查询语句的复杂性，使得多个地方使用起来极为不方面。
-            应该以本类作为查询对象，直接从最上层深入到最下层</remarks>
-        </member>
-        <member name="M:XCode.DataAccessLayer.SelectBuilder.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:XCode.DataAccessLayer.SelectBuilder.#ctor(XCode.DataAccessLayer.DatabaseType)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="dbType"></param>
+            <summary>SQL查询语句生成器</summary>
+            <remarks>
+            查询语句的复杂性，使得多个地方使用起来极为不方面。
+            应该以本类作为查询对象，直接从最上层深入到最下层
+            </remarks>
         </member>
         <member name="M:XCode.DataAccessLayer.SelectBuilder.Parse(System.String)">
             <summary>
@@ -6600,45 +7091,86 @@
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.SelectBuilder.Clone">
-            <summary>
-            克隆
-            </summary>
+            <summary>克隆</summary>
             <returns></returns>
         </member>
-        <member name="P:XCode.DataAccessLayer.SelectBuilder.DbType">
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.AppendWhereAnd(System.String,System.Object[])">
             <summary>
-            数据库类型
+            增加Where条件
             </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.AppendColumn(System.String)">
+            <summary>增加一个字段，必须是当前表普通字段，如果内部是*则不加</summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.AsChild(System.String)">
+            <summary>作为子查询</summary>
+            <param name="alias">别名，某些数据库可能需要使用as</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.CloneWithGroupBy(System.String)">
+            <summary>处理可能带GroupBy的克隆，如果带有GroupBy，则必须作为子查询，否则简单克隆即可</summary>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.Split(System.String,System.Boolean[]@)">
+            <summary>拆分排序字句</summary>
+            <param name="orderby"></param>
+            <param name="isdescs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.Join(System.String[],System.Boolean[])">
+            <summary>连接排序字句</summary>
+            <param name="keys"></param>
+            <param name="isdescs"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.Key">
+            <summary>分页主键</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.Keys">
+            <summary>分页主键组</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.IsDesc">
+            <summary>是否降序</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.IsDescs">
+            <summary>主键组是否降序</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.IsInt">
+            <summary>是否整数自增主键</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.KeyOrder">
+            <summary>分页主键排序</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.ReverseKeyOrder">
+            <summary>分页主键反排序</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SelectBuilder.Column">
-            <summary>
-            选择列
-            </summary>
+            <summary>选择列</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SelectBuilder.Table">
-            <summary>
-            数据表
-            </summary>
+            <summary>数据表</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SelectBuilder.Where">
-            <summary>
-            条件
-            </summary>
+            <summary>条件</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SelectBuilder.GroupBy">
-            <summary>
-            分组
-            </summary>
+            <summary>分组</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SelectBuilder.Having">
-            <summary>
-            分组条件
-            </summary>
+            <summary>分组条件</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.SelectBuilder.OrderBy">
-            <summary>
-            排序
-            </summary>
+            <summary>排序</summary>
+            <remarks>给排序赋值时，如果没有指定分页主键，则自动采用排序中的字段</remarks>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SelectBuilder.ColumnOrDefault">
+            <summary>选择列，为空时为*</summary>
         </member>
         <member name="T:XCode.Exceptions.XDbMetaDataException">
             <summary>
@@ -7274,9 +7806,16 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:XCode.EntityFactory.GetEntitiesByConnName(System.String)">
+        <member name="M:XCode.EntityFactory.LoadEntities(System.String)">
             <summary>
             获取指定连接名下的所有实体类
+            </summary>
+            <param name="connName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityFactory.GetTables(System.String)">
+            <summary>
+            获取指定连接名下的所有实体数据表
             </summary>
             <param name="connName"></param>
             <returns></returns>
@@ -7293,6 +7832,36 @@
             确保实体类已经执行完静态构造函数，因为那里实在是太容易导致死锁了
             </summary>
             <param name="type"></param>
+        </member>
+        <member name="T:XCode.Accessors.EntityAccessorOptions">
+            <summary>实体访问器设置选项</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.AllFields">
+            <summary>是否所有字段</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.Request">
+            <summary>请求</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.MaxLength">
+            <summary>最大文件大小，默认10M</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.Container">
+            <summary>控件容器</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.IsFindChildForm">
+            <summary>
+            是否在子窗体中查询
+            这里泛指Form嵌套Form
+            </summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.ItemPrefix">
+            <summary>前缀</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.Stream">
+            <summary>数据流</summary>
+        </member>
+        <member name="F:XCode.Accessors.EntityAccessorOptions.Encoding">
+            <summary>编码</summary>
         </member>
         <member name="T:XCode.DirtyCollection">
             <summary>脏属性集合</summary>
@@ -7544,6 +8113,164 @@
             <param name="connStr"></param>
             <param name="provider"></param>
             <returns></returns>
+        </member>
+        <member name="T:XCode.Accessors.WebFormEntityAccessor">
+            <summary>WebForm实体访问器</summary>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetConfig(System.String,System.Object)">
+            <summary>
+            设置参数。返回自身，方便链式写法。
+            </summary>
+            <param name="name">参数名</param>
+            <param name="value">参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.OnReadItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            外部=>实体，从外部读取指定实体字段的信息
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.GetFormItem(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.Control)">
+            <summary>
+            把控件的值设置到实体属性上
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.GetFormItemTextBox(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.TextBox)">
+            <summary>
+            文本框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.GetFormItemLabel(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.Label)">
+            <summary>
+            标签，不做任何操作
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.GetFormItemCheckBox(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.CheckBox)">
+            <summary>
+            复选框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.GetFormItemListControl(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.ListControl)">
+            <summary>
+            列表框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.GetFormItemRadioButton(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.RadioButton)">
+            <summary>
+            单选框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.OnWriteItem(XCode.IEntity,XCode.Configuration.FieldItem)">
+            <summary>
+            实体=>外部，把指定实体字段的信息写入到外部
+            </summary>
+            <param name="entity">实体对象</param>
+            <param name="item">实体字段</param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetFormItem(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.Control,System.Boolean)">
+            <summary>
+            把实体成员的值设置到控件上
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetFormItemTextBox(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.TextBox,System.Boolean)">
+            <summary>
+            文本框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetFormItemLabel(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.Label,System.Boolean)">
+            <summary>
+            标签
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetFormItemCheckBox(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.CheckBox,System.Boolean)">
+            <summary>
+            复选框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetFormItemListControl(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.ListControl,System.Boolean)">
+            <summary>
+            列表框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetFormItemRadioButton(XCode.IEntity,XCode.Configuration.FieldItem,System.Web.UI.WebControls.RadioButton,System.Boolean)">
+            <summary>
+            单选框
+            </summary>
+            <param name="entity"></param>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.SetNotAllowNull(XCode.Configuration.FieldItem,System.Web.UI.Control,System.Boolean)">
+            <summary>
+            设置控件的不允许空
+            </summary>
+            <param name="field"></param>
+            <param name="control"></param>
+            <param name="canSave"></param>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.FindControl(System.String)">
+            <summary>
+            查找表单控件
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Accessors.WebFormEntityAccessor.FindControlByField(XCode.Configuration.FieldItem)">
+            <summary>
+            查找字段对应的控件
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.Accessors.WebFormEntityAccessor.Container">
+            <summary>页面</summary>
+        </member>
+        <member name="P:XCode.Accessors.WebFormEntityAccessor.MaxLength">
+            <summary>最大文件大小，默认10M</summary>
+        </member>
+        <member name="P:XCode.Accessors.WebFormEntityAccessor.ItemPrefix">
+            <summary>前缀</summary>
         </member>
         <member name="T:XCode.DataAccessLayer.XDbConnectionStringBuilder">
             <summary>

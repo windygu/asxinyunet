@@ -9,14 +9,16 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using DotNet.Tools.Controls ;
+using YoungRunControl.Controls ;
 
-namespace YoungRunTest
+namespace YoungRunControl.Forms
 {
+
  
 	/// <summary>
-	/// tb_bttestdata
+	/// tb_DicType
 	/// </summary>
-	public partial class AddBttestdataForm : Form
+	public partial class AddDicTypeForm : Form
 	{
 	        #region 自动生成的代码,窗体初始化
 			/// <summary>
@@ -45,7 +47,7 @@ namespace YoungRunTest
 			/// </summary>
 			private void InitializeComponent()
 			{
-				this.EntityControl = new YoungRunMISTest.AddBttestdata();
+				this.EntityControl = new AddDicType();
 			this.SuspendLayout();
 			// 
 			// EntityControl
@@ -71,9 +73,9 @@ namespace YoungRunTest
 			this.Text = "Form1";
 			this.ResumeLayout(false);
 		    }
-		    private YoungRunMISTest.AddBttestdata EntityControl;		
+		    private AddDicType EntityControl;		
 		
-		public AddBttestdataForm ()
+		public AddDicTypeForm ()
 		{
 			InitializeComponent();			
 		}

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B3281232-CAFF-4B4A-9F76-CD9D01C45638}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YoungRunControl</RootNamespace>
+    <AssemblyName>YoungRunControl</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XCode">
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\添加产品配方信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加原料进厂检测.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加外来油样检测.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加字典数据.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加实验任务表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加油品全套指标.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加油罐信息表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加油罐储量信息表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加用户信息表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加白土车间检测.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加糠醛车间检测数据.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\添加调配小样检测.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\产品配方信息.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\原料进厂检测.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\外来油样检测.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\字典数据.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\实验任务表.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\油品全套指标.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\油罐信息表.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\油罐储量信息表.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\用户信息表.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\白土车间检测.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\糠醛车间检测数据.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\调配小样检测.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YoungRunEntity\YoungRunEntity.csproj">
+      <Project>{2CC9DC3D-DF15-491F-86F0-2D3EA819B1B3}</Project>
+      <Name>YoungRunEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\产品配方信息.resx">
+      <DependentUpon>产品配方信息.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\原料进厂检测.resx">
+      <DependentUpon>原料进厂检测.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\外来油样检测.resx">
+      <DependentUpon>外来油样检测.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\字典数据.resx">
+      <DependentUpon>字典数据.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\实验任务表.resx">
+      <DependentUpon>实验任务表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\油品全套指标.resx">
+      <DependentUpon>油品全套指标.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\油罐信息表.resx">
+      <DependentUpon>油罐信息表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\油罐储量信息表.resx">
+      <DependentUpon>油罐储量信息表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\用户信息表.resx">
+      <DependentUpon>用户信息表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\白土车间检测.resx">
+      <DependentUpon>白土车间检测.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\糠醛车间检测数据.resx">
+      <DependentUpon>糠醛车间检测数据.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\调配小样检测.resx">
+      <DependentUpon>调配小样检测.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\添加白土车间检测.resx">
+      <DependentUpon>添加白土车间检测.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

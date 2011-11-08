@@ -76,7 +76,7 @@ namespace YoungRunST.Controls
 				return ;
 			}
 			if (txtProductName.Text .Trim ()!="") {
-				model.ProductName = txtProductName.Text .Trim () ;				
+				model.ProductNameTP = txtProductName.Text .Trim () ;				
 			}
 			else 
 			{

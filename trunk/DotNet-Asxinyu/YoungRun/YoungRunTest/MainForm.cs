@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using DotNet.Tools.Controls ;
-using NewLife.CommonEntity ;
 using XCode ;
 using XCode.DataAccessLayer ;
+using YoungRunControl.Forms;
 
 namespace YoungRunTest
 {
@@ -28,19 +28,15 @@ namespace YoungRunTest
 		}
 		
 		void Button1Click(object sender, EventArgs e)
-		{	
-//			Administrator admin = new Administrator () ;
-//			admin.Name = "aa" ;
-//			admin.IsEnable = true ;
-//			admin.DisplayName ="aa" ;
-//			admin.Save ();
-			NewLife.CommonEntity.Menu me = new NewLife.CommonEntity.Menu () ;
-			me.Permission = "a";
-			me.ParentMenuName ="asdfsa";
-			me.Save () ;
-//			AddBttestdataForm testform = new AddBttestdataForm () ;
-//			testform.InitializeSettings (FormShowMode.ReadOnlyForOne ,"","") ;
-//			testform.ShowDialog () ;
+		{
+            AddBtTestDataForm a = new AddBtTestDataForm();
+            a.InitializeSettings(FormShowMode.AddOne , "", "");
+            a.Show();
 		}
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
 	}
 }
