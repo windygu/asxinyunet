@@ -144,17 +144,17 @@ namespace YoungRunEntity
 			switch (yrDataType)
 			{
 				case YoungRunDataType.R201 :
-					tb_kqtestdata model = SearchNextId<tb_kqtestdata >(tb_kqtestdata._.ID + " like '%" + perID +"%'");
+                    tb_KqTestData model = SearchNextId<tb_KqTestData>(tb_KqTestData._.ID + " like '%" + perID + "%'");
 					return model == null ? perID + "-" + "01" :(perID+"-"+GetNextString(model.ID));
 				case YoungRunDataType.R202 :
-					tb_bttestdata model202 = SearchNextId<tb_bttestdata>(tb_bttestdata._.ID  + " like '%" + perID + "%'");
+                    tb_BtTestData model202 = SearchNextId<tb_BtTestData>(tb_BtTestData._.ID + " like '%" + perID + "%'");
 					return model202 == null ? perID + "-" + "01" : (perID + "-" + GetNextString(model202.ID));
 				case YoungRunDataType.R203 :
-					tb_oildata model203 = SearchNextId<tb_oildata>(tb_oildata._.ID + " like '%" + perID + "%'");
+                    tb_OilData model203 = SearchNextId<tb_OilData>(tb_OilData._.ID + " like '%" + perID + "%'");
 					return model203 == null ? perID + "-" + "01" : (perID + "-" + GetNextString(model203.ID));
 					
 				case YoungRunDataType.R204 :
-					tb_oilsampletest model207 = SearchNextId<tb_oilsampletest>(tb_oilsampletest._.ID + " like '%" + perID + "%'");
+                    tb_OutSampleTest model207 = SearchNextId<tb_OutSampleTest>(tb_OutSampleTest._.ID + " like '%" + perID + "%'");
 					return model207 == null ? perID + "-" + "01" : (perID + "-" + GetNextString(model207.ID));
 					
 					default :
@@ -255,7 +255,7 @@ namespace YoungRunEntity
 		#region 根据字典类型获取相应键值的列表
 		public static string[] GetDicValueList(YoungRunDicType dicType)
 		{
-			List<tb_dictype>  tlist = tb_dictype.FindAll(tb_dictype._.TypeName ,dicType.ToString ()) ;
+            List<tb_DicType> tlist = tb_DicType.FindAll(tb_DicType._.TypeName, dicType.ToString());
 			string[] res = new string[tlist.Count ] ;
 			if (tlist !=null )
 			{
@@ -271,7 +271,7 @@ namespace YoungRunEntity
 		#region 获取数据库服务器的时间
 		public static DateTime GetDBServerTime()
 		{
-			return Convert.ToDateTime(tb_oiltankst.Meta.Query("select now();").Tables[0].Rows[0][0].ToString()) ;
+            return Convert.ToDateTime(tb_OilTankST.Meta.Query("select now();").Tables[0].Rows[0][0].ToString());
 		}
 		#endregion
 		
@@ -338,10 +338,11 @@ namespace YoungRunEntity
 			//先获取罐的存储类型
 			string[] AllTankType = GetDicValueList (YoungRunDicType.TankType ) ;
 			//获取指定时刻的储量数据,2分钟之内
-			string str1 = tb_oiltankst._.RecordTime +">='"+dt.ToString ("yyyy-MM-dd HH:mm") +":00'" ;
-			string str2 =" and " + tb_oiltankst._.RecordTime +"<='"+dt.AddMinutes (1).ToString ("yyyy-MM-dd HH:mm")+":59'" ;
-			List <tb_oiltankst > cutST = tb_oiltankst.FindAll(str1+str2 ,"","",0,0) ;//
-			List <tb_oiltankst > s = cutST.FindAll (delegate (tb_oiltankst name){
+            string str1 = tb_OilTankST._.RecordTime + ">='" + dt.ToString("yyyy-MM-dd HH:mm") + ":00'";
+            string str2 = " and " + tb_OilTankST._.RecordTime + "<='" + dt.AddMinutes(1).ToString("yyyy-MM-dd HH:mm") + ":59'";
+            List<tb_OilTankST> cutST = tb_OilTankST.FindAll(str1 + str2, "", "", 0, 0);//
+            List<tb_OilTankST> s = cutST.FindAll(delegate(tb_OilTankST name)
+            {
 			                                        	return true ;
 			                                        }) ;
 			#endregion
@@ -393,9 +394,9 @@ namespace YoungRunEntity
 			for (int i = 0; i < AllTankType.Length ; i++) {
 				
 				//每一个储罐类型下找对应的子类型
-				tb_dictype dic = tb_dictype.Find (tb_dictype._.Value ,AllTankType[i ]) ;
+                tb_DicType dic = tb_DicType.Find(tb_DicType._.Value, AllTankType[i]);
 				//再查找每个子类型下所有的油品名称
-				List<tb_dictype > subDicTypes = tb_dictype.FindAll(tb_dictype._.TypeName ,dic.Remark ) ;
+                List<tb_DicType> subDicTypes = tb_DicType.FindAll(tb_DicType._.TypeName, dic.Remark);
 				//循环获取与统计每个子类型下面的油品名称的储量数据
 				#region 写入每一个大类的信息
 				//合并单元格，设置居中，文字大小，文字方向按照换行解决
@@ -404,7 +405,8 @@ namespace YoungRunEntity
 				//查询当前类中包括的油品名称，总共有多少个罐
 				int allSubCount = 0 ;
 				for (int r = 0; r < subDicTypes.Count ; r++) {
-					List <tb_oiltankst> cutSub = cutST.FindAll (delegate (tb_oiltankst st){
+                    List<tb_OilTankST> cutSub = cutST.FindAll(delegate(tb_OilTankST st)
+                    {
 					                                            	return st.ProductNameTP  == subDicTypes[r ].Value ? true:false ;
 					                                            }) ;
 					allSubCount += cutSub.Count ;
@@ -423,7 +425,8 @@ namespace YoungRunEntity
 				for (int j = 0; j < subDicTypes.Count ; j++)
 				{
 					//根据油罐储量信息表存储的信息为准，因为储罐信息表是当前的信息，不能代表过去的信息
-					List <tb_oiltankst> cutSubTypeTanks = cutST.FindAll (delegate (tb_oiltankst st){
+                    List<tb_OilTankST> cutSubTypeTanks = cutST.FindAll(delegate(tb_OilTankST st)
+                    {
 					                                                     	return st.ProductNameTP == subDicTypes[j ].Value ? true:false ;
 					                                                     }) ;
 					#region 写入每一个子类的信息
@@ -450,9 +453,9 @@ namespace YoungRunEntity
 						sum += cutSubTypeTanks[k ].CurWeigth ;
 						newSheet.GetRow (curRow).Height = 500 ;
 						newSheet.GetRow (curRow ).CreateCell (2).SetCellValue (GetRichText (hssfworkbook,cutSubTypeTanks[k].TankIdTP.Replace ("罐","")
-						                                                                                           +"   "+tb_oiltankinfo.Find (tb_oiltankinfo._.TankId ,cutSubTypeTanks[k].TankIdTP ).Volume.ToString ()+"m3"));//设置油罐号
+      + "   " + tb_OilTankInfo.Find(tb_OilTankInfo._.TankId, cutSubTypeTanks[k].TankIdTP).Volume.ToString() + "m3"));//设置油罐号
 						newSheet.GetRow (curRow ).CreateCell (3).SetCellValue (GetRichTextForSize (hssfworkbook,cutSubTypeTanks[k].LiquidLevel.ToString ("F2")+
-						                                                                    "   "+tb_oiltankinfo.Find (tb_oiltankinfo._.TankId ,cutSubTypeTanks[k].TankIdTP ).Height.ToString ()+"m"));//设置液位
+                                                                                            "   " + tb_OilTankInfo.Find(tb_OilTankInfo._.TankId, cutSubTypeTanks[k].TankIdTP).Height.ToString() + "m"));//设置液位
 						newSheet.GetRow (curRow ).CreateCell (4).SetCellValue ( cutSubTypeTanks[k].CurWeigth.ToString ("F2"));//设置液位
 						newSheet.GetRow (curRow ).CreateCell (5).SetCellValue ("");//汇总
 						newSheet.GetRow (curRow ).CreateCell (6).SetCellValue ( cutSubTypeTanks[k].Remark);//备注
