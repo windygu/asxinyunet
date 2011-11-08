@@ -60,8 +60,8 @@
     <Compile Include="Lib\Template\实体\类名.cs" />
     <Compile Include="Lib\Template\纯属性\I类名.cs" />
     <Compile Include="Lib\Template\纯属性\类名.cs" />
-    <Compile Include="Lib\Template\董斌辉\AddCtl.cs" />
-    <Compile Include="Lib\Template\董斌辉\AddCtlForm.cs" />
+    <Compile Include="Lib\Template\董斌辉-控件\类名.cs" />
+    <Compile Include="Lib\Template\董斌辉-窗体\添加类名.cs" />
     <Compile Include="Lib\Template\页面EntityForm2\类名.aspx.cs">
       <DependentUpon>类名.aspx</DependentUpon>
     </Compile>
@@ -153,9 +153,12 @@
     <Content Include="Lib\XCoder.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Lib\Template\董斌辉\AddCtl.resx">
-      <DependentUpon>AddCtl.cs</DependentUpon>
+    <EmbeddedResource Include="Lib\Template\董斌辉-控件\类名.resx">
+      <DependentUpon>类名.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lib\Template\董斌辉\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
