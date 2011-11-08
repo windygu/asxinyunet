@@ -1,10 +1,4 @@
-﻿/*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
- * 时间：2011-10-11 15:59:28
- * 版权：版权所有 (C) 新生命开发团队 2011
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -14,8 +8,8 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
-    /// <summary>数据</summary>
-    public partial class Data : Entity<Data>
+    /// <summary>调配小样检测</summary>
+    public partial class tb_ReseachSample : Entity<tb_ReseachSample>
     
     {
         #region 扩展属性
@@ -23,36 +17,36 @@ namespace YoungRunEntity
 
         #region 扩展查询
         /// <summary>
-        /// 根据主键查询一个数据实体对象用于表单编辑
+        /// 根据主键查询一个调配小样检测实体对象用于表单编辑
         /// </summary>
-        /// <param name="__序号">序号</param>
+        /// <param name="id">记录编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Data FindByKeyForEdit(Int32 __序号)
+        public static tb_ReseachSample FindByKeyForEdit(String id)
         {
-            Data entity = Find(new String[] { _.序号 }, new Object[] { __序号 });
+            tb_ReseachSample entity = Find(new String[] { _.ID }, new Object[] { id });
             if (entity == null)
             {
-                entity = new Data();
+                entity = new tb_ReseachSample();
             }
             return entity;
         }
 
 
         /// <summary>
-        /// 根据序号查找
+        /// 根据记录编号查找
         /// </summary>
-        /// <param name="__序号">序号</param>
+        /// <param name="id">记录编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Data FindBy序号(Int32 __序号)
+        public static tb_ReseachSample FindByID(String id)
         {
             if (Meta.Count >= 1000)
-                return Find(new String[] { _.序号 }, new Object[] { __序号 });
+                return Find(new String[] { _.ID }, new Object[] { id });
             else // 实体缓存
-                return Meta.Cache.Entities.Find(_.序号, __序号);
+                return Meta.Cache.Entities.Find(_.ID, id);
             // 单对象缓存
-            //return Meta.SingleCache[__序号];
+            //return Meta.SingleCache[id];
         }
         #endregion
 
@@ -134,7 +128,7 @@ namespace YoungRunEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Data> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<tb_ReseachSample> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}
