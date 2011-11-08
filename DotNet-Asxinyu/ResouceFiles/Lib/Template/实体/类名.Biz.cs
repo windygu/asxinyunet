@@ -10,23 +10,21 @@ namespace <#=Config.NameSpace#>
 {<#if(Config.RenderGenEntity){#>
     /// <summary><#=Table.Description#></summary>
     [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
-    public class <#=Table.Alias#> : <#=Table.Alias#><<#=Table.Alias#>> { }
-<#}#>
+    public class <#=Table.Alias#> : <#=Table.Alias#><<#=Table.Alias#>> { }<#
+}#>
+
     /// <summary><#=Table.Description#></summary><#
 if(!Config.RenderGenEntity){#>
-    public partial class <#=Table.Alias#> : <#=Config.BaseClass#><<#=Table.Alias#>>
-    <#}else{#>
+    public partial class <#=Table.Alias#> : <#=Config.BaseClass#><<#=Table.Alias#>><#
+}else{#>
     public partial class <#=Table.Alias#><TEntity> : <#=Config.BaseClass#><TEntity> where TEntity : <#=Table.Alias#><TEntity>, new()<#
-    }#>
+}#>
     {
-        #region 扩展属性<#@include Name="扩展属性.xt"#>
-        #endregion
+        #region 扩展属性<#@include Name="扩展属性.xt"#>        #endregion
 
-        #region 扩展查询<#@include Name="扩展查询.xt"#>
-        #endregion
+        #region 扩展查询<#@include Name="扩展查询.xt"#>        #endregion
 
-        #region 对象操作<#@include Name="对象操作.xt"#>
-        #endregion
+        #region 对象操作<#@include Name="对象操作.xt"#>        #endregion
 
         #region 高级查询
         // 以下为自定义高级查询的例子
