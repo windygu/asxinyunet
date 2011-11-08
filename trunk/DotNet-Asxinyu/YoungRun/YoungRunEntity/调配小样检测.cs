@@ -7,13 +7,13 @@ using XCode.DataAccessLayer;
 
 namespace YoungRunEntity
 {
-    /// <summary>油样检测数据表</summary>
+    /// <summary>调配小样检测</summary>
     [Serializable]
     [DataObject]
-    [Description("油样检测数据表")]
+    [Description("调配小样检测")]
     [BindIndex("PRIMARY", true, "ID")]
-    [BindTable("tb_oilsampletest", Description = "油样检测数据表", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
-    public partial class tb_oilsampletest : Itb_oilsampletest
+    [BindTable("tb_ReseachSample", Description = "调配小样检测", ConnName = "YoungRunST", DbType = DatabaseType.MySql)]
+    public partial class tb_ReseachSample : Itb_ReseachSample
     
     {
         #region 属性
@@ -29,36 +29,24 @@ namespace YoungRunEntity
             set { if (OnPropertyChanging("ID", value)) { _ID = value; OnPropertyChanged("ID"); } }
         }
 
-        private String _RecordType;
-        /// <summary>记录类型</summary>
-        [DisplayName("记录类型")]
-        [Description("记录类型")]
-        [DataObjectField(false, false, false, 16)]
-        [BindColumn(2, "RecordType", "记录类型", null, "varchar(16)", 0, 0, false)]
-        public String RecordType
-        {
-            get { return _RecordType; }
-            set { if (OnPropertyChanging("RecordType", value)) { _RecordType = value; OnPropertyChanged("RecordType"); } }
-        }
-
-        private String _OilNameTP;
+        private String _OilName;
         /// <summary>油品名称</summary>
         [DisplayName("油品名称")]
         [Description("油品名称")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(3, "OilNameTP", "油品名称", null, "varchar(20)", 0, 0, false)]
-        public String OilNameTP
+        [BindColumn(2, "OilName", "油品名称", null, "varchar(20)", 0, 0, false)]
+        public String OilName
         {
-            get { return _OilNameTP; }
-            set { if (OnPropertyChanging("OilNameTP", value)) { _OilNameTP = value; OnPropertyChanged("OilNameTP"); } }
+            get { return _OilName; }
+            set { if (OnPropertyChanging("OilName", value)) { _OilName = value; OnPropertyChanged("OilName"); } }
         }
 
         private String _ProviderTP;
-        /// <summary>供应方</summary>
-        [DisplayName("供应方")]
-        [Description("供应方")]
+        /// <summary>负责人</summary>
+        [DisplayName("负责人")]
+        [Description("负责人")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(4, "ProviderTP", "供应方", null, "varchar(20)", 0, 0, false)]
+        [BindColumn(3, "ProviderTP", "负责人", null, "varchar(20)", 0, 0, false)]
         public String ProviderTP
         {
             get { return _ProviderTP; }
@@ -70,23 +58,23 @@ namespace YoungRunEntity
         [DisplayName("数据编号")]
         [Description("数据编号")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(5, "DataID", "数据编号", null, "varchar(20)", 0, 0, false)]
+        [BindColumn(4, "DataID", "数据编号", null, "varchar(20)", 0, 0, false)]
         public String DataID
         {
             get { return _DataID; }
             set { if (OnPropertyChanging("DataID", value)) { _DataID = value; OnPropertyChanged("DataID"); } }
         }
 
-        private String _SendPerson;
+        private String _SendPersonTP;
         /// <summary>送样人</summary>
         [DisplayName("送样人")]
         [Description("送样人")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(6, "SendPerson", "送样人", null, "varchar(20)", 0, 0, false)]
-        public String SendPerson
+        [BindColumn(5, "SendPersonTP", "送样人", null, "varchar(20)", 0, 0, false)]
+        public String SendPersonTP
         {
-            get { return _SendPerson; }
-            set { if (OnPropertyChanging("SendPerson", value)) { _SendPerson = value; OnPropertyChanged("SendPerson"); } }
+            get { return _SendPersonTP; }
+            set { if (OnPropertyChanging("SendPersonTP", value)) { _SendPersonTP = value; OnPropertyChanged("SendPersonTP"); } }
         }
 
         private DateTime _SendDateTime;
@@ -94,7 +82,7 @@ namespace YoungRunEntity
         [DisplayName("送样时间")]
         [Description("送样时间")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn(7, "SendDateTime", "送样时间", null, "datetime", 0, 0, false)]
+        [BindColumn(6, "SendDateTime", "送样时间", null, "datetime", 0, 0, false)]
         public DateTime SendDateTime
         {
             get { return _SendDateTime; }
@@ -106,7 +94,7 @@ namespace YoungRunEntity
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(8, "Remark", "备注", null, "varchar(50)", 0, 0, false)]
+        [BindColumn(7, "Remark", "备注", null, "varchar(50)", 0, 0, false)]
         public String Remark
         {
             get { return _Remark; }
@@ -129,11 +117,10 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : return _ID;
-                    case "RecordType" : return _RecordType;
-                    case "OilNameTP" : return _OilNameTP;
+                    case "OilName" : return _OilName;
                     case "ProviderTP" : return _ProviderTP;
                     case "DataID" : return _DataID;
-                    case "SendPerson" : return _SendPerson;
+                    case "SendPersonTP" : return _SendPersonTP;
                     case "SendDateTime" : return _SendDateTime;
                     case "Remark" : return _Remark;
                     default: return base[name];
@@ -144,11 +131,10 @@ namespace YoungRunEntity
                 switch (name)
                 {
                     case "ID" : _ID = Convert.ToString(value); break;
-                    case "RecordType" : _RecordType = Convert.ToString(value); break;
-                    case "OilNameTP" : _OilNameTP = Convert.ToString(value); break;
+                    case "OilName" : _OilName = Convert.ToString(value); break;
                     case "ProviderTP" : _ProviderTP = Convert.ToString(value); break;
                     case "DataID" : _DataID = Convert.ToString(value); break;
-                    case "SendPerson" : _SendPerson = Convert.ToString(value); break;
+                    case "SendPersonTP" : _SendPersonTP = Convert.ToString(value); break;
                     case "SendDateTime" : _SendDateTime = Convert.ToDateTime(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -158,26 +144,23 @@ namespace YoungRunEntity
         #endregion
 
         #region 字段名
-        /// <summary>取得油样检测数据表字段信息的快捷方式</summary>
+        /// <summary>取得调配小样检测字段信息的快捷方式</summary>
         public class _
         {
             ///<summary>记录编号</summary>
             public static readonly FieldItem ID = Meta.Table.FindByName("ID");
 
-            ///<summary>记录类型</summary>
-            public static readonly FieldItem RecordType = Meta.Table.FindByName("RecordType");
-
             ///<summary>油品名称</summary>
-            public static readonly FieldItem OilNameTP = Meta.Table.FindByName("OilNameTP");
+            public static readonly FieldItem OilName = Meta.Table.FindByName("OilName");
 
-            ///<summary>供应方</summary>
+            ///<summary>负责人</summary>
             public static readonly FieldItem ProviderTP = Meta.Table.FindByName("ProviderTP");
 
             ///<summary>数据编号</summary>
             public static readonly FieldItem DataID = Meta.Table.FindByName("DataID");
 
             ///<summary>送样人</summary>
-            public static readonly FieldItem SendPerson = Meta.Table.FindByName("SendPerson");
+            public static readonly FieldItem SendPersonTP = Meta.Table.FindByName("SendPersonTP");
 
             ///<summary>送样时间</summary>
             public static readonly FieldItem SendDateTime = Meta.Table.FindByName("SendDateTime");
@@ -188,27 +171,24 @@ namespace YoungRunEntity
         #endregion
     }
 
-    /// <summary>油样检测数据表接口</summary>
-    public partial interface Itb_oilsampletest
+    /// <summary>调配小样检测接口</summary>
+    public partial interface Itb_ReseachSample
     {
         #region 属性
         /// <summary>记录编号</summary>
         String ID { get; set; }
 
-        /// <summary>记录类型</summary>
-        String RecordType { get; set; }
-
         /// <summary>油品名称</summary>
-        String OilNameTP { get; set; }
+        String OilName { get; set; }
 
-        /// <summary>供应方</summary>
+        /// <summary>负责人</summary>
         String ProviderTP { get; set; }
 
         /// <summary>数据编号</summary>
         String DataID { get; set; }
 
         /// <summary>送样人</summary>
-        String SendPerson { get; set; }
+        String SendPersonTP { get; set; }
 
         /// <summary>送样时间</summary>
         DateTime SendDateTime { get; set; }

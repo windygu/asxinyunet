@@ -8,8 +8,8 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
-    /// <summary>油品全套指标</summary>
-    public partial class tb_oildata : Entity<tb_oildata>
+    /// <summary>外来油样检测</summary>
+    public partial class tb_OutSampleTest : Entity<tb_OutSampleTest>
     
     {
         #region 扩展属性
@@ -17,29 +17,29 @@ namespace YoungRunEntity
 
         #region 扩展查询
         /// <summary>
-        /// 根据主键查询一个油品全套指标实体对象用于表单编辑
+        /// 根据主键查询一个外来油样检测实体对象用于表单编辑
         /// </summary>
-        /// <param name="id">数据编号</param>
+        /// <param name="id">记录编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_oildata FindByKeyForEdit(String id)
+        public static tb_OutSampleTest FindByKeyForEdit(String id)
         {
-            tb_oildata entity = Find(new String[] { _.ID }, new Object[] { id });
+            tb_OutSampleTest entity = Find(new String[] { _.ID }, new Object[] { id });
             if (entity == null)
             {
-                entity = new tb_oildata();
+                entity = new tb_OutSampleTest();
             }
             return entity;
         }
 
 
         /// <summary>
-        /// 根据数据编号查找
+        /// 根据记录编号查找
         /// </summary>
-        /// <param name="id">数据编号</param>
+        /// <param name="id">记录编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_oildata FindByID(String id)
+        public static tb_OutSampleTest FindByID(String id)
         {
             if (Meta.Count >= 1000)
                 return Find(new String[] { _.ID }, new Object[] { id });
@@ -128,7 +128,7 @@ namespace YoungRunEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<tb_oildata> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<tb_OutSampleTest> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

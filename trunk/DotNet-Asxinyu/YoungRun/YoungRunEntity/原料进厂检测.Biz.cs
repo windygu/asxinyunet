@@ -8,8 +8,8 @@ using XCode.Configuration;
 
 namespace YoungRunEntity
 {
-    /// <summary>产品配方信息</summary>
-    public partial class tb_productformule : Entity<tb_productformule>
+    /// <summary>原料进厂检测</summary>
+    public partial class tb_RawIntoFactory : Entity<tb_RawIntoFactory>
     
     {
         #region 扩展属性
@@ -17,36 +17,36 @@ namespace YoungRunEntity
 
         #region 扩展查询
         /// <summary>
-        /// 根据主键查询一个产品配方信息实体对象用于表单编辑
+        /// 根据主键查询一个原料进厂检测实体对象用于表单编辑
         /// </summary>
-        /// <param name="productnametp">产品名称</param>
+        /// <param name="id">记录编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_productformule FindByKeyForEdit(String productnametp)
+        public static tb_RawIntoFactory FindByKeyForEdit(String id)
         {
-            tb_productformule entity = Find(new String[] { _.ProductNameTP }, new Object[] { productnametp });
+            tb_RawIntoFactory entity = Find(new String[] { _.ID }, new Object[] { id });
             if (entity == null)
             {
-                entity = new tb_productformule();
+                entity = new tb_RawIntoFactory();
             }
             return entity;
         }
 
 
         /// <summary>
-        /// 根据产品名称查找
+        /// 根据记录编号查找
         /// </summary>
-        /// <param name="productnametp">产品名称</param>
+        /// <param name="id">记录编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_productformule FindByProductNameTP(String productnametp)
+        public static tb_RawIntoFactory FindByID(String id)
         {
             if (Meta.Count >= 1000)
-                return Find(new String[] { _.ProductNameTP }, new Object[] { productnametp });
+                return Find(new String[] { _.ID }, new Object[] { id });
             else // 实体缓存
-                return Meta.Cache.Entities.Find(_.ProductNameTP, productnametp);
+                return Meta.Cache.Entities.Find(_.ID, id);
             // 单对象缓存
-            //return Meta.SingleCache[productnametp];
+            //return Meta.SingleCache[id];
         }
         #endregion
 
@@ -128,7 +128,7 @@ namespace YoungRunEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<tb_productformule> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<tb_RawIntoFactory> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}
