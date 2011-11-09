@@ -65,9 +65,9 @@ namespace YoungRunControl.Forms
             // addBtTestData1
             // 
             this.addBtTestData1.CutModel = null;
-            this.addBtTestData1.CutSearchCondition = null;
+            this.addBtTestData1.CutSearchCondition = "";
             this.addBtTestData1.CutShowMode = DotNet.Tools.Controls.FormShowMode.ContinueAdd;
-            this.addBtTestData1.FixedSqlCondition = null;
+            this.addBtTestData1.FixedSqlCondition = "";
             this.addBtTestData1.Location = new System.Drawing.Point(-2, 12);
             this.addBtTestData1.Name = "addBtTestData1";
             this.addBtTestData1.Size = new System.Drawing.Size(402, 326);
