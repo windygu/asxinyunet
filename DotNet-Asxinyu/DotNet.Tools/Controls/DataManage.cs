@@ -162,7 +162,7 @@ namespace DotNet.Tools.Controls
 		void GetData()
 		{
 			//            winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
-			btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
+            btList = (List<IEntity>)EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
 			                            winPage.PageSize);
 			dgv.DataSource = btList;
 			ArrayList list = new ArrayList();

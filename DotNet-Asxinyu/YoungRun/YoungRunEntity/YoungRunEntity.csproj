@@ -68,7 +68,7 @@
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NPOI.dll</HintPath>
+      <HintPath>..\..\ResouceFiles\Lib\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

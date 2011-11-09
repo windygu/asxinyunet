@@ -77,7 +77,7 @@
       <HintPath>..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>Dll\NPOI.dll</HintPath>
+      <HintPath>..\ResouceFiles\Lib\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -233,37 +233,6 @@
     <None Include="Resouces\Images\user group.ico" />
     <None Include="Resouces\Images\view.ico" />
     <None Include="Resouces\Images\yes.ico" />
-    <None Include="Resouces\Lib\HtmlAgilityPack.dll" />
-    <None Include="Resouces\Lib\HtmlAgilityPack.pdb" />
-    <None Include="Resouces\Lib\HtmlAgilityPack.XML" />
-    <None Include="Resouces\Lib\Kenny.Controls.WinForm.dll" />
-    <None Include="Resouces\Lib\Log.ico" />
-    <None Include="Resouces\Lib\NewLife.CommonEntity.dll" />
-    <None Include="Resouces\Lib\NewLife.CommonEntity.pdb" />
-    <None Include="Resouces\Lib\NewLife.CommonEntity.XML" />
-    <None Include="Resouces\Lib\NewLife.Core.dll" />
-    <None Include="Resouces\Lib\NewLife.Core.pdb" />
-    <None Include="Resouces\Lib\NewLife.Core.xml" />
-    <None Include="Resouces\Lib\NewLife.Net.dll" />
-    <None Include="Resouces\Lib\NewLife.Net.pdb" />
-    <None Include="Resouces\Lib\NewLife.Net.xml" />
-    <None Include="Resouces\Lib\NPOI.dll" />
-    <None Include="Resouces\Lib\obj\Debug\GenerateResource.read.434.tlog" />
-    <None Include="Resouces\Lib\obj\Debug\GenerateResource.write.433.tlog" />
-    <None Include="Resouces\Lib\obj\Debug\GenerateResource.write.434.tlog" />
-    <None Include="Resouces\Lib\XAgent.dll" />
-    <None Include="Resouces\Lib\XAgent.pdb" />
-    <None Include="Resouces\Lib\XAgent.XML" />
-    <None Include="Resouces\Lib\XCode.dll" />
-    <None Include="Resouces\Lib\XCode.pdb" />
-    <None Include="Resouces\Lib\XCode.xml" />
-    <None Include="Resouces\Lib\XControl.dll" />
-    <None Include="Resouces\Lib\XControl.pdb" />
-    <None Include="Resouces\Lib\XControl.XML" />
-    <None Include="Resouces\Lib\XTemplate.dll" />
-    <None Include="Resouces\Lib\XTemplate.pdb" />
-    <None Include="Resouces\Lib\XTemplate.xml" />
-    <None Include="Resouces\Lib\X组件手册.chm" />
     <None Include="Controls\Resources\PageBg.png" />
   </ItemGroup>
   <ItemGroup>

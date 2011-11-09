@@ -36,9 +36,9 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnLast = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnToPageIndex = new System.Windows.Forms.Button();
             this.txtToPageIndex = new System.Windows.Forms.TextBox();
             this.toolTipPager = new System.Windows.Forms.ToolTip(this.components);
+            this.btnToPageIndex = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -109,6 +109,14 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Name = "label3";
             // 
+            // txtToPageIndex
+            // 
+            resources.ApplyResources(this.txtToPageIndex, "txtToPageIndex");
+            this.txtToPageIndex.Name = "txtToPageIndex";
+            this.txtToPageIndex.TabStop = false;
+            this.toolTipPager.SetToolTip(this.txtToPageIndex, resources.GetString("txtToPageIndex.ToolTip"));
+            this.txtToPageIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToPageIndex_KeyPress);
+            // 
             // btnToPageIndex
             // 
             resources.ApplyResources(this.btnToPageIndex, "btnToPageIndex");
@@ -123,14 +131,6 @@
             this.btnToPageIndex.UseVisualStyleBackColor = false;
             this.btnToPageIndex.Click += new System.EventHandler(this.btnToPageIndex_Click);
             // 
-            // txtToPageIndex
-            // 
-            resources.ApplyResources(this.txtToPageIndex, "txtToPageIndex");
-            this.txtToPageIndex.Name = "txtToPageIndex";
-            this.txtToPageIndex.TabStop = false;
-            this.toolTipPager.SetToolTip(this.txtToPageIndex, resources.GetString("txtToPageIndex.ToolTip"));
-            this.txtToPageIndex.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToPageIndex_KeyPress);
-            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
@@ -143,13 +143,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::DotNet.Tools.Controls.Resource.PageBg;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnToPageIndex);
             this.Controls.Add(this.txtToPageIndex);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnFirst);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Name = "EntityFormPager";
             this.toolTipPager.SetToolTip(this, resources.GetString("$this.ToolTip"));
@@ -169,9 +169,9 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnToPageIndex;
         private System.Windows.Forms.TextBox txtToPageIndex;
         private System.Windows.Forms.ToolTip toolTipPager;
+        private System.Windows.Forms.Button btnToPageIndex;
         private System.Windows.Forms.Label label1;
     }
 }
