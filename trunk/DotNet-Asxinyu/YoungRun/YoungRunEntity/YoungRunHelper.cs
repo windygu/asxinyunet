@@ -17,20 +17,18 @@ using NewLife.IO;
 using NewLife.Reflection;
 using XCode.Configuration;
 using XCode.Exceptions;
-using XCode.Model;
 using NPOI.Util;
 using NPOI.SS.Util ;
 using NPOI.HSSF.Model;
 using NPOI.HSSF.UserModel;
 using NPOI.HSSF;
 using NPOI.POIFS.FileSystem;
-using NPOI.HSSF.UserModel.Contrib;
 using System.Text ;
 using NPOI.SS.UserModel ;
 
 namespace YoungRunEntity
 {
-	
+    //使用PropertyGrid控件
 	#region 枚举类型
 	/// <summary>
 	/// 永润数据类型编号
@@ -121,11 +119,28 @@ namespace YoungRunEntity
 		/// </summary>
 		[Description("白土车间采样地点")]
 		BtGetSampleLocate ,
+
+        /// <summary>
+        /// 白土车间采样人
+        /// </summary>
+        [Description("白土车间采样人")]
+        BtGetSamplePerson ,
 		/// <summary>
 		/// 糠醛车间采样地点
 		/// </summary>
 		[Description("糠醛车间采样地点")]
-		KqGetSampleLoate
+		KqGetSampleLoate ,
+        /// <summary>
+        /// 糠醛车间采样人
+        /// </summary>
+        [Description("糠醛车间采样人")]
+        KqGetSamplePerson,
+
+        /// <summary>
+        /// 化验室检测人员
+        /// </summary>
+        [Description("化验室检测人员")]
+        LabTestPersons
 	}
 	#endregion
 

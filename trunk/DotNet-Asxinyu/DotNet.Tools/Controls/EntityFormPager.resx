@@ -211,7 +211,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnFirst.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnPrevious.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -226,7 +226,7 @@
     <value>1</value>
   </data>
   <data name="btnPrevious.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 2</value>
+    <value>23, 2</value>
   </data>
   <data name="btnPrevious.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
@@ -247,7 +247,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPrevious.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnNext.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -283,7 +283,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnNext.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnLast.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -298,7 +298,7 @@
     <value>3</value>
   </data>
   <data name="btnLast.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 2</value>
+    <value>77, 2</value>
   </data>
   <data name="btnLast.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
@@ -319,13 +319,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnLast.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 7</value>
+    <value>99, 8</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 12</value>
@@ -348,53 +348,17 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="btnToPageIndex.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnToPageIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnToPageIndex.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnToPageIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 2</value>
-  </data>
-  <data name="btnToPageIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 22</value>
-  </data>
-  <data name="btnToPageIndex.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnToPageIndex.Text" xml:space="preserve">
-    <value>跳转</value>
-  </data>
   <metadata name="toolTipPager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>137, 17</value>
   </metadata>
-  <data name="btnToPageIndex.ToolTip" xml:space="preserve">
-    <value>跳转到指定的页</value>
-  </data>
-  <data name="&gt;&gt;btnToPageIndex.Name" xml:space="preserve">
-    <value>btnToPageIndex</value>
-  </data>
-  <data name="&gt;&gt;btnToPageIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnToPageIndex.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnToPageIndex.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="txtToPageIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
   <data name="txtToPageIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 3</value>
+    <value>117, 3</value>
   </data>
   <data name="txtToPageIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
+    <value>35, 21</value>
   </data>
   <data name="txtToPageIndex.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -418,19 +382,64 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtToPageIndex.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="toolTipPager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>137, 17</value>
+  </metadata>
+  <data name="btnToPageIndex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnToPageIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnToPageIndex.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnToPageIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="btnToPageIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 2</value>
+  </data>
+  <data name="btnToPageIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 22</value>
+  </data>
+  <data name="btnToPageIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnToPageIndex.Text" xml:space="preserve">
+    <value>跳转</value>
+  </data>
+  <data name="btnToPageIndex.ToolTip" xml:space="preserve">
+    <value>跳转到指定的页</value>
+  </data>
+  <data name="&gt;&gt;btnToPageIndex.Name" xml:space="preserve">
+    <value>btnToPageIndex</value>
+  </data>
+  <data name="&gt;&gt;btnToPageIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnToPageIndex.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnToPageIndex.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 7</value>
+    <value>155, 7</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 12</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>条</value>
@@ -445,7 +454,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -466,7 +475,7 @@
     <value>Disable</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 27</value>
+    <value>208, 27</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value>Wi</value>

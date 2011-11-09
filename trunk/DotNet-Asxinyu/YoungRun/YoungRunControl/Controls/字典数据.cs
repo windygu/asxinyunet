@@ -71,139 +71,159 @@
 				#region 组件设计器生成的代码
 				private void InitializeComponent()
 				{
-					this.components = new System.ComponentModel.Container();
-					System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDicType));
-					this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-					this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-					this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
-					
-						this.lblID = new System.Windows.Forms.Label() ;
-						this.lblID.AutoSize = true;
-						this.lblID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.lblID.Name = "lblID";
-						this.lblID.Size = new System.Drawing.Size(10,16);
-						this.lblID.TabIndex = 200 ;
-						this.lblID.Text = "编号";
-						this.Controls.Add(this.lblID) ;
-					
-						this.lblTypeName = new System.Windows.Forms.Label() ;
-						this.lblTypeName.AutoSize = true;
-						this.lblTypeName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.lblTypeName.Name = "lblTypeName";
-						this.lblTypeName.Size = new System.Drawing.Size(10,16);
-						this.lblTypeName.TabIndex = 200 ;
-						this.lblTypeName.Text = "类型名称";
-						this.Controls.Add(this.lblTypeName) ;
-					
-						this.lblValue = new System.Windows.Forms.Label() ;
-						this.lblValue.AutoSize = true;
-						this.lblValue.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.lblValue.Name = "lblValue";
-						this.lblValue.Size = new System.Drawing.Size(10,16);
-						this.lblValue.TabIndex = 200 ;
-						this.lblValue.Text = "数据值";
-						this.Controls.Add(this.lblValue) ;
-					
-						this.lblRemark = new System.Windows.Forms.Label() ;
-						this.lblRemark.AutoSize = true;
-						this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.lblRemark.Name = "lblRemark";
-						this.lblRemark.Size = new System.Drawing.Size(10,16);
-						this.lblRemark.TabIndex = 200 ;
-						this.lblRemark.Text = "备注";
-						this.Controls.Add(this.lblRemark) ;
-					
-						this.lblID.Location = new System.Drawing.Point(6, 10);
-						
-						this.txtID = new System.Windows.Forms.TextBox() ;
-						this.txtID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.txtID.Location = new System.Drawing.Point(158, 10);
-						this.txtID.Name = "txtID";
-						this.txtID.Size = new System.Drawing.Size(150,22);
-						this.txtID.TabIndex = 0 ;
-						this.Controls.Add(this.txtID) ;
-						this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-						
-						this.lblTypeName.Location = new System.Drawing.Point(6, 37);
-						
-						this.combTypeName = new System.Windows.Forms.ComboBox() ;
-						this.combTypeName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.combTypeName.FormattingEnabled = true;
-						this.combTypeName.Location = new System.Drawing.Point(158, 37);
-						this.combTypeName.Name = "combTypeName";
-						this.combTypeName.Size = new System.Drawing.Size(150,22);
-						this.combTypeName.TabIndex = 2 ;
-						this.Controls.Add(this.combTypeName) ;
-						
-						this.lblValue.Location = new System.Drawing.Point(6, 64);
-						
-						this.txtValue = new System.Windows.Forms.TextBox() ;
-						this.txtValue.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.txtValue.Location = new System.Drawing.Point(158, 64);
-						this.txtValue.Name = "txtValue";
-						this.txtValue.Size = new System.Drawing.Size(150,22);
-						this.txtValue.TabIndex = 4 ;
-						this.Controls.Add(this.txtValue) ;
-						
-						this.lblRemark.Location = new System.Drawing.Point(6, 91);
-						
-						this.txtRemark = new System.Windows.Forms.TextBox() ;
-						this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-						this.txtRemark.Location = new System.Drawing.Point(158, 91);
-						this.txtRemark.Name = "txtRemark";
-						this.txtRemark.Size = new System.Drawing.Size(150,22);
-						this.txtRemark.TabIndex = 6 ;
-						this.Controls.Add(this.txtRemark) ;
-						
-					#region 添加按钮
-					this.btnOK = new System.Windows.Forms.Button();
-					this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-					this.btnOK.Location = new System.Drawing.Point(26, 138);
-					this.btnOK.Name = "btnOK";
-					this.btnOK.Size = new System.Drawing.Size(78, 27);
-					this.btnOK.TabIndex = 8;
-					this.btnOK.Text = "保存";
-					this.btnOK.UseVisualStyleBackColor = true;
-					this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-					this.Controls.Add(this.btnOK);
-					this.btnCancle = new System.Windows.Forms.Button();
-					this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-					this.btnCancle.Location = new System.Drawing.Point(106, 138);
-					this.btnCancle.Name = "btnCancle";
-					this.btnCancle.Size = new System.Drawing.Size(78, 27);
-					this.btnCancle.TabIndex = 10;
-					this.btnCancle.Text = "取消";
-					this.btnCancle.UseVisualStyleBackColor = true;
-					this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
-					this.Controls.Add(this.btnCancle);
-					this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-					((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-					this.errorProvider1.ContainerControl = this;
+            this.components = new System.ComponentModel.Container();
+            this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
+            this.lblID = new System.Windows.Forms.Label();
+            this.lblTypeName = new System.Windows.Forms.Label();
+            this.lblValue = new System.Windows.Forms.Label();
+            this.lblRemark = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.combTypeName = new System.Windows.Forms.ComboBox();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.txtRemark = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // FormPager
+            // 
+            this.FormPager.AutoSize = true;
+            this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FormPager.BackColor = System.Drawing.Color.Transparent;
+            this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.FormPager.Location = new System.Drawing.Point(10, 168);
+            this.FormPager.Name = "FormPager";
+            this.FormPager.RecordCount = 0;
+            this.FormPager.Size = new System.Drawing.Size(256, 29);
+            this.FormPager.TabIndex = 100;
+            this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblID.Location = new System.Drawing.Point(6, 10);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(35, 14);
+            this.lblID.TabIndex = 200;
+            this.lblID.Text = "编号";
+            // 
+            // lblTypeName
+            // 
+            this.lblTypeName.AutoSize = true;
+            this.lblTypeName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTypeName.Location = new System.Drawing.Point(6, 37);
+            this.lblTypeName.Name = "lblTypeName";
+            this.lblTypeName.Size = new System.Drawing.Size(63, 14);
+            this.lblTypeName.TabIndex = 200;
+            this.lblTypeName.Text = "类型名称";
+            // 
+            // lblValue
+            // 
+            this.lblValue.AutoSize = true;
+            this.lblValue.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblValue.Location = new System.Drawing.Point(6, 64);
+            this.lblValue.Name = "lblValue";
+            this.lblValue.Size = new System.Drawing.Size(49, 14);
+            this.lblValue.TabIndex = 200;
+            this.lblValue.Text = "数据值";
+            // 
+            // lblRemark
+            // 
+            this.lblRemark.AutoSize = true;
+            this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblRemark.Location = new System.Drawing.Point(6, 91);
+            this.lblRemark.Name = "lblRemark";
+            this.lblRemark.Size = new System.Drawing.Size(35, 14);
+            this.lblRemark.TabIndex = 200;
+            this.lblRemark.Text = "备注";
+            // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtID.Location = new System.Drawing.Point(158, 10);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(150, 23);
+            this.txtID.TabIndex = 0;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
+            // 
+            // combTypeName
+            // 
+            this.combTypeName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.combTypeName.FormattingEnabled = true;
+            this.combTypeName.Location = new System.Drawing.Point(158, 37);
+            this.combTypeName.Name = "combTypeName";
+            this.combTypeName.Size = new System.Drawing.Size(150, 22);
+            this.combTypeName.TabIndex = 2;
+            // 
+            // txtValue
+            // 
+            this.txtValue.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtValue.Location = new System.Drawing.Point(158, 64);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(150, 23);
+            this.txtValue.TabIndex = 4;
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtRemark.Location = new System.Drawing.Point(158, 91);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(150, 23);
+            this.txtRemark.TabIndex = 6;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOK.Location = new System.Drawing.Point(26, 138);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(78, 27);
+            this.btnOK.TabIndex = 8;
+            this.btnOK.Text = "保存";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancle
+            // 
+            this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancle.Location = new System.Drawing.Point(106, 138);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(78, 27);
+            this.btnCancle.TabIndex = 10;
+            this.btnCancle.Text = "取消";
+            this.btnCancle.UseVisualStyleBackColor = true;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // AddDicType
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.lblTypeName);
+            this.Controls.Add(this.lblValue);
+            this.Controls.Add(this.lblRemark);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.combTypeName);
+            this.Controls.Add(this.txtValue);
+            this.Controls.Add(this.txtRemark);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.FormPager);
+            this.Name = "AddDicType";
+            this.Size = new System.Drawing.Size(350, 211);
+            this.Load += new System.EventHandler(this.AddAddDicTypeLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
-					this.FormPager.AutoSize = true;
-					this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-					this.FormPager.BackColor = System.Drawing.Color.Transparent;
-					this.FormPager.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FormPager.BackgroundImage")));
-					this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-					this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-					this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-					this.FormPager.Location = new System.Drawing.Point(10, 168);
-					this.FormPager.Name = "FormPager";
-					this.FormPager.RecordCount = 0;
-					this.FormPager.Size = new System.Drawing.Size(256, 29);
-					this.FormPager.TabIndex = 100;
-					this.Controls.Add(this.FormPager);
-					this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
-					#endregion
-					#region 窗体
-					this.Name = "AddDicType";
-					this.Size = new System.Drawing.Size(350, 500);
-					this.Load += new System.EventHandler(this.AddAddDicTypeLoad);
-					this.SuspendLayout();
-					((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-					this.ResumeLayout(false);
-					this.PerformLayout();
-					#endregion
 				}
 				#endregion
 			#endregion
