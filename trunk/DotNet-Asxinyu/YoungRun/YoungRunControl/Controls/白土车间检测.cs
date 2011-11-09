@@ -497,7 +497,14 @@ namespace YoungRunControl.Controls
         #endregion
 
         #region 构造函数 及初始化
-        public AddBtTestData() { InitializeComponent(); CustomerSettings(); }       
+        public AddBtTestData()
+        {
+            InitializeComponent(); 
+            if (!DesignMode )
+            {
+                CustomerSettings();  
+            } 
+        }       //
         //控件加载事件,完成数据绑定和相关基本设置
         void AddAddBtTestDataLoad(object sender, EventArgs e) { }
         /// <summary>
