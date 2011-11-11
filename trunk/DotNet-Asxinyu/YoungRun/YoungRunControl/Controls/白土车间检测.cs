@@ -499,11 +499,7 @@ namespace YoungRunControl.Controls
         #region 构造函数 及初始化
         public AddBtTestData()
         {
-            InitializeComponent(); 
-            if (!DesignMode )
-            {
-                CustomerSettings();  
-            } 
+            InitializeComponent();             
         }
         /// <summary>
         /// 其他控件的特殊设置
@@ -525,7 +521,13 @@ namespace YoungRunControl.Controls
             }
         }   
         //控件加载事件,完成数据绑定和相关基本设置
-        void AddAddBtTestDataLoad(object sender, EventArgs e) { }
+        void AddAddBtTestDataLoad(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+                CustomerSettings();  
+            }
+        }
         /// <summary>
         /// 初始化设置
         /// </summary>
@@ -792,7 +794,6 @@ namespace YoungRunControl.Controls
         #endregion
 
         #region 绑定数据
-
         /// <summary>
         /// 加载子窗口:if(Field.PrimaryKey) continue;
         /// </summary>

@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\DotNet.Tools.dll</HintPath>
+    </Reference>
     <Reference Include="NewLife.Core, Version=3.3.4329.35774, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
@@ -52,6 +56,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
+    <Reference Include="YoungRunControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\白土车间检测分部类.cs" />
@@ -80,9 +85,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\添加用户信息表.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\添加白土车间检测.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\添加糠醛车间检测数据.cs">
@@ -134,10 +136,6 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
-      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
-      <Name>DotNet.Tools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YoungRunEntity\YoungRunEntity.csproj">
       <Project>{2CC9DC3D-DF15-491F-86F0-2D3EA819B1B3}</Project>
       <Name>YoungRunEntity</Name>
@@ -179,9 +177,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\调配小样检测.resx">
       <DependentUpon>调配小样检测.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\添加白土车间检测.resx">
-      <DependentUpon>添加白土车间检测.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using DotNet.Tools.Controls ;
 using XCode ;
 using XCode.DataAccessLayer ;
-using YoungRunControl.Forms;
+using YoungRunControl.Controls ;
 
 namespace YoungRunTest
 {
@@ -28,11 +28,19 @@ namespace YoungRunTest
 		}
 		
 		void Button1Click(object sender, EventArgs e)
-		{
-            AddBtTestDataForm a = new AddBtTestDataForm();
-            a.InitializeSettings(FormShowMode.AddOne , "", "");
-            a.Show();
-		}
+		{         
+            AddBtTestData EntityControl= new AddBtTestData();            
+            EntityControl.CutShowMode = DotNet.Tools.Controls.FormShowMode.ContinueDisplay;
+            EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;        
+            EntityControl.Location = new System.Drawing.Point(0, 0);
+            EntityControl.Name = "EntityControl";            
+            EntityControl.TabIndex = 0;
+            TestForm tf = new TestForm();
+            tf.Size =new Size (EntityControl.Width +10,EntityControl.Size.Height +35);
+            tf.Controls.Add(EntityControl);
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            tf.Show();
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
