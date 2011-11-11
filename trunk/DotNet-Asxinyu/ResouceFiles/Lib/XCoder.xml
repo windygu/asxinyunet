@@ -4,4 +4,4 @@
  * 时间：&lt;#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#&gt;
  * 版权：版权所有 (C) 新生命开发团队 &lt;#=DateTime.Now.ToString("yyyy")#&gt;
 */
-</HeadTemplate><Debug>True</Debug><LastUpdate>2011-11-09 12:45:56</LastUpdate><LastBlogTitle>Oracle免客户端For .Net（增加分析Devart和DataDirect）</LastBlogTitle><Items /></XConfig>
+</HeadTemplate><Debug>True</Debug><LastUpdate>2011-11-10 12:42:56</LastUpdate><LastBlogTitle>Oracle免客户端For .Net（增加分析Devart和DataDirect）</LastBlogTitle><Items /></XConfig>
