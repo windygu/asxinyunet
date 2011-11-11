@@ -52,9 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\白土车间检测分部类.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\白土车间检测分部类.cs" />
     <Compile Include="Forms\添加产品配方信息.cs">
       <SubType>Form</SubType>
     </Compile>
