@@ -502,7 +502,7 @@ namespace YoungRunControl.Controls
             InitializeComponent(); 
             if (!DesignMode )
             {
-                CustomerSettings();  
+                //CustomerSettings();  
             } 
         }       //
         //控件加载事件,完成数据绑定和相关基本设置

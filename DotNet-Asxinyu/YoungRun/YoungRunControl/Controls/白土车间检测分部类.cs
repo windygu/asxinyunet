@@ -11,26 +11,26 @@ using DotNet.Tools.Controls;
 
 namespace YoungRunControl.Controls
 {
-    public partial class AddBtTestData
+    public class AddBtTestDatapartial
     {
         /// <summary>
         /// 其他控件的特殊设置
         /// </summary>
-        private void CustomerSettings() 
-        {
-            //控件的特殊设置，如格式，显示,控件的绑定
-            if (!DesignMode )
-            {
-                //日期控件的显示格式
-                dtGetSampleTime.Format = DateTimePickerFormat.Custom;
-                dtGetSampleTime .CustomFormat = "yyyy-MM-dd HH:mm:ss";
-                dtUpdateTime.Format = DateTimePickerFormat.Custom;
-                dtUpdateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-                //绑定数据
-                combGetSamLocationTP.Items.AddRange(YoungRunHelper.GetDicValueList (YoungRunDicType.BtGetSampleLocate ));
-                combGetSampPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList (YoungRunDicType.BtGetSamplePerson  ));
-                combTestPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.LabTestPersons));
-            }
-        }   
+        //private void CustomerSettings() 
+        //{
+        //    //控件的特殊设置，如格式，显示,控件的绑定
+        //    if (!DesignMode )
+        //    {
+        //        //日期控件的显示格式
+        //        dtGetSampleTime.Format = DateTimePickerFormat.Custom;
+        //        dtGetSampleTime .CustomFormat = "yyyy-MM-dd HH:mm:ss";
+        //        dtUpdateTime.Format = DateTimePickerFormat.Custom;
+        //        dtUpdateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+        //        //绑定数据
+        //        combGetSamLocationTP.Items.AddRange(YoungRunHelper.GetDicValueList (YoungRunDicType.BtGetSampleLocate ));
+        //        combGetSampPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList (YoungRunDicType.BtGetSamplePerson  ));
+        //        combTestPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.LabTestPersons));
+        //    }
+        //}   
     }
 }
