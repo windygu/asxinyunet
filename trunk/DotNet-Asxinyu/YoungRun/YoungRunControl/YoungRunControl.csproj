@@ -33,7 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NewLife.Core">
+    <Reference Include="NewLife.Core, Version=3.3.4329.35774, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -47,7 +48,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="XCode">
+    <Reference Include="XCode, Version=8.2.4329.38209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
