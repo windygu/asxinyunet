@@ -19,8 +19,7 @@ namespace LotteryTicket.ValidateResult
 	/// 预测方法验证
 	/// </summary>
 	public static class ValidateMethods
-    {
-        #region  其他方法      
+    { 
         #region 公共方法
         /// <summary>
 		/// 统计bool数组中True的比例,即正确率
@@ -40,8 +39,13 @@ namespace LotteryTicket.ValidateResult
 		#endregion
 		
 		#region 和值相关的验证
-		//验证和值在一定范围的比例
-		public static double SumInRangeLimite(double[][] data, double[] conditions)
+	    /// <summary>
+        /// 验证和值在一定范围的比例
+	    /// </summary>
+	    /// <param name="data">需要验证的数据期数</param>
+	    /// <param name="conditions">和值范围</param>
+	    /// <returns>和值在此范围的比例</returns>
+		public static double SumInRangeLimiteValidate(double[][] data, double[] conditions)
 		{
 			//获取测试数据			
 			bool[] res = PredictMethodsValidate.PredictValidate(data ,IndexNameType.A_Sum ,conditions,
@@ -51,14 +55,25 @@ namespace LotteryTicket.ValidateResult
 		#endregion
 		
 		#region 跨度相关验证
-		public static double MaxSpanInRangeLimite(double[][] data,double[] conditons)
+        /// <summary>
+        /// 最大跨度范围验证
+        /// </summary>
+        /// <param name="data">需要验证的数据期数</param>
+        /// <param name="conditons">跨度范围</param>
+        /// <returns>跨度在此范围的比例</returns>
+		public static double MaxSpanInRangeLimiteValidate(double[][] data,double[] conditons)
 		{
 			bool[] res =PredictMethodsValidate .PredictValidate (data ,IndexNameType.A_MaxSpan ,conditons,
 			                                                     FilterRuleType.RangeLimite,0) ;
 			return GetRateReuslt (res ) ;
 		}
-		
-		public static double MinSpanInRangeLimite(double[][] data,double[] conditons)
+		/// <summary>
+        /// 最小跨度范围验证
+		/// </summary>
+        /// <param name="data">需要验证的数据期数</param>
+        /// <param name="conditons">跨度范围</param>
+        /// <returns>跨度在此范围的比例</returns>
+		public static double MinSpanInRangeLimiteValidate(double[][] data,double[] conditons)
 		{
 			bool[] res =PredictMethodsValidate .PredictValidate (data ,IndexNameType.A_MinSpan ,conditons,
 			                                                     FilterRuleType.RangeLimite,0) ;
@@ -67,16 +82,45 @@ namespace LotteryTicket.ValidateResult
 		#endregion
 		
 		#region 多期验证
-		public static double LatestValidate(double[][] data)
+        /// <summary>
+        /// 多期中最后一期中出现号码的个数：即旧号码出现的个数
+        /// </summary>
+        /// <param name="data">需要验证的数据期数</param>      
+        /// <param name="conditons">条件</param>
+        /// <param name="rows">比较的期数</param>
+        /// <param name="ruleType">验证规则类型,默认为区间验证</param>
+        /// <returns>满足指定条件的概率</returns>
+		public static double LatestValidate(double[][] data,double[] conditons,int rows,FilterRuleType ruleType = FilterRuleType.RangeLimite)
 		{
 			bool[] res =PredictMethodsValidate.PredictValidate (data ,IndexNameType.B_ManyNoOfNewCount,
-			                                                    new double[]{1,3},FilterRuleType.RangeLimite,6) ;
+                                                                conditons, FilterRuleType.RangeLimite,rows );
 			return GetRateReuslt (res ) ;
 		}
-		#endregion
-		
-		#region 综合验证
-		public static double ComprehensiveValidate(double[][] data)
+		#endregion		
+
+        #region 跨度列表验证
+        /// <summary>
+        /// 验证最近期的跨度列表不相同的概率
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <param name="rows">验证的行数</param>
+        /// <returns>返回指定期内与当前期不同的概率</returns>
+        public static double SpanListValidate(double[][] data ,int rows)
+        {
+            //单独写算法			       
+            double[][] spanList = new double[data.GetLength(0)][];
+            for (int i = 0; i <spanList.Length ; i++)
+            {
+                //先计算每一期的列表
+                spanList[i ] = (double[])IndexCalculate.CalculateAllData(data, IndexNameType.C_SpanList, 1);
+            }
+            //然后再比较
+            return GetRateReuslt(res);
+        }
+        #endregion
+        
+        #region 综合验证
+        public static double ComprehensiveValidate(double[][] data)
 		{
 			bool[][] res = new bool[5][] ;
 			res[0] = PredictMethodsValidate.PredictValidate(data ,IndexNameType.A_Sum ,new double []{65,145},
@@ -109,8 +153,7 @@ namespace LotteryTicket.ValidateResult
 			return ((double )(data[0].Length -count) )/((double )data[0].Length ) ;
 		}
 		#endregion		
-        #endregion
-
+     
         #region 文本解释规则进行验证
         /// <summary>
         /// 根据文本规则进行方法验证,并将结果输入到文本中

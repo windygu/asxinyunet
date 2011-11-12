@@ -57,7 +57,10 @@ namespace LotteryTicket.Data
                         model.号码5 = Convert.ToInt32(tempNo[4]);
                         model.号码6 = Convert.ToInt32(tempNo[5]);
                         model.红球  = Convert.ToInt32(tempNo[6]);
-                        model.Save();//自动判断是否存在         
+                        if (!model.Exist(new string[] { ssq._.期号}))
+                        {
+                            model.Insert ();//自动判断是否存在         
+                        }                        
                         Console.WriteLine("第 " + i.ToString() + "页，第 " + j.ToString() + " 条");
                     }                 
 				}
