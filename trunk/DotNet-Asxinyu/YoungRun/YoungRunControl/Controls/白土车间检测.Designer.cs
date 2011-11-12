@@ -11,7 +11,7 @@ using DotNet.Tools.Controls;
 
 namespace YoungRunControl.Controls
 {
-    public class AddBtTestDatapartial
+    public class AddBtTessstData
     {
         /// <summary>
         /// 其他控件的特殊设置

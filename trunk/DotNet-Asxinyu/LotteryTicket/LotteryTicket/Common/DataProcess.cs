@@ -8,7 +8,6 @@
  */
 using System;
 using System.IO ;
-using Kw.Combinatorics;
 
 namespace LotteryTicket.Common
 {

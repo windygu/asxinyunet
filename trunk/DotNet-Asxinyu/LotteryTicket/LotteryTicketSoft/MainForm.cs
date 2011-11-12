@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using LotteryTicket ;
-using LotteryTicketData ;
 using LotteryTicketSoft.GraphForm ;
 
 namespace LotteryTicketSoft
