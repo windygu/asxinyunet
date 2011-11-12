@@ -80,7 +80,7 @@ namespace LotteryTicket
 				for (int i = min ; i <= max; i ++ )
 				{
 					double[][] sn = new double[needRows ][] ;
-					for (int j = 0 ; j <sn.Length ; j ++)
+                    for (int j = 0; j < needRows; j++)
 					{
 						sn [j ] = args [i +j ] ;
 					}
