@@ -25,6 +25,7 @@ using NPOI.HSSF;
 using NPOI.POIFS.FileSystem;
 using System.Text ;
 using NPOI.SS.UserModel ;
+using DotNet.Tools.Controls ;
 
 namespace YoungRunEntity
 {
@@ -144,7 +145,16 @@ namespace YoungRunEntity
 	}
 	#endregion
 
-	
+    public interface IEntityControl
+    {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="formShowMode"></param>
+        /// <param name="searcgCondtion"></param>
+        /// <param name="fixCondition"></param>
+        void InitializeSettings(FormShowMode formShowMode, string searcgCondtion, string fixCondition);
+    }
 	/// <summary>
 	/// 永润石化帮助类
 	/// </summary>
@@ -180,7 +190,7 @@ namespace YoungRunEntity
 		private static T SearchNextId<T>(string condition) where T :Entity<T>,new()
 		{
 			List<T> list = Entity<T>.FindAll(condition, Entity<T>.Meta.Unique.ColumnName +" Desc", null, 0, 1);
-			if (list == null)
+			if (list == null || list.Count ==0)
 			{
 				return null;
 			}

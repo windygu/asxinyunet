@@ -60,6 +60,9 @@
     <DocumentationFile>..\..\..\代码生成\YoungRunEntity\YoungRunEntity.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNet.Tools">
+      <HintPath>..\..\ResouceFiles\Lib\DotNet.Tools.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
