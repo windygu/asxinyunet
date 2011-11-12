@@ -9,7 +9,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Kw.Combinatorics;
 using DotNet.Tools ;
 
 namespace LotteryTicket.Common

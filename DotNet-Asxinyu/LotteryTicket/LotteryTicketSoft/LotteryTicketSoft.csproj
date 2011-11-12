@@ -52,6 +52,9 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ZedGraph">
+      <HintPath>..\..\ResouceFiles\Lib\ZedGraph.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphForm\BaseGraphClass.cs" />
@@ -60,6 +63,12 @@
     </Compile>
     <Compile Include="GraphForm\DataPredict.Designer.cs">
       <DependentUpon>DataPredict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphForm\FilterNumber.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GraphForm\FilterNumber.Designer.cs">
+      <DependentUpon>FilterNumber.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -71,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GraphForm\DataPredict.resx">
       <DependentUpon>DataPredict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphForm\FilterNumber.resx">
+      <DependentUpon>FilterNumber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

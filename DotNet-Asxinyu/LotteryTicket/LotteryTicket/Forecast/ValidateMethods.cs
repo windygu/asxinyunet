@@ -100,7 +100,7 @@ namespace LotteryTicket.ValidateResult
 
         #region 跨度列表验证
         /// <summary>
-        /// 验证最近期的跨度列表不相同的概率
+        /// 验证最近期的跨度列表不相同的概率，测试正确
         /// </summary>
         /// <param name="data">数据</param>
         /// <param name="rows">验证的行数</param>

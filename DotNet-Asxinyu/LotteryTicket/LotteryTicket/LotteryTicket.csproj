@@ -43,9 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="KwCombinatorics">
-      <HintPath>..\..\ResouceFiles\Lib\KwCombinatorics.dll</HintPath>
-    </Reference>
     <Reference Include="NewLife.Core">
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
@@ -74,7 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseLotTickClass.cs" />
+    <Compile Include="Base\Combination.cs" />
     <Compile Include="Base\IndexNameType.cs" />
+    <Compile Include="Base\Permutation.cs" />
     <Compile Include="Calculate\RuleCompare.cs" />
     <Compile Include="Calculate\IndexCalculate.cs" />
     <Compile Include="Calculate\PerNoIndexCalculate.cs" />
