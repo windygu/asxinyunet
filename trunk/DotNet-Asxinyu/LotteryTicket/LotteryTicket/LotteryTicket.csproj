@@ -105,6 +105,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LotteryTicket.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\PerIndexCalculateDataAB.txt" />
   </ItemGroup>
   <ItemGroup />
