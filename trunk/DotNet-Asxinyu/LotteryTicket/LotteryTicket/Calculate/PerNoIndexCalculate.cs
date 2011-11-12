@@ -152,27 +152,18 @@ namespace LotteryTicket
 			}
 			return (double )al.Count ;
 		}
-		//多期中旧号出现的个数
+		//多期中出现重复号码的个数
 		public static object B_ManyNoOfNewCount(object args)
 		{
 			double[][] data = (double[][])args ;//多期数据
+            int count = 0;
 			ArrayList al = new ArrayList ();
-			for (int i = 0 ; i <data.Length -1 ; i ++)
+			for (int i = 0 ; i <data.GetLength (0) ; i ++)
 			{
 				for (int j=0 ; j <data[0].Length ; j ++)
 				{
-					if (!al.Contains (data[i][j]))
-					{
-						al.Add (data[i][j]);
-					}
-				}
-			}
-			int count = 0 ;
-			for (int i = 0; i < data[0].Length ; i++)
-			{
-				if (al.Contains (data[data.Length -1][i ]))
-				{
-					count ++ ;
+                    if (!al.Contains(data[i][j])) { al.Add(data[i][j]); }
+                    else { count++; }
 				}
 			}
 			return (double )count ;

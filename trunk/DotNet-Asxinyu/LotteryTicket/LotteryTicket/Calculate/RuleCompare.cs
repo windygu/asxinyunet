@@ -108,13 +108,16 @@ namespace LotteryTicket
         public static bool EqualAll(double[] data ,double[] Conditons)
 		{
 			//完全匹配:匹配队列中所有值,全部转换为double进行计算,差小于0.001即认为相等
-			//如和值匹配,跨度匹配,组合匹配(2个数字都要出现,组合出现)				
+			//如和值匹配,跨度匹配,组合匹配(2个数字都要出现,组合出现)	
+            bool[] dataRes = new bool[data.Length];
 			for (int i = 0 ; i <data.Length ; i ++ )
 			{
+                dataRes[i] = false; //默认为False
 				for (int j = 0 ; j <Conditons.Length ; j ++)
 				{
-					if (Math.Abs (data [i ]-Conditons [j ]) >Precision){return false  ;}//一旦有不相等的,说明不满足,即可返回					
+                    if (Math.Abs(data[i] - Conditons[j]) < Precision) { dataRes[i] = true; break; }//一旦有小于相等的,说明当前元素满足条件
 				}
+                if (!dataRes[i]) { return false; }//有一个不满足即可返回
 			}
 			return true  ;
 		}

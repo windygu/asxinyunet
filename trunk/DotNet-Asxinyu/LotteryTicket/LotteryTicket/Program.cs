@@ -84,8 +84,9 @@ namespace LotteryTicket
             //sections [4] = new double[] {29,30,31,32,33};
             //String connStr = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=LotteryTicket.mdb;Persist Security Info=False;OLE DB Services=-1";
             //DAL.AddConnStr("LotTick", connStr, null, "access");
-            GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
+            //GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
             //gs.GetAllHistoryData(64);
+            ValidateMethods.ComprehensiveValidate();
 			Console.ReadKey(true);
 		}
 	}

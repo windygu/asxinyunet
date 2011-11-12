@@ -21,13 +21,7 @@ namespace LotteryTicket
 	/// 框架计算类,根据指标计算出统计规律,是构建预测方案的重要依据
 	/// </summary>
 	public class StaticsResult
-	{	
-		//多期内相同数字列表,计算重复的周期
-		public static void CalcateRepeateNumber(double[][] data,int needLength)
-		{
-			double[][] result = (double[][])IndexCalculate.CalculateAllData (data,IndexNameType.D_ManyNosList, needLength) ;
-		}		
-		
+	{			
 		#region 分段匹配
 		/// <summary>
 		/// 分段匹配测试

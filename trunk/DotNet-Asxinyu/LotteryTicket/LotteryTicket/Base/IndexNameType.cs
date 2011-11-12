@@ -65,22 +65,12 @@ namespace LotteryTicket
 		/// <summary>
 		/// 数据密度,返回1个double类型
 		/// </summary>
-		A_DataDensity ,
+		A_DataDensity ,		
 		
 		/// <summary>
-		/// 多期中不相同号码个数,返回1个double类型
-		/// </summary>
-		B_ManyNoCounts ,
-		
-		/// <summary>
-		/// 多期中最后一期与前几期相比,旧号出现的个数
+		/// 多期中重复号码出现的个数
 		/// </summary>
 		B_ManyNoOfNewCount ,
-		
-		/// <summary>
-		/// 多期号码中相同的号码列表
-		/// </summary>
-		D_ManyNosList 
 	}
 	#endregion
 	
