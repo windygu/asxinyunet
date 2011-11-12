@@ -14,6 +14,7 @@ using DotNet.Tools.Controls ;
 using XCode ;
 using XCode.DataAccessLayer ;
 using YoungRunControl.Controls ;
+using YoungRunEntity;
 
 namespace YoungRunTest
 {
@@ -28,16 +29,25 @@ namespace YoungRunTest
 		}
 		
 		void Button1Click(object sender, EventArgs e)
-		{         
-            AddBtTestData EntityControl= new AddBtTestData();            
-            EntityControl.CutShowMode = DotNet.Tools.Controls.FormShowMode.ContinueDisplay;
-            EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;        
+		{
+            GetControlForm<AddBtTestData>(FormShowMode.AddOne, "", "");
+        }
+
+        /// <summary>
+        /// 根据控件得到窗体,可以进行快速测试，不用每一个都写窗体
+        /// </summary>
+        public static void GetControlForm<T>(FormShowMode formShowMode,
+            string searcgCondtion, string fixCondition) where T : UserControl, IEntityControl,new()
+        {            
+            T EntityControl= new T();
+            EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
             EntityControl.Location = new System.Drawing.Point(0, 0);
-            EntityControl.Name = "EntityControl";            
+            EntityControl.Name = "EntityControl";           
             EntityControl.TabIndex = 0;
             TestForm tf = new TestForm();
-            tf.Size =new Size (EntityControl.Width +10,EntityControl.Size.Height +35);
-            tf.Controls.Add(EntityControl);
+            tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
+            tf.Controls.Add(EntityControl);//将控件添加到窗体中
+            EntityControl.InitializeSettings(formShowMode, searcgCondtion, fixCondition);
             tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             tf.Show();
         }

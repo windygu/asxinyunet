@@ -29,7 +29,7 @@ using DotNet.Tools.Controls;
 
 namespace YoungRunControl.Controls
 {
-    public partial class AddBtTestData : UserControl
+    public partial class AddBtTestData : UserControl,IEntityControl 
     {
         #region 自动生成代码
         #region Designer.cs必须代码
@@ -519,7 +519,7 @@ namespace YoungRunControl.Controls
                 combGetSampPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.BtGetSamplePerson));
                 combTestPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.LabTestPersons));
             }
-        }   
+        }
         //控件加载事件,完成数据绑定和相关基本设置
         void AddAddBtTestDataLoad(object sender, EventArgs e)
         {
@@ -720,8 +720,9 @@ namespace YoungRunControl.Controls
                 btnOK.Enabled = true;
                 btnOK.Text = "保存";
                 //设置控件清空，并且可用
-                txtID.ReadOnly = false;//数据编号
-                txtID.Text = string.Empty;
+                 //增加数据编号的自动生成绑定
+                txtID.Text = YoungRunHelper.GetNextYoungRunDataId(YoungRunDataType.R202);
+                txtID.ReadOnly = false;//数据编号                
                 combProductNameTP.Enabled = true; //产品名称	
                 txtV40.ReadOnly = false;//V40
                 txtV40.Text = string.Empty;
