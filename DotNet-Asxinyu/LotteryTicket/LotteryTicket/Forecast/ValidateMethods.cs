@@ -35,7 +35,7 @@ namespace LotteryTicket.ValidateResult
 				}
 			}
 			return ((double)sum)/((double)result.Length ) ;
-		}
+		}      
 		#endregion
 		
 		#region 和值相关的验证
@@ -83,7 +83,7 @@ namespace LotteryTicket.ValidateResult
 		
 		#region 多期验证
         /// <summary>
-        /// 多期中最后一期中出现号码的个数：即旧号码出现的个数
+        /// 最近几期号码重复出现的个数
         /// </summary>
         /// <param name="data">需要验证的数据期数</param>      
         /// <param name="conditons">条件</param>
@@ -93,7 +93,7 @@ namespace LotteryTicket.ValidateResult
 		public static double LatestValidate(double[][] data,double[] conditons,int rows,FilterRuleType ruleType = FilterRuleType.RangeLimite)
 		{
 			bool[] res =PredictMethodsValidate.PredictValidate (data ,IndexNameType.B_ManyNoOfNewCount,
-                                                                conditons, FilterRuleType.RangeLimite,rows );
+                                                                conditons, ruleType , rows);
 			return GetRateReuslt (res ) ;
 		}
 		#endregion		
@@ -112,48 +112,59 @@ namespace LotteryTicket.ValidateResult
             for (int i = 0; i <spanList.Length ; i++)
             {
                 //先计算每一期的列表
-                spanList[i ] = (double[])IndexCalculate.CalculateAllData(data, IndexNameType.C_SpanList, 1);
+                spanList[i ] = (double[])IndexCalculate.CalculateIndex(data[i], IndexNameType.C_SpanList );
             }
-            //然后再比较
+            //然后再循环比较,先将所有结果一一对比，然后再根据期数去判断
+            Dictionary<string, bool> dic = new Dictionary<string, bool>();
+            for (int i = 0; i < spanList.GetLength(0) - 1; i++)
+            {
+                for (int j = i + 1; j < spanList.GetLength(0); j++)
+                {
+                    dic.Add(i.ToString() +"-"+j .ToString (),BaseRuleCompare.RuleCompare
+                        (FilterRuleType.EqualAll, spanList[i], spanList[j]));
+                }
+            }
+            int L = spanList.GetLength(0)-rows +1 ;
+            bool[] res = new bool[L ];
+            for (int i = 0; i <L ; i++)//将连续的几期，逐一比较
+            {
+                bool temp = false;//标记符，默认为false
+                for (int j = i+1 ; j <i +rows ; j++)
+                {                   
+                    if (dic[i.ToString() + "-" + j.ToString()])//完全相同，则说明是不满足
+                    {
+                        temp = true ; break ;
+                    }                                           
+                    if (temp) { break; }//如果不满足,也跳出循环
+                }
+                res[i] =!temp;
+            }
             return GetRateReuslt(res);
         }
         #endregion
         
-        #region 综合验证
-        public static double ComprehensiveValidate(double[][] data)
+        #region 综合验证, 验证上述几个算法是否编码正确
+        public static void ComprehensiveValidate()
 		{
-			bool[][] res = new bool[5][] ;
-			res[0] = PredictMethodsValidate.PredictValidate(data ,IndexNameType.A_Sum ,new double []{65,145},
-			                                                     FilterRuleType.RangeLimite,0) ;
-			res[1] =PredictMethodsValidate .PredictValidate (data ,IndexNameType.A_MaxSpan ,new double []{15,32},
-			                                                     FilterRuleType.RangeLimite,0) ;
-			res[2] =PredictMethodsValidate .PredictValidate (data ,IndexNameType.A_MinSpan ,new double []{1,3},
-			                                                     FilterRuleType.RangeLimite,0) ;
-			res[3] =PredictMethodsValidate.PredictValidate (data ,IndexNameType.A_SpanSum ,new double []{16,32},
-			                                                            FilterRuleType.RangeLimite ,0) ;
-			res[4] =PredictMethodsValidate.PredictValidate(data,IndexNameType.A_AcValue ,new double []{5,10},
-			                                                            FilterRuleType.RangeLimite,0) ;
-			return GetResult (res ) ;
-		}
-		
-		public static double GetResult(bool[][] data)
-		{
-			int count = 0 ;
-			for (int i = 0; i < data[0].Length ; i++)
-			{
-				for (int j = 0; j < data.Length ; j++)
-				{
-					if (!data [j] [i ])
-					{
-						count ++ ;
-						break ;
-					}
-				}				
-			}
-			return ((double )(data[0].Length -count) )/((double )data[0].Length ) ;
+            int[] dataLenAll = {5,10,20,50,100,200,500,1000 };
+            int[] dataLenLimit = {1,2,3,4,5,6};            
+            for (int i = 0; i < dataLenAll.Length ; i++)
+            {                
+            }
+            double[][] data = TwoColorBall.GetRedBallData(10);
+            //double res = SumInRangeLimiteValidate(data, new double[] {65,145});
+            //double res1 = MaxSpanInRangeLimiteValidate(data, new double[] {15,30});
+            //double res2 = MinSpanInRangeLimiteValidate(data, new double[] {1,1});
+            //double res3 = LatestValidate(data, new double[] { 2 }, 3, FilterRuleType.LessThanLimite);
+            double res4 = SpanListValidate(data,5);
+            //Console.WriteLine(res.ToString());
+            //Console.WriteLine(res1.ToString());
+            //Console.WriteLine(res2.ToString());
+            //Console.WriteLine(res3.ToString());
+            Console.WriteLine(res4.ToString());
 		}
 		#endregion		
-     
+
         #region 文本解释规则进行验证
         /// <summary>
         /// 根据文本规则进行方法验证,并将结果输入到文本中

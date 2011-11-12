@@ -114,7 +114,7 @@ namespace LotteryTicket
 			//根据预测指标的类型,可能数据长度不一致;B、D类型要根据当前所需行数来进行一个判断转换
 			res = new bool[args.Length -needCounts ] ;			
 			char origCt = origIndexType.ToString ()[0];
-			object origData = origMi.Invoke(null ,new object []{args ,origIndexType,new int[]{needCounts}}) ;
+			object origData = origMi.Invoke(null ,new object []{args ,origIndexType,needCounts}) ;
 			MethodInfo mi1 = typeof (BaseRuleCompare ).GetMethod ("RuleCompare") ;
 			if ((origCt == 'A')||(origCt == 'B'))//A B
 			{

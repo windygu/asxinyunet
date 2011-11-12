@@ -82,7 +82,7 @@ namespace LotteryTicket
 					double[][] sn = new double[needRows ][] ;
                     for (int j = 0; j < needRows; j++)
 					{
-						sn [j ] = args [i +j ] ;
+						sn [j ] = args [i +j ] ;//构造数据列表
 					}
 					res [i ] = (double) mi.Invoke (null ,new object []{sn }) ;
 				}

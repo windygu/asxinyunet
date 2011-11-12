@@ -48,16 +48,16 @@ namespace LotteryTicket
 		}
 		#endregion
 		
-		#region 获取双色球计算数据		
+		#region 获取双色球计算数据
 		/// <summary>
 		/// 从数据库获取指定期数红球数据
 		/// </summary>
 		/// <param name="length">最近的期数</param>
-		public static double[][] GetRedBallData(int  selectLength = -1)
+		public static double[][] GetRedBallData(int selectLength = -1)
 		{
 			//获取数据 order by  desc 降序排列, asc 升序		
 			ssq model = new ssq () ;//("select * from tb_ssq order by 期号 asc").Tables [0] ;
-		    EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");
+		    EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");//升序
             DataTable dt = list.ToDataTable () ;
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
