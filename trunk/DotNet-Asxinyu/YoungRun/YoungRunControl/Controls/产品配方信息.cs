@@ -81,6 +81,7 @@
 				private void InitializeComponent()
 				{
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProductFormule));
             this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
             this.lblProductIdTP = new System.Windows.Forms.Label();
             this.lblProductNameTP = new System.Windows.Forms.Label();
@@ -109,13 +110,14 @@
             this.FormPager.AutoSize = true;
             this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FormPager.BackColor = System.Drawing.Color.Transparent;
+            this.FormPager.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FormPager.BackgroundImage")));
             this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.FormPager.Location = new System.Drawing.Point(10, 276);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
-            this.FormPager.Size = new System.Drawing.Size(256, 29);
+            this.FormPager.Size = new System.Drawing.Size(238, 29);
             this.FormPager.TabIndex = 100;
             this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
             // 
