@@ -69,7 +69,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\Lib\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\ResouceFiles\Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NewLife.Core, Version=3.0.4287.35957, Culture=neutral, processorArchitecture=MSIL">
