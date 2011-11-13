@@ -9,7 +9,7 @@ using System.Globalization;
 using System.Collections.Generic;
 
 [assembly: CLSCompliant (true)]
-namespace Kw.Combinatorics
+namespace LotteryTicket
 {
     /// <summary>
     /// Represents a pick-combination as a sequence of ascending unique integers from a
