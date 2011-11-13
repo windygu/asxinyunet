@@ -72,10 +72,10 @@ using LotteryTicket.Data;
 
 namespace LotteryTicket
 {
-	class Program
-	{
-		public static void Main(string[] args)
-		{			
+    class Program
+    {
+        public static void Main(string[] args)
+        {
             //double[][] data= TwoColorBall.GetRedBallData (200) ;
             //double[][] sections = new double[5][] ;
             //sections [0] = new double[] {1,2,3,4,5,6,7};
@@ -87,8 +87,22 @@ namespace LotteryTicket
             //DAL.AddConnStr("LotTick", connStr, null, "access");
             //GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
             //gs.GetAllHistoryData(64);
-            ValidateMethods.ComprehensiveValidate();
-			Console.ReadKey(true);
-		}
-	}
+            //ValidateMethods.ComprehensiveValidate();
+            CombinationTest();
+            Console.ReadKey(true);
+        }
+        /// <summary>
+        /// Combination类测试
+        /// </summary>
+        public static void CombinationTest()
+        {
+            int[] data = new int[] { 6, 7, 8, 9 };
+            foreach (Combination combom in new Combination(4, 3).Rows)
+            {
+                foreach (int item in Combination.Permute(combom, data))
+                    Console.Write(item.ToString () + " ");
+                Console.WriteLine();
+            }
+        }
+    }
 }

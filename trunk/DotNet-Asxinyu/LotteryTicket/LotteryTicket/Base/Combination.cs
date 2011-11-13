@@ -9,20 +9,60 @@ using System.Globalization;
 using System.Collections.Generic;
 
 [assembly: CLSCompliant (true)]
-namespace LotteryTicket
+namespace Kw.Combinatorics
 {
     /// <summary>
-    /// 排列组合生成类
-    /// </summary>   
-    public class Combination :ICloneable, IComparable, System.Collections.IEnumerable, IComparable<Combination>,
-        IEquatable<Combination>,IEnumerable<int>
+    /// Represents a pick-combination as a sequence of ascending unique integers from a
+    /// supplied number of choices.
+    /// </summary>
+    /// <remarks>
+    /// <para>Pick-combinations are also known as as K-combinations.</para>
+    /// <para>
+    /// Use the <see cref="Picks"/> property to get the width of a <see cref="Combination"/>.
+    /// Use the <see cref="Rank"/> property to calculate a lexicographically ordered
+    /// sequence for the supplied value.
+    /// Use the <see cref="GetEnumerator">default enumerator</see> to enumerate over
+    /// all the elements of the supplied <see cref="Combination"/>.
+    /// Use <see cref="Rows"/>
+    /// to enumerate over all possible pick-combinations in lexicographical order.
+    /// Use <see cref="AllPicks"/> to enumerate over all pick sizes from (1..Picks).
+    /// Use the <see cref="Permute">Permute</see>
+    /// method to rearrange a supplied list based on the current sequence.
+    /// Use the <see cref="P:Kw.Combinatorics.Combination.Item(System.Int32)">indexer</see>
+    /// to get an element of the sequence.
+    /// </para>
+    /// <para>
+    /// For more information about pick-combinations, see:<br />
+    /// <br />
+    /// <em>http://en.wikipedia.org/wiki/Combination</em>
+    /// </para>
+    /// </remarks>
+    /// <example>
+    /// <para>
+    /// Iterating over <c>Combination (4, 3)</c> produces:
+    /// </para>
+    /// <para>
+    /// { 0, 1, 2 }<br />
+    /// { 0, 1, 3 }<br />
+    /// { 0, 2, 3 }<br />
+    /// { 1, 2, 3 }
+    /// </para>
+    /// </example>
+    public class Combination :
+        ICloneable,
+        IComparable,
+        System.Collections.IEnumerable,
+        IComparable<Combination>,
+        IEquatable<Combination>,
+        IEnumerable<int>
     {
-        private int[] data;     /* 所有元素，长度为‘n' */
-        private int choices;    /* 组合的宽度(长度)，为 'k' */
-        private long rank;      /* 行号 */
+        private int[] data;     /* The elements.  Length is 'n'. */
+        private int choices;    /* Width of the combination 'k'. */
+        private long rank;      /* Row index. */
 
-        #region 构造函数
-        /// <summary>空的构造函数，参数置0</summary>
+        #region Constructors
+
+        /// <summary>Make an empty <see cref="Combination"/>.</summary>
         public Combination ()
         {
             data = new int[0];
@@ -31,8 +71,9 @@ namespace LotteryTicket
             Height = 0;
         }
 
-        /// <summary>复制一个Combination对象</summary>
-        /// <param name="source">Combination对象</param>
+
+        /// <summary>Make a copy of a <see cref="Combination"/>.</summary>
+        /// <param name="source">Instance to copy.</param>
         public Combination (Combination source)
         {
             data = new int[source.data.Length];
@@ -41,74 +82,63 @@ namespace LotteryTicket
             rank = source.rank;
             Height = source.Height;
         }
-        
-        /// <summary>由给定的宽度来构造对象</summary>
-        /// <param name="newChoices">组合的宽度</param>
+
+
+        /// <summary>Make a new <see cref="Combination"/> of rank 0 based on all picks
+        /// from the given number of choices.</summary>
+        /// <param name="newChoices">Width of the new combination.</param>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>newChoices</em>
+        /// less than 0.</exception>
+        /// <exception cref="OverflowException">When too many choices.</exception>
         public Combination (int newChoices)
         {
             if (newChoices < 0)
-                throw new ArgumentOutOfRangeException ("newChoices", "值小于0");
+                throw new ArgumentOutOfRangeException ("newChoices", "Value is less than zero.");
+
             choices = newChoices;
             Height = CalculateHeight (newChoices, newChoices);
             rank = 0;
+
             data = new int[newChoices];
             for (int j = 0; j < Picks; ++j)
                 data[j] = j;
         }
 
-        /// <summary>由给定元素来构造对象</summary>
-        /// <param name="newChoices">组合的宽度</param>
-        /// <param name="dataElement">元素数组</param>
-        public Combination(int newChoices,int[] dataElement)
-        {
-            if (newChoices < 0)
-                throw new ArgumentOutOfRangeException("newChoices", "Value is less than zero.");
-            choices = newChoices;
-            Height = CalculateHeight(newChoices, newChoices);
-            rank = 0;
-            data = dataElement;
-        }
 
         /// <summary>
-        /// 根据给定的宽度和元素来构造对象
+        /// Make a new <see cref="Combination"/> of rank 0 based on the given picks from
+        /// the given number of choices.
         /// </summary>
-        /// <param name="newChoices">组合的宽度</param>
-        /// <param name="newPicks">可选择的元素最大值,默认从0开始</param>
+        /// <param name="newChoices">Width of the new sequence.</param>
+        /// <param name="newPicks">Size of the sequence selected from the available
+        /// choices.</param>
+        /// <example>
+        /// <code source="Examples\CombinationExample03\CombinationExample03.cs" lang="cs" />
+        /// </example>
+        /// <exception cref="ArgumentOutOfRangeException">When negative value supplied;
+        /// when picks greater than choices; when numbers just too big.</exception>
+        /// <exception cref="OverflowException">When too many choices.</exception>
         public Combination (int newChoices, int newPicks)
         {
             if (newChoices < 0)
                 throw new ArgumentOutOfRangeException ("newChoices", "Value is less than zero.");
+
             if (newPicks < 0)
                 throw new ArgumentOutOfRangeException ("newPicks", "Value is less than zero.");
+
             if (newPicks > newChoices)
                 throw new ArgumentOutOfRangeException ("newPicks", "Value is greater than choices.");
+
             choices = newChoices;
             Height = CalculateHeight (newChoices, newPicks);
             rank = 0;
+
             data = new int[newPicks];
             for (int j = 0; j < newPicks; ++j)
                 data[j] = j;
         }
 
-        /// <summary>
-        /// 根据给定的宽度和元素来构造对象
-        /// </summary>
-        /// <param name="newChoices">组合的宽度</param>
-        /// <param name="newPicks">可选择的元素最大值,默认从0开始</param>
-        public Combination(int newChoices, int[] dataElement)
-        {
-            if (newChoices < 0)
-                throw new ArgumentOutOfRangeException("newChoices", "Value is less than zero.");
-            if (dataElement.Length  > newChoices)
-                throw new ArgumentOutOfRangeException("newPicks", "Value is greater than choices.");
-            choices = newChoices;
-            Height = CalculateHeight(newChoices, newPicks);
-            rank = 0;
-            data = new int[newPicks];
-            for (int j = 0; j < newPicks; ++j)
-                data[j] = j;
-        }
-     
+
         /// <summary>
         /// Make a new combination of the given rank based on the given picks
         /// from the given number of choices.

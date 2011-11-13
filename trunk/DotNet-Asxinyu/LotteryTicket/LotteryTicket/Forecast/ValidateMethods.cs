@@ -149,7 +149,8 @@ namespace LotteryTicket.ValidateResult
             int[] dataLenAll = {5,10,20,50,100,200,500,1000 };
             int[] dataLenLimit = {1,2,3,4,5,6};            
             for (int i = 0; i < dataLenAll.Length ; i++)
-            {                
+            {
+   
             }
             double[][] data = TwoColorBall.GetRedBallData(10);
             //double res = SumInRangeLimiteValidate(data, new double[] {65,145});
@@ -163,7 +164,7 @@ namespace LotteryTicket.ValidateResult
             //Console.WriteLine(res3.ToString());
             Console.WriteLine(res4.ToString());
 		}
-		#endregion		
+		#endregion
 
         #region 文本解释规则进行验证
         /// <summary>
