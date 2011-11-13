@@ -79,7 +79,7 @@
     <Compile Include="Calculate\PerNoIndexCalculate.cs" />
     <Compile Include="Calculate\StaticsTest.cs" />
     <Compile Include="Common\DataSaveAndValidate.cs" />
-    <Compile Include="Common\DataProcess.cs" />
+    <Compile Include="Common\FilterNumberProcess.cs" />
     <Compile Include="Common\TxtParse.cs" />
     <Compile Include="Data\LotTickData.cs" />
     <Compile Include="Entities\Ssq.Biz.cs" />
