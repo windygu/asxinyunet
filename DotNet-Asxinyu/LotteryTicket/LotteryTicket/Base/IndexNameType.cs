@@ -71,6 +71,11 @@ namespace LotteryTicket
 		/// 多期中重复号码出现的个数
 		/// </summary>
 		B_ManyNoOfNewCount ,
+		
+		/// <summary>
+		/// 每期最长的连续号码,2个2连续算3
+		/// </summary>
+		A_ContinuousCount 
 	}
 	#endregion
 	

@@ -1,4 +1,5 @@
-﻿/*
+﻿#region 开发进度
+/*
  * Created by SharpDevelop.
  * User: 董斌辉
  * Date: 2011-2-17
@@ -14,13 +15,15 @@
  *      3.将预测类分为：规律测试后类  和  规律验证类
  *             规律测试：是每一期 或 前几期的规律进行分析验证
  *             预测方法验证：是上一期或者几期 组合的预测方法 预测到下一期的结果
- *      		//TODO:计算一定期内奇数与偶数的个数
- * 		       //一定期数内不重复的次数
+ *      	//TODO:计算一定期内奇数与偶数的个数
+ * 		    //一定期数内不重复的次数
  * 
  * 彩票处理程序类库
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
  * 
+ * 
+ * 2011-11-13 修改组合生成方法,完成杀号和杀组合的过滤算法
  * 2011-11-12 对预测方法类，进行更新，测试及修改Bug
  * 2011-11-06 采用Xcode架构，对程序结果进行重新梳理，完善注释
  * 2011-11-05 中断半年后重新开始整理程序结构
@@ -56,19 +59,19 @@
  * 2010-02-10 编写从网页获取数据的基本类库,用于结果采集存储
  * 2010-02-05 产生基本思路和想法 
  */
+ #endregion
 
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
-using LotteryTicket.ValidateResult;
 using DotNet.Tools;
 using XCode;
+using LotteryTicket.Validate ;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
 using LotteryTicket.Data;
-
-
+using LotteryTicket.Common;
 
 namespace LotteryTicket
 {
@@ -78,8 +81,8 @@ namespace LotteryTicket
         {
             //double[][] data= TwoColorBall.GetRedBallData (200) ;
             //double[][] sections = new double[5][] ;
-            //sections [0] = new double[] {1,2,3,4,5,6,7};
-            //sections [1] = new double[] {8,9,10,11,12,13,14};
+            double[] data1 = new double[] {1,2,3,4,5,6};
+            double[] data2 = new double[] {5,6,9,26,28,29};
             //sections [2] = new double[] {15,16,17,18,19,20,21};
             //sections [3] = new double[] {22,23,24,25,26,27,28};
             //sections [4] = new double[] {29,30,31,32,33};
@@ -87,8 +90,8 @@ namespace LotteryTicket
             //DAL.AddConnStr("LotTick", connStr, null, "access");
             //GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
             //gs.GetAllHistoryData(64);
-            //ValidateMethods.ComprehensiveValidate();
-            CombinationTest();
+            ValidateMethods.ComprehensiveValidate();
+//            Console.WriteLine ( ValidateMethods.GetRepeatNumbers (data1,data2 )) ;
             Console.ReadKey(true);
         }
         /// <summary>

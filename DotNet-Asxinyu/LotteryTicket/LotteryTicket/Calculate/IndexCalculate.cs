@@ -144,5 +144,27 @@ namespace LotteryTicket
 				return null ;
 		}
 		#endregion
+		
+		#region 其他辅助方法
+		/// <summary>
+		/// 获取2个序列的重复号码个数
+		/// </summary>
+		/// <returns>返回重复号码的个数</returns>
+		public static int GetRepeatNumbers(double[] data1,double[] data2)
+		{
+			int count = 0 ;
+			double temp ;
+			for (int i = 0; i <data1.Length  ; i++)
+			{
+				for (int j = 0; j < data2.Length ; j++)
+				{
+					temp = data1[i]-data2 [j ] ;					
+					if (Math.Abs (temp) <0.01){count ++ ;break ;}
+					if (temp <-0.01) {break ;}//后面的已经比其越来越大了
+				}
+			}
+			return count ;
+		}
+		#endregion
 	}
 }

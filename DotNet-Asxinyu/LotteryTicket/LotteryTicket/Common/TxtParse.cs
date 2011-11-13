@@ -78,8 +78,7 @@ namespace LotteryTicket.Common
 
         //拼接字符串
         public static string CombStringArr(string[] str)
-        {
-            string res = "";
+        {            
             if (str.Length == 4)
             {
                 return str[0] + ":" + str[1] + ":" + str[2] + ":" + str[3];
