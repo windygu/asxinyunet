@@ -85,12 +85,12 @@
     <Compile Include="Entities\Ssq.Biz.cs" />
     <Compile Include="Entities\Ssq.cs" />
     <Compile Include="LotTickClass\TwoColorBall.cs" />
-    <Compile Include="Forecast\PredictMethodsValidate.cs" />
+    <Compile Include="Validate\PredictMethodsValidate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\LotteryTest.cs" />
     <Compile Include="Test\TestData.cs" />
-    <Compile Include="Forecast\ValidateMethods.cs" />
+    <Compile Include="Validate\ValidateMethods.cs" />
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="RuleFile.txt" />

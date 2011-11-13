@@ -124,7 +124,7 @@ namespace LotteryTicket
 		/// <param name="prizeNo">中奖号码</param>
 		/// <param name="testNo">需要测试对比的号码</param>
 		/// <returns>中奖等级</returns>
-		public static int GetPrizeGrade(double[] prizeNo,double[] testNo)
+		public static int GetPrizeGradeForOne(double[] prizeNo,double[] testNo)
 		{
 			//循环的方式，蓝球分开，直接对比最后一位
 			int countR = 0 ;
@@ -174,7 +174,7 @@ namespace LotteryTicket
 		{
 			int[] grades = new int[testNoes.Length ] ;
 			for (int i = 0; i < testNoes.Length ; i++) {
-				grades [i ] = GetPrizeGrade (prizeNo,testNoes[i ]) ;
+				grades [i ] = GetPrizeGradeForOne (prizeNo,testNoes[i ]) ;
 			}
 			//统计结果
 			int[] res = new int[7] ;

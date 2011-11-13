@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections ;
+using System.Collections.Generic ;
 
 namespace LotteryTicket
 {	
@@ -259,6 +260,16 @@ namespace LotteryTicket
 		{
 			double[] data = (double[])args ;
 			return data [2]-data [1] ;
+		}
+		#endregion
+		
+		#region 每期最长的连续号码个数,2个2连续算3
+		public static object A_ContinuousCount(object args)
+		{
+			double[] res = (double[])C_SpanList (args ) ;//计算跨度
+			int count = 0 ;
+			for (int i = 0; i < res.Length ; i++) {if (res [i ] ==1) count ++ ;}
+			return count +1 ;
 		}
 		#endregion
 	}
