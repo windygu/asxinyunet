@@ -56,7 +56,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
-    <Reference Include="YoungRunControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\白土车间检测.Designer.cs">
