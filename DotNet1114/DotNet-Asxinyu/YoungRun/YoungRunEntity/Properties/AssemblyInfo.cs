@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("YoungRunEntity")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("YoungRunEntity")]
-[assembly: AssemblyCopyright("Copyright 2011")]
+[assembly: AssemblyCompany("永润石化")]
+[assembly: AssemblyProduct("管理系统")]
+[assembly: AssemblyCopyright("Copyright @YoungRun 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,3 +29,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
 [assembly: AssemblyVersion("1.1.11.14")]
+[assembly: AssemblyFileVersionAttribute("1.1.11.114")]

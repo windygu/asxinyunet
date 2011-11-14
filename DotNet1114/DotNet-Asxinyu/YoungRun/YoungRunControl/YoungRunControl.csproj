@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\DotNet.Tools.dll</HintPath>
+    </Reference>
     <Reference Include="NewLife.Core, Version=3.3.4329.35774, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
@@ -142,10 +146,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
-      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
-      <Name>DotNet.Tools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YoungRunEntity\YoungRunEntity.csproj">
       <Project>{2CC9DC3D-DF15-491F-86F0-2D3EA819B1B3}</Project>
       <Name>YoungRunEntity</Name>
