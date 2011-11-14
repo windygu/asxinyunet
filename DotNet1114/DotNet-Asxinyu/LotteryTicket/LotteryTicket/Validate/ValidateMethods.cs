@@ -90,7 +90,8 @@ namespace LotteryTicket.Validate
 		/// <param name="rows">比较的期数</param>
 		/// <param name="ruleType">验证规则类型,默认为区间验证</param>
 		/// <returns>满足指定条件的概率</returns>
-		public static double LatestValidate(double[][] data,double[] conditons,int rows,FilterRuleType ruleType = FilterRuleType.RangeLimite)
+		public static double LatestValidate(double[][] data,double[] conditons,int rows,
+            FilterRuleType ruleType = FilterRuleType.RangeLimite)
 		{
 			bool[] res =PredictMethodsValidate.PredictValidate (data ,IndexNameType.B_ManyNoOfNewCount,
 			                                                    conditons, ruleType , rows);
@@ -185,18 +186,21 @@ namespace LotteryTicket.Validate
 		
 		#region 最大连续号码
 		/// <summary>
-		/// 验证每一期与前若干期相比中，最大号码小于reapterCount的概率
+        /// 验证指定期内，每一期的最大连续号码最大不超过maxCount的概率
 		/// </summary>
 		/// <param name="data">数据</param>
 		/// <param name="rows">验证的行数</param>
 		/// <param name="maxCount">最大连续数</param>
 		/// <returns>指定条件下，成功的概率</returns>
-		public static double ContinuousCountValidate(double[][] data,int rows,int maxCount = 2)
+		public static double ContinuousCountValidate(double[][] data,int maxCount = 1)
 		{
-			return 0 ;
+            //获取测试数据
+            bool[] res = PredictMethodsValidate.PredictValidate(data, IndexNameType.A_ContinuousCount,
+                new double[] { (double)maxCount }, FilterRuleType.LessThanLimite);
+            return GetRateReuslt(res);
 		}
 		#endregion
-		
+
 		#region 综合验证, 验证上述几个算法是否编码正确
 		/// <summary>
 		/// 综合验证
@@ -205,12 +209,15 @@ namespace LotteryTicket.Validate
 		{
 			int[] dataLenAll = {1,2,3,4,5,6,7,8,9,10};//,100,200,500,1000 };
 			int[] dataLenLimit = {1,2,3,4,5,6};
-			double[][] data = TwoColorBall.GetRedBallData(1000);
-			for (int i = 0; i < dataLenAll.Length ; i++)
-			{
-				Console.WriteLine (dataLenAll[i ].ToString ()+":"+
-				                   RepeatNumbersValidate (data,dataLenAll[i],3));
-			}
+			double[][] data = TwoColorBall.GetRedBallData(10);
+            Console.WriteLine(ContinuousCountValidate(data, 1).ToString());
+            Console.WriteLine(ContinuousCountValidate(data, 2).ToString());
+            Console.WriteLine(ContinuousCountValidate(data, 3).ToString());
+            //for (int i = 0; i < dataLenAll.Length ; i++)
+            //{
+            //    Console.WriteLine (dataLenAll[i ].ToString ()+":"+
+            //                       RepeatNumbersValidate (data,dataLenAll[i],3));
+            //}
 			
 			//double res = SumInRangeLimiteValidate(data, new double[] {65,145});
 			//double res1 = MaxSpanInRangeLimiteValidate(data, new double[] {15,30});

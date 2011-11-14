@@ -269,7 +269,7 @@ namespace LotteryTicket
 			double[] res = (double[])C_SpanList (args ) ;//计算跨度
 			int count = 0 ;
 			for (int i = 0; i < res.Length ; i++) {if (res [i ] ==1) count ++ ;}
-			return count +1 ;
+			return (double)(count +1) ;
 		}
 		#endregion
 	}

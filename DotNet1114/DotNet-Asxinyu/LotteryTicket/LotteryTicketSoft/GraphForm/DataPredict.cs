@@ -10,7 +10,7 @@ using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using LotteryTicket;
+using LotteryTicket.Validate;
 using DotNet.Tools;
 
 namespace LotteryTicketSoft.GraphForm
