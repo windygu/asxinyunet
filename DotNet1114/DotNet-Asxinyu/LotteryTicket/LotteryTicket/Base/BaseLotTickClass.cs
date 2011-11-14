@@ -46,8 +46,9 @@ namespace LotteryTicket
     /// </summary>
     interface IValidateFilter
     {
-        void FilterNumbers(List<double[]> origData,params object[] paramValues);//过滤号码
-        double Validate(double[][] data, FilterRuleType ruleType, double[] conditons = null , 
+        void FilterNumbers(List<double[]> origData,FilterRuleType ruleType = FilterRuleType.RangeLimite,
+            double[] conditons = null, params object[] paramValues);//过滤号码
+        double Validate(double[][] data,FilterRuleType ruleType = FilterRuleType.NotEqual , double[] conditons = null , 
             int rows = 0, params object[] paramValues);//验证
     }
 	/// <summary>
