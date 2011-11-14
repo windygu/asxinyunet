@@ -272,7 +272,7 @@ namespace LotteryTicket
 				Type t = typeof (BaseRuleCompare);
 				MethodInfo mi = t.GetMethod (typeName.ToString ()) ;
 				//invoke,传入数组参数
-				ArrayList[] ar = (ArrayList[])data ;
+				ArrayList[] ar = (ArrayList[])data ;//此处有问题？？？11.14
 				return  (bool )mi.Invoke (null ,new object []{ar[0],ar [1] }) ;
 			}
 			else
