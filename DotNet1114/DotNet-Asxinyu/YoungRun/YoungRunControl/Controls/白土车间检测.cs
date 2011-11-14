@@ -518,7 +518,7 @@ namespace YoungRunControl
             combGetSampPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.BtGetSamplePerson));
             combTestPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.LabTestPersons));
             combProductNameTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.ProductName));
-            //txtID.Text = YoungRunHelper.GetNextYoungRunDataId(YoungRunDataType.R202);
+            txtID.Text = YoungRunHelper.GetNextYoungRunDataId(YoungRunDataType.R202);
         }
         //控件加载事件,完成数据绑定和相关基本设置
         void AddAddBtTestDataLoad(object sender, EventArgs e)
@@ -645,11 +645,12 @@ namespace YoungRunControl
                     if (CutShowMode == FormShowMode.AddOne)
                     {
                         if (model.Insert()>0)//添加
-                        {
+                        { 
+                            this.ParentForm.DialogResult = DialogResult.OK;
+                                this.ParentForm.Close();
                             if (MessageBox.Show("添加成功")== DialogResult.OK )
                             {
-                                this.ParentForm.DialogResult = DialogResult.OK;
-                                this.ParentForm.Close();
+                               
                             }
                         }
                     }
