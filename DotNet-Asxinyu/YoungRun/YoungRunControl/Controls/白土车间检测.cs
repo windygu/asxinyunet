@@ -29,7 +29,7 @@ using DotNet.Tools.Controls;
 
 namespace YoungRunControl.Controls
 {
-    public partial class AddBtTestData : UserControl,IEntityControl 
+    public partial class AddBtTestData : UserControl, IEntityControl
     {
         #region 自动生成代码
         #region Designer.cs必须代码
@@ -499,7 +499,7 @@ namespace YoungRunControl.Controls
         #region 构造函数 及初始化
         public AddBtTestData()
         {
-            InitializeComponent();             
+            InitializeComponent();
         }
         /// <summary>
         /// 其他控件的特殊设置
@@ -507,26 +507,22 @@ namespace YoungRunControl.Controls
         private void CustomerSettings()
         {
             //控件的特殊设置，如格式，显示,控件的绑定
-            if (!DesignMode)
-            {
-                //日期控件的显示格式
-                dtGetSampleTime.Format = DateTimePickerFormat.Custom;
-                dtGetSampleTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-                dtUpdateTime.Format = DateTimePickerFormat.Custom;
-                dtUpdateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-                //绑定数据
-                combGetSamLocationTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.BtGetSampleLocate));
-                combGetSampPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.BtGetSamplePerson));
-                combTestPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.LabTestPersons));
-            }
+            //日期控件的显示格式
+            dtGetSampleTime.Format = DateTimePickerFormat.Custom;
+            dtGetSampleTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dtUpdateTime.Format = DateTimePickerFormat.Custom;
+            dtUpdateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            // 绑定数据                
+            combGetSamLocationTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.BtGetSampleLocate));
+            combGetSampPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.BtGetSamplePerson));
+            combTestPersonTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.LabTestPersons));
+            combProductNameTP.Items.AddRange(YoungRunHelper.GetDicValueList(YoungRunDicType.ProductName));
+            txtID.Text = YoungRunHelper.GetNextYoungRunDataId(YoungRunDataType.R202);
         }
         //控件加载事件,完成数据绑定和相关基本设置
         void AddAddBtTestDataLoad(object sender, EventArgs e)
         {
-            if (!DesignMode)
-            {
-                CustomerSettings();  
-            }
+
         }
         /// <summary>
         /// 初始化设置
@@ -540,7 +536,11 @@ namespace YoungRunControl.Controls
             this.CutShowMode = showMode;
             this.CutSearchCondition = searcgCondtion;
             this.FixedSqlCondition = fixCondition;
-            if (showMode == FormShowMode.AddOne || showMode == FormShowMode.ContinueAdd) { SetAllTextControls(ControlStatus.ReSet); }
+            if (showMode == FormShowMode.AddOne || showMode == FormShowMode.ContinueAdd)
+            {
+                CustomerSettings();
+                SetAllTextControls(ControlStatus.Edit);
+            }
             else
             {
                 SetAllTextControls(ControlStatus.ReadOnly);//只读
@@ -720,7 +720,7 @@ namespace YoungRunControl.Controls
                 btnOK.Enabled = true;
                 btnOK.Text = "保存";
                 //设置控件清空，并且可用
-                 //增加数据编号的自动生成绑定
+                //增加数据编号的自动生成绑定
                 txtID.Text = YoungRunHelper.GetNextYoungRunDataId(YoungRunDataType.R202);
                 txtID.ReadOnly = false;//数据编号                
                 combProductNameTP.Enabled = true; //产品名称	
@@ -750,7 +750,8 @@ namespace YoungRunControl.Controls
                 btnOK.Enabled = true;
                 btnOK.Text = " 保存";
                 //控件除主键外都可读
-                txtID.ReadOnly = true;//数据编号combProductNameTP.Enabled = true ;//产品名称
+                txtID.ReadOnly = true;//数据编号
+                combProductNameTP.Enabled = true;//产品名称
                 txtV40.ReadOnly = false;//V40
                 txtV100.ReadOnly = false;//V100
                 txtVI.ReadOnly = false;//粘度指数
