@@ -28,7 +28,7 @@ namespace LotteryTicket.Validate
 		/// <returns>方法预测的正确性</returns>
 		public static bool[] PredictValidate(double[][] args ,IndexNameType origIndexType,
 		                                     IndexNameType compIndexType,
-		                                     FilterRuleType ruleType,int needCounts=1)
+		                                     FilterRuleType ruleType,int needCounts=0)
 		{
 			bool[] res ;
 			Type t = typeof (IndexCalculate ) ;
@@ -103,7 +103,7 @@ namespace LotteryTicket.Validate
         /// <returns>方法预测的正确性</returns>
 		public static bool[] PredictValidate(double[][] args ,IndexNameType origIndexType,
 		                                     double[] Conditions, 
-		                                     FilterRuleType ruleType,int needCounts = 1 )
+		                                     FilterRuleType ruleType,int needCounts =0 )
 		{
 			bool[] res ;
 			Type t = typeof (IndexCalculate ) ;
@@ -137,7 +137,7 @@ namespace LotteryTicket.Validate
 		}
 	
 		public static double GetValidateResult(double[][] data,double[] conditions,IndexNameType indexType,
-		                                       FilterRuleType ruleType,int needLength = 1 )
+		                                       FilterRuleType ruleType,int needLength = 0 )
 		{
 			bool[] res = PredictMethodsValidate .PredictValidate 
 				(data , indexType ,conditions,ruleType,needLength) ;

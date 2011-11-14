@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic ;
 
 namespace LotteryTicket
 {
@@ -39,7 +40,16 @@ namespace LotteryTicket
 		void GetAllHistoryData(int pages) ;//获取所有历史数据
 		void UpdateRecentData (int pages) ;//更新最新数据
 	}
-	
+
+    /// <summary>
+    /// 验证和过滤接口,根据指标和参数对序列进行验证和过滤
+    /// </summary>
+    interface IValidateFilter
+    {
+        void FilterNumbers(List<double[]> origData,params object[] paramValues);//过滤号码
+        double Validate(double[][] data, FilterRuleType ruleType, double[] conditons = null , 
+            int rows = 0, params object[] paramValues);//验证
+    }
 	/// <summary>
 	/// 获取彩票数据类基类
 	/// </summary>
