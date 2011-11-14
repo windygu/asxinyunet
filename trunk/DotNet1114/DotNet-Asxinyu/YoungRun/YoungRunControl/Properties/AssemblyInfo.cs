@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("YoungRunControl")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("WwW.YLmF.CoM")]
-[assembly: AssemblyProduct("YoungRunControl")]
-[assembly: AssemblyCopyright("Copyright © WwW.YLmF.CoM 2011")]
+[assembly: AssemblyCompany("永润石化")]
+[assembly: AssemblyProduct("管理系统")]
+[assembly: AssemblyCopyright("Copyright @YoungRun 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.11.14")]
+[assembly: AssemblyVersion("1.1.11.14")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

@@ -645,13 +645,10 @@ namespace YoungRunControl
                     if (CutShowMode == FormShowMode.AddOne)
                     {
                         if (model.Insert()>0)//添加
-                        { 
+                        {
+                            MessageBox.Show("添加成功");
                             this.ParentForm.DialogResult = DialogResult.OK;
-                                this.ParentForm.Close();
-                            if (MessageBox.Show("添加成功")== DialogResult.OK )
-                            {
-                               
-                            }
+                            this.ParentForm.Close();                         
                         }
                     }
                     else if (CutShowMode == FormShowMode.ContinueAdd)
