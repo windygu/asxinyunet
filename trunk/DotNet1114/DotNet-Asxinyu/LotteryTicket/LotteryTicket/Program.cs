@@ -21,7 +21,9 @@
  * 彩票处理程序类库
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
+ *              TODO:考虑将比较方法升级为泛型**
  * 
+ * 2011-11-15 整体项目采用Linq技术进行重构升级,以增加完善处理逻辑,增加邻号验证和过滤
  * 2011-11-14 继续完善杀号方法和验证方法,将验证和过滤升级为接口,更容易操作
  * 2011-11-13 修改组合生成方法,完成杀号和杀组合的过滤算法
  * 2011-11-12 对预测方法类，进行更新，测试及修改Bug
@@ -79,21 +81,7 @@ namespace LotteryTicket
     {
         public static void Main(string[] args)
         {
-
-
-            //double[][] data= TwoColorBall.GetRedBallData (200) ;
-            //double[][] sections = new double[5][] ;
-            double[] data1 = new double[] {1,2,3,4,5,6};
-            double[] data2 = new double[] {5,6,9,26,28,29};
-            //sections [2] = new double[] {15,16,17,18,19,20,21};
-            //sections [3] = new double[] {22,23,24,25,26,27,28};
-            //sections [4] = new double[] {29,30,31,32,33};
-            //String connStr = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=LotteryTicket.mdb;Persist Security Info=False;OLE DB Services=-1";
-            //DAL.AddConnStr("LotTick", connStr, null, "access");
-            //GetSSQDataFromWeb gs = new GetSSQDataFromWeb();
-            //gs.GetAllHistoryData(64);
-            ValidateMethods.ComprehensiveValidate();
-//            Console.WriteLine ( ValidateMethods.GetRepeatNumbers (data1,data2 )) ;
+            VFTest.TestAll(1000);
             Console.ReadKey(true);
         }
         /// <summary>

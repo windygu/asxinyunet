@@ -8559,8 +8559,5 @@
         <member name="P:XCode.DataAccessLayer.XDbConnectionStringBuilder.ConnectionString">
             <summary>连接字符串</summary>
         </member>
-        <member name="T:System.Runtime.CompilerServices.ExtensionAttribute">
-            <summary>支持使用扩展方法的特性</summary>
-        </member>
     </members>
 </doc>
