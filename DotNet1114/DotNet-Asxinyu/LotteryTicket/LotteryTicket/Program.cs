@@ -79,6 +79,8 @@ namespace LotteryTicket
     {
         public static void Main(string[] args)
         {
+
+
             //double[][] data= TwoColorBall.GetRedBallData (200) ;
             //double[][] sections = new double[5][] ;
             double[] data1 = new double[] {1,2,3,4,5,6};

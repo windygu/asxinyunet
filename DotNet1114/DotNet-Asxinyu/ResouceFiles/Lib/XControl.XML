@@ -63,6 +63,95 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:XControl.Helper.HTMLPropertyEscape(System.String)">
+            <summary>
+            将指定字符串作为html标签属性中可使用的字符串返回
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:XControl.Helper.HTMLPropertyEscape(System.String,System.Object[])">
+            <summary>
+            将指定字符串作为html标签属性中可使用的字符串返回
+            </summary>
+            <param name="fmt"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.HTMLPropertyEscape(System.Web.UI.WebControls.WebControl,System.String,System.String,System.Object[])">
+            <summary>
+            将指定字符串作为html标签属性中可使用的字符串返回
+            </summary>
+            <param name="ctl">需要添加属性的控件</param>
+            <param name="attname">需要添加的html属性名,以on开头的名称将会使用JsMinSimple处理换行</param>
+            <param name="fmt"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsObjectString(System.Object[])">
+            <summary>
+            使用指定的名值对创建对应的Javascript Object的声明字符串
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsObjectString(NewLife.Reflection.Func{System.String,System.Object,System.Boolean},System.Object[])">
+             <summary>
+             使用指定的名值对创建对应的Javascript Object的声明字符串
+             返回的结果类似 {'a':0.1, 'b':'2', 'c':true},如果args长度为0则返回{}
+            
+             如果不是成对出现的 则会忽略掉最后一个
+             如果需要去除开始和结尾的{},可以使用String.Trim('{','}')
+             </summary>
+             <param name="filter">过滤器,遍历名值,只对于返回true的名值进行处理</param>
+             <param name="args"></param>
+             <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsObjectString(System.Boolean,NewLife.Reflection.Func{System.String,System.Object,System.Boolean},System.Object[])">
+            <summary>
+            使用指定的名值对创建对应的Javascript Object的声明字符串
+            </summary>
+            <param name="escapeValue"></param>
+            <param name="filter"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.IsJsLiteralValue(System.Object)">
+            <summary>
+            指定变量是否属于js的字面值类型,字面值类型可以直接ToString输出
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsStringEscape(System.String)">
+            <summary>
+            将指定的字符串作为javascript中使用的字符串内容返回,没有js字符串声明两边的双引号
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsStringEscape(System.String,System.Object[])">
+            <summary>
+            将指定的字符串作为javascript中使用的字符串内容返回,没有js字符串声明两边的双引号
+            </summary>
+            <param name="fmt"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsMinSimple(System.String)">
+            <summary>
+            将指定的javascript代码做简单压缩,去除换行和缩进
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.Helper.JsMinSimple(System.String,System.Object[])">
+            <summary>
+            将指定的javascript代码做简单压缩,去除换行和缩进
+            </summary>
+            <param name="fmt"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="T:XControl.LinkBox">
             <summary>
             弹出窗口
@@ -213,6 +302,27 @@
             </summary>
             <param name="e"></param>
         </member>
+        <member name="M:XControl.GridViewExtender.JSStringEscape(System.String)">
+            <summary>
+            将指定的字符串作为javascript中使用的字符串内容返回,没有js字符串声明两边的双引号
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.GridViewExtender.SimpleMinJs(System.String)">
+            <summary>
+            将指定的javascript代码做简单压缩,去除换行和缩进
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XControl.GridViewExtender.HTMLPropertyEscape(System.String)">
+            <summary>
+            将指定字符串作为html标签属性中可使用的字符串返回
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
         <member name="P:XControl.GridViewExtender.SelectedRowBackColor">
             <summary>选中项背景颜色</summary>
         </member>
@@ -358,6 +468,11 @@
             当前值
             </summary>
         </member>
+        <member name="P:XControl.NumberBox.AllowMinus">
+            <summary>
+            是否允许负数
+            </summary>
+        </member>
         <member name="T:XControl.LinkBoxField">
             <summary>
             链接弹出框字段
@@ -451,6 +566,11 @@
         </member>
         <member name="P:XControl.LinkBoxField.ShowButtonRow">
             <summary>是否显示按钮行</summary>
+        </member>
+        <member name="P:XControl.LinkBoxField.ClickedRowBackColor">
+            <summary>
+            打开窗口后将所在GridView中所在行高亮的颜色
+            </summary>
         </member>
         <member name="T:XControl.DataPager">
             <summary>
@@ -1302,6 +1422,11 @@
             当前值
             </summary>
         </member>
+        <member name="P:XControl.RealBox.AllowMinus">
+            <summary>
+            是否允许负数
+            </summary>
+        </member>
         <member name="T:XControl.GridViewExtenderDesigner">
             <summary>
             GridView扩展控件设计时
@@ -1459,6 +1584,11 @@
         <member name="P:XControl.DecimalBox.Value">
             <summary>
             当前值
+            </summary>
+        </member>
+        <member name="P:XControl.DecimalBox.AllowMinus">
+            <summary>
+            是否允许负数
             </summary>
         </member>
         <member name="P:XControl.DecimalBox.Text">
