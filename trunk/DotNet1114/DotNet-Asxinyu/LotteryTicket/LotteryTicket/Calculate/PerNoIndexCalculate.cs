@@ -9,6 +9,7 @@
 using System;
 using System.Collections ;
 using System.Collections.Generic ;
+using System.Linq ;
 
 namespace LotteryTicket
 {	
@@ -30,11 +31,13 @@ namespace LotteryTicket
 		/// </summary>
 		public static object A_Sum(object args)
 		{
+
 			double[] data = (double[])args ;
+            return 
 			double sum = 0 ;
 			foreach(double a in data )
 				sum += a ;
-			return sum ;
+			return sum ;            
 		}
 		
 		/// <summary>
