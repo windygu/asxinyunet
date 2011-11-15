@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudySample", "StudySample"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zedDataProcess", "StudySample\zedDataProcess\zedDataProcess.csproj", "{FF030E0F-EABB-45DA-8C72-5143950E817A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqDemo", "Examples\LinqDemo\LinqDemo.csproj", "{56570DF1-6A64-4C50-BCA9-85B9B71985DB}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -180,6 +182,21 @@ Global
 		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FF030E0F-EABB-45DA-8C72-5143950E817A}.Release|x86.ActiveCfg = Release|Any CPU
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}..Net 2.0|Any CPU.ActiveCfg = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}..Net 2.0|Mixed Platforms.ActiveCfg = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}..Net 2.0|Mixed Platforms.Build.0 = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}..Net 2.0|x86.ActiveCfg = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}..Net 2.0|x86.Build.0 = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Debug|x86.ActiveCfg = Debug|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Debug|x86.Build.0 = Debug|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Release|Any CPU.ActiveCfg = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Release|Mixed Platforms.Build.0 = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Release|x86.ActiveCfg = Release|x86
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,5 +210,6 @@ Global
 		{B3281232-CAFF-4B4A-9F76-CD9D01C45638} = {C9B9B9CF-837D-418B-A2BE-23B95FF79736}
 		{2CC9DC3D-DF15-491F-86F0-2D3EA819B1B3} = {C9B9B9CF-837D-418B-A2BE-23B95FF79736}
 		{FF030E0F-EABB-45DA-8C72-5143950E817A} = {1D860FBA-A9F0-41A9-9A1C-B2D2525EBF03}
+		{56570DF1-6A64-4C50-BCA9-85B9B71985DB} = {1D860FBA-A9F0-41A9-9A1C-B2D2525EBF03}
 	EndGlobalSection
 EndGlobal
