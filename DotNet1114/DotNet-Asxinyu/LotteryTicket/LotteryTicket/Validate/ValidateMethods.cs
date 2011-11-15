@@ -16,7 +16,7 @@ using System.IO;
 namespace LotteryTicket.Validate
 {
     /// <summary>
-    /// 预测方法验证
+    /// 预测方法验证:淘汰，已经被带有验证和过滤结构的具体算法类取代
     /// </summary>
     public static class ValidateMethods
     {
@@ -26,14 +26,7 @@ namespace LotteryTicket.Validate
         /// </summary>
         public static double GetRateReuslt(bool[] result)
         {
-            int sum = 0;
-            foreach (bool element in result)
-            {
-                if (element)
-                {
-                    sum++;
-                }
-            }
+            int sum = result.Where(n => n == true).Count();
             return ((double)sum) / ((double)result.Length);
         }
         #endregion
@@ -145,7 +138,7 @@ namespace LotteryTicket.Validate
         #endregion
 
         #region 每期号码重复数
-        //每一期号码与前若干期号码重复的个数,用于判断组合出现的情况，组合杀号
+        //每一期号码与前若干期号码每期号称重复的最大值,用于判断组合出现的情况，组合杀号
         /// <summary>
         /// 验证每一期与前若干期相比中，每一期重复出现号码小于reapterCount的概率
         /// </summary>
@@ -229,7 +222,6 @@ namespace LotteryTicket.Validate
             //Console.WriteLine(res2.ToString());
             //Console.WriteLine(res3.ToString());
             //			Console.WriteLine(res4.ToString());
-
         }
         #endregion
 
@@ -257,128 +249,5 @@ namespace LotteryTicket.Validate
             }
         }
         #endregion
-    }
-
-    #region 和值范围验证和过滤
-    /// <summary>
-    /// 和值范围验证和过滤
-    /// </summary>
-    public class SumVF : IValidateFilter
-    {
-        /// <summary>
-        /// 和值范围过滤
-        /// </summary>
-        /// <param name="origData">原始数据序列</param>
-        /// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
-        /// <param name="paramValues">参数数组:第一个参数为和值下限，第二个参数为和值上线.闭区间比较</param>
-        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, params object[] paramValues)
-        {
-            //double[] condition;
-            //if (paramValues.Length == 1) { condition = new double[] { (double)paramValues[0], (double)paramValues[1] }; }
-            //if (paramValues.Length >= 2) { condition = new double[] { (double)paramValues[0], (double)paramValues[1] }; }
-            //else condition = null;
-            origData.RemoveAll(delegate(double[] cur)
-            {
-                double sum = (double)IndexCalculate.CalculateIndex(cur, IndexNameType.A_Sum);
-                return BaseRuleCompare.RuleCompare(ruleType, sum, conditons);
-            });
-        }
-        /// <summary>
-        /// 和值验证，验证一段时期内和值满足某一条件的概率
-        /// </summary>
-        /// <param name="data">序列</param>
-        /// <param name="ruleType">对比类型</param>
-        /// <param name="conditons">条件</param>
-        /// <param name="rows">需要的行数,此处为0</param>
-        /// <param name="paramValues">其他参数</param>
-        /// <returns>指定条件的概率</returns>
-        public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, int rows = 0, params object[] paramValues) //验证
-        {
-            bool[] res = PredictMethodsValidate.PredictValidate(data, IndexNameType.A_Sum, conditons, ruleType, rows);
-            return ValidateMethods.GetRateReuslt(res);
-        }
-    }
-    #endregion
-
-    #region 最大跨度范围验证和过滤
-    /// <summary>
-    /// 和值范围验证和过滤
-    /// </summary>
-    public class MaxSpanVF : IValidateFilter
-    {
-        /// <summary>
-        /// 最大跨度范围过滤
-        /// </summary>
-        /// <param name="origData">原始数据序列</param>
-        /// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
-        /// <param name="paramValues">参数数组:第一个参数为和值下限，第二个参数为和值上线.闭区间比较</param>
-        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, params object[] paramValues)
-        {
-            origData.RemoveAll(delegate(double[] cur)
-            {
-                double maxSpan = (double)IndexCalculate.CalculateIndex(cur, IndexNameType.A_MaxSpan);
-                return BaseRuleCompare.RuleCompare(ruleType, maxSpan, conditons);
-            });
-        }
-        /// <summary>
-        /// 和值验证，验证一段时期内和值满足某一条件的概率
-        /// </summary>
-        /// <param name="data">序列</param>
-        /// <param name="ruleType">对比类型</param>
-        /// <param name="conditons">条件</param>
-        /// <param name="rows">需要的行数,此处为0</param>
-        /// <param name="paramValues">其他参数</param>
-        /// <returns>指定条件的概率</returns>
-        public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, int rows = 0, params object[] paramValues) //验证
-        {
-            bool[] res = PredictMethodsValidate.PredictValidate(data, IndexNameType.A_MaxSpan, conditons, ruleType, rows);
-            return ValidateMethods.GetRateReuslt(res);
-        }
-    }
-    #endregion
-
-    #region 最小跨度范围验证和过滤
-    /// <summary>
-    /// 最小跨度范围验证和过滤
-    /// </summary>
-    public class MinSpanVF : IValidateFilter
-    {
-        /// <summary>
-        /// 和值范围过滤
-        /// </summary>
-        /// <param name="origData">原始数据序列</param>
-        /// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
-        /// <param name="paramValues">参数数组:第一个参数为和值下限，第二个参数为和值上线.闭区间比较</param>
-        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, params object[] paramValues)
-        {         
-            origData.RemoveAll(delegate(double[] cur)
-            {
-                double minSpan = (double)IndexCalculate.CalculateIndex(cur, IndexNameType.A_MinSpan);
-                return BaseRuleCompare.RuleCompare(ruleType, minSpan, conditons);
-            });
-        }
-        /// <summary>
-        /// 和值验证，验证一段时期内和值满足某一条件的概率
-        /// </summary>
-        /// <param name="data">序列</param>
-        /// <param name="ruleType">对比类型</param>
-        /// <param name="conditons">条件</param>
-        /// <param name="rows">需要的行数,此处为0</param>
-        /// <param name="paramValues">其他参数</param>
-        /// <returns>指定条件的概率</returns>
-        public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, int rows = 0, params object[] paramValues) //验证
-        {
-            bool[] res = PredictMethodsValidate.PredictValidate(data, IndexNameType.A_MinSpan, conditons, ruleType, rows);
-            return ValidateMethods.GetRateReuslt(res);
-        }
-    }
-    #endregion
-
-
+    }   
 }

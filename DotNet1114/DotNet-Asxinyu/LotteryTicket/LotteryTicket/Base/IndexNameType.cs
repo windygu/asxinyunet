@@ -68,7 +68,7 @@ namespace LotteryTicket
 		A_DataDensity ,		
 		
 		/// <summary>
-		/// 多期中重复号码出现的个数
+        /// 多期数据中,出现重复号码的个数
 		/// </summary>
 		B_ManyNoOfNewCount ,
 		

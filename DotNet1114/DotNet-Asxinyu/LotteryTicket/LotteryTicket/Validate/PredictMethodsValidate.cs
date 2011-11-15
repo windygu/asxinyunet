@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Linq;
 using System.Reflection ;
 
 namespace LotteryTicket.Validate
@@ -149,14 +150,7 @@ namespace LotteryTicket.Validate
 		/// </summary>		
 		public static double GetRateReuslt(bool[] result)
 		{
-			int sum = 0 ;
-			foreach (bool element in result ) 
-			{
-				if (element ) 
-				{
-					sum ++ ;
-				}
-			}
+            int sum = result.Where(n => n == true).Count();
 			return ((double)sum)/((double)result.Length ) ;
 		}
 		#endregion

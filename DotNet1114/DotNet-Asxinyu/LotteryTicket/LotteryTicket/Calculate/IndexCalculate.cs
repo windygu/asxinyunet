@@ -144,9 +144,9 @@ namespace LotteryTicket
 				return null ;
 		}
 		#endregion
-		
-		#region 其他辅助方法
-		/// <summary>
+
+        #region 获取2个序列的重复号码个数
+        /// <summary>
 		/// 获取2个序列的重复号码个数
 		/// </summary>
 		/// <returns>返回重复号码的个数</returns>
@@ -166,5 +166,28 @@ namespace LotteryTicket
 			return count ;
 		}
 		#endregion
-	}
+
+        #region 获取邻号出现的个数
+        /// <summary>
+        /// 获取上期的邻号在当前期出现的个数
+        /// </summary>
+        /// <param name="LastNumber">上期号码</param>
+        /// <param name="CurNumber">当期号码</param>
+        /// <returns>出现的个数</returns>
+        public static int NeighbourNumberCount(double[] LastNumber, double[] CurNumber)
+        {
+            int count = 0;
+            double temp = 0 ;
+            foreach (double  item in LastNumber )
+            {
+                foreach (double cur in CurNumber )
+                {
+                    temp = Math.Abs (item - cur ) ;
+                    if (temp == 1 || temp == 32) count++;
+                }
+            }
+            return count;
+        }
+        #endregion
+    }
 }

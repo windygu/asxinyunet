@@ -9,7 +9,7 @@
 using System;
 using System.Collections ;
 using System.Collections.Generic ;
-
+using System.Linq;
 
 namespace LotteryTicket
 {	
@@ -30,13 +30,8 @@ namespace LotteryTicket
 		/// 计算和值
 		/// </summary>
 		public static object A_Sum(object args)
-		{
-			double[] data = (double[])args ;
-            
-			double sum = 0 ;
-			foreach(double a in data )
-				sum += a ;
-			return sum ;            
+		{			
+            return ((double[])args).Sum();//返回和值
 		}
 		
 		/// <summary>
@@ -44,7 +39,7 @@ namespace LotteryTicket
 		/// </summary>
 		public static object A_DataDensity(object args)
 		{
-			return ((double )A_Sum(args ))/((double )A_MaxSpan(args )) ;
+            return ((double[])args).Sum()/((double)A_MaxSpan(args));
 		}
 		#endregion
 		
@@ -77,30 +72,17 @@ namespace LotteryTicket
 		/// </summary>
 		public static object A_MinSpan(object args)
 		{
-			double[] data = (double[])args ;
-			double[] res = (double[])C_SpanList (data ) ;
-			double temp = res [0 ] ;
-			foreach (double a in res )
-			{
-				if (temp > a )
-				{
-					temp = a ;
-				}
-			}
-			return temp ;
+            double[] res = (double[])C_SpanList(args);
+            return res.Min();//返回最小值
 		}
 		
 		/// <summary>
 		/// 跨度和值
 		/// </summary>
 		public static object A_SpanSum(object args)
-		{
-			double[] data = (double[])args ;
-			double sum = 0 ;
-			double[] res = (double[])C_SpanList (data );
-			foreach (double a in res )
-				sum += a ;
-			return sum ;
+		{	
+			double[] res = (double[])C_SpanList (args );
+            return res.Sum();
 		}
 		
 		/// <summary>
@@ -139,6 +121,9 @@ namespace LotteryTicket
 		#endregion
 		
 		#region 多期号码
+        /// <summary>
+        /// 多期号码中，号码所有出现的个数，去掉重复的
+        /// </summary>        
 		public static object B_ManyNoCounts(object args)
 		{
 			double[][] data = (double[][])args ;//多期数据
@@ -155,7 +140,9 @@ namespace LotteryTicket
 			}
 			return (double )al.Count ;
 		}
-		//多期中出现重复号码的个数
+		/// <summary>
+        /// 多期数据中,出现重复号码的个数
+		/// </summary>		
 		public static object B_ManyNoOfNewCount(object args)
 		{
 			double[][] data = (double[][])args ;//多期数据
@@ -171,7 +158,9 @@ namespace LotteryTicket
 			}
 			return (double )count ;
 		}
-		//多期相同的数据列表
+		/// <summary>
+        /// 多期相同的数据列表？？？
+		/// </summary>	
 		public static object D_ManyNosList(object args)
 		{
 			double[][] data = (double[][])args ;//多期数据
@@ -203,8 +192,6 @@ namespace LotteryTicket
 		/// <summary>
 		/// 计算在当前期内出现的次数
 		/// </summary>
-		/// <param name="args"></param>
-		/// <returns></returns>
 		public static object FrequCount(int[][] args)
 		{
 			//先从最后一列找出最大值,确定出现的最大数字
@@ -269,8 +256,7 @@ namespace LotteryTicket
 		public static object A_ContinuousCount(object args)
 		{
 			double[] res = (double[])C_SpanList (args ) ;//计算跨度
-			int count = 0 ;
-			for (int i = 0; i < res.Length ; i++) {if (res [i ] ==1) count ++ ;}
+            int count = res.Where(n => n == 1).Count();//计算==1的个数			
 			return (double)(count +1) ;
 		}
 		#endregion

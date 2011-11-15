@@ -39,17 +39,17 @@ namespace LotteryTicket
 		RangeLimite ,
 		
 		/// <summary>
-		/// 不在范围内 <a,>b
+		/// 不在范围内
 		/// </summary>
 		NotInRangeLimite ,
 		
 		/// <summary>
-		/// 小于一个数 <= a
+        /// 小于或等于
 		/// </summary>
 		LessThanLimite,
 		
 		/// <summary>
-		/// 大于一个数 >=b
+        /// 大于或等于
 		/// </summary>
 		GreaterThanLimite,
 		
@@ -176,7 +176,7 @@ namespace LotteryTicket
 		}
         #endregion
 
-        #region 数值比较—(小于匹配)
+        #region 数值比较—(小于或等于匹配)
         /// <summary>
         /// 小于或等于比较匹配
         /// </summary>
@@ -193,7 +193,7 @@ namespace LotteryTicket
 		}
         #endregion
 
-        #region 数值比较—(大于匹配)
+        #region 数值比较—(大于或等于匹配)
         /// <summary>
         /// 大于或等于比较匹配
         /// </summary>

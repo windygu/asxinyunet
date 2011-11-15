@@ -91,6 +91,7 @@
     <Compile Include="Test\LotteryTest.cs" />
     <Compile Include="Test\TestData.cs" />
     <Compile Include="Validate\ValidateMethods.cs" />
+    <Compile Include="Validate\验证与过滤算法.cs" />
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="RuleFile.txt" />
