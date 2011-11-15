@@ -4,23 +4,23 @@
  * Date: 2011-2-20
  * Time: 16:00
  * 
- *数据统计分析
+ *
  */
 using System;
 using System.Collections ;
 using System.Collections.Generic ;
-using System.Linq ;
+
 
 namespace LotteryTicket
 {	
 	/// <summary>
-	/// 每期指标计算静态类
+	/// 单个指标计算
 	/// </summary>
 	public class PerNoIndexCalculate
 	{				
 		#region 自身数据
 		public static object C_SelfNumber(object args)
-		{
+		{          
 			return args ;
 		}
 		#endregion
@@ -31,9 +31,8 @@ namespace LotteryTicket
 		/// </summary>
 		public static object A_Sum(object args)
 		{
-
 			double[] data = (double[])args ;
-            return 
+            
 			double sum = 0 ;
 			foreach(double a in data )
 				sum += a ;

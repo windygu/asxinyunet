@@ -230,14 +230,10 @@
             <summary>值</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Web.DownloadFile">
-            <summary>
-            文件下载处理器，可以直接使用，也可以继承
-            </summary>
+            <summary>文件下载处理器，可以直接使用，也可以继承</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Web.AttachmentHttpHandler">
-            <summary>
-            附件处理器
-            </summary>
+            <summary>附件处理器</summary>
         </member>
         <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.GetStream(System.Web.HttpContext,NewLife.CommonEntity.Attachment)">
             <summary>
@@ -994,6 +990,148 @@
         </member>
         <member name="F:NewLife.CommonEntity.Statistics`1._.Remark">
             <summary>备注</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Template`1">
+            <summary>模版</summary>
+            <summary>模版</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ITemplate">
+            <summary>模版接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.UserID">
+            <summary>用户编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.UserName">
+            <summary>用户</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.LastModify">
+            <summary>最后修改</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.Remark">
+            <summary>备注</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplate.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.FindByName(System.String)">
+            <summary>
+            根据名称查找
+            </summary>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.FindAllByUserID(System.Int32)">
+            <summary>
+            根据用户编号查找
+            </summary>
+            <param name="userid">用户编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.CreateInstance(System.Boolean)">
+            <summary>
+            已重载。记录默认作者
+            </summary>
+            <param name="forEdit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.Valid(System.Boolean)">
+            <summary>
+            验证数据，通过抛出异常的方式提示验证失败。
+            </summary>
+            <param name="isNew"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.OnDelete">
+            <summary>
+            已重载。删除关联数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Template`1.SearchWhere(System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.UserID">
+            <summary>用户编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.UserName">
+            <summary>用户</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.LastModify">
+            <summary>最后修改</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.Remark">
+            <summary>备注</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Template`1.TemplateItems">
+            <summary>该模版所拥有的模版项集合</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Template`1._">
+            <summary>取得模版字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.UserID">
+            <summary>用户编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.UserName">
+            <summary>用户</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.LastModify">
+            <summary>最后修改</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Template`1._.Remark">
+            <summary>备注</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Template">
+            <summary>模版</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Area`1">
             <summary>
@@ -2520,6 +2658,12 @@
         </member>
         <member name="T:NewLife.CommonEntity.IManageProvider">
             <summary>管理提供者接口</summary>
+            <remarks>
+            管理提供者接口主要提供（或统一规范）用户提供者定位、用户查找登录等功能。
+            只需要一个实现IManageUser接口的用户类即可实现IManageProvider接口。
+            IManageProvider足够精简，使得大多数用户可以自定义实现；
+            也因为其简单稳定，大多数需要涉及用户与权限功能的操作，均可以直接使用该接口。
+            </remarks>
         </member>
         <member name="M:NewLife.CommonEntity.IManageProvider.FindByID(System.Object)">
             <summary>
@@ -2541,6 +2685,20 @@
             </summary>
             <param name="account"></param>
             <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManageProvider.GetService``1">
+            <summary>
+            获取服务
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManageProvider.GetService(System.Type)">
+            <summary>
+            获取服务
+            </summary>
+            <param name="serviceType"></param>
             <returns></returns>
         </member>
         <member name="P:NewLife.CommonEntity.IManageProvider.ManageUserType">
@@ -2572,6 +2730,28 @@
             </summary>
             <param name="account"></param>
             <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.GetService``1">
+            <summary>
+            获取服务
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.GetService(System.Type)">
+            <summary>
+            获取服务
+            </summary>
+            <param name="serviceType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.GetHttpCache(System.Object,NewLife.Reflection.Func{System.Object,System.Object})">
+            <summary>
+            获取Http缓存，如果不存在，则调用func去计算
+            </summary>
+            <param name="key"></param>
+            <param name="func"></param>
             <returns></returns>
         </member>
         <member name="P:NewLife.CommonEntity.ManageProvider.Provider">
@@ -2668,6 +2848,11 @@
             已重载。
             </summary>
             <returns></returns>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1.IsFindhttpHandler">
+            <summary>
+            是否进行过查询
+            </summary>
         </member>
         <member name="M:NewLife.CommonEntity.Attachment`1.FindAllByCmdType(System.String)">
             <summary>
@@ -2823,6 +3008,14 @@
             <param name="name">字段名</param>
             <returns></returns>
         </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.httpHandler">
+            <summary>Att httpHandler</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.HenderUrl">
+            <summary>
+            获取Config中Handler设置
+            </summary>
+        </member>
         <member name="P:NewLife.CommonEntity.Attachment`1.FullFilePath">
             <summary>
             完全文件路径
@@ -2867,6 +3060,311 @@
         <member name="F:NewLife.CommonEntity.Attachment`1._.IsEnable">
             <summary>是否启用</summary>
         </member>
+        <member name="T:NewLife.CommonEntity.TemplateItem`1">
+            <summary>模版项</summary>
+            <summary>模版项</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ITemplateItem">
+            <summary>模版项接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateItem.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateItem.TemplateID">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateItem.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateItem.Kind">
+            <summary>模版种类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateItem.Remark">
+            <summary>备注</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateItem.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.FindByTemplateIDAndName(System.Int32,System.String)">
+            <summary>
+            根据模版、名称查找
+            </summary>
+            <param name="templateid">模版</param>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.FindAllByTemplateID(System.Int32)">
+            <summary>
+            根据模版查找
+            </summary>
+            <param name="templateid">模版</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.CreateInstance(System.Boolean)">
+            <summary>
+            已重载。
+            </summary>
+            <param name="forEdit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.OnDelete">
+            <summary>
+            已重载。删除关联数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.Search(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录集，分页、排序
+            </summary>
+            <param name="templateid">模版编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体集</returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.SearchCount(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
+            </summary>
+            <param name="templateid">模版编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateItem`1.SearchWhere(System.Int32,System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="templateid">模版编号</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.TemplateID">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.Kind">
+            <summary>模版种类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.Remark">
+            <summary>备注</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.TemplateContents">
+            <summary>该模版项所拥有的模版内容集合</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.Template">
+            <summary>该模版项所对应的模版</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateItem`1.TemplateName">
+            <summary>该模版项所对应的模版名称</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.TemplateItem`1._">
+            <summary>取得模版项字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateItem`1._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateItem`1._.TemplateID">
+            <summary>模版</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateItem`1._.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateItem`1._.Kind">
+            <summary>模版种类</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateItem`1._.Remark">
+            <summary>备注</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.TemplateContent`1">
+            <summary>模版内容</summary>
+            <summary>模版内容</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ITemplateContent">
+            <summary>模版内容接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.TemplateItemID">
+            <summary>模版项</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.Content">
+            <summary>模版内容</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.ContentBackup">
+            <summary>内容备份</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.Version">
+            <summary>版本</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.UserID">
+            <summary>作者编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.UserName">
+            <summary>作者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ITemplateContent.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.FindByTemplateItemIDAndVersion(System.Int32,System.Int32)">
+            <summary>
+            根据模版项、版本查找
+            </summary>
+            <param name="templateitemid">模版项</param>
+            <param name="version">版本</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.FindAllByUserID(System.Int32)">
+            <summary>
+            根据作者编号查找
+            </summary>
+            <param name="userid">作者编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.FindAllByTemplateItemID(System.Int32)">
+            <summary>
+            根据模版项查找
+            </summary>
+            <param name="templateitemid">模版项</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.FindLastByTemplateItemID(System.Int32)">
+            <summary>
+            根据模版项查找最后一个版本
+            </summary>
+            <param name="templateitemid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.CreateInstance(System.Boolean)">
+            <summary>
+            已重载。记录默认作者
+            </summary>
+            <param name="forEdit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.Valid(System.Boolean)">
+            <summary>
+            验证数据，通过抛出异常的方式提示验证失败。
+            </summary>
+            <param name="isNew"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.TemplateContent`1.SearchWhere(System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.TemplateItemID">
+            <summary>模版项</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.Content">
+            <summary>模版内容</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.ContentBackup">
+            <summary>内容备份</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.Version">
+            <summary>版本</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.UserID">
+            <summary>作者编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.UserName">
+            <summary>作者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.TemplateItem">
+            <summary>该模版内容所对应的模版项</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.TemplateContent`1.TemplateItemName">
+            <summary>该模版内容所对应的模版项名称</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.TemplateContent`1._">
+            <summary>取得模版内容字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.TemplateItemID">
+            <summary>模版项</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.Content">
+            <summary>模版内容</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.ContentBackup">
+            <summary>内容备份</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.Version">
+            <summary>版本</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.UserID">
+            <summary>作者编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.UserName">
+            <summary>作者</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.TemplateContent`1._.CreateTime">
+            <summary>创建时间</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.Menu`1">
             <summary>
             菜单
@@ -2886,6 +3384,13 @@
             <param name="separator">分隔符</param>
             <param name="func">回调</param>
             <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.IMenu.CheckMenuName(System.String,System.String)">
+            <summary>
+            检查菜单名称，修改为新名称。返回自身，支持链式写法
+            </summary>
+            <param name="oldName"></param>
+            <param name="newName"></param>
         </member>
         <member name="P:NewLife.CommonEntity.IMenu.ID">
             <summary>
@@ -2935,6 +3440,15 @@
             </summary>
             <param name="name">字段名</param>
             <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.IMenu.Childs">
+            <summary>子菜单</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IMenu.AllChilds">
+            <summary>子孙菜单</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IMenu.Deepth">
+            <summary>深度</summary>
         </member>
         <member name="M:NewLife.CommonEntity.Menu`1.InitData">
             <summary>
@@ -3055,6 +3569,12 @@
             <param name="reamark"></param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.CommonEntity.Menu`1.ScanAndAdd">
+            <summary>
+             扫描配置文件中指定的目录
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.CommonEntity.Menu`1.ScanAndAdd(System.String)">
             <summary>
             扫描指定目录并添加文件到第一个顶级菜单之下
@@ -3085,6 +3605,13 @@
             <param name="separator">分隔符</param>
             <param name="func">回调</param>
             <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Menu`1.NewLife#CommonEntity#IMenu#CheckMenuName(System.String,System.String)">
+            <summary>
+            检查菜单名称，修改为新名称。返回自身，支持链式写法
+            </summary>
+            <param name="oldName"></param>
+            <param name="newName"></param>
         </member>
         <member name="P:NewLife.CommonEntity.Menu`1.ID">
             <summary>
@@ -3146,6 +3673,12 @@
         <member name="P:NewLife.CommonEntity.Menu`1.CurrentMenu">
             <summary>当前页所对应的菜单项。通过实体资格提供者，保证取得正确的菜单项</summary>
         </member>
+        <member name="P:NewLife.CommonEntity.Menu`1.NewLife#CommonEntity#IMenu#Childs">
+            <summary>子菜单</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Menu`1.NewLife#CommonEntity#IMenu#AllChilds">
+            <summary>子孙菜单</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.Menu`1._">
             <summary>
             取得菜单字段名的快捷方式
@@ -3174,6 +3707,168 @@
         </member>
         <member name="F:NewLife.CommonEntity.Menu`1._.IsShow">
             <summary>是否显示</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.SimpleTree`1">
+            <summary>简单分类</summary>
+            <summary>简单分类</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ISimpleTree">
+            <summary>简单分类接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimpleTree.ID">
+            <summary></summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimpleTree.Name">
+            <summary>名称索引</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimpleTree.ParentID">
+            <summary></summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimpleTree.Sort">
+            <summary></summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimpleTree.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.SimpleTree`1.FindByKeyForEdit(System.Int32)">
+            <summary>
+            根据主键查询一个简单分类实体对象用于表单编辑
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.SimpleTree`1.FindByName(System.String)">
+            <summary>
+            根据名称索引查找
+            </summary>
+            <param name="name">名称索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.SimpleTree`1.FindByID(System.Int32)">
+            <summary>
+            根据ID查找
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.SimpleTree`1.SearchWhere(System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.SimpleTree`1.ID">
+            <summary></summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SimpleTree`1.Name">
+            <summary>名称索引</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SimpleTree`1.ParentID">
+            <summary></summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SimpleTree`1.Sort">
+            <summary></summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SimpleTree`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.CommonEntity.SimpleTree`1._">
+            <summary>取得简单分类字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.SimpleTree`1._.ID">
+            <summary></summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.SimpleTree`1._.Name">
+            <summary>名称索引</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.SimpleTree`1._.ParentID">
+            <summary></summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.SimpleTree`1._.Sort">
+            <summary></summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Simple`1">
+            <summary>简单信息</summary>
+            <summary>简单信息</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ISimple">
+            <summary>简单信息接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimple.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimple.Name">
+            <summary>信息名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISimple.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Simple`1.FindByKeyForEdit(System.Int32)">
+            <summary>
+            根据主键查询一个简单信息实体对象用于表单编辑
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Simple`1.FindByName(System.String)">
+            <summary>
+            根据信息名称查找
+            </summary>
+            <param name="name">信息名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Simple`1.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Simple`1.SearchWhere(System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Simple`1.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Simple`1.Name">
+            <summary>信息名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Simple`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.CommonEntity.Simple`1._">
+            <summary>取得简单信息字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Simple`1._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Simple`1._.Name">
+            <summary>信息名称</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Sequence`1">
             <summary>
@@ -3303,6 +3998,9 @@
         <member name="F:NewLife.CommonEntity.Sequence`1._.LastUpdate">
             <summary>最后更新</summary>
         </member>
+        <member name="T:NewLife.CommonEntity.TemplateContent">
+            <summary>模版内容</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.SequenceKinds">
             <summary>
             序列种类
@@ -3386,9 +4084,210 @@
         <member name="P:NewLife.CommonEntity.Web.ShowPicture.Height">
             <summary>高度</summary>
         </member>
+        <member name="T:NewLife.CommonEntity.Web.EntityForm2">
+            <summary>第二代实体表单</summary>
+            <remarks>
+            作为第二代实体表单，必须解决几个问题：
+            1，不能使用泛型；
+            2，不能占用页面基类；
+            </remarks>
+        </member>
+        <member name="T:NewLife.CommonEntity.IEntityForm">
+            <summary>实体表单接口</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.IEntityForm.Init(System.Web.UI.Control,System.Type)">
+            <summary>
+            使用控件容器和实体类初始化接口
+            </summary>
+            <param name="container"></param>
+            <param name="entityType"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.IEntityForm.Accessor">
+            <summary>访问器</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IEntityForm.EntityID">
+            <summary>主键</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IEntityForm.Entity">
+            <summary>数据实体</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IEntityForm.IsNew">
+            <summary>是否新增</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnGetEntity">
+            <summary>获取数据实体，允许页面重载改变实体</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnSetForm">
+            <summary>把实体数据设置到表单后触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnGetForm">
+            <summary>从表单上读取实体数据后触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnValid">
+            <summary>验证时触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnSaving">
+            <summary>保存前触发，位于事务保护内</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnSaveSuccess">
+            <summary>保存成功后触发，位于事务保护外</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnSaveFailure">
+            <summary>保存失败后触发，位于事务保护外</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnRead">
+            <summary>从实体对象读取指定实体字段的信息后触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.IEntityForm.OnWrite">
+            <summary>把指定实体字段的信息写入到实体对象后触发</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.#ctor">
+            <summary>
+            实例化一个实体表单
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.#ctor(System.Web.UI.Control,System.Type)">
+            <summary>
+            指定控件容器和实体类型，实例化一个实体表单
+            </summary>
+            <param name="container"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.FillEntityWithRequest(XCode.IEntity)">
+            <summary>
+            使用Request参数填充entity
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.SetForm">
+            <summary>把实体的属性设置到控件上</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.GetForm">
+            <summary>从表单上读取实体数据</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.ValidForm">
+            <summary>
+            验证表单，返回是否有效数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.ValidFormItem(XCode.Configuration.FieldItem,System.Web.UI.Control)">
+            <summary>
+            验证表单项
+            </summary>
+            <param name="field"></param>
+            <param name="control"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.SaveForm">
+            <summary>
+            保存表单，把实体保存到数据库，当前方法处于事务保护之中
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.SaveFormSuccess">
+            <summary>
+            保存成功
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.SaveFormFailure(System.Exception)">
+            <summary>
+            保存失败
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.FindControl(System.String)">
+            <summary>
+            查找表单控件
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.FindControlByField(XCode.Configuration.FieldItem)">
+            <summary>
+            查找字段对应的控件
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.NewLife#CommonEntity#IEntityForm#Init(System.Web.UI.Control,System.Type)">
+            <summary>
+            使用控件容器和实体类初始化接口
+            </summary>
+            <param name="container"></param>
+            <param name="entityType"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.Container">
+            <summary>容器</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.EntityType">
+            <summary>实体类型</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.ItemPrefix">
+            <summary>表单项名字前缀，默认frm</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.Accessor">
+            <summary>访问器</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.Factory">
+            <summary>实体操作者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.Page">
+            <summary>页面</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.Response">
+            <summary>响应</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.SaveButton">
+            <summary>保存按钮，查找名为btnSave或UpdateButton（兼容旧版本）的按钮，如果没找到，将使用第一个使用了提交行为的按钮</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.IsNew">
+            <summary>是否空主键</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.CanSave">
+            <summary>是否有权限保存数据</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnSetForm">
+            <summary>把实体数据设置到表单后触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnGetForm">
+            <summary>从表单上读取实体数据后触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnValid">
+            <summary>验证时触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnSaving">
+            <summary>保存前触发，位于事务保护内</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnSaveSuccess">
+            <summary>保存成功后触发，位于事务保护外</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnSaveFailure">
+            <summary>保存失败后触发，位于事务保护外</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.KeyName">
+            <summary>键名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.EntityID">
+            <summary>主键</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.EntityForm2.Entity">
+            <summary>数据实体</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnGetEntity">
+            <summary>获取数据实体，允许页面重载改变实体</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnRead">
+            <summary>从实体对象读取指定实体字段的信息后触发</summary>
+        </member>
+        <member name="E:NewLife.CommonEntity.Web.EntityForm2.OnWrite">
+            <summary>把指定实体字段的信息写入到实体对象后触发</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Simple">
+            <summary>简单信息</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.Exceptions.EntityException">
             <summary>
-            实体异常d
+            实体异常
             </summary>
         </member>
         <member name="M:NewLife.CommonEntity.Exceptions.EntityException.#ctor">
@@ -3431,6 +4330,142 @@
         </member>
         <member name="T:NewLife.CommonEntity.User">
             <summary>用户</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.TemplateItem">
+            <summary>模版项</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.SimpleTree">
+            <summary>简单分类</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.IManagerPage">
+            <summary>管理页接口，用于控制页面权限等</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.IManagePage">
+            <summary>管理页接口，用于控制页面权限等</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManagePage.Init(System.Web.UI.Control,System.Type)">
+            <summary>
+            使用控件容器和实体类初始化接口
+            </summary>
+            <param name="container"></param>
+            <param name="entityType"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManagePage.Acquire(NewLife.CommonEntity.PermissionFlags)">
+            <summary>申请指定操作的权限</summary>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.IManagePage.Acquire(System.String,NewLife.CommonEntity.PermissionFlags)">
+            <summary>申请指定权限项中指定操作的权限</summary>
+            <param name="name"></param>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManagePage.Container">
+            <summary>容器</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManagePage.EntityType">
+            <summary>实体类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManagePage.Navigation">
+            <summary>导航 分为三级：栏目－子栏目－页面</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManagePage.Current">
+            <summary>当前管理员</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManagePage.CurrentMenu">
+            <summary>本页菜单</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IManagePage.ValidatePermission">
+            <summary>是否检查权限</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.ManagePage">
+            <summary>管理页，用于控制页面权限等</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.Init(System.Web.UI.Control,System.Type)">
+            <summary>
+            使用控件容器和实体类初始化接口
+            </summary>
+            <param name="container"></param>
+            <param name="entityType"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.CheckLogin">
+            <summary>
+            检查是否已登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.CheckPermission">
+            <summary>
+            检查权限，实际上就是Acquire(PermissionFlags.None)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.Acquire(NewLife.CommonEntity.PermissionFlags)">
+            <summary>
+            申请指定操作的权限
+            </summary>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.Acquire(System.String,NewLife.CommonEntity.PermissionFlags)">
+            <summary>
+            申请指定操作的权限
+            </summary>
+            <param name="name"></param>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.Acquire(System.String)">
+            <summary>
+            申请指定操作的权限
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.FixObjectDataSource">
+            <summary>
+            如果没有设置TypeName，则说明该控件还没有人工控制，采用自动控制
+            </summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.ManagePage.FixObjectDataSource(System.Web.UI.WebControls.ObjectDataSource)">
+            <summary>
+            如果没有设置TypeName，则说明该控件还没有人工控制，采用自动控制
+            </summary>
+            <param name="ods"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.Container">
+            <summary>容器</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.Page">
+            <summary>页面</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.EntityType">
+            <summary>实体类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.Request">
+            <summary>请求</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.Response">
+            <summary>响应</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.Current">
+            <summary>当前管理员</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.CurrentAdmin">
+            <summary>当前管理员</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.Navigation">
+            <summary>导航 分为三级：栏目－子栏目－页面</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.CurrentMenu">
+            <summary>本页菜单</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.ValidatePermission">
+            <summary>是否检查权限</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ManagePage.PermissionName">
+            <summary>权限名。默认是页面标题</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Administrator">
             <summary>
@@ -3486,26 +4521,20 @@
         <member name="T:NewLife.CommonEntity.ICommonManageProvider">
             <summary>通用实体类管理提供者接口</summary>
         </member>
-        <member name="M:NewLife.CommonEntity.ICommonManageProvider.FindByID(System.Object)">
+        <member name="M:NewLife.CommonEntity.ICommonManageProvider.CreatePage(System.Web.UI.Control,System.Type)">
             <summary>
-            根据用户编号查找
+            创建管理页控制器
             </summary>
-            <param name="userid"></param>
+            <param name="container"></param>
+            <param name="entityType"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.CommonEntity.ICommonManageProvider.FindByAccount(System.String)">
+        <member name="M:NewLife.CommonEntity.ICommonManageProvider.CreateForm(System.Web.UI.Control,System.Type)">
             <summary>
-            根据用户帐号查找
+            创建实体表单控制器
             </summary>
-            <param name="account"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.ICommonManageProvider.Login(System.String,System.String)">
-            <summary>
-            登录
-            </summary>
-            <param name="account"></param>
-            <param name="password"></param>
+            <param name="container"></param>
+            <param name="entityType"></param>
             <returns></returns>
         </member>
         <member name="P:NewLife.CommonEntity.ICommonManageProvider.AdminstratorType">
@@ -3523,8 +4552,8 @@
         <member name="P:NewLife.CommonEntity.ICommonManageProvider.RoleMenuType">
             <summary>权限类</summary>
         </member>
-        <member name="P:NewLife.CommonEntity.ICommonManageProvider.Current">
-            <summary>当前用户</summary>
+        <member name="P:NewLife.CommonEntity.ICommonManageProvider.MenuRoot">
+            <summary>菜单根，如果不支持则返回null</summary>
         </member>
         <member name="T:NewLife.CommonEntity.CommonManageProvider">
             <summary>通用实体类管理提供者</summary>
@@ -3533,51 +4562,7 @@
             <summary>通用实体类管理提供者</summary>
             <typeparam name="TAdministrator">管理员类</typeparam>
         </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#FindByID(System.Object)">
-            <summary>
-            根据用户编号查找
-            </summary>
-            <param name="userid"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#FindByAccount(System.String)">
-            <summary>
-            根据用户帐号查找
-            </summary>
-            <param name="account"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#Login(System.String,System.String)">
-            <summary>
-            登录
-            </summary>
-            <param name="account"></param>
-            <param name="password"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#FindByID(System.Object)">
-            <summary>
-            根据用户编号查找
-            </summary>
-            <param name="userid"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#FindByAccount(System.String)">
-            <summary>
-            根据用户帐号查找
-            </summary>
-            <param name="account"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#Login(System.String,System.String)">
-            <summary>
-            登录
-            </summary>
-            <param name="account"></param>
-            <param name="password"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.FindByID(System.Int32)">
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.FindByID(System.Object)">
             <summary>
             根据用户编号查找
             </summary>
@@ -3599,13 +4584,29 @@
             <param name="password"></param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.CreatePage(System.Web.UI.Control,System.Type)">
+            <summary>
+            创建管理页控制器
+            </summary>
+            <param name="container"></param>
+            <param name="entityType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.CommonManageProvider`1.CreateForm(System.Web.UI.Control,System.Type)">
+            <summary>
+            创建实体表单控制器
+            </summary>
+            <param name="container"></param>
+            <param name="entityType"></param>
+            <returns></returns>
+        </member>
         <member name="P:NewLife.CommonEntity.CommonManageProvider`1.Provider">
             <summary>当前提供者</summary>
         </member>
-        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#ManageUserType">
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.ManageUserType">
             <summary>管理用户类</summary>
         </member>
-        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#IManageProvider#Current">
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.Current">
             <summary>当前用户</summary>
         </member>
         <member name="P:NewLife.CommonEntity.CommonManageProvider`1.AdminstratorType">
@@ -3623,11 +4624,8 @@
         <member name="P:NewLife.CommonEntity.CommonManageProvider`1.RoleMenuType">
             <summary>权限类</summary>
         </member>
-        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#Current">
-            <summary>当前用户</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.Current">
-            <summary>当前用户</summary>
+        <member name="P:NewLife.CommonEntity.CommonManageProvider`1.NewLife#CommonEntity#ICommonManageProvider#MenuRoot">
+            <summary>菜单根</summary>
         </member>
     </members>
 </doc>

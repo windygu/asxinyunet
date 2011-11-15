@@ -98,16 +98,15 @@
     <None Include="TestData\PredictValidateData.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
-      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
-      <Name>DotNet.Tools</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="LotteryTicket.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\PerIndexCalculateDataAB.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

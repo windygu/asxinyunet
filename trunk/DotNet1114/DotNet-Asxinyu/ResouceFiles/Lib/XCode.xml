@@ -1859,6 +1859,9 @@
         <member name="P:XCode.Accessors.HttpEntityAccessor.Request">
             <summary>请求</summary>
         </member>
+        <member name="P:XCode.Accessors.HttpEntityAccessor.ItemPrefix">
+            <summary>前缀，只用于Form</summary>
+        </member>
         <member name="P:XCode.Accessors.HttpEntityAccessor.MaxLength">
             <summary>最大文件大小，默认10M</summary>
         </member>
@@ -2372,6 +2375,34 @@
             <param name="json"></param>
             <returns></returns>
         </member>
+        <member name="M:XCode.IEntityOperate.Query(System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>结果记录集</returns>
+        </member>
+        <member name="M:XCode.IEntityOperate.QueryCount(System.String)">
+            <summary>
+            查询记录数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:XCode.IEntityOperate.Execute(System.String)">
+            <summary>
+            执行
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>影响的结果</returns>
+        </member>
+        <member name="M:XCode.IEntityOperate.InsertAndGetIdentity(System.String)">
+            <summary>
+            执行插入语句并返回新增行的自动编号
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>新增行的自动编号</returns>
+        </member>
         <member name="M:XCode.IEntityOperate.BeginTransaction">
             <summary>
             开始事务
@@ -2597,9 +2628,7 @@
             <summary>执行时间字符串</summary>
         </member>
         <member name="T:XCode.Entity`1">
-            <summary>
-            数据实体类基类。所有数据实体类都必须继承该类。
-            </summary>
+            <summary>数据实体类基类。所有数据实体类都必须继承该类。</summary>
         </member>
         <member name="T:XCode.EntityBase">
             <summary>数据实体基类的基类</summary>
@@ -2785,6 +2814,7 @@
         <member name="M:XCode.Entity`1.CreateInstance(System.Boolean)">
             <summary>
             创建实体。可以重写改方法以实现实体对象的一些初始化工作。
+            切记，写为实例方法仅仅是为了方便重载，所要返回的实例绝对不会是当前实例。
             </summary>
             <param name="forEdit">是否为了编辑而创建，如果是，可以再次做一些相关的初始化工作</param>
             <returns></returns>
@@ -3291,15 +3321,11 @@
             <returns></returns>
         </member>
         <member name="M:XCode.Entity`1.ToString">
-            <summary>
-            已重载。
-            </summary>
+            <summary>已重载。</summary>
             <returns></returns>
         </member>
         <member name="M:XCode.Entity`1.SetDirty(System.Boolean)">
-            <summary>
-            设置所有数据的脏属性
-            </summary>
+            <summary>设置所有数据的脏属性</summary>
             <param name="isDirty">改变脏属性的属性个数</param>
             <returns></returns>
         </member>
@@ -3349,23 +3375,13 @@
             <returns></returns>
         </member>
         <member name="T:XCode.Entity`1.Meta">
-            <summary>
-            元数据
-            </summary>
+            <summary>实体元数据</summary>
         </member>
         <member name="M:XCode.Entity`1.Meta.Query(System.String)">
             <summary>
             查询
             </summary>
             <param name="sql">SQL语句</param>
-            <returns>结果记录集</returns>
-        </member>
-        <member name="M:XCode.Entity`1.Meta.Query(System.String,System.String[])">
-            <summary>
-            查询
-            </summary>
-            <param name="sql">SQL语句</param>
-            <param name="tableNames">所依赖的表的表名</param>
             <returns>结果记录集</returns>
         </member>
         <member name="M:XCode.Entity`1.Meta.QueryCount(System.String)">
@@ -3731,6 +3747,34 @@
             </summary>
             <param name="json"></param>
             <returns></returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.Query(System.String)">
+            <summary>
+            查询
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>结果记录集</returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.QueryCount(System.String)">
+            <summary>
+            查询记录数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.Execute(System.String)">
+            <summary>
+            执行
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>影响的结果</returns>
+        </member>
+        <member name="M:XCode.Entity`1.EntityOperate.InsertAndGetIdentity(System.String)">
+            <summary>
+            执行插入语句并返回新增行的自动编号
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>新增行的自动编号</returns>
         </member>
         <member name="M:XCode.Entity`1.EntityOperate.BeginTransaction">
             <summary>
@@ -4955,6 +4999,10 @@
             <param name="type">实现了IDatabase接口的数据库类型</param>
             <param name="provider">数据库提供者，如果没有指定数据库类型，则有提供者判断使用哪一种内置类型</param>
         </member>
+        <member name="M:XCode.DataAccessLayer.DAL.GetNames">
+            <summary>获取所有已注册的连接名</summary>
+            <returns></returns>
+        </member>
         <member name="M:XCode.DataAccessLayer.DAL.EncodeConnStr(System.String)">
             <summary>连接字符串编码</summary>
             <remarks>明文=>UTF8字节=>Base64</remarks>
@@ -5156,7 +5204,7 @@
             <summary>是否启用数据架构</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.DAL.NegativeCheckOnly">
-            <summary>是否只检查不操作</summary>
+            <summary>是否只检查不操作，默认不启用</summary>
         </member>
         <member name="P:XCode.DataAccessLayer.DAL.NegativeNoDelete">
             <summary>是否启用不删除字段</summary>
@@ -5523,6 +5571,18 @@
             NotIn操作
             </summary>
             <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Configuration.FieldItem.IsNull">
+            <summary>
+            IsNull操作
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Configuration.FieldItem.NotIsNull">
+            <summary>
+            NotIn操作
+            </summary>
             <returns></returns>
         </member>
         <member name="M:XCode.Configuration.FieldItem.op_GreaterThan(XCode.Configuration.FieldItem,System.Object)">
@@ -6520,6 +6580,47 @@
             </summary>
             <param name="table"></param>
         </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.CopyFrom(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
+            <summary>
+            复制数据表到另一个数据表，不复制数据列、索引和关系
+            </summary>
+            <param name="src"></param>
+            <param name="des"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.CopyAllFrom(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable,System.Boolean)">
+            <summary>
+            复制数据表到另一个数据表，复制所有数据列、索引和关系
+            </summary>
+            <param name="src"></param>
+            <param name="des"></param>
+            <param name="resetColumnID">是否重置列ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.CopyFrom(XCode.DataAccessLayer.IDataColumn,XCode.DataAccessLayer.IDataColumn)">
+            <summary>
+            赋值数据列到另一个数据列
+            </summary>
+            <param name="src"></param>
+            <param name="des"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.CopyFrom(XCode.DataAccessLayer.IDataIndex,XCode.DataAccessLayer.IDataIndex)">
+            <summary>
+            赋值数据列到另一个数据列
+            </summary>
+            <param name="src"></param>
+            <param name="des"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.CopyFrom(XCode.DataAccessLayer.IDataRelation,XCode.DataAccessLayer.IDataRelation)">
+            <summary>
+            赋值数据列到另一个数据列
+            </summary>
+            <param name="src"></param>
+            <param name="des"></param>
+            <returns></returns>
+        </member>
         <member name="M:XCode.DataAccessLayer.ModelHelper.GetAlias(System.String)">
             <summary>
             获取别名
@@ -6912,6 +7013,9 @@
         <member name="P:XCode.DataAccessLayer.IDataTable.PrimaryKeys">
             <summary>主键集合。可以是空集合，但不能为null。</summary>
         </member>
+        <member name="P:XCode.DataAccessLayer.IDataTable.DisplayName">
+            <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
+        </member>
         <member name="M:XCode.DataAccessLayer.XTable.#ctor">
             <summary>
             初始化
@@ -7064,6 +7168,9 @@
         <member name="P:XCode.DataAccessLayer.XTable.PrimaryKeys">
             <summary>主键集合。可以是空集合，但不能为null。</summary>
         </member>
+        <member name="P:XCode.DataAccessLayer.XTable.DisplayName">
+            <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
+        </member>
         <member name="T:XCode.DataAccessLayer.SelectBuilder">
             <summary>SQL查询语句生成器</summary>
             <remarks>
@@ -7102,9 +7209,9 @@
             <param name="args"></param>
             <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.SelectBuilder.AppendColumn(System.String)">
-            <summary>增加一个字段，必须是当前表普通字段，如果内部是*则不加</summary>
-            <param name="column"></param>
+        <member name="M:XCode.DataAccessLayer.SelectBuilder.AppendColumn(System.String[])">
+            <summary>增加多个字段，必须是当前表普通字段，如果内部是*则不加</summary>
+            <param name="columns"></param>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.SelectBuilder.AsChild(System.String)">
@@ -7207,6 +7314,129 @@
         </member>
         <member name="P:XCode.Exceptions.XDbMetaDataException.MetaData">
             <summary>数据库元数据</summary>
+        </member>
+        <member name="T:XCode.IEntityPersistence">
+            <summary>实体持久化接口。可通过实现该接口来自定义实体类持久化行为。</summary>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Insert(XCode.IEntity)">
+            <summary>插入</summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Update(XCode.IEntity)">
+            <summary>更新</summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Delete(XCode.IEntity)">
+            <summary>删除</summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Insert(System.Type,System.String[],System.Object[])">
+            <summary>把一个实体对象持久化到数据库</summary>
+            <param name="entityType">实体类</param>
+            <param name="names">更新属性列表</param>
+            <param name="values">更新值列表</param>
+            <returns>返回受影响的行数</returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Update(System.Type,System.String,System.String)">
+            <summary>更新一批实体数据</summary>
+            <param name="entityType">实体类</param>
+            <param name="setClause">要更新的项和数据</param>
+            <param name="whereClause">指定要更新的实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Update(System.Type,System.String[],System.Object[],System.String[],System.Object[])">
+            <summary>更新一批实体数据</summary>
+            <param name="entityType">实体类</param>
+            <param name="setNames">更新属性列表</param>
+            <param name="setValues">更新值列表</param>
+            <param name="whereNames">条件属性列表</param>
+            <param name="whereValues">条件值列表</param>
+            <returns>返回受影响的行数</returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Delete(System.Type,System.String)">
+            <summary>从数据库中删除指定条件的实体对象。</summary>
+            <param name="entityType">实体类</param>
+            <param name="whereClause">限制条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.IEntityPersistence.Delete(System.Type,System.String[],System.Object[])">
+            <summary>从数据库中删除指定属性列表和值列表所限定的实体对象。</summary>
+            <param name="entityType">实体类</param>
+            <param name="names">属性列表</param>
+            <param name="values">值列表</param>
+            <returns></returns>
+        </member>
+        <member name="T:XCode.EntityPersistence">
+            <summary>默认实体持久化</summary>
+        </member>
+        <member name="M:XCode.EntityPersistence.Insert(XCode.IEntity)">
+            <summary>插入</summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Update(XCode.IEntity)">
+            <summary>更新</summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Delete(XCode.IEntity)">
+            <summary>删除</summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Insert(System.Type,System.String[],System.Object[])">
+            <summary>把一个实体对象持久化到数据库</summary>
+            <param name="entityType">实体类</param>
+            <param name="names">更新属性列表</param>
+            <param name="values">更新值列表</param>
+            <returns>返回受影响的行数</returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Update(System.Type,System.String,System.String)">
+            <summary>更新一批实体数据</summary>
+            <param name="entityType">实体类</param>
+            <param name="setClause">要更新的项和数据</param>
+            <param name="whereClause">指定要更新的实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Update(System.Type,System.String[],System.Object[],System.String[],System.Object[])">
+            <summary>更新一批实体数据</summary>
+            <param name="entityType">实体类</param>
+            <param name="setNames">更新属性列表</param>
+            <param name="setValues">更新值列表</param>
+            <param name="whereNames">条件属性列表</param>
+            <param name="whereValues">条件值列表</param>
+            <returns>返回受影响的行数</returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Delete(System.Type,System.String)">
+            <summary>从数据库中删除指定条件的实体对象。</summary>
+            <param name="entityType">实体类</param>
+            <param name="whereClause">限制条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.Delete(System.Type,System.String[],System.Object[])">
+            <summary>从数据库中删除指定属性列表和值列表所限定的实体对象。</summary>
+            <param name="entityType">实体类</param>
+            <param name="names">属性列表</param>
+            <param name="values">值列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.SQL(XCode.IEntity,System.ComponentModel.DataObjectMethodType)">
+            <summary>把SQL模版格式化为SQL语句</summary>
+            <param name="entity">实体对象</param>
+            <param name="methodType"></param>
+            <returns>SQL字符串</returns>
+        </member>
+        <member name="M:XCode.EntityPersistence.DefaultCondition(XCode.IEntity)">
+            <summary>
+            默认条件。
+            若有标识列，则使用一个标识列作为条件；
+            如有主键，则使用全部主键作为条件。
+            </summary>
+            <param name="entity">实体对象</param>
+            <returns>条件</returns>
         </member>
         <member name="T:XCode.DataAccessLayer.Network">
             <summary>
@@ -7313,9 +7543,7 @@
             </summary>
         </member>
         <member name="T:XCode.EntityList`1">
-            <summary>
-            实体集合
-            </summary>
+            <summary>实体集合，提供批量查询和批量操作实体等操作</summary>
         </member>
         <member name="M:XCode.EntityList`1.#ctor">
             <summary>
@@ -7757,10 +7985,11 @@
             说明数据表
             </summary>
         </member>
+        <member name="P:XCode.DataAccessLayer.IDataColumn.DisplayName">
+            <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
+        </member>
         <member name="T:XCode.EntityFactory">
-            <summary>
-            实体工厂
-            </summary>
+            <summary>实体工厂</summary>
         </member>
         <member name="M:XCode.EntityFactory.Create(System.String)">
             <summary>
@@ -7777,17 +8006,13 @@
             <returns></returns>
         </member>
         <member name="M:XCode.EntityFactory.CreateOperate(System.String)">
-            <summary>
-            创建实体操作接口
-            </summary>
+            <summary>创建实体操作接口</summary>
             <remarks>因为只用来做实体操作，所以只需要一个实例即可</remarks>
             <param name="typeName"></param>
             <returns></returns>
         </member>
         <member name="M:XCode.EntityFactory.CreateOperate(System.Type)">
-            <summary>
-            创建实体操作接口
-            </summary>
+            <summary>创建实体操作接口</summary>
             <remarks>因为只用来做实体操作，所以只需要一个实例即可</remarks>
             <param name="type"></param>
             <returns></returns>
@@ -7828,9 +8053,7 @@
             <returns></returns>
         </member>
         <member name="M:XCode.EntityFactory.EnsureInit(System.Type)">
-            <summary>
-            确保实体类已经执行完静态构造函数，因为那里实在是太容易导致死锁了
-            </summary>
+            <summary>确保实体类已经执行完静态构造函数，因为那里实在是太容易导致死锁了</summary>
             <param name="type"></param>
         </member>
         <member name="T:XCode.Accessors.EntityAccessorOptions">
@@ -7987,6 +8210,9 @@
         </member>
         <member name="P:XCode.DataAccessLayer.XField.Table">
             <summary>表</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.XField.DisplayName">
+            <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
         </member>
         <member name="M:XCode.DataAccessLayer.SQLite.OnCreateSession">
             <summary>
@@ -8332,6 +8558,9 @@
         </member>
         <member name="P:XCode.DataAccessLayer.XDbConnectionStringBuilder.ConnectionString">
             <summary>连接字符串</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ExtensionAttribute">
+            <summary>支持使用扩展方法的特性</summary>
         </member>
     </members>
 </doc>
