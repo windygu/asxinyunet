@@ -22,7 +22,7 @@
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
  *              TODO:考虑将比较方法升级为泛型**
- * 
+ * 2011-11-16 根据相关网站经验和改进，完成多个验证和过滤算法，进一步丰富数据特征的验证
  * 2011-11-15 整体项目采用Linq技术进行重构升级,以增加完善处理逻辑,增加邻号验证和过滤
  * 2011-11-14 继续完善杀号方法和验证方法,将验证和过滤升级为接口,更容易操作
  * 2011-11-13 修改组合生成方法,完成杀号和杀组合的过滤算法
@@ -82,12 +82,12 @@ namespace LotteryTicket
     	public static void Main(string[] args)
     	{
     		//            VFTest.TestAll(1000);
-    		double[] a = new double[] {1,2,3,4,6,8};
+    		double[] a = new double[] {1,2,3,4,5,6,7,8};
     		double[] b = new double[] {1,3,5,7,9};
-    		double[] c = new double[] {2,4,6,8};
-    		Console.WriteLine (PerNoIndexCalculate.A_EvenNumber (a ).ToString ());
-    		Console.WriteLine (PerNoIndexCalculate.A_EvenNumber (b ).ToString ());
-    		Console.WriteLine (PerNoIndexCalculate.A_EvenNumber (c ).ToString ());
+    		double[] c = new double[] {2,4,6,8,9,10,16,17,18,19};
+            Console.WriteLine(PerNoIndexCalculate.CoverCount(a ,5));
+            Console.WriteLine(PerNoIndexCalculate.CoverCount(b ,8));
+            Console.WriteLine(PerNoIndexCalculate.CoverCount(c ,9));
     		Console.ReadKey(true);
     	}
     	/// <summary>

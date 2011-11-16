@@ -426,6 +426,43 @@ namespace LotteryTicket.Validate
 	#endregion
 
 	#region 求余覆盖范围
+    /// <summary>
+	/// 通过求余来计算覆盖的范围 
+	/// </summary>
+    public class CoverVF : IValidateFilter
+    {
+        /// <summary>
+        /// 通过求余来计算覆盖的范围来过滤
+        /// </summary>
+        /// <param name="origData">原始数据序列</param>
+        /// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
+        ///<param name="conditons" >条件，求余参数，以及覆盖范围的个数：第一二个为上下限，第三个为求余参数</param>
+        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.RangeLimite,
+                                  double[] conditons = null, params object[] paramValues)
+        {
+            //对比规则,求余参数L，0-L-1，出现的个数
+            int L = (int)conditons[2];
+            origData.RemoveAll(n => !BaseRuleCompare.RuleCompare(
+                ruleType, (double)PerNoIndexCalculate.A_CoverCount(n, L), conditons));
+        }
+        /// <summary>
+        /// 通过求余来计算覆盖的范围来验证概率
+        /// </summary>
+        /// <param name="data">序列</param>
+        /// <param name="ruleType">对比类型</param>
+        /// <param name="conditons">条件，求余参数，以及覆盖范围的个数：第一二个为上下限，第三个为求余参数</param>
+        /// <param name="rows">需要的行数,此处为0</param>
+        /// <param name="paramValues">其他参数</param>
+        /// <returns>指定条件的概率</returns>
+        public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.RangeLimite,
+                               double[] conditons = null, int rows = 0, params object[] paramValues) //验证
+        {
+            int L = (int)conditons[2];
+            bool[] res = data.Select(n => BaseRuleCompare.RuleCompare(
+                ruleType, (double)PerNoIndexCalculate.A_CoverCount(n,L ), conditons)).ToArray();
+            return ValidateMethods.GetRateReuslt(res);
+        }
+    }
 	#endregion
 
 	#region 新旧跳比

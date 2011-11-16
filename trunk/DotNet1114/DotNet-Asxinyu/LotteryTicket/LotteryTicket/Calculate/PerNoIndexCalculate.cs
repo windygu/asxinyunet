@@ -288,5 +288,18 @@ namespace LotteryTicket
 			return args.Where (n=>((int )n )%2 ==0).Count ();
 		}
 		#endregion
-	}
+
+        #region 求余来计算覆盖的范围的个数
+        /// <summary>
+        ///  求余来计算覆盖的范围的个数,0到L-1出现的个数
+        /// </summary>
+        /// <param name="args">数据</param>
+        /// <param name="L">求余参数</param>
+        /// <returns>出现的个数</returns>
+        public static int A_CoverCount(double[] args, int L)
+        {
+            return args.Select(n => ((int)n) % L).Distinct().Count();
+        }
+        #endregion
+    }
 }
