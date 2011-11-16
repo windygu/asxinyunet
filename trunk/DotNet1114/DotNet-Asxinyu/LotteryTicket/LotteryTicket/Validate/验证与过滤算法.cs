@@ -265,13 +265,13 @@ namespace LotteryTicket.Validate
         /// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
         /// <param name="conditons">参数数组:第一个参数为邻号数</param>
         /// <param name="paramValues">第一个参数为double[]，即上一期的数据</param>
-        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.LessThanLimite ,
+        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.LessThanLimite,
             double[] conditons = null, params object[] paramValues)
         {
             double[] temp = (double[])paramValues[0];
             origData.RemoveAll(delegate(double[] cur)
             {
-                double Count = (double)IndexCalculate.NeighbourNumberCount(temp,cur );
+                double Count = (double)IndexCalculate.NeighbourNumberCount(temp, cur);
                 return !BaseRuleCompare.RuleCompare(ruleType, Count, conditons);
             });
         }
@@ -285,20 +285,40 @@ namespace LotteryTicket.Validate
         /// <param name="paramValues">其他参数</param>
         /// <returns>指定条件的概率</returns>
         public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.LessThanLimite,
-            double[] conditons = null, int rows = 1, params object[] paramValues) 
+            double[] conditons = null, int rows = 1, params object[] paramValues)
         {
-            double[] count = new double[data.Length -rows ];
-            for (int i = 0; i < count.Length ; i++)
+            double[] count = new double[data.Length - rows];
+            for (int i = 0; i < count.Length; i++)
             {
-                count[i] =(double)IndexCalculate.NeighbourNumberCount(data[i], data[i + 1]);//相邻期验证
+                count[i] = (double)IndexCalculate.NeighbourNumberCount(data[i], data[i + 1]);//相邻期验证
             }
             //获取测试数据TOTO:更改比较方法,提高效率，一一比较，重复调用
-            bool[] res = count.Select(n => BaseRuleCompare.RuleCompare(ruleType, n , conditons)).ToArray();          
+            bool[] res = count.Select(n => BaseRuleCompare.RuleCompare(ruleType, n, conditons)).ToArray();
             return ValidateMethods.GetRateReuslt(res);
         }
     }
     #endregion
 
-#region 验证所有期内 跨度列表 出现的总次数，不用过滤,参考指标
-#endregion
+    #region 验证所有期内 跨度列表 出现的总次数，不用过滤,参考指标
+
+    #endregion
+
+    #region 质合比
+    #endregion
+
+    #region 奇偶比
+    #endregion
+
+    #region 求余覆盖范围
+    #endregion
+
+    #region 新旧跳比
+
+    #endregion
+
+    //http://taobao.starlott.com/ssq/hqyl.html
+    //http://taobao.starlott.com/ssq/hzyl.html
+    //新旧跳比
+    //奇号连：前后两个号间隔为2，且号码都是奇数，这样的号码的组数，例如：01，03，07，09 ，11，19则奇号连续为3，即01-03，07-09。 
+    //偶号连：前后两个号间隔为2，且号码都是偶数，这样的号码的组数，例如：02，04，08，10 ，12，20则偶号连续为3，即02-04，08-10。
 }
