@@ -17,7 +17,12 @@ namespace LotteryTicket
 	/// 单个指标计算
 	/// </summary>
 	public class PerNoIndexCalculate
-	{				
+	{
+		/// <summary>
+		/// 质数集合
+		/// </summary>
+		public static readonly double[] PrimeNumbers =new double[] {2,3,5,7,11,13,17,19,23,29,31};
+		
 		#region 自身数据
 		public static object C_SelfNumber(object args)
 		{          
@@ -253,11 +258,34 @@ namespace LotteryTicket
 		#endregion
 		
 		#region 每期最长的连续号码个数,2个2连续算3
-		public static object A_ContinuousCount(object args)
+		/// <summary>
+		/// 每期最长的连续号码个数,2个2连续算3
+		/// </summary>	
+		public static double A_ContinuousCount(double[] args)
 		{
 			double[] res = (double[])C_SpanList (args ) ;//计算跨度
             int count = res.Where(n => n == 1).Count();//计算==1的个数			
 			return (double)(count +1) ;
+		}
+		#endregion
+		
+		#region 质数个数计算
+		/// <summary>
+		/// 每期质数的个数
+		/// </summary>		
+		public static int A_PrimeCount(double[] args)
+		{
+			return IndexCalculate.GetRepeatNumbers (PrimeNumbers,args ) ;
+		}
+		#endregion
+		
+		#region 偶数个数计算
+		/// <summary>
+		/// 计算每期的偶数的个数
+		/// </summary>
+		public static int A_EvenNumber(double[] args)
+		{
+			return args.Where (n=>((int )n )%2 ==0).Count ();
 		}
 		#endregion
 	}

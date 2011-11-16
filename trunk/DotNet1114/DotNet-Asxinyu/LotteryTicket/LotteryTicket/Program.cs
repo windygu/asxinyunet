@@ -79,12 +79,18 @@ namespace LotteryTicket
 {
     class Program
     {
-        public static void Main(string[] args)
-        {
-            VFTest.TestAll(1000);
-            Console.ReadKey(true);
-        }
-        /// <summary>
+    	public static void Main(string[] args)
+    	{
+    		//            VFTest.TestAll(1000);
+    		double[] a = new double[] {1,2,3,4,6,8};
+    		double[] b = new double[] {1,3,5,7,9};
+    		double[] c = new double[] {2,4,6,8};
+    		Console.WriteLine (PerNoIndexCalculate.A_EvenNumber (a ).ToString ());
+    		Console.WriteLine (PerNoIndexCalculate.A_EvenNumber (b ).ToString ());
+    		Console.WriteLine (PerNoIndexCalculate.A_EvenNumber (c ).ToString ());
+    		Console.ReadKey(true);
+    	}
+    	/// <summary>
         /// Combination类测试
         /// </summary>
         public static void CombinationTest()
