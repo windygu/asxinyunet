@@ -255,7 +255,7 @@ namespace LotteryTicket.Validate
     }
     #endregion
 
-    #region 上期的邻号在下去出现的个数
+    #region 上期的邻号在下期出现的个数
     public class NeighbourNumberVF : IValidateFilter
     {
         /// <summary>
@@ -290,7 +290,7 @@ namespace LotteryTicket.Validate
             double[] count = new double[data.Length -rows ];
             for (int i = 0; i < count.Length ; i++)
             {
-                count[i] =(double ) IndexCalculate.NeighbourNumberCount(data[i], data[i + 1]);//相邻期验证
+                count[i] =(double)IndexCalculate.NeighbourNumberCount(data[i], data[i + 1]);//相邻期验证
             }
             //获取测试数据TOTO:更改比较方法,提高效率，一一比较，重复调用
             bool[] res = count.Select(n => BaseRuleCompare.RuleCompare(ruleType, n , conditons)).ToArray();          
@@ -298,4 +298,7 @@ namespace LotteryTicket.Validate
         }
     }
     #endregion
+
+#region 验证所有期内 跨度列表 出现的总次数，不用过滤,参考指标
+#endregion
 }
