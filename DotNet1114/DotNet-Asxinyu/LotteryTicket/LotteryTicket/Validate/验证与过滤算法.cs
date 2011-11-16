@@ -472,6 +472,9 @@ namespace LotteryTicket.Validate
 	#region 和值与前几期不同的概率，杀单个和值
 	#endregion
 
+    #region 和值振幅范围，对和值振幅这个进行分析，其他指标，倍数，质合之类的
+	#endregion
+
 	#region 旋转矩阵
 	#endregion
 
