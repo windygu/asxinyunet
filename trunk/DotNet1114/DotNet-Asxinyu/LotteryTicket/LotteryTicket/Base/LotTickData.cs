@@ -18,7 +18,7 @@ using DotNet.Tools.Web;
 using HtmlAgilityPack;
 using DotNet.Tools;
 
-namespace LotteryTicket.Data
+namespace LotteryTicket
 {	
 		/// <summary>
 		/// 从网页获取双色球数据，并添加到数据库中

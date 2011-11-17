@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using DotNet.Tools ;
 
-namespace LotteryTicket.Common
+namespace LotteryTicket
 {
 	/// <summary>
 	/// 数据过滤与数据分析保存：生成预测文件,根据结果和预测文件对预测进行分析

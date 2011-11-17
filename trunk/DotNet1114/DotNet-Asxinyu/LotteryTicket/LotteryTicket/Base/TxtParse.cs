@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace LotteryTicket.Common
+namespace LotteryTicket
 {
     /// <summary>
     /// 文本文件的规则解析

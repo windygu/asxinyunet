@@ -22,7 +22,8 @@
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
  *              TODO:考虑将比较方法升级为泛型
- * 2011-11-17 考虑将常规计算指标放到字段中去，固定起来，直接读取。先进行数据库设计
+ *              
+ * 2011-11-17 整个架构重新设计，考虑将常规计算指标放到字段中去，固定起来，直接读取。先进行数据库设计
  * 2011-11-16 根据相关网站经验和改进，完成多个验证和过滤算法，进一步丰富数据特征的验证
  * 2011-11-15 整体项目采用Linq技术进行重构升级,以增加完善处理逻辑,增加邻号验证和过滤
  * 2011-11-14 继续完善杀号方法和验证方法,将验证和过滤升级为接口,更容易操作
@@ -70,11 +71,8 @@ using System.Reflection;
 using System.IO;
 using DotNet.Tools;
 using XCode;
-using LotteryTicket.Validate ;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
-using LotteryTicket.Data;
-using LotteryTicket.Common;
 
 namespace LotteryTicket
 {
@@ -86,9 +84,9 @@ namespace LotteryTicket
     		double[] a = new double[] {1,2,3,4,5,6,7,8};
     		double[] b = new double[] {1,3,5,7,9};
     		double[] c = new double[] {2,4,6,8,9,10,16,17,18,19};
-            Console.WriteLine(PerNoIndexCalculate.CoverCount(a ,5));
-            Console.WriteLine(PerNoIndexCalculate.CoverCount(b ,8));
-            Console.WriteLine(PerNoIndexCalculate.CoverCount(c ,9));
+            //Console.WriteLine(PerNoIndexCalculate.CoverCount(a ,5));
+            //Console.WriteLine(PerNoIndexCalculate.CoverCount(b ,8));
+            //Console.WriteLine(PerNoIndexCalculate.CoverCount(c ,9));
     		Console.ReadKey(true);
     	}
     	/// <summary>

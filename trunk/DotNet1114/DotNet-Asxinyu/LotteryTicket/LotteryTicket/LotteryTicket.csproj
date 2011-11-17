@@ -78,20 +78,20 @@
     <Compile Include="Calculate\IndexCalculate.cs" />
     <Compile Include="Calculate\PerNoIndexCalculate.cs" />
     <Compile Include="Calculate\StaticsTest.cs" />
-    <Compile Include="Common\DataSaveAndValidate.cs" />
-    <Compile Include="Common\FilterNumberProcess.cs" />
-    <Compile Include="Common\TxtParse.cs" />
-    <Compile Include="Data\LotTickData.cs" />
+    <Compile Include="Base\DataSaveAndValidate.cs" />
+    <Compile Include="Base\FilterNumberProcess.cs" />
+    <Compile Include="Base\TxtParse.cs" />
+    <Compile Include="Base\LotTickData.cs" />
     <Compile Include="Entities\Ssq.Biz.cs" />
     <Compile Include="Entities\Ssq.cs" />
-    <Compile Include="LotTickClass\TwoColorBall.cs" />
-    <Compile Include="Validate\PredictMethodsValidate.cs" />
+    <Compile Include="Base\TwoColorBall.cs" />
+    <Compile Include="Calculate\PredictMethodsValidate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\LotteryTest.cs" />
     <Compile Include="Test\TestData.cs" />
-    <Compile Include="Validate\ValidateMethods.cs" />
-    <Compile Include="Validate\验证与过滤算法.cs" />
+    <Compile Include="Calculate\ValidateMethods.cs" />
+    <Compile Include="Calculate\验证与过滤算法.cs" />
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="RuleFile.txt" />
@@ -113,4 +113,5 @@
       <Name>DotNet.Tools</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
 </Project>
