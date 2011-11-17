@@ -75,7 +75,7 @@ namespace LotteryTicket
 		/// <summary>
 		/// 每期最长的连续号码,2个2连续算3
 		/// </summary>
-		A_ContinuousCount 
+		A_ContinuousCount
 	}
 	#endregion
 	
