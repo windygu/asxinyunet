@@ -10,21 +10,24 @@ using System;
 using System.Collections ;
 using System.Collections.Generic ;
 using System.Linq;
+using System.IO;
 
 namespace LotteryTicket
 {	
 	/// <summary>
-	/// 单个指标计算
+	/// 指标计算:单个指标和所有指标
 	/// </summary>
     public class IndexCalculate
-	{
-		/// <summary>
+    {
+        #region 常量
+        /// <summary>
 		/// 质数集合
 		/// </summary>
 		public static readonly double[] PrimeNumbers =new double[] {2,3,5,7,11,13,17,19,23,29,31};
-		
-		#region 自身数据
-		public static object C_SelfNumber(object args)
+        #endregion
+
+        #region 自身数据
+        public static object C_SelfNumber(object args)
 		{          
 			return args ;
 		}
