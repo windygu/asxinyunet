@@ -26,33 +26,31 @@ using System.Xml;
  * 
  */
 using HtmlAgilityPack;
+using System.Collections;
+using System.Linq;
 
 namespace DotNet.Tools
 {
+    /// <summary>
+    /// 扩展方法测试
+    /// </summary>
+    public static class EnumerableExtensions
+    {
+        public static IEnumerable<T> Test<T>(this IEnumerable<T> source) where T:IComparable 
+        {
+            return source.Last() - source.First();
+        }
+    }
+
 	class Program
 	{
 		static void Main(string[] args)
 		{
 //			YoungRunHelper.StockStatistics (DateTime.Parse ("2011-10-10 8:00:00")) ;
-						
-			B.Test ();
+								
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
 	}
-	class A
-	{
-		public static void Test()
-		{ Console.WriteLine("Test"); } 
-	     static A ()
-		{
-			Test () ;
-		}
-	}
-	class B:A{
-		static B()
-		{ Console.WriteLine("Hi"); }
-		public B()
-		{ Console.WriteLine("Hello"); }
-	}
+	
 }
