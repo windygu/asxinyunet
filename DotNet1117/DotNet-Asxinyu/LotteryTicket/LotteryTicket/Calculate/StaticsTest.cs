@@ -18,7 +18,7 @@ using System.Security.Cryptography;
 namespace LotteryTicket
 {
 	/// <summary>
-	/// 框架计算类,根据指标计算出统计规律,是构建预测方案的重要依据
+	/// 历史代码，淘汰框架计算类,根据指标计算出统计规律,是构建预测方案的重要依据
 	/// </summary>
 	class StaticsResult
 	{			

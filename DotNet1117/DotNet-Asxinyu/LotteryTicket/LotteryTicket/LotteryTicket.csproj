@@ -75,7 +75,6 @@
     <Compile Include="Base\Permutation.cs" />
     <Compile Include="Calculate\RuleCompare.cs" />
     <Compile Include="Calculate\IndexCalculate.cs" />
-    <Compile Include="Calculate\PerNoIndexCalculate.cs" />
     <Compile Include="Calculate\StaticsTest.cs" />
     <Compile Include="Base\LotTickData.cs" />
     <Compile Include="Entities\Ssq.Biz.cs" />

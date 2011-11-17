@@ -1,41 +1,323 @@
 ﻿/*
  * Created by SharpDevelop.
  * User: 董斌辉
- * Date: 2011-2-18
- * Time: 21:06
+ * Date: 2011-2-20
+ * Time: 16:00
  * 
- *  指标计算静态类
+ *
  */
 using System;
+using System.Collections ;
 using System.Collections.Generic ;
-using System.Reflection ;
 using System.Linq;
-using System.IO;
-using System.Text;
 
 namespace LotteryTicket
-{
+{	
 	/// <summary>
-	/// 计算单期单个指标，以及所有数据的单个指标计算
+	/// 单个指标计算
 	/// </summary>
-	public static class IndexCalculate
-	{	
-		#region 根据类型名称和数据计算指标(单期指标)
+    public class IndexCalculate
+	{
 		/// <summary>
-        /// 根据类型名称和输入数据计算相应数据,需要进行的数据在外部传入
+		/// 质数集合
 		/// </summary>
-		/// <param name="data">数据(单期)</param>
-		/// <param name="typeName">指标名称:根据名称来判断数据类别</param>
-		/// <returns>该数据集合在指定的指标下计算的结果</returns>
-		public static object CalculateIndex(object data,IndexNameType typeName)
-		{
-			//TODO:分别针对ABCD不同类型，输入数据可能不一样进行处理
-			Type t = typeof (PerNoIndexCalculate);			
-			MethodInfo mi = t.GetMethod (typeName.ToString ()) ;
-			//invoke,传入数组参数
-			return  mi.Invoke (null ,new object []{data }) ;
+		public static readonly double[] PrimeNumbers =new double[] {2,3,5,7,11,13,17,19,23,29,31};
+		
+		#region 自身数据
+		public static object C_SelfNumber(object args)
+		{          
+			return args ;
 		}
-	    #endregion
+		#endregion
+				
+		#region 和值与数据密度
+		/// <summary>
+		/// 计算和值
+		/// </summary>
+		public static object A_Sum(object args)
+		{			
+            return ((double[])args).Sum();//返回和值
+		}
+		
+		/// <summary>
+		/// 数据密度:和值/极差
+		/// </summary>
+		public static object A_DataDensity(object args)
+		{
+            return ((double[])args).Sum()/((double)A_MaxSpan(args));
+		}
+		#endregion
+		
+		#region 跨度
+		/// <summary>
+		/// 计算最大跨度
+		/// </summary>
+		public static object A_MaxSpan(object args)
+		{
+			double[] data = (double[])args ;
+			return (data[data.Length -1] - data [0]) ;
+		}
+		
+		/// <summary>
+		/// 计算跨度列表
+		/// </summary>
+		public static object C_SpanList(object args)
+		{
+			double[] data = (double[])args ;
+			double[] res = new double[data.Length -1 ] ;//少一个
+			for (int i = 0 ; i <res.Length ; i ++) 
+			{
+				res [i ] = data [i +1]-data [i ] ;
+			}
+			return res ;
+		}
+		
+		/// <summary>
+		/// 最小跨度
+		/// </summary>
+		public static object A_MinSpan(object args)
+		{
+            double[] res = (double[])C_SpanList(args);
+            return res.Min();//返回最小值
+		}
+		
+		/// <summary>
+		/// 跨度和值
+		/// </summary>
+		public static object A_SpanSum(object args)
+		{	
+			double[] res = (double[])C_SpanList (args );
+            return res.Sum();
+		}
+		
+		/// <summary>
+		/// 跨度密度:跨度和/最大跨度
+		/// </summary>
+		public static object A_SpanDensity(object args)
+		{
+			double spansum =(double ) A_SpanSum (args ) ;
+			double max = (double ) A_MaxSpan (args ) ;
+			return spansum /max ;
+		}
+		#endregion
+		
+		#region AC值
+		/// <summary>
+		/// Ac值=差值个数-(6-1)
+		/// </summary>
+		public static object A_AcValue(object args)
+		{
+			double[] data = (double[])args ;
+			ArrayList list = new ArrayList () ;
+			double temp ;
+			for (int i = 0 ; i <data.Length -1 ; i ++)
+			{
+				for (int j = i +1 ; j <data.Length ; j ++)
+				{
+					temp = data [j ] - data [i ] ;
+					if (!list.Contains (temp ))
+					{
+						list.Add (temp ) ;
+					}
+				}
+			}
+			return (double )(list.Count -(data.Length -1)) ;
+		}
+		#endregion
+		
+		#region 多期号码
+        /// <summary>
+        /// 多期号码中，号码所有出现的个数，去掉重复的
+        /// </summary>        
+		public static object B_ManyNoCounts(object args)
+		{
+			double[][] data = (double[][])args ;//多期数据
+			ArrayList al = new ArrayList ();
+			for (int i = 0 ; i <data.Length ; i ++)
+			{
+				for (int j=0 ; j <data[0].Length ; j ++)
+				{
+					if (!al.Contains(data[i][j]))
+					{
+						al.Add (data[i][j]);
+					}
+				}
+			}
+			return (double )al.Count ;
+		}
+		/// <summary>
+        /// 多期数据中,出现重复号码的个数
+		/// </summary>		
+		public static object B_ManyNoOfNewCount(object args)
+		{
+			double[][] data = (double[][])args ;//多期数据
+            int count = 0;
+			ArrayList al = new ArrayList ();
+			for (int i = 0 ; i <data.GetLength (0) ; i ++)
+			{
+				for (int j=0 ; j <data[0].Length ; j ++)
+				{
+                    if (!al.Contains(data[i][j])) { al.Add(data[i][j]); }
+                    else { count++; }
+				}
+			}
+			return (double )count ;
+		}
+		/// <summary>
+        /// 多期相同的数据列表？？？
+		/// </summary>	
+		public static object D_ManyNosList(object args)
+		{
+			double[][] data = (double[][])args ;//多期数据
+			ArrayList al = new ArrayList ();
+			for (int i = 0 ; i <data.Length -1 ; i ++)
+			{
+				for (int j=0 ; j <data[0].Length ; j ++)
+				{
+					if (!al.Contains (data[i][j]))
+					{
+						al.Add (data[i][j]);
+					}
+				}
+			}
+			ArrayList resList = new ArrayList () ;
+			for (int i = 0; i < data[0].Length ; i++)
+			{
+				if (al.Contains (data[data.Length -1][i ]))
+				{
+					resList .Add (data[data.Length -1][i ]) ;
+				}
+			}
+			double[] d = (double[])resList.ToArray(typeof (double )) ;
+			return d ;
+		}
+		#endregion
+		
+		#region 统计次数与频率 FrequCount FrequPrecent
+		/// <summary>
+		/// 计算在当前期内出现的次数
+		/// </summary>
+		public static object FrequCount(int[][] args)
+		{
+			//先从最后一列找出最大值,确定出现的最大数字
+			int max = args [0][args[0].Length-1] ;
+			for (int i = 0 ; i <args.Length ; i ++ )
+			{
+				if (args [i ][args [0].Length -1]>max )
+				{
+					max = args [i ][args [0].Length -1] ;
+				}
+			}
+			int[] count = new int[max ] ;
+			for (int i = 0 ; i <args.Length ; i ++ )
+			{
+				for (int j = 0 ; j <args[0].Length ; j ++)
+				{
+					count[args [i ][j ]-1] ++ ;
+				}
+			}
+			return count ;
+		}
+		
+		/// <summary>
+		/// 计算百分比频率
+		/// </summary>
+		public static object FrequPrecent(int[][] args)
+		{
+			int[] count = (int[])FrequCount (args ) ;
+			double[] res = new double[count .Length ] ;
+			for (int i = 0 ; i <res.Length ; i ++)
+			{
+				res [i ] = ((double )count [i ])/((double )args .Length);
+			}
+			return res ;
+		}
+		#endregion		
+		
+		#region PM001A
+		/// <summary>
+		/// 利用PM001算法计算预期结果
+		/// 当期开奖号码大小顺序第一位与第六位的差，计算的结果在下一期有可能不出
+		/// </summary>
+		public static object A_PM001(object args)
+		{
+			double[] data = (double[])args ;
+			return (double ) PerNoIndexCalculate.A_MaxSpan  (data ) ;//跨度			
+		}
+		#endregion
+		
+		#region PM002A
+		/// <summary>
+		/// 当期开奖号码大小顺序第二位与第三位的差，计算的结果在下一期有可能不出
+		/// </summary>
+		public static object A_PM002(object args)
+		{
+			double[] data = (double[])args ;
+			return data [2]-data [1] ;
+		}
+		#endregion
+		
+		#region 每期最长的连续号码个数,2个2连续算3
+		/// <summary>
+		/// 每期最长的连续号码个数,2个2连续算3
+		/// </summary>	
+		public static double A_ContinuousCount(double[] args)
+		{
+			double[] res = (double[])C_SpanList (args ) ;//计算跨度
+            int count = res.Where(n => n == 1).Count();//计算==1的个数			
+			return (double)(count +1) ;
+		}
+		#endregion
+		
+		#region 质数个数计算
+		/// <summary>
+		/// 每期质数的个数
+		/// </summary>		
+		public static int A_PrimeCount(double[] args)
+		{
+			return IndexCalculate.GetRepeatNumbers (PrimeNumbers,args ) ;
+		}
+		#endregion
+		
+		#region 偶数个数计算
+		/// <summary>
+		/// 计算每期的偶数的个数
+		/// </summary>
+		public static int A_EvenNumber(double[] args)
+		{
+			return args.Where (n=>((int )n )%2 ==0).Count ();
+		}
+		#endregion
+
+        #region 求余来计算覆盖的范围的个数
+        /// <summary>
+        ///  求余来计算覆盖的范围的个数,0到L-1出现的个数
+        /// </summary>
+        /// <param name="args">数据</param>
+        /// <param name="L">求余参数</param>
+        /// <returns>出现的个数</returns>
+        public static int A_CoverCount(double[] args, int L)
+        {
+            return args.Select(n => ((int)n) % L).Distinct().Count();
+        }
+        #endregion
+
+        #region 根据类型名称和数据计算指标(单期指标)
+        /// <summary>
+        /// 根据类型名称和输入数据计算相应数据,需要进行的数据在外部传入
+        /// </summary>
+        /// <param name="data">数据(单期)</param>
+        /// <param name="typeName">指标名称:根据名称来判断数据类别</param>
+        /// <returns>该数据集合在指定的指标下计算的结果</returns>
+        public static object CalculateIndex(object data, IndexNameType typeName)
+        {
+            //TODO:分别针对ABCD不同类型，输入数据可能不一样进行处理
+            Type t = typeof(PerNoIndexCalculate);
+            MethodInfo mi = t.GetMethod(typeName.ToString());
+            //invoke,传入数组参数
+            return mi.Invoke(null, new object[] { data });
+        }
+        #endregion
 
         #region	计算所有数据集指标的值(多期指标)
         /// <summary>
@@ -45,130 +327,130 @@ namespace LotteryTicket
         /// <param name="typeName">指标名称:根据名称来判断数据类别</param>
         /// <param name="needRows">计算一次所需要的行数(需依赖的期数),默认为1</param>
         /// <returns>计算结果:结果类型根据名称来判断</returns>
-		public static object CalculateAllData(object data,IndexNameType typeName ,int needRows = 1 )
-		{
-			string name = typeName.ToString () ;
-			char ct = name[0] ;
-			if ((ct == 'B')||(ct == 'D'))
-			{
+        public static object CalculateAllData(object data, IndexNameType typeName, int needRows = 1)
+        {
+            string name = typeName.ToString();
+            char ct = name[0];
+            if ((ct == 'B') || (ct == 'D'))
+            {
                 return CalculateAllDataBD(data, typeName, needRows);
-			}
-			else if ((ct == 'A')||(ct == 'C'))
-			{
-				return CalculateAllDataAC (data,typeName) ;
-			}
-			return null ;
-		}
-		
-		/// <summary>
+            }
+            else if ((ct == 'A') || (ct == 'C'))
+            {
+                return CalculateAllDataAC(data, typeName);
+            }
+            return null;
+        }
+
+        /// <summary>
         /// 计算多期BD类型的指标,需要输入所需的行
-		/// </summary>
-		/// <param name="data">多期数据</param>
+        /// </summary>
+        /// <param name="data">多期数据</param>
         /// <param name="typeName">指标名称(BD类):根据名称来判断数据类别</param>
         /// <param name="needRows">计算一次所需要的行数(需依赖的期数),默认为1</param>
         /// <returns>计算结果:结果类型根据名称来判断</returns>
-		public static object CalculateAllDataBD(object data,IndexNameType typeName ,int needRows = 1 )
-		{
-			Type t = typeof (PerNoIndexCalculate) ;
-			string name = typeName.ToString () ;
-			MethodInfo mi = t.GetMethod (name) ;
-			char ct = name[0] ;
-			double[][] args = (double[][]) data ;
-			int min = 0 ;
-			int max = args.Length - needRows ;//确认？
-			if (ct =='B')
-			{				
-				double[] res = new double[args.Length -needRows + 1 ] ;
-				//invoke,传入数组参数
-				for (int i = min ; i <= max; i ++ )
-				{
-					double[][] sn = new double[needRows ][] ;
+        public static object CalculateAllDataBD(object data, IndexNameType typeName, int needRows = 1)
+        {
+            Type t = typeof(PerNoIndexCalculate);
+            string name = typeName.ToString();
+            MethodInfo mi = t.GetMethod(name);
+            char ct = name[0];
+            double[][] args = (double[][])data;
+            int min = 0;
+            int max = args.Length - needRows;//确认？
+            if (ct == 'B')
+            {
+                double[] res = new double[args.Length - needRows + 1];
+                //invoke,传入数组参数
+                for (int i = min; i <= max; i++)
+                {
+                    double[][] sn = new double[needRows][];
                     for (int j = 0; j < needRows; j++)
-					{
-						sn [j ] = args [i +j ] ;//构造数据列表
-					}
-					res [i ] = (double) mi.Invoke (null ,new object []{sn }) ;
-				}
-				return res ;
-			}
-			else if (ct == 'D')			
-			{
-				double[][] res = new double[args.Length -needRows +1][] ;
-				//invoke,传入数组参数
-				for (int i = min ; i < max; i ++ )
-				{
-					double[][] sn = new double[needRows ][] ;
-					for (int j = 0 ; j <sn.Length ; j ++)
-					{
-						sn [j ] = args [i +j ] ;
-					}
-					res [i ] = (double[]) mi.Invoke (null ,new object []{sn }) ;
-				}
-				return res ;
-			}			
-			else 
-				return null ;
-		}
-		
+                    {
+                        sn[j] = args[i + j];//构造数据列表
+                    }
+                    res[i] = (double)mi.Invoke(null, new object[] { sn });
+                }
+                return res;
+            }
+            else if (ct == 'D')
+            {
+                double[][] res = new double[args.Length - needRows + 1][];
+                //invoke,传入数组参数
+                for (int i = min; i < max; i++)
+                {
+                    double[][] sn = new double[needRows][];
+                    for (int j = 0; j < sn.Length; j++)
+                    {
+                        sn[j] = args[i + j];
+                    }
+                    res[i] = (double[])mi.Invoke(null, new object[] { sn });
+                }
+                return res;
+            }
+            else
+                return null;
+        }
+
         /// <summary>
         /// 计算多期AC类型的指标,需要输入所需的行
         /// </summary>
         /// <param name="data">多期数据</param>
         /// <param name="typeName">指标名称(AC类):根据名称来判断数据类别</param>
         /// <returns>计算结果:结果类型根据名称来判断</returns>
-		public static object CalculateAllDataAC(object data,IndexNameType typeName)
-		{
-			Type t = typeof (PerNoIndexCalculate) ;
-			string name = typeName.ToString () ;
-			MethodInfo mi = t.GetMethod (name) ;
-			char ct = name[0] ;
-			double[][] args = (double[][]) data ;
-			if (ct =='A') //[] -- 1
-			{				
-				double[] res = new double[args.Length ] ;
-				//invoke,传入数组参数
-				for (int i = 0 ; i <args.Length ; i ++ )
-				{
-					res [i ] = (double) mi.Invoke (null ,new object []{args[i ]}) ;
-				}
-				return res ;
-			}
-			else if (ct == 'C' )	  //[] --- []
-			{
-				double[][] res = new double[args.Length ][] ;
-				for (int i = 0 ; i <args.Length ; i ++)
-				{
-					//invoke,传入数组参数
-					res [i ] = (double[]) mi.Invoke (null ,new object []{args [i ]}) ;
-				}
-				return res ;
-			}			
-			else 
-				return null ;
-		}
-		#endregion
+        public static object CalculateAllDataAC(object data, IndexNameType typeName)
+        {
+            Type t = typeof(PerNoIndexCalculate);
+            string name = typeName.ToString();
+            MethodInfo mi = t.GetMethod(name);
+            char ct = name[0];
+            double[][] args = (double[][])data;
+            if (ct == 'A') //[] -- 1
+            {
+                double[] res = new double[args.Length];
+                //invoke,传入数组参数
+                for (int i = 0; i < args.Length; i++)
+                {
+                    res[i] = (double)mi.Invoke(null, new object[] { args[i] });
+                }
+                return res;
+            }
+            else if (ct == 'C')	  //[] --- []
+            {
+                double[][] res = new double[args.Length][];
+                for (int i = 0; i < args.Length; i++)
+                {
+                    //invoke,传入数组参数
+                    res[i] = (double[])mi.Invoke(null, new object[] { args[i] });
+                }
+                return res;
+            }
+            else
+                return null;
+        }
+        #endregion
 
         #region 获取2个序列的重复号码个数
         /// <summary>
-		/// 获取2个序列的重复号码个数
-		/// </summary>
-		/// <returns>返回重复号码的个数</returns>
-		public static int GetRepeatNumbers(double[] data1,double[] data2)
-		{
-			int count = 0 ;
-			double temp ;
-			for (int i = 0; i <data1.Length  ; i++)
-			{
-				for (int j = 0; j < data2.Length ; j++)
-				{
-					temp = data1[i]-data2 [j ] ;					
-					if (Math.Abs (temp) <0.01){count ++ ;break ;}
-					if (temp <-0.01) {break ;}//后面的已经比其越来越大了
-				}
-			}
-			return count ;
-		}
-		#endregion
+        /// 获取2个序列的重复号码个数
+        /// </summary>
+        /// <returns>返回重复号码的个数</returns>
+        public static int GetRepeatNumbers(double[] data1, double[] data2)
+        {
+            int count = 0;
+            double temp;
+            for (int i = 0; i < data1.Length; i++)
+            {
+                for (int j = 0; j < data2.Length; j++)
+                {
+                    temp = data1[i] - data2[j];
+                    if (Math.Abs(temp) < 0.01) { count++; break; }
+                    if (temp < -0.01) { break; }//后面的已经比其越来越大了
+                }
+            }
+            return count;
+        }
+        #endregion
 
         #region 获取邻号出现的个数
         /// <summary>
@@ -180,12 +462,12 @@ namespace LotteryTicket
         public static int NeighbourNumberCount(double[] LastNumber, double[] CurNumber)
         {
             int count = 0;
-            double temp = 0 ;
-            foreach (double  item in LastNumber )
+            double temp = 0;
+            foreach (double item in LastNumber)
             {
-                foreach (double cur in CurNumber )
+                foreach (double cur in CurNumber)
                 {
-                    temp = Math.Abs (item - cur ) ;
+                    temp = Math.Abs(item - cur);
                     if (temp == 1 || temp == 32) count++;
                 }
             }
