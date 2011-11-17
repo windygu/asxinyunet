@@ -10,7 +10,6 @@ using System;
 using System.IO ;
 using System.Collections ;
 using NUnit.Framework ;
-using LotteryTicket.Validate ;
 
 namespace LotteryTicket.Test
 {

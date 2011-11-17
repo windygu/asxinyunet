@@ -3,9 +3,8 @@ using System.Collections ;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using LotteryTicket.Common;
 
-namespace LotteryTicket.Validate
+namespace LotteryTicket
 {
 	#region 测试类
 	/// <summary>
@@ -495,11 +494,12 @@ namespace LotteryTicket.Validate
         public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.EqualSingle ,
                                double[] conditons = null, int rows = 5, params object[] paramValues)
         {
-            double[] sum = 
-            int L = (int)conditons[2];
-            bool[] res = data.Select(n => BaseRuleCompare.RuleCompare(
-                ruleType, (double)PerNoIndexCalculate.A_CoverCount(n, L), conditons)).ToArray();
-            return ValidateMethods.GetRateReuslt(res);
+            //double[] sum = 
+            //int L = (int)conditons[2];
+            //bool[] res = data.Select(n => BaseRuleCompare.RuleCompare(
+            //    ruleType, (double)PerNoIndexCalculate.A_CoverCount(n, L), conditons)).ToArray();
+            //return ValidateMethods.GetRateReuslt(res);
+            return 0;
         }
     }
 	#endregion

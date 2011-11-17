@@ -10,7 +10,7 @@ using System;
 using System.Linq;
 using System.Reflection ;
 
-namespace LotteryTicket.Validate
+namespace LotteryTicket
 {
 	/// <summary>
 	/// 预测方法验证

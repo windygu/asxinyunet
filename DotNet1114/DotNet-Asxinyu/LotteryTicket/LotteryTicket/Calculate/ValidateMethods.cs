@@ -7,13 +7,12 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using LotteryTicket.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace LotteryTicket.Validate
+namespace LotteryTicket
 {
     /// <summary>
     /// 预测方法验证:淘汰，已经被带有验证和过滤结构的具体算法类取代
