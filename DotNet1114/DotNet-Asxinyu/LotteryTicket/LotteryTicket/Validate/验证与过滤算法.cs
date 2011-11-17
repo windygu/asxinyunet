@@ -38,7 +38,7 @@ namespace LotteryTicket.Validate
 	public class SumVF : IValidateFilter
 	{
 		/// <summary>
-		/// 和值范围过滤
+		/// 和值范围过滤，主要是规定和值范围
 		/// </summary>
 		/// <param name="origData">原始数据序列</param>
 		/// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
@@ -465,14 +465,46 @@ namespace LotteryTicket.Validate
     }
 	#endregion
 
-	#region 新旧跳比
-
-	#endregion
-
 	#region 和值与前几期不同的概率，杀单个和值
+    /// <summary>
+    /// 和值不同的计算和过滤 
+    /// </summary>
+    public class DifferentSumVF : IValidateFilter
+    {
+        /// <summary>
+        /// 通过和值来过滤:主要是杀和值，去掉列表中包含的和值
+        /// </summary>
+        /// <param name="origData">原始数据序列</param>
+        /// <param name="ruleType">过滤过程中的数据比较类型,默认为区间</param>
+        ///<param name="conditons" >需要排除的和值</param>
+        public void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.EqualSingle ,
+                                  double[] conditons = null, params object[] paramValues)
+        {
+            origData.RemoveAll(n=>BaseRuleCompare.RuleCompare(ruleType,
+                (double)IndexCalculate.CalculateIndex(n , IndexNameType.A_Sum), conditons));//满足一个即可
+        }
+        /// <summary>
+        /// 计算指定期内和值最近K期都不相同的概率
+        /// </summary>
+        /// <param name="data">序列</param>
+        /// <param name="ruleType">对比类型</param>
+        /// <param name="conditons"></param>
+        /// <param name="rows">需要的行数,此处为5</param>
+        /// <param name="paramValues">其他参数</param>
+        /// <returns>指定条件的概率</returns>
+        public double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.EqualSingle ,
+                               double[] conditons = null, int rows = 5, params object[] paramValues)
+        {
+            double[] sum = 
+            int L = (int)conditons[2];
+            bool[] res = data.Select(n => BaseRuleCompare.RuleCompare(
+                ruleType, (double)PerNoIndexCalculate.A_CoverCount(n, L), conditons)).ToArray();
+            return ValidateMethods.GetRateReuslt(res);
+        }
+    }
 	#endregion
 
-    #region 和值振幅范围，对和值振幅这个进行分析，其他指标，倍数，质合之类的
+    #region 和值振幅范围，对和值振幅这个进行分析，其他指标，倍数，质合之类的，连续几期的分析
 	#endregion
 
 	#region 旋转矩阵
