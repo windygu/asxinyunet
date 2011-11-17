@@ -15,9 +15,8 @@ namespace LotteryTicket
 	/// <summary>
 	/// 预测方法验证
 	/// </summary>
-	public class PredictMethodsValidate
-	{
-	
+    public class ValidatePredict
+	{	
 		/// <summary>
 		/// 验证单个方法与方法之间的预测情况(所有数据)
 		/// </summary>
