@@ -158,6 +158,17 @@ namespace LotteryTicket
     /// </summary>
     public class LotTicketHelper
     {
+        #region 公共方法---获得正确率
+        /// <summary>
+        /// 统计bool数组中True的比例,即正确率
+        /// </summary>
+        public static double GetRateReuslt(bool[] result)
+        {
+            int sum = result.Where(n => n == true).Count();
+            return ((double)sum) / ((double)result.Length);
+        }
+        #endregion
+
         #region  文本文件的规则解析:界面上动态添加规则，并更新到文本。最后还是通过文本的规则来解析，结果记录方便
         /// <summary>
         /// 解析规则文本
