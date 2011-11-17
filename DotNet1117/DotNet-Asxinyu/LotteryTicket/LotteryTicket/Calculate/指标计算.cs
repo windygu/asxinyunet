@@ -13,94 +13,68 @@ using System.Linq;
 using System.IO;
 
 namespace LotteryTicket
-{	
-	/// <summary>
-	/// 指标计算:单个指标和所有指标
+{
+    /// <summary>
+	/// 指标计算:单个指标和所有指标,采用扩展方法实现
 	/// </summary>
-    public class IndexCalculate
+    public static class IndexCalculate
     {
         #region 常量
         /// <summary>
 		/// 质数集合
 		/// </summary>
-		public static readonly double[] PrimeNumbers =new double[] {2,3,5,7,11,13,17,19,23,29,31};
+		public static readonly int[] PrimeNumbers =new int[] {2,3,5,7,11,13,17,19,23,29,31};
         #endregion
-
-        #region 自身数据
-        public static object C_SelfNumber(object args)
-		{          
-			return args ;
-		}
-		#endregion
-				
+    
 		#region 和值与数据密度
 		/// <summary>
 		/// 计算和值
 		/// </summary>
-		public static object A_Sum(object args)
-		{			
-            return ((double[])args).Sum();//返回和值
-		}
-		
-		/// <summary>
-		/// 数据密度:和值/极差
-		/// </summary>
-		public static object A_DataDensity(object args)
+        public static int Index_Sum(this IEnumerable<int > source)
 		{
-            return ((double[])args).Sum()/((double)A_MaxSpan(args));
+            return source.Sum();
 		}
-		#endregion
-		
-		#region 跨度
-		/// <summary>
+        #endregion
+
+        #region 跨度
+        /// <summary>
 		/// 计算最大跨度
 		/// </summary>
-		public static object A_MaxSpan(object args)
+        public static int Index_MaxSpan(this IEnumerable<int> source)
 		{
-			double[] data = (double[])args ;
-			return (data[data.Length -1] - data [0]) ;
+            return source.Last() - source.First();            
 		}
 		
 		/// <summary>
 		/// 计算跨度列表
 		/// </summary>
-		public static object C_SpanList(object args)
+        public static int[] Index_SpanList(this IEnumerable<int> source)
 		{
-			double[] data = (double[])args ;
-			double[] res = new double[data.Length -1 ] ;//少一个
-			for (int i = 0 ; i <res.Length ; i ++) 
-			{
-				res [i ] = data [i +1]-data [i ] ;
-			}
+            int[] list = source.ToArray();
+            int[] res = new int[list.Length];
+            for (int i = 0; i < list.Length ; i++)
+            {
+                res[i] = list[i + 1] - list[i];
+            }
 			return res ;
 		}
 		
 		/// <summary>
 		/// 最小跨度
 		/// </summary>
-		public static object A_MinSpan(object args)
+        public static int Index_MinSpan(this IEnumerable<int> source)
 		{
-            double[] res = (double[])C_SpanList(args);
+            int[] res = Index_SpanList(source);
             return res.Min();//返回最小值
 		}
 		
 		/// <summary>
 		/// 跨度和值
 		/// </summary>
-		public static object A_SpanSum(object args)
-		{	
-			double[] res = (double[])C_SpanList (args );
-            return res.Sum();
-		}
-		
-		/// <summary>
-		/// 跨度密度:跨度和/最大跨度
-		/// </summary>
-		public static object A_SpanDensity(object args)
+        public static int Index_SpanSum(this IEnumerable<int> source)
 		{
-			double spansum =(double ) A_SpanSum (args ) ;
-			double max = (double ) A_MaxSpan (args ) ;
-			return spansum /max ;
+            int[] res = Index_SpanList(source);
+            return res.Sum();
 		}
 		#endregion
 		
@@ -108,11 +82,11 @@ namespace LotteryTicket
 		/// <summary>
 		/// Ac值=差值个数-(6-1)
 		/// </summary>
-		public static object A_AcValue(object args)
-		{
-			double[] data = (double[])args ;
+		public static int Index_AcValue(this IEnumerable<int > source)
+        {
+            int[] data = source.ToArray();
 			ArrayList list = new ArrayList () ;
-			double temp ;
+			int temp ;
 			for (int i = 0 ; i <data.Length -1 ; i ++)
 			{
 				for (int j = i +1 ; j <data.Length ; j ++)
@@ -124,7 +98,7 @@ namespace LotteryTicket
 					}
 				}
 			}
-			return (double )(list.Count -(data.Length -1)) ;
+			return list.Count -(data.Length -1) ;
 		}
 		#endregion
 		
@@ -236,30 +210,7 @@ namespace LotteryTicket
 			return res ;
 		}
 		#endregion		
-		
-		#region PM001A
-		/// <summary>
-		/// 利用PM001算法计算预期结果
-		/// 当期开奖号码大小顺序第一位与第六位的差，计算的结果在下一期有可能不出
-		/// </summary>
-		public static object A_PM001(object args)
-		{
-			double[] data = (double[])args ;
-			return (double ) PerNoIndexCalculate.A_MaxSpan  (data ) ;//跨度			
-		}
-		#endregion
-		
-		#region PM002A
-		/// <summary>
-		/// 当期开奖号码大小顺序第二位与第三位的差，计算的结果在下一期有可能不出
-		/// </summary>
-		public static object A_PM002(object args)
-		{
-			double[] data = (double[])args ;
-			return data [2]-data [1] ;
-		}
-		#endregion
-		
+					
 		#region 每期最长的连续号码个数,2个2连续算3
 		/// <summary>
 		/// 每期最长的连续号码个数,2个2连续算3
@@ -477,18 +428,7 @@ namespace LotteryTicket
             return count;
         }
         #endregion
-
-        #region 公共方法
-        /// <summary>
-        /// 统计bool数组中True的比例,即正确率
-        /// </summary>
-        public static double GetRateReuslt(bool[] result)
-        {
-            int sum = result.Where(n => n == true).Count();
-            return ((double)sum) / ((double)result.Length);
-        }
-        #endregion
-
+             
         #region 文本解释规则进行验证
         /// <summary>
         /// 根据文本规则进行方法验证,并将结果输入到文本中

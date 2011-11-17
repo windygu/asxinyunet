@@ -4,7 +4,7 @@
  * Date: 2011-2-18
  * Time: 23:33
  * 
- * 号码过滤
+ * 2011-11-17 修改为泛型方法
  */
 using System;
 using System.Reflection ;
@@ -39,7 +39,7 @@ namespace LotteryTicket
 		RangeLimite ,
 		
 		/// <summary>
-		/// 不在范围内
+		/// 不在[]范围内即可
 		/// </summary>
 		NotInRangeLimite ,
 		
@@ -85,13 +85,13 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,在某一时刻，该集合是固定的</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-		public static bool EqualSingle(double[] data ,double[] Conditons)
+        public static bool EqualSingle<T>(T[] data, T[] Conditons) where T : IComparable 
 		{			
 			for (int i = 0 ; i <data.Length ; i ++ )
 			{
 				for (int j = 0 ; j <Conditons.Length ; j ++)
-				{
-                    if (Math.Abs(data[i] - Conditons[j]) < Precision){return true;}//一旦有相等的,即可返回}
+				{   
+                    if (data[i].CompareTo(Conditons [j ])==0) {return true;}//一旦有相等的,即可返回}
 				}
 			}
 			return false ;
@@ -105,7 +105,7 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,在某一时刻，该集合是固定的</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-        public static bool EqualAll(double[] data ,double[] Conditons)
+        public static bool EqualAll<T>(T[] data ,T[] Conditons) where T:IComparable 
 		{
 			//完全匹配:匹配队列中所有值,全部转换为double进行计算,差小于0.001即认为相等
 			//如和值匹配,跨度匹配,组合匹配(2个数字都要出现,组合出现)	
@@ -115,7 +115,8 @@ namespace LotteryTicket
                 dataRes[i] = false; //默认为False
 				for (int j = 0 ; j <Conditons.Length ; j ++)
 				{
-                    if (Math.Abs(data[i] - Conditons[j]) < Precision) { dataRes[i] = true; break; }//一旦有小于相等的,说明当前元素满足条件
+                    //一旦有小于相等的,说明当前元素满足条件
+                    if (data[i].CompareTo (Conditons[j])==0) { dataRes[i] = true; break; }
 				}
                 if (!dataRes[i]) { return false; }//有一个不满足即可返回
 			}
@@ -130,13 +131,11 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,在某一时刻，该集合是固定的</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-        public static bool NotEqual(double[] data , double[] Conditons)
-		{
-			double[] obj = new double[Conditons.Length ] ;
-			for (int i = 0 ; i <Conditons.Length ; i ++){obj [i ] = (double )Conditons [i ] ;}			
+        public static bool NotEqual<T>(T[] data, T[] Conditons) where T : IComparable 
+		{			
 			for (int i = 0 ; i <data.Length ; i ++ ){
 				for (int j = 0 ; j <Conditons.Length ; j ++){
-					if (Math.Abs (data [i ]-Conditons [j ]) < Precision ){return false ;}//一旦有相等的,说明不满足,即可返回					
+					if (data [i ].CompareTo(Conditons[j])==0){return false ;}//一旦有相等的,说明不满足,即可返回					
 				}
 			}
 			return true  ;
@@ -150,10 +149,13 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,上限和下限</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-        public static bool RangeLimite(double[] data ,double[] Conditons)
+        public static bool RangeLimite<T>(T[] data, T[] Conditons) where T : IComparable 
 		{
-			for (int i = 0 ; i <data.Length ; i ++ ){				
-				if ((data[i ]>Conditons [1])||(data [i ]<Conditons [0])){return false ;}//一旦有不在范围的,说明不满足,即可返回				
+			for (int i = 0 ; i <data.Length ; i ++ )
+            {
+                //一旦有不在范围的,说明不满足,即可返回				
+				if ((data[i ].CompareTo(Conditons [0])>=0)||(data [i ].CompareTo(Conditons [1])<=0))
+                {return false ;}
 			}
 			return true  ;
 		}
@@ -166,11 +168,12 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,上限和下限</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-        public static bool NotInRangeLimite(double[] data ,double[] Conditons)
+        public static bool NotInRangeLimite<T>(T[] data, T[] Conditons) where T : IComparable 
 		{
-			//不在某一区间,即<=或者>=
+			//不在某一区间,即<或者>
 			for (int i = 0 ; i <data.Length ; i ++ ){				
-				if ((data[i ]<Conditons [1])&&(data [i ]>Conditons [0])){return false ;}//一旦有不在范围的,说明不满足,即可返回					
+				if ((data[i ].CompareTo(Conditons [1])<0)&&(data [i].CompareTo(Conditons[0])>0))
+                {return false ;}//一旦有不在范围的,说明不满足,即可返回					
 			}
 			return true  ;
 		}
@@ -183,11 +186,11 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,上限和下限</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-        public static bool LessThanLimite(double[] data ,double[] Conditons)
+        public static bool LessThanLimite<T>(T[] data, T[] Conditons) where T : IComparable 
 		{
 			//小于等于比较<=
 			for (int i = 0 ; i <data.Length ; i ++ ){				
-				if ((data[i ]>Conditons [0])){return false ;}//一旦有大于范围的,说明不满足,即可返回
+				if (data[i].CompareTo (Conditons [0])>0){return false ;}//一旦有大于范围的,说明不满足,即可返回
 			}
 			return true  ;
 		}
@@ -200,12 +203,12 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,上限和下限</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-        public static bool GreaterThanLimite(double[] data ,double[] Conditons)
+        public static bool GreaterThanLimite<T>(T[] data, T[] Conditons) where T : IComparable 
 		{
 			//大于等于比较>=
 			for (int i = 0 ; i <data.Length ; i ++ )
 			{				
-				if ((data[i ]<Conditons [0])){return false ;}//一旦有小于于范围的,说明不满足,即可返回			
+				if (data[i ].CompareTo(Conditons [0])<0){return false ;}//一旦有小于于范围的,说明不满足,即可返回			
 			}
 			return true  ;
 		}
@@ -256,7 +259,7 @@ namespace LotteryTicket
 		}
 		#endregion
 
-        #region 综合比较
+        #region 综合比较--淘汰
         /// <summary>
 		/// 根据指定的规则来调用具体方法进行匹配验证，确定是否满足条件
 		/// </summary>
@@ -264,7 +267,7 @@ namespace LotteryTicket
         /// <param name="data">需要进行比较的集合,一般为指标的计算值</param>
         /// <param name="Conditons">目标集合,在某一时刻，该集合是固定的</param>
         /// <returns>返回是否匹配成功:True 成功，False 失败</returns>
-		public static bool RuleCompare(FilterRuleType typeName,object data ,double[] Conditons)
+		private static bool RuleCompare(FilterRuleType typeName,object data ,double[] Conditons)
 		{
 			//根据名称，采用反射调用,data为Arraylist数组
 			if ((typeName == FilterRuleType.StringEqualSingle )||(typeName == FilterRuleType.StringEqualAll ))
@@ -284,5 +287,35 @@ namespace LotteryTicket
 			}
         }
         #endregion
+
+        #region 综合比较
+        public static bool RuleCompare<T>(FilterRuleType typeName,T[] data, T[] Conditons) where T:IComparable 
+        {
+            switch (typeName)
+            {
+                case FilterRuleType.EqualSingle:
+                    return EqualSingle<T>(data, Conditons);                    
+                case FilterRuleType.EqualAll:
+                    return EqualAll<T>(data, Conditons);
+                case FilterRuleType.NotEqual:
+                    return NotEqual<T>(data, Conditons);
+                case FilterRuleType.RangeLimite:
+                    return RangeLimite<T>(data, Conditons);
+                case FilterRuleType.NotInRangeLimite:
+                    return NotInRangeLimite<T>(data, Conditons);
+                case FilterRuleType.LessThanLimite:
+                    return LessThanLimite<T>(data, Conditons);
+                case FilterRuleType.GreaterThanLimite:
+                    return GreaterThanLimite<T>(data, Conditons);
+                case FilterRuleType.StringEqualSingle:
+                    return false ;//TODO:需要完善
+                case FilterRuleType.StringEqualAll:
+                    return false;//TODO:需要完善
+                default:
+                    return false;
+            }
+        }
+        #endregion
+
     }	
 }
