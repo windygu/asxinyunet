@@ -99,6 +99,9 @@
     <None Include="TestData\PredictValidateData.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LotteryTicket-db-1117.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LotteryTicket.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
