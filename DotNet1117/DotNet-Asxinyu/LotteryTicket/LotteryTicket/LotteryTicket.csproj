@@ -73,14 +73,14 @@
     <Compile Include="Base\Combination.cs" />
     <Compile Include="Base\LotTicketHelper.cs" />
     <Compile Include="Base\Permutation.cs" />
-    <Compile Include="Calculate\RuleCompare.cs" />
-    <Compile Include="Calculate\IndexCalculate.cs" />
+    <Compile Include="Calculate\规则对比.cs" />
+    <Compile Include="Calculate\指标计算.cs" />
     <Compile Include="Calculate\StaticsTest.cs" />
     <Compile Include="Base\LotTickData.cs" />
     <Compile Include="Entities\Ssq.Biz.cs" />
     <Compile Include="Entities\Ssq.cs" />
     <Compile Include="Base\TwoColorBall.cs" />
-    <Compile Include="Calculate\PredictMethodsValidate.cs" />
+    <Compile Include="Calculate\验证预测.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\LotteryTest.cs" />
