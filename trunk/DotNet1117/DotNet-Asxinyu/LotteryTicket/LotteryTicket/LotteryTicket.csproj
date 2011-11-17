@@ -70,7 +70,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseLotTickClass.cs" />
     <Compile Include="Base\Combination.cs" />
     <Compile Include="Base\LotTicketHelper.cs" />
     <Compile Include="Base\Permutation.cs" />

@@ -116,9 +116,12 @@ namespace LotteryTicket
 			return res ;
 		}
 		#endregion
-		
-		#region 奖项对比
-		/// <summary>
+
+        #region 获取单个指标的数据
+        #endregion
+
+        #region 奖项对比
+        /// <summary>
 		/// 对比单期号码与中奖号码,确定中奖等级
 		/// </summary>
 		/// <param name="prizeNo">中奖号码</param>
