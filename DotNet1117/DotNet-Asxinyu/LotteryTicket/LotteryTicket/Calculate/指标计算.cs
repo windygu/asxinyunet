@@ -102,124 +102,55 @@ namespace LotteryTicket
 		}
 		#endregion
 		
-		#region 多期号码
-        /// <summary>
-        /// 多期号码中，号码所有出现的个数，去掉重复的
-        /// </summary>        
-		public static object B_ManyNoCounts(object args)
-		{
-			double[][] data = (double[][])args ;//多期数据
-			ArrayList al = new ArrayList ();
-			for (int i = 0 ; i <data.Length ; i ++)
-			{
-				for (int j=0 ; j <data[0].Length ; j ++)
-				{
-					if (!al.Contains(data[i][j]))
-					{
-						al.Add (data[i][j]);
-					}
-				}
-			}
-			return (double )al.Count ;
-		}
+		#region 多期号码出现的重复号码
 		/// <summary>
         /// 多期数据中,出现重复号码的个数
 		/// </summary>		
-		public static object B_ManyNoOfNewCount(object args)
+        public static int Index_ManyNoOfNewCount(this IEnumerable<int[]> source)
 		{
-			double[][] data = (double[][])args ;//多期数据
+            ArrayList al = new ArrayList();
             int count = 0;
-			ArrayList al = new ArrayList ();
-			for (int i = 0 ; i <data.GetLength (0) ; i ++)
-			{
-				for (int j=0 ; j <data[0].Length ; j ++)
-				{
-                    if (!al.Contains(data[i][j])) { al.Add(data[i][j]); }
+            foreach (var item in source )
+            {
+                foreach (var s in item )
+                {
+                    if (!al.Contains(s )) { al.Add(s ); }
                     else { count++; }
-				}
-			}
-			return (double )count ;
-		}
-		/// <summary>
-        /// 多期相同的数据列表？？？
-		/// </summary>	
-		public static object D_ManyNosList(object args)
-		{
-			double[][] data = (double[][])args ;//多期数据
-			ArrayList al = new ArrayList ();
-			for (int i = 0 ; i <data.Length -1 ; i ++)
-			{
-				for (int j=0 ; j <data[0].Length ; j ++)
-				{
-					if (!al.Contains (data[i][j]))
-					{
-						al.Add (data[i][j]);
-					}
-				}
-			}
-			ArrayList resList = new ArrayList () ;
-			for (int i = 0; i < data[0].Length ; i++)
-			{
-				if (al.Contains (data[data.Length -1][i ]))
-				{
-					resList .Add (data[data.Length -1][i ]) ;
-				}
-			}
-			double[] d = (double[])resList.ToArray(typeof (double )) ;
-			return d ;
+                }
+            }            
+			return count ;
 		}
 		#endregion
 		
 		#region 统计次数与频率 FrequCount FrequPrecent
 		/// <summary>
-		/// 计算在当前期内出现的次数
+		/// 计算在所有当前数据中，号码出现的频率(百分比)
 		/// </summary>
-		public static object FrequCount(int[][] args)
+        public static double[] FrequPrecent(this IEnumerable<int[]> source,int maxNumber = 33)
 		{
 			//先从最后一列找出最大值,确定出现的最大数字
-			int max = args [0][args[0].Length-1] ;
-			for (int i = 0 ; i <args.Length ; i ++ )
-			{
-				if (args [i ][args [0].Length -1]>max )
-				{
-					max = args [i ][args [0].Length -1] ;
-				}
-			}
-			int[] count = new int[max ] ;
-			for (int i = 0 ; i <args.Length ; i ++ )
-			{
-				for (int j = 0 ; j <args[0].Length ; j ++)
-				{
-					count[args [i ][j ]-1] ++ ;
-				}
-			}
-			return count ;
-		}
-		
-		/// <summary>
-		/// 计算百分比频率
-		/// </summary>
-		public static object FrequPrecent(int[][] args)
-		{
-			int[] count = (int[])FrequCount (args ) ;
-			double[] res = new double[count .Length ] ;
-			for (int i = 0 ; i <res.Length ; i ++)
-			{
-				res [i ] = ((double )count [i ])/((double )args .Length);
-			}
-			return res ;
-		}
+            int[] numbers = new int[maxNumber];
+            foreach (var item in source )
+            {
+                foreach (var s in item )
+                {
+                    numbers[s + 1]++;
+                }
+            }
+            int allNumbers = numbers.Sum () ;
+            return numbers.Select(n => ((double)n) / ((double)allNumbers)).ToArray ();
+		}		
 		#endregion		
 					
 		#region 每期最长的连续号码个数,2个2连续算3
 		/// <summary>
 		/// 每期最长的连续号码个数,2个2连续算3
 		/// </summary>	
-		public static double A_ContinuousCount(double[] args)
-		{
-			double[] res = (double[])C_SpanList (args ) ;//计算跨度
+        public static int Index_ContinuousCount(this IEnumerable<int> source)
+		{			
+            int[] res = source.Index_SpanList();
             int count = res.Where(n => n == 1).Count();//计算==1的个数			
-			return (double)(count +1) ;
+			return count +1 ;
 		}
 		#endregion
 		
