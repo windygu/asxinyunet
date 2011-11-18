@@ -104,7 +104,5 @@
       <Name>DotNet.Tools</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Calculate\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
