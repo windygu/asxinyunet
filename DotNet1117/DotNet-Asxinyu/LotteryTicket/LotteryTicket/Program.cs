@@ -22,7 +22,7 @@
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
  *
- *              
+ * 2011-11-18 重大改进基本完成,整理之后，利用Linq特性，大大简化程序结构。整合完善彩票类，数据接口
  * 2011-11-17 整个架构重新设计，重新设计数据库，更改程序架构，改进比较算法类为泛型类
  *            重大改进：将指标计算类升级为泛型扩展方法类，以便在后续的计算过程中采用Linq技术
  * 2011-11-16 根据相关网站经验和改进，完成多个验证和过滤算法，进一步丰富数据特征的验证
@@ -74,6 +74,7 @@ using DotNet.Tools;
 using XCode;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
+using Kw.Combinatorics;
 
 namespace LotteryTicket
 {

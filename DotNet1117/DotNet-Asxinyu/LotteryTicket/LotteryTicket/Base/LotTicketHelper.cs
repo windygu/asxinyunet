@@ -13,6 +13,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using DotNet.Tools;
+using Kw.Combinatorics;
 
 namespace LotteryTicket
 {
@@ -43,8 +44,8 @@ namespace LotteryTicket
     /// </summary>
     interface IGetWebLotTickData
     {
-        void GetAllHistoryData(int pages);//获取所有历史数据
-        void UpdateRecentData(int pages);//更新最新数据
+        void GetAllHistoryData(int pages = -1);//获取所有历史数据，自动计算所有页面的总数
+        void UpdateRecentData(int pages=1);//更新最新数据,默认为一页
     }
 
     /// <summary>
