@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Text;
+using DotNet.Tools;
 
 namespace LotteryTicket
 {
@@ -409,11 +410,11 @@ namespace LotteryTicket
                     double[][] deleteNos = TwoColorBall.GetRedBallData(latestNos);
                     for (int i = 0; i < deleteNos.GetLength(0); i++)
                     {
-                        if (IndexCalculate.GetRepeatNumbers(curComb, deleteNos[i]) >= repeatNumbers)
-                        {
-                            temp = false;
-                            break;
-                        }
+                        //if (IndexCalculate.GetRepeatNumbers(curComb, deleteNos[i]) >= repeatNumbers)
+                        //{
+                        //    temp = false;
+                        //    break;
+                        //}
                     }
                     if (temp) res.Add(curComb);//符合要求则添加
                 }
@@ -440,10 +441,10 @@ namespace LotteryTicket
             //					flag.Add (i ) ;//将位置添加到序列,统一删除
             //				}
             //			}
-            origData.RemoveAll(delegate(double[] cur)
-            {
-                return IndexCalculate.GetRepeatNumbers(cur, deleteNumber) >= numbers ? true : false;
-            });
+            //origData.RemoveAll(delegate(double[] cur)
+            //{
+            //    return IndexCalculate.GetRepeatNumbers(cur, deleteNumber) >= numbers ? true : false;
+            //});
         }
         /// <summary>
         ///  杀组合,杀掉一组序列中所有指定的组合
@@ -473,6 +474,31 @@ namespace LotteryTicket
                 numbers.Add(Convert.ToDouble(numbers[i]));
             }
             return numbers.ToArray();
+        }
+        #endregion
+
+        #region 文本解释规则进行验证
+        /// <summary>
+        /// 根据文本规则进行方法验证,并将结果输入到文本中
+        /// </summary>
+        /// <param name="ruleFilePath">规则文件路径</param>
+        public static void ValidateRuleFile(string ruleFilePath)
+        {
+            //List<string> ruleList = TxtParse.GetRuleListFormFile(ruleFilePath);//原始规则
+            //string[][] ruleStr = TxtParse.ParseRuleList(ruleList);//解析后的规则字符串,每行一个规则,没列为参数列表
+            //using (StreamWriter sw = new StreamWriter(DateTime.Now.ToShortDateString(), false))
+            //{
+            //    //调用方法进行计算
+            //    for (int i = 0; i < ruleStr.Length; i++)
+            //    {
+            //        //基本参数的转化,类型不同
+
+            //        //依次计算,并写入结果
+            //        sw.WriteLine(TxtParse.CombStringArr(ruleStr[i]));
+            //        //结果
+            //        sw.WriteLine();
+            //    }
+            //}
         }
         #endregion
     }

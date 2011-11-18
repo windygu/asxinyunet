@@ -31,18 +31,7 @@ using System.Linq;
 
 namespace DotNet.Tools
 {
-    /// <summary>
-    /// 扩展方法测试
-    /// </summary>
-    public static class EnumerableExtensions
-    {
-        public static IEnumerable<T> Test<T>(this IEnumerable<T> source) where T:IComparable 
-        {
-            return source.Last() - source.First();
-        }
-    }
-
-	class Program
+    class Program
 	{
 		static void Main(string[] args)
 		{
