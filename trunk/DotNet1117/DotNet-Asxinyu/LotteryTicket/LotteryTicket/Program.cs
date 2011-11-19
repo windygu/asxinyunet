@@ -82,14 +82,7 @@ namespace LotteryTicket
     class Program
     {
     	public static void Main(string[] args)
-    	{
-    		//            VFTest.TestAll(1000);
-    		double[] a = new double[] {1,2,3,4,5,6,7,8};
-    		double[] b = new double[] {1,3,5,7,9};
-    		double[] c = new double[] {2,4,6,8,9,10,16,17,18,19};
-            //Console.WriteLine(PerNoIndexCalculate.CoverCount(a ,5));
-            //Console.WriteLine(PerNoIndexCalculate.CoverCount(b ,8));
-            //Console.WriteLine(PerNoIndexCalculate.CoverCount(c ,9));
+    	{            
     		Console.ReadKey(true);
     	}
     	/// <summary>
