@@ -84,8 +84,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Library\平台搭建计划.doc" />
+    <None Include="Lib\CuteEditor.lic" />
+    <None Include="Lib\ManagedCPPAPI.netmodule" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Library\计划进度.txt" />
+    <Content Include="Lib\App_Licenses.dll" />
+    <Content Include="Lib\CalcuteWave.dll" />
+    <Content Include="Lib\CuteEditor.dll" />
+    <Content Include="Lib\CuteEditor.ImageEditor.dll" />
+    <Content Include="Lib\DotNet.Tools.dll" />
+    <Content Include="Lib\DotNet.Tools.pdb" />
+    <Content Include="Lib\KdTree.dll" />
+    <Content Include="Lib\Library.dll" />
+    <Content Include="Lib\Library.pdb" />
+    <Content Include="Lib\MWArray.dll" />
+    <Content Include="Lib\NetSpell.SpellChecker.dll" />
+    <Content Include="Lib\NPOI.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
