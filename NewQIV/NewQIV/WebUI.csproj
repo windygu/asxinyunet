@@ -69,35 +69,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="App_Licenses">
-      <HintPath>..\dll\App_Licenses.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\App_Licenses.dll</HintPath>
     </Reference>
     <Reference Include="CalcuteWave">
-      <HintPath>..\dll\CalcuteWave.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\CalcuteWave.dll</HintPath>
     </Reference>
     <Reference Include="CuteEditor">
-      <HintPath>..\dll\CuteEditor.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\CuteEditor.dll</HintPath>
     </Reference>
     <Reference Include="CuteEditor.ImageEditor">
-      <HintPath>..\dll\CuteEditor.ImageEditor.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\CuteEditor.ImageEditor.dll</HintPath>
     </Reference>
     <Reference Include="DotNet.Tools">
-      <HintPath>..\dll\DotNet.Tools.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\DotNet.Tools.dll</HintPath>
     </Reference>
     <Reference Include="KdTree">
-      <HintPath>..\dll\KdTree.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\KdTree.dll</HintPath>
     </Reference>
     <Reference Include="Library">
-      <HintPath>..\dll\Library.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\Library.dll</HintPath>
     </Reference>
     <Reference Include="MWArray, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dll\MWArray.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="NetSpell.SpellChecker">
-      <HintPath>..\dll\NetSpell.SpellChecker.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\dll\NPOI.dll</HintPath>
+      <HintPath>..\BioinfoLibrary\Lib\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
