@@ -38,7 +38,7 @@ namespace LotteryTicket
 
         #region 跨度
         /// <summary>
-        /// 计算最大跨度
+        /// 最大跨度:一个投注结果中最大号码与最小号码之差
         /// </summary>
         public static int Index_最大跨度(this IEnumerable<int> source)
         {
@@ -57,15 +57,6 @@ namespace LotteryTicket
                 res[i] = list[i + 1] - list[i];
             }
             return res;
-        }
-
-        /// <summary>
-        /// 最小跨度
-        /// </summary>
-        public static int Index_最小跨度(this IEnumerable<int> source)
-        {
-            int[] res = Index_跨度列表(source);
-            return res.Min();//返回最小值
         }
 
         /// <summary>
@@ -142,15 +133,30 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 每期最长的连续号码个数,2个2连续算3
+        #region 每期最长的连续号码数
         /// <summary>
-        /// 每期最长的连续号码个数,2个2连续算3
+        /// 每期最长的连续号码数
         /// </summary>	
-        public static int Index_最长连续号码个数(this IEnumerable<int> source)
+        public static int Index_最长连续号码数(this IEnumerable<int> source)
         {
-            int[] res = source.Index_跨度列表();
-            int count = res.Where(n => n == 1).Count();//计算==1的个数			
-            return count + 1;
+            int[] data = source.ToArray();
+            int count = 0;
+            int maxCount = 0;
+            for (int i = data.Length -1; i > 0; i--)
+            {
+                for (int j = i -1; j >= 0 ; j--)
+                {
+                    if (data[i] - data[j] == 1) count++;
+                    else 
+                    {
+                        if (maxCount < count) { maxCount = count; } 
+                        count = 0; 
+                    }
+                }
+            }
+            //可能最后一次循环很大
+            if (maxCount < count) { maxCount = count; } 
+            return maxCount;
         }
         #endregion
 
@@ -227,6 +233,132 @@ namespace LotteryTicket
                 }
             }
             return count;
+        }
+        #endregion
+
+        #region 大号个数:号码值大于等于17的投注号码个数
+        /// <summary>
+        /// 大号个数:号码值大于等于指定值的投注号码个数
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="BigNumber">大号号码下限,默认为17</param>      
+        public static int Index_大号个数(this IEnumerable<int> source,int BigNumber = 17)
+        {
+            return source.Where(n =>n >=BigNumber ).Count();
+        }
+        #endregion
+
+        #region 尾数和值：一个投注结果中所有号码尾数（个位）之和
+        /// <summary>
+        /// 尾数和值
+        /// </summary>
+        public static int Index_尾数和值(this IEnumerable<int> source)
+        {
+            //对10求余即为尾数，求和
+            return source.Select(n => n % 10).Sum();
+        }
+        #endregion
+
+        #region 奇号连续个数：一个投注结果中，如果一个号码为奇号，其前一个号码也为奇号，则为一个奇号连续
+        /// <summary>
+        /// 奇号连续个数
+        /// </summary>
+        public static int Index_奇号连续个数(this IEnumerable<int> source)
+        {            
+            bool[] res = source.Select (n=>n %2 ==1).ToArray () ;//是否是奇数
+            int count = 0;
+            for (int i = 0; i < res.Length -1 ; i++)
+            {
+                if (res[i + 1] && res[i]) count++;
+            }
+            return count;
+        }
+        #endregion
+
+        #region 偶号连续个数:一个投注结果中，如果一个号码为偶号，其前一个号码也为偶号，则为一个偶号连续；
+        /// <summary>
+        /// 偶号连续个数
+        /// </summary>
+        public static int Index_偶号连续个数(this IEnumerable<int> source)
+        {
+            bool[] res = source.Select(n => n % 2 == 0).ToArray();//是否是奇数
+            int count = 0;
+            for (int i = 0; i < res.Length - 1; i++)
+            {
+                if (res[i + 1] && res[i]) count++;
+            }
+            return count;
+        }
+        #endregion
+
+        #region 最大邻号间距:一个投注结果中所有相邻两个彩球号码之差的最大值
+        /// <summary>
+        /// 最大邻号间距
+        /// </summary>
+        public static int Index_最大邻号间距(this IEnumerable<int> source)
+        {
+            return source.Index_跨度列表 ().Max () ;            
+        }
+        #endregion
+
+        #region 最小邻号间距:一个投注结果中所有相邻两个彩球号码之差的最小值
+        /// <summary>
+        /// 最小邻号间距
+        /// </summary>
+        public static int Index_最小邻号间距(this IEnumerable<int> source)
+        {
+            return source.Index_跨度列表().Min();
+        }
+        #endregion
+
+        #region 连号个数:投注结果中后一个号码与前一个号码相差为1就是连号
+        /// <summary>
+        /// 连号个数
+        /// </summary>
+        public static int Index_连号个数(this IEnumerable<int> source)
+        {
+            int[] data = source.ToArray();
+            int count = 0;
+            for (int i = 0; i < data.Length ; i++)
+            {
+                if (data[i + 1] - data[i] == 1) count++;
+            }
+            return count;
+        }
+        #endregion
+
+        #region 连号组数:一个投注结果中出现连号的组数
+        /// <summary>
+        /// 连号个数
+        /// </summary>
+        public static int Index_连号组数(this IEnumerable<int> source)
+        {
+            int[] data = source.ToArray();
+            int count = 0;
+            bool flag = false;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i + 1] - data[i] == 1)
+                {
+                    if (flag)//只第一次加
+                    {
+                        count++;
+                        flag = true;
+                    }
+                }
+                else { flag = false; }
+            }
+            return count;
+        }
+        #endregion
+
+        #region 尾数组数:一个投注结果中不同尾数的组数
+        /// <summary>
+        /// 尾数组数
+        /// </summary>
+        public static int Index_尾数组数(this IEnumerable<int> source)
+        {
+            return source.Select(n => n % 10).Distinct().Count();
         }
         #endregion
     }

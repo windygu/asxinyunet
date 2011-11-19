@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\LotTicketHelper.cs" />
+    <Compile Include="Base\规律统计.cs" />
     <Compile Include="Base\规则对比.cs" />
     <Compile Include="Base\指标计算.cs" />
     <Compile Include="Test\StaticsTest.cs" />
