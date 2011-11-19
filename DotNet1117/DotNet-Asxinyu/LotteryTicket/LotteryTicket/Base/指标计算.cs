@@ -30,7 +30,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算和值
         /// </summary>
-        public static int Index_Sum(this IEnumerable<int> source)
+        public static int Index_和值(this IEnumerable<int> source)
         {
             return source.Sum();
         }
@@ -40,7 +40,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算最大跨度
         /// </summary>
-        public static int Index_MaxSpan(this IEnumerable<int> source)
+        public static int Index_最大跨度(this IEnumerable<int> source)
         {
             return source.Last() - source.First();
         }
@@ -48,7 +48,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算跨度列表
         /// </summary>
-        public static int[] Index_SpanList(this IEnumerable<int> source)
+        public static int[] Index_跨度列表(this IEnumerable<int> source)
         {
             int[] list = source.ToArray();
             int[] res = new int[list.Length];
@@ -62,18 +62,18 @@ namespace LotteryTicket
         /// <summary>
         /// 最小跨度
         /// </summary>
-        public static int Index_MinSpan(this IEnumerable<int> source)
+        public static int Index_最小跨度(this IEnumerable<int> source)
         {
-            int[] res = Index_SpanList(source);
+            int[] res = Index_跨度列表(source);
             return res.Min();//返回最小值
         }
 
         /// <summary>
         /// 跨度和值
         /// </summary>
-        public static int Index_SpanSum(this IEnumerable<int> source)
+        public static int Index_跨度和值(this IEnumerable<int> source)
         {
-            int[] res = Index_SpanList(source);
+            int[] res = Index_跨度列表(source);
             return res.Sum();
         }
         #endregion
@@ -82,7 +82,7 @@ namespace LotteryTicket
         /// <summary>
         /// Ac值=差值个数-(6-1)
         /// </summary>
-        public static int Index_AcValue(this IEnumerable<int> source)
+        public static int Index_Ac值(this IEnumerable<int> source)
         {
             int[] data = source.ToArray();
             ArrayList list = new ArrayList();
@@ -106,7 +106,7 @@ namespace LotteryTicket
         /// <summary>
         /// 多期数据中,出现重复号码的个数
         /// </summary>		
-        public static int Index_ManyNoOfNewCount(this IEnumerable<int[]> source)
+        public static int Index_多期重复号码数(this IEnumerable<int[]> source)
         {
             ArrayList al = new ArrayList();
             int count = 0;
@@ -126,7 +126,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算在所有当前数据中，号码出现的频率(百分比)
         /// </summary>
-        public static double[] FrequPrecent(this IEnumerable<int[]> source, int maxNumber = 33)
+        public static double[] Index_号码频率(this IEnumerable<int[]> source, int maxNumber = 33)
         {
             //先从最后一列找出最大值,确定出现的最大数字
             int[] numbers = new int[maxNumber];
@@ -146,9 +146,9 @@ namespace LotteryTicket
         /// <summary>
         /// 每期最长的连续号码个数,2个2连续算3
         /// </summary>	
-        public static int Index_ContinuousCount(this IEnumerable<int> source)
+        public static int Index_最长连续号码个数(this IEnumerable<int> source)
         {
-            int[] res = source.Index_SpanList();
+            int[] res = source.Index_跨度列表();
             int count = res.Where(n => n == 1).Count();//计算==1的个数			
             return count + 1;
         }
@@ -158,9 +158,9 @@ namespace LotteryTicket
         /// <summary>
         /// 每期质数的个数
         /// </summary>		
-        public static int Index_PrimeCount(this IEnumerable<int> source)
+        public static int Index_质数个数(this IEnumerable<int> source)
         {
-            return source.Index_GetRepeatNumbers(PrimeNumbers);            
+            return source.Index_2个序列的重复号码个数(PrimeNumbers);            
         }
         #endregion
 
@@ -168,7 +168,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算每期的偶数的个数
         /// </summary>
-        public static int Index_EvenNumber(this IEnumerable<int> source)
+        public static int Index_偶数个数(this IEnumerable<int> source)
         {
             return source.Where(n => ((int)n) % 2 == 0).Count();
         }
@@ -181,7 +181,7 @@ namespace LotteryTicket
         /// <param name="source">数据源</param>
         /// <param name="L">求余参数,默认18</param>
         /// <returns>在此参数下的所有出现数字</returns>
-        public static int Index_CoverCount(this IEnumerable<int> source,int L = 18)
+        public static int Index_求余覆盖个数(this IEnumerable<int> source,int L = 18)
         {
             return source.Select(n => ((int)n) % L).Distinct().Count();
         }
@@ -192,7 +192,7 @@ namespace LotteryTicket
         /// 获取2个序列的重复号码个数
         /// </summary>
         /// <returns>返回重复号码的个数</returns>
-        public static int Index_GetRepeatNumbers(this IEnumerable<int> source, IEnumerable<int> compareSouce)
+        public static int Index_2个序列的重复号码个数(this IEnumerable<int> source, IEnumerable<int> compareSouce)
         {
             int count = 0;
             foreach (int item in source)
@@ -214,7 +214,7 @@ namespace LotteryTicket
         /// <param name="source">本期数据</param>
         /// <param name="LastSouce">上期数据或者指定期数据</param>
         /// <returns>上期邻号在本期出现的个数</returns>
-        public static int Index_NeighbourNumberCount(this IEnumerable<int> source, IEnumerable<int> LastSouce)
+        public static int Index_上期邻号出现个数(this IEnumerable<int> source, IEnumerable<int> LastSouce)
         {
             int count = 0;
             double temp = 0;
