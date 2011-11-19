@@ -13,7 +13,6 @@ namespace LotteryTicket
         public int FloorLimit { get; set; }
         public int CeilLimit { get; set; } 
         public System.Func<int[], int> Selector { get; set; }
-
     }
 
     /// <summary>
