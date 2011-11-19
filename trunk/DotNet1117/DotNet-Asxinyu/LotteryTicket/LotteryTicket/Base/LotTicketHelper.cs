@@ -17,6 +17,74 @@ using Kw.Combinatorics;
 
 namespace LotteryTicket
 {
+    #region 规则类，设置规则及比较参数
+    /// <summary>
+    /// 规则类
+    /// </summary>
+    public class Rule
+    {
+        /// <summary>
+        /// 上限
+        /// </summary>
+        public int FloorLimit { get; set; }
+        /// <summary>
+        /// 下限
+        /// </summary>
+        public int CeilLimit { get; set; }
+        /// <summary>
+        /// 指标计算函数
+        /// </summary>
+        public System.Func<int[], int> Selector { get; set; }
+        /// <summary>
+        /// 对比类型
+        /// </summary>
+        public CompareType CompareRule { get; set; }
+        /// <summary>
+        /// 构造函数,如果为单参数的话，默认为floorlimit
+        /// </summary>
+        /// <param name="selector">指标计算函数</param>
+        /// <param name="compareRule">对比类型</param>
+        /// <param name="floorlimit">下限,默认为单个比较参数</param>
+        /// <param name="ceilLimit">上限</param>
+        public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0, int ceilLimit = 0)
+        {
+            this.Selector = selector;
+            this.CompareRule = compareRule;
+            this.FloorLimit = floorlimit;
+            this.CeilLimit = ceilLimit;
+        }
+    }
+    #endregion
+
+    #region 比较类型枚举
+    /// <summary>
+    /// 比较类型
+    /// </summary>
+    public enum CompareType
+    {
+        /// <summary>
+        /// 相等匹配
+        /// </summary>
+        Equal,
+
+        /// <summary>
+        /// 一定范围内,上下限:[a,b]
+        /// </summary>
+        RangeLimite,
+
+        /// <summary>
+        /// 小于或等于
+        /// </summary>
+        LessThanLimite,
+
+        /// <summary>
+        /// 大于或等于
+        /// </summary>
+        GreaterThanLimite
+
+    }
+    #endregion
+
     #region 彩票类型基类
     public class BaseLotTickClass
     {
