@@ -6,6 +6,17 @@ using System.Text;
 namespace LotteryTicket
 {
     /// <summary>
+    /// 规则类
+    /// </summary>
+    public class Rule
+    {
+        public int FloorLimit { get; set; }
+        public int CeilLimit { get; set; } 
+        public System.Func<int[], int> Selector { get; set; }
+
+    }
+
+    /// <summary>
     /// 规律统计
     /// </summary>
     public static class StatisticalRegularity
