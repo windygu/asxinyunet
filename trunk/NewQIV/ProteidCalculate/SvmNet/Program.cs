@@ -27,12 +27,12 @@ namespace SvmNet
 			{
                 WriteMode();
                 int mode = Convert.ToInt32(Console.ReadLine());
-                if (mode <0 || mode >8)
+                if (mode <0 || mode >9)
                 {
                     Console.Clear();
                     continue;
                 }
-                if (mode ==8)
+                if (mode ==9)
                 {
                     flag = false;
                     return;
@@ -71,8 +71,8 @@ namespace SvmNet
             Console.WriteLine("5.单独计算PMeS-K-Train模型");
             Console.WriteLine("6.单独计算DLMLA-methyllysine-Train模型");
             Console.WriteLine("7.单独计算DLMLA-acetyllysine-Train模型");
-            Console.WriteLine("7.单独计算PredSulSite-Trai模型");
-            Console.WriteLine("8.退出程序");
+            Console.WriteLine("8.单独计算PredSulSite-Trai模型");
+            Console.WriteLine("9.退出程序");
             Console.Write("请根据实际选择运行模式:");
         }
 	}	
