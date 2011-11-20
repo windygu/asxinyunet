@@ -41,11 +41,11 @@ namespace SvmNet
         /// <summary>
         /// 二进制序列化,将对象保存为文件
         /// </summary>
-        public static void BinarySerialize(Model curModel,string filePath)
-        {            
+        public static void BinarySerialize(Model curModel, string filePath)
+        {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream fileStream = File.Create(filePath );
-            formatter.Serialize(fileStream, curModel );
+            FileStream fileStream = File.Create(filePath);
+            formatter.Serialize(fileStream, curModel);
             fileStream.Close();
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace SvmNet
         {
             BinaryFormatter derializer = new BinaryFormatter();
             FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-            Model t = (Model)derializer.Deserialize(fileStream);           
+            Model t = (Model)derializer.Deserialize(fileStream);
             fileStream.Close();
             return t;
         }
@@ -248,7 +248,7 @@ namespace SvmNet
             output += "</td><td align='center' style=\"border:1px solid #333;font-family:'宋体';\">";
             output += GetHtmlCodeByString(sequences, color);
             output += "</td><td align='center' style=\"border:1px solid #333;\">";
-            output += resultName ;
+            output += resultName;
             output += "</td><td align='center' style=\"border:1px solid #333;\">";
             output += probValue;
             output += "</td></tr>";
@@ -289,37 +289,50 @@ namespace SvmNet
         /// 计算所有的模型并序列化
         /// </summary>
         public static void CalculateAllSvmTestMode()
-        {            
+        {
+            //先读取参数
             Dictionary<char, double[]> dic = ReadForParams(folder + "parameters.txt");
             double[] Param_C = dic['C'];
             double[] Param_G = dic['G'];
             Model[] modelList = new Model[filesName.Length];//返回的模型
-            for (int i = 0; i < filesName.Length  ; i++)
+            for (int i = 0; i < filesName.Length; i++)
             {
                 modelList[i] = ProteidSvmTest.GetTrainingModel(folder + filesName[i], Param_C[i], Param_G[i]);
                 //模型序列化
                 BinarySerialize(modelList[i], folder + "Binary_" + filesName[i]);
-            }
-            //return modelList;           
+                Console.WriteLine(filesName[i ] + " 计算完成");
+            }     
+        }
+
+        /// <summary>
+        /// 单独计算一个模型
+        /// </summary>
+        public static void CalculateSingleSvmTestMode(int modeId, double C, double G)
+        {
+            Model curmodel = ProteidSvmTest.GetTrainingModel(folder + filesName[modeId -2],C,G );
+            //模型序列化
+            BinarySerialize(curmodel , folder + "Binary_" + filesName[modeId -2]);
+            Console.WriteLine(filesName[modeId -2]+" 计算完成");
         }
         /// <summary>
         /// 反序列化读取所有的模型
         /// </summary>
         public static Model[] ReadAllSvmTestMode()
-        {           
+        {
             Model[] modelList = new Model[filesName.Length];//返回的模型
             for (int i = 0; i < filesName.Length; i++)
             {
                 //模型反序列化
                 modelList[i] = BinaryDeserialize(folder + "Binary_" + filesName[i]);
             }
-            return modelList;           
+            return modelList;
         }
+
         /// <summary>
         /// 获取计算参数
         /// </summary>
         /// <param name="fileName">文件名</param>        
-        public static Dictionary <char,double[]> ReadForParams(string fileName)
+        public static Dictionary<char, double[]> ReadForParams(string fileName)
         {
             Dictionary<char, double[]> dic = new Dictionary<char, double[]>();
             using (StreamReader sr = new StreamReader(fileName))
@@ -331,11 +344,11 @@ namespace SvmNet
                     {
                         continue;
                     }
-                    if (line.StartsWith ("C"))
+                    if (line.StartsWith("C"))
                     {
-                        string[] temp = line.Split(':')[1].Split (',');
+                        string[] temp = line.Split(':')[1].Split(',');
                         double[] Param_C = new double[temp.Length];
-                        for (int i = 0; i < temp.Length ; i++)
+                        for (int i = 0; i < temp.Length; i++)
                         {
                             Param_C[i] = Convert.ToDouble(temp[i]);
                         }
@@ -365,15 +378,15 @@ namespace SvmNet
         {
             string folder = @"C:\DataSet\"; //存放训练的目录
             string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
-                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };          
-            for (int i =5; i < filesName.Length; i++)
+                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
+            for (int i = 5; i < filesName.Length; i++)
             {
                 double C, Gamma;
                 Parameter parameters = new Parameter();
-                Problem train = Problem.Read(folder + filesName[i]);               
+                Problem train = Problem.Read(folder + filesName[i]);
                 ParameterSelection.Grid(train, parameters, "params.txt", out C, out Gamma);
-                Console.WriteLine("{0} C:{1},G:{2}",filesName[i],C,Gamma );
-            }            
+                Console.WriteLine("{0} C:{1},G:{2}", filesName[i], C, Gamma);
+            }
         }
         //			Problem train = Problem.Read("data.txt"); //"a2a.txt"  train.txt
         //			RangeTransform range = RangeTransform.Compute(train);

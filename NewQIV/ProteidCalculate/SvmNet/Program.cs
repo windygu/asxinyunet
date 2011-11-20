@@ -8,6 +8,7 @@
  */
 using System;
 using SVM;
+using System.Threading;
 using System.Collections.Generic;
 
 namespace SvmNet
@@ -24,15 +25,56 @@ namespace SvmNet
 			bool flag = true ;
 			while (flag )
 			{
-				Console.WriteLine("请选择运行模式:");
-				Console.WriteLine("1.直接根据文件名称和参数文件计算所有模型");
-				Console.WriteLine("2.单独计算Ace-Pred-Train模型");
-				Console.WriteLine("3.单独计算Ace-Pred-Train模型");
-			}
-//          ProteidSvmTest.CalculateAllSvmTestMode();					
+                WriteMode();
+                int mode = Convert.ToInt32(Console.ReadLine());
+                if (mode <0 || mode >8)
+                {
+                    Console.Clear();
+                    continue;
+                }
+                if (mode ==8)
+                {
+                    flag = false;
+                    return;
+                }
+                if (mode == 1)
+                {
+                    flag = false;
+                    ProteidSvmTest.CalculateAllSvmTestMode();
+                    Console.Clear();
+                }
+                else
+                {                   
+                    Console.Write("请输入当前模型的参数 C:");
+                    double C = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("请输入当前模型的参数 G:");
+                    double G = Convert.ToDouble(Console.ReadLine());
+                    ProteidSvmTest.CalculateSingleSvmTestMode(mode, C, G);
+                    Console.Clear();
+                }
+                Console.WriteLine("-----------------------");
+                Console.WriteLine("计算完成，请继续");
+                Console.WriteLine("-----------------------");
+			}            
+            Console.WriteLine("**********************************************");
 			Console.Write("计算完成,请手动关闭此程序");
 			Console.ReadKey(true);
 		}
+
+        public static void WriteMode()
+        {
+            Console.WriteLine("所有运行模式:");
+            Console.WriteLine("1.直接根据文件名称和参数文件计算所有模型");
+            Console.WriteLine("2.单独计算WSM-Plam-Train模型");
+            Console.WriteLine("3.单独计算Ace-Pred-Train模型");
+            Console.WriteLine("4.单独计算PMeS-R-Train模型");
+            Console.WriteLine("5.单独计算PMeS-K-Train模型");
+            Console.WriteLine("6.单独计算DLMLA-methyllysine-Train模型");
+            Console.WriteLine("7.单独计算DLMLA-acetyllysine-Train模型");
+            Console.WriteLine("7.单独计算PredSulSite-Trai模型");
+            Console.WriteLine("8.退出程序");
+            Console.Write("请根据实际选择运行模式:");
+        }
 	}	
 }
 			#region 废弃的测试代码
