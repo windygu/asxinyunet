@@ -32,6 +32,10 @@ namespace LotteryTicket
         /// </summary>
         public int CeilLimit { get; set; }
         /// <summary>
+        /// 比较序列
+        /// </summary>
+        public int[] CompList { get; set; }
+        /// <summary>
         /// 指标计算函数
         /// </summary>
         public System.Func<int[], int> Selector { get; set; }
@@ -46,12 +50,14 @@ namespace LotteryTicket
         /// <param name="compareRule">对比类型</param>
         /// <param name="floorlimit">下限,默认为单个比较参数</param>
         /// <param name="ceilLimit">上限</param>
-        public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0, int ceilLimit = 0)
+        public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0, 
+            int ceilLimit = 0,int[] compList = null )
         {
             this.Selector = selector;
             this.CompareRule = compareRule;
             this.FloorLimit = floorlimit;
             this.CeilLimit = ceilLimit;
+            this.CompList = compList;
         }
     }
     #endregion
@@ -80,8 +86,16 @@ namespace LotteryTicket
         /// <summary>
         /// 大于或等于
         /// </summary>
-        GreaterThanLimite
+        GreaterThanLimite,
 
+        /// <summary>
+        /// 包含在列表中
+        /// </summary>
+        InList,
+        /// <summary>
+        /// 不包含在列表中
+        /// </summary>
+        NotInList
     }
     #endregion
 

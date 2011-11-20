@@ -30,6 +30,10 @@ namespace LotteryTicket
                     return res <= rule.FloorLimit;
                 case CompareType.GreaterThanLimite:
                     return res >= rule.FloorLimit;
+                case CompareType.InList :
+                    return rule.CompList.Contains(res);
+                case CompareType.NotInList :
+                    return !rule.CompList.Contains(res);
                 default:
                     return false;
             }        
@@ -55,28 +59,5 @@ namespace LotteryTicket
             return source.Where(n => n.CompareRule(rule));
         }
         #endregion
-    }
-
-    /// <summary>
-    /// 验证过滤
-    /// </summary>
-    public static class Validate
-    {
-        #region 排除指定值过滤：删除指标值等于列表中数据的序列
-        /// <summary>
-        /// 删除指标值等于列表中数据的序列
-        /// </summary>
-        /// <param name="source">数据源</param>
-        /// <param name="selector">统计值的计算函数</param>
-        /// <param name="deleteList">删除列表</param>
-        public static IEnumerable<int[]> Filter_删除指定值过滤(this IEnumerable<int[]> source, System.Func<int[], int> selector,
-            int[] deleteList)
-        {            
-            return (from n in source
-                    let sum = selector(n)
-                    where (!deleteList.Contains (sum))//包含指定值的不选择，也就是删除
-                    select n);
-        }
-        #endregion
-    }
+    }   
 }
