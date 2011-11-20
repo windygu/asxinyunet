@@ -16,16 +16,25 @@ namespace SvmNet
 	{
 		public static void Main(string[] args)
 		{
-            //List<int> list = new List<int>();
-            //list.AddRange(new int[] {2,9,5,8,3,6,4 });
-            //list.Sort();
-            ProteidSvmTest.GetAllParams();
-//			double[] res ;
-//			double d = ProteidSvmTest.GetSvmPredictResult ("train1.txt","test1.txt",8192,0.000488281,out res ) ;
-//			Console.WriteLine (d.ToString ()) ;
-//			double d2 =ProteidSvmTest.TestMode ("train1.txt","test1.txt",8192,0.000488281,out res ) ;
-//			Console.WriteLine (d2.ToString ()) ;
-			
+			Console.WriteLine("**********************************************");
+			Console.WriteLine("网站参数配置程序:");
+			Console.WriteLine("警告：运行此程序之前，先停止服务器网站的运行");
+			Console.WriteLine("注意：由于训练集的不同，时间可能比较长     ");
+			Console.WriteLine("**********************************************");
+			bool flag = true ;
+			while (flag )
+			{
+				Console.WriteLine("请选择运行模式:");
+				Console.WriteLine("1.直接根据文件名称和参数文件计算所有模型");
+				Console.WriteLine("2.单独计算Ace-Pred-Train模型");
+				Console.WriteLine("3.单独计算Ace-Pred-Train模型");
+			}
+//          ProteidSvmTest.CalculateAllSvmTestMode();					
+			Console.Write("计算完成,请手动关闭此程序");
+			Console.ReadKey(true);
+		}
+	}	
+}
 			#region 废弃的测试代码
 //            Problem train = Problem.Read("data.txt"); //"a2a.txt"  train.txt		
 //            Problem test = Problem.Read("data.txt");	//"a2a.t"  test.txt		
@@ -46,11 +55,3 @@ namespace SvmNet
 //            Console.WriteLine ("C:"+parameters.C.ToString ()) ;
 //            Console.WriteLine ("Gamma:"+parameters.Gamma.ToString ()) ;
 		#endregion		
-			
-			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
-		}
-	}
-	
-	
-}

@@ -25,7 +25,7 @@ font-size:10.5000pt; font-family:'Calibri'; }
         }
         .style3
         {
-            text-align: left;
+            text-align: justify;
         }
     </style>
 </head>
@@ -48,8 +48,8 @@ font-size:10.5000pt; font-family:'Calibri'; }
             <tr>
               <td><table width="1000">
                   <tr>
-                    <th><font size="+2">BIOINFO: </font> </th>
-                    <td><font size="4pt">DLMLA: Distinguish lysine methylation from lysine acetylation </font></td>
+                    <th><font size="+2">PLMLA: </font> </th>
+                    <td><font size="4pt"> Prediction of lysine methylation and lysine acetylation</font></td>
                   </tr>
                   </table></td>
             </tr>
@@ -133,12 +133,7 @@ font-size:10.5000pt; font-family:'Calibri'; }
       <tr>
         <td class="style3">
             <br />
-            Window size -6 to +6 is employed to construct the prediction&nbsp; model&nbsp; DLMLA. 
-            Users can submit&nbsp; one or&nbsp; multiple human or other species protein sequences in 
-            FASTA format to the system and select which kind of post-translational 
-            modifications (methylated lysine or acetyllysine) need to be predicted. The 
-            system efficiently returns the predictions, including protein name, the position 
-            of site, flanking amino acids, predicted result and SVM probability.<br />
+            PLMLA is an in silico online tool for prediction of potential lysine methylation and lysine acetylation from protein sequences. Window size -6 to +6 is employed to construct the prediction model. Users can submit one or multiple human or other species protein sequences in FASTA format to the system and select which kind of post-translational modifications (methylated lysine or acetyllysine) need to be predicted. The system efficiently returns the predictions, including protein name, the position of site, flanking amino acids, predicted result and SVM probability.<br />
         </td>
       </tr>
       <tr>

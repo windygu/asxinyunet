@@ -103,6 +103,12 @@
     <Content Include="Lib\NetSpell.SpellChecker.dll" />
     <Content Include="Lib\NPOI.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProteidCalculate\SVM\SVM.csproj">
+      <Project>{2A381CBB-8291-435C-A8E3-BBF3B590B2B6}</Project>
+      <Name>SVM</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
