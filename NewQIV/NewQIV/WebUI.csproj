@@ -144,6 +144,7 @@
     <Content Include="DataSet\PMeS-R-Train.txt" />
     <Content Include="DataSet\PredSulSite-Train.txt" />
     <Content Include="DataSet\WSM-Plam-Train.txt" />
+    <Content Include="data\main_data.mdb" />
     <Content Include="Default.aspx" />
     <Content Include="inquiries_GetGroupAttributeCode.aspx" />
     <Content Include="Web.config" />
@@ -543,7 +544,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />

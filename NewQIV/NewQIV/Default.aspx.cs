@@ -22,7 +22,7 @@ namespace WebUI
         /// 5:DLMLA-A
         /// 6:PredSulSite
         /// </summary>
-        public static Model[] modelList = ProteidSvmTest.GetAllSvmTestMode();
+        public static Model[] modelList = ProteidSvmTest.ReadAllSvmTestMode ();//读取所有模型
 
         protected void Page_Load(object sender, EventArgs e)
         {

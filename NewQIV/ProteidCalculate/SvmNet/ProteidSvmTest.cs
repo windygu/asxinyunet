@@ -4,7 +4,7 @@
  * 日期: 2011-10-15
  * 时间: 11:09
  *  
- * 
+ * 2011-11-20 采用序列化技术，将对象进行序列化保存，加快读写速度
  * 2011-10-23 整合Html显示部分，针对每次模型计算进行优化，全局静态变量，并转移到基础类库中进行
  * 2011-10-20 清理网站解决方案，优化代码结果，解决了代码优化带来的Bug 
  * 2011-10-15 对SVM.NET程序包结构清楚，开始对其进行优化，提高速度，减少无用的IO操作：
@@ -21,6 +21,10 @@
  */
 using System;
 using SVM;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SvmNet
 {
@@ -29,6 +33,34 @@ namespace SvmNet
     /// </summary>
     public class ProteidSvmTest
     {
+        static string folder = @"C:\DataSet\"; //存放训练的目录
+        static string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
+                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
+
+        #region 模型对象二进制序列化
+        /// <summary>
+        /// 二进制序列化,将对象保存为文件
+        /// </summary>
+        public static void BinarySerialize(Model curModel,string filePath)
+        {            
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream fileStream = File.Create(filePath );
+            formatter.Serialize(fileStream, curModel );
+            fileStream.Close();
+        }
+        /// <summary>
+        /// 二进制反序列化,将文件读取为对象
+        /// </summary>
+        public static Model BinaryDeserialize(string filePath)
+        {
+            BinaryFormatter derializer = new BinaryFormatter();
+            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            Model t = (Model)derializer.Deserialize(fileStream);           
+            fileStream.Close();
+            return t;
+        }
+        #endregion
+
         #region SVM.NET类库的使用及整理
         /// <summary>
         /// Svm.NET计算序列预测结果，直接根据模型来计算
@@ -254,23 +286,74 @@ namespace SvmNet
 
         #region 得到网站项目所使用的模型
         /// <summary>
-        /// 获得网站中所有的SVM变量
+        /// 计算所有的模型并序列化
         /// </summary>
-        public static Model[] GetAllSvmTestMode()
-        {
-            string folder = @"C:\DataSet\"; //存放训练的目录
-            string[] filesName = new string[] { "WSM-Plam-Train.txt", "Ace-Pred-Train.txt", 
-                "PMeS-R-Train.txt", "PMeS-K-Train.txt", "DLMLA-methyllysine-Train.txt", "DLMLA-acetyllysine-Train.txt", "PredSulSite-Train.txt" };
-            //double[] Param_C = new double[] { 512, 2048, 8, 8192, 32768, 8,8192 };//参数列表
-            //double[] Param_G = new double[] { 0.00048828125, 0.001953125, 0.5, 0.5, 1, 0.03125, 3.0517578125E-05 };//参数列表
-            double[] Param_C = new double[] { 512, 32768, 32768, 32768, 32768, 0.5, 2.0 };//参数列表
-            double[] Param_G = new double[] { 0.00048828125, 1, 0.5, 0.5, 1, 2, 0.5 };//参数列表
+        public static void CalculateAllSvmTestMode()
+        {            
+            Dictionary<char, double[]> dic = ReadForParams(folder + "parameters.txt");
+            double[] Param_C = dic['C'];
+            double[] Param_G = dic['G'];
             Model[] modelList = new Model[filesName.Length];//返回的模型
             for (int i = 0; i < filesName.Length  ; i++)
             {
                 modelList[i] = ProteidSvmTest.GetTrainingModel(folder + filesName[i], Param_C[i], Param_G[i]);
+                //模型序列化
+                BinarySerialize(modelList[i], folder + "Binary_" + filesName[i]);
+            }
+            //return modelList;           
+        }
+        /// <summary>
+        /// 反序列化读取所有的模型
+        /// </summary>
+        public static Model[] ReadAllSvmTestMode()
+        {           
+            Model[] modelList = new Model[filesName.Length];//返回的模型
+            for (int i = 0; i < filesName.Length; i++)
+            {
+                //模型反序列化
+                modelList[i] = BinaryDeserialize(folder + "Binary_" + filesName[i]);
             }
             return modelList;           
+        }
+        /// <summary>
+        /// 获取计算参数
+        /// </summary>
+        /// <param name="fileName">文件名</param>        
+        public static Dictionary <char,double[]> ReadForParams(string fileName)
+        {
+            Dictionary<char, double[]> dic = new Dictionary<char, double[]>();
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                string line = null;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.StartsWith("//"))
+                    {
+                        continue;
+                    }
+                    if (line.StartsWith ("C"))
+                    {
+                        string[] temp = line.Split(':')[1].Split (',');
+                        double[] Param_C = new double[temp.Length];
+                        for (int i = 0; i < temp.Length ; i++)
+                        {
+                            Param_C[i] = Convert.ToDouble(temp[i]);
+                        }
+                        dic.Add('C', Param_C);
+                    }
+                    if (line.StartsWith("G"))
+                    {
+                        string[] temp = line.Split(':')[1].Split(',');
+                        double[] Param_G = new double[temp.Length];
+                        for (int i = 0; i < temp.Length; i++)
+                        {
+                            Param_G[i] = Convert.ToDouble(temp[i]);
+                        }
+                        dic.Add('G', Param_G);
+                    }
+                }
+            }
+            return dic;
         }
         #endregion
 
