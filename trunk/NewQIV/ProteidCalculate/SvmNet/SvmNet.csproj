@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>SvmNet</RootNamespace>
     <AssemblyName>SvmNet</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <PublishUrl>http://localhost/SvmNet/</PublishUrl>
     <Install>true</Install>
@@ -94,12 +94,6 @@
     <Compile Include="ProteidSvmTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SVM\SVM.csproj">
-      <Project>{2A381CBB-8291-435C-A8E3-BBF3B590B2B6}</Project>
-      <Name>SVM</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -118,6 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SVM\SVM.csproj">
+      <Project>{2A381CBB-8291-435C-A8E3-BBF3B590B2B6}</Project>
+      <Name>SVM</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
