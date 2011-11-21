@@ -29,7 +29,7 @@ using DotNet.Tools.Controls ;
 
 namespace LotteryTicketSoft.GraphForm
 {	
-	public class AddRules: UserControl
+	public class AddRules: UserControl,IEntityControl 
 	{
 		#region 自动生成代码
 		#region Designer.cs必须代码

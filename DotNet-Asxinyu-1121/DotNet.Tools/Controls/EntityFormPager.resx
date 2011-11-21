@@ -348,9 +348,6 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="toolTipPager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>137, 17</value>
-  </metadata>
   <data name="txtToPageIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
@@ -369,6 +366,9 @@
   <data name="txtToPageIndex.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
+  <metadata name="toolTipPager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>137, 17</value>
+  </metadata>
   <data name="txtToPageIndex.ToolTip" xml:space="preserve">
     <value>请输入要跳转到的页</value>
   </data>
@@ -384,9 +384,6 @@
   <data name="&gt;&gt;txtToPageIndex.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="toolTipPager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>137, 17</value>
-  </metadata>
   <data name="btnToPageIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -395,9 +392,6 @@
   </data>
   <data name="btnToPageIndex.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
-  </data>
-  <data name="btnToPageIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
   </data>
   <data name="btnToPageIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>166, 2</value>
@@ -428,9 +422,6 @@
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 7</value>

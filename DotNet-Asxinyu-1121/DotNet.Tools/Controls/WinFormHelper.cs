@@ -249,7 +249,19 @@ namespace DotNet.Tools.Controls
         #endregion       
 
         #region 根据实体类型及程序集名称动态加载窗体
-
+        void DynamicLoadForm(string FormAssemblyName, string FormName, bool IsHaveMenu, Type type, string TitleText)
+        {
+            //DataManageForm dt = new DataManageForm();
+            //dt.InitializeSettings (
+            //dt.IsHaveMenu = IsHaveMenu;
+            //dt.FormAssemblyName = FormAssemblyName;
+            //dt.FormName = FormName;
+            //dt.EntityType = type;
+            //dt.Text = TitleText;
+            //dt.MdiParent = this;
+            //dt.StartPosition = FormStartPosition.CenterParent;
+            //dt.Show();
+        }
         #endregion
 
         #region 根据控件和窗体模板得到显示的窗体
