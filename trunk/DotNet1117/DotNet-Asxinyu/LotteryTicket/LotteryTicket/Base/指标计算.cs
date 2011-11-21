@@ -361,7 +361,6 @@ namespace LotteryTicket
             return source.Select(n => n % 10).Distinct().Count();
         }
         #endregion
-
-
+        
     }
 }

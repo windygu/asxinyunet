@@ -7,6 +7,7 @@
  * 
  */
 using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,46 @@ namespace LotteryTicket
     [Serializable]
     public class Rule
     {
+        string _indexSelectorName;//指标函数的名称
+        /// <summary>
+        /// 指标函数的名称
+        /// </summary>
+        public string IndexSelectorName
+        {
+            get { return _indexSelectorName; }
+            set
+            {
+                _indexSelectorName = value;
+                Type t = typeof(IndexCalculate);
+                MethodInfo cur = t.GetMethod(value);
+                Selector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
+            }
+        }
+
+        /// <summary>
+        /// 指标计算函数
+        /// </summary>
+        public System.Func<int[], int> Selector { get; set; }
+
+
+        private string _compareRuleName;
+        /// <summary>
+        /// 比较的类型名称
+        /// </summary>
+        public string CompareRuleName
+        {
+            get { return _compareRuleName; }
+            set
+            {
+                _compareRuleName = value;
+                CompareRule = value.ToEnum<CompareType>();
+            }
+        }
+        /// <summary>
+        /// 对比类型
+        /// </summary>
+        public CompareType CompareRule { get; set; }
+
         /// <summary>
         /// 上限
         /// </summary>
@@ -37,18 +78,26 @@ namespace LotteryTicket
         /// 下限
         /// </summary>
         public int CeilLimit { get; set; }
+
+        //比较序列的字符串形式
+        string _compListStr;
+        /// <summary>
+        /// 比较序列的字符串形式，逗号分隔
+        /// </summary>
+        public string CompListStr
+        {
+            get { return _compListStr; }
+            set
+            {
+                _compListStr = value;
+                CompList = value.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+            }
+        }
         /// <summary>
         /// 比较序列
         /// </summary>
         public int[] CompList { get; set; }
-        /// <summary>
-        /// 指标计算函数
-        /// </summary>
-        public System.Func<int[], int> Selector { get; set; }
-        /// <summary>
-        /// 对比类型
-        /// </summary>
-        public CompareType CompareRule { get; set; }
+
         /// <summary>
         /// 构造函数,如果为单参数的话，默认为floorlimit
         /// </summary>
@@ -59,11 +108,21 @@ namespace LotteryTicket
         public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0,
             int ceilLimit = 0, int[] compList = null)
         {
-            this.Selector = selector;
+            this.IndexSelectorName = selector.Method.Name;
+            this.CompareRuleName = compareRule.ToString();
             this.CompareRule = compareRule;
             this.FloorLimit = floorlimit;
             this.CeilLimit = ceilLimit;
-            this.CompList = compList;
+            if (compList != null)
+            {
+                string temp = "";
+                for (int i = 0; i < compList.Length -1 ; i++)
+                {
+                    temp +=(compList[i].ToString () +",");
+                }
+                temp += compList [compList.Length -1].ToString () ;
+                this.CompListStr = temp;
+            }            
         }
     }
     #endregion
@@ -621,19 +680,66 @@ namespace LotteryTicket
         #endregion
 
         #region 将Rule数组转换为DataTable显示,并可编辑
-        public static DataTable RulesToDataTable(List<Rule> rules)
+        public static DataTable RulesToDataTable(Rule[] rules)
         {
             DataTable dt = new DataTable("Rules");
             dt.Columns.Add(new DataColumn("序号", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("指标函数", typeof(System.Func<int[], int>)));
+            dt.Columns.Add(new DataColumn("指标函数", typeof(string)));
             dt.Columns.Add(new DataColumn("对比类型", typeof(CompareType)));
             dt.Columns.Add(new DataColumn("范围下限", typeof(Int32)));
             dt.Columns.Add(new DataColumn("范围上限", typeof(Int32)));
+            dt.Columns.Add(new DataColumn("列表范围", typeof(int[])));
+            int count = 0;
+            foreach (Rule item in rules)
+            {
+                DataRow dr = dt.NewRow();
+                dr[0] = ++count;
+                dr[1] = item.IndexSelectorName;
+                dr[2] = item.CompareRule;
+                dr[3] = item.FloorLimit;
+                dr[4] = item.CeilLimit;
+                dr[5] = item.CompList;
+                dt.Rows.Add(dr);
+            }
             return dt;
         }
         #endregion
 
+        #region 获取所有的方法类型和比较类型
+        public static List<string> GetAllIndexNames()
+        {
+            Type t = typeof(IndexCalculate);
+            MethodInfo[] methods = t.GetMethods();
+            List<string> res = new List<string>(methods.Length);
+            foreach (MethodInfo item in methods)
+            {
+                res.Add(item.Name);
+            }
+            return res;
+        }
+        #endregion
+
         #region 扩展方法
+        /// <summary>
+        /// 根据字符串获取指定类型的枚举值
+        /// </summary>
+        public static T ToEnum<T>(this string name)
+        {
+            return (T)Enum.Parse(typeof(T), name);
+        }
+        /// <summary>
+        /// 获取枚举类型的所有枚举值
+        /// </summary>
+        public static List<string> GetAllEnumNames<T>()
+        {
+            Type t = typeof(T);
+            List<string> list = new List<string>();
+            foreach (string s in Enum.GetNames(t))
+            {
+                list.Add(s);
+            }
+            return list;
+        }
         public static bool IsNullEmpty(this IEnumerable source)
         {
             if (source == null) return true;
@@ -654,13 +760,13 @@ namespace LotteryTicket
                     foreach (PropertyInfo pi in oProps)
                     {
                         Type colType = pi.PropertyType;
-                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>))) 
-                            colType = colType.GetGenericArguments()[0]; 
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                            colType = colType.GetGenericArguments()[0];
                         dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
                     }
-                } 
+                }
                 DataRow dr = dtReturn.NewRow();
-                foreach (PropertyInfo pi in oProps) 
+                foreach (PropertyInfo pi in oProps)
                     dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue(rec, null);
                 dtReturn.Rows.Add(dr);
             }
