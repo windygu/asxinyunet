@@ -161,9 +161,9 @@ namespace DotNet.Tools.Controls
 		//IEntityList btList; //实体列表
 		void GetData()
 		{
-			//            winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
-            btList = (List<IEntity>)EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
-			                            winPage.PageSize);
+			// winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
+            btList =EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
+			                            winPage.PageSize).ToList ();
 			dgv.DataSource = btList;
 			ArrayList list = new ArrayList();
 			for (int i = 0; i < btList.Count; i++)
