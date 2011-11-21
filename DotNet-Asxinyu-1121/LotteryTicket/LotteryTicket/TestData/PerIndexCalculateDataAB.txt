@@ -1,0 +1,48 @@
+﻿##单期指标测试数据，格式：需要测试的指标名称:6位原始数据:结果
+##主要测试A,B类型,C,D类型涉及多行数据,暂不测试
+#A_Sum 和值测试数据  
+A_Sum : 1,2, 8,13,17,24 : 65
+A_Sum : 4,5,11,12,30,32 : 94
+
+#C_SelfNumber
+C_SelfNumber : 1,2, 8,13,17,24 : 1,2, 8,13,17,24
+C_SelfNumber : 4,5,11,12,30,32 : 4,5,11,12,30,32
+
+#A_PM001
+
+
+#A_PM002
+
+
+
+#A_MaxSpan
+A_MaxSpan : 1,2, 8,13,17,24 : 23
+A_MaxSpan : 4,5,11,12,30,32 : 28
+
+#A_MinSpan
+A_MinSpan : 1,2, 8,13,17,24 : 1
+A_MinSpan : 4,5,11,12,30,32 : 1
+A_MinSpan : 8,13,17,21,23,32: 2
+A_MinSpan : 2,12,16,17,27,30: 1
+
+#C_SpanList
+C_SpanList : 1,2, 8,13,17,24 : 1,6,5,4,7
+C_SpanList : 4,5,11,12,30,32 : 1,6,1,18,2
+C_SpanList : 8,13,17,21,23,32: 5,4,4,2,9
+C_SpanList : 2,12,16,17,27,30: 10,4,1,10,3
+
+#A_SpanSum
+A_SpanSum : 1,2, 8,13,17,24 : 23
+A_SpanSum : 4,5,11,12,30,32 : 28
+A_SpanSum : 8,13,17,21,23,32: 24
+A_SpanSum : 2,12,16,17,27,30: 28
+
+#A_AcValue 暂不测试
+
+#A_SpanDensity
+
+
+#A_DataDensity
+
+
+#B_ManyNoSameCount
