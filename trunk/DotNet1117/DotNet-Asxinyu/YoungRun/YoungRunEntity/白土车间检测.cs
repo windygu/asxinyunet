@@ -16,8 +16,7 @@ namespace YoungRunEntity
     [Description("白土车间检测")]
     [BindIndex("PRIMARY", true, "ID")]
     [BindTable("tb_BtTestData", Description = "白土车间检测", ConnName = "YoungRunMIS", DbType = DatabaseType.MySql)]
-    public partial class tb_BtTestData : Itb_BtTestData
-    
+    public partial class tb_BtTestData : Itb_BtTestData    
     {
         #region 属性
         private String _ID;
