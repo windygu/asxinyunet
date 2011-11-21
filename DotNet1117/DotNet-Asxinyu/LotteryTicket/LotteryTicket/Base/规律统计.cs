@@ -6,7 +6,7 @@ using System.Text;
 namespace LotteryTicket
 {
     /// <summary>
-    /// 规律统计与过滤 TODO:进一步完善比较方法和类型,比如删除指定的
+    /// 规律统计与过滤
     /// </summary>
     public static class StatisticalFilter
     {

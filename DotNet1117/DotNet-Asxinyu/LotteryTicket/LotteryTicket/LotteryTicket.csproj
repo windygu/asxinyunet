@@ -78,9 +78,11 @@
     <Compile Include="Base\规律统计.cs" />
     <Compile Include="Base\规则对比.cs" />
     <Compile Include="Base\指标计算.cs" />
+    <Compile Include="Entities\tb_Rules.Biz.cs" />
+    <Compile Include="Entities\tb_Rules.cs" />
+    <Compile Include="Entities\tb_Ssq.Biz.cs" />
+    <Compile Include="Entities\tb_Ssq.cs" />
     <Compile Include="Test\StaticsTest.cs" />
-    <Compile Include="Entities\Ssq.Biz.cs" />
-    <Compile Include="Entities\Ssq.cs" />
     <Compile Include="Base\TwoColorBall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

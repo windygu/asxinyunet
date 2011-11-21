@@ -13,7 +13,6 @@ using System.Data;
 using System.Net.Cache;
 using System.Threading;
 using XCode ;
-using LotteryTicket.Entities;
 using HtmlAgilityPack;
 using DotNet.Tools;
 
@@ -63,8 +62,8 @@ namespace LotteryTicket
 		public static double[][] GetRedBallData(int selectLength = -1)
 		{
 			//获取数据 order by  desc 降序排列, asc 升序		
-			ssq model = new ssq () ;//("select * from tb_ssq order by 期号 asc").Tables [0] ;
-		    EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");//升序
+            tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");//升序
             DataTable dt = list.ToDataTable () ;
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
@@ -86,8 +85,8 @@ namespace LotteryTicket
 		/// <param name="length">指定的期数据,最近期开始,默认为-1,代表期所有的数据</param>
 		public static double[] GetBlueBallData(int selectLength = -1 )
 		{
-            ssq model = new ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
-            EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");
+            tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");
             DataTable dt = list.ToDataTable();
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[] res = new double[length ] ;
@@ -106,8 +105,8 @@ namespace LotteryTicket
 		public static double[][] GetAllData(int selectLength = -1 )
 		{
 			//获取数据
-            ssq model = new ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
-            EntityList<ssq> list = ssq.FindAll("select * from tb_ssq order by 期号 asc");
+            tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");
             DataTable dt = list.ToDataTable();
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
 			double[][] res = new double[length ][] ;
@@ -214,7 +213,7 @@ namespace LotteryTicket
         {
             //TODO:自动获取总页数            
             string website;//动态获取的网址				
-            ssq model = new ssq();
+            tb_Ssq model = new tb_Ssq();
             for (int i = 1; i <= pages; i++)
             {
                 //福彩 /html[1]/body[1]/table[1]/tr[7]
@@ -235,7 +234,7 @@ namespace LotteryTicket
                     model.号码5 = Convert.ToInt32(tempNo[4]);
                     model.号码6 = Convert.ToInt32(tempNo[5]);
                     model.红球 = Convert.ToInt32(tempNo[6]);
-                    if (!model.Exist(new string[] { ssq._.期号 }))
+                    if (!model.Exist(new string[] { tb_Ssq._.期号 }))
                     {
                         model.Insert();//自动判断是否存在         
                     }
