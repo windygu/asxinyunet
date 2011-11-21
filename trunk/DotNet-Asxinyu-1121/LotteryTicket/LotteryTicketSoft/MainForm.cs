@@ -29,5 +29,11 @@ namespace LotteryTicketSoft
 		{
 			
 		}
+
+        private void 常规参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormModel tf = WinFormHelper.GetControlForm<AddRules >(FormShowMode.ContinueAdd, "", "");
+            tf.Show();
+        }
 	}
 }

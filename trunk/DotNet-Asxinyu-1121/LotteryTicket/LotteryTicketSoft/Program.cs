@@ -25,7 +25,7 @@ namespace LotteryTicketSoft
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new DataPredict ());
+			Application.Run(new MainForm());
 		}
 		
 	}

@@ -21,7 +21,15 @@ namespace DotNet.Tools.Controls
 		public DataManageForm()
 		{
 			InitializeComponent();           
-		}		
+		}
+
+        public bool IsHaveMenu
+        {
+            get { return this.DataManageControl.IsHaveMenu; }
+            set { this.DataManageControl.IsHaveMenu = value; }
+        }
+
+
 		/// <summary>
 		/// 初始化配置
 		/// </summary>

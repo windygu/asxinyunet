@@ -37,10 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ResouceFiles\Lib\DotNet.Tools.dll</HintPath>
-    </Reference>
     <Reference Include="NewLife.Core, Version=3.3.4329.35774, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
