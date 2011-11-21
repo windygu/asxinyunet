@@ -85,6 +85,7 @@ namespace LotteryTicket
     	public static void Main(string[] args)
     	{
             Rule rule = new Rule(IndexCalculate.Index_Ac值, CompareType.Equal, 2, 3);
+            rule.IndexSelectorName = "Index_Ac值";
             Rule[] rules = new Rule[1];
             rules[0] = rule;
             DataTable dt = rules.ToDataTable<Rule>();
