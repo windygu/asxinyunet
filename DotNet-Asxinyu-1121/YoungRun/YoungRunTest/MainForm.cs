@@ -16,7 +16,7 @@ using XCode.DataAccessLayer ;
 using YoungRunEntity;
 using YoungRunControl;
 
-namespace YoungRunTest
+namespace DotNet
 {
 	/// <summary>
 	/// Description of MainForm.

@@ -1,6 +1,6 @@
-﻿namespace DotNet
+﻿namespace DotNet.Tools.Controls
 {
-    partial class TestForm
+    partial class FormModel
     {
         /// <summary>
         /// Required designer variable.

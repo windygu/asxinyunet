@@ -77,6 +77,9 @@
     <Compile Include="GraphForm\FilterNumber.Designer.cs">
       <DependentUpon>FilterNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphForm\tb_Rules.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\FilterNumber.resx">
       <DependentUpon>FilterNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphForm\tb_Rules.resx">
+      <DependentUpon>tb_Rules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

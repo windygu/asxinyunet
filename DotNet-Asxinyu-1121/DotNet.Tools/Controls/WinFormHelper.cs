@@ -8,10 +8,12 @@
  */
 using System;
 using System.Windows.Forms ;
+using System.Drawing;
 using System.Data ;
 using System.Collections.Generic;
 using System.Collections;
-using XCode ;
+using XCode;
+using XCode.DataAccessLayer;
 
 namespace DotNet.Tools.Controls
 {
@@ -65,8 +67,21 @@ namespace DotNet.Tools.Controls
 		ReadOnlyForOne 
 	}
 	#endregion
-	
-	/// <summary>
+
+    #region 实体接口
+    public interface IEntityControl
+    {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="formShowMode"></param>
+        /// <param name="searcgCondtion"></param>
+        /// <param name="fixCondition"></param>
+        void InitializeSettings(FormShowMode formShowMode, string searcgCondtion, string fixCondition);
+    }
+    #endregion
+
+    /// <summary>
 	/// WinForm帮助类
 	/// </summary>
 	public class WinFormHelper
@@ -235,6 +250,28 @@ namespace DotNet.Tools.Controls
 
         #region 根据实体类型及程序集名称动态加载窗体
 
+        #endregion
+
+        #region 根据控件和窗体模板得到显示的窗体
+         /// <summary>
+        /// 根据控件得到窗体,可以进行快速测试，不用每一个都写窗体
+        /// </summary>
+        public static FormModel GetControlForm<T>(FormShowMode formShowMode,
+            string searcgCondtion, string fixCondition) where T : UserControl, IEntityControl,new()
+        {            
+            T EntityControl= new T();
+            EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            EntityControl.Location = new System.Drawing.Point(0, 0);
+            EntityControl.Name = "EntityControl";           
+            EntityControl.TabIndex = 0;
+EntityControl.InitializeSettings(formShowMode, searcgCondtion, fixCondition);
+            FormModel tf = new FormModel();
+            tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
+            tf.Controls.Add(EntityControl);//将控件添加到窗体中
+            
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            return tf;
+        }
         #endregion
     }
 }
