@@ -38,6 +38,9 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -51,6 +54,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="XCode, Version=8.3.4336.36706, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
     <Reference Include="ZedGraph">
       <HintPath>..\..\ResouceFiles\Lib\ZedGraph.dll</HintPath>
