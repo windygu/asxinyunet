@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DotNet
+namespace DotNet.Tools.Controls
 {
-    public partial class TestForm : Form
+    public partial class FormModel : Form
     {
-        public TestForm()
+        public FormModel()
         {
             InitializeComponent();
         }

@@ -33,28 +33,28 @@ namespace LotteryTicket
             set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } }
         }
 
-        private String _IndexSelectorName;
+        private String _IndexSelectorNameTP;
         /// <summary>指标函数</summary>
         [DisplayName("指标函数")]
         [Description("指标函数")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(2, "IndexSelectorName", "指标函数", null, "VarChar", 0, 0, false)]
-        public virtual String IndexSelectorName
+        [BindColumn(2, "IndexSelectorNameTP", "指标函数", null, "VarChar", 0, 0, false)]
+        public virtual String IndexSelectorNameTP
         {
-            get { return _IndexSelectorName; }
-            set { if (OnPropertyChanging("IndexSelectorName", value)) { _IndexSelectorName = value; OnPropertyChanged("IndexSelectorName"); } }
+            get { return _IndexSelectorNameTP; }
+            set { if (OnPropertyChanging("IndexSelectorNameTP", value)) { _IndexSelectorNameTP = value; OnPropertyChanged("IndexSelectorNameTP"); } }
         }
 
-        private String _CompareRuleName;
+        private String _CompareRuleNameTP;
         /// <summary>对比类型</summary>
         [DisplayName("对比类型")]
         [Description("对比类型")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(3, "CompareRuleName", "对比类型", null, "VarChar", 0, 0, false)]
-        public virtual String CompareRuleName
+        [BindColumn(3, "CompareRuleNameTP", "对比类型", null, "VarChar", 0, 0, false)]
+        public virtual String CompareRuleNameTP
         {
-            get { return _CompareRuleName; }
-            set { if (OnPropertyChanging("CompareRuleName", value)) { _CompareRuleName = value; OnPropertyChanged("CompareRuleName"); } }
+            get { return _CompareRuleNameTP; }
+            set { if (OnPropertyChanging("CompareRuleNameTP", value)) { _CompareRuleNameTP = value; OnPropertyChanged("CompareRuleNameTP"); } }
         }
 
         private Int16 _FloorLimit;
@@ -145,8 +145,8 @@ namespace LotteryTicket
                 switch (name)
                 {
                     case "Id" : return _Id;
-                    case "IndexSelectorName" : return _IndexSelectorName;
-                    case "CompareRuleName" : return _CompareRuleName;
+                    case "IndexSelectorNameTP" : return _IndexSelectorNameTP;
+                    case "CompareRuleNameTP" : return _CompareRuleNameTP;
                     case "FloorLimit" : return _FloorLimit;
                     case "CeilLimit" : return _CeilLimit;
                     case "CompListStr" : return _CompListStr;
@@ -161,8 +161,8 @@ namespace LotteryTicket
                 switch (name)
                 {
                     case "Id" : _Id = Convert.ToInt32(value); break;
-                    case "IndexSelectorName" : _IndexSelectorName = Convert.ToString(value); break;
-                    case "CompareRuleName" : _CompareRuleName = Convert.ToString(value); break;
+                    case "IndexSelectorNameTP" : _IndexSelectorNameTP = Convert.ToString(value); break;
+                    case "CompareRuleNameTP" : _CompareRuleNameTP = Convert.ToString(value); break;
                     case "FloorLimit" : _FloorLimit = Convert.ToInt16(value); break;
                     case "CeilLimit" : _CeilLimit = Convert.ToInt16(value); break;
                     case "CompListStr" : _CompListStr = Convert.ToString(value); break;
@@ -183,10 +183,10 @@ namespace LotteryTicket
             public static readonly FieldItem Id = Meta.Table.FindByName("Id");
 
             ///<summary>指标函数</summary>
-            public static readonly FieldItem IndexSelectorName = Meta.Table.FindByName("IndexSelectorName");
+            public static readonly FieldItem IndexSelectorNameTP = Meta.Table.FindByName("IndexSelectorNameTP");
 
             ///<summary>对比类型</summary>
-            public static readonly FieldItem CompareRuleName = Meta.Table.FindByName("CompareRuleName");
+            public static readonly FieldItem CompareRuleNameTP = Meta.Table.FindByName("CompareRuleNameTP");
 
             ///<summary>下限</summary>
             public static readonly FieldItem FloorLimit = Meta.Table.FindByName("FloorLimit");
@@ -217,10 +217,10 @@ namespace LotteryTicket
         Int32 Id { get; set; }
 
         /// <summary>指标函数</summary>
-        String IndexSelectorName { get; set; }
+        String IndexSelectorNameTP { get; set; }
 
         /// <summary>对比类型</summary>
-        String CompareRuleName { get; set; }
+        String CompareRuleNameTP { get; set; }
 
         /// <summary>下限</summary>
         Int16 FloorLimit { get; set; }

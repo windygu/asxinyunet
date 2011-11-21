@@ -9,7 +9,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace YoungRunTest
+namespace DotNet
 {
 	/// <summary>
 	/// Class with program entry point.

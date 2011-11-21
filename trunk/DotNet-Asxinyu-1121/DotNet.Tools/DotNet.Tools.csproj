@@ -110,6 +110,12 @@
     <Compile Include="BaseUtilities\RandomHelper.cs" />
     <Compile Include="BaseUtilities\StringHelper.cs" />
     <Compile Include="BaseUtilities\Validator.cs" />
+    <Compile Include="Controls\FormModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FormModel.Designer.cs">
+      <DependentUpon>FormModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Image\ImageHelper.cs" />
     <Compile Include="Other.cs" />
     <Compile Include="Program.cs" />
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\StausInfoShow.resx">
       <DependentUpon>StausInfoShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FormModel.resx">
+      <DependentUpon>FormModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ValidateCode.resx">
       <DependentUpon>ValidateCode.cs</DependentUpon>
