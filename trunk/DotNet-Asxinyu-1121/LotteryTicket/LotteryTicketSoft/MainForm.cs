@@ -7,33 +7,49 @@
  * 软件GUI工具
  */
 using System;
-using DotNet.Tools.Controls ;
+using DotNet.Tools.Controls;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using LotteryTicket ;
-using LotteryTicketSoft.GraphForm ;
+using LotteryTicket;
+using LotteryTicketSoft.GraphForm;
 
 namespace LotteryTicketSoft
 {
-	/// <summary>
-	/// 主程序
-	/// </summary>
-	public partial class MainForm : Form
-	{
-		public MainForm()
-		{			
-			InitializeComponent();				
-		}	
-		void MainFormLoad(object sender, EventArgs e)
-		{
-			
-		}
+    /// <summary>
+    /// 主程序
+    /// </summary>
+    public partial class MainForm : Form
+    {
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+        static string LabAssemblyName = "LotteryTicketSoft.exe";
+
+
+        void MainFormLoad(object sender, EventArgs e)
+        {
+
+        }
 
         private void 常规参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormModel tf = WinFormHelper.GetControlForm<AddRules >(FormShowMode.ContinueAdd, "", "");
+            FormModel tf = WinFormHelper.GetControlForm<AddRules>(FormShowMode.ContinueAdd, "", "");
             tf.Show();
         }
-	}
+
+        private void 数据更新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 数据更新ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DataManageForm dt = WinFormHelper.DynamicLoadForm(LabAssemblyName, "LotteryTicketSoft.GraphForm.AddRules",
+                     true, typeof(tb_Rules), "");
+            dt.MdiParent = this;
+            dt.Show();
+        }
+    }
 }

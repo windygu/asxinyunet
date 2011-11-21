@@ -102,6 +102,7 @@ namespace LotteryTicketSoft
             this.数据更新ToolStripMenuItem.Name = "数据更新ToolStripMenuItem";
             this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据更新ToolStripMenuItem.Text = "数据更新";
+            this.数据更新ToolStripMenuItem.Click += new System.EventHandler(this.数据更新ToolStripMenuItem_Click_1);
             // 
             // 常规参数设置ToolStripMenuItem
             // 
