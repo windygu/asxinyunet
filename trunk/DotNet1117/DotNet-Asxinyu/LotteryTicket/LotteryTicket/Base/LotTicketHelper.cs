@@ -13,7 +13,12 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using DotNet.Tools;
+using System.Reflection;
+using System.Data;
 using Kw.Combinatorics;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace LotteryTicket
 {
@@ -21,6 +26,7 @@ namespace LotteryTicket
     /// <summary>
     /// 规则类
     /// </summary>
+    [Serializable]
     public class Rule
     {
         /// <summary>
@@ -50,8 +56,8 @@ namespace LotteryTicket
         /// <param name="compareRule">对比类型</param>
         /// <param name="floorlimit">下限,默认为单个比较参数</param>
         /// <param name="ceilLimit">上限</param>
-        public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0, 
-            int ceilLimit = 0,int[] compList = null )
+        public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0,
+            int ceilLimit = 0, int[] compList = null)
         {
             this.Selector = selector;
             this.CompareRule = compareRule;
@@ -127,7 +133,7 @@ namespace LotteryTicket
     interface IGetWebLotTickData
     {
         void GetAllHistoryData(int pages = -1);//获取所有历史数据，自动计算所有页面的总数
-        void UpdateRecentData(int pages=1);//更新最新数据,默认为一页
+        void UpdateRecentData(int pages = 1);//更新最新数据,默认为一页
     }
 
     /// <summary>
@@ -240,7 +246,7 @@ namespace LotteryTicket
     /// <summary>
     /// 项目常规帮助类
     /// </summary>
-    public class LotTicketHelper
+    public static class LotTicketHelper
     {
         #region 公共方法---获得正确率
         /// <summary>
@@ -582,6 +588,83 @@ namespace LotteryTicket
             //        sw.WriteLine();
             //    }
             //}
+        }
+        #endregion
+
+        #region 序列化
+        /// <summary>
+        /// 读取XML文件，反序列化为对象
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="t">对象</param>
+        /// <param name="fileName">xml文件名</param>
+        /// <returns>反序列化的对象</returns>
+        public static T ReadXMLFileToType<T>(string xmlFileName)
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(T));
+            FileStream fileStream = new FileStream(xmlFileName, FileMode.Open, FileAccess.Read);
+            return (T)ser.Deserialize(fileStream);
+        }
+
+        /// <summary>
+        /// 序列化对象，保存为XML文件，前缀为空
+        /// </summary>
+        /// <param name="t">对象类型</param>
+        /// <param name="s">对象序列化后的Xml文件</param>
+        public static void SaveTypeToXmlFile<T>(T t, string xmlFile)
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(T));
+            FileStream fileStream = new FileStream(xmlFile, FileMode.Create, FileAccess.Write);
+            ser.Serialize(fileStream, t);
+            fileStream.Close();
+        }
+        #endregion
+
+        #region 将Rule数组转换为DataTable显示,并可编辑
+        public static DataTable RulesToDataTable(List<Rule> rules)
+        {
+            DataTable dt = new DataTable("Rules");
+            dt.Columns.Add(new DataColumn("序号", typeof(Int32)));
+            dt.Columns.Add(new DataColumn("指标函数", typeof(System.Func<int[], int>)));
+            dt.Columns.Add(new DataColumn("对比类型", typeof(CompareType)));
+            dt.Columns.Add(new DataColumn("范围下限", typeof(Int32)));
+            dt.Columns.Add(new DataColumn("范围上限", typeof(Int32)));
+            return dt;
+        }
+        #endregion
+
+        #region 扩展方法
+        public static bool IsNullEmpty(this IEnumerable source)
+        {
+            if (source == null) return true;
+            foreach (var item in source)
+                return false;
+            return true;
+        }
+        public static DataTable ToDataTable<T>(this IEnumerable<T> varlist)
+        {
+            DataTable dtReturn = new DataTable();
+            PropertyInfo[] oProps = null;
+            if (varlist == null) return dtReturn;
+            foreach (T rec in varlist)
+            {
+                if (oProps == null)
+                {
+                    oProps = ((Type)rec.GetType()).GetProperties();
+                    foreach (PropertyInfo pi in oProps)
+                    {
+                        Type colType = pi.PropertyType;
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>))) 
+                            colType = colType.GetGenericArguments()[0]; 
+                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
+                    }
+                } 
+                DataRow dr = dtReturn.NewRow();
+                foreach (PropertyInfo pi in oProps) 
+                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue(rec, null);
+                dtReturn.Rows.Add(dr);
+            }
+            return dtReturn;
         }
         #endregion
     }

@@ -76,13 +76,19 @@ using XCode;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
 using Kw.Combinatorics;
+using System.Data;
 
 namespace LotteryTicket
 {
     class Program
     {
     	public static void Main(string[] args)
-    	{            
+    	{
+            Rule rule = new Rule(IndexCalculate.Index_Ac值, CompareType.Equal, 2, 3);
+            Rule[] rules = new Rule[1];
+            rules[0] = rule;
+            DataTable dt = rules.ToDataTable<Rule>();
+            dt.TableName = "规则集合";
     		Console.ReadKey(true);
     	}
     	/// <summary>
