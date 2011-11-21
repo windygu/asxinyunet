@@ -1,28 +1,29 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using NewLife.Log;
 using XCode;
 using XCode.Configuration;
 
-namespace LotteryTicket.Entities
+namespace LotteryTicket
 {
-
     /// <summary></summary>
-    public partial class ssq : Entity<ssq>
+    public partial class tb_Ssq : Entity<tb_Ssq>
     {
-        #region 扩展属性
+        #region 扩展属性﻿
         #endregion
 
-        #region 扩展查询
+        #region 扩展查询﻿
         /// <summary>
         /// 根据期号查找
         /// </summary>
         /// <param name="__期号">期号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static ssq FindBy期号(Double __期号)
+        public static tb_Ssq FindBy期号(Double __期号)
         {
             if (Meta.Count >= 1000)
                 return Find(new String[] { _.期号 }, new Object[] { __期号 });
@@ -33,7 +34,7 @@ namespace LotteryTicket.Entities
         }
         #endregion
 
-        #region 对象操作
+        #region 对象操作﻿
         ///// <summary>
         ///// 已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert
         ///// </summary>
@@ -85,7 +86,7 @@ namespace LotteryTicket.Entities
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}管理员数据……", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}数据……", typeof(tb_Ssq).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -95,7 +96,7 @@ namespace LotteryTicket.Entities
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}管理员数据！", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}数据！", typeof(tb_Ssq).Name);
         //}
         #endregion
 
@@ -111,7 +112,7 @@ namespace LotteryTicket.Entities
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<ssq> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<tb_Ssq> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

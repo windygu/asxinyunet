@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
@@ -8,15 +8,15 @@ using XCode.DataAccessLayer;
 
 #pragma warning disable 3021
 #pragma warning disable 3008
-namespace LotteryTicket.Entities
+namespace LotteryTicket
 {
     /// <summary></summary>
     [Serializable]
     [DataObject]
     [Description("")]
     [BindIndex("PrimaryKey", true, "期号")]
-    [BindTable("tb_ssq", Description = "", ConnName = "LotTick", DbType = DatabaseType.Access)]
-    public partial class ssq : Issq
+    [BindTable("tb_Ssq", Description = "", ConnName = "LotTick", DbType = DatabaseType.Access)]
+    public partial class tb_Ssq : Itb_Ssq
     
     {
         #region 属性
@@ -209,7 +209,7 @@ namespace LotteryTicket.Entities
     }
 
     /// <summary>接口</summary>
-    public partial interface Issq
+    public partial interface Itb_Ssq
     {
         #region 属性
         /// <summary>开奖日期</summary>
