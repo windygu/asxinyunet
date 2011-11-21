@@ -14,12 +14,12 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using DotNet.Tools;
-using System.Reflection;
 using System.Data;
 using Kw.Combinatorics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace LotteryTicket
 {
@@ -45,12 +45,10 @@ namespace LotteryTicket
                 Selector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
             }
         }
-
         /// <summary>
         /// 指标计算函数
         /// </summary>
         public System.Func<int[], int> Selector { get; set; }
-
 
         private string _compareRuleName;
         /// <summary>
@@ -116,13 +114,21 @@ namespace LotteryTicket
             if (compList != null)
             {
                 string temp = "";
-                for (int i = 0; i < compList.Length -1 ; i++)
+                for (int i = 0; i < compList.Length - 1; i++)
                 {
-                    temp +=(compList[i].ToString () +",");
+                    temp += (compList[i].ToString() + ",");
                 }
-                temp += compList [compList.Length -1].ToString () ;
+                temp += compList[compList.Length - 1].ToString();
                 this.CompListStr = temp;
-            }            
+            }
+        }
+        public Rule(string selector, string compareRule, string compList, int floorlimit = 0, int ceilLimit = 0)
+        {
+            this.IndexSelectorName = selector;
+            this.CompareRuleName = compareRule;
+            this.FloorLimit = floorlimit;
+            this.CeilLimit = ceilLimit;
+            this.CompListStr = compList;
         }
     }
     #endregion
@@ -317,85 +323,7 @@ namespace LotteryTicket
             return ((double)sum) / ((double)result.Length);
         }
         #endregion
-
-        #region  文本文件的规则解析:界面上动态添加规则，并更新到文本。最后还是通过文本的规则来解析，结果记录方便
-        /// <summary>
-        /// 解析规则文本
-        /// </summary>
-        /// <param name="ruleFilePath">规则文件路径</param>
-        /// <returns>规则列表</returns>
-        public static List<string> GetRuleListFormFile(string ruleFilePath)
-        {
-            List<string> ruleList = new List<string>();//规则列表
-            using (StreamReader sr = new StreamReader(ruleFilePath))
-            {
-                string line = null;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (line.StartsWith("#") || (line.Length < 5))
-                    {
-                        continue;
-                    }
-                    ruleList.Add(line);//添加
-                }
-            }
-            return ruleList;
-        }
-
-        /// <summary>
-        /// 根据规则列表解析规则
-        /// </summary>
-        /// <param name="ruleList">规则数组列表</param>
-        /// <returns>规则字符串数组</returns>
-        public static string[][] ParseRuleList(List<string> ruleList)
-        {
-            string[][] res = new string[ruleList.Count][];
-            //TODO:解析文本，增加一个特殊规则的处理，特殊规则的处理，到最底层处理
-            //先：分割
-            for (int i = 0; i < ruleList.Count; i++)
-            {
-                List<string> strList = new List<string>();
-                string[] temp = ruleList[i].Split(':');
-                if (temp.Length == 4) //只能有3个
-                {
-                    if (temp[3].Contains("#"))
-                    {
-                        res[i] = new string[6];
-                        string[] t = temp[3].Split('#');//再次分割
-                        res[i][0] = temp[0].Trim();
-                        res[i][1] = temp[1].Trim();
-                        res[i][2] = temp[2].Trim();
-                        res[i][3] = t[0].Trim();
-                        res[i][4] = t[1].Trim();
-                        res[i][5] = t[2].Trim();
-                    }
-                    else
-                    {
-                        res[i] = new string[4];
-                        res[i][0] = temp[0].Trim();
-                        res[i][1] = temp[1].Trim();
-                        res[i][2] = temp[2].Trim();
-                        res[i][3] = temp[3].Trim();
-                    }
-                }
-            }
-            return res;
-        }
-
-        //拼接字符串
-        public static string CombStringArr(string[] str)
-        {
-            if (str.Length == 4)
-            {
-                return str[0] + ":" + str[1] + ":" + str[2] + ":" + str[3];
-            }
-            else
-            {
-                return str[0] + ":" + str[1] + ":" + str[2] + ":" + str[3] + "#" + str[4] + "#" + str[5];
-            }
-        }
-        #endregion
-
+            
         #region 生成文件名和验证文件是否合法
         /// <summary>
         /// 验证文件是否合法
@@ -419,92 +347,7 @@ namespace LotteryTicket
             return "";
         }
         #endregion
-
-        #region 根据预测规则文件,进行数据过滤,得到预测数据,并保存到文件
-        /// <summary>
-        ///  根据预测规则文件,进行数据过滤,得到预测数据,并保存到文件
-        /// </summary>
-        /// <param name="ruleFilePath">规则文件名称</param>
-        /// <param name="saveFilePath">保存文件名称</param>
-        public static void GetPredictDataByRule(string ruleFilePath, string saveFilePath)
-        {
-            List<string> ruleArr = new List<string>();
-            #region 读取数据并处理
-            //读取测试规则列表,将规则保存到字符串数组中
-            using (StreamReader sr = new StreamReader(ruleFilePath))
-            {
-                string str = "";
-                while ((str = sr.ReadLine()) != null)
-                {
-                    if (!str.StartsWith("#"))
-                    {
-                        //不是以#开头的为规则
-                        ruleArr.Add(str);//添加
-                    }
-                }
-            }
-            string[][] ruleStr = new string[ruleArr.Count][];//存储规则名称,2列
-            double[][] ruleParmas = new double[ruleArr.Count][];//存储对应规则的参数列表
-            int count = 0;
-            foreach (string element in ruleArr)
-            {
-                string[] temp = element.Split(':');
-                ruleStr[count] = new string[] { temp[0], temp[1] };
-                ruleParmas[count] = temp[2].ConvertStrToDoubleList(',');
-            }
-            #endregion
-
-            //保存到数据文件,每行一组
-            Combination com = new Combination(33, 6);
-            var res = com.Rows;
-            foreach (var s in res)
-            {
-                //先得到组号码组
-                foreach (var element in s)
-                {
-                    Console.Write(element.ToString() + "  ");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine(com.Rank.ToString());
-        }
-        #endregion
-
-        #region 从文件读取预测数据
-        /// <summary>
-        /// 从文件读取预测数据
-        /// </summary>
-        /// <param name="dataFilePath">文件名称</param>
-        /// <returns>预测文件中的数据集合</returns>
-        public static double[][] GetPredictDataFormFile(string dataFilePath)
-        {
-            //TODO:文件验证，文件名唯一，需要验证
-            //规则类似测试文件,读取，方便更改
-            List<string> dataArr = new List<string>();
-
-            // 读取数据 并 处理
-            //首先读取测试的数据文件结果,保存到数据:每一行一期,蓝号放在最后 " ," 为分隔符
-            using (StreamReader sr = new StreamReader(dataFilePath))
-            {
-                string str = "";
-                while ((str = sr.ReadLine()) != null)
-                {
-                    if (str != "")
-                    {
-                        dataArr.Add(str);//添加测试数据
-                    }
-                }
-            }
-            double[][] testData = new double[dataArr.Count][]; ;
-            int count = 0;
-            foreach (string element in dataArr)
-            {
-                testData[count++] = element.ConvertStrToDoubleList(',');
-            }
-            return testData;
-        }
-        #endregion
-
+                
         #region 验证实际预测结果的收获
         /// <summary>
         /// 验证实际预测结果的收获
@@ -512,13 +355,13 @@ namespace LotteryTicket
         /// <param name="dataFilePath">实际预测文件路径名称</param>
         /// <param name="prizedata">实际中奖数据</param>
         /// <returns>实际收益(按照所有预测文件单注计算)</returns>
-        public static double ValidatePrizes(string dataFilePath, double[] prizedata)
-        {
-            //TODO:循环数据 与 正确号码进行对比,确定奖等级
-            //直接调用彩票类的兑奖计算
-            double[][] data = GetPredictDataFormFile(dataFilePath);
-            return TwoColorBall.GetAllPrizeReward(prizedata, data);
-        }
+        //public static double ValidatePrizes(string dataFilePath, double[] prizedata)
+        //{
+        //    //TODO:循环数据 与 正确号码进行对比,确定奖等级
+        //    //直接调用彩票类的兑奖计算
+        //    double[][] data = GetPredictDataFormFile(dataFilePath);
+        //    return TwoColorBall.GetAllPrizeReward(prizedata, data);
+        //}
 
         /// <summary>
         /// 验证实际预测结果的收获
@@ -526,10 +369,10 @@ namespace LotteryTicket
         /// <param name="dataFilePath">实际预测文件路径名称</param>
         /// <param name="prizedata">实际中奖数据</param>
         /// <returns>实际收益(按照所有预测文件单注计算)</returns>
-        public static double ValidatePrizes(double[][] predictData, double[] prizedata)
-        {
-            return TwoColorBall.GetAllPrizeReward(prizedata, predictData);
-        }
+        //public static double ValidatePrizes(double[][] predictData, double[] prizedata)
+        //{
+        //    return TwoColorBall.GetAllPrizeReward(prizedata, predictData);
+        //}
         #endregion
 
         #region 过滤处理
@@ -571,86 +414,7 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 杀组合
-        /// <summary>
-        /// 杀组合,杀掉一组序列中所有指定的组合
-        /// </summary>
-        /// <param name="origData">原始序列</param>
-        /// <param name="deleteNumber">需要排除的序列组合</param>
-        /// <param name="numbers">组合数</param>
-        public static void DeleteCombinationNumbers(List<double[]> origData,
-                                                    double[] deleteNumber, int numbers)
-        {
-            //			List<int > flag = new List<int > () ;
-            //			for (int i = 0; i < origData.Count ; i++)
-            //			{
-            //				if (IndexCalculate.GetRepeatNumbers (element,deleteNumber )>=numbers )
-            //				{
-            //					flag.Add (i ) ;//将位置添加到序列,统一删除
-            //				}
-            //			}
-            //origData.RemoveAll(delegate(double[] cur)
-            //{
-            //    return IndexCalculate.GetRepeatNumbers(cur, deleteNumber) >= numbers ? true : false;
-            //});
-        }
-        /// <summary>
-        ///  杀组合,杀掉一组序列中所有指定的组合
-        /// </summary>
-        /// <param name="origData">原始序列</param>
-        /// <param name="combStr">组合,-分隔每个数字，逗号分隔2个组合：2-3-4,3-6-8</param>
-        public static void DeleteCombinationNumbers(List<double[]> origData, string combStr)
-        {
-            string[] numStr = combStr.Split(',');
-            for (int i = 0; i < numStr.Length; i++)
-            {
-                double[] temp = GetSpliteNumbers(numStr[i]);
-                DeleteCombinationNumbers(origData, temp, temp.Length);
-            }
-        }
-        /// <summary>
-        /// 分隔字符串，获得一组序列,逗号分隔
-        /// </summary>
-        /// <param name="combStr"></param>
-        /// <returns></returns>
-        public static double[] GetSpliteNumbers(string combStr)
-        {
-            string[] numStr = combStr.Split('-');
-            List<double> numbers = new List<double>();
-            for (int i = 0; i < numStr.Length; i++)
-            {
-                numbers.Add(Convert.ToDouble(numbers[i]));
-            }
-            return numbers.ToArray();
-        }
-        #endregion
-
-        #region 文本解释规则进行验证
-        /// <summary>
-        /// 根据文本规则进行方法验证,并将结果输入到文本中
-        /// </summary>
-        /// <param name="ruleFilePath">规则文件路径</param>
-        public static void ValidateRuleFile(string ruleFilePath)
-        {
-            //List<string> ruleList = TxtParse.GetRuleListFormFile(ruleFilePath);//原始规则
-            //string[][] ruleStr = TxtParse.ParseRuleList(ruleList);//解析后的规则字符串,每行一个规则,没列为参数列表
-            //using (StreamWriter sw = new StreamWriter(DateTime.Now.ToShortDateString(), false))
-            //{
-            //    //调用方法进行计算
-            //    for (int i = 0; i < ruleStr.Length; i++)
-            //    {
-            //        //基本参数的转化,类型不同
-
-            //        //依次计算,并写入结果
-            //        sw.WriteLine(TxtParse.CombStringArr(ruleStr[i]));
-            //        //结果
-            //        sw.WriteLine();
-            //    }
-            //}
-        }
-        #endregion
-
-        #region 序列化
+        #region XML序列化
         /// <summary>
         /// 读取XML文件，反序列化为对象
         /// </summary>
@@ -676,6 +440,30 @@ namespace LotteryTicket
             FileStream fileStream = new FileStream(xmlFile, FileMode.Create, FileAccess.Write);
             ser.Serialize(fileStream, t);
             fileStream.Close();
+        }
+        #endregion
+
+        #region 二进制序列化
+        /// <summary>
+        /// 二进制序列化,将对象保存为文件
+        /// </summary>
+        private static void BinarySerialize<T>(T t,string fileName)
+        {            
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream fileStream = File.Create(fileName );
+            formatter.Serialize(fileStream, t);
+            fileStream.Close();
+        }
+        /// <summary>
+        /// 二进制反序列化,将文件读取为对象
+        /// </summary>
+        private static T BinaryDeserialize<T>(string fileName)
+        {
+            BinaryFormatter derializer = new BinaryFormatter();
+            FileStream fileStream = new FileStream(fileName , FileMode.Open, FileAccess.Read, FileShare.Read);
+            T t = (T )derializer.Deserialize(fileStream);          
+            fileStream.Close();
+            return t;
         }
         #endregion
 
@@ -717,16 +505,7 @@ namespace LotteryTicket
             }
             return res;
         }
-        #endregion
 
-        #region 扩展方法
-        /// <summary>
-        /// 根据字符串获取指定类型的枚举值
-        /// </summary>
-        public static T ToEnum<T>(this string name)
-        {
-            return (T)Enum.Parse(typeof(T), name);
-        }
         /// <summary>
         /// 获取枚举类型的所有枚举值
         /// </summary>
@@ -740,6 +519,110 @@ namespace LotteryTicket
             }
             return list;
         }
+        #endregion
+                       
+        #region 将Rule数组转换为DataTable显示,并实时计算，保存
+        /// <summary>
+        /// 将规则类数组转换为DataGridView，便于编辑
+        /// </summary>
+        public static void RulesToDgv(LotteryTicket.Rule[] rules, DataGridView dgv)
+        {
+            DataGridViewTextBoxColumn tb = new DataGridViewTextBoxColumn();
+            tb.Name = "序号";
+            tb.ValueType = typeof(int);
+            tb.Width = 80;
+            dgv.Columns.Add(tb);
+
+            DataGridViewComboBoxColumn comb = new DataGridViewComboBoxColumn();
+            comb.Name = "指标函数";
+            comb.Width = 180;
+            comb.ValueType = typeof(string);
+            comb.DataSource = LotTicketHelper.GetAllIndexNames().Where(n => n.Contains("Index_")).ToList();
+            dgv.Columns.Add(comb);
+
+            DataGridViewComboBoxColumn comb2 = new DataGridViewComboBoxColumn();
+            comb2.Name = "对比类型";
+            comb2.Width = 160;
+            comb2.ValueType = typeof(string);
+            comb2.DataSource = LotTicketHelper.GetAllEnumNames<CompareType>();
+            dgv.Columns.Add(comb2);
+
+            DataGridViewTextBoxColumn tb2 = new DataGridViewTextBoxColumn();
+            tb2.Name = "下限";
+            tb2.Width = 80;
+            tb2.ValueType = typeof(int);
+            dgv.Columns.Add(tb2);
+
+            DataGridViewTextBoxColumn tb3 = new DataGridViewTextBoxColumn();
+            tb3.Name = "上限";
+            tb3.Width = 80;
+            tb3.ValueType = typeof(int);
+            dgv.Columns.Add(tb3);
+
+            DataGridViewTextBoxColumn tb4 = new DataGridViewTextBoxColumn();
+            tb4.Name = "列表范围";
+            tb4.Width = 200;
+            tb4.ValueType = typeof(string);
+            dgv.Columns.Add(tb4);
+
+            DataGridViewTextBoxColumn tb5 = new DataGridViewTextBoxColumn();
+            tb5.Name = "概率值";
+            tb5.Width = 80;
+            tb5.ValueType = typeof(string);
+            dgv.Columns.Add(tb5);
+
+            dgv.Rows.Add(rules.Length);
+            for (int i = 0; i < rules.Length; i++)
+            {
+                dgv.Rows[i].Cells[0].Value = i + 1;
+                dgv.Rows[i].Cells[1].Value = rules[i].IndexSelectorName;
+                dgv.Rows[i].Cells[2].Value = rules[i].CompareRuleName;
+                dgv.Rows[i].Cells[3].Value = rules[i].FloorLimit;
+                dgv.Rows[i].Cells[4].Value = rules[i].CeilLimit;
+                dgv.Rows[i].Cells[5].Value = rules[i].CompListStr;
+            }
+        }        
+        #endregion
+
+        #region 根据配置文件的规则,对历史数据进行计算，并显示结果
+        //计算当期规则
+        public static void CalculateCurrent(int[][] data, DataGridView dgv)
+        {
+            int rowIndex = dgv.CurrentRow.Index;
+            LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[rowIndex].Cells[1].Value,
+                (string)dgv.Rows[rowIndex].Cells[2].Value, (string)dgv.Rows[rowIndex].Cells[5].Value,
+                (int)dgv.Rows[rowIndex].Cells[3].Value, (int)dgv.Rows[rowIndex].Cells[4].Value);
+            double res = data.Static_单个指标频率(cutRule);
+            dgv.Rows[rowIndex].Cells[6].Value = (res * 100).ToString("F4");
+        }
+        //计算所有期规则
+        public static void CalculateAllRules(int[][] data, DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[i].Cells[1].Value,
+               (string)dgv.Rows[i].Cells[2].Value, (string)dgv.Rows[i].Cells[5].Value,
+               (int)dgv.Rows[i].Cells[3].Value, (int)dgv.Rows[i].Cells[4].Value);
+                double res = data.Static_单个指标频率(cutRule);
+                dgv.Rows[i].Cells[6].Value = (res * 100).ToString("F4");
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region 常规的扩展方法类
+    public static class ExtendsExpress
+    {
+        #region 扩展方法
+        /// <summary>
+        /// 根据字符串获取指定类型的枚举值
+        /// </summary>
+        public static T ToEnum<T>(this string name)
+        {
+            return (T)Enum.Parse(typeof(T), name);
+        }
+       
         public static bool IsNullEmpty(this IEnumerable source)
         {
             if (source == null) return true;
@@ -747,6 +630,9 @@ namespace LotteryTicket
                 return false;
             return true;
         }
+        /// <summary>
+        /// 将对象转换为DataTable
+        /// </summary>
         public static DataTable ToDataTable<T>(this IEnumerable<T> varlist)
         {
             DataTable dtReturn = new DataTable();
