@@ -18,7 +18,7 @@ namespace LotteryTicket
         /// <param name="rule">数据源相应的比较规则</param>
         /// <returns>是否符合规则:符合为True,否则False</returns>
         public static bool CompareRule(this IEnumerable<int> source, Rule rule)
-        {
+        {            
             int res = rule.Selector(source.ToArray ());//结果
             switch (rule.CompareRule)
             {
@@ -42,7 +42,7 @@ namespace LotteryTicket
 
         #region 统计值出现在指定范围的频率
         public static double Static_单个指标频率(this IEnumerable<int[]> source,Rule rule)
-        {
+        {            
             return ((double)source.Where(n => n.CompareRule(rule)).Count()) / ((double)source.Count());           
         }
         #endregion  
@@ -59,5 +59,5 @@ namespace LotteryTicket
             return source.Where(n => n.CompareRule(rule));
         }
         #endregion
-    }   
+    }
 }
