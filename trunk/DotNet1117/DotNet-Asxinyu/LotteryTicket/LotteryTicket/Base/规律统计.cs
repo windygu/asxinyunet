@@ -40,7 +40,7 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 统计值出现在指定范围的频率
+        #region 统计值出现在指定范围的频率--单个指标频率
         public static double Static_单个指标频率(this IEnumerable<int[]> source,Rule rule)
         {            
             return ((double)source.Where(n => n.CompareRule(rule)).Count()) / ((double)source.Count());           
