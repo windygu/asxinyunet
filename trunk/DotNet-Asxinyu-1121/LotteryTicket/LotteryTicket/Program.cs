@@ -22,6 +22,8 @@
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
  *
+ * 2011-11-22 全面考虑各种验证和过滤功能。
+ * 2011-11-21 取消18日的数据库改进,开始进行规则类的显示及数据库保存。
  * 2011-11-19 指标名称更改为中文，便于理解。结合500w彩票软件进行，无需重复开发功能。增加自己的特殊功能而已。
  * 2011-11-18 重大改进基本完成,整理之后，利用Linq特性，大大简化程序结构。整合完善彩票类，数据接口
  * 2011-11-17 整个架构重新设计，重新设计数据库，更改程序架构，改进比较算法类为泛型类
@@ -84,12 +86,7 @@ namespace LotteryTicket
     {
     	public static void Main(string[] args)
     	{
-            Rule rule = new Rule(IndexCalculate.Index_Ac值, CompareType.Equal, 2, 3);
-            rule.IndexSelectorName = "Index_Ac值";
-            Rule[] rules = new Rule[1];
-            rules[0] = rule;
-            DataTable dt = rules.ToDataTable<Rule>();
-            dt.TableName = "规则集合";
+           
     		Console.ReadKey(true);
     	}
     	/// <summary>

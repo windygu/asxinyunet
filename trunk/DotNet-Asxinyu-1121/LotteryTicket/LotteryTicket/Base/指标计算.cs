@@ -15,9 +15,9 @@ using System.IO;
 namespace LotteryTicket
 {
     /// <summary>
-    /// 指标计算:单个指标和所有指标,采用扩展方法实现
+    /// 指标计算:OM类单个指标，1对1和1对多的实现
     /// </summary>
-    public static class IndexCalculate
+    public static class OOIndexCalculate
     {
         #region 常量
         /// <summary>
@@ -361,5 +361,29 @@ namespace LotteryTicket
             return source.Select(n => n % 10).Distinct().Count();
         }
         #endregion        
+    }
+
+    /// <summary>
+    /// 单个指标：多组数据计算结果实现
+    /// </summary>
+    public static class MOIndexCalculate
+    {
+
+    }
+
+    /// <summary>
+    /// 其他特殊指标计算
+    /// </summary>
+    public static class OtherIndexCalculate
+    {
+
+    }
+
+    /// <summary>
+    /// 其他特殊指标过滤
+    /// </summary>
+    public static class OtherIndexFilter
+    {
+
     }
 }

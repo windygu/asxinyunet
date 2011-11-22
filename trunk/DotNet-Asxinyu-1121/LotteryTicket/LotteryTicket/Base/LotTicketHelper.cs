@@ -30,7 +30,28 @@ namespace LotteryTicket
     [Serializable]
     public class Rule
     {
-        string _indexSelectorName;//指标函数的名称
+        #region 规则类型及模式
+        /// <summary>
+        /// 是否是1对1常规类型
+        /// </summary>
+        public bool IsOO { get; set; }
+
+        /// <summary>
+        /// 是否是特殊模式,此模式下,其他参数设置无效,只接受特殊参数数组
+        /// </summary>
+        public bool IsSpecialMode { get; set; }
+        /// <summary>
+        /// 特殊模式下的参数
+        /// </summary>
+        public object[] ParamsValues { get; set; }                
+        #endregion
+
+        #region MO类型时的计算期数N
+        public int NumbersCount { get; set; }
+        #endregion
+
+        #region 指标函数委托及名称
+        string _indexSelectorName;
         /// <summary>
         /// 指标函数的名称
         /// </summary>
@@ -40,16 +61,28 @@ namespace LotteryTicket
             set
             {
                 _indexSelectorName = value;
-                Type t = typeof(IndexCalculate);
-                MethodInfo cur = t.GetMethod(value);
-                Selector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
+                if (IsOO)
+                {
+                    Type t = typeof(OOIndexCalculate);
+                    MethodInfo cur = t.GetMethod(value);
+                    OOSelector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
+                }
+                else
+                {
+                    Type t = typeof(MOIndexCalculate);
+                    MethodInfo cur = t.GetMethod(value);
+                    MOSelector = (Func<int[][], int>)Delegate.CreateDelegate(typeof(Func<int[][], int>), cur);
+                }
             }
         }
         /// <summary>
         /// 指标计算函数
         /// </summary>
-        public System.Func<int[], int> Selector { get; set; }
+        public System.Func<int[], int> OOSelector { get; set; }
+        public System.Func<int[][], int> MOSelector { get; set; }
+        #endregion
 
+        #region 比较类型及名称
         private string _compareRuleName;
         /// <summary>
         /// 比较的类型名称
@@ -67,7 +100,9 @@ namespace LotteryTicket
         /// 对比类型
         /// </summary>
         public CompareType CompareRule { get; set; }
+        #endregion
 
+        #region 范围比较参数
         /// <summary>
         /// 上限
         /// </summary>
@@ -87,49 +122,54 @@ namespace LotteryTicket
             get { return _compListStr; }
             set
             {
-                _compListStr = value;
-                CompList = value.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                if (value !=null && value !="")
+                {
+                    _compListStr = value;
+                    CompList = value.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                }               
             }
         }
         /// <summary>
         /// 比较序列
         /// </summary>
         public int[] CompList { get; set; }
+        #endregion           
 
+        #region OO与MO通用构造函数,常用,传入字符串，并转换为类型
         /// <summary>
-        /// 构造函数,如果为单参数的话，默认为floorlimit
+        /// 通用构造函数
         /// </summary>
         /// <param name="selector">指标计算函数</param>
-        /// <param name="compareRule">对比类型</param>
-        /// <param name="floorlimit">下限,默认为单个比较参数</param>
-        /// <param name="ceilLimit">上限</param>
-        public Rule(System.Func<int[], int> selector, CompareType compareRule, int floorlimit = 0,
-            int ceilLimit = 0, int[] compList = null)
+        /// <param name="compareRule">对比规则</param>
+        /// <param name="compList">对比序列,默认为空</param>
+        /// <param name="isOO">是否是1对1类型</param>
+        /// <param name="needRows">计算所需的函数,OO为0，MO需要设置</param>
+        /// <param name="floorlimit">范围下限</param>
+        /// <param name="ceilLimit">范围上限</param>
+        public Rule(string selector, string compareRule,string compList ="",bool isOO = true ,
+            int needRows = 0 ,int floorlimit = 0, int ceilLimit = 0)
         {
-            this.IndexSelectorName = selector.Method.Name;
-            this.CompareRuleName = compareRule.ToString();
-            this.CompareRule = compareRule;
-            this.FloorLimit = floorlimit;
-            this.CeilLimit = ceilLimit;
-            if (compList != null)
-            {
-                string temp = "";
-                for (int i = 0; i < compList.Length - 1; i++)
-                {
-                    temp += (compList[i].ToString() + ",");
-                }
-                temp += compList[compList.Length - 1].ToString();
-                this.CompListStr = temp;
-            }
-        }
-        public Rule(string selector, string compareRule, string compList, int floorlimit = 0, int ceilLimit = 0)
-        {
+            this.IsSpecialMode = false;//默认为非特殊模式,也就是正常模式
+            this.NumbersCount = needRows;
+            this.IsOO = isOO;
             this.IndexSelectorName = selector;
             this.CompareRuleName = compareRule;
             this.FloorLimit = floorlimit;
             this.CeilLimit = ceilLimit;
             this.CompListStr = compList;
         }
+        /// <summary>
+        /// 特殊模式构造函数，直接传入参数数组即可
+        /// </summary>
+        /// <param name="selector">特殊模式下对应的方法名称</param>
+        /// <param name="paramsValues">参数</param>
+        public Rule(string selector, object[] paramsValues)
+        {
+            this._indexSelectorName = selector;
+            this.IsSpecialMode = true;
+
+        }
+        #endregion       
     }
     #endregion
 
@@ -201,16 +241,6 @@ namespace LotteryTicket
         void UpdateRecentData(int pages = 1);//更新最新数据,默认为一页
     }
 
-    /// <summary>
-    /// 验证和过滤接口,根据指标和参数对序列进行验证和过滤
-    /// </summary>
-    interface IValidateFilter
-    {
-        void FilterNumbers(List<double[]> origData, FilterRuleType ruleType = FilterRuleType.RangeLimite,
-            double[] conditons = null, params object[] paramValues);//过滤号码
-        double Validate(double[][] data, FilterRuleType ruleType = FilterRuleType.NotEqual, double[] conditons = null,
-            int rows = 0, params object[] paramValues);//验证
-    }
     /// <summary>
     /// 获取彩票数据类基类
     /// </summary>
@@ -496,7 +526,7 @@ namespace LotteryTicket
         #region 获取所有的方法类型和比较类型
         public static List<string> GetAllIndexNames()
         {
-            Type t = typeof(IndexCalculate);
+            Type t = typeof(OOIndexCalculate);
             MethodInfo[] methods = t.GetMethods();
             List<string> res = new List<string>(methods.Length);
             foreach (MethodInfo item in methods)
@@ -588,24 +618,24 @@ namespace LotteryTicket
         //计算当期规则
         public static void CalculateCurrent(int[][] data, DataGridView dgv)
         {
-            int rowIndex = dgv.CurrentRow.Index;
-            LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[rowIndex].Cells[1].Value,
-                (string)dgv.Rows[rowIndex].Cells[2].Value, (string)dgv.Rows[rowIndex].Cells[5].Value,
-                (int)dgv.Rows[rowIndex].Cells[3].Value, (int)dgv.Rows[rowIndex].Cells[4].Value);
-            double res = data.Static_单个指标频率(cutRule);
-            dgv.Rows[rowIndex].Cells[6].Value = (res * 100).ToString("F4");
+            //int rowIndex = dgv.CurrentRow.Index;
+            //LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[rowIndex].Cells[1].Value,
+            //    (string)dgv.Rows[rowIndex].Cells[2].Value, (string)dgv.Rows[rowIndex].Cells[5].Value,
+            //    (int)dgv.Rows[rowIndex].Cells[3].Value, (int)dgv.Rows[rowIndex].Cells[4].Value);
+            //double res = data.Static_单个指标频率(cutRule);
+            //dgv.Rows[rowIndex].Cells[6].Value = (res * 100).ToString("F4");
         }
         //计算所有期规则
         public static void CalculateAllRules(int[][] data, DataGridView dgv)
         {
-            for (int i = 0; i < dgv.Rows.Count; i++)
-            {
-                LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[i].Cells[1].Value,
-               (string)dgv.Rows[i].Cells[2].Value, (string)dgv.Rows[i].Cells[5].Value,
-               (int)dgv.Rows[i].Cells[3].Value, (int)dgv.Rows[i].Cells[4].Value);
-                double res = data.Static_单个指标频率(cutRule);
-                dgv.Rows[i].Cells[6].Value = (res * 100).ToString("F4");
-            }
+            //for (int i = 0; i < dgv.Rows.Count; i++)
+            //{
+            //    LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[i].Cells[1].Value,
+            //   (string)dgv.Rows[i].Cells[2].Value, (string)dgv.Rows[i].Cells[5].Value,
+            //   (int)dgv.Rows[i].Cells[3].Value, (int)dgv.Rows[i].Cells[4].Value);
+            //    double res = data.Static_单个指标频率(cutRule);
+            //    dgv.Rows[i].Cells[6].Value = (res * 100).ToString("F4");
+            //}
         }
         #endregion
     }
