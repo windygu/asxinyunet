@@ -76,6 +76,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="代码\Test\StaticsTest.cs" />
+    <Compile Include="代码\Test\TestData.cs" />
     <Compile Include="代码\规则对比.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,9 @@
     <Content Include="Lib\XCoder.exe" />
     <Content Include="Lib\XCoder.xml" />
     <Content Include="Lib\ZedGraph.dll" />
+    <Content Include="代码\TestData\PerIndexCalculateDataAB.txt" />
+    <None Include="代码\TestData\PredictValidateData.txt" />
+    <None Include="代码\TestData\AllDataCalculateData.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Lib\Template\董斌辉-控件\类名.resx">
