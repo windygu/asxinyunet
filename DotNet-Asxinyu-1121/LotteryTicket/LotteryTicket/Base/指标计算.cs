@@ -44,27 +44,12 @@ namespace LotteryTicket
         {
             return source.Last() - source.First();
         }
-
-        /// <summary>
-        /// 计算跨度列表
-        /// </summary>
-        public static int[] Index_跨度列表(this IEnumerable<int> source)
-        {
-            int[] list = source.ToArray();
-            int[] res = new int[list.Length];
-            for (int i = 0; i < list.Length; i++)
-            {
-                res[i] = list[i + 1] - list[i];
-            }
-            return res;
-        }
-
         /// <summary>
         /// 跨度和值
         /// </summary>
         public static int Index_跨度和值(this IEnumerable<int> source)
         {
-            int[] res = Index_跨度列表(source);
+            int[] res = OtherIndexCalculate.Index_S跨度列表(source);
             return res.Sum();
         }
         #endregion
@@ -297,7 +282,7 @@ namespace LotteryTicket
         /// </summary>
         public static int Index_最大邻号间距(this IEnumerable<int> source)
         {
-            return source.Index_跨度列表 ().Max () ;            
+            return source.Index_S跨度列表 ().Max () ;            
         }
         #endregion
 
@@ -307,7 +292,7 @@ namespace LotteryTicket
         /// </summary>
         public static int Index_最小邻号间距(this IEnumerable<int> source)
         {
-            return source.Index_跨度列表().Min();
+            return source.Index_S跨度列表().Min();
         }
         #endregion
 
@@ -376,14 +361,35 @@ namespace LotteryTicket
     /// </summary>
     public static class OtherIndexCalculate
     {
-
+        /// <summary>
+        /// 计算跨度列表
+        /// </summary>
+        public static int[] Index_S跨度列表(this IEnumerable<int> source)
+        {
+            int[] list = source.ToArray();
+            int[] res = new int[list.Length];
+            for (int i = 0; i < list.Length; i++)
+            {
+                res[i] = list[i + 1] - list[i];
+            }
+            return res;
+        }
     }
 
     /// <summary>
-    /// 其他特殊指标过滤
+    /// 其他特殊指标验证与过滤
     /// </summary>
     public static class OtherIndexFilter
     {
-
+        public static int[] Index_S跨度列表(this IEnumerable<int> source)
+        {
+            int[] list = source.ToArray();
+            int[] res = new int[list.Length];
+            for (int i = 0; i < list.Length; i++)
+            {
+                res[i] = list[i + 1] - list[i];
+            }
+            return res;
+        }
     }
 }
