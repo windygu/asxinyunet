@@ -405,7 +405,7 @@ namespace LotteryTicket
         public static IEnumerable<int[]> Filter_S跨度不重复(this IEnumerable<int[]> source, object[] paramsValue)
         {
             Hashtable ht = (Hashtable)paramsValue[0];
-            return source.Where (n=>ht.ContainsKey (
+            return source.Where(n =>!ht.ContainsKey(n.ListToString()));
         }
     }
 }
