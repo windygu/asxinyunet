@@ -76,7 +76,6 @@
   <ItemGroup>
     <Compile Include="Base\LotTicketHelper.cs" />
     <Compile Include="Base\规律统计.cs" />
-    <Compile Include="Base\规则对比.cs" />
     <Compile Include="Base\指标计算.cs" />
     <Compile Include="Entities\tb_Rules.Biz.cs" />
     <Compile Include="Entities\tb_Rules.cs" />
@@ -89,6 +88,7 @@
     <Compile Include="Test\TestData.cs" />
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="RuleFile.txt" />
     <None Include="TestData\AllDataCalculateData.txt" />
     <None Include="TestData\PredictValidateData.txt" />
