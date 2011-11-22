@@ -689,6 +689,37 @@ namespace LotteryTicket
             return dtReturn;
         }
         #endregion
+
+        #region 比较2个序列是否相等
+        public static bool IsEqual<T>(this IEnumerable<T> source, IEnumerable<T> compList) where T : IComparable 
+        {
+            if (source.Count() != compList.Count()) return false;
+            else
+            {
+                T[] s1 = source.ToArray();
+                T[] s2 = source.ToArray();
+                for (int i = 0; i < s1.Length ; i++)
+                {
+                    if (s1[i].CompareTo(s2[i]) != 0) return false;
+                }
+            }
+            return true;
+        }
+        /// <summary>
+        /// 将数组转换为字符串序列,通过逗号拼接
+        /// </summary>
+        public static string ListToString<T>(this IEnumerable<T> source) 
+        {
+            string res = "";
+            T[] s = source.ToArray();
+            for (int i = 0; i < s.Length -1; i++)
+            {
+                res += (s [i].ToString ()+",");
+            }
+            res += s[s.Length - 1].ToString();
+            return res;
+        }
+        #endregion
     }
     #endregion
 }
