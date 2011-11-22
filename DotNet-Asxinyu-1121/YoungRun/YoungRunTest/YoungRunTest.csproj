@@ -56,15 +56,9 @@
     <OutputPath>..\代码生成\YoungRunTest\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNet.Tools">
-      <HintPath>..\..\ResouceFiles\Lib\DotNet.Tools.dll</HintPath>
-    </Reference>
     <Reference Include="NewLife.Core, Version=3.3.4329.35774, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\..\DotNet.Tools\Resouces\Lib\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -134,6 +128,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YoungRunControl\YoungRunControl.csproj">
       <Project>{B3281232-CAFF-4B4A-9F76-CD9D01C45638}</Project>
       <Name>YoungRunControl</Name>
