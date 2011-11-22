@@ -34,11 +34,11 @@ namespace LotteryTicketSoft.GraphForm
             dataGridView1.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
                         new string[] { "Edit", "Delete" }, new string[] { "修改", "保存数据","过滤数据","计算当期规则","计算所有" },
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });
-            LotteryTicket.Rule rule = new LotteryTicket.Rule(OOIndexCalculate.Index_Ac值, CompareType.Equal, 2, 3,
-                new int[] { 1, 2, 3, 4, 5 });
-            LotteryTicket.Rule[] rules = new LotteryTicket.Rule[1];
-            rules[0] = rule;
-            LotTicketHelper.RulesToDgv(rules, dataGridView1);
+            //LotteryTicket.Rule rule = new LotteryTicket.Rule(OOIndexCalculate.Index_Ac值, CompareType.Equal, 2, 3,
+            //    new int[] { 1, 2, 3, 4, 5 });
+            //LotteryTicket.Rule[] rules = new LotteryTicket.Rule[1];
+            //rules[0] = rule;
+            //LotTicketHelper.RulesToDgv(rules, dataGridView1);
         }
    
         #region  菜单事件

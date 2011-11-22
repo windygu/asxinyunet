@@ -27,17 +27,17 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {            
+        {
             this.SuspendLayout();
             // 
-            // TestForm
+            // FormModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 321);
+            this.ClientSize = new System.Drawing.Size(561, 377);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TestForm";
+            this.Name = "FormModel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TestForm";
             this.ResumeLayout(false);
