@@ -153,9 +153,7 @@ namespace DotNet.Tools.Controls
 		//IListSource ls=btList as IListSource ;
 		//dgv.DataSource = ls.GetList(); ;// btList ;
 		//Type type = typeof(EntityList<>).MakeGenericType(_entityType);
-		//IList list = TypeX.CreateInstance(type) as System.Collections.IList;
-		
-		
+		//IList list = TypeX.CreateInstance(type) as System.Collections.IList;	
 		//获取数据并绑定到dgv    列的 SortMode 不能设置为 Automatic。
 		//List<IEntity> btlist;
 		//IEntityList btList; //实体列表
@@ -216,9 +214,11 @@ namespace DotNet.Tools.Controls
 		void ToolAddClick(object sender, EventArgs e)
 		{
 			if (IsEnableAddBtn ) {
-				Assembly assembly = Assembly.LoadFrom(FormAssemblyName );
-				Type T = assembly.GetType(FormName );
-				Form controller = (Form )Activator.CreateInstance(T, null);
+                Assembly assembly = Assembly.LoadFrom(FormAssemblyName);
+                Type T = assembly.GetType(FormName);
+                Form controller = (Form)Activator.CreateInstance(T, null);
+                //IEntityControl T ;
+                //FormModel controller = WinFormHelper.GetControlForm <>();
 				if (controller.ShowDialog ()== DialogResult.OK )
 				{
 					GetData () ;
@@ -245,7 +245,7 @@ namespace DotNet.Tools.Controls
 		void ToolExportToExcelClick(object sender, EventArgs e)
 		{
 			SearchConditionForm sf = new SearchConditionForm () ;
-			sf.CutEntityName = EntityOper.TableName ;//"tb_bttestdata";
+			sf.CutEntityName = EntityOper.TableName ;
 			sf.CurConditions = cutSql ;
 			if (sf.ShowDialog ()== DialogResult.OK ) {
 				cutSql = sf.CurConditions ;
@@ -266,10 +266,6 @@ namespace DotNet.Tools.Controls
 		{
 			stausInfoShow1.SetToolInfo2("和值:" + WinFormHelper.GetDynamicSecletedInfo(dgv)[0].ToString());
 		}
-		#endregion
-
-		
-		
-		
+		#endregion		
 	}
 }

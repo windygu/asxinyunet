@@ -272,7 +272,7 @@ namespace DotNet.Tools.Controls
 
         #region 根据控件和窗体模板得到显示的窗体
          /// <summary>
-        /// 根据控件得到窗体,可以进行快速测试，不用每一个都写窗体
+        /// 根据控件的类型得到窗体,可以进行快速测试，不用每一个都写窗体
         /// </summary>
         public static FormModel GetControlForm<T>(FormShowMode formShowMode,
             string searcgCondtion, string fixCondition) where T : UserControl, IEntityControl,new()
@@ -285,11 +285,10 @@ namespace DotNet.Tools.Controls
 EntityControl.InitializeSettings(formShowMode, searcgCondtion, fixCondition);
             FormModel tf = new FormModel();
             tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
-            tf.Controls.Add(EntityControl);//将控件添加到窗体中
-            
+            tf.Controls.Add(EntityControl);//将控件添加到窗体中            
             tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             return tf;
-        }
+        }      
         #endregion
     }
 }
