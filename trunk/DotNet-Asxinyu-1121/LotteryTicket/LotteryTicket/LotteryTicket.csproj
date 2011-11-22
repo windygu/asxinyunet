@@ -81,23 +81,16 @@
     <Compile Include="Entities\tb_Rules.cs" />
     <Compile Include="Entities\tb_Ssq.Biz.cs" />
     <Compile Include="Entities\tb_Ssq.cs" />
-    <Compile Include="Test\StaticsTest.cs" />
     <Compile Include="Base\TwoColorBall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\TestData.cs" />
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="RuleFile.txt" />
-    <None Include="TestData\AllDataCalculateData.txt" />
-    <None Include="TestData\PredictValidateData.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LotteryTicket.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\PerIndexCalculateDataAB.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
