@@ -227,19 +227,19 @@ namespace DotNet.Tools.Controls
 		void ToolAddClick(object sender, EventArgs e)
 		{
 			if (IsEnableAddBtn ) {
-                Assembly   asm   =   Assembly.LoadFile(FormAssemblyName ); 
-                IEntityControl  obj  =(IEntityControl) asm.CreateInstance(TypeOfAddControlName ,false,BindingFlags.Public|BindingFlags.Instance|BindingFlags.CreateInstance,null,null,null,null   );
+                //Assembly   asm   =   Assembly.LoadFile(FormAssemblyName ); 
+                //IEntityControl  obj  =(IEntityControl) asm.CreateInstance(TypeOfAddControlName ,false,BindingFlags.Public|BindingFlags.Instance|BindingFlags.CreateInstance,null,null,null,null   );
               
-                //Form controller = WinFormHelper.GetControlForm(FormShowMode.ContinueAdd, "", "");
-                //Assembly assembly = Assembly.LoadFrom(FormAssemblyName);
-                //Type T = assembly.GetType(FormName);
-                //Form controller = (Form)Activator.CreateInstance(T, null);
-                //IEntityControl T ;
-                //FormModel controller = WinFormHelper.GetControlForm <>();
-				if (controller.ShowDialog ()== DialogResult.OK )
-				{
-					GetData () ;
-				}
+                ////Form controller = WinFormHelper.GetControlForm(FormShowMode.ContinueAdd, "", "");
+                ////Assembly assembly = Assembly.LoadFrom(FormAssemblyName);
+                ////Type T = assembly.GetType(FormName);
+                ////Form controller = (Form)Activator.CreateInstance(T, null);
+                ////IEntityControl T ;
+                ////FormModel controller = WinFormHelper.GetControlForm <>();
+                //if (controller.ShowDialog ()== DialogResult.OK )
+                //{
+                //    GetData () ;
+                //}
 			}
 		}
 		void ToolFindClick(object sender, EventArgs e)
