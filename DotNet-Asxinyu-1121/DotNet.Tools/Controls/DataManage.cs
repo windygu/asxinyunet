@@ -31,6 +31,19 @@ namespace DotNet.Tools.Controls
 		List<IEntity> btList; //实体列表
 		string cutSql ;//当前查询字符串
 		string _formAssemblyName ;//添加窗体所在的程序集名称
+        string _typeOfAddControlName;//添加控件的名称
+        /// <summary>
+        /// 添加控件的名称
+        /// </summary>
+        public string TypeOfAddControlName
+        {
+            get { return _typeOfAddControlName; }
+            set { _typeOfAddControlName = value; }
+        }
+        /// <summary>
+        /// 添加实体窗体的类型
+        /// </summary>
+        public Type TypeOfAddEntityControl { get; set; }
 		/// <summary>
 		/// 添加窗体所在程序的名称
 		/// </summary>
@@ -119,9 +132,9 @@ namespace DotNet.Tools.Controls
 		/// <param name="IsHaveDgvMenu">是否显示菜单</param>
 		/// <param name="IsHaveSelectSum">是否开启动态求和功能</param>
 		/// <param name="pageSize">分页数</param>
-		public void InitializeSettings(Type entityType,string formAssemblyName = "",string formName="",
-		                               bool IsHaveDgvMenu = false,bool IsHaveSelectSum =false ,int pageSize = 20,
-		                               string firStatus="数据管理模块",string secStatus="",string thirdStatus="开发:asxinyu@qq.com")
+		public void InitializeSettings(Type entityType,string formAssemblyName = "",string formName="",bool IsHaveDgvMenu = false,bool IsHaveSelectSum =false ,int pageSize = 20,
+		                               string firStatus="数据管理模块",string secStatus="",
+                                        string thirdStatus="开发:asxinyu@qq.com")
 		{
 			if (formAssemblyName !="" && formName !="") {
 				IsEnableAddBtn = true ;
@@ -148,7 +161,7 @@ namespace DotNet.Tools.Controls
 			this.winPage.PageSize = pageSize ;
 		}
 		#endregion
-
+        
 		#region 菜单事件
 		//IListSource ls=btList as IListSource ;
 		//dgv.DataSource = ls.GetList(); ;// btList ;
@@ -214,9 +227,13 @@ namespace DotNet.Tools.Controls
 		void ToolAddClick(object sender, EventArgs e)
 		{
 			if (IsEnableAddBtn ) {
-                Assembly assembly = Assembly.LoadFrom(FormAssemblyName);
-                Type T = assembly.GetType(FormName);
-                Form controller = (Form)Activator.CreateInstance(T, null);
+                Assembly   asm   =   Assembly.LoadFile(FormAssemblyName ); 
+                IEntityControl  obj  =(IEntityControl) asm.CreateInstance(TypeOfAddControlName ,false,BindingFlags.Public|BindingFlags.Instance|BindingFlags.CreateInstance,null,null,null,null   );
+              
+                //Form controller = WinFormHelper.GetControlForm(FormShowMode.ContinueAdd, "", "");
+                //Assembly assembly = Assembly.LoadFrom(FormAssemblyName);
+                //Type T = assembly.GetType(FormName);
+                //Form controller = (Form)Activator.CreateInstance(T, null);
                 //IEntityControl T ;
                 //FormModel controller = WinFormHelper.GetControlForm <>();
 				if (controller.ShowDialog ()== DialogResult.OK )
