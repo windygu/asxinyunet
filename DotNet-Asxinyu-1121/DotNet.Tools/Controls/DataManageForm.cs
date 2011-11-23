@@ -22,29 +22,15 @@ namespace DotNet.Tools.Controls
 		{
 			InitializeComponent();           
 		}
-
-        public bool IsHaveMenu
-        {
-            get { return this.DataManageControl.IsHaveMenu; }
-            set { this.DataManageControl.IsHaveMenu = value; }
-        }
-
-
 		/// <summary>
 		/// 初始化配置
 		/// </summary>
-		/// <param name="entityType">实体类型</param>
-		/// <param name="formAssemblyName">窗体程序集名称</param>
-		/// <param name="formName">窗体名称</param>
-		/// <param name="IsHaveDgvMenu">是否显示菜单</param>
-		/// <param name="pageSize">分页数</param>
-		public void InitializeSettings(Type entityType,string formAssemblyName = "",string formName="",
-		                               bool IsHaveDgvMenu = false,bool IsHaveSelectSum =false,int pageSize = 20,
-		                              string firStatus="数据管理模块",string secStatus="",string thirdStatus="开发:asxinyu@qq.com")
-		{
-			this.StartPosition = FormStartPosition.CenterParent;
-			this.DataManageControl .InitializeSettings (entityType,formAssemblyName,formName,IsHaveDgvMenu,IsHaveSelectSum,pageSize,
-			                                            firStatus,secStatus,thirdStatus );
-		}
+        /// <param name="dcp">参数类</param>
+        public void InitializeSettings(DataControlParams dcp)
+        {
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.Text = dcp.ManageFormTitleText;//标题
+            this.DataManageControl.InitializeSettings(dcp);
+        }
 	}
 }

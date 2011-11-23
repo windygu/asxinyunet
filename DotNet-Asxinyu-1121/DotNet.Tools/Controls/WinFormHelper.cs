@@ -74,10 +74,7 @@ namespace DotNet.Tools.Controls
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="formShowMode"></param>
-        /// <param name="searcgCondtion"></param>
-        /// <param name="fixCondition"></param>
-        void InitializeSettings(FormShowMode formShowMode, string searcgCondtion, string fixCondition);
+        void InitializeSettings(DataControlParams controlParams);
     }
     #endregion
 
@@ -87,11 +84,17 @@ namespace DotNet.Tools.Controls
     /// </summary>
     public class DataControlParams
     {
+        #region 数据管理窗体的属性
         /// <summary>
         /// 添加控件所在程序的名称
         /// </summary>
         public string ControlAssemblyName { get; set; }
-        
+
+        /// <summary>
+        /// 控件的类型名称
+        /// </summary>
+        public string ControlName { get; set; }
+
         /// <summary>
 		/// 是否开启右键菜单，默认开启
 		/// </summary>
@@ -146,6 +149,58 @@ namespace DotNet.Tools.Controls
         /// 底部状态栏 第三个的显示信息
         /// </summary>
         public string ThirdStatusInfo { get; set; }
+        #endregion
+
+        #region 添加实体窗体属性
+        /// <summary>
+        /// 添加实体窗体的显示模式
+        /// </summary>
+        public FormShowMode AddFormShowMode { get; set; }
+        /// <summary>
+        /// 添加窗体的搜索字符串
+        /// </summary>
+        public string AddFormSearchString { get; set; }
+        #endregion
+
+        #region 构造函数
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="assemblyName">添加控件所在程序的名称</param>
+        /// <param name="entityType">实体类型</param>
+        /// <param name="controlName">控件的类型名称</param>
+        /// <param name="isHaveMenu">是否开启右键菜单，默认开启</param>
+        /// <param name="isEnableAddBtn">是否使得添加按钮可用，默认：可用</param>
+        /// <param name="isHaveSelectSum">是否开启鼠标选择动态求和功能：默认关闭</param>
+        /// <param name="isEnablePaging">是否开启分页功能：默认开启</param>
+        /// <param name="addFormTitleText"> 添加窗体的标题，默认：添加数据</param>
+        /// <param name="manageFormTitleText">管理窗体标题，默认：集中数据管理</param>
+        /// <param name="pageSize">开启分页后，每页的记录数</param>
+        /// <param name="firStatusInfo"> 底部状态栏 第一个的显示信息</param>
+        /// <param name="secStatusInfo">底部状态栏 第二个的显示信息</param>
+        /// <param name="thirdStatusInfo">底部状态栏 第三个的显示信息</param>
+        public DataControlParams(string assemblyName, Type entityType,string controlName = "",
+            bool isHaveMenu = true ,bool isEnableAddBtn = true ,
+            bool isHaveSelectSum = false, bool isEnablePaging = true ,
+            string addFormTitleText = "添加数据", string manageFormTitleText = "集中数据管理",
+            int pageSize = 20, string firStatusInfo = "数据管理模块",
+            string secStatusInfo = "", string thirdStatusInfo = "开发:asxinyu@qq.com")
+        {
+            this.ControlAssemblyName = assemblyName;
+            this.ControlName = controlName;
+            this.EntityType = entityType;
+            this.IsHaveMenu = isHaveMenu;
+            this.IsEnableAddBtn = isEnableAddBtn ;
+            this.IsHaveSelectSum = isHaveSelectSum;
+            this.IsEnablePaging = isEnablePaging;
+            this.AddFormTitleText = addFormTitleText;
+            this.ManageFormTitleText = manageFormTitleText;
+            this.PageSize = pageSize;
+            this.FirStatusInfo = firStatusInfo;
+            this.SecStatusInfo = secStatusInfo;
+            this.ThirdStatusInfo = thirdStatusInfo;
+        }
+        #endregion
     }
     #endregion
 
@@ -319,22 +374,10 @@ namespace DotNet.Tools.Controls
         #endregion
 
         #region 根据实体类型及程序集名称动态加载窗体
-        public static DataManageForm DynamicLoadForm(string FormAssemblyName, string FormName, bool IsHaveMenu, Type type, string TitleText)
-        {
-            //DataManageForm dt = new DataManageForm();
-            //dt.InitializeSettings (
-            //dt.IsHaveMenu = IsHaveMenu;
-            //dt.FormAssemblyName = FormAssemblyName;
-            //dt.FormName = FormName;
-            //dt.EntityType = type;
-            //dt.Text = TitleText;
-            //dt.MdiParent = this;
-            //dt.StartPosition = FormStartPosition.CenterParent;
-            //dt.Show();
-
+        public static DataManageForm DynamicLoadForm(DataControlParams dcp)
+        {            
             DataManageForm dt = new DataManageForm();
-            dt.InitializeSettings(type, FormAssemblyName, FormName, IsHaveMenu, true, 20, "", "", "");
-            dt.Text = TitleText;
+            dt.InitializeSettings(dcp );            
             dt.StartPosition = FormStartPosition.CenterParent;
             return dt;
         }
@@ -344,15 +387,14 @@ namespace DotNet.Tools.Controls
         /// <summary>
         /// 根据控件的类型得到窗体,可以进行快速测试，不用每一个都写窗体
         /// </summary>
-        public static FormModel GetControlForm<T>(FormShowMode formShowMode,
-            string searcgCondtion, string fixCondition) where T : UserControl, IEntityControl, new()
+        public static FormModel GetControlForm<T>(DataControlParams cp ) where T : UserControl, IEntityControl, new()
         {
             T EntityControl = new T();
             EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
             EntityControl.Location = new System.Drawing.Point(0, 0);
             EntityControl.Name = "EntityControl";
             EntityControl.TabIndex = 0;
-            EntityControl.InitializeSettings(formShowMode, searcgCondtion, fixCondition);
+            EntityControl.InitializeSettings(cp );
             FormModel tf = new FormModel();
             tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
             tf.Controls.Add(EntityControl);//将控件添加到窗体中            

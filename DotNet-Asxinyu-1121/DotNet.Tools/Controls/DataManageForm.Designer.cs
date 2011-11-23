@@ -43,10 +43,9 @@ namespace DotNet.Tools.Controls
 			// DataManageControl
 			// 
 			this.DataManageControl.AutoSize = true;
-			this.DataManageControl.Dock = System.Windows.Forms.DockStyle.Fill;			
-			this.DataManageControl.FormAssemblyName = null;
-			this.DataManageControl.FormName = null;
-			this.DataManageControl.IsHaveMenu = false;
+			this.DataManageControl.Dock = System.Windows.Forms.DockStyle.Fill;	
+			
+			
 			this.DataManageControl.Location = new System.Drawing.Point(0, 0);
 			this.DataManageControl.Name = "DataManageControl";
 			this.DataManageControl.Size = new System.Drawing.Size(708, 431);
