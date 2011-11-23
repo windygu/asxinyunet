@@ -339,21 +339,21 @@ private System.Windows.Forms.TextBox txtRemark ;
 		/// 初始化设置
 		/// </summary>
 		/// <param name="showMode">窗体的显示模式,必须指定</param>
-		/// <param name="searcgCondtion">指定显示的实体条件</param>
-		/// <param name="fixCondition">固定的显示条件</param>
-		public void InitializeSettings(FormShowMode showMode,string searcgCondtion = "",string fixCondition="")
+		/// <param name="searchCondtion">指定显示的实体条件</param>
+		public void InitializeSettings(DataControlParams controlParams)
 		{
 			this.FormPager.PageSize = 1;
-            this.CutShowMode = showMode;
-            this.CutSearchCondition = searcgCondtion;
-            this.FixedSqlCondition = fixCondition;
-            if (showMode == FormShowMode.AddOne || showMode == FormShowMode.ContinueAdd)
+            this.CutShowMode = controlParams.AddFormShowMode;
+            this.CutSearchCondition = controlParams.AddFormSearchString; ;
+            if (CutShowMode == FormShowMode.AddOne || CutShowMode == FormShowMode.ContinueAdd)
             {
                 CustomerSettings();
                 SetAllTextControls(ControlStatus.Edit);
             }
             else
             {
+                //此记录数可以在加载时固定起来,不用每次都计算
+                FormPager.RecordCount = tb_Rules.FindCount(CutSearchCondition, "", "", 0, 0);
                 SetAllTextControls(ControlStatus.ReadOnly);//只读
                 GetData();
                 BandingData();//绑定数据
@@ -371,40 +371,19 @@ private System.Windows.Forms.TextBox txtRemark ;
 				
 		#region 相关字段与属性
 		/// <summary>
-		/// 固定的查询条件
-		/// </summary>
-		public string FixedSqlCondition {get ;set ;}
-		string _curSeachCondition ;
-		/// <summary>
 		/// 获取或者设置当前的查询条件
 		/// </summary>
-		public string CutSearchCondition
-		{
-			get {return _curSeachCondition ;}
-			set	{
-				_curSeachCondition = "" ;
-				if (FixedSqlCondition !=null && FixedSqlCondition !="") {
-					if (value !=null && value!="") {
-						_curSeachCondition +=(FixedSqlCondition +" and " +value ) ;
-					}
-					else
-						_curSeachCondition = FixedSqlCondition ;
-				}
-				else{
-				if (value !=null) {_curSeachCondition = value ;}
-				else _curSeachCondition="" ;}
-				//此记录数可以在加载时固定起来,不用每次都计算
-				FormPager.RecordCount = tb_Rules.FindCount(CutSearchCondition,"","",0,0) ;
-			}
-		}
+        public string CutSearchCondition { get; set; }
+		
 		/// <summary>
 		/// 获取或者设置当前实体
 		/// </summary>
-		public tb_Rules CutModel{get ;set ;}
-		/// <summary>
-		/// 当前实体窗体的显示模式,默认为连续显示
-		/// </summary>
-		public FormShowMode CutShowMode{get ;set ;}
+		public tb_Rules CutModel{ get ;set ;}
+
+        /// <summary>
+        /// 当前实体窗体的显示模式,默认为连续显示
+        /// </summary>
+        public FormShowMode CutShowMode { get; set; }
 		#endregion
 
 		#region 验证事件

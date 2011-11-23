@@ -186,7 +186,6 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "DataManage";
             this.Size = new System.Drawing.Size(618, 381);
-            this.Load += new System.EventHandler(this.DataManageLoad);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

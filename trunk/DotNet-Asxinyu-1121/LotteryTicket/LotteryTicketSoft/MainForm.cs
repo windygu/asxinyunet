@@ -35,8 +35,8 @@ namespace LotteryTicketSoft
 
         private void 常规参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormModel tf = WinFormHelper.GetControlForm<AddRules>(FormShowMode.ContinueAdd, "", "");
-            tf.Show();
+            //FormModel tf = WinFormHelper.GetControlForm<AddRules>(FormShowMode.ContinueAdd, "", "");
+            //tf.Show();
         }
 
         private void 数据更新ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,10 +46,11 @@ namespace LotteryTicketSoft
 
         private void 数据更新ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            DataManageForm dt = WinFormHelper.DynamicLoadForm(LabAssemblyName, "LotteryTicketSoft.GraphForm.AddRules",
-                     true, typeof(tb_Rules), "");
+            DataControlParams CP = new DataControlParams(LabAssemblyName,typeof(tb_Rules) ,
+                "LotteryTicketSoft.GraphForm.AddRules");
+            DataManageForm dt = WinFormHelper.DynamicLoadForm(CP);
             dt.MdiParent = this;
-            dt.Show();
+            dt.Show();           
         }
     }
 }

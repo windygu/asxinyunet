@@ -5,6 +5,7 @@
  * 时间: 17:17
  *
  * 目标：添加按钮事件、绑定实体
+ * 2011-11-23 根据数据管理窗口的统一需求,增加参数类,来传递参数。更加灵活和完整。 
  * 2011-11-08 增加注释，完善格式，完成基本功能调试，修改控件显示Bug
  * 2011-10-18 修改各种状态下的显示Bug,基本满足了大致需求
  * 2011-10-16 增加完善数据初始化与数据绑定,修正生成过程的相关错误,并增加初始化函数,增加对于的窗体文件生成
@@ -185,21 +186,21 @@ namespace <#=Config.NameSpace#>
 		/// 初始化设置
 		/// </summary>
 		/// <param name="showMode">窗体的显示模式,必须指定</param>
-		/// <param name="searcgCondtion">指定显示的实体条件</param>
-		/// <param name="fixCondition">固定的显示条件</param>
-		public void InitializeSettings(FormShowMode showMode,string searcgCondtion = "",string fixCondition="")
+		/// <param name="searchCondtion">指定显示的实体条件</param>
+		public void InitializeSettings(FormShowMode showMode,string searchCondtion = "")
 		{
 			this.FormPager.PageSize = 1;
-            this.CutShowMode = showMode;
-            this.CutSearchCondition = searcgCondtion;
-            this.FixedSqlCondition = fixCondition;
-            if (showMode == FormShowMode.AddOne || showMode == FormShowMode.ContinueAdd)
+            this.CutShowMode = controlParams.AddFormShowMode;
+            this.CutSearchCondition = searchCondtion;
+            if (CutShowMode == FormShowMode.AddOne || CutShowMode == FormShowMode.ContinueAdd)
             {
                 CustomerSettings();
                 SetAllTextControls(ControlStatus.Edit);
             }
             else
             {
+                //此记录数可以在加载时固定起来,不用每次都计算
+                FormPager.RecordCount = tb_Rules.FindCount(CutSearchCondition, "", "", 0, 0);
                 SetAllTextControls(ControlStatus.ReadOnly);//只读
                 GetData();
                 BandingData();//绑定数据
@@ -215,34 +216,12 @@ namespace <#=Config.NameSpace#>
         }
 		#endregion
 				
-		#region 相关字段与属性
-		/// <summary>
-		/// 固定的查询条件
-		/// </summary>
-		public string FixedSqlCondition {get ;set ;}
-		string _curSeachCondition ;
+		#region 相关字段与属性		
 		/// <summary>
 		/// 获取或者设置当前的查询条件
 		/// </summary>
-		public string CutSearchCondition
-		{
-			get {return _curSeachCondition ;}
-			set	{
-				_curSeachCondition = "" ;
-				if (FixedSqlCondition !=null && FixedSqlCondition !="") {
-					if (value !=null && value!="") {
-						_curSeachCondition +=(FixedSqlCondition +" and " +value ) ;
-					}
-					else
-						_curSeachCondition = FixedSqlCondition ;
-				}
-				else{
-				if (value !=null) {_curSeachCondition = value ;}
-				else _curSeachCondition="" ;}
-				//此记录数可以在加载时固定起来,不用每次都计算
-				FormPager.RecordCount = <#=Table.Alias#>.FindCount(CutSearchCondition,"","",0,0) ;
-			}
-		}
+		public string CutSearchCondition { get; set; }
+		
 		/// <summary>
 		/// 获取或者设置当前实体
 		/// </summary>
