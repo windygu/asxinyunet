@@ -7,9 +7,9 @@
  * 要改变这种模板请点击 工具|选项|代码编写|编辑标准头文件
  */
 using System;
-using System.Windows.Forms ;
+using System.Windows.Forms;
 using System.Drawing;
-using System.Data ;
+using System.Data;
 using System.Collections.Generic;
 using System.Collections;
 using XCode;
@@ -17,56 +17,56 @@ using XCode.DataAccessLayer;
 
 namespace DotNet.Tools.Controls
 {
-	#region 实体控件中当前实体的状态
-	/// <summary>
-	/// 控件状态：清空，只读，修改
-	/// </summary>
-	public enum ControlStatus
-	{
-		/// <summary>
-		/// 清空控件
-		/// </summary>
-		ReSet ,
-		/// <summary>
-		/// 修改控件内容
-		/// </summary>
-		Edit ,
-		/// <summary>
-		/// 只读
-		/// </summary>		
-		ReadOnly
-	}
-	/// <summary>
-	/// 实体控件窗体的显示类型
-	/// </summary>
-	public enum FormShowMode
-	{
-		/// <summary>
-		/// 连续添加
-		/// </summary>
-		ContinueAdd ,
-		/// <summary>
-		/// 只添加一次
-		/// </summary>
-		AddOne ,
-		/// <summary>
-		/// 连续显示,可编辑
-		/// </summary>
-		ContinueDisplay ,
-		/// <summary>
-		/// 显示当前一条实体,可编辑
-		/// </summary>
-		DisplayCurrent ,
-		/// <summary>
-		/// 连续只读浏览
-		/// </summary>
-		ReadOnlyForAll ,
-		/// <summary>
-		/// 当前一条实体只读显示
-		/// </summary>
-		ReadOnlyForOne 
-	}
-	#endregion
+    #region 实体控件中当前实体的状态
+    /// <summary>
+    /// 控件状态：清空，只读，修改
+    /// </summary>
+    public enum ControlStatus
+    {
+        /// <summary>
+        /// 清空控件
+        /// </summary>
+        ReSet,
+        /// <summary>
+        /// 修改控件内容
+        /// </summary>
+        Edit,
+        /// <summary>
+        /// 只读
+        /// </summary>		
+        ReadOnly
+    }
+    /// <summary>
+    /// 实体控件窗体的显示类型
+    /// </summary>
+    public enum FormShowMode
+    {
+        /// <summary>
+        /// 连续添加
+        /// </summary>
+        ContinueAdd,
+        /// <summary>
+        /// 只添加一次
+        /// </summary>
+        AddOne,
+        /// <summary>
+        /// 连续显示,可编辑
+        /// </summary>
+        ContinueDisplay,
+        /// <summary>
+        /// 显示当前一条实体,可编辑
+        /// </summary>
+        DisplayCurrent,
+        /// <summary>
+        /// 连续只读浏览
+        /// </summary>
+        ReadOnlyForAll,
+        /// <summary>
+        /// 当前一条实体只读显示
+        /// </summary>
+        ReadOnlyForOne
+    }
+    #endregion
 
     #region 实体接口
     public interface IEntityControl
@@ -81,62 +81,132 @@ namespace DotNet.Tools.Controls
     }
     #endregion
 
+    #region 通用管理界面控件的参数类:参数设置好,以后只需要传入一个类型对象即可
     /// <summary>
-	/// WinForm帮助类
-	/// </summary>
-	public class WinFormHelper
+    /// 通用管理界面控件的参数类
+    /// </summary>
+    public class DataControlParams
+    {
+        /// <summary>
+        /// 添加控件所在程序的名称
+        /// </summary>
+        public string ControlAssemblyName { get; set; }
+        
+        /// <summary>
+		/// 是否开启右键菜单，默认开启
+		/// </summary>
+        public bool IsHaveMenu { get; set; }
+
+        /// <summary>
+		/// 实体类型
+		/// </summary>
+        public Type EntityType { get; set; }
+
+        /// <summary>
+        /// 是否使得添加按钮可用，默认：可用
+        /// </summary>
+        public bool IsEnableAddBtn { get; set; }
+
+        /// <summary>
+        /// 添加窗体的标题，默认：添加数据
+        /// </summary>
+        public string AddFormTitleText { get; set; }
+
+        /// <summary>
+        /// 管理窗体标题，默认：集中数据管理
+        /// </summary>
+        public string ManageFormTitleText { get; set; }
+
+        /// <summary>
+        /// 是否开启鼠标选择动态求和功能：默认关闭
+        /// </summary>
+        public bool IsHaveSelectSum { get; set; }
+
+        /// <summary>
+        /// 是否开启分页功能：默认开启
+        /// </summary>
+        public bool IsEnablePaging { get; set; }
+
+        /// <summary>
+        /// 开启分页后，每页的记录数
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// 底部状态栏 第一个的显示信息
+        /// </summary>
+        public string FirStatusInfo { get; set; }
+
+        /// <summary>
+        /// 底部状态栏 第二个的显示信息
+        /// </summary>
+        public string SecStatusInfo { get; set; }
+
+        /// <summary>
+        /// 底部状态栏 第三个的显示信息
+        /// </summary>
+        public string ThirdStatusInfo { get; set; }
+    }
+    #endregion
+
+    #region WinForm开发帮助类
+    /// <summary>
+    /// WinForm帮助类
+    /// </summary>
+    public class WinFormHelper
     {
         #region 添加右键菜单
         /// <summary>
-		/// 添加右键菜单
-		/// </summary>
-		/// <param name="names">菜单名称</param>
-		/// <param name="texts"></param>
-		/// <param name="onclick"></param>
-		/// <returns></returns>
-		public static ContextMenuStrip GetContextMenuStrip(string[] names,string[] texts,EventHandler[] onclick)
-		{
-			ContextMenuStrip CellcontextMenuStrip = new ContextMenuStrip () ;
-			for (int i = 0; i < names.Length ; i++) {
-				ToolStripMenuItem toolStripMenu = new ToolStripMenuItem () ;
-				toolStripMenu.Name = names [i ] ;
-				toolStripMenu.Size = new System.Drawing.Size(180, 70);
-				toolStripMenu.Text = texts[i] ;
-				toolStripMenu.Click += new EventHandler(onclick [i ]);
-				CellcontextMenuStrip.Items.Add(toolStripMenu ) ;				
-			}
-			return CellcontextMenuStrip ;
-		}
+        /// 添加右键菜单
+        /// </summary>
+        /// <param name="names">菜单名称</param>
+        /// <param name="texts"></param>
+        /// <param name="onclick"></param>
+        /// <returns></returns>
+        public static ContextMenuStrip GetContextMenuStrip(string[] names, string[] texts, EventHandler[] onclick)
+        {
+            ContextMenuStrip CellcontextMenuStrip = new ContextMenuStrip();
+            for (int i = 0; i < names.Length; i++)
+            {
+                ToolStripMenuItem toolStripMenu = new ToolStripMenuItem();
+                toolStripMenu.Name = names[i];
+                toolStripMenu.Size = new System.Drawing.Size(180, 70);
+                toolStripMenu.Text = texts[i];
+                toolStripMenu.Click += new EventHandler(onclick[i]);
+                CellcontextMenuStrip.Items.Add(toolStripMenu);
+            }
+            return CellcontextMenuStrip;
+        }
         #endregion
 
         #region 设置控件只能输入数字
         /// <summary>
-		/// 设置控件只能输入数字
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public static void SetControlOnlyValue(object sender, KeyPressEventArgs e)
-		{
+        /// 设置控件只能输入数字
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void SetControlOnlyValue(object sender, KeyPressEventArgs e)
+        {
             e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == (char)8 || e.KeyChar == '.' || e.KeyChar == '-');
-			if (!e.Handled)
+            if (!e.Handled)
                 (sender as TextBox).Tag = (sender as TextBox).Text;//记录最后一次正确输入
-		}
-		/// <summary>
-		/// 只能输入正数
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public static void SetControlOnlyZS(object sender, KeyPressEventArgs e)
-		{
+        }
+        /// <summary>
+        /// 只能输入正数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void SetControlOnlyZS(object sender, KeyPressEventArgs e)
+        {
             e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == (char)8 || e.KeyChar == '.');
-			if (!e.Handled)
+            if (!e.Handled)
                 (sender as TextBox).Tag = (sender as TextBox).Text;//记录最后一次正确输入
-		}
+        }
         #endregion
 
         #region 重置控件
-        public static void ResetFormControls(object sender, EventArgs e,Control cur)
-        {            
+        public static void ResetFormControls(object sender, EventArgs e, Control cur)
+        {
             foreach (var item in cur.Controls)
             {
                 if (item.GetType() == typeof(TextBox))
@@ -147,9 +217,9 @@ namespace DotNet.Tools.Controls
                 {
                     ((ComboBox)item).SelectedIndex = -1;
                 }
-                else if (item.GetType() == typeof(GroupBox ))
+                else if (item.GetType() == typeof(GroupBox))
                 {
-                    foreach (var items in ((GroupBox )item).Controls)
+                    foreach (var items in ((GroupBox)item).Controls)
                     {
                         if (items.GetType() == typeof(TextBox))
                         {
@@ -168,14 +238,14 @@ namespace DotNet.Tools.Controls
                 {
 
                 }
-            }            
+            }
         }
         #endregion
 
         #region 删除DataGridView控件中的数据
-        public static void DeleteDgvItems<T>(object sender, EventArgs e, DataGridView dgv, List<T > btList) where T : Entity<T>, new()
+        public static void DeleteDgvItems<T>(object sender, EventArgs e, DataGridView dgv, List<T> btList) where T : Entity<T>, new()
         {
-            try                
+            try
             {
                 if (MessageBox.Show("是否删除选中记录,删除后不可恢复,确认请点'是'", "提示", MessageBoxButtons.YesNo)
                     == DialogResult.Yes)
@@ -189,7 +259,7 @@ namespace DotNet.Tools.Controls
                         {
                             btList[RowIndex].Delete();
                         }
-                    }                   
+                    }
                 }
                 else
                     return;
@@ -206,12 +276,12 @@ namespace DotNet.Tools.Controls
         /// 鼠标选中单元格动态求值
         /// </summary>
         public static string[] GetDynamicSecletedInfo(DataGridView dgv)
-        { 
+        {
             double SelectedCellTotal = 0;//所选单元格中数据的和值
             ArrayList selectRowsCount = new ArrayList();//行统计//dgv.SelectedColumns.Count 
             ArrayList selectColumsCount = new ArrayList();//列统计
             try
-            {  
+            {
                 for (int counter = 0; counter < dgv.SelectedCells.Count; counter++)
                 {
                     if (dgv.SelectedCells[counter].Value != null)
@@ -231,7 +301,7 @@ namespace DotNet.Tools.Controls
                             (selectCellType == typeof(int)) || (selectCellType == typeof(float)) || (selectCellType == typeof(byte)))
                         {
                             if (dgv.SelectedCells[counter].Value.ToString().Trim() != "")
-                            { 
+                            {
                                 //选定的数据不能为空，或者不能为null，否则会出现异常
                                 SelectedCellTotal += double.Parse(dgv.SelectedCells[counter].Value.ToString());
                             }
@@ -239,14 +309,14 @@ namespace DotNet.Tools.Controls
                     }
                 }
                 return new string[] {SelectedCellTotal.ToString("F2"),selectRowsCount.Count.ToString(), selectColumsCount.Count.ToString (),
-                dgv.SelectedCells.Count.ToString ()};             
+                dgv.SelectedCells.Count.ToString ()};
             }
             catch (Exception err)
             {
                 throw new Exception(err.Message);
             }
         }
-        #endregion       
+        #endregion
 
         #region 根据实体类型及程序集名称动态加载窗体
         public static DataManageForm DynamicLoadForm(string FormAssemblyName, string FormName, bool IsHaveMenu, Type type, string TitleText)
@@ -264,31 +334,32 @@ namespace DotNet.Tools.Controls
 
             DataManageForm dt = new DataManageForm();
             dt.InitializeSettings(type, FormAssemblyName, FormName, IsHaveMenu, true, 20, "", "", "");
-            dt.Text = TitleText;           
+            dt.Text = TitleText;
             dt.StartPosition = FormStartPosition.CenterParent;
             return dt;
         }
         #endregion
 
         #region 根据控件和窗体模板得到显示的窗体
-         /// <summary>
+        /// <summary>
         /// 根据控件的类型得到窗体,可以进行快速测试，不用每一个都写窗体
         /// </summary>
         public static FormModel GetControlForm<T>(FormShowMode formShowMode,
-            string searcgCondtion, string fixCondition) where T : UserControl, IEntityControl,new()
-        {            
-            T EntityControl= new T();
+            string searcgCondtion, string fixCondition) where T : UserControl, IEntityControl, new()
+        {
+            T EntityControl = new T();
             EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
             EntityControl.Location = new System.Drawing.Point(0, 0);
-            EntityControl.Name = "EntityControl";           
+            EntityControl.Name = "EntityControl";
             EntityControl.TabIndex = 0;
-EntityControl.InitializeSettings(formShowMode, searcgCondtion, fixCondition);
+            EntityControl.InitializeSettings(formShowMode, searcgCondtion, fixCondition);
             FormModel tf = new FormModel();
             tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
             tf.Controls.Add(EntityControl);//将控件添加到窗体中            
             tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             return tf;
-        }      
+        }
         #endregion
     }
+    #endregion
 }
