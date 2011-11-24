@@ -159,6 +159,7 @@ namespace LotteryTicket
             this.FloorLimit = floorlimit;
             this.CeilLimit = ceilLimit;
             this.CompListStr = compList;
+            this.IsSpecialMode = false;
         }
         /// <summary>
         /// 特殊模式构造函数，直接传入参数数组即可
@@ -169,7 +170,7 @@ namespace LotteryTicket
         {
             this._indexSelectorName = selector;
             this.IsSpecialMode = true;
-
+            this.ParamsValues = paramsValues;
         }
         #endregion       
     }
@@ -457,10 +458,20 @@ namespace LotteryTicket
         #endregion
 
         #region 获取所有的方法类型和比较类型
-        public static List<string> GetAllIndexFuncNames(string containString = "Index_")
+        /// <summary>
+        /// 加入OM,特殊验证方法,其他指标的名字，通过前缀区分来区分
+        /// </summary>
+        public static List<string> GetAllIndexFuncNames()
         {
-            return (typeof(OOIndexCalculate)).GetMethods().
-                Select(n => n.Name).Where(n => n.Contains(containString)).ToList();
+            List<string> index =(typeof(OOIndexCalculate)).GetMethods().Select(n => n.Name)
+                .Where(n => n.Contains("Index_")).ToList();
+            List<string> index_M = (typeof(MOIndexCalculate)).GetMethods().Select(n => n.Name)
+                .Where(n => n.Contains("Index_M")).ToList();
+            List<string> index_S = (typeof(OtherIndexCalculate)).GetMethods().Select(n => n.Name)
+               .Where(n => n.Contains("Index_S")).ToList();
+            index.AddRange(index_M);
+            index.AddRange(index_S);
+            return index;
         }
 
         /// <summary>
