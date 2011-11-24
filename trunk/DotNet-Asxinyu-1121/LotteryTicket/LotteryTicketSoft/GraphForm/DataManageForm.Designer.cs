@@ -40,13 +40,13 @@ namespace LotteryTicketSoft.GraphForm
             this.DataManageControl = new LotteryTicketSoft.GraphForm.DataManage();
             this.SuspendLayout();
             // 
-            // dataManage1
+            // DataManageControl
             // 
             this.DataManageControl.ControlParams = null;
             this.DataManageControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataManageControl.EntityOper = null;
             this.DataManageControl.Location = new System.Drawing.Point(0, 0);
-            this.DataManageControl.Name = "dataManage1";
+            this.DataManageControl.Name = "DataManageControl";
             this.DataManageControl.Size = new System.Drawing.Size(724, 431);
             this.DataManageControl.TabIndex = 0;
             // 

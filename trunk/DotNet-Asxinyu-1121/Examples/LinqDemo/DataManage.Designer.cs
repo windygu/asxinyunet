@@ -41,6 +41,15 @@ namespace LotteryTicketSoft.GraphForm
             this.dgv = new System.Windows.Forms.DataGridView();
             this.winPage = new DotNet.Tools.Controls.WinFormPager();
             this.stausInfoShow1 = new DotNet.Tools.Controls.StausInfoShow();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IndexSelectorName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CompareRuleName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.FloorLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CeilLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompListStr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataRows = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UpdateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -146,6 +155,16 @@ namespace LotteryTicketSoft.GraphForm
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.IndexSelectorName,
+            this.CompareRuleName,
+            this.FloorLimit,
+            this.CeilLimit,
+            this.CompListStr,
+            this.DataRows,
+            this.UpdateTime,
+            this.Remark});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.Location = new System.Drawing.Point(0, 0);
@@ -177,6 +196,51 @@ namespace LotteryTicketSoft.GraphForm
             this.stausInfoShow1.Name = "stausInfoShow1";
             this.stausInfoShow1.Size = new System.Drawing.Size(618, 24);
             this.stausInfoShow1.TabIndex = 40;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "序号";
+            this.Id.Name = "Id";
+            // 
+            // IndexSelectorName
+            // 
+            this.IndexSelectorName.HeaderText = "指标函数";
+            this.IndexSelectorName.Name = "IndexSelectorName";
+            // 
+            // CompareRuleName
+            // 
+            this.CompareRuleName.HeaderText = "对比类型";
+            this.CompareRuleName.Name = "CompareRuleName";
+            // 
+            // FloorLimit
+            // 
+            this.FloorLimit.HeaderText = "下限";
+            this.FloorLimit.Name = "FloorLimit";
+            // 
+            // CeilLimit
+            // 
+            this.CeilLimit.HeaderText = "上限";
+            this.CeilLimit.Name = "CeilLimit";
+            // 
+            // CompListStr
+            // 
+            this.CompListStr.HeaderText = "对比序列";
+            this.CompListStr.Name = "CompListStr";
+            // 
+            // DataRows
+            // 
+            this.DataRows.HeaderText = "验证行数";
+            this.DataRows.Name = "DataRows";
+            // 
+            // UpdateTime
+            // 
+            this.UpdateTime.HeaderText = "更新时间";
+            this.UpdateTime.Name = "UpdateTime";
+            // 
+            // Remark
+            // 
+            this.Remark.HeaderText = "备注";
+            this.Remark.Name = "Remark";
             // 
             // DataManage
             // 
@@ -213,5 +277,14 @@ namespace LotteryTicketSoft.GraphForm
         private DotNet.Tools.Controls.StausInfoShow stausInfoShow1;
         private System.Windows.Forms.DataGridView dgv;
         private WinFormPager winPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewComboBoxColumn IndexSelectorName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CompareRuleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FloorLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CeilLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompListStr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataRows;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UpdateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
     }
 }
