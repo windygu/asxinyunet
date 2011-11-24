@@ -48,9 +48,18 @@ namespace LotteryTicketSoft
         {
             DataControlParams CP = new DataControlParams(LabAssemblyName,typeof(tb_Rules) ,
                 "LotteryTicketSoft.GraphForm.AddRules");
-            DataManageForm dt = WinFormHelper.DynamicLoadForm(CP);
+            LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
             dt.MdiParent = this;
             dt.Show();           
+        }
+
+        //加载管理窗体
+        public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
+        {
+            LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
+            dt.InitializeSettings(dcp);
+            dt.StartPosition = FormStartPosition.CenterParent;
+            return dt;
         }
     }
 }

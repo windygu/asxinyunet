@@ -39,12 +39,10 @@ namespace LotteryTicketSoft.GraphForm
             this.toolExit = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.winPage = new DotNet.Tools.Controls.WinFormPager();
             this.stausInfoShow1 = new DotNet.Tools.Controls.StausInfoShow();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -132,10 +130,6 @@ namespace LotteryTicketSoft.GraphForm
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgv);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.winPage);
             this.splitContainer1.Size = new System.Drawing.Size(618, 332);
             this.splitContainer1.SplitterDistance = 306;
             this.splitContainer1.SplitterWidth = 1;
@@ -153,22 +147,6 @@ namespace LotteryTicketSoft.GraphForm
             this.dgv.RowTemplate.Height = 23;
             this.dgv.Size = new System.Drawing.Size(618, 306);
             this.dgv.TabIndex = 42;
-            // 
-            // winPage
-            // 
-            this.winPage.AutoSize = true;
-            this.winPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.winPage.BackColor = System.Drawing.Color.Transparent;
-            this.winPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("winPage.BackgroundImage")));
-            this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
-            this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(135, 0);
-            this.winPage.Name = "winPage";
-            this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(483, 25);
-            this.winPage.TabIndex = 0;
-            this.winPage.PageIndexChanged += new DotNet.Tools.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 
             // stausInfoShow1
             // 
@@ -190,8 +168,6 @@ namespace LotteryTicketSoft.GraphForm
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

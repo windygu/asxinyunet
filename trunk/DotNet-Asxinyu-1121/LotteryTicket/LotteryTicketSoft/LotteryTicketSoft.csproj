@@ -71,6 +71,12 @@
     <Compile Include="GraphForm\DataManage.Designer.cs">
       <DependentUpon>DataManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphForm\DataManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphForm\DataManageForm.Designer.cs">
+      <DependentUpon>DataManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GraphForm\DataPredict.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GraphForm\DataManage.resx">
       <DependentUpon>DataManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphForm\DataManageForm.resx">
+      <DependentUpon>DataManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\DataPredict.resx">
       <DependentUpon>DataPredict.cs</DependentUpon>
