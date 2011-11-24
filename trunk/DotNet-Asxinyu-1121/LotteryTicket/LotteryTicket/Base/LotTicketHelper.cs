@@ -457,7 +457,7 @@ namespace LotteryTicket
         #endregion
 
         #region 获取所有的方法类型和比较类型
-        public static List<string> GetAllIndexNames()
+        public static List<string> GetAllIndexFuncNames()
         {
             Type t = typeof(OOIndexCalculate);
             MethodInfo[] methods = t.GetMethods();
@@ -472,15 +472,9 @@ namespace LotteryTicket
         /// <summary>
         /// 获取枚举类型的所有枚举值
         /// </summary>
-        public static List<string> GetAllEnumNames<T>()
+        public static List<string> GetAllEnumNames<T>(string containString = "Index_")
         {
-            Type t = typeof(T);
-            List<string> list = new List<string>();
-            foreach (string s in Enum.GetNames(t))
-            {
-                list.Add(s);
-            }
-            return list;
+            return Enum.GetNames(typeof(T)).Where(n => n.Contains(containString)).ToList();
         }
         #endregion
                        
@@ -500,14 +494,14 @@ namespace LotteryTicket
             comb.Name = "指标函数";
             comb.Width = 180;
             comb.ValueType = typeof(string);
-            comb.DataSource = LotTicketHelper.GetAllIndexNames().Where(n => n.Contains("Index_")).ToList();
+            comb.DataSource = LotTicketHelper.GetAllIndexFuncNames();
             dgv.Columns.Add(comb);
 
             DataGridViewComboBoxColumn comb2 = new DataGridViewComboBoxColumn();
             comb2.Name = "对比类型";
             comb2.Width = 160;
             comb2.ValueType = typeof(string);
-            comb2.DataSource = LotTicketHelper.GetAllEnumNames<CompareType>();
+            comb2.DataSource = LotTicketHelper.GetAllEnumNames<CompareType>().ToList();;
             dgv.Columns.Add(comb2);
 
             DataGridViewTextBoxColumn tb2 = new DataGridViewTextBoxColumn();
