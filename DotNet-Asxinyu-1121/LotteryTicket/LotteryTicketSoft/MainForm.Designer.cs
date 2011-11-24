@@ -100,14 +100,14 @@ namespace LotteryTicketSoft
             // 数据更新ToolStripMenuItem
             // 
             this.数据更新ToolStripMenuItem.Name = "数据更新ToolStripMenuItem";
-            this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.数据更新ToolStripMenuItem.Text = "数据更新";
             this.数据更新ToolStripMenuItem.Click += new System.EventHandler(this.数据更新ToolStripMenuItem_Click_1);
             // 
             // 常规参数设置ToolStripMenuItem
             // 
             this.常规参数设置ToolStripMenuItem.Name = "常规参数设置ToolStripMenuItem";
-            this.常规参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.常规参数设置ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.常规参数设置ToolStripMenuItem.Text = "常规参数设置";
             this.常规参数设置ToolStripMenuItem.Click += new System.EventHandler(this.常规参数设置ToolStripMenuItem_Click);
             // 
@@ -124,7 +124,6 @@ namespace LotteryTicketSoft
             this.ClientSize = new System.Drawing.Size(759, 614);
             this.Controls.Add(this.StausShow);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
