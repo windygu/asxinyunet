@@ -110,21 +110,39 @@ namespace LotteryTicketSoft.GraphForm
         /// </summary>
         void InitialDataGridView()
         {
-            //现在初始化列          
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.Id, tb_Rules._.Id.Description));
-            dgv.Columns.Add(CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description));
-            dgv.Columns.Add(CreateComboBoxWithNames(LotTicketHelper.GetAllEnumNames<CompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.RuleCompareParams , tb_Rules._.RuleCompareParams.Description));            
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.FilterInfo, tb_Rules._.FilterInfo.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.UpdateTime, tb_Rules._.UpdateTime.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description));
+            //现在初始化列   
+            DataGridViewTextBoxColumn tb1 = CreateTextBoxWithNames(tb_Rules._.Id, tb_Rules._.Id.Description);
+            tb1.Width = 60;
+            dgv.Columns.Add(tb1 );
+            DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
+            tb2.Width = 140;
+            dgv.Columns.Add(tb2 );
+            DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTicketHelper.GetAllEnumNames<CompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
+            tb3.Width = 140;
+            dgv.Columns.Add(tb3 );
+            DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
+            tb4.Width = 160;
+            dgv.Columns.Add(tb4);
+            DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description);
+            tb5.Width = 80;
+            dgv.Columns.Add(tb5);
+            DataGridViewTextBoxColumn tb6 = CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description);
+            tb6.Width = 80;
+            dgv.Columns.Add(tb6);
+            DataGridViewTextBoxColumn tb7 = CreateTextBoxWithNames(tb_Rules._.FilterInfo, tb_Rules._.FilterInfo.Description);
+            tb7.Width = 80;
+            dgv.Columns.Add(tb7);
+            DataGridViewTextBoxColumn tb8 = CreateTextBoxWithNames(tb_Rules._.UpdateTime, tb_Rules._.UpdateTime.Description);
+            tb8.Width = 120;
+            dgv.Columns.Add(tb8);
+            DataGridViewTextBoxColumn tb9 = CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description);
+            tb9.Width = 60;
+            dgv.Columns.Add(tb9);           
         }
         DataGridViewComboBoxColumn CreateComboBoxWithNames(List<string> dataSource, string dataPropertyName,string DispalyName)
         {
             DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-            combo.DataSource = dataSource;
+            combo.DataSource = dataSource;            
             combo.DataPropertyName = dataPropertyName;
             combo.Name = DispalyName;
             return combo;
