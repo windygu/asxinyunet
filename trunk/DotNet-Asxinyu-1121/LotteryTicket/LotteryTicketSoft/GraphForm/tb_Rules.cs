@@ -365,7 +365,9 @@ private System.Windows.Forms.TextBox txtRemark ;
         /// </summary>
         private void CustomerSettings()
         {
-            //控件的特殊设置，如格式，显示,控件的绑定           
+            //控件的特殊设置，如格式，显示,控件的绑定  
+            combIndexSelectorNameTP.Items.AddRange(LotTicketHelper.GetAllIndexFuncNames().ToArray());
+            combCompareRuleNameTP.Items.AddRange(LotTicketHelper.GetAllEnumNames<CompareType>().ToArray());
         }
 		#endregion
 				

@@ -31,7 +31,6 @@ namespace LotteryTicketSoft.GraphForm
         {
             InitializeComponent();
         }
-
         /// <summary>
         /// 实体列表
         /// </summary>
@@ -80,11 +79,11 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.PageSize = controlParams.PageSize;
             if (controlParams.EntityType != null)
             {
-                this.EntityOper  = EntityFactory.CreateOperate(controlParams.EntityType);                
-                //string maininfo = EntityOper.Table.Description;
+                this.EntityOper  = EntityFactory.CreateOperate(controlParams.EntityType);                     
             }
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
+            InitialDataGridView();    
         }
         #endregion
 
@@ -96,15 +95,15 @@ namespace LotteryTicketSoft.GraphForm
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
             {
-                btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
-                                            winPage.PageSize);               
+                btList = EntityOper.FindAll(cutSql,tb_Rules._.Id + " asc","",
+                    (winPage.PageIndex - 1) * winPage.PageSize,winPage.PageSize);               
             }
             else //不需要分页的情况下
             {
-                btList = EntityOper.FindAll(cutSql, "", "", 0, 0);             
+                btList = EntityOper.FindAll(cutSql,tb_Rules._.Id + " asc", "", 0, 0);             
             }                      
             for (int i = 0; i < btList.Count; i++)     bs.Add(btList[i]);
-            InitialDataGridView();           
+                   
             dgv.DataSource = bs;
         }
         /// <summary>
@@ -210,6 +209,9 @@ namespace LotteryTicketSoft.GraphForm
         {
             this.ParentForm.Close();
         }
+        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+        }
         #endregion
 
         #region 按钮事件--搜索--查询条件
@@ -245,11 +247,7 @@ namespace LotteryTicketSoft.GraphForm
             stausInfoShow1.SetToolInfo2("和值:" + WinFormHelper.GetDynamicSecletedInfo(dgv)[0].ToString());
         }
         #endregion
-
-        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-        }
-        
+                
         #region 废弃代码---很有参考价值
         //IListSource ls=btList as IListSource ;
         //dgv.DataSource = ls.GetList(); ;// btList ;
