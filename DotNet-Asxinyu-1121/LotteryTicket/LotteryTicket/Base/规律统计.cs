@@ -23,17 +23,17 @@ namespace LotteryTicket
             switch (rule.CompareRule)
             {
                 case CompareType.Equal://相等比较第一个
-                    return res == rule.FloorLimit;                    
+                    return res == rule.RuleParams.FloorLimit;                    
                 case CompareType.RangeLimite:
-                    return (res >= rule.FloorLimit )&&(res <= rule.CeilLimit ) ;
+                    return (res >= rule.RuleParams.FloorLimit) && (res <= rule.RuleParams.CeilLimit);
                 case CompareType.LessThanLimite:
-                    return res <= rule.FloorLimit;
+                    return res <= rule.RuleParams.FloorLimit;
                 case CompareType.GreaterThanLimite:
-                    return res >= rule.FloorLimit;
+                    return res >= rule.RuleParams.FloorLimit;
                 case CompareType.InList :
-                    return rule.CompList.Contains(res);
+                    return rule.RuleParams.CompList.Contains(res);
                 case CompareType.NotInList :
-                    return !rule.CompList.Contains(res);
+                    return !rule.RuleParams.CompList.Contains(res);
                 default:
                     return false;
             }        
@@ -51,17 +51,17 @@ namespace LotteryTicket
             switch (rule.CompareRule)
             {
                 case CompareType.Equal://相等比较第一个
-                    return res == rule.FloorLimit;
+                    return res == rule.RuleParams.FloorLimit;
                 case CompareType.RangeLimite:
-                    return (res >= rule.FloorLimit) && (res <= rule.CeilLimit);
+                    return (res >= rule.RuleParams.FloorLimit) && (res <= rule.RuleParams.CeilLimit);
                 case CompareType.LessThanLimite:
-                    return res <= rule.FloorLimit;
+                    return res <= rule.RuleParams.FloorLimit;
                 case CompareType.GreaterThanLimite:
-                    return res >= rule.FloorLimit;
+                    return res >= rule.RuleParams.FloorLimit;
                 case CompareType.InList:
-                    return rule.CompList.Contains(res);
+                    return rule.RuleParams.CompList.Contains(res);
                 case CompareType.NotInList:
-                    return !rule.CompList.Contains(res);
+                    return !rule.RuleParams.CompList.Contains(res);
                 default:
                     return false;
             }

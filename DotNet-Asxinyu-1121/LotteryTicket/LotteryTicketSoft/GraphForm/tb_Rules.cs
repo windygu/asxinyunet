@@ -292,7 +292,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.Location = new System.Drawing.Point(76, 335);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
-            this.FormPager.Size = new System.Drawing.Size(242, 29);
+            this.FormPager.Size = new System.Drawing.Size(238, 29);
             this.FormPager.TabIndex = 100;
             this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
             // 
@@ -321,7 +321,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.FormPager);
             this.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "AddRules";
-            this.Size = new System.Drawing.Size(293, 296);
+            this.Size = new System.Drawing.Size(287, 292);
             this.Load += new System.EventHandler(this.AddAddRulesLoad);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

@@ -265,7 +265,7 @@ namespace LotteryTicketSoft.GraphForm
             stausInfoShow1.SetToolInfo2("和值:" + WinFormHelper.GetDynamicSecletedInfo(dgv)[0].ToString());
         }
         #endregion
-                
+
         #region 废弃代码---很有参考价值
         //IListSource ls=btList as IListSource ;
         //dgv.DataSource = ls.GetList(); ;// btList ;
