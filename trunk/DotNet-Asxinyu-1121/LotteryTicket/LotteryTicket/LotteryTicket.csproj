@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\特殊统计和过滤.cs" />
     <Compile Include="Base\LotTicketHelper.cs" />
     <Compile Include="Base\规律统计.cs" />
     <Compile Include="Base\指标计算.cs" />
