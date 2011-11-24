@@ -36,34 +36,33 @@ namespace LotteryTicketSoft.GraphForm
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataManageForm));
-			this.DataManageControl = new DotNet.Tools.Controls.DataManage();
-			this.SuspendLayout();
-			// 
-			// DataManageControl
-			// 
-			this.DataManageControl.AutoSize = true;
-			this.DataManageControl.Dock = System.Windows.Forms.DockStyle.Fill;	
-			
-			
-			this.DataManageControl.Location = new System.Drawing.Point(0, 0);
-			this.DataManageControl.Name = "DataManageControl";
-			this.DataManageControl.Size = new System.Drawing.Size(708, 431);
-			this.DataManageControl.TabIndex = 0;
-			// 
-			// DataManageForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(708, 431);
-			this.Controls.Add(this.DataManageControl);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.Name = "DataManageForm";
-			this.Text = "TestControlForm";
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataManageForm));
+            this.DataManageControl = new LotteryTicketSoft.GraphForm.DataManage();
+            this.SuspendLayout();
+            // 
+            // dataManage1
+            // 
+            this.DataManageControl.ControlParams = null;
+            this.DataManageControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataManageControl.EntityOper = null;
+            this.DataManageControl.Location = new System.Drawing.Point(0, 0);
+            this.DataManageControl.Name = "dataManage1";
+            this.DataManageControl.Size = new System.Drawing.Size(724, 431);
+            this.DataManageControl.TabIndex = 0;
+            // 
+            // DataManageForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(724, 431);
+            this.Controls.Add(this.DataManageControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.Name = "DataManageForm";
+            this.Text = "TestControlForm";
+            this.ResumeLayout(false);
+
 		}
-		private DotNet.Tools.Controls.DataManage DataManageControl;
+        private DataManage DataManageControl;
 	}
 }
