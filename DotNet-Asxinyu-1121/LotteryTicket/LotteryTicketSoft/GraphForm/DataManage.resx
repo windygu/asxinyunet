@@ -236,15 +236,6 @@
         5z7ZCRrYXyBfcBd+VHi6yD+jAt9qR4rsIr6A/wAAPwRGEQCSZwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="winPage.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAYAAAAaCAIAAAAburr/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAJVJREFUKFPVz2kO
-        gjAQBeCH9z+S0ZNIcCkiytZCSboMjhaNmRvYfJm8N/Or2b6cCAs+b4MM1i0CmpkEtDMJ/7Ti3zxsbCyx
-        FHC3UUA9vVb1Wwq4jVFANcarIZ7pUBlCaUhYV0pHpdcbSh0uOpwHfxm80oErTr0/9j7NFFB0ruh83jrG
-        gSvyxh1+cEVlgoCdmrZq/OL6BHpcsD7+jCpTAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>49</value>
   </metadata>
