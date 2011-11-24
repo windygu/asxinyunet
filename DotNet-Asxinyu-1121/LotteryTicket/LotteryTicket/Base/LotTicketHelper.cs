@@ -457,24 +457,18 @@ namespace LotteryTicket
         #endregion
 
         #region 获取所有的方法类型和比较类型
-        public static List<string> GetAllIndexFuncNames()
+        public static List<string> GetAllIndexFuncNames(string containString = "Index_")
         {
-            Type t = typeof(OOIndexCalculate);
-            MethodInfo[] methods = t.GetMethods();
-            List<string> res = new List<string>(methods.Length);
-            foreach (MethodInfo item in methods)
-            {
-                res.Add(item.Name);
-            }
-            return res;
+            return (typeof(OOIndexCalculate)).GetMethods().
+                Select(n => n.Name).Where(n => n.Contains(containString)).ToList();
         }
 
         /// <summary>
         /// 获取枚举类型的所有枚举值
         /// </summary>
-        public static List<string> GetAllEnumNames<T>(string containString = "Index_")
+        public static List<string> GetAllEnumNames<T>()
         {
-            return Enum.GetNames(typeof(T)).Where(n => n.Contains(containString)).ToList();
+            return Enum.GetNames(typeof(T)).ToList();
         }
         #endregion
                        

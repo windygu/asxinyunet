@@ -92,7 +92,6 @@ namespace LotteryTicketSoft.GraphForm
         //分页事件-得到数据
         void GetData()
         {
-            BindingSource bs = new BindingSource();
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
             {
@@ -102,42 +101,16 @@ namespace LotteryTicketSoft.GraphForm
             else //不需要分页的情况下
             {
                 btList = EntityOper.FindAll(cutSql, "", "", 0, 0);             
-            }                      
-            for (int i = 0; i < btList.Count; i++)     bs.Add(btList[i]);
-            InitialDataGridView();           
-            dgv.DataSource = bs;
-        }
-        /// <summary>
-        /// 初始化，格式控制
-        /// </summary>
-        void InitialDataGridView()
-        {
-            //现在初始化列          
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.Id, tb_Rules._.Id.Description));
-            dgv.Columns.Add(CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description));
-            dgv.Columns.Add(CreateComboBoxWithNames(LotTicketHelper.GetAllEnumNames<CompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.FloorLimit, tb_Rules._.FloorLimit.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.CeilLimit, tb_Rules._.CeilLimit.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.CompListStr, tb_Rules._.CompListStr.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.UpdateTime, tb_Rules._.UpdateTime.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description));
-        }
-
-        DataGridViewComboBoxColumn CreateComboBoxWithNames(List<string> dataSource, string dataPropertyName,string DispalyName)
-        {
-            DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-            combo.DataSource = dataSource;
-            combo.DataPropertyName = dataPropertyName;
-            combo.Name = DispalyName;
-            return combo;
-        }
-        DataGridViewTextBoxColumn CreateTextBoxWithNames(string dataPropertyName, string DispalyName)
-        {
-            DataGridViewTextBoxColumn combo = new DataGridViewTextBoxColumn();
-            combo.DataPropertyName = dataPropertyName;
-            combo.Name = DispalyName;
-            return combo;
+            }           
+            ArrayList list = new ArrayList();
+            for (int i = 0; i < btList.Count; i++)
+            {
+                list.Add(btList[i]);
+            }            
+            //需要对列进行改变                    
+            dgv.DataSource = list;
+            (dgv.Columns[1] as DataGridViewComboBoxColumn).DataSource = LotTicketHelper.GetAllIndexFuncNames();
+            (dgv.Columns[2] as DataGridViewComboBoxColumn).DataSource = LotTicketHelper.GetAllEnumNames<CompareType>();
         }
         #endregion
 
@@ -246,10 +219,6 @@ namespace LotteryTicketSoft.GraphForm
         }
         #endregion
 
-        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-        }
-        
         #region 废弃代码---很有参考价值
         //IListSource ls=btList as IListSource ;
         //dgv.DataSource = ls.GetList(); ;// btList ;
