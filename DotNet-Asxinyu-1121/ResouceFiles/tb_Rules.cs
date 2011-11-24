@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -338,13 +337,11 @@ private System.Windows.Forms.TextBox txtRemark ;
 		/// <summary>
 		/// 初始化设置
 		/// </summary>
-		/// <param name="showMode">窗体的显示模式,必须指定</param>
-		/// <param name="searchCondtion">指定显示的实体条件</param>
 		public void InitializeSettings(DataControlParams controlParams)
 		{
 			this.FormPager.PageSize = 1;
             this.CutShowMode = controlParams.AddFormShowMode;
-            this.CutSearchCondition = controlParams.AddFormSearchString; ;
+            this.CutSearchCondition = controlParams.AddFormSearchString; 
             if (CutShowMode == FormShowMode.AddOne || CutShowMode == FormShowMode.ContinueAdd)
             {
                 CustomerSettings();
