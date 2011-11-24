@@ -102,9 +102,8 @@ namespace LotteryTicketSoft.GraphForm
             {
                 btList = EntityOper.FindAll(cutSql,tb_Rules._.Id + " asc", "", 0, 0);             
             }                      
-            for (int i = 0; i < btList.Count; i++)     bs.Add(btList[i]);
-                   
-            dgv.DataSource = bs;
+            for (int i = 0; i < btList.Count; i++)     bs.Add(btList[i]);                   
+            dgv.DataSource = bs;//绑定数据
         }
         /// <summary>
         /// 初始化，格式控制
@@ -141,6 +140,7 @@ namespace LotteryTicketSoft.GraphForm
         #endregion
 
         #region 菜单事件
+        #region 右键编辑与删除
         //右键编辑修改
         private void toolStripMenuEdit_Click(object sender, EventArgs e)
         {
@@ -175,6 +175,24 @@ namespace LotteryTicketSoft.GraphForm
             }
             ToolFindClick(sender, e);
         }
+        #endregion
+
+        #region 右键预测与过滤
+        //右键预测验证频率
+        private void toolStripStatics_Click(object sender, EventArgs e)
+        {
+            //循环读取当前列表中的规则,其实也就是
+
+        }
+        //右键过滤
+        private void toolStripFilter_Click(object sender, EventArgs e)
+        {
+            if (ControlParams.IsHaveMenu && dgv.CurrentCell != null)
+            {
+                dgv.BeginEdit(false);
+            }
+        }
+        #endregion
         #endregion
 
         #region 添加 查找 退出

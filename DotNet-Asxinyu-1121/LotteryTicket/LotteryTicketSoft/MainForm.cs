@@ -48,6 +48,7 @@ namespace LotteryTicketSoft
         {
             DataControlParams CP = new DataControlParams(LabAssemblyName,typeof(tb_Rules) ,
                 "LotteryTicketSoft.GraphForm.AddRules");
+            CP.IsEnablePaging = false;
             LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
             dt.MdiParent = this;
             dt.Show();           
