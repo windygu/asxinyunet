@@ -1,4 +1,5 @@
-﻿/*
+﻿#region
+/*
  * 由SharpDevelop创建。
  * 用户： Administrator
  * 日期: 2011-11-17
@@ -20,6 +21,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using System.Xml;
 using System.Windows.Forms;
+#endregion
 
 namespace LotteryTicket
 {
@@ -247,75 +249,6 @@ namespace LotteryTicket
     public class BaseGetLotTicData
     {
 
-    }
-    #endregion
-
-    #region 指标名称类型枚举
-    public enum IndexNameType
-    {
-        //  A   []  --->  1个结果
-        //  B   [][]  --->  1个结果
-        //  C   []  --->  []多个结果
-        //  D   [][]  --->[]多个结果
-        //  F   统计规律常数类指标
-
-        /// <summary>
-        /// 自身数字,只支持[] -->[],主要用于胆号和杀号
-        /// </summary>
-        C_SelfNumber,
-
-        A_PM001,
-        A_PM002,
-
-        /// <summary>
-        /// 和值,返回1个double类型
-        /// </summary>
-        A_Sum,
-
-        /// <summary>
-        /// 最大跨度,返回1个double类型
-        /// </summary>
-        A_MaxSpan,
-
-        /// <summary>
-        /// 最小跨度,返回1个double类型
-        /// </summary>
-        A_MinSpan,
-
-        /// <summary>
-        /// 跨度列表,返回1个double[]类型
-        /// </summary>
-        C_SpanList,
-
-        /// <summary>
-        /// 跨度和值,返回1个double类型
-        /// </summary>
-        A_SpanSum,
-
-        /// <summary>
-        /// Ac值，返回1个double类型
-        /// </summary>
-        A_AcValue,
-
-        /// <summary>
-        /// 跨度密度,返回1个double类型
-        /// </summary>
-        A_SpanDensity,
-
-        /// <summary>
-        /// 数据密度,返回1个double类型
-        /// </summary>
-        A_DataDensity,
-
-        /// <summary>
-        /// 多期数据中,出现重复号码的个数
-        /// </summary>
-        B_ManyNoOfNewCount,
-
-        /// <summary>
-        /// 每期最长的连续号码,2个2连续算3
-        /// </summary>
-        A_ContinuousCount
     }
     #endregion
 
