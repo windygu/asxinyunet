@@ -22,8 +22,7 @@ namespace LotteryTicket
     //七乐彩数据：http://kaijiang.zhcw.com/zhcw/html/qlc/list_1.html
     //双色球数据：http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html
     //福彩3D数据：http://kaijiang.zhcw.com/zhcw/html/3d/list_2.html	
-
-
+    
 	/// <summary>
 	/// 双色球彩票类型
 	/// </summary>

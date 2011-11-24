@@ -27,7 +27,7 @@ namespace LotteryTicket
 {
     #region 规则类，设置规则及比较参数
     /// <summary>
-    /// 规则类
+    /// 规则类，增加数据参数类：将上下限，等参数放到一个类中，一个对象
     /// </summary>
     [Serializable]
     public class Rule
@@ -41,11 +41,7 @@ namespace LotteryTicket
         /// <summary>
         /// 是否是特殊模式,此模式下,其他参数设置无效,只接受特殊参数数组
         /// </summary>
-        public bool IsSpecialMode { get; set; }
-        /// <summary>
-        /// 特殊模式下的参数
-        /// </summary>
-        public object[] ParamsValues { get; set; }                
+        public bool IsSpecialMode { get; set; }                      
         #endregion
 
         #region MO类型时的计算期数N
@@ -102,15 +98,59 @@ namespace LotteryTicket
         /// 对比类型
         /// </summary>
         public CompareType CompareRule { get; set; }
+        #endregion  
+
+        #region 参数对象
+        /// <summary>
+        /// 规则比较参数
+        /// </summary>
+        public RuleCompareParams RuleParams { get; set; }
         #endregion
 
+        #region OO与MO通用构造函数,常用,传入字符串，并转换为类型
+        /// <summary>
+        /// 通用构造函数
+        /// </summary>
+        /// <param name="selector">指标计算函数</param>
+        /// <param name="compareRule">对比规则</param>
+        /// <param name="isOO">是否是1对1类型</param>
+        /// <param name="needRows">计算所需的函数,OO为0，MO需要设置</param>
+        public Rule(RuleCompareParams ruleParams,string selector, string compareRule,bool isOO = true ,int needRows = 0 )
+        {
+            this.IsSpecialMode = false;//默认为非特殊模式,也就是正常模式
+            this.NumbersCount = needRows;
+            this.IsOO = isOO;
+            this.IndexSelectorName = selector;
+            this.CompareRuleName = compareRule;         
+            this.IsSpecialMode = false;
+        }
+        /// <summary>
+        /// 特殊模式构造函数，直接传入参数数组即可
+        /// </summary>
+        /// <param name="selector">特殊模式下对应的方法名称</param>
+        /// <param name="paramsValues">参数</param>
+        public Rule(string selector, object[] paramsValues)
+        {
+            this._indexSelectorName = selector;
+            this.IsSpecialMode = true;
+            //this.ParamsValues = paramsValues;
+        }
+        #endregion       
+    }
+
+    /// <summary>
+    /// 规则比较参数类
+    /// </summary>
+    [Serializable]
+    public class RuleCompareParams
+    {
         #region 范围比较参数
         /// <summary>
-        /// 上限
+        /// 下限
         /// </summary>
         public int FloorLimit { get; set; }
         /// <summary>
-        /// 下限
+        /// 上限
         /// </summary>
         public int CeilLimit { get; set; }
 
@@ -124,55 +164,56 @@ namespace LotteryTicket
             get { return _compListStr; }
             set
             {
-                if (value !=null && value !="")
+                if (value != null && value != "")
                 {
                     _compListStr = value;
                     CompList = value.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
-                }               
+                }
             }
         }
         /// <summary>
         /// 比较序列
         /// </summary>
         public int[] CompList { get; set; }
-        #endregion           
 
-        #region OO与MO通用构造函数,常用,传入字符串，并转换为类型
         /// <summary>
-        /// 通用构造函数
+        /// 特殊模式下的参数
         /// </summary>
-        /// <param name="selector">指标计算函数</param>
-        /// <param name="compareRule">对比规则</param>
-        /// <param name="compList">对比序列,默认为空</param>
-        /// <param name="isOO">是否是1对1类型</param>
-        /// <param name="needRows">计算所需的函数,OO为0，MO需要设置</param>
-        /// <param name="floorlimit">范围下限</param>
-        /// <param name="ceilLimit">范围上限</param>
-        public Rule(string selector, string compareRule,string compList ="",bool isOO = true ,
-            int needRows = 0 ,int floorlimit = 0, int ceilLimit = 0)
-        {
-            this.IsSpecialMode = false;//默认为非特殊模式,也就是正常模式
-            this.NumbersCount = needRows;
-            this.IsOO = isOO;
-            this.IndexSelectorName = selector;
-            this.CompareRuleName = compareRule;
-            this.FloorLimit = floorlimit;
-            this.CeilLimit = ceilLimit;
-            this.CompListStr = compList;
-            this.IsSpecialMode = false;
-        }
+        public string ParamsValue { get; set; }
+        #endregion           
+        
+        #region 构造函数
         /// <summary>
-        /// 特殊模式构造函数，直接传入参数数组即可
+        /// 构造函数，字符串格式：**-**-*,*,*-**,**
         /// </summary>
-        /// <param name="selector">特殊模式下对应的方法名称</param>
-        /// <param name="paramsValues">参数</param>
-        public Rule(string selector, object[] paramsValues)
+        /// <param name="conditons">参数条件字符串,安装指定格式</param>
+        public RuleCompareParams(string conditons)
         {
-            this._indexSelectorName = selector;
-            this.IsSpecialMode = true;
-            this.ParamsValues = paramsValues;
+            if (conditons != null && conditons != "")
+            {
+                string[] str = conditons.Split('-');
+                if (str.Length == 1) this.CeilLimit = Convert.ToInt32(str[0]);
+                if (str.Length == 2)
+                {
+                    this.FloorLimit = Convert.ToInt32(str[0]);
+                    this.CeilLimit = Convert.ToInt32(str[1]);
+                }
+                if (str.Length == 3)
+                {
+                    this.FloorLimit = Convert.ToInt32(str[0]);
+                    this.CeilLimit = Convert.ToInt32(str[1]);
+                    this.CompListStr = str[2];
+                }
+                if (str.Length == 4)
+                {
+                    this.FloorLimit = Convert.ToInt32(str[0]);
+                    this.CeilLimit = Convert.ToInt32(str[1]);
+                    this.CompListStr = str[2];
+                    this.ParamsValue = str[3];
+                }
+            }
         }
-        #endregion       
+        #endregion
     }
     #endregion
 
@@ -431,30 +472,30 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 将Rule数组转换为DataTable显示,并可编辑
-        public static DataTable RulesToDataTable(Rule[] rules)
-        {
-            DataTable dt = new DataTable("Rules");
-            dt.Columns.Add(new DataColumn("序号", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("指标函数", typeof(string)));
-            dt.Columns.Add(new DataColumn("对比类型", typeof(CompareType)));
-            dt.Columns.Add(new DataColumn("范围下限", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("范围上限", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("列表范围", typeof(int[])));
-            int count = 0;
-            foreach (Rule item in rules)
-            {
-                DataRow dr = dt.NewRow();
-                dr[0] = ++count;
-                dr[1] = item.IndexSelectorName;
-                dr[2] = item.CompareRule;
-                dr[3] = item.FloorLimit;
-                dr[4] = item.CeilLimit;
-                dr[5] = item.CompList;
-                dt.Rows.Add(dr);
-            }
-            return dt;
-        }
+        #region 将Rule数组转换为DataTable显示,并可编辑----废弃
+        //public static DataTable RulesToDataTable(Rule[] rules)
+        //{
+        //    DataTable dt = new DataTable("Rules");
+        //    dt.Columns.Add(new DataColumn("序号", typeof(Int32)));
+        //    dt.Columns.Add(new DataColumn("指标函数", typeof(string)));
+        //    dt.Columns.Add(new DataColumn("对比类型", typeof(CompareType)));
+        //    dt.Columns.Add(new DataColumn("范围下限", typeof(Int32)));
+        //    dt.Columns.Add(new DataColumn("范围上限", typeof(Int32)));
+        //    dt.Columns.Add(new DataColumn("列表范围", typeof(int[])));
+        //    int count = 0;
+        //    foreach (Rule item in rules)
+        //    {
+        //        DataRow dr = dt.NewRow();
+        //        dr[0] = ++count;
+        //        dr[1] = item.IndexSelectorName;
+        //        dr[2] = item.CompareRule;
+        //        dr[3] = item.FloorLimit;
+        //        dr[4] = item.CeilLimit;
+        //        dr[5] = item.CompList;
+        //        dt.Rows.Add(dr);
+        //    }
+        //    return dt;
+        //}
         #endregion
 
         #region 获取所有的方法类型和比较类型
@@ -483,7 +524,7 @@ namespace LotteryTicket
         }
         #endregion
                        
-        #region 将Rule数组转换为DataTable显示,并实时计算，保存
+        #region 将Rule数组转换为DataTable显示,并实时计算--废弃
         /// <summary>
         /// 将规则类数组转换为DataGridView，便于编辑
         /// </summary>
@@ -539,9 +580,9 @@ namespace LotteryTicket
                 dgv.Rows[i].Cells[0].Value = i + 1;
                 dgv.Rows[i].Cells[1].Value = rules[i].IndexSelectorName;
                 dgv.Rows[i].Cells[2].Value = rules[i].CompareRuleName;
-                dgv.Rows[i].Cells[3].Value = rules[i].FloorLimit;
-                dgv.Rows[i].Cells[4].Value = rules[i].CeilLimit;
-                dgv.Rows[i].Cells[5].Value = rules[i].CompListStr;
+                dgv.Rows[i].Cells[3].Value = rules[i].RuleParams .FloorLimit;
+                dgv.Rows[i].Cells[4].Value = rules[i].RuleParams.CeilLimit;
+                dgv.Rows[i].Cells[5].Value = rules[i].RuleParams.CompListStr;
             }
         }        
         #endregion

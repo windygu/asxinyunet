@@ -15,7 +15,7 @@ using System.IO;
 namespace LotteryTicket
 {
     /// <summary>
-    /// 指标计算:OM类单个指标，1对1和1对多的实现:Index_
+    /// 指标计算:OO类单个指标，1对1和1对多的实现:Index_
     /// </summary>
     public static class OOIndexCalculate
     {
@@ -77,47 +77,7 @@ namespace LotteryTicket
             return list.Count - (data.Length - 1);
         }
         #endregion
-
-        #region 多期号码出现的重复号码
-        /// <summary>
-        /// 多期数据中,出现重复号码的个数
-        /// </summary>		
-        public static int Index_多期重复号码数(this IEnumerable<int[]> source)
-        {
-            ArrayList al = new ArrayList();
-            int count = 0;
-            foreach (var item in source)
-            {
-                foreach (var s in item)
-                {
-                    if (!al.Contains(s)) { al.Add(s); }
-                    else { count++; }
-                }
-            }
-            return count;
-        }
-        #endregion
-
-        #region 统计次数与频率 FrequCount FrequPrecent
-        /// <summary>
-        /// 计算在所有当前数据中，号码出现的频率(百分比)
-        /// </summary>
-        public static double[] Index_号码频率(this IEnumerable<int[]> source, int maxNumber = 33)
-        {
-            //先从最后一列找出最大值,确定出现的最大数字
-            int[] numbers = new int[maxNumber];
-            foreach (var item in source)
-            {
-                foreach (var s in item)
-                {
-                    numbers[s + 1]++;
-                }
-            }
-            int allNumbers = numbers.Sum();
-            return numbers.Select(n => ((double)n) / ((double)allNumbers)).ToArray();
-        }
-        #endregion
-
+                   
         #region 每期最长的连续号码数
         /// <summary>
         /// 每期最长的连续号码数
@@ -151,7 +111,7 @@ namespace LotteryTicket
         /// </summary>		
         public static int Index_质数个数(this IEnumerable<int> source)
         {
-            return source.Index_2个序列的重复号码个数(PrimeNumbers);            
+            return source.Index_S2个序列的重复号码个数(PrimeNumbers);            
         }
         #endregion
 
@@ -176,50 +136,7 @@ namespace LotteryTicket
         {
             return source.Select(n => ((int)n) % L).Distinct().Count();
         }
-        #endregion
-
-        #region 获取2个序列的重复号码个数
-        /// <summary>
-        /// 获取2个序列的重复号码个数
-        /// </summary>
-        /// <returns>返回重复号码的个数</returns>
-        public static int Index_2个序列的重复号码个数(this IEnumerable<int> source, IEnumerable<int> compareSouce)
-        {
-            int count = 0;
-            foreach (int item in source)
-            {
-                foreach (int s in compareSouce)
-                {
-                    if (item == s) { count++; break; }
-                    if (item < s) { break; }//后面的已经比其越来越大了
-                }
-            }
-            return count;
-        }
-        #endregion
-
-        #region 获取邻号出现的个数
-        /// <summary>
-        /// 获取上期的邻号在当前期出现的个数
-        /// </summary>
-        /// <param name="source">本期数据</param>
-        /// <param name="LastSouce">上期数据或者指定期数据</param>
-        /// <returns>上期邻号在本期出现的个数</returns>
-        public static int Index_上期邻号出现个数(this IEnumerable<int> source, IEnumerable<int> LastSouce)
-        {
-            int count = 0;
-            double temp = 0;
-            foreach (int item in source )
-            {
-                foreach (int cur in LastSouce )
-                {
-                    temp = Math.Abs(item - cur);
-                    if (temp == 1 || temp == 32) count++;
-                }
-            }
-            return count;
-        }
-        #endregion
+        #endregion                       
 
         #region 大号个数:号码值大于等于17的投注号码个数
         /// <summary>
@@ -349,11 +266,29 @@ namespace LotteryTicket
     }
 
     /// <summary>
-    /// 单个指标：多组数据计算结果实现，Index_M
+    /// 单个指标，多对一：多组数据计算结果实现，Index_M
     /// </summary>
     public static class MOIndexCalculate
     {
-
+        #region 多期号码出现的重复号码
+        /// <summary>
+        /// 多期数据中,出现重复号码的个数
+        /// </summary>		
+        public static int Index_M多期重复号码数(this IEnumerable<int[]> source)
+        {
+            ArrayList al = new ArrayList();
+            int count = 0;
+            foreach (var item in source)
+            {
+                foreach (var s in item)
+                {
+                    if (!al.Contains(s)) { al.Add(s); }
+                    else { count++; }
+                }
+            }
+            return count;
+        }
+        #endregion
     }
 
     /// <summary>
@@ -361,6 +296,7 @@ namespace LotteryTicket
     /// </summary>
     public static class OtherIndexCalculate
     {
+        #region 跨度列表-1对多
         /// <summary>
         /// 计算跨度列表
         /// </summary>
@@ -374,5 +310,69 @@ namespace LotteryTicket
             }
             return res;
         }
-    }   
+        #endregion
+
+        #region 统计次数与频率-多对多
+        /// <summary>
+        /// 计算在所有当前数据中，号码出现的频率(百分比)
+        /// </summary>
+        public static double[] Index_S号码频率(this IEnumerable<int[]> source, int maxNumber = 33)
+        {
+            //先从最后一列找出最大值,确定出现的最大数字
+            int[] numbers = new int[maxNumber];
+            foreach (var item in source)
+            {
+                foreach (var s in item)
+                {
+                    numbers[s + 1]++;
+                }
+            }
+            int allNumbers = numbers.Sum();
+            return numbers.Select(n => ((double)n) / ((double)allNumbers)).ToArray();
+        }
+        #endregion
+
+        #region 获取2个序列的重复号码个数
+        /// <summary>
+        /// 获取2个序列的重复号码个数
+        /// </summary>
+        /// <returns>返回重复号码的个数</returns>
+        public static int Index_S2个序列的重复号码个数(this IEnumerable<int> source, IEnumerable<int> compareSouce)
+        {
+            int count = 0;
+            foreach (int item in source)
+            {
+                foreach (int s in compareSouce)
+                {
+                    if (item == s) { count++; break; }
+                    if (item < s) { break; }//后面的已经比其越来越大了
+                }
+            }
+            return count;
+        }
+        #endregion
+
+        #region 获取邻号出现的个数
+        /// <summary>
+        /// 获取上期的邻号在当前期出现的个数
+        /// </summary>
+        /// <param name="source">本期数据</param>
+        /// <param name="LastSouce">上期数据或者指定期数据</param>
+        /// <returns>上期邻号在本期出现的个数</returns>
+        public static int Index_S上期邻号出现个数(this IEnumerable<int> source, IEnumerable<int> LastSouce)
+        {
+            int count = 0;
+            double temp = 0;
+            foreach (int item in source)
+            {
+                foreach (int cur in LastSouce)
+                {
+                    temp = Math.Abs(item - cur);
+                    if (temp == 1 || temp == 32) count++;
+                }
+            }
+            return count;
+        }
+        #endregion
+    }
 }
