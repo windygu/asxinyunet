@@ -38,6 +38,10 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
+    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\DotNet.Tools.dll</HintPath>
+    </Reference>
     <Reference Include="NewLife.Core">
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
@@ -120,10 +124,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
-      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
-      <Name>DotNet.Tools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LotteryTicket\LotteryTicket.csproj">
       <Project>{0E0705A3-789A-4D95-9293-C605171AF53C}</Project>
       <Name>LotteryTicket</Name>
@@ -133,6 +133,7 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DotNet.Tools.dll" />
     <Content Include="LotteryTicket.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

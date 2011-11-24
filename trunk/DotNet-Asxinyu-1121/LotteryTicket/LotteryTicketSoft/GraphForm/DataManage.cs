@@ -1,4 +1,5 @@
-﻿/*
+﻿#region 
+/*
  * XCoder v4.3.2011.0915
  * 作者：Administrator/PC2010081511LNR
  * 时间：2011-09-30 11:54:03
@@ -18,6 +19,7 @@ using DotNet.Tools.Controls;
 using XCode;
 using NewLife;
 using NewLife.Reflection;
+#endregion
 
 namespace LotteryTicketSoft.GraphForm
 {
@@ -28,10 +30,11 @@ namespace LotteryTicketSoft.GraphForm
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// 实体列表
         /// </summary>
-        List<IEntity> btList; // List<IEntity> btList;IEntityList btList;
+        IEntityList btList; //List<IEntity>
 
         /// <summary>
         /// 当前查询字符串,初始为空
@@ -46,15 +49,7 @@ namespace LotteryTicketSoft.GraphForm
         /// 实体操作
         /// </summary>
         public IEntityOperate EntityOper { get; set; }
-        /// <summary>
-        /// 指标函数，绑定Dgv下拉列表用
-        /// </summary>
-        private string IndexFuncNames;
-
-        /// <summary>
-        /// 对比类型,绑定Dgv下拉列表用
-        /// </summary>
-        private string CompareTypeNames;
+        
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
@@ -89,8 +84,6 @@ namespace LotteryTicketSoft.GraphForm
             }
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
-            //下拉列表数据
-
         }
         #endregion
 
@@ -100,18 +93,17 @@ namespace LotteryTicketSoft.GraphForm
         {
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
-            {                
-                IEntityList temp = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
+            {
+                btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
                                             winPage.PageSize);
-                btList =temp.ToList(); 
+               // btList = temp.ToList(); 
             }
             else //不需要分页的情况下
             {
-                btList = EntityOper.FindAll(cutSql, "", "", 0, 0).ToList();             
+                btList = EntityOper.FindAll(cutSql, "", "", 0, 0);//.ToList()               
             }
-            //dgv.DataSource = btList;
+            dgv.DataSource = btList;
             ArrayList list = new ArrayList();
-
             for (int i = 0; i < btList.Count; i++)
             {
                 list.Add(btList[i]);
