@@ -30,7 +30,7 @@ using DotNet.Tools.Controls ;
 
 namespace <#=Config.NameSpace#>
 {	<# string className ="Add"+ Table.Alias.Replace ("tb_","")[0].ToString().ToUpper()+Table.Alias.Replace ("tb_","").Substring (1); #>
-	public class <#=className#>: UserControl
+	public class <#=className#>: UserControl,IEntityControl 
 	{
 		#region 自动生成代码
 		#region Designer.cs必须代码
@@ -185,13 +185,11 @@ namespace <#=Config.NameSpace#>
 		/// <summary>
 		/// 初始化设置
 		/// </summary>
-		/// <param name="showMode">窗体的显示模式,必须指定</param>
-		/// <param name="searchCondtion">指定显示的实体条件</param>
-		public void InitializeSettings(FormShowMode showMode,string searchCondtion = "")
+		public void InitializeSettings(DataControlParams controlParams)
 		{
 			this.FormPager.PageSize = 1;
             this.CutShowMode = controlParams.AddFormShowMode;
-            this.CutSearchCondition = searchCondtion;
+            this.CutSearchCondition = controlParams.AddFormSearchString; 
             if (CutShowMode == FormShowMode.AddOne || CutShowMode == FormShowMode.ContinueAdd)
             {
                 CustomerSettings();

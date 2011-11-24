@@ -114,14 +114,13 @@ namespace LotteryTicketSoft.GraphForm
             dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.Id, tb_Rules._.Id.Description));
             dgv.Columns.Add(CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description));
             dgv.Columns.Add(CreateComboBoxWithNames(LotTicketHelper.GetAllEnumNames<CompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.FloorLimit, tb_Rules._.FloorLimit.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.CeilLimit, tb_Rules._.CeilLimit.Description));
-            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.CompListStr, tb_Rules._.CompListStr.Description));
+            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.RuleCompareParams , tb_Rules._.RuleCompareParams.Description));            
             dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description));
+            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description));
+            dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.FilterInfo, tb_Rules._.FilterInfo.Description));
             dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.UpdateTime, tb_Rules._.UpdateTime.Description));
             dgv.Columns.Add(CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description));
         }
-
         DataGridViewComboBoxColumn CreateComboBoxWithNames(List<string> dataSource, string dataPropertyName,string DispalyName)
         {
             DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();

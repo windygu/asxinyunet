@@ -78,11 +78,11 @@
     <Compile Include="Base\LotTicketHelper.cs" />
     <Compile Include="Base\规律统计.cs" />
     <Compile Include="Base\指标计算.cs" />
+    <Compile Include="Base\TwoColorBall.cs" />
     <Compile Include="Entities\tb_Rules.Biz.cs" />
     <Compile Include="Entities\tb_Rules.cs" />
     <Compile Include="Entities\tb_Ssq.Biz.cs" />
     <Compile Include="Entities\tb_Ssq.cs" />
-    <Compile Include="Base\TwoColorBall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="app.config" />
