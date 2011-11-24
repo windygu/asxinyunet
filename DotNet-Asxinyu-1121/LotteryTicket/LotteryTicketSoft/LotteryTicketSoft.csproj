@@ -81,12 +81,6 @@
     <Compile Include="GraphForm\DataManageForm.Designer.cs">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GraphForm\DataPredict.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GraphForm\DataPredict.Designer.cs">
-      <DependentUpon>DataPredict.cs</DependentUpon>
-    </Compile>
     <Compile Include="GraphForm\FilterNumber.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,9 +103,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\DataManageForm.resx">
       <DependentUpon>DataManageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GraphForm\DataPredict.resx">
-      <DependentUpon>DataPredict.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\FilterNumber.resx">
       <DependentUpon>FilterNumber.cs</DependentUpon>
