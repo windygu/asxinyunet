@@ -15,7 +15,7 @@ using System.IO;
 namespace LotteryTicket
 {
     /// <summary>
-    /// 指标计算:OM类单个指标，1对1和1对多的实现
+    /// 指标计算:OM类单个指标，1对1和1对多的实现:Index_
     /// </summary>
     public static class OOIndexCalculate
     {
@@ -349,7 +349,7 @@ namespace LotteryTicket
     }
 
     /// <summary>
-    /// 单个指标：多组数据计算结果实现
+    /// 单个指标：多组数据计算结果实现，Index_M
     /// </summary>
     public static class MOIndexCalculate
     {
@@ -357,7 +357,7 @@ namespace LotteryTicket
     }
 
     /// <summary>
-    /// 其他特殊指标计算
+    /// 其他特殊指标计算:Index_S
     /// </summary>
     public static class OtherIndexCalculate
     {
