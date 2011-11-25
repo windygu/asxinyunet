@@ -309,7 +309,7 @@ namespace LotteryTicket
         {
             int[] list = source.ToArray();
             int[] res = new int[list.Length];
-            for (int i = 0; i < list.Length; i++)
+            for (int i = 0; i < list.Length-1; i++)
             {
                 res[i] = list[i + 1] - list[i];
             }
