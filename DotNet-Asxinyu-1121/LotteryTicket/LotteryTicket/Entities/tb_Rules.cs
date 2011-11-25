@@ -15,7 +15,7 @@ namespace LotteryTicket
     [DataObject]
     [Description("")]
     [BindIndex("PrimaryKey", true, "Id")]
-    [BindIndex("Id", false, "Id")]
+    [BindIndex("Id", true , "Id")]
     [BindTable("tb_Rules", Description = "", ConnName = "LotTick", DbType = DatabaseType.Access)]
     public partial class tb_Rules : Itb_Rules
     

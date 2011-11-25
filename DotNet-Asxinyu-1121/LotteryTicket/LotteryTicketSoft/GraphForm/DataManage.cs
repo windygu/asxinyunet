@@ -60,8 +60,9 @@ namespace LotteryTicketSoft.GraphForm
             if (controlParams.IsHaveMenu)
             {
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete" }, new string[] { "修改", "删除" },
-                        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });                
+                        new string[] { "Edit", "Delete","Validate","过滤"}, new string[] { "修改", "删除","验证","过滤"},
+                        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
+                        toolStripStatics_Click,toolStripFilter_Click});                
             }
             //动态求和设置
             if (controlParams.IsHaveSelectSum)
@@ -199,7 +200,7 @@ namespace LotteryTicketSoft.GraphForm
         private void toolStripStatics_Click(object sender, EventArgs e)
         {
             //循环读取当前列表中的规则,其实也就是
-
+            LotTicketHelper.CalculateCurrentRow(this.dgv);
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)

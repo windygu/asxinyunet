@@ -20,23 +20,7 @@ namespace LotteryTicket
         public static bool CompareRuleOO(this IEnumerable<int> source, Rule rule)
         {            
             int res = rule.OOSelector(source.ToArray ());//结果
-            switch (rule.CompareRule)
-            {
-                case CompareType.Equal://相等比较第一个
-                    return res == rule.RuleParams.FloorLimit;                    
-                case CompareType.RangeLimite:
-                    return (res >= rule.RuleParams.FloorLimit) && (res <= rule.RuleParams.CeilLimit);
-                case CompareType.LessThanLimite:
-                    return res <= rule.RuleParams.FloorLimit;
-                case CompareType.GreaterThanLimite:
-                    return res >= rule.RuleParams.FloorLimit;
-                case CompareType.InList :
-                    return rule.RuleParams.CompList.Contains(res);
-                case CompareType.NotInList :
-                    return !rule.RuleParams.CompList.Contains(res);
-                default:
-                    return false;
-            }        
+            return GetCompareResult(res, rule);
         }
 
         /// <summary>
@@ -48,6 +32,10 @@ namespace LotteryTicket
         public static bool CompareRuleMO(this IEnumerable<int[]> source, Rule rule)
         {
             int res = rule.MOSelector (source.ToArray ());//结果
+            return GetCompareResult(res, rule);
+        }
+        static bool GetCompareResult(int res, Rule rule)
+        {
             switch (rule.CompareRule)
             {
                 case CompareType.Equal://相等比较第一个
