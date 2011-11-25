@@ -193,7 +193,7 @@ namespace LotteryTicket
             if (conditons != null && conditons != "")
             {
                 string[] str = conditons.Split('-');
-                if (str.Length == 1) this.CeilLimit = Convert.ToInt32(str[0]);
+                if (str.Length == 1) this.FloorLimit = Convert.ToInt32(str[0]);
                 if (str.Length == 2)
                 {
                     this.FloorLimit = Convert.ToInt32(str[0]);
