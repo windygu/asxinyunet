@@ -8,7 +8,7 @@ using System.Xml;
 using System.Runtime.Serialization.Formatters.Binary;
 namespace DotNet.Tools.BaseUtilities
 {
-    class Class1
+    public class Serialize
     {
         #region XML序列化
         /// <summary>

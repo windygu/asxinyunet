@@ -301,7 +301,7 @@ namespace LotteryTicket
     /// </summary>
     public static class OtherIndexCalculate
     {
-        #region 跨度列表-1对多
+        #region 跨度列表-1对多--验证和过滤已完成
         /// <summary>
         /// 计算跨度列表
         /// </summary>
