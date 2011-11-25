@@ -21,6 +21,8 @@
  * 彩票处理程序类库
  * 
  * 修改更新逻辑：每次更新数据库后，保存到日志中。下次进行对比，确定更新数据的期数
+ *          TODO:对过滤规则列表进行优先级处理,例如杀号，可以优先进行，提高速度
+ *               过滤速度很慢，需要对规则窗体的计算过程进行优化，例如中间保存
  *
  * 2011-11-25 数据规则展示控件基本完成，基本指标的验证计算功能完成，还需完善其他类型指标的计算
  * 2011-11-22 全面考虑各种验证和过滤功能。
@@ -87,7 +89,7 @@ namespace LotteryTicket
     {
     	public static void Main(string[] args)
     	{
-           
+            CombinationTest();
     		Console.ReadKey(true);
     	}
     	/// <summary>
@@ -95,8 +97,8 @@ namespace LotteryTicket
         /// </summary>
         public static void CombinationTest()
         {
-            int[] data = new int[] { 6, 7, 8, 9 };
-            foreach (Combination combom in new Combination(4, 3).Rows)
+            int[] data = new int[] { 6,9 , 18, 39,46 };
+            foreach (Combination combom in new Combination(5, 3).Rows)
             {
                 foreach (int item in Combination.Permute(combom, data))
                     Console.Write(item.ToString () + " ");

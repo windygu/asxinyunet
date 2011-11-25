@@ -379,46 +379,7 @@ namespace LotteryTicket
         //{
         //    return TwoColorBall.GetAllPrizeReward(prizedata, predictData);
         //}
-        #endregion
-
-        #region 过滤处理
-        /// <summary>
-        /// 生成双色球全部数据,默认过滤指标：3连号及以上、和值、跨度
-        /// </summary>
-        /// <param name="fileName">最终号码存储的文件名</param>
-        public static List<double[]> InitialFilterData(double[] deleteNumbers, int latestNos = 5, int repeatNumbers = 2)
-        {
-            double[] data = new double[33];//初始化所有号码
-            List<double> listNumbers = new List<double>();
-            //初始化
-            for (int i = 0; i < data.Length; i++) { listNumbers.Add((double)(i + 1)); }
-            //杀号处理
-            for (int i = 0; i < deleteNumbers.Length; i++) { listNumbers.Remove(deleteNumbers[i]); }
-            //迭代获取所有组合序列,并对每个序列进行判断
-            List<double[]> res = new List<double[]>();
-            foreach (Combination combom in new Combination(data.Length, 6).Rows)
-            {
-                double[] curComb = Combination.Permute(combom, data).ToArray();
-                //杀组合，参数为最近的期数和最大重复数,也可以单独杀
-                if (latestNos > 0) //最近的期数
-                {
-                    //先获取需要杀号的数据
-                    bool temp = true;
-                    int [][] deleteNos = TwoColorBall.GetRedBallData(latestNos);
-                    for (int i = 0; i < deleteNos.GetLength(0); i++)
-                    {
-                        //if (IndexCalculate.GetRepeatNumbers(curComb, deleteNos[i]) >= repeatNumbers)
-                        //{
-                        //    temp = false;
-                        //    break;
-                        //}
-                    }
-                    if (temp) res.Add(curComb);//符合要求则添加
-                }
-            }
-            return res;
-        }
-        #endregion
+        #endregion               
 
         #region XML序列化
         /// <summary>
@@ -471,32 +432,6 @@ namespace LotteryTicket
             fileStream.Close();
             return t;
         }
-        #endregion
-
-        #region 将Rule数组转换为DataTable显示,并可编辑----废弃
-        //public static DataTable RulesToDataTable(Rule[] rules)
-        //{
-        //    DataTable dt = new DataTable("Rules");
-        //    dt.Columns.Add(new DataColumn("序号", typeof(Int32)));
-        //    dt.Columns.Add(new DataColumn("指标函数", typeof(string)));
-        //    dt.Columns.Add(new DataColumn("对比类型", typeof(CompareType)));
-        //    dt.Columns.Add(new DataColumn("范围下限", typeof(Int32)));
-        //    dt.Columns.Add(new DataColumn("范围上限", typeof(Int32)));
-        //    dt.Columns.Add(new DataColumn("列表范围", typeof(int[])));
-        //    int count = 0;
-        //    foreach (Rule item in rules)
-        //    {
-        //        DataRow dr = dt.NewRow();
-        //        dr[0] = ++count;
-        //        dr[1] = item.IndexSelectorName;
-        //        dr[2] = item.CompareRule;
-        //        dr[3] = item.FloorLimit;
-        //        dr[4] = item.CeilLimit;
-        //        dr[5] = item.CompList;
-        //        dt.Rows.Add(dr);
-        //    }
-        //    return dt;
-        //}
         #endregion
 
         #region 获取所有的方法类型和比较类型
@@ -619,6 +554,34 @@ namespace LotteryTicket
             double res = data.Static_单个指标频率(rule);
             return (res * 100).ToString("F4");
         }
+        #endregion
+
+        #region 过滤处理,从头开始，对所有规则进行过滤--直接计算所有行
+        public static void FilterAllRows(DataGridView dgv, IEnumerable<int[]> InitiaData)
+        {
+            //测试期间只考虑单独指标计算的情况
+            for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
+            {
+                //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新              
+                tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算                      
+                RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
+                Rule rule = new Rule(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP);
+                int count1 = InitiaData.Count ();
+                InitiaData = InitiaData.Filter_范围过滤(rule);
+                int count2 = InitiaData.Count ();
+                dgv.Rows[rowIndex].Cells[6].Value = string.Format("{0}-{1}={2}", count1, count1 - count2, count2);
+            }
+        }
+        public static IEnumerable<int[]> GetInitiaData()
+        {
+            int[] data = new int[33];
+            //初始化
+            for (int i = 0; i < data.Length; i++) { data[i] = i + 1; }
+            //迭代获取所有组合序列,并对每个序列进行判断         
+            return new Combination(data.Length, 6).Rows.Select(n => n.ToArray());
+        }
+
         #endregion
     }
     #endregion
