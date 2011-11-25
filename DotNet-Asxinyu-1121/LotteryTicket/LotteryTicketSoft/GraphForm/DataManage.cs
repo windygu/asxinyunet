@@ -157,7 +157,7 @@ namespace LotteryTicketSoft.GraphForm
         }
         #endregion
 
-        #region 菜单事件
+        #region 右键菜单事件
         #region 右键编辑与删除
         //右键编辑修改
         private void toolStripMenuEdit_Click(object sender, EventArgs e)
@@ -272,6 +272,11 @@ namespace LotteryTicketSoft.GraphForm
         {
             GetData();
         }
+        //参数配置界面
+        private void toolStripSetting_Click(object sender, EventArgs e)
+        {
+            //增加参数配置界面,形成一个窗体
+        }
         #endregion
 
         #region 求和操作
@@ -280,7 +285,7 @@ namespace LotteryTicketSoft.GraphForm
             stausInfoShow1.SetToolInfo2("和值:" + WinFormHelper.GetDynamicSecletedInfo(dgv)[0].ToString());
         }
         #endregion
-
+        
         #region 废弃代码---很有参考价值
         //IListSource ls=btList as IListSource ;
         //dgv.DataSource = ls.GetList(); ;// btList ;

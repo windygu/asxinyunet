@@ -380,60 +380,7 @@ namespace LotteryTicket
         //    return TwoColorBall.GetAllPrizeReward(prizedata, predictData);
         //}
         #endregion               
-
-        #region XML序列化
-        /// <summary>
-        /// 读取XML文件，反序列化为对象
-        /// </summary>
-        /// <typeparam name="T">对象类型</typeparam>
-        /// <param name="t">对象</param>
-        /// <param name="fileName">xml文件名</param>
-        /// <returns>反序列化的对象</returns>
-        public static T ReadXMLFileToType<T>(string xmlFileName)
-        {
-            XmlSerializer ser = new XmlSerializer(typeof(T));
-            FileStream fileStream = new FileStream(xmlFileName, FileMode.Open, FileAccess.Read);
-            return (T)ser.Deserialize(fileStream);
-        }
-
-        /// <summary>
-        /// 序列化对象，保存为XML文件，前缀为空
-        /// </summary>
-        /// <param name="t">对象类型</param>
-        /// <param name="s">对象序列化后的Xml文件</param>
-        public static void SaveTypeToXmlFile<T>(T t, string xmlFile)
-        {
-            XmlSerializer ser = new XmlSerializer(typeof(T));
-            FileStream fileStream = new FileStream(xmlFile, FileMode.Create, FileAccess.Write);
-            ser.Serialize(fileStream, t);
-            fileStream.Close();
-        }
-        #endregion
-
-        #region 二进制序列化
-        /// <summary>
-        /// 二进制序列化,将对象保存为文件
-        /// </summary>
-        private static void BinarySerialize<T>(T t,string fileName)
-        {            
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream fileStream = File.Create(fileName );
-            formatter.Serialize(fileStream, t);
-            fileStream.Close();
-        }
-        /// <summary>
-        /// 二进制反序列化,将文件读取为对象
-        /// </summary>
-        private static T BinaryDeserialize<T>(string fileName)
-        {
-            BinaryFormatter derializer = new BinaryFormatter();
-            FileStream fileStream = new FileStream(fileName , FileMode.Open, FileAccess.Read, FileShare.Read);
-            T t = (T )derializer.Deserialize(fileStream);          
-            fileStream.Close();
-            return t;
-        }
-        #endregion
-
+        
         #region 获取所有的方法类型和比较类型
         /// <summary>
         /// 加入OM,特殊验证方法,其他指标的名字，通过前缀区分来区分
@@ -458,70 +405,7 @@ namespace LotteryTicket
         {
             return Enum.GetNames(typeof(T)).ToList();
         }
-        #endregion
-
-        #region 将Rule数组转换为DataTable显示,并实时计算--废弃
-        /// <summary>
-        /// 将规则类数组转换为DataGridView，便于编辑
-        /// </summary>
-        public static void RulesToDgv(LotteryTicket.Rule[] rules, DataGridView dgv)
-        {
-            DataGridViewTextBoxColumn tb = new DataGridViewTextBoxColumn();
-            tb.Name = "序号";
-            tb.ValueType = typeof(int);
-            tb.Width = 80;
-            dgv.Columns.Add(tb);
-
-            DataGridViewComboBoxColumn comb = new DataGridViewComboBoxColumn();
-            comb.Name = "指标函数";
-            comb.Width = 180;
-            comb.ValueType = typeof(string);
-            comb.DataSource = LotTicketHelper.GetAllIndexFuncNames();
-            dgv.Columns.Add(comb);
-
-            DataGridViewComboBoxColumn comb2 = new DataGridViewComboBoxColumn();
-            comb2.Name = "对比类型";
-            comb2.Width = 160;
-            comb2.ValueType = typeof(string);
-            comb2.DataSource = LotTicketHelper.GetAllEnumNames<CompareType>().ToList();;
-            dgv.Columns.Add(comb2);
-
-            DataGridViewTextBoxColumn tb2 = new DataGridViewTextBoxColumn();
-            tb2.Name = "下限";
-            tb2.Width = 80;
-            tb2.ValueType = typeof(int);
-            dgv.Columns.Add(tb2);
-
-            DataGridViewTextBoxColumn tb3 = new DataGridViewTextBoxColumn();
-            tb3.Name = "上限";
-            tb3.Width = 80;
-            tb3.ValueType = typeof(int);
-            dgv.Columns.Add(tb3);
-
-            DataGridViewTextBoxColumn tb4 = new DataGridViewTextBoxColumn();
-            tb4.Name = "列表范围";
-            tb4.Width = 200;
-            tb4.ValueType = typeof(string);
-            dgv.Columns.Add(tb4);
-
-            DataGridViewTextBoxColumn tb5 = new DataGridViewTextBoxColumn();
-            tb5.Name = "概率值";
-            tb5.Width = 80;
-            tb5.ValueType = typeof(string);
-            dgv.Columns.Add(tb5);
-
-            dgv.Rows.Add(rules.Length);
-            for (int i = 0; i < rules.Length; i++)
-            {
-                dgv.Rows[i].Cells[0].Value = i + 1;
-                dgv.Rows[i].Cells[1].Value = rules[i].IndexSelectorName;
-                dgv.Rows[i].Cells[2].Value = rules[i].CompareRuleName;
-                dgv.Rows[i].Cells[3].Value = rules[i].RuleParams .FloorLimit;
-                dgv.Rows[i].Cells[4].Value = rules[i].RuleParams.CeilLimit;
-                dgv.Rows[i].Cells[5].Value = rules[i].RuleParams.CompListStr;
-            }
-        }        
-        #endregion
+        #endregion            
 
         #region 根据表格显示的规则进行计算和过滤，并显示结果
         //计算当期规则
