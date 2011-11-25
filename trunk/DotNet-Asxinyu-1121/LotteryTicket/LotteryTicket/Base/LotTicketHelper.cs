@@ -117,6 +117,7 @@ namespace LotteryTicket
         /// <param name="needRows">计算所需的函数,OO为0，MO需要设置</param>
         public Rule(RuleCompareParams ruleParams,string selector, string compareRule,bool isOO = true ,int needRows = 0 )
         {
+            this.RuleParams = ruleParams;
             this.IsSpecialMode = false;//默认为非特殊模式,也就是正常模式
             this.NumbersCount = needRows;
             this.IsOO = isOO;
@@ -403,7 +404,7 @@ namespace LotteryTicket
                 {
                     //先获取需要杀号的数据
                     bool temp = true;
-                    double[][] deleteNos = TwoColorBall.GetRedBallData(latestNos);
+                    int [][] deleteNos = TwoColorBall.GetRedBallData(latestNos);
                     for (int i = 0; i < deleteNos.GetLength(0); i++)
                     {
                         //if (IndexCalculate.GetRepeatNumbers(curComb, deleteNos[i]) >= repeatNumbers)
@@ -523,7 +524,7 @@ namespace LotteryTicket
             return Enum.GetNames(typeof(T)).ToList();
         }
         #endregion
-                       
+
         #region 将Rule数组转换为DataTable显示,并实时计算--废弃
         /// <summary>
         /// 将规则类数组转换为DataGridView，便于编辑
@@ -587,28 +588,36 @@ namespace LotteryTicket
         }        
         #endregion
 
-        #region 根据配置文件的规则,对历史数据进行计算，并显示结果
+        #region 根据表格显示的规则进行计算和过滤，并显示结果
         //计算当期规则
-        public static void CalculateCurrent(int[][] data, DataGridView dgv)
+        public static void CalculateCurrentRow(DataGridView dgv,int defaultHisDataCount = 1000)
         {
-            //int rowIndex = dgv.CurrentRow.Index;
-            //LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[rowIndex].Cells[1].Value,
-            //    (string)dgv.Rows[rowIndex].Cells[2].Value, (string)dgv.Rows[rowIndex].Cells[5].Value,
-            //    (int)dgv.Rows[rowIndex].Cells[3].Value, (int)dgv.Rows[rowIndex].Cells[4].Value);
-            //double res = data.Static_单个指标频率(cutRule);
-            //dgv.Rows[rowIndex].Cells[6].Value = (res * 100).ToString("F4");
+            int rowIndex = dgv.CurrentRow.Index;            
+            //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新
+            tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
+            //再根据ruleMode判断规则类别，调用相应的方法进行计算            
+            int[][] data = TwoColorBall.GetRedBallData(defaultHisDataCount);
+            dgv.Rows[rowIndex].Cells[5].Value = GetDgvCalculateResult(data ,ruleMode );
         }
         //计算所有期规则
-        public static void CalculateAllRules(int[][] data, DataGridView dgv)
+        public static void CalculateAllRows(DataGridView dgv, int defaultHisDataCount = 1000)
         {
-            //for (int i = 0; i < dgv.Rows.Count; i++)
-            //{
-            //    LotteryTicket.Rule cutRule = new LotteryTicket.Rule((string)dgv.Rows[i].Cells[1].Value,
-            //   (string)dgv.Rows[i].Cells[2].Value, (string)dgv.Rows[i].Cells[5].Value,
-            //   (int)dgv.Rows[i].Cells[3].Value, (int)dgv.Rows[i].Cells[4].Value);
-            //    double res = data.Static_单个指标频率(cutRule);
-            //    dgv.Rows[i].Cells[6].Value = (res * 100).ToString("F4");
-            //}
+            for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
+            {               
+                //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新
+                tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算            
+                int[][] data = TwoColorBall.GetRedBallData(defaultHisDataCount);
+                dgv.Rows[rowIndex].Cells[5].Value = GetDgvCalculateResult(data, ruleMode);
+            }
+        }
+        static string GetDgvCalculateResult(int[][] data,tb_Rules ruleMode)
+        {           
+            //再根据ruleMode判断规则类别，调用相应的方法进行计算                       
+            RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
+            Rule rule = new Rule(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP);
+            double res = data.Static_单个指标频率(rule);
+            return (res * 100).ToString("F4");
         }
         #endregion
     }

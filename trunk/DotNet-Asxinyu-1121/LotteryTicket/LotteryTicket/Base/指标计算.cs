@@ -14,8 +14,13 @@ using System.IO;
 
 namespace LotteryTicket
 {
+    //指标计算说明：分为3类
+    //OOIndexCalculate类，特征是方法名称包含 Index_，是单期数据计算得到单个结果
+    //MOIndexCalculate类  特征是方法名称包含 Index_M ，是多期数据计算得到单个结果
+    //OtherIndexCalculate类，特征是方法名称包含 Index_S ，是其他类型的数据计算结果，单独分析，一对多和多对多结果
+
     /// <summary>
-    /// 指标计算:OO类单个指标，1对1和1对多的实现:Index_
+    /// 指标计算:OO类单个指标，1对1实现:Index_
     /// </summary>
     public static class OOIndexCalculate
     {

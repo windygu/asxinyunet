@@ -59,21 +59,21 @@ namespace LotteryTicket
 		/// 从数据库获取指定期数红球数据
 		/// </summary>
 		/// <param name="length">最近的期数</param>
-		public static double[][] GetRedBallData(int selectLength = -1)
+		public static int [][] GetRedBallData(int selectLength = -1)
 		{
 			//获取数据 order by  desc 降序排列, asc 升序		
             tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
             EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");//升序
             DataTable dt = list.ToDataTable () ;
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
-			double[][] res = new double[length ][] ;
+			int[][] res = new int[length ][] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
-				res [i ] = new double[6 ] ;
+				res [i ] = new int[6 ] ;
 				for (int j = 0 ; j < res[i ].Length ; j ++)
 				{
-					res [i ][j ] =Convert.ToDouble(dt.Rows [k + i][2+j ].ToString ()) ; ;
+					res [i ][j ] =Convert.ToInt32(dt.Rows [k + i][2+j ].ToString ()) ; ;
 				}
 			}
 			return res ;
