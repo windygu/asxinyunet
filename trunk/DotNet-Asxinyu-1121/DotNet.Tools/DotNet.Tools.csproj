@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUtilities\AppMessage.cs" />
+    <Compile Include="BaseUtilities\Class1.cs" />
     <Compile Include="BaseUtilities\Convertor.cs" />
     <Compile Include="BaseUtilities\EnumHelper.cs" />
     <Compile Include="BaseUtilities\ExtendProperty.cs" />
