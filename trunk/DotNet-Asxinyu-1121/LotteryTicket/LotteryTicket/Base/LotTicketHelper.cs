@@ -45,6 +45,9 @@ namespace LotteryTicket
         #endregion
 
         #region MO类型时的计算期数N
+        /// <summary>
+        /// 每一次计算所需要的行数
+        /// </summary>
         public int NumbersCount { get; set; }
         #endregion
 
@@ -130,13 +133,14 @@ namespace LotteryTicket
         /// </summary>
         /// <param name="selector">特殊模式下对应的方法名称</param>
         /// <param name="paramsValues">参数</param>
-        public Rule(string selector, object[] paramsValues)
+        public Rule(string selector,int needRows = 0,params object[] paramsValues)
         {
             this._indexSelectorName = selector;
+            this.NumbersCount = needRows;
             this.IsSpecialMode = true;
             //this.ParamsValues = paramsValues;
         }
-        #endregion       
+        #endregion           
     }
 
     /// <summary>
@@ -183,38 +187,45 @@ namespace LotteryTicket
         public string ParamsValue { get; set; }
         #endregion           
         
-        #region 构造函数
+        #region 构造函数---特殊模式时,参数就只给一个
         /// <summary>
         /// 构造函数，字符串格式：**-**-*,*,*-**,**
         /// </summary>
         /// <param name="conditons">参数条件字符串,安装指定格式</param>
-        public RuleCompareParams(string conditons)
+        public RuleCompareParams(string conditons,bool isSpecialMode = false )
         {
-            if (conditons != null && conditons != "")
+            if (isSpecialMode)//特殊模式
             {
-                string[] str = conditons.Split('-');
-                if (str.Length == 1) this.FloorLimit = Convert.ToInt32(str[0]);
-                if (str.Length == 2)
+                this.ParamsValue = conditons ;
+            }
+            else
+            {
+                if (conditons != null && conditons != "")
                 {
-                    this.FloorLimit = Convert.ToInt32(str[0]);
-                    this.CeilLimit = Convert.ToInt32(str[1]);
-                }
-                if (str.Length == 3)
-                {
-                    this.FloorLimit = Convert.ToInt32(str[0]);
-                    this.CeilLimit = Convert.ToInt32(str[1]);
-                    this.CompListStr = str[2];
-                }
-                if (str.Length == 4)
-                {
-                    this.FloorLimit = Convert.ToInt32(str[0]);
-                    this.CeilLimit = Convert.ToInt32(str[1]);
-                    this.CompListStr = str[2];
-                    this.ParamsValue = str[3];
+                    string[] str = conditons.Split('-');
+                    if (str.Length == 1) this.FloorLimit = Convert.ToInt32(str[0]);
+                    if (str.Length == 2)
+                    {
+                        this.FloorLimit = Convert.ToInt32(str[0]);
+                        this.CeilLimit = Convert.ToInt32(str[1]);
+                    }
+                    if (str.Length == 3)
+                    {
+                        this.FloorLimit = Convert.ToInt32(str[0]);
+                        this.CeilLimit = Convert.ToInt32(str[1]);
+                        this.CompListStr = str[2];
+                    }
+                    if (str.Length == 4)
+                    {
+                        this.FloorLimit = Convert.ToInt32(str[0]);
+                        this.CeilLimit = Convert.ToInt32(str[1]);
+                        this.CompListStr = str[2];
+                        this.ParamsValue = str[3];
+                    }
                 }
             }
         }
-        #endregion
+        #endregion                
     }
     #endregion
 
@@ -310,6 +321,88 @@ namespace LotteryTicket
         /// 数字型,如3D，选出一个整数，号码不能变顺序
         /// </summary>
         Number
+    }
+    #endregion
+
+    #region 常规的扩展方法类
+    public static class ExtendsExpress
+    {
+        #region 扩展方法
+        /// <summary>
+        /// 根据字符串获取指定类型的枚举值
+        /// </summary>
+        public static T ToEnum<T>(this string name)
+        {
+            return (T)Enum.Parse(typeof(T), name);
+        }
+
+        public static bool IsNullEmpty(this IEnumerable source)
+        {
+            if (source == null) return true;
+            foreach (var item in source)
+                return false;
+            return true;
+        }
+        /// <summary>
+        /// 将对象转换为DataTable
+        /// </summary>
+        public static DataTable ToDataTable<T>(this IEnumerable<T> varlist)
+        {
+            DataTable dtReturn = new DataTable();
+            PropertyInfo[] oProps = null;
+            if (varlist == null) return dtReturn;
+            foreach (T rec in varlist)
+            {
+                if (oProps == null)
+                {
+                    oProps = ((Type)rec.GetType()).GetProperties();
+                    foreach (PropertyInfo pi in oProps)
+                    {
+                        Type colType = pi.PropertyType;
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                            colType = colType.GetGenericArguments()[0];
+                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
+                    }
+                }
+                DataRow dr = dtReturn.NewRow();
+                foreach (PropertyInfo pi in oProps)
+                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue(rec, null);
+                dtReturn.Rows.Add(dr);
+            }
+            return dtReturn;
+        }
+        #endregion
+
+        #region 比较2个序列是否相等
+        public static bool IsEqual<T>(this IEnumerable<T> source, IEnumerable<T> compList) where T : IComparable
+        {
+            if (source.Count() != compList.Count()) return false;
+            else
+            {
+                T[] s1 = source.ToArray();
+                T[] s2 = source.ToArray();
+                for (int i = 0; i < s1.Length; i++)
+                {
+                    if (s1[i].CompareTo(s2[i]) != 0) return false;
+                }
+            }
+            return true;
+        }
+        /// <summary>
+        /// 将数组转换为字符串序列,通过逗号拼接
+        /// </summary>
+        public static string ListToString<T>(this IEnumerable<T> source)
+        {
+            string res = "";
+            T[] s = source.ToArray();
+            for (int i = 0; i < s.Length - 1; i++)
+            {
+                res += (s[i].ToString() + ",");
+            }
+            res += s[s.Length - 1].ToString();
+            return res;
+        }
+        #endregion
     }
     #endregion
 
@@ -468,87 +561,5 @@ namespace LotteryTicket
 
         #endregion
     }
-    #endregion
-
-    #region 常规的扩展方法类
-    public static class ExtendsExpress
-    {
-        #region 扩展方法
-        /// <summary>
-        /// 根据字符串获取指定类型的枚举值
-        /// </summary>
-        public static T ToEnum<T>(this string name)
-        {
-            return (T)Enum.Parse(typeof(T), name);
-        }
-       
-        public static bool IsNullEmpty(this IEnumerable source)
-        {
-            if (source == null) return true;
-            foreach (var item in source)
-                return false;
-            return true;
-        }
-        /// <summary>
-        /// 将对象转换为DataTable
-        /// </summary>
-        public static DataTable ToDataTable<T>(this IEnumerable<T> varlist)
-        {
-            DataTable dtReturn = new DataTable();
-            PropertyInfo[] oProps = null;
-            if (varlist == null) return dtReturn;
-            foreach (T rec in varlist)
-            {
-                if (oProps == null)
-                {
-                    oProps = ((Type)rec.GetType()).GetProperties();
-                    foreach (PropertyInfo pi in oProps)
-                    {
-                        Type colType = pi.PropertyType;
-                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>)))
-                            colType = colType.GetGenericArguments()[0];
-                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
-                    }
-                }
-                DataRow dr = dtReturn.NewRow();
-                foreach (PropertyInfo pi in oProps)
-                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue(rec, null);
-                dtReturn.Rows.Add(dr);
-            }
-            return dtReturn;
-        }
-        #endregion
-
-        #region 比较2个序列是否相等
-        public static bool IsEqual<T>(this IEnumerable<T> source, IEnumerable<T> compList) where T : IComparable 
-        {
-            if (source.Count() != compList.Count()) return false;
-            else
-            {
-                T[] s1 = source.ToArray();
-                T[] s2 = source.ToArray();
-                for (int i = 0; i < s1.Length ; i++)
-                {
-                    if (s1[i].CompareTo(s2[i]) != 0) return false;
-                }
-            }
-            return true;
-        }
-        /// <summary>
-        /// 将数组转换为字符串序列,通过逗号拼接
-        /// </summary>
-        public static string ListToString<T>(this IEnumerable<T> source) 
-        {
-            string res = "";
-            T[] s = source.ToArray();
-            for (int i = 0; i < s.Length -1; i++)
-            {
-                res += (s [i].ToString ()+",");
-            }
-            res += s[s.Length - 1].ToString();
-            return res;
-        }
-        #endregion
-    }
-    #endregion
+    #endregion        
 }
