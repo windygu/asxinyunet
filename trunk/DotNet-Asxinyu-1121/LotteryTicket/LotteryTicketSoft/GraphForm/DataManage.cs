@@ -199,16 +199,13 @@ namespace LotteryTicketSoft.GraphForm
         //右键预测验证频率
         private void toolStripStatics_Click(object sender, EventArgs e)
         {
-            //循环读取当前列表中的规则,其实也就是
+            //循环读取当前列表中的规则
             LotTicketHelper.CalculateCurrentRow(this.dgv);
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
-            if (ControlParams.IsHaveMenu && dgv.CurrentCell != null)
-            {
-                dgv.BeginEdit(false);
-            }
+            LotTicketHelper.FilterAllRows(this.dgv ,LotTicketHelper.GetInitiaData());
         }
         #endregion
         #endregion
