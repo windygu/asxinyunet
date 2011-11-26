@@ -93,7 +93,7 @@ namespace LotteryTicket
     {
     	public static void Main(string[] args)
     	{
-            CombinationTest();
+            TestMethods.Test01();
     		Console.ReadKey(true);
     	}
     	/// <summary>
