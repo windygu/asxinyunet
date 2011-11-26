@@ -32,13 +32,6 @@ namespace LotteryTicket
     [Serializable]
     public class RuleInfo
     {
-        #region 规则类型及模式 
-        /// <summary>
-        /// 是否是特殊模式,此模式下,其他参数设置无效,只接受特殊参数数组
-        /// </summary>
-        public bool IsSpecialMode { get; set; }                      
-        #endregion
-
         #region 计算所需要的期数N
         /// <summary>
         /// 每一次计算所需要的行数
@@ -65,34 +58,10 @@ namespace LotteryTicket
                 else if (value.Contains("Index_MM")) CurIndexType = IndexType.MM;
                 else if (value.Contains("Index_MO")) CurIndexType = IndexType.MO;
                 else if (value.Contains("Index_OM")) CurIndexType = IndexType.OM;
-                else if (value.Contains("Index_SP")) CurIndexType = IndexType.Specail;
+                else if (value.Contains("Static_S")) CurIndexType = IndexType.Specail;//特殊验证和过滤的名字相同
                 else CurIndexType = IndexType.None;
             }
-        }       
-
-        //get { return _indexSelectorName; }
-            //set
-            //{
-            //    _indexSelectorName = value;
-            //    if (IsOO)
-            //    {
-            //        Type t = typeof(OOIndexCalculate);
-            //        MethodInfo cur = t.GetMethod(value);
-            //        OOSelector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
-            //    }
-            //    else
-            //    {
-            //        Type t = typeof(MMIndexCalculate);
-            //        MethodInfo cur = t.GetMethod(value);
-            //        MOSelector = (Func<int[][], int>)Delegate.CreateDelegate(typeof(Func<int[][], int>), cur);
-            //    }
-            //}
-        //}
-        /// <summary>
-        /// 指标计算函数
-        /// </summary>
-        //public System.Func<int[], int> OOSelector { get; set; }
-        //public System.Func<int[][], int> MOSelector { get; set; }
+        }
         #endregion
 
         #region 比较类型及名称
@@ -131,25 +100,11 @@ namespace LotteryTicket
         /// <param name="needRows">计算所需的行数</param>
         public RuleInfo(RuleCompareParams ruleParams,string selector, string compareRule,int needRows = 1 )
         {
-            this.RuleParams = ruleParams;
-            this.IsSpecialMode = false;//默认为非特殊模式,也就是正常模式
+            this.RuleParams = ruleParams;            
             this.NumbersCount = needRows;            
             this.IndexSelectorName = selector;
-            this.CompareRuleName = compareRule;         
-            this.IsSpecialMode = false;
-        }
-        /// <summary>
-        /// 特殊模式构造函数，直接传入参数数组即可
-        /// </summary>
-        /// <param name="selector">特殊模式下对应的方法名称</param>
-        /// <param name="paramsValues">参数？？特殊指标的参数到底如何传递？？</param>
-        public RuleInfo(string selector,int needRows = 0,params object[] paramsValues)
-        {
-            this._indexSelectorName = selector;
-            this.NumbersCount = needRows;
-            this.IsSpecialMode = true;
-            //this.ParamsValues = paramsValues;
-        }
+            this.CompareRuleName = compareRule;  
+        }   
         #endregion           
     }
 
@@ -506,6 +461,21 @@ namespace LotteryTicket
             return numbers.Select(n => ((double)n) / ((double)allNumbers)).ToArray();
         }
         #endregion
+
+        #region 跨度列表-1对多--验证和过滤已完成
+        /// <summary>
+        /// 计算跨度列表
+        /// </summary>
+        public static int[] Index_SP跨度列表(this int[] source)
+        {
+            int[] res = new int[source.Length];
+            for (int i = 0; i < source.Length - 1; i++)
+            {
+                res[i] = source[i + 1] - source[i];
+            }
+            return res;
+        }
+        #endregion        
     }
     #endregion
 
@@ -584,12 +554,18 @@ namespace LotteryTicket
         public static List<string> GetAllIndexFuncNames()
         {
             List<string> index =(typeof(OOIndexCalculate)).GetMethods().Select(n => n.Name)
-                .Where(n => n.Contains("Index_")).ToList();
-            List<string> index_M = (typeof(MMIndexCalculate)).GetMethods().Select(n => n.Name)
-                .Where(n => n.Contains("Index_M")).ToList();
-            List<string> index_S = (typeof(OtherIndexCalculate)).GetMethods().Select(n => n.Name)
-               .Where(n => n.Contains("Index_S")).ToList();
-            index.AddRange(index_M);
+                .Where(n => n.Contains("Index_OO")).ToList();
+            List<string> index_MM = (typeof(MMIndexCalculate)).GetMethods().Select(n => n.Name)
+                .Where(n => n.Contains("Index_MM")).ToList();
+            List<string> index_MO = (typeof(MOIndexCalculate)).GetMethods().Select(n => n.Name)
+                .Where(n => n.Contains("Index_MO")).ToList();
+            List<string> index_OM = (typeof(OMIndexCalculate)).GetMethods().Select(n => n.Name)
+          .Where(n => n.Contains("Index_OM")).ToList();
+            List<string> index_S = (typeof(OtherIndexStatic)).GetMethods().Select(n => n.Name)
+      .Where(n => n.Contains("Static_S")).ToList(); 
+            index.AddRange(index_MM);
+            index.AddRange(index_MO);
+            index.AddRange(index_OM);
             index.AddRange(index_S);
             return index;
         }
@@ -630,37 +606,36 @@ namespace LotteryTicket
         {           
             //再根据ruleMode判断规则类别，调用相应的方法进行计算                       
             RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
-            RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP);
-            //double res = data.Static_单个指标频率(rule);
-            //return (res * 100).ToString("F4");
-            return "";
+            RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,ruleMode.DataRows );
+            double res = data.Static_单个指标频率(rule);
+            return (res * 100).ToString("F4");            
         }
         #endregion
 
         #region 过滤处理,从头开始，对所有规则进行过滤--直接计算所有行
-        public static void FilterAllRows(DataGridView dgv, IEnumerable<int[]> InitiaData)
+        public static void FilterAllRows(DataGridView dgv, int[][] InitiaData)
         {
             //测试期间只考虑单独指标计算的情况
-            //for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
-            //{
-            //    //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新              
-            //    tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
-            //    //再根据ruleMode判断规则类别，调用相应的方法进行计算                      
-            //    RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
-            //    RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP);
-            //    int count1 = InitiaData.Count ();
-            //    InitiaData = InitiaData.Filter_范围过滤(rule);
-            //    int count2 = InitiaData.Count ();
-            //    dgv.Rows[rowIndex].Cells[6].Value = string.Format("{0}-{1}={2}", count1, count1 - count2, count2);
-            //}
+            for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
+            {
+                //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新              
+                tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算                      
+                RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
+                RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,ruleMode.DataRows);
+                int count1 = InitiaData.Count();
+                InitiaData = InitiaData.Filter_范围过滤(rule);
+                int count2 = InitiaData.Count();
+                dgv.Rows[rowIndex].Cells[6].Value = string.Format("{0}-{1}={2}", count1, count1 - count2, count2);
+            }
         }
-        public static IEnumerable<int[]> GetInitiaData()
+        public static int[][] GetInitiaData()
         {
             int[] data = new int[33];
             //初始化
             for (int i = 0; i < data.Length; i++) { data[i] = i + 1; }
             //迭代获取所有组合序列,并对每个序列进行判断         
-            return new Combination(data.Length, 6).Rows.Select(n => n.ToArray());
+            return new Combination(data.Length, 6).Rows.Select(n => n.ToArray()).ToArray ();
         }
 
         #endregion

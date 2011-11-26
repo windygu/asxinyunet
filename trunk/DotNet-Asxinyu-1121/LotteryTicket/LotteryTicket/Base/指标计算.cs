@@ -54,7 +54,7 @@ namespace LotteryTicket
         /// </summary>
         public static int Index_跨度和值(this int[] source)
         {
-            int[] res = OtherIndexCalculate.Index_SP跨度列表(source);
+            int[] res = source.Index_SP跨度列表();
             return res.Sum();
         }
         #endregion
@@ -147,9 +147,9 @@ namespace LotteryTicket
         /// </summary>
         /// <param name="source"></param>
         /// <param name="BigNumber">大号号码下限,默认为17</param>      
-        public static int Index_OO大号个数(this int[] source, int BigNumber = 17)
+        public static int Index_OO大号个数(this int[] source)
         {
-            return source.Where(n => n >= BigNumber).Count();
+            return source.Where(n => n >= 17).Count();
         }
         #endregion
 
@@ -276,7 +276,7 @@ namespace LotteryTicket
 
     #region MM指标计算 Index_MM
     /// <summary>
-    /// 单个指标，多对一：多组数据计算结果实现，Index_M
+    /// 单个指标，多对一：多组数据计算结果实现，Index_MM
     /// </summary>
     public static class MMIndexCalculate
     {
@@ -284,14 +284,15 @@ namespace LotteryTicket
         /// <summary>
         /// 多期数据中,出现重复号码的个数,列表:
         /// </summary>		
-        public static int[] Index_MM多期重复数(this int[][] data, int NeedRows = 3)
+        public static int[] Index_MM多期重复数(this int[][] data,RuleInfo rule)
         {
+            int NeedRows = rule.NumbersCount;
             int count = data.GetLength (0) - NeedRows + 1;//结果的总数
             int[] res = new int[count];            
             for (int i = 0; i < count; i++)
             {
                 IEnumerable<int> union = data[i];
-                for (int j = i; j < j + NeedRows; j++)
+                for (int j = i; j < i + NeedRows; j++)
                 {
                     union = union.Union(data[j]);
                 }
@@ -305,8 +306,9 @@ namespace LotteryTicket
         /// <summary>
         /// 上(i)期的邻号在本期出现的个数
         /// </summary>
-        public static int[] Index_MM邻号出现数(this int[][] data, int NeedRows = 2)
+        public static int[] Index_MM邻号出现数(this int[][] data, RuleInfo rule)
         {
+            int NeedRows = rule.NumbersCount;
             int count = data.GetLength (0) - NeedRows + 1;
             int[] res = new int[count];           
             for (int i = 0; i < count ; i++)
@@ -324,29 +326,6 @@ namespace LotteryTicket
     {        
         //public static int[] Index_MO(this IEnumerable<int[]> source, int NeedRows)
         //{}
-    }
-    #endregion
-
-    #region 其他特殊指标计算:Index_SP
-    /// <summary>
-    /// 其他特殊指标计算:Index_S
-    /// </summary>
-    public static class OtherIndexCalculate
-    {
-        #region 跨度列表-1对多--验证和过滤已完成
-        /// <summary>
-        /// 计算跨度列表
-        /// </summary>
-        public static int[] Index_SP跨度列表(this int[] source)
-        {
-            int[] res = new int[source.Length];
-            for (int i = 0; i < source.Length - 1; i++)
-            {
-                res[i] = source[i + 1] - source[i];
-            }
-            return res;
-        }
-        #endregion        
     }
     #endregion    
 }

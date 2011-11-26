@@ -62,10 +62,10 @@ namespace LotteryTicket
 		public static int [][] GetRedBallData(int selectLength = -1)
 		{
 			//获取数据 order by  desc 降序排列, asc 升序		
-            tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
+            //tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
             EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");//升序
             DataTable dt = list.ToDataTable () ;
-			int length = selectLength <=0? dt.Rows.Count : selectLength ;
+			int length = selectLength<0? list.Count :selectLength  ;
 			int[][] res = new int[length ][] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
@@ -73,12 +73,29 @@ namespace LotteryTicket
 				res [i ] = new int[6 ] ;
 				for (int j = 0 ; j < res[i ].Length ; j ++)
 				{
-					res [i ][j ] =Convert.ToInt32(dt.Rows [k + i][2+j ].ToString ()) ; ;
+					res [i ][j ] =Convert.ToInt32(dt.Rows [k + i][2+j ].ToString ()) ;
 				}
 			}
 			return res ;
 		}
-		
+        /// <summary>
+        /// 获取最近几期的红球数据
+        /// </summary>        
+        public static int[][] GetLatestRedBallData(int selectLength = 1)
+        {           
+            EntityList<tb_Ssq> list = tb_Ssq.FindAll("", tb_Ssq._.期号 + " desc", "", 0, selectLength);
+            DataTable dt = list.ToDataTable();
+            int[][] res = new int[selectLength][];
+            for (int i = 0 ; i <selectLength ; i++)
+            {
+                res[i] = new int[6];
+                for (int j = 0; j < 6; j++)
+                {
+                    res[i][j] = Convert.ToInt32(dt.Rows[selectLength -1-i ][2 + j].ToString());
+                }
+            }
+            return res;
+        }
 		/// <summary>
 		/// 获取所有的蓝球数据,单独
 		/// </summary>
