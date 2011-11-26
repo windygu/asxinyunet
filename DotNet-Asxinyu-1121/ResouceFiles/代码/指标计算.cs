@@ -35,7 +35,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算和值
         /// </summary>
-        public static int Index_OO和值(this int[] source)
+        public static int Index_OO和值(this IEnumerable<int> source)
         {
             return source.Sum();
         }
@@ -45,14 +45,14 @@ namespace LotteryTicket
         /// <summary>
         /// 最大跨度:一个投注结果中最大号码与最小号码之差
         /// </summary>
-        public static int Index_OO最大跨度(this int[] source)
+        public static int Index_OO最大跨度(this IEnumerable<int> source)
         {
             return source.Last() - source.First();
         }
         /// <summary>
         /// 跨度和值
         /// </summary>
-        public static int Index_跨度和值(this int[] source)
+        public static int Index_跨度和值(this IEnumerable<int> source)
         {
             int[] res = OtherIndexCalculate.Index_SP跨度列表(source);
             return res.Sum();
@@ -63,8 +63,9 @@ namespace LotteryTicket
         /// <summary>
         /// Ac值=差值个数-(6-1)
         /// </summary>
-        public static int Index_OOAc值(this int[] data)
-        {            
+        public static int Index_OOAc值(this IEnumerable<int> source)
+        {
+            int[] data = source.ToArray();
             ArrayList list = new ArrayList();
             int temp;
             for (int i = 0; i < data.Length - 1; i++)
@@ -86,8 +87,9 @@ namespace LotteryTicket
         /// <summary>
         /// 每期最长的连续号码数
         /// </summary>	
-        public static int Index_OO最长连续号码数(this int[] data)
-        {           
+        public static int Index_OO最长连续号码数(this IEnumerable<int> source)
+        {
+            int[] data = source.ToArray();
             int count = 0;
             int maxCount = 0;
             for (int i = data.Length - 1; i > 0; i--)
@@ -112,7 +114,7 @@ namespace LotteryTicket
         /// <summary>
         /// 每期质数的个数
         /// </summary>		
-        public static int Index_OO质数个数(this int[] source)
+        public static int Index_OO质数个数(this IEnumerable<int> source)
         {
             return source.Index_S2个序列的重复号码个数(PrimeNumbers);
         }
@@ -122,7 +124,7 @@ namespace LotteryTicket
         /// <summary>
         /// 计算每期的偶数的个数
         /// </summary>
-        public static int Index_OO偶数个数(this int[] source)
+        public static int Index_OO偶数个数(this IEnumerable<int> source)
         {
             return source.Where(n => ((int)n) % 2 == 0).Count();
         }
@@ -135,7 +137,7 @@ namespace LotteryTicket
         /// <param name="source">数据源</param>
         /// <param name="L">求余参数,默认18</param>
         /// <returns>在此参数下的所有出现数字</returns>
-        public static int Index_OO求余覆盖个数(this int[] source, int L = 18)
+        public static int Index_OO求余覆盖个数(this IEnumerable<int> source, int L = 18)
         {
             return source.Select(n => ((int)n) % L).Distinct().Count();
         }
@@ -147,7 +149,7 @@ namespace LotteryTicket
         /// </summary>
         /// <param name="source"></param>
         /// <param name="BigNumber">大号号码下限,默认为17</param>      
-        public static int Index_OO大号个数(this int[] source, int BigNumber = 17)
+        public static int Index_OO大号个数(this IEnumerable<int> source, int BigNumber = 17)
         {
             return source.Where(n => n >= BigNumber).Count();
         }
@@ -157,7 +159,7 @@ namespace LotteryTicket
         /// <summary>
         /// 尾数和值
         /// </summary>
-        public static int Index_OO尾数和值(this int[] source)
+        public static int Index_OO尾数和值(this IEnumerable<int> source)
         {
             //对10求余即为尾数，求和
             return source.Select(n => n % 10).Sum();
@@ -168,7 +170,7 @@ namespace LotteryTicket
         /// <summary>
         /// 奇号连续个数
         /// </summary>
-        public static int Index_OO奇号连续个数(this int[] source)
+        public static int Index_OO奇号连续个数(this IEnumerable<int> source)
         {
             bool[] res = source.Select(n => n % 2 == 1).ToArray();//是否是奇数
             int count = 0;
@@ -184,7 +186,7 @@ namespace LotteryTicket
         /// <summary>
         /// 偶号连续个数
         /// </summary>
-        public static int Index_OO偶号连续个数(this int[] source)
+        public static int Index_OO偶号连续个数(this IEnumerable<int> source)
         {
             bool[] res = source.Select(n => n % 2 == 0).ToArray();//是否是奇数
             int count = 0;
@@ -200,7 +202,7 @@ namespace LotteryTicket
         /// <summary>
         /// 最大邻号间距
         /// </summary>
-        public static int Index_OO最大邻号间距(this int[] source)
+        public static int Index_OO最大邻号间距(this IEnumerable<int> source)
         {
             return source.Index_SP跨度列表().Max();
         }
@@ -210,7 +212,7 @@ namespace LotteryTicket
         /// <summary>
         /// 最小邻号间距
         /// </summary>
-        public static int Index_OO最小邻号间距(this int[] source)
+        public static int Index_OO最小邻号间距(this IEnumerable<int> source)
         {
             return source.Index_SP跨度列表().Min();
         }
@@ -220,8 +222,9 @@ namespace LotteryTicket
         /// <summary>
         /// 连号个数
         /// </summary>
-        public static int Index_OO连号个数(this int[] data)
-        {            
+        public static int Index_OO连号个数(this IEnumerable<int> source)
+        {
+            int[] data = source.ToArray();
             int count = 0;
             for (int i = 0; i < data.Length; i++)
             {
@@ -235,8 +238,9 @@ namespace LotteryTicket
         /// <summary>
         /// 连号个数
         /// </summary>
-        public static int Index_OO连号组数(this int[] data)
-        {           
+        public static int Index_OO连号组数(this IEnumerable<int> source)
+        {
+            int[] data = source.ToArray();
             int count = 0;
             bool flag = false;
             for (int i = 0; i < data.Length; i++)
@@ -259,7 +263,7 @@ namespace LotteryTicket
         /// <summary>
         /// 尾数组数
         /// </summary>
-        public static int Index_OO尾数组数(this int[] source)
+        public static int Index_OO尾数组数(this IEnumerable<int> source)
         {
             return source.Select(n => n % 10).Distinct().Count();
         }
@@ -284,10 +288,11 @@ namespace LotteryTicket
         /// <summary>
         /// 多期数据中,出现重复号码的个数,列表:
         /// </summary>		
-        public static int[] Index_MM多期重复数(this int[][] data, int NeedRows = 3)
+        public static int[] Index_MM多期重复数(this IEnumerable<int[]> source, int NeedRows=3)
         {
-            int count = data.GetLength (0) - NeedRows + 1;//结果的总数
-            int[] res = new int[count];            
+            int count = source.Count() - NeedRows + 1;//结果的总数
+            int[] res = new int[count];
+            int[][] data = source.ToArray();
             for (int i = 0; i < count; i++)
             {
                 IEnumerable<int> union = data[i];
@@ -305,10 +310,11 @@ namespace LotteryTicket
         /// <summary>
         /// 上(i)期的邻号在本期出现的个数
         /// </summary>
-        public static int[] Index_MM邻号出现数(this int[][] data, int NeedRows = 2)
+        public static int[] Index_MM邻号出现数(this IEnumerable<int[]> source, int NeedRows=2)
         {
-            int count = data.GetLength (0) - NeedRows + 1;
-            int[] res = new int[count];           
+            int count = source.Count() - NeedRows + 1;
+            int[] res = new int[count];
+            int[][] data = source.ToArray();
             for (int i = 0; i < count ; i++)
             {
                 res[i] = data[i+NeedRows -1].Index_上期邻号出现个数(data[i]);
@@ -337,12 +343,13 @@ namespace LotteryTicket
         /// <summary>
         /// 计算跨度列表
         /// </summary>
-        public static int[] Index_SP跨度列表(this int[] source)
+        public static int[] Index_SP跨度列表(this IEnumerable<int> source)
         {
-            int[] res = new int[source.Length];
-            for (int i = 0; i < source.Length - 1; i++)
+            int[] list = source.ToArray();
+            int[] res = new int[list.Length];
+            for (int i = 0; i < list.Length - 1; i++)
             {
-                res[i] = source[i + 1] - source[i];
+                res[i] = list[i + 1] - list[i];
             }
             return res;
         }

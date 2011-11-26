@@ -79,6 +79,7 @@
     <Compile Include="tb_Rules.cs" />
     <Compile Include="代码\Test\StaticsTest.cs" />
     <Compile Include="代码\Test\TestData.cs" />
+    <Compile Include="代码\指标计算.cs" />
     <Compile Include="代码\规则对比.cs" />
   </ItemGroup>
   <ItemGroup>

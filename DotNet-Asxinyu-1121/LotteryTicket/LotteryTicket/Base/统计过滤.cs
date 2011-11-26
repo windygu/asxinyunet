@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Reflection;
 
 namespace LotteryTicket
 {
+
     /// <summary>
     /// 规律统计与过滤
     /// </summary>
@@ -18,24 +20,23 @@ namespace LotteryTicket
         /// <param name="source">数据源</param>
         /// <param name="rule">数据源相应的比较规则</param>
         /// <returns>是否符合规则:符合为True,否则False</returns>
-        public static bool CompareRuleOO(this IEnumerable<int> source, Rule rule)
-        {            
-            int res = rule.OOSelector(source.ToArray ());//结果
-            return GetCompareResult(res, rule);
-        }
-
+        //public static bool CompareRuleOO(this IEnumerable<int> source, RuleInfo rule)
+        //{            
+        //    int res = rule.OOSelector(source.ToArray ());//结果
+        //    return GetCompareResult(res, rule);
+        //}
         /// <summary>
         /// 规则比较：多对多,多对1
         /// </summary>
         /// <param name="source">数据源</param>
         /// <param name="rule">数据源相应的比较规则</param>
         /// <returns>是否符合规则:符合为True,否则False</returns>
-        public static bool CompareRuleMO(this IEnumerable<int[]> source, Rule rule)
-        {
-            int res = rule.MOSelector (source.ToArray ());//结果
-            return GetCompareResult(res, rule);
-        }
-        static bool GetCompareResult(int res, Rule rule)
+        //public static bool CompareRuleMO(this IEnumerable<int[]> source, RuleInfo rule)
+        //{
+        //    int res = rule.MOSelector (source.ToArray ());//结果
+        //    return GetCompareResult(res, rule);
+        //}
+        static bool GetCompareResult(int res, RuleInfo rule)
         {
             switch (rule.CompareRule)
             {
@@ -55,18 +56,44 @@ namespace LotteryTicket
                     return false;
             }
         }
-        #endregion
-
+        #endregion        
+        public static int test(this int[] a) { return 0; }
         #region 统计值出现在指定范围的频率--单个指标频率
         /// <summary>
         /// TODO:特殊的验证和过滤解决
         /// </summary>
-        public static double Static_单个指标频率(this IEnumerable<int[]> source,Rule rule)
-        {            
+        public static void  Static_单个指标频率(this IEnumerable<int[]> source,RuleInfo rule)
+        {
             //TODO:增加是特殊模式下时的处理
-            return ((double)source.Where(n => n.CompareRuleOO(rule)).Count()) / ((double)source.Count());           
+            //先根据Rule中的规则类别，反射加载选择器Selector
+            Type t = GetTypeByEnumName(rule.CurIndexType);
+            MethodInfo cur = t.GetMethod(rule.IndexSelectorName );
+            var selector = (Func<int[][], int[]>)Delegate.CreateDelegate(typeof(Func<int[][], int[]>), cur);
+            //根据规则和选择器Selector进行计算
+            int[] result = selector(source.ToArray ());
+            //return ((double)source.Where(n => n.CompareRuleOO(rule)).Count()) / ((double)source.Count());           
         }
-        #endregion  
+        static Type GetTypeByEnumName(IndexType indexType)
+        {
+            switch (indexType )
+            {
+                case IndexType.OO:
+                    return typeof(OOIndexCalculate);
+                case IndexType.MM:
+                    return typeof(MMIndexCalculate);
+                case IndexType.MO:
+                    return typeof(MOIndexCalculate);
+                case IndexType.OM:
+                    return typeof(OMIndexCalculate);
+                case IndexType.Specail:
+                    return typeof(OtherIndexCalculate);
+                case IndexType.None:
+                    return null;                    
+                default:
+                    return null;
+            }
+        }
+        #endregion
 
         #region 范围过滤：只保留对应规则的数据
         /// <summary>
@@ -75,10 +102,10 @@ namespace LotteryTicket
         /// <param name="source">数据源</param>
         /// <param name="rule">保留规则</param>
         /// <returns>符合条件的集合</returns>
-        public static IEnumerable<int[]> Filter_范围过滤(this IEnumerable<int[]> source,Rule rule)
+        public static void  Filter_范围过滤(this IEnumerable<int[]> source,RuleInfo rule)
         {
-            //TODO:增加是特殊模式下时的处理
-            return source.Where(n => n.CompareRuleOO(rule));
+            //TODO:增加是特殊模式下时的处理  IEnumerable<int[]>
+            //return source.Where(n => n.CompareRuleOO(rule));
         }
         #endregion
     }
@@ -114,7 +141,7 @@ namespace LotteryTicket
         /// </summary>
         /// <param name="source">需要过滤的数据</param>
         /// <param name="paramsValue">rule.RuleParams.ParamsValue 第一个参数为所需要过滤的数据的期数</param>
-        public static IEnumerable<int[]> Filter_S跨度不重复(this IEnumerable<int[]> source, Rule rule)
+        public static IEnumerable<int[]> Filter_S跨度不重复(this IEnumerable<int[]> source, RuleInfo rule)
         {
             //每次都获取数据，重新计算所有的跨度列表
             int[][] data = TwoColorBall.GetRedBallData(Convert.ToInt32(rule.RuleParams.ParamsValue));
