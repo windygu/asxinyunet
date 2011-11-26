@@ -70,7 +70,7 @@ namespace LotteryTicket
                 }
                 else
                 {
-                    Type t = typeof(MOIndexCalculate);
+                    Type t = typeof(MMIndexCalculate);
                     MethodInfo cur = t.GetMethod(value);
                     MOSelector = (Func<int[][], int>)Delegate.CreateDelegate(typeof(Func<int[][], int>), cur);
                 }
@@ -482,7 +482,7 @@ namespace LotteryTicket
         {
             List<string> index =(typeof(OOIndexCalculate)).GetMethods().Select(n => n.Name)
                 .Where(n => n.Contains("Index_")).ToList();
-            List<string> index_M = (typeof(MOIndexCalculate)).GetMethods().Select(n => n.Name)
+            List<string> index_M = (typeof(MMIndexCalculate)).GetMethods().Select(n => n.Name)
                 .Where(n => n.Contains("Index_M")).ToList();
             List<string> index_S = (typeof(OtherIndexCalculate)).GetMethods().Select(n => n.Name)
                .Where(n => n.Contains("Index_S")).ToList();

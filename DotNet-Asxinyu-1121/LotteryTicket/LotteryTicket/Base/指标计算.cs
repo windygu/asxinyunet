@@ -273,25 +273,27 @@ namespace LotteryTicket
     /// <summary>
     /// 单个指标，多对一：多组数据计算结果实现，Index_M
     /// </summary>
-    public static class MOIndexCalculate
+    public static class MMIndexCalculate
     {
         #region 多期号码出现的重复号码
         /// <summary>
-        /// 多期数据中,出现重复号码的个数
+        /// 多期数据中,出现重复号码的个数,列表:
         /// </summary>		
-        public static int Index_M多期重复号码数(this IEnumerable<int[]> source)
+        public static int[] Index_M多期重复号码数(this IEnumerable<int[]> source,int NeedRows)
         {
-            ArrayList al = new ArrayList();
-            int count = 0;
-            foreach (var item in source)
+            int count = source.Count() - NeedRows + 1;//结果的总数
+            int[] res = new int[count];
+            int[][] data = source.ToArray();
+            for (int i = 0; i < count ; i++)
             {
-                foreach (var s in item)
+                IEnumerable<int> union = data[i];
+                for (int j = i ; j < j +NeedRows ; j++)
                 {
-                    if (!al.Contains(s)) { al.Add(s); }
-                    else { count++; }
+                    union = union.Union(data[j]);
                 }
+                res[i] = NeedRows*data [0].Length - union.Count();//重复数=总数-当期剩余数
             }
-            return count;
+            return res;
         }
         #endregion
     }
