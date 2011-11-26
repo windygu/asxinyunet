@@ -104,7 +104,7 @@ namespace LotteryTicket
             this.NumbersCount = needRows;            
             this.IndexSelectorName = selector;
             this.CompareRuleName = compareRule;  
-        }   
+        }           
         #endregion           
     }
 
@@ -593,12 +593,12 @@ namespace LotteryTicket
         //计算所有期规则
         public static void CalculateAllRows(DataGridView dgv, int defaultHisDataCount = 1000)
         {
+            int[][] data = TwoColorBall.GetRedBallData(defaultHisDataCount);
             for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
             {               
                 //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新
                 tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
-                //再根据ruleMode判断规则类别，调用相应的方法进行计算            
-                int[][] data = TwoColorBall.GetRedBallData(defaultHisDataCount);
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算                            
                 dgv.Rows[rowIndex].Cells[5].Value = GetDgvCalculateResult(data, ruleMode);
             }
         }
@@ -609,6 +609,46 @@ namespace LotteryTicket
             RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,ruleMode.DataRows );
             double res = data.Static_单个指标频率(rule);
             return (res * 100).ToString("F4");            
+        }
+        #endregion
+
+        #region 交叉验证
+        public static double CrossValidateRules(DataGridView dgv, int defaultHisDataCount = 1000)
+        {
+            int[][] data = TwoColorBall.GetRedBallData(defaultHisDataCount);
+            //交叉验证,对OO类型的规则进行交叉验证，结果显示在下方状态栏中间
+            RuleInfo[] rules = new RuleInfo[dgv.Rows.Count];
+            for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
+            {
+                //先得到一个tb_Rules对象,直接从数据库读取就OK了,因为是实时更新
+                tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算                            
+                RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
+                rules[rowIndex ] = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP, ruleMode.DataRows);
+            }
+            //每一期 验证所有规则，都通过算一次
+            int sum = 0;
+            for (int i = 0; i < data.GetLength (0); i++)
+            {
+                bool flag = true ;
+                for (int j = 0; j < rules.Length ; j++)
+                {
+                    if (rules[j ].CurIndexType == IndexType.OO )
+                    {
+                        var selector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>),
+                            typeof(OOIndexCalculate ).GetMethod (rules[j].IndexSelectorName ));
+                        bool res = StatisticalFilter.GetCompareResult (selector (data[i]),rules[j]);
+                        if (!res)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                }
+                if(flag )  sum++;
+            }
+            double result = ((double )sum) /((double )data.GetLength (0));
+            return result;
         }
         #endregion
 
