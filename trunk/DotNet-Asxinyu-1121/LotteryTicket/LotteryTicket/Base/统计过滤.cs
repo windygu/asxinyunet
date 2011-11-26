@@ -145,7 +145,7 @@ namespace LotteryTicket
             Hashtable ht = new Hashtable();
             foreach (int[] item in source)
             {
-                string s = item.Index_SP跨度列表().ListToString();//有问题，这是期数重复，不是跨度重复
+                string s = item.Index_SP跨度列表().ListToString();
                 if (!ht.ContainsKey(s)) ht.Add(s, "");//不包含则添加                
             }
             return ((double)ht.Count) / ((double)source.Count());
