@@ -100,17 +100,17 @@ namespace LotteryTicket
 		/// 获取所有的蓝球数据,单独
 		/// </summary>
 		/// <param name="length">指定的期数据,最近期开始,默认为-1,代表期所有的数据</param>
-		public static double[] GetBlueBallData(int selectLength = -1 )
+		public static int[] GetBlueBallData(int selectLength = -1 )
 		{
             tb_Ssq model = new tb_Ssq();//("select * from tb_ssq order by 期号 asc").Tables [0] ;
             EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");
             DataTable dt = list.ToDataTable();
 			int length = selectLength <=0? dt.Rows.Count : selectLength ;
-			double[] res = new double[length ] ;
+			int[] res = new int[length ] ;
 			int k = dt.Rows.Count - length ;
 			for (int i = 0 ; i <res.Length ; i ++)
 			{
-				res [i ] = Convert.ToDouble(dt.Rows [k + i][8].ToString ()) ;
+				res [i ] = Convert.ToInt32 (dt.Rows [k + i][8].ToString ()) ;
 			}
 			return res ;
 		}

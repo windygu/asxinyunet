@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\LotTicketHelper.cs" />
+    <Compile Include="Base\TestMethods.cs" />
     <Compile Include="Base\统计过滤.cs" />
     <Compile Include="Base\指标计算.cs" />
     <Compile Include="Base\TwoColorBall.cs" />
