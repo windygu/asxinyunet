@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Collections;
 using System.Reflection;
 
 namespace LotteryTicket
 {
+    #region 统计规律，所有规则
     /// <summary>
     /// 规律统计与过滤
     /// </summary>
@@ -29,7 +28,7 @@ namespace LotteryTicket
                     var temp = source.Select(n => selector(n)).ToArray();//中间迭代每次计算一期数据
                     return ((double)temp.Where(n => GetCompareResult(n, rule)).Count()) / ((double)temp.Count());
                 case IndexType.MM:
-                    var selectorMM = (Func<int[][], RuleInfo , int[]>)Delegate.CreateDelegate
+                    var selectorMM = (Func<int[][], RuleInfo, int[]>)Delegate.CreateDelegate
                         (typeof(Func<int[][], RuleInfo, int[]>), cur);
                     var tempMM = selectorMM(source, rule);//一次计算
                     return ((double)tempMM.Where(n => GetCompareResult(n, rule)).Count()) / ((double)tempMM.Count());
@@ -114,26 +113,28 @@ namespace LotteryTicket
             //先根据Rule中的规则类别，反射加载选择器Selector
             //根据规则和选择器Selector进行计算
             Type t = GetTypeByEnumName(rule.CurIndexType);
-            MethodInfo cur = t.GetMethod(rule.IndexSelectorName);            
+            MethodInfo cur = t.GetMethod(rule.IndexSelectorName);
             switch (rule.CurIndexType)
             {
                 //出了OO，其他的过滤都在OtherIndexFilter
                 case IndexType.OO:
                     var selector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
                     var temp = source.Select(n => selector(n)).ToArray();//中间迭代每次计算一期数据
-                    return source.Where(n => GetCompareResult(selector(n), rule)).ToArray();              
+                    return source.Where(n => GetCompareResult(selector(n), rule)).ToArray();
                 case IndexType.None:
-                    return source ;
+                    return source;
                 default://  其他类都到这里
-                    var selectorS = (Func<int[][], RuleInfo , int[][]>)Delegate.CreateDelegate
-                       (typeof(Func<int[][], RuleInfo , int[][]>),typeof(OtherIndexFilter).GetMethod ("Filter_S"+
-                           rule.IndexSelectorName .Substring (8)));
+                    var selectorS = (Func<int[][], RuleInfo, int[][]>)Delegate.CreateDelegate
+                       (typeof(Func<int[][], RuleInfo, int[][]>), typeof(OtherIndexFilter).GetMethod("Filter_S" +
+                           rule.IndexSelectorName.Substring(8)));
                     return selectorS(source, rule);
             }
         }
         #endregion
     }
+    #endregion
 
+    #region 其他特殊指标统计
     /// <summary>
     /// 其他特殊指标频率 Static_S
     /// </summary>
@@ -152,7 +153,9 @@ namespace LotteryTicket
         }
         #endregion
     }
+    #endregion
 
+    #region 其他特殊指标过滤
     /// <summary>
     /// 其他特殊指标过滤:Filter_S
     /// </summary>
@@ -164,14 +167,14 @@ namespace LotteryTicket
         public static int[][] Filter_S多期重复数(this int[][] source, RuleInfo rule)
         {
             //先根据rule规则中的定义的需要行数据，取出数据库中最近的几期数据
-            int[][] data = TwoColorBall.GetLatestRedBallData(rule.NumbersCount-1);
+            int[][] data = TwoColorBall.GetLatestRedBallData(rule.NumbersCount - 1);
             return source.Where(n => StatisticalFilter.GetCompareResult(data.重复数(n), rule)).ToArray();
         }
-        public static int 重复数(this int[][] source,int[] data)
+        public static int 重复数(this int[][] source, int[] data)
         {
-            for (int i = 0; i < source.Count (); i++)
+            for (int i = 0; i < source.Count(); i++)
             {
-                data = data.Union(source[i]).ToArray ();
+                data = data.Union(source[i]).ToArray();
             }
             return data.Count();
         }
@@ -182,7 +185,7 @@ namespace LotteryTicket
         {
             //先根据rule规则中的定义的需要行数据，取出数据库中最近的第几期数据来与之对比，确定邻号数
             int[] data = TwoColorBall.GetLatestRedBallData(rule.NumbersCount)[0];
-            return source.Where(n => StatisticalFilter.GetCompareResult(n.Index_上期邻号出现个数 (data ), rule)).ToArray();
+            return source.Where(n => StatisticalFilter.GetCompareResult(n.Index_上期邻号出现个数(data), rule)).ToArray();
         }
         #endregion
         #endregion
@@ -200,11 +203,12 @@ namespace LotteryTicket
             Hashtable ht = new Hashtable();
             foreach (int[] item in data)
             {
-                string s = item.Index_SP跨度列表 ().ListToString();
+                string s = item.Index_SP跨度列表().ListToString();
                 if (!ht.ContainsKey(s)) ht.Add(s, "");//不包含则添加                
             }
-            return source.Where(n => !ht.ContainsKey(n.Index_SP跨度列表 ().ListToString())).ToArray();
+            return source.Where(n => !ht.ContainsKey(n.Index_SP跨度列表().ListToString())).ToArray();
         }
         #endregion
     }
+    #endregion
 }

@@ -79,6 +79,8 @@
     <Compile Include="Base\统计过滤.cs" />
     <Compile Include="Base\指标计算.cs" />
     <Compile Include="Base\TwoColorBall.cs" />
+    <Compile Include="Entities\tb_IndexInfo.Biz.cs" />
+    <Compile Include="Entities\tb_IndexInfo.cs" />
     <Compile Include="Entities\tb_Rules.Biz.cs" />
     <Compile Include="Entities\tb_Rules.cs" />
     <Compile Include="Entities\tb_Ssq.Biz.cs" />
