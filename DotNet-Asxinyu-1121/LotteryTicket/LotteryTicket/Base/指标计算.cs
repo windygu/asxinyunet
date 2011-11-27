@@ -126,6 +126,18 @@ namespace LotteryTicket
         {
             return source.Where(n => ((int)n) % 2 == 0).Count();
         }
+        #endregion        
+
+        #region 大号个数:号码值大于等于17的投注号码个数
+        /// <summary>
+        /// 大号个数:号码值大于等于指定值的投注号码个数
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="BigNumber">大号号码下限,默认为17</param>      
+        public static int Index_OO大号个数(this int[] source)
+        {
+            return source.Where(n => n >= 17).Count();
+        }
         #endregion
 
         #region 求余来计算覆盖的范围的个数---L自定义，需要调整
@@ -138,18 +150,6 @@ namespace LotteryTicket
         public static int Index_OO求余覆盖个数(this int[] source)
         {
             return source.Select(n => ((int)n) % 18).Distinct().Count();
-        }
-        #endregion
-
-        #region 大号个数:号码值大于等于17的投注号码个数
-        /// <summary>
-        /// 大号个数:号码值大于等于指定值的投注号码个数
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="BigNumber">大号号码下限,默认为17</param>      
-        public static int Index_OO大号个数(this int[] source)
-        {
-            return source.Where(n => n >= 17).Count();
         }
         #endregion
 
@@ -223,7 +223,7 @@ namespace LotteryTicket
         public static int Index_OO连号个数(this int[] data)
         {            
             int count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < data.Length -1; i++)
             {
                 if (data[i + 1] - data[i] == 1) count++;
             }
@@ -239,7 +239,7 @@ namespace LotteryTicket
         {           
             int count = 0;
             bool flag = false;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < data.Length-1; i++)
             {
                 if (data[i + 1] - data[i] == 1)
                 {
