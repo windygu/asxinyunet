@@ -83,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="beta 0.15\LotteryTicketSoft.exe.config" />
+    <None Include="beta 0.15\LotteryTicketSoft.vshost.exe.config" />
+    <None Include="beta 0.15\LotteryTicketSoft.vshost.exe.manifest" />
     <None Include="DesignFiles\永润数据字典-1019.doc" />
     <None Include="Images\application.ico" />
     <None Include="Images\apply.ico" />
@@ -140,6 +143,18 @@
     <None Include="Lib\X组件手册.chm" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="beta 0.15\DotNet.Tools.dll" />
+    <Content Include="beta 0.15\KwCombinatorics.dll" />
+    <Content Include="beta 0.15\LotteryTicket.exe" />
+    <Content Include="beta 0.15\LotteryTicket.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="beta 0.15\LotteryTicketSoft.exe" />
+    <Content Include="beta 0.15\LotteryTicketSoft.vshost.exe" />
+    <Content Include="beta 0.15\NewLife.Core.dll" />
+    <Content Include="beta 0.15\XCode.dll" />
+    <Content Include="beta 0.15\XCode.pdb" />
+    <Content Include="beta 0.15\ZedGraph.dll" />
     <Content Include="Lib\access.xml" />
     <Content Include="Lib\EntLib.Controls.WinForm.dll" />
     <Content Include="Lib\KwCombinatorics.dll" />

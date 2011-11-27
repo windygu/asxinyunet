@@ -86,7 +86,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
             InitialDataGridView();
-            GetData();
+            //GetData();
         }
         #endregion
 
