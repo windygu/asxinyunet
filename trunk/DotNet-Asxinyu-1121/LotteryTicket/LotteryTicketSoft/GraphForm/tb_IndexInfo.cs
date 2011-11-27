@@ -81,6 +81,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddIndexInfo));
             this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
             this.lblId = new System.Windows.Forms.Label();
             this.lblIndexName = new System.Windows.Forms.Label();
@@ -111,13 +112,14 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.AutoSize = true;
             this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FormPager.BackColor = System.Drawing.Color.Transparent;
+            this.FormPager.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FormPager.BackgroundImage")));
             this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.FormPager.Location = new System.Drawing.Point(10, 303);
+            this.FormPager.Location = new System.Drawing.Point(9, 345);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
-            this.FormPager.Size = new System.Drawing.Size(238, 29);
+            this.FormPager.Size = new System.Drawing.Size(242, 29);
             this.FormPager.TabIndex = 100;
             this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
             // 
@@ -145,7 +147,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblClassName.AutoSize = true;
             this.lblClassName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblClassName.Location = new System.Drawing.Point(6, 64);
+            this.lblClassName.Location = new System.Drawing.Point(20, 64);
             this.lblClassName.Name = "lblClassName";
             this.lblClassName.Size = new System.Drawing.Size(49, 14);
             this.lblClassName.TabIndex = 200;
@@ -155,7 +157,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblPriorLevel.AutoSize = true;
             this.lblPriorLevel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblPriorLevel.Location = new System.Drawing.Point(6, 91);
+            this.lblPriorLevel.Location = new System.Drawing.Point(20, 91);
             this.lblPriorLevel.Name = "lblPriorLevel";
             this.lblPriorLevel.Size = new System.Drawing.Size(49, 14);
             this.lblPriorLevel.TabIndex = 200;
@@ -185,7 +187,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDescription.Location = new System.Drawing.Point(6, 172);
+            this.lblDescription.Location = new System.Drawing.Point(6, 193);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(63, 14);
             this.lblDescription.TabIndex = 200;
@@ -195,7 +197,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblUpdateTime.AutoSize = true;
             this.lblUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUpdateTime.Location = new System.Drawing.Point(6, 199);
+            this.lblUpdateTime.Location = new System.Drawing.Point(6, 246);
             this.lblUpdateTime.Name = "lblUpdateTime";
             this.lblUpdateTime.Size = new System.Drawing.Size(63, 14);
             this.lblUpdateTime.TabIndex = 200;
@@ -205,7 +207,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblRemark.AutoSize = true;
             this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblRemark.Location = new System.Drawing.Point(6, 226);
+            this.lblRemark.Location = new System.Drawing.Point(34, 273);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(35, 14);
             this.lblRemark.TabIndex = 200;
@@ -214,83 +216,86 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtId.Location = new System.Drawing.Point(158, 10);
+            this.txtId.Location = new System.Drawing.Point(70, 6);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(150, 23);
+            this.txtId.Size = new System.Drawing.Size(230, 23);
             this.txtId.TabIndex = 0;
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
             // txtIndexName
             // 
             this.txtIndexName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtIndexName.Location = new System.Drawing.Point(158, 37);
+            this.txtIndexName.Location = new System.Drawing.Point(70, 33);
             this.txtIndexName.Name = "txtIndexName";
-            this.txtIndexName.Size = new System.Drawing.Size(150, 23);
+            this.txtIndexName.Size = new System.Drawing.Size(230, 23);
             this.txtIndexName.TabIndex = 2;
             // 
             // txtClassName
             // 
             this.txtClassName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtClassName.Location = new System.Drawing.Point(158, 64);
+            this.txtClassName.Location = new System.Drawing.Point(70, 60);
             this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Size = new System.Drawing.Size(150, 23);
+            this.txtClassName.Size = new System.Drawing.Size(230, 23);
             this.txtClassName.TabIndex = 4;
             // 
             // txtPriorLevel
             // 
             this.txtPriorLevel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtPriorLevel.Location = new System.Drawing.Point(158, 91);
+            this.txtPriorLevel.Location = new System.Drawing.Point(70, 87);
             this.txtPriorLevel.Name = "txtPriorLevel";
-            this.txtPriorLevel.Size = new System.Drawing.Size(150, 23);
+            this.txtPriorLevel.Size = new System.Drawing.Size(230, 23);
             this.txtPriorLevel.TabIndex = 6;
+            this.txtPriorLevel.Text = "1";
             this.txtPriorLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
             // combSuitableType
             // 
             this.combSuitableType.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.combSuitableType.FormattingEnabled = true;
-            this.combSuitableType.Location = new System.Drawing.Point(158, 118);
+            this.combSuitableType.Location = new System.Drawing.Point(70, 114);
             this.combSuitableType.Name = "combSuitableType";
-            this.combSuitableType.Size = new System.Drawing.Size(150, 22);
+            this.combSuitableType.Size = new System.Drawing.Size(230, 22);
             this.combSuitableType.TabIndex = 8;
             // 
             // txtUseExplain
             // 
             this.txtUseExplain.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtUseExplain.Location = new System.Drawing.Point(158, 145);
+            this.txtUseExplain.Location = new System.Drawing.Point(70, 141);
+            this.txtUseExplain.Multiline = true;
             this.txtUseExplain.Name = "txtUseExplain";
-            this.txtUseExplain.Size = new System.Drawing.Size(150, 23);
+            this.txtUseExplain.Size = new System.Drawing.Size(230, 42);
             this.txtUseExplain.TabIndex = 10;
             // 
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDescription.Location = new System.Drawing.Point(158, 172);
+            this.txtDescription.Location = new System.Drawing.Point(70, 189);
+            this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(150, 23);
+            this.txtDescription.Size = new System.Drawing.Size(230, 47);
             this.txtDescription.TabIndex = 12;
             // 
             // dtUpdateTime
             // 
             this.dtUpdateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.dtUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dtUpdateTime.Location = new System.Drawing.Point(158, 199);
+            this.dtUpdateTime.Location = new System.Drawing.Point(70, 242);
             this.dtUpdateTime.Name = "dtUpdateTime";
-            this.dtUpdateTime.Size = new System.Drawing.Size(150, 23);
+            this.dtUpdateTime.Size = new System.Drawing.Size(230, 23);
             this.dtUpdateTime.TabIndex = 14;
             // 
             // txtRemark
             // 
             this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtRemark.Location = new System.Drawing.Point(158, 226);
+            this.txtRemark.Location = new System.Drawing.Point(70, 269);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(150, 23);
+            this.txtRemark.Size = new System.Drawing.Size(230, 23);
             this.txtRemark.TabIndex = 16;
             // 
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOK.Location = new System.Drawing.Point(26, 273);
+            this.btnOK.Location = new System.Drawing.Point(140, 298);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 27);
             this.btnOK.TabIndex = 18;
@@ -301,7 +306,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancle.Location = new System.Drawing.Point(106, 273);
+            this.btnCancle.Location = new System.Drawing.Point(220, 298);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(78, 27);
             this.btnCancle.TabIndex = 20;
@@ -339,7 +344,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.FormPager);
             this.Name = "AddIndexInfo";
-            this.Size = new System.Drawing.Size(350, 500);
+            this.Size = new System.Drawing.Size(315, 331);
             this.Load += new System.EventHandler(this.AddAddIndexInfoLoad);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

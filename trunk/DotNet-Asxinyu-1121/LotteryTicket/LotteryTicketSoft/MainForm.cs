@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using LotteryTicket;
 using LotteryTicketSoft.GraphForm;
+using DotNet.Tools.Controls;
 
 namespace LotteryTicketSoft
 {
@@ -34,14 +35,11 @@ namespace LotteryTicketSoft
         }
 
         private void 常规参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //FormModel tf = WinFormHelper.GetControlForm<AddRules>(FormShowMode.ContinueAdd, "", "");
-            //tf.Show();
+        {            
         }
 
         private void 数据更新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void 数据更新ToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -54,13 +52,35 @@ namespace LotteryTicketSoft
             dt.Show();           
         }
 
-        //加载管理窗体
+        //加载验证过滤管理窗体
         public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
         {
             LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
             dt.InitializeSettings(dcp);
             dt.StartPosition = FormStartPosition.CenterParent;
             return dt;
+        }
+        
+        private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules),
+                "LotteryTicketSoft.GraphForm.AddRules");
+            CP.IsEnablePaging = false;
+            LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
+            dt.MdiParent = this;
+            dt.Show();  
+        }
+
+        private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),
+               "LotteryTicketSoft.GraphForm.AddIndexInfo");
+            CP.IsEnablePaging = false;
+            DotNet.Tools.Controls.DataManageForm dt = new DotNet.Tools.Controls.DataManageForm();
+            dt.InitializeSettings(CP );
+            dt.StartPosition = FormStartPosition.CenterParent;
+            dt.MdiParent = this;
+            dt.Show();  
         }
     }
 }
