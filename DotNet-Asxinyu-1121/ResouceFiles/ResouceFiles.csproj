@@ -76,10 +76,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tb_Rules.cs" />
+    <Compile Include="代码\tb_Rules.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="代码\Test\StaticsTest.cs" />
     <Compile Include="代码\Test\TestData.cs" />
-    <Compile Include="代码\指标计算.cs" />
     <Compile Include="代码\规则对比.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +166,7 @@
     <EmbeddedResource Include="Lib\Template\董斌辉-控件\类名.resx">
       <DependentUpon>类名.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="tb_Rules.resx">
+    <EmbeddedResource Include="代码\tb_Rules.resx">
       <DependentUpon>tb_Rules.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
