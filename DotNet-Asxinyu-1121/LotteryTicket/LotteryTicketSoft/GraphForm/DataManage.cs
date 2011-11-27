@@ -60,7 +60,8 @@ namespace LotteryTicketSoft.GraphForm
             if (controlParams.IsHaveMenu)
             {
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete", "Validate","CrossValidate","Filter" }, new string[] { "修改", "删除", "验证", "交叉验证", "过滤" },
+                        new string[] { "Edit", "Delete", "Validate","CrossValidate","Filter" }, new string[] {
+                            "修改", "删除", "验证", "交叉验证", "过滤" },
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
                         toolStripStatics_Click,toolStripCrossValidate_Click,toolStripFilter_Click});
             }
@@ -106,15 +107,12 @@ namespace LotteryTicketSoft.GraphForm
             for (int i = 0; i < btList.Count; i++) bs.Add(btList[i]);
             dgv.DataSource = bs;//绑定数据
             //移除不需要的列，可以设置为一个开关，根据需要是否打开
-            if (dgv.Columns.Contains(tb_Rules._.Remark.Description))
-            {
-                dgv.Columns.Remove(tb_Rules._.Remark.Description);
-            }
-            if (dgv.Columns.Contains(tb_Rules._.Remark.Name ))
-            {
-                dgv.Columns.Remove(tb_Rules._.Remark.Name);
-            }
-           
+            if (dgv.Columns.Contains(tb_Rules._.Remark.Description))   dgv.Columns.Remove(tb_Rules._.Remark.Description);           
+            if (dgv.Columns.Contains(tb_Rules._.Remark.Name ))  dgv.Columns.Remove(tb_Rules._.Remark.Name);         
+            if (dgv.Columns.Contains(tb_Rules._.SchemeId .Description))  dgv.Columns.Remove(tb_Rules._.SchemeId.Description);        
+            if (dgv.Columns.Contains(tb_Rules._.SchemeId.Name)) dgv.Columns.Remove(tb_Rules._.SchemeId.Name);          
+            if (dgv.Columns.Contains(tb_Rules._.UpdateTime .Description))  dgv.Columns.Remove(tb_Rules._.UpdateTime.Description);    
+            if (dgv.Columns.Contains(tb_Rules._.UpdateTime.Name))   dgv.Columns.Remove(tb_Rules._.UpdateTime.Name);     
         }
         /// <summary>
         /// 初始化，格式控制
@@ -125,31 +123,40 @@ namespace LotteryTicketSoft.GraphForm
             DataGridViewTextBoxColumn tb1 = CreateTextBoxWithNames(tb_Rules._.Id, tb_Rules._.Id.Description);
             tb1.Width = 60;
             dgv.Columns.Add(tb1);
+            //SchemeId
+            DataGridViewTextBoxColumn tbT1 = CreateTextBoxWithNames(tb_Rules._.SchemeId, tb_Rules._.SchemeId.Description);
+            tbT1.Width = 60;
+            dgv.Columns.Add(tbT1);
             DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
-            tb2.Width = 140;
+            tb2.Width = 160;
             dgv.Columns.Add(tb2);
             DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTicketHelper.GetAllEnumNames<CompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
-            tb3.Width = 140;
+            tb3.Width = 130;
             dgv.Columns.Add(tb3);
             DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
-            tb4.Width = 160;
+            tb4.Width = 80;
             dgv.Columns.Add(tb4);
             DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description);
-            tb5.Width = 80;
+            tb5.Width =60;
             dgv.Columns.Add(tb5);
             DataGridViewTextBoxColumn tb6 = CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description);
             tb6.Width = 80;
             dgv.Columns.Add(tb6);
             DataGridViewTextBoxColumn tb7 = CreateTextBoxWithNames(tb_Rules._.FilterInfo, tb_Rules._.FilterInfo.Description);
-            tb7.Width = 80;
+            tb7.Width = 120;
             dgv.Columns.Add(tb7);
+            //Enable
+            DataGridViewCheckBoxColumn tbT2 = new DataGridViewCheckBoxColumn();
+            tbT2.DataPropertyName = tb_Rules._.Enable;
+            tbT2.Name = tb_Rules._.Enable.Description;
+            tbT2.Width = 40;
+            dgv.Columns.Add(tbT2);
             DataGridViewTextBoxColumn tb8 = CreateTextBoxWithNames(tb_Rules._.UpdateTime, tb_Rules._.UpdateTime.Description);
-            tb8.Width = 120;
+            tb8.Width = 50;
             dgv.Columns.Add(tb8);
             DataGridViewTextBoxColumn tb9 = CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description);
             tb9.Width = 60;
-            dgv.Columns.Add(tb9);
-            dgv.Columns.Remove(tb_Rules._.Remark.Description);
+            dgv.Columns.Add(tb9);            
         }
         DataGridViewComboBoxColumn CreateComboBoxWithNames(List<string> dataSource, string dataPropertyName, string DispalyName)
         {
