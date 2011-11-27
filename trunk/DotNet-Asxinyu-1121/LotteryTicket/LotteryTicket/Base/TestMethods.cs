@@ -6,10 +6,32 @@ using System.Text;
 namespace LotteryTicket
 {
     /// <summary>
+    /// 常规计算参数类：封装常用的计算参数
+    /// 主要用作公式杀号
+    /// </summary>
+    public class CommCalculateParams
+    {
+        public int Add { get; set; }
+        public int Sub { get; set; }
+        public int Multi { get; set; }
+        public int Divisor { get; set; }        
+        public Dictionary<string, int> Dic { get; set; }
+        public CommCalculateParams(int add = 0, int sub = 0, int multi = 0, int divisor = 16)
+        {
+            this.Add = add;
+            this.Sub = sub;
+            this.Multi = multi;
+            this.Divisor = divisor;
+        }
+    }
+    
+
+    /// <summary>
     /// 测试杀号方法
     /// </summary>
     public static class TestMethods
     {
+        #region 根据尾数，杀下期红号---失败
         //凡是上期出1尾，下期则不出：06 10
         //凡是上期出2尾，下期则不出：03 07 08 09
         //凡是上期出3尾，下期则不出：03
@@ -49,5 +71,91 @@ namespace LotteryTicket
             list = list.Distinct().OrderBy (n=>n).ToList ();
             return list;
         }
+        #endregion
+
+        #region 期数、红球计算求余杀蓝号--可行，进一步搜索最大的组合
+        public static void Test02()
+        {
+            List<tb_Ssq> list =tb_Ssq.FindAll("select * from tb_Ssq order by 期号 asc");
+            //List<double> res = new List<double>();
+            List<CommCalculateParams> listParmas = new List<CommCalculateParams>();
+            for (int i = 1; i <= 5 ; i++)//乘数
+            {
+                for (int j = 1; j <=6; j++)//红球id
+                {
+                    for (int k = 1; k < 15; k++)//加数
+                    {
+                        double temp = GetTestResult(list,i,j,k , 16);
+                        if (temp > 0.954)
+                        {
+                            listParmas.Add(new CommCalculateParams(k, j , i, 16));
+                            //res.Add(temp); Console.WriteLine("{0}-{1}-{2}:{3}", i, j, k, temp);
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("总共方法数：{0},结果{1}",listParmas.Count ,GetMultiResult(listParmas, list ));
+            //res = res.OrderBy(n => n).ToList ();
+            //foreach (var item in res )
+            //{
+            //    Console.Write("{0},", item );
+            //}
+
+            //while (true)
+            //{
+            //    Console.Write("输入参数，乘数：");
+            //    int multi = Convert.ToInt32(Console.ReadLine());
+            //    Console.Write("输入红球编号：");
+            //    int redid = Convert.ToInt32(Console.ReadLine());
+            //    Console.Write("输入加数：");
+            //    int add = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine(GetTestResult(list, multi , redid ,add , 16).ToString("F4"));
+            //}
+        }
+
+        //同时计算多条规则的成功率
+        static double GetMultiResult(List<CommCalculateParams> list, List<tb_Ssq> data)
+        {
+            int count = 0;
+            for (int i = 0; i < data.Count - 1; i++)
+            {
+                bool flag = true ;
+                for (int j = 0; j < list.Count ; j++)
+                {
+                    int temp = ((int)data[i].期号 * list[j].Multi + list[j].Add +
+                    (int)tb_Ssq.GetValue(data[i], "号码" + list[j].Sub.ToString())) % list[j].Divisor;
+                    Console.Write("{0},",temp );
+                    //余数是否为下期的蓝号
+                    if (temp == data[i + 1].蓝球)//只要一次不满足就跳出
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                Console.WriteLine();
+                if (flag) count++;//都满足才加1
+            }
+            return ((double)count) / ((double)data.Count);
+        }
+
+        //计算该条件下的成功率
+        static double GetTestResult(List<tb_Ssq > data, int multiplicator,int RedNumberId, int addend, int divisor)
+        {
+            int count = 0;
+            for (int i = 0; i < data.Count -1; i++)
+            {
+                int temp = (int)data[i].期号 * multiplicator+addend +
+                    (int)tb_Ssq.GetValue(data[i], "号码" + RedNumberId.ToString());               
+                //余数是否为下期的蓝号
+                if ((temp %divisor )!=data [i +1].蓝球 )
+                {
+                    count++;
+                }
+            }          
+            return ((double)count) / ((double)data.Count);
+        }
+        #endregion
+
+        
     }
 }
