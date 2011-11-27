@@ -105,6 +105,16 @@ namespace LotteryTicketSoft.GraphForm
             }
             for (int i = 0; i < btList.Count; i++) bs.Add(btList[i]);
             dgv.DataSource = bs;//绑定数据
+            //移除不需要的列，可以设置为一个开关，根据需要是否打开
+            if (dgv.Columns.Contains(tb_Rules._.Remark.Description))
+            {
+                dgv.Columns.Remove(tb_Rules._.Remark.Description);
+            }
+            if (dgv.Columns.Contains(tb_Rules._.Remark.Name ))
+            {
+                dgv.Columns.Remove(tb_Rules._.Remark.Name);
+            }
+           
         }
         /// <summary>
         /// 初始化，格式控制
@@ -139,6 +149,7 @@ namespace LotteryTicketSoft.GraphForm
             DataGridViewTextBoxColumn tb9 = CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description);
             tb9.Width = 60;
             dgv.Columns.Add(tb9);
+            dgv.Columns.Remove(tb_Rules._.Remark.Description);
         }
         DataGridViewComboBoxColumn CreateComboBoxWithNames(List<string> dataSource, string dataPropertyName, string DispalyName)
         {

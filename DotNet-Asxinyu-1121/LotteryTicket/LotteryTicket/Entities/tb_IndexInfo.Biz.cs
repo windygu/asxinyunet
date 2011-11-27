@@ -11,19 +11,19 @@ using XCode.Configuration;
 namespace LotteryTicket
 {
     /// <summary></summary>
-    public partial class tb_Rules : Entity<tb_Rules>
+    public partial class tb_IndexInfo : Entity<tb_IndexInfo>
     {
         #region 扩展属性﻿
         #endregion
 
         #region 扩展查询﻿
         /// <summary>
-        /// 根据序号查找
+        /// 根据指标编号查找
         /// </summary>
-        /// <param name="id">序号</param>
+        /// <param name="id">指标编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_Rules FindById(Int32 id)
+        public static tb_IndexInfo FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(new String[] { _.Id }, new Object[] { id });
@@ -34,31 +34,17 @@ namespace LotteryTicket
         }
 
         /// <summary>
-        /// 根据序号查找
+        /// 根据指标编号查找
         /// </summary>
-        /// <param name="id">序号</param>
+        /// <param name="id">指标编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<tb_Rules> FindAllById(Int32 id)
+        public static EntityList<tb_IndexInfo> FindAllById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return FindAll(new String[] { _.Id }, new Object[] { id });
             else // 实体缓存
                 return Meta.Cache.Entities.FindAll(_.Id, id);
-        }
-
-        /// <summary>
-        /// 根据方案编号查找
-        /// </summary>
-        /// <param name="schemeid">方案编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<tb_Rules> FindAllBySchemeId(String schemeid)
-        {
-            if (Meta.Count >= 1000)
-                return FindAll(new String[] { _.SchemeId }, new Object[] { schemeid });
-            else // 实体缓存
-                return Meta.Cache.Entities.FindAll(_.SchemeId, schemeid);
         }
         #endregion
 
@@ -114,7 +100,7 @@ namespace LotteryTicket
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}数据……", typeof(tb_Rules).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}数据……", typeof(tb_IndexInfo).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -124,7 +110,7 @@ namespace LotteryTicket
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}数据！", typeof(tb_Rules).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}数据！", typeof(tb_IndexInfo).Name);
         //}
         #endregion
 
@@ -140,7 +126,7 @@ namespace LotteryTicket
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<tb_Rules> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<tb_IndexInfo> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}
