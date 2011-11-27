@@ -128,16 +128,16 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 求余来计算覆盖的范围的个数
+        #region 求余来计算覆盖的范围的个数---L自定义，需要调整
         /// <summary>
         /// 求余来计算覆盖的范围的个数,0到L-1出现的个数
         /// </summary>
         /// <param name="source">数据源</param>
         /// <param name="L">求余参数,默认18</param>
         /// <returns>在此参数下的所有出现数字</returns>
-        public static int Index_OO求余覆盖个数(this int[] source, int L = 18)
+        public static int Index_OO求余覆盖个数(this int[] source)
         {
-            return source.Select(n => ((int)n) % L).Distinct().Count();
+            return source.Select(n => ((int)n) % 18).Distinct().Count();
         }
         #endregion
 
