@@ -570,6 +570,16 @@ namespace LotteryTicket
             return index;
         }
 
+        public static string GetClassNameByIndexName(string indexName)
+        {
+            if (indexName.Contains("Index_OO")) return "OOIndexCalculate";
+            if (indexName.Contains("Index_MM")) return "MMIndexCalculate";
+            if (indexName.Contains("Index_MO")) return "MOIndexCalculate";
+            if (indexName.Contains("Index_OM")) return "OMIndexCalculate";
+            if (indexName.Contains("Static_S")) return "OtherIndexStatic";
+            return "None";
+        }
+
         /// <summary>
         /// 获取枚举类型的所有枚举值
         /// </summary>

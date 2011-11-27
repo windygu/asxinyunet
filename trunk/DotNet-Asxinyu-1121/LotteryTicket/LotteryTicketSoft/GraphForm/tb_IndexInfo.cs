@@ -53,8 +53,7 @@ namespace LotteryTicketSoft.GraphForm
 		#endregion		
 		#region 控件定义
 		private System.Windows.Forms.TextBox txtId ;
-		private System.Windows.Forms.Label    lblId ;
-private System.Windows.Forms.TextBox txtIndexName ;
+        private System.Windows.Forms.Label lblId;
 		private System.Windows.Forms.Label    lblIndexName ;
 private System.Windows.Forms.TextBox txtClassName ;
 		private System.Windows.Forms.Label    lblClassName ;
@@ -73,7 +72,8 @@ private System.Windows.Forms.TextBox txtRemark ;
 		private System.Windows.Forms.Label    lblRemark ;
    private System.Windows.Forms.ErrorProvider errorProvider1 ;
 		private System.Windows.Forms.Button btnOK ;
-		private System.Windows.Forms.Button btnCancle ;
+        private System.Windows.Forms.Button btnCancle;
+        private ComboBox txtIndexName;
 		private DotNet.Tools.Controls.EntityFormPager FormPager;
 		#endregion
 		
@@ -93,7 +93,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.lblUpdateTime = new System.Windows.Forms.Label();
             this.lblRemark = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.txtIndexName = new System.Windows.Forms.TextBox();
             this.txtClassName = new System.Windows.Forms.TextBox();
             this.txtPriorLevel = new System.Windows.Forms.TextBox();
             this.combSuitableType = new System.Windows.Forms.ComboBox();
@@ -104,6 +103,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtIndexName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,14 +222,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtId.TabIndex = 0;
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
-            // txtIndexName
-            // 
-            this.txtIndexName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtIndexName.Location = new System.Drawing.Point(70, 33);
-            this.txtIndexName.Name = "txtIndexName";
-            this.txtIndexName.Size = new System.Drawing.Size(230, 23);
-            this.txtIndexName.TabIndex = 2;
-            // 
             // txtClassName
             // 
             this.txtClassName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -318,10 +310,21 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtIndexName
+            // 
+            this.txtIndexName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtIndexName.FormattingEnabled = true;
+            this.txtIndexName.Location = new System.Drawing.Point(70, 33);
+            this.txtIndexName.Name = "txtIndexName";
+            this.txtIndexName.Size = new System.Drawing.Size(230, 22);
+            this.txtIndexName.TabIndex = 201;
+            this.txtIndexName.SelectedIndexChanged += new System.EventHandler(this.txtIndexName_SelectedIndexChanged);
+            // 
             // AddIndexInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtIndexName);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblIndexName);
             this.Controls.Add(this.lblClassName);
@@ -332,7 +335,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.lblUpdateTime);
             this.Controls.Add(this.lblRemark);
             this.Controls.Add(this.txtId);
-            this.Controls.Add(this.txtIndexName);
             this.Controls.Add(this.txtClassName);
             this.Controls.Add(this.txtPriorLevel);
             this.Controls.Add(this.combSuitableType);
@@ -386,7 +388,8 @@ private System.Windows.Forms.TextBox txtRemark ;
         /// </summary>
         private void CustomerSettings()
         {
-            //控件的特殊设置，如格式，显示,控件的绑定           
+            //控件的特殊设置，如格式，显示,控件的绑定   
+            txtIndexName.Items.AddRange(LotTicketHelper.GetAllIndexFuncNames().ToArray ());//获取所有指标名称
         }
 		#endregion
 				
@@ -538,7 +541,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 				//设置控件清空，并且可用
 				txtId.ReadOnly = false ;//指标编号
 				txtId.Text = string.Empty  ; 
-				txtIndexName.ReadOnly = false ;//指标名称
+				txtIndexName.Enabled = true  ;//指标名称
 				txtIndexName.Text = string.Empty  ; 
 				txtClassName.ReadOnly = false ;//所属类
 				txtClassName.Text = string.Empty  ; 
@@ -580,7 +583,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 				btnOK.Enabled = false ;
 			}
 			txtId.ReadOnly = true  ;//指标编号
-			txtIndexName.ReadOnly = true  ;//指标名称
+			txtIndexName.Enabled  = false   ;//指标名称
 			txtClassName.ReadOnly = true  ;//所属类
 			txtPriorLevel.ReadOnly = true  ;//优先级
 			combSuitableType.Enabled = false ;//适用类型
@@ -617,5 +620,11 @@ private System.Windows.Forms.TextBox txtRemark ;
 			txtRemark.DataBindings.Add ("Text",CutModel,"Remark");
 		}
 		#endregion
+
+        private void txtIndexName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //动态改变所属类的名称
+            txtClassName.Text = LotTicketHelper.GetClassNameByIndexName(txtIndexName.Text.Trim());
+        }
    }
 }
