@@ -25,7 +25,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using YoungRunEntity;
+using LotteryTicket;
 using DotNet.Tools.Controls ;
 
 namespace <#=Config.NameSpace#>
@@ -53,7 +53,7 @@ namespace <#=Config.NameSpace#>
 		#endregion		
 		#region 控件定义
 		<# foreach(IDataColumn Field in Table.Columns){
-		if(Field.DataType == typeof(string) && (Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+		if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 		private System.Windows.Forms.ComboBox comb<#=Field.Alias#> ;
 		<#}else if (Field.DataType == typeof(string)) {#>private System.Windows.Forms.TextBox txt<#=Field.Alias#> ;
 		<#}else if (Field.DataType == typeof(DateTime)) {#>private System.Windows.Forms.DateTimePicker dt<#=Field.Alias#> ;
@@ -84,7 +84,7 @@ namespace <#=Config.NameSpace#>
 			this.lbl<#=Field.Alias#>.Text = "<#=Field.Description#>";
 			this.Controls.Add(this.lbl<#=Field.Alias#>) ;
 		<#}#><#foreach(IDataColumn Field in Table.Columns){
-		if(Field.DataType == typeof(string) && (Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+		if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 			this.lbl<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
 			<#cutX += (W+2) ;#>
 			this.comb<#=Field.Alias#> = new System.Windows.Forms.ComboBox() ;
@@ -214,7 +214,7 @@ namespace <#=Config.NameSpace#>
         }
 		#endregion
 				
-		#region 相关字段与属性		
+		#region 相关字段与属性
 		/// <summary>
 		/// 获取或者设置当前的查询条件
 		/// </summary>
@@ -252,12 +252,13 @@ namespace <#=Config.NameSpace#>
 		{
 			//TODO:有问题，需要根据当前的状态来更新和保存数据
 			//当前实体状态不是只读并且通过验证后才能进行操作
+			//当comb类别为int时，有bug,需要手动修改加一下数据转换
 			if (btnOK.Text.Contains ("修改")) SetAllTextControls(ControlStatus.Edit );
 			else 
 			{
 				if(((CutShowMode!= FormShowMode.ReadOnlyForAll) || (CutShowMode != FormShowMode.ReadOnlyForOne)) && ValidateControls() )
 				{
-					<#=Table.Alias#> model = new <#=Table.Alias#>();//定义当前实体 <# foreach(IDataColumn Field in Table.Columns){if(Field.DataType == typeof(string) && (Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+					<#=Table.Alias#> model = new <#=Table.Alias#>();//定义当前实体 <# foreach(IDataColumn Field in Table.Columns){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 					if(comb<#=Field.Alias#>.Text.Trim()!="") model.<#=Field.Alias#> = comb<#=Field.Alias#>.Text.Trim() ;//<#=Field.Description#><#}else if (Field.DataType == typeof(string)) {#>
 					if(txt<#=Field.Alias#>.Text.Trim()!="")  model.<#=Field.Alias#> = txt<#=Field.Alias#>.Text.Trim()  ;//<#=Field.Description#><#}else if (Field.DataType == typeof(DateTime)) {#>
 					model.<#=Field.Alias#> = dt<#=Field.Alias#>.Value ;//<#=Field.Description#><#}else {#>
