@@ -86,6 +86,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
             InitialDataGridView();
+            GetData();
         }
         #endregion
 
@@ -107,8 +108,8 @@ namespace LotteryTicketSoft.GraphForm
             for (int i = 0; i < btList.Count; i++) bs.Add(btList[i]);
             dgv.DataSource = bs;//绑定数据
             //移除不需要的列，可以设置为一个开关，根据需要是否打开
-            if (dgv.Columns.Contains(tb_Rules._.Remark.Description))   dgv.Columns.Remove(tb_Rules._.Remark.Description);           
-            if (dgv.Columns.Contains(tb_Rules._.Remark.Name ))  dgv.Columns.Remove(tb_Rules._.Remark.Name);         
+            //if (dgv.Columns.Contains(tb_Rules._.Remark.Description))   dgv.Columns.Remove(tb_Rules._.Remark.Description);           
+            //if (dgv.Columns.Contains(tb_Rules._.Remark.Name ))  dgv.Columns.Remove(tb_Rules._.Remark.Name);         
             if (dgv.Columns.Contains(tb_Rules._.SchemeId .Description))  dgv.Columns.Remove(tb_Rules._.SchemeId.Description);        
             if (dgv.Columns.Contains(tb_Rules._.SchemeId.Name)) dgv.Columns.Remove(tb_Rules._.SchemeId.Name);          
             if (dgv.Columns.Contains(tb_Rules._.UpdateTime .Description))  dgv.Columns.Remove(tb_Rules._.UpdateTime.Description);    
