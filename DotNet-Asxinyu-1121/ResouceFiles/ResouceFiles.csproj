@@ -159,6 +159,7 @@
     <Content Include="Lib\XCoder.xml" />
     <Content Include="Lib\ZedGraph.dll" />
     <Content Include="代码\TestData\PerIndexCalculateDataAB.txt" />
+    <None Include="XCoder v4.5_20111111142242.rar" />
     <None Include="代码\TestData\PredictValidateData.txt" />
     <None Include="代码\TestData\AllDataCalculateData.txt" />
   </ItemGroup>
