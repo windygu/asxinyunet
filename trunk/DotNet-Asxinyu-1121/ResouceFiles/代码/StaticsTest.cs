@@ -163,6 +163,7 @@ namespace LotteryTicket
 		public static double[] GetList(int count ,List<double > curList)
 		{
 			RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider () ;
+            
 			byte[] curLocate = new Byte[1] ;
 			double[] res = new double[count ]  ;
 			for (int i = 0; i < count ; i++) {
