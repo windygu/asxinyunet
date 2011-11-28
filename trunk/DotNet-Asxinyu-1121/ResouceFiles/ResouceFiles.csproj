@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="代码\StaticsTest.cs" />
     <Compile Include="代码\tb_Rules.cs" />
     <Compile Include="代码\Test\StaticsTest.cs" />
     <Compile Include="代码\Test\TestData.cs" />
