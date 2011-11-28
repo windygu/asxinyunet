@@ -86,6 +86,7 @@
     <None Include="beta 0.15\LotteryTicketSoft.exe.config" />
     <None Include="beta 0.15\LotteryTicketSoft.vshost.exe.config" />
     <None Include="beta 0.15\LotteryTicketSoft.vshost.exe.manifest" />
+    <None Include="CleanSolution.bat" />
     <None Include="DesignFiles\永润数据字典-1019.doc" />
     <None Include="Images\application.ico" />
     <None Include="Images\apply.ico" />
