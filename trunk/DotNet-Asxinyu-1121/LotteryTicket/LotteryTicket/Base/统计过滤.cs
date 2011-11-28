@@ -74,7 +74,7 @@ namespace LotteryTicket
             }
         }
         /// <summary>
-        /// 根据规则和数据，计算得到结果
+        /// 根据规则和数据，判断是否满足要求
         /// </summary>
         /// <param name="source">数据</param>
         /// <param name="rule">规则信息</param>
