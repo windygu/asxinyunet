@@ -5,6 +5,7 @@ using System.Text;
 
 namespace LotteryTicket
 {
+
     /// <summary>
     /// 常规计算参数类：封装常用的计算参数
     /// 主要用作公式杀号
@@ -156,6 +157,11 @@ namespace LotteryTicket
         }
         #endregion
 
-        
+        #region 不同区间模式出现的概率个数
+        public static void Test03()
+        {
+
+        }
+        #endregion
     }
 }
