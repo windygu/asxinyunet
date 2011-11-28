@@ -82,7 +82,7 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 每期最长的连续号码数
+        #region 每期最长的连续号码数----测试有错误
         /// <summary>
         /// 每期最长的连续号码数
         /// </summary>	

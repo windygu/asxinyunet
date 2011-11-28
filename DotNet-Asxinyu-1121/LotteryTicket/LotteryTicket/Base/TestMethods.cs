@@ -238,20 +238,52 @@ namespace LotteryTicket
                     for (int j = i +1; j <item.Length ; j++)
                     {
                         string s = item[i].ToString() + "-" + item[j].ToString();
-                        if (dic.ContainsKey(s))
+                        if (dic.ContainsKey(s))//组合出现的次数
                             dic[s]++;
                         else
                             dic.Add(s, 1);
                     }
                 }
             }
-            var res = dic.OrderBy(n => n.Value).ToArray();
+            var res = dic.OrderBy(n => n.Value).ToArray();//排序
             Console.WriteLine("总数{0}", res.Count());
             //foreach (var item in res )
             //{
             //    Console.WriteLine(item.Key + ":" + item.Value.ToString());
             //}
         }
+        #endregion
+
+        #region 上期和值与尾数和%10杀下期蓝号
+        public static void Test05()
+        {
+            int[][] data = TwoColorBall.GetRedBallData(-1);
+            int[] blue = TwoColorBall.GetBlueBallData ();
+            int sum = 0;
+            for (int i = 0; i < data.GetLength (0)-1; i++)
+            {
+                int temp = (int)(data[i].Sum() / 10);
+                if (temp != blue[i]) sum++;
+            }
+            double res = ((double)sum) / ((double)blue.Length);
+            Console.WriteLine("和值/10杀蓝准确率：{0}", res);
+        }
+        public static void Test06()
+        {
+            int[][] data = TwoColorBall.GetRedBallData(-1);
+            int[] blue = TwoColorBall.GetBlueBallData();
+            int sum = 0;
+            for (int i = 0; i < data.GetLength(0) - 1; i++)
+            {
+                int temp = (int)(data[i].Select(n=>n %10).Sum () / 10);
+                if (temp != blue[i]) sum++;
+            }
+            double res = ((double)sum) / ((double)blue.Length);
+            Console.WriteLine("尾数和值/10杀蓝准确率：{0}", res);
+        }
+        #endregion
+
+        #region 倍数概率
         #endregion
     }
 }
