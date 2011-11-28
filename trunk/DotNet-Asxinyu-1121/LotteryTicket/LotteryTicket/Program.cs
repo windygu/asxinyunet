@@ -95,7 +95,7 @@ namespace LotteryTicket
     {
     	public static void Main(string[] args)
     	{
-            TestMethods.Test02();
+            TestMethods.Test04();
     		Console.ReadKey(true);
     	}
     	/// <summary>

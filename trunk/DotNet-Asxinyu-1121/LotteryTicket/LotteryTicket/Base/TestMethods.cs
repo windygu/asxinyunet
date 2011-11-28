@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace LotteryTicket
 {
-
+    #region 常规参数类
     /// <summary>
     /// 常规计算参数类：封装常用的计算参数
     /// 主要用作公式杀号
@@ -28,7 +28,7 @@ namespace LotteryTicket
             this.Divisor = divisor;
         }
     }
-    
+    #endregion
 
     /// <summary>
     /// 测试杀号方法
@@ -48,8 +48,7 @@ namespace LotteryTicket
         //凡是上期出0尾，下期则不出：01 02 03 04 08 09 10 12 13 16 
         //结果：总体失败，每一个尾数，后面所有的号都出来过
         public static void Test01()
-        {
-            
+        {           
             int[][] data = TwoColorBall.GetRedBallData(-1);
             for (int i = 0; i < 10; i++)
             {
@@ -224,6 +223,34 @@ namespace LotteryTicket
                 list[sectionCount - 1].Add(numbers[count++]);
             }
             return list.Select(n => n.ToArray()).ToArray();
+        }
+        #endregion
+
+        #region 统计那些组合同时出现的频率最高
+        public static void Test04()
+        {
+            int[][] data = TwoColorBall.GetRedBallData(-1);
+            Dictionary<string, int> dic = new Dictionary<string, int>();
+            foreach (int[] item in data )
+            {
+                for (int i = 0; i < item.Length -1; i++)
+                {
+                    for (int j = i +1; j <item.Length ; j++)
+                    {
+                        string s = item[i].ToString() + "-" + item[j].ToString();
+                        if (dic.ContainsKey(s))
+                            dic[s]++;
+                        else
+                            dic.Add(s, 1);
+                    }
+                }
+            }
+            var res = dic.OrderBy(n => n.Value).ToArray();
+            Console.WriteLine("总数{0}", res.Count());
+            //foreach (var item in res )
+            //{
+            //    Console.WriteLine(item.Key + ":" + item.Value.ToString());
+            //}
         }
         #endregion
     }
