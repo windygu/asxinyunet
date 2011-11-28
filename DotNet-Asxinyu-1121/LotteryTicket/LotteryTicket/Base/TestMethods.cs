@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace LotteryTicket
 {
@@ -161,6 +164,66 @@ namespace LotteryTicket
         public static void Test03()
         {
 
+        }
+        /// <summary>
+        /// 将当期数据与分段模式进行比较，得到比较结果
+        /// </summary>
+        /// <param name="data">当期数据</param>
+        /// <param name="sections">分段模式</param>
+        /// <returns>匹配结果,对应位置模式出现的次数</returns>
+        public static int[] SectionCompare(this int[] data, int[][] sections)
+        {
+            int[] res = new int[sections.Length];
+            foreach (int item in data )
+            {
+                for (int i = 0; i < sections.GetLength (0); i++)
+                {
+                    if (sections[i].Contains(item))
+                    {
+                        res[i]++;
+                        break;
+                    }
+                }
+            }
+            return res;
+        }
+        /// <summary>
+        /// 获取随机的分段模式
+        /// </summary>
+        /// <param name="numberCount">所有数字个数</param>
+        /// <param name="sectionCount">分段数</param>
+        /// <returns>分段模式</returns>
+        public static int[][] GetRandomSections(int numberCount, int sectionCount)
+        {
+            Random rand = new Random();
+            int[] numbers = new int[numberCount];
+            for (int i = 0; i < numberCount; i++) numbers[i] = i + 1;            
+            for (int i = 0; i <5; i++)
+            {
+                for (int j = 0; j < numberCount ; j++)
+                {
+                    int r = rand.Next(0, numberCount - 1);
+                    int temp = numbers[j];
+                    numbers[j] = numbers[r];
+                    numbers[r] = temp;
+                }
+            }         
+            //然后填充到list中去
+            List<int>[] list = new List<int>[sectionCount];
+            int PerCount =(int )(((double)numberCount) /(double ) sectionCount);
+            int count = 0 ;
+            for (int i = 0; i < sectionCount -1 ; i++)
+            {
+                for (int j = 0; j < PerCount ; j++)
+                {
+                    list[i].Add(numbers[count++]);
+                }
+            }
+            for (int i = count ; i <numberCount ; i++)
+            {
+                list[sectionCount - 1].Add(numbers[count++]);
+            }
+            return list.Select(n => n.ToArray()).ToArray();
         }
         #endregion
     }
