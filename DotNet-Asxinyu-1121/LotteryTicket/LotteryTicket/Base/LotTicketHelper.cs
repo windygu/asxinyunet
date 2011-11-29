@@ -39,6 +39,13 @@ namespace LotteryTicket
         public int NumbersCount { get; set; }
         #endregion
 
+        #region 是否是验证模式
+        /// <summary>
+        /// 是否是验证模式,默认true
+        /// </summary>
+        public bool IsValidateMode { get; set; }
+        #endregion
+
         #region 指标函数类型及名称
         /// <summary>
         /// 当前规则中的指标类型,通过IndexSelectorName的方法名称来识别
@@ -98,8 +105,10 @@ namespace LotteryTicket
         /// <param name="selector">指标计算函数</param>
         /// <param name="compareRule">对比规则</param>
         /// <param name="needRows">计算所需的行数</param>
-        public RuleInfo(RuleCompareParams ruleParams,string selector, string compareRule,int needRows = 1 )
+        public RuleInfo(RuleCompareParams ruleParams,string selector, string compareRule,
+            bool isValidate = true ,int needRows = 1 )
         {
+            this.IsValidateMode = isValidate;
             this.RuleParams = ruleParams;            
             this.NumbersCount = needRows;            
             this.IndexSelectorName = selector;
@@ -616,7 +625,7 @@ namespace LotteryTicket
         {           
             //再根据ruleMode判断规则类别，调用相应的方法进行计算                       
             RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
-            RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,ruleMode.DataRows );
+            RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,true ,ruleMode.DataRows );
             double res = data.Static_单个指标频率(rule);
             return (res * 100).ToString("F4");            
         }
@@ -634,7 +643,7 @@ namespace LotteryTicket
                 tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
                 //再根据ruleMode判断规则类别，调用相应的方法进行计算                            
                 RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
-                rules[rowIndex ] = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP, ruleMode.DataRows);
+                rules[rowIndex ] = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP, true,ruleMode.DataRows);
             }
             //每一期 验证所有规则，都通过算一次
             int sum = 0;
@@ -672,7 +681,7 @@ namespace LotteryTicket
                 tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
                 //再根据ruleMode判断规则类别，调用相应的方法进行计算                      
                 RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
-                RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,ruleMode.DataRows);
+                RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,true,ruleMode.DataRows);
                 int count1 = InitiaData.Count();
                 InitiaData = InitiaData.Filter_范围过滤(rule);
                 int count2 = InitiaData.Count();
@@ -689,6 +698,6 @@ namespace LotteryTicket
         }
 
         #endregion
-    }
-    #endregion        
+    } 
+    #endregion
 }

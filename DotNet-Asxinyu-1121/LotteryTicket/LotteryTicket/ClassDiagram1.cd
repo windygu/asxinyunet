@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="LotteryTicket.RuleInfo" Collapsed="true">
-    <Position X="10.25" Y="6.5" Width="1.5" />
+  <Class Name="LotteryTicket.RuleInfo">
+    <Position X="8.5" Y="5.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAgCAAAAAQAAAAAAAgAAAAAAAACAAAABAAAIAAAAQAA=</HashCode>
+      <HashCode>AAgCAAAAAQAAAAACAgAAAAAAAACAAAABAAAIAAAAQAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -22,7 +22,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotteryTicket.BaseGetLotTicData" Collapsed="true">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
@@ -113,7 +113,7 @@
       <FileName>Base\指标计算.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.tb_IndexInfo" BaseTypeListCollapsed="true">
+  <Class Name="LotteryTicket.tb_IndexInfo" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="8.25" Y="2.25" Width="2.5" />
     <NestedTypes>
       <Class Name="LotteryTicket.tb_IndexInfo._" Collapsed="true">
@@ -128,8 +128,8 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="LotteryTicket.tb_Rules" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="3" Y="4.75" Width="1.5" />
+  <Class Name="LotteryTicket.tb_Rules" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.25" Width="2.75" />
     <NestedTypes>
       <Class Name="LotteryTicket.tb_Rules._" Collapsed="true">
         <TypeIdentifier>
@@ -152,7 +152,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="LotteryTicket.Program" Collapsed="true">
-    <Position X="1.75" Y="5.25" Width="1.5" />
+    <Position X="3.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -186,7 +186,7 @@
       <FileName>Entities\tb_Ssq.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="LotteryTicket.CompareType" Collapsed="true">
+  <Enum Name="LotteryTicket.CompareType">
     <Position X="3" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAJAAAAgAAAAAAAAAAAAABAAAAABAAAAAA=</HashCode>

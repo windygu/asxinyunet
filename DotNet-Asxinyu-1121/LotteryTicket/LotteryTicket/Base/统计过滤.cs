@@ -140,7 +140,7 @@ namespace LotteryTicket
     /// </summary>
     public static class OtherIndexStatic
     {
-        #region 跨度不重复的概率
+        #region 跨度不重复的概率---一次技术所有
         public static double Static_S跨度不重复(this int[][] source, RuleInfo rule)
         {
             Hashtable ht = new Hashtable();
@@ -152,8 +152,6 @@ namespace LotteryTicket
             return ((double)ht.Count) / ((double)source.Count());
         }
         #endregion
-
-        
     }
     #endregion
 

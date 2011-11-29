@@ -302,7 +302,7 @@ namespace LotteryTicket
         }
         #endregion
 
-        #region 邻号出现数列表
+        #region 邻号出现数列表--
         /// <summary>
         /// 上(i)期的邻号在本期出现的个数
         /// </summary>
@@ -314,6 +314,23 @@ namespace LotteryTicket
             for (int i = 0; i < count ; i++)
             {
                 res[i] = data[i+NeedRows -1].Index_上期邻号出现个数(data[i]);
+            }
+            return res;
+        }
+        #endregion
+
+        #region 邻号出现数列表--修改版
+        /// <summary>
+        /// 上(i)期的邻号在本期出现的个数
+        /// </summary>
+        public static int[] Index_MMS邻号出现数(this int[][] data, RuleInfo rule)
+        {
+            int NeedRows = rule.NumbersCount;
+            int count = data.GetLength(0) - NeedRows + 1;
+            int[] res = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                res[i] = data[i + NeedRows - 1].Index_上期邻号出现个数(data[i]);
             }
             return res;
         }
