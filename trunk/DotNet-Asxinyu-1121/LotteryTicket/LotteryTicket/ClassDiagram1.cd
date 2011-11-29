@@ -1,63 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="LotteryTicket.RuleInfo">
-    <Position X="8.5" Y="5.75" Width="3" />
+    <Position X="6" Y="3" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAgCAAAAAQAAAAACAgAAAAAAAACAAAABAAAIAAAAQAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotteryTicket.RuleCompareParams">
-    <Position X="10.75" Y="3.75" Width="1.75" />
+    <Position X="9.75" Y="4.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>BAAAAAIAAAABgAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.BaseLotTickClass" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAIAAQBAgAEAAAIBgAAAAAAAAAAAgCI=</HashCode>
-      <FileName>Base\LotTicketHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LotteryTicket.BaseGetLotTicData" Collapsed="true">
-    <Position X="2.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Base\LotTicketHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LotteryTicket.ExtendsExpress" Collapsed="true">
-    <Position X="6.5" Y="0.5" Width="1.5" />
+  <Class Name="LotteryTicket.ExtendsExpress">
+    <Position X="6" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAUQAAAAAAAAQAAEIAAQAEAAAAAAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.LotTicketHelper" Collapsed="true">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+  <Class Name="LotteryTicket.LotTicketHelper">
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAQAAAAAHAAAAAAAACAAAAAAAEAAAAABIAAACgAAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.CommCalculateParams" Collapsed="true">
-    <Position X="4.75" Y="0.5" Width="1.5" />
+  <Class Name="LotteryTicket.CommCalculateParams">
+    <Position X="4.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAoAAAAAAAAAAAAgAAAAAAAAAAIAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Base\TestMethods.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.TestMethods" Collapsed="true">
-    <Position X="6.5" Y="4.75" Width="1.5" />
+  <Class Name="LotteryTicket.TestMethods">
+    <Position X="4" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAgAQAgBAAAAAIAAA=</HashCode>
       <FileName>Base\TestMethods.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.TwoColorBall" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+  <Class Name="LotteryTicket.TwoColorBall">
+    <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAIAAEAAQAAACAAEIAAAAAiAAAAAAAAAA=</HashCode>
       <FileName>Base\TwoColorBall.cs</FileName>
@@ -65,56 +57,45 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="LotteryTicket.StatisticalFilter">
-    <Position X="3" Y="2.25" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAACAAAAAABAAAAAAAAAAIAA=</HashCode>
       <FileName>Base\统计过滤.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotteryTicket.OtherIndexStatic">
-    <Position X="4.75" Y="2.25" Width="2" />
+    <Position X="4.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Base\统计过滤.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.OtherIndexFilter" Collapsed="true">
-    <Position X="8.25" Y="1.5" Width="1.5" />
+  <Class Name="LotteryTicket.OtherIndexFilter">
+    <Position X="2.5" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAAEAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>Base\统计过滤.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.OOIndexCalculate" Collapsed="true">
-    <Position X="6.5" Y="1.5" Width="1.5" />
+  <Class Name="LotteryTicket.OOIndexCalculate">
+    <Position X="9.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAIAIEIAAAAQAAAAIAIAAGAIAACAAACAAAAAAABAgAQ=</HashCode>
       <FileName>Base\指标计算.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.OMIndexCalculate" Collapsed="true">
-    <Position X="4.75" Y="1.5" Width="1.5" />
+  <Class Name="LotteryTicket.MMIndexCalculate">
+    <Position X="6" Y="5.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>Base\指标计算.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotteryTicket.MMIndexCalculate" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
-      <FileName>Base\指标计算.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LotteryTicket.MOIndexCalculate" Collapsed="true">
-    <Position X="3" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Base\指标计算.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LotteryTicket.tb_IndexInfo" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="2.25" Width="2.5" />
+  <Class Name="LotteryTicket.tb_IndexInfo" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <NestedTypes>
       <Class Name="LotteryTicket.tb_IndexInfo._" Collapsed="true">
         <TypeIdentifier>
@@ -129,7 +110,11 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="LotteryTicket.tb_Rules" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="3.25" Width="2.75" />
+    <Position X="0.5" Y="3.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <NestedTypes>
       <Class Name="LotteryTicket.tb_Rules._" Collapsed="true">
         <TypeIdentifier>
@@ -143,67 +128,17 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="LotteryTicket.tb_Ssq" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAACCAgAAAAAgO0QQAAAAAAAAAAQQAQ=</HashCode>
-      <FileName>Entities\tb_Ssq.Biz.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="LotteryTicket.Program" Collapsed="true">
-    <Position X="3.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Interface Name="LotteryTicket.IGetWebLotTickData" Collapsed="true">
-    <Position X="3" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Base\LotTicketHelper.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="LotteryTicket.Itb_IndexInfo" Collapsed="true">
-    <Position X="4.75" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACQARIAACgAQAACAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
-      <FileName>Entities\tb_IndexInfo.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="LotteryTicket.Itb_Rules" Collapsed="true">
-    <Position X="6.5" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAACAAAQAAAAAQAQCAAQCAEAAAAAAAAAAIABAAAAAQA=</HashCode>
-      <FileName>Entities\tb_Rules.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="LotteryTicket.Itb_Ssq" Collapsed="true">
-    <Position X="6.5" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAACAAAAAAAAAAAAAAAAAAAAAAQQAQ=</HashCode>
-      <FileName>Entities\tb_Ssq.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Enum Name="LotteryTicket.CompareType">
-    <Position X="3" Y="7" Width="1.5" />
+    <Position X="2.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAJAAAAgAAAAAAAAAAAAABAAAAABAAAAAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="LotteryTicket.IndexType" Collapsed="true">
-    <Position X="4.75" Y="7" Width="1.5" />
+  <Enum Name="LotteryTicket.IndexType">
+    <Position X="2.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAABQAAAAAAAAFAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Base\LotTicketHelper.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="LotteryTicket.LotTickType" Collapsed="true">
-    <Position X="6.5" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Base\LotTicketHelper.cs</FileName>
     </TypeIdentifier>
   </Enum>
