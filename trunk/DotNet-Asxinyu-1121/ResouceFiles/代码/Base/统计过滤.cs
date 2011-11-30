@@ -15,7 +15,7 @@ namespace LotteryTicket
         /// <summary>
         /// 单个指标统计
         /// </summary>
-        public static bool[] Static_单个指标频率(this int[][] source, RuleInfo rule)
+        public static double Static_单个指标频率(this int[][] source, RuleInfo rule)
         {
             //先根据Rule中的规则类别，反射加载选择器Selector
             //根据规则和选择器Selector进行计算
@@ -26,30 +26,30 @@ namespace LotteryTicket
                 case IndexType.OO:
                     var selector = (Func<int[], int>)Delegate.CreateDelegate(typeof(Func<int[], int>), cur);
                     var temp = source.Select(n => selector(n)).ToArray();//中间迭代每次计算一期数据
-                    return temp.Select(n => GetCompareResult(n, rule)).ToArray () ;
+                    return ((double)temp.Where(n => GetCompareResult(n, rule)).Count()) / ((double)temp.Count());
                 case IndexType.MM:
                     var selectorMM = (Func<int[][], RuleInfo, int[]>)Delegate.CreateDelegate
                         (typeof(Func<int[][], RuleInfo, int[]>), cur);
                     var tempMM = selectorMM(source, rule);//一次计算
-                    return tempMM.Select(n => GetCompareResult(n, rule)).ToArray ();
+                    return ((double)tempMM.Where(n => GetCompareResult(n, rule)).Count()) / ((double)tempMM.Count());
                 case IndexType.MO://实现过程还没有
                     var selectorMO = (Func<int[][], int[]>)Delegate.CreateDelegate
                      (typeof(Func<int[][], int[]>), cur);
                     var tempMO = selectorMO(source);//一次计算
-                    return tempMO.Select(n => GetCompareResult(n, rule)).ToArray ();
+                    return ((double)tempMO.Where(n => GetCompareResult(n, rule)).Count()) / ((double)tempMO.Count());
                 case IndexType.OM:
                     var selectorOM = (Func<int[][], int[]>)Delegate.CreateDelegate
                   (typeof(Func<int[][], int[]>), cur);
                     var tempOM = selectorOM(source);//一次计算
-                    return tempOM.Select(n => GetCompareResult(n, rule)).ToArray();
+                    return ((double)tempOM.Where(n => GetCompareResult(n, rule)).Count()) / ((double)tempOM.Count());
                 case IndexType.Specail:
-                    var selectorS = (Func<int[][], RuleInfo, bool[]>)Delegate.CreateDelegate
+                    var selectorS = (Func<int[][], RuleInfo, double>)Delegate.CreateDelegate
                  (typeof(Func<int[][], RuleInfo, double>), cur);
                     return selectorS(source, rule);//直接返回结果
                 case IndexType.None:
-                    return null ;
+                    return 0;
                 default:
-                    return null ;
+                    return 0;
             }
         }
         //根据枚举类型获取对应的指标类类型
