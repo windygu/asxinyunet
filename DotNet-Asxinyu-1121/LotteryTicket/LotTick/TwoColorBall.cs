@@ -8,16 +8,22 @@ namespace LotTick
     /// <summary>
     /// 双色球彩票类
     /// </summary>
-    public class TwoColorBall:BasicLotTick,IGetHistoryData 
+    public class TwoColorBall:BasicLotTick,IGetHistoryData
     {
         /// <summary>
         /// 双色球构造函数
         /// </summary>
-        public TwoColorBall()
+        public TwoColorBall(int dataRows = 100)
         {
             //双色球有特殊的蓝球号码
             this.IsSpecailMode = true;
+            this.CalcuteRows = dataRows;
+            //获取数据集,分别填充NormalData和SpecialData 
+
         }
+
+        
+
         /// <summary>
         /// 获取所有历史数据
         /// </summary>

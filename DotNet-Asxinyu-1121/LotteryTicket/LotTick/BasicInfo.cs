@@ -11,6 +11,21 @@ namespace LotTick
     public abstract class LotIndex
     {
         /// <summary>
+        /// 计算指标所需要的邻近行的数目
+        /// </summary>
+        /// <remarks>一般只与当期相关的指标不需要邻近行,即为0</remarks>
+        /// <value>0</value>
+        public int NeedRows
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+        /// <summary>
         /// 根据该指标的规则,验证对历史数据的准确性
         /// </summary>
         /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
@@ -27,7 +42,7 @@ namespace LotTick
     /// <summary>
     /// 抽象彩票基类
     /// </summary>
-    public abstract class BasicLotTick
+    public class BasicLotTick
     {
         /// <summary>
         /// 常规号码列表
@@ -43,6 +58,77 @@ namespace LotTick
         /// 是否特殊模式,即是否存在特殊号码
         /// </summary>
         public bool IsSpecailMode { get; set; }
+
+        /// <summary>
+        /// 需要计算的数目
+        /// </summary>
+        public int CalcuteRows
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// 所有号码列表,常规号码+特殊列表
+        /// </summary>
+        public int[] AllData
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// 指标计算所需的最大行数,结合CalcuteRows获取数据行
+        /// </summary>
+        public int MaxNeedRows
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// 确定获奖等级
+        /// </summary>
+        /// <param name="prizeCount">中奖号码</param>
+        /// <param name="testNo">检测号码</param>
+        public int GetPrizeGrade(int[] prizeNo, int[][] testNo)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// 最终返回各个等级中奖号码的个数
+        /// </summary>
+        /// <param name="prizeCount">中奖号码</param>
+        /// <param name="testNoes">检测号码</param>
+        public int[] GetPrizeGrades(int[] prizeNo, int[][] testNoes)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// 根据中奖明细统计中奖金额
+        /// </summary>
+        /// <param name="prizeCount">相应的中奖号码个数</param>
+        public int GetAllPrizeReward(int[] prizeCount)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     /// <summary>
@@ -59,5 +145,12 @@ namespace LotTick
         /// 更新最近的开奖数据,自动到数据库匹配
         /// </summary>
         void UpdateRecent();
+    }
+
+    /// <summary>
+    /// 彩票兑奖等级接口
+    /// </summary>
+    public interface IPrizeGrade
+    {
     }
 }
