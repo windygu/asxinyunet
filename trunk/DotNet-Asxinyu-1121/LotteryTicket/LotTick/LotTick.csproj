@@ -46,6 +46,7 @@
     <Compile Include="BasicInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwoColorBall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="设计.cd" />
