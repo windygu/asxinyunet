@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicInfo.cs" />
+    <Compile Include="LotTickHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwoColorBall.cs" />
+    <Compile Include="指标计算.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="设计.cd" />
