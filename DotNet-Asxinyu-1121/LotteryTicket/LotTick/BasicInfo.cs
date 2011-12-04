@@ -5,6 +5,43 @@ using System.Text;
 
 namespace LotTick
 {
+    #region 比较类型枚举
+    /// <summary>
+    /// 比较类型
+    /// </summary>
+    public enum ECompareType
+    {
+        /// <summary>
+        /// 相等匹配
+        /// </summary>
+        Equal,
+
+        /// <summary>
+        /// 一定范围内,上下限:[a,b]
+        /// </summary>
+        RangeLimite,
+
+        /// <summary>
+        /// 小于或等于
+        /// </summary>
+        LessThanLimite,
+
+        /// <summary>
+        /// 大于或等于
+        /// </summary>
+        GreaterThanLimite,
+
+        /// <summary>
+        /// 包含在列表中
+        /// </summary>
+        InList,
+        /// <summary>
+        /// 不包含在列表中
+        /// </summary>
+        NotInList
+    }
+    #endregion
+
     /// <summary>
     /// 彩票指标计算抽象类
     /// </summary>
@@ -105,7 +142,8 @@ namespace LotTick
         /// <summary>
         /// 计算所有数据的指标结果
         /// </summary>
-        public int[] GetAllValue()
+        /// <param name="data">数据</param>
+        public virtual int[] GetAllValue(int[][] data)
         {
             throw new System.NotImplementedException();
         }
@@ -113,7 +151,8 @@ namespace LotTick
         /// <summary>
         /// 计算一组数据的指标结果
         /// </summary>
-        public int GetOneResult()
+        /// <param name="data">一组数据</param>
+        public virtual int GetOneResult(int[] data)
         {
             throw new System.NotImplementedException();
         }
@@ -121,8 +160,10 @@ namespace LotTick
         /// <summary>
         /// 根据该规则,对数据集进行过滤,只保留满足规则的书籍
         /// </summary>
+        /// <param name="data">所有需要过滤的数据</param>
+        /// <param name="compCoditon">比较参数</param>
         /// <returns>满足规则的数据集</returns>
-        public virtual int[][] GetFilterResult()
+        public virtual int[][] GetFilterResult(int[][] data, CompareParams compCoditon)
         {
             throw new System.NotImplementedException();
 }
@@ -131,8 +172,10 @@ namespace LotTick
         /// 根据该指标的规则,验证对历史数据的准确性
         /// </summary>
         /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
+        /// <param name="data">计算的原始数据</param>
+        /// <param name="compCoditon">比较参数</param>
         /// <returns>返回每一期的正确性</returns>
-        public virtual bool[] GetValidateResult()
+        public virtual bool[] GetValidateResult(int[][] data, LotTick.CompareParams compCoditon)
         {
             throw new System.NotImplementedException();
 }

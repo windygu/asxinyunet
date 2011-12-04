@@ -64,7 +64,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="LotteryTicket.StatisticalFilter" Collapsed="true">
+  <Class Name="LotteryTicket.StatisticalFilter">
     <Position X="8.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAACAAAAAABAAAAAAAAAAIAA=</HashCode>
@@ -172,7 +172,7 @@
       <FileName>Entities\tb_Ssq.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="LotteryTicket.CompareType" Collapsed="true">
+  <Enum Name="LotteryTicket.CompareType">
     <Position X="3" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAJAAAAgAAAAAAAAAAAAABAAAAABAAAAAA=</HashCode>
