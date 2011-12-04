@@ -18,7 +18,7 @@
   <Class Name="LotTick.LotTickHelper">
     <Position X="8.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>LotTickHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -39,12 +39,12 @@
   <Class Name="LotTick.RuleInfo">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>RuleInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.CompareParams">
-    <Position X="2.75" Y="1.5" Width="1.5" />
+    <Position X="2.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAABAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>RuleCompareParams.cs</FileName>
