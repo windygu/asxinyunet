@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicInfo.cs" />
+    <Compile Include="ErrorInfo.cs" />
     <Compile Include="LotTickHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
