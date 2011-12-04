@@ -24,24 +24,24 @@ namespace LotTick
         /// <param name="source">数据</param>
         /// <param name="rule">规则信息</param>
         /// <returns>结果列表,包括了所有的指标类型</returns>    
-        public static bool GetCompareResult(this int[] res,CompareParams compConditon,ECompareType compType)
+        public static bool[] GetCompareResult(this int[] data,CompareParams compConditon,ECompareType compType)
         {
             switch (compType)
             {
                 case ECompareType.Equal://相等比较第一个
-                    return res == compConditon.FloorLimit;
+                    return data.Select(n => n == compConditon.FloorLimit).Where (n=>n).ToArray();
                 case ECompareType.RangeLimite:
-                    return (res >= RuleParams.FloorLimit) && (res <= rule.RuleParams.CeilLimit);
+                    return data.Select(n => (n >= compConditon.FloorLimit) && (n <= compConditon.CeilLimit)).Where(n => n).ToArray();
                 case ECompareType.LessThanLimite:
-                    return res <= RuleParams.FloorLimit;
+                    return data.Select(n => n <= compConditon.FloorLimit).Where(n => n).ToArray();
                 case ECompareType.GreaterThanLimite:
-                    return res >= RuleParams.FloorLimit;
+                    return data.Select(n => n >= compConditon.FloorLimit).Where(n => n).ToArray();
                 case ECompareType.InList:
-                    return RuleParams.CompList.Contains(res);
+                    return data.Select(n => compConditon.CompList.Contains(n)).Select(n => n).ToArray();
                 case ECompareType.NotInList:
-                    return !RuleParams.CompList.Contains(res);
+                    return data.Select(n => !compConditon.CompList.Contains(n)).Select(n => n).ToArray();                  
                 default:
-                    return false;
+                    return data.Select(n=>false ).ToArray ();
             }
         }
         #endregion

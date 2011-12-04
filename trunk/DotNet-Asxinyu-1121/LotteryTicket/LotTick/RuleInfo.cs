@@ -10,5 +10,18 @@ namespace LotTick
     /// </summary>
     public class RuleInfo
     {
+        /// <summary>
+        /// 比较参数类型
+        /// </summary>
+        public CompareParams CondtionParams
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
