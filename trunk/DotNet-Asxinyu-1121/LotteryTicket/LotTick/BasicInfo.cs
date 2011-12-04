@@ -74,10 +74,68 @@ namespace LotTick
             }
         }
 
-        public void GetAllValue()
+        /// <summary>
+        /// 单期计算结果类型
+        /// </summary>
+        public EIndexResultType ResultType
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// 比较条件参数
+        /// </summary>
+        public CompareParams CompareCondition
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// 计算所有数据的指标结果
+        /// </summary>
+        public int[] GetAllValue()
         {
             throw new System.NotImplementedException();
         }
+
+        /// <summary>
+        /// 计算一组数据的指标结果
+        /// </summary>
+        public int GetOneResult()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// 根据该规则,对数据集进行过滤,只保留满足规则的书籍
+        /// </summary>
+        /// <returns>满足规则的数据集</returns>
+        public virtual int[][] GetFilterResult()
+        {
+            throw new System.NotImplementedException();
+}
+
+        /// <summary>
+        /// 根据该指标的规则,验证对历史数据的准确性
+        /// </summary>
+        /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
+        /// <returns>返回每一期的正确性</returns>
+        public virtual bool[] GetValidateResult()
+        {
+            throw new System.NotImplementedException();
+}
     }
 
     /// <summary>
@@ -209,5 +267,24 @@ namespace LotTick
     /// </summary>
     public interface IPrizeGrade
     {
+    }
+
+    /// <summary>
+    /// 指标计算结果的类型
+    /// </summary>
+    public enum EIndexResultType
+    {
+        /// <summary>
+        /// 单个值
+        /// </summary>
+        Single = 0,
+        /// <summary>
+        /// 多个值
+        /// </summary>
+        List = 1,
+        /// <summary>
+        /// 键值对
+        /// </summary>
+        Dickeys = 2,
     }
 }

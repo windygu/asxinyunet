@@ -47,8 +47,10 @@
     <Compile Include="LotTickHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleCompareParams.cs" />
+    <Compile Include="RuleInfo.cs" />
     <Compile Include="TwoColorBall.cs" />
-    <Compile Include="指标计算.cs" />
+    <Compile Include="Index_和值.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="设计.cd" />
