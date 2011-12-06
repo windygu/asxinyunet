@@ -13,14 +13,14 @@ namespace LotTick
         public Index_和值(RuleInfo ruleInfo)
         {
             this.RuleInfoParams = ruleInfo;
-            this.ResultType = EIndexResultType.Single;         
+            this.CurrentMode = EIndexMode.Normal;         
         }
-        public override int[] GetAllValue(int[][] data)
+        public override LotTick.LotTickData[] GetAllValue(LotTickData[] data)
         {
             //只计算所需要的行
             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
                 throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows ));
-            return data.Select(n => n.Sum()).ToArray ();
+            return data.Select(n =>n.NormalData.Sum ()).ToArray ();
         }
         public override int GetOneResult(int[] data)
         {

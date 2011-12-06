@@ -13,9 +13,9 @@ namespace LotTick
         public Index_邻号出现数(RuleInfo ruleInfo)
         {
             this.RuleInfoParams = ruleInfo;
-            this.ResultType = EIndexResultType.List ;         
+            this.CurrentMode = EIndexMode.Special ;         
         }
-        public override int[] GetAllValue(int[][] data)
+        public override LotTick.LotTickData[] GetAllValue(int[][] data)
         {
             //只计算所需要的行
             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )

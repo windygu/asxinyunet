@@ -86,5 +86,19 @@ namespace LotTick
             {
             }
         }
+
+        /// <summary>
+        /// 指标当前的计算模式
+        /// </summary>
+        public EIndexMode CurrentIndexMode
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
