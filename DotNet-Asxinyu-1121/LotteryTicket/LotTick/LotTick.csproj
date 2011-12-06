@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BasicInfo.cs" />
     <Compile Include="ErrorInfo.cs" />
+    <Compile Include="ExtendsExpress.cs" />
     <Compile Include="LotTickHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

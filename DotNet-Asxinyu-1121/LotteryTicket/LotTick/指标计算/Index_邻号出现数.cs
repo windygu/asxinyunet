@@ -6,33 +6,37 @@ using System.Text;
 namespace LotTick
 {
     /// <summary>
-    /// 序列和值
+    /// 上期的邻号出现个数
     /// </summary>
-    public class Index_和值 : LotIndex
+    public class Index_邻号出现数 : LotIndex
     {
-        public Index_和值(RuleInfo ruleInfo)
+        public Index_邻号出现数(RuleInfo ruleInfo)
         {
             this.RuleInfoParams = ruleInfo;
-            this.ResultType = EIndexResultType.Single;         
+            this.ResultType = EIndexResultType.List ;         
         }
         public override int[] GetAllValue(int[][] data)
         {
             //只计算所需要的行
             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
-                throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows ));
-            return data.Select(n => n.Sum()).ToArray ();
-        }
-        public override int GetOneResult(int[] data)
-        {
-            return data.Sum();
+                throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows ));               
+            int[] res = new int[data.GetLength(0) - this.RuleInfoParams.NeedRows]; 
+            for (int i = 0; i < res.Length ; i++)
+            {
+                res[i] = data[i + 1].Index_S邻号出现个数(data[i]);
+            }
+            return res;
         }
         public override int[][] GetFilterResult(int[][] data)
         {
-            return data.Where(n => (n.Sum().GetCompareResult(this.RuleInfoParams))).ToArray();
+            //只需要最近的期数数据即可
+            int[] lastData = data[data.GetLength(0) - 1];
+            return data.Where(n => (n.Index_S邻号出现个数(lastData)).
+                GetCompareResult (this.RuleInfoParams)).ToArray();
         }
         public override bool[] GetValidateResult(int[][] data)
         {
-            return data.Select(n => (n.Sum().GetCompareResult(this.RuleInfoParams))).ToArray();
+            return GetAllValue(data).Select(n => n.GetCompareResult(this.RuleInfoParams)).ToArray();
         }
     }
 }
