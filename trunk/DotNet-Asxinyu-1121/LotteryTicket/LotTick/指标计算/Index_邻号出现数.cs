@@ -15,7 +15,7 @@ namespace LotTick
             this.RuleInfoParams = ruleInfo;
             this.CurrentMode = EIndexMode.Special ;         
         }
-        public override LotTick.LotTickData[] GetAllValue(int[][] data)
+        public override int[] GetAllValue(LotTickData[] data)
         {
             //只计算所需要的行
             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
@@ -23,7 +23,7 @@ namespace LotTick
             int[] res = new int[data.GetLength(0) - this.RuleInfoParams.NeedRows]; 
             for (int i = 0; i < res.Length ; i++)
             {
-                res[i] = data[i + 1].Index_S邻号出现个数(data[i]);
+                res[i] = data[i + 1].NormalData.Index_S邻号出现个数(data[i].NormalData );
             }
             return res;
         }
@@ -34,9 +34,9 @@ namespace LotTick
             return data.Where(n => (n.Index_S邻号出现个数(lastData)).
                 GetCompareResult (this.RuleInfoParams)).ToArray();
         }
-        public override bool[] GetValidateResult(int[][] data)
-        {
-            return GetAllValue(data).Select(n => n.GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
+        //public override bool[] GetValidateResult(int[][] data)
+        //{
+        //    return GetAllValue(data).Select(n => n.GetCompareResult(this.RuleInfoParams)).ToArray();
+        //}
     }
 }
