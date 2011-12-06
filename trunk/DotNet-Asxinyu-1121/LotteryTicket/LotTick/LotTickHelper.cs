@@ -24,24 +24,45 @@ namespace LotTick
         /// <param name="source">数据</param>
         /// <param name="rule">规则信息</param>
         /// <returns>结果列表,包括了所有的指标类型</returns>    
-        public static bool[] GetCompareResult(this int[] data,CompareParams compConditon,ECompareType compType)
+        public static bool[] GetCompareResult(this int[] data,RuleInfo ruleInfo)
         {
-            switch (compType)
+            switch (ruleInfo.CompareRule)
             {
                 case ECompareType.Equal://相等比较第一个
-                    return data.Select(n => n == compConditon.FloorLimit).Where (n=>n).ToArray();
+                    return data.Select(n => n == ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
                 case ECompareType.RangeLimite:
-                    return data.Select(n => (n >= compConditon.FloorLimit) && (n <= compConditon.CeilLimit)).Where(n => n).ToArray();
+                    return data.Select(n => (n >= ruleInfo.CondtionParams.FloorLimit) && (n <= ruleInfo.CondtionParams.CeilLimit)).Where(n => n).ToArray();
                 case ECompareType.LessThanLimite:
-                    return data.Select(n => n <= compConditon.FloorLimit).Where(n => n).ToArray();
+                    return data.Select(n => n <= ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
                 case ECompareType.GreaterThanLimite:
-                    return data.Select(n => n >= compConditon.FloorLimit).Where(n => n).ToArray();
+                    return data.Select(n => n >= ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
                 case ECompareType.InList:
-                    return data.Select(n => compConditon.CompList.Contains(n)).Select(n => n).ToArray();
+                    return data.Select(n => ruleInfo.CondtionParams.CompList.Contains(n)).Select(n => n).ToArray();
                 case ECompareType.NotInList:
-                    return data.Select(n => !compConditon.CompList.Contains(n)).Select(n => n).ToArray();                  
+                    return data.Select(n => !ruleInfo.CondtionParams.CompList.Contains(n)).Select(n => n).ToArray();                  
                 default:
                     return data.Select(n=>false ).ToArray ();
+            }
+        }
+
+        public static bool GetCompareResult(this int data, RuleInfo ruleInfo)
+        {
+            switch (ruleInfo.CompareRule)
+            {
+                case ECompareType.Equal://相等比较第一个
+                    return data == ruleInfo.CondtionParams.FloorLimit;
+                case ECompareType.RangeLimite:
+                    return (data >= ruleInfo.CondtionParams.FloorLimit) && (data <= ruleInfo.CondtionParams.CeilLimit) ;
+                case ECompareType.LessThanLimite:
+                    return data<= ruleInfo.CondtionParams.FloorLimit ;
+                case ECompareType.GreaterThanLimite:
+                    return data >= ruleInfo.CondtionParams.FloorLimit ;
+                case ECompareType.InList:
+                    return ruleInfo.CondtionParams.CompList.Contains(data );
+                case ECompareType.NotInList:
+                    return !ruleInfo.CondtionParams.CompList.Contains(data );
+                default:
+                    return false;
             }
         }
         #endregion
