@@ -51,7 +51,8 @@
     <Compile Include="RuleCompareParams.cs" />
     <Compile Include="RuleInfo.cs" />
     <Compile Include="TwoColorBall.cs" />
-    <Compile Include="Index_和值.cs" />
+    <Compile Include="指标计算\Index_和值.cs" />
+    <Compile Include="指标计算\Index_邻号出现数.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="设计.cd" />

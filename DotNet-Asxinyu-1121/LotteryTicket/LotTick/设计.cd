@@ -25,8 +25,8 @@
   <Class Name="LotTick.Index_和值">
     <Position X="4.5" Y="3.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAACAA=</HashCode>
-      <FileName>Index_和值.cs</FileName>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>指标计算\Index_和值.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.LotIndex">
