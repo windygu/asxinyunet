@@ -79,37 +79,8 @@ namespace LotTick
     /// <summary>
     /// 彩票指标计算抽象类
     /// </summary>
-    public abstract class LotIndex
+    public class LotIndex
     {
-        /// <summary>
-        /// 计算指标所需要的邻近行的数目
-        /// </summary>
-        /// <remarks>一般只与当期相关的指标不需要邻近行,即为0</remarks>
-        /// <value>0</value>
-        public int NeedRows
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// 需要计算的数目
-        /// </summary>
-        public int CalcuteRows
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
 
         /// <summary>
         /// 单期计算结果类型
@@ -126,9 +97,9 @@ namespace LotTick
         }
 
         /// <summary>
-        /// 比较条件参数
+        /// 比较规则对象
         /// </summary>
-        public CompareParams CompareCondition
+        public RuleInfo RuleInfoParams
         {
             get
             {
@@ -163,7 +134,7 @@ namespace LotTick
         /// <param name="data">所有需要过滤的数据</param>
         /// <param name="compCoditon">比较参数</param>
         /// <returns>满足规则的数据集</returns>
-        public virtual int[][] GetFilterResult(int[][] data, CompareParams compCoditon)
+        public virtual int[][] GetFilterResult(int[][] data)
         {
             throw new System.NotImplementedException();
 }
@@ -173,9 +144,8 @@ namespace LotTick
         /// </summary>
         /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
         /// <param name="data">计算的原始数据</param>
-        /// <param name="compCoditon">比较参数</param>
         /// <returns>返回每一期的正确性</returns>
-        public virtual bool[] GetValidateResult(int[][] data, LotTick.CompareParams compCoditon)
+        public virtual bool[] GetValidateResult(int[][] data)
         {
             throw new System.NotImplementedException();
 }
@@ -330,4 +300,41 @@ namespace LotTick
         /// </summary>
         Dickeys = 2,
     }
+
+    #region 比较类型枚举
+    /// <summary>
+    /// 比较类型
+    /// </summary>
+    public enum CompareType
+    {
+        /// <summary>
+        /// 相等匹配
+        /// </summary>
+        Equal,
+
+        /// <summary>
+        /// 一定范围内,上下限:[a,b]
+        /// </summary>
+        RangeLimite,
+
+        /// <summary>
+        /// 小于或等于
+        /// </summary>
+        LessThanLimite,
+
+        /// <summary>
+        /// 大于或等于
+        /// </summary>
+        GreaterThanLimite,
+
+        /// <summary>
+        /// 包含在列表中
+        /// </summary>
+        InList,
+        /// <summary>
+        /// 不包含在列表中
+        /// </summary>
+        NotInList
+    }
+    #endregion
 }

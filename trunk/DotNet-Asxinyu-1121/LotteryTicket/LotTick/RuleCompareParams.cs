@@ -13,7 +13,7 @@ namespace LotTick
         /// <summary>
         /// 参数类构造函数
         /// </summary>
-        /// <param name="conditions">条件字符串形式,格式：2-2-1,2,3-2,3</param>
+        /// <param name="IndexName">条件字符串形式,格式：2-2-1,2,3-2,3</param>
         public CompareParams(string conditions)
         {
             throw new System.NotImplementedException();
