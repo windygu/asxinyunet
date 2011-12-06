@@ -15,7 +15,7 @@ namespace LotTick
             this.RuleInfoParams = ruleInfo;
             this.CurrentMode = EIndexMode.Normal;         
         }
-        public override LotTick.LotTickData[] GetAllValue(LotTickData[] data)
+        public override int[] GetAllValue(LotTickData[] data)
         {
             //只计算所需要的行
             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
