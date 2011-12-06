@@ -83,9 +83,9 @@ namespace LotTick
     {
 
         /// <summary>
-        /// 单期计算结果类型
+        /// 当期的使用模式
         /// </summary>
-        public EIndexResultType ResultType
+        public EIndexMode CurrentMode
         {
             get
             {
@@ -114,7 +114,7 @@ namespace LotTick
         /// 计算所有数据的指标结果
         /// </summary>
         /// <param name="data">数据</param>
-        public virtual int[] GetAllValue(int[][] data)
+        public virtual int[] GetAllValue(LotTick.LotTickData[] data)
         {
             throw new System.NotImplementedException();
         }
@@ -157,14 +157,9 @@ namespace LotTick
     public class BasicLotTick
     {
         /// <summary>
-        /// 常规号码列表
+        /// 号码数据列表
         /// </summary>
-        public int[][] NormalData { get; set; }
-
-        /// <summary>
-        /// 特殊号码
-        /// </summary>
-        public int SpecialData { get; set; }
+        public LotTick.LotTickData[] LotData { get; set; }
 
         /// <summary>
         /// 是否特殊模式,即是否存在特殊号码
@@ -283,22 +278,22 @@ namespace LotTick
     }
 
     /// <summary>
-    /// 指标计算结果的类型
+    /// 指标计算的模式
     /// </summary>
-    public enum EIndexResultType
+    public enum EIndexMode
     {
         /// <summary>
-        /// 单个值
+        /// 常规模式,即对普通号码操作
         /// </summary>
-        Single = 0,
+        Normal = 0,
         /// <summary>
-        /// 多个值
+        /// 特殊模式,即对特殊号码操作
         /// </summary>
-        List = 1,
+        Special = 1,
         /// <summary>
-        /// 键值对
+        /// 混合模式,同时操作所有数据
         /// </summary>
-        Dickeys = 2,
+        Mix = 2,
     }
 
     #region 比较类型枚举
@@ -337,4 +332,19 @@ namespace LotTick
         NotInList
     }
     #endregion
+
+    /// <summary>
+    /// 每期的彩票数据,重新封装一下
+    /// </summary>
+    public class LotTickData
+    {
+        /// <summary>
+        /// 常规数据
+        /// </summary>
+        public int[] NormalData;
+        /// <summary>
+        /// 特殊数据
+        /// </summary>
+        public int SpecialData;
+    }
 }
