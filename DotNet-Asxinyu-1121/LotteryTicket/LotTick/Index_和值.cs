@@ -28,7 +28,11 @@ namespace LotTick
         }
         public override int[][] GetFilterResult(int[][] data)
         {
-            return base.GetFilterResult(data);
+            return data.Where(n => (n.Sum().GetCompareResult(this.RuleInfoParams))).ToArray();
+        }
+        public override bool[] GetValidateResult(int[][] data)
+        {
+            
         }
     }
 }

@@ -34,7 +34,7 @@ namespace LotTick
         /// <summary>
         /// 比例类型
         /// </summary>
-        public CompareType CompareRuleName
+        public ECompareType CompareRule
         {
             get
             {
