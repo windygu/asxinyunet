@@ -32,7 +32,7 @@ namespace LotTick
         }
         public override bool[] GetValidateResult(int[][] data)
         {
-            
+            return data.Select(n => (n.Sum().GetCompareResult(this.RuleInfoParams))).ToArray();
         }
     }
 }
