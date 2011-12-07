@@ -101,7 +101,7 @@ namespace LotTick
         /// 计算一组数据的指标结果
         /// </summary>
         /// <param name="data">一组数据</param>
-        public virtual int GetOneResult(int[] data)
+        public virtual int GetOneResult(LotTickData data)
         {
             throw new System.NotImplementedException();
         }
@@ -112,7 +112,7 @@ namespace LotTick
         /// <param name="data">所有需要过滤的数据</param>
         /// <param name="compCoditon">比较参数</param>
         /// <returns>满足规则的数据集</returns>
-        public virtual int[][] GetFilterResult(int[][] data)
+        public virtual LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
         {
             throw new System.NotImplementedException();
         }
@@ -123,7 +123,7 @@ namespace LotTick
         /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
         /// <param name="data">计算的原始数据</param>
         /// <returns>返回每一期的正确性</returns>
-        public virtual bool[] GetValidateResult(int[][] data)
+        public virtual bool[] GetValidateResult(LotTickData[] data)
         {
             throw new System.NotImplementedException();
         }
