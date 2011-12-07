@@ -624,10 +624,11 @@ namespace LotteryTicket
         static string GetDgvCalculateResult(int[][] data,tb_Rules ruleMode)
         {           
             //再根据ruleMode判断规则类别，调用相应的方法进行计算                       
-            RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
-            RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,true ,ruleMode.DataRows );
-            double res = data.Static_单个指标频率(rule);
-            return (res * 100).ToString("F4");            
+            //RuleCompareParams ruleParams = new RuleCompareParams(ruleMode.RuleCompareParams);//参数
+            //RuleInfo rule = new RuleInfo(ruleParams, ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,true ,ruleMode.DataRows );
+            //double res = 0;// data.Static_单个指标频率(rule);
+            //return (res * 100).ToString("F4");  
+            return string.Empty;
         }
         #endregion
 
