@@ -140,11 +140,6 @@ namespace LotTick
         public LotTick.LotTickData[] LotData { get; set; }
 
         /// <summary>
-        /// 需要计算的数目
-        /// </summary>
-        public int CalcuteRows { get; set; }
-
-        /// <summary>
         /// 指标计算所需的最大行数,结合CalcuteRows获取数据行
         /// </summary>
         public int MaxNeedRows { get; set; }
@@ -153,8 +148,9 @@ namespace LotTick
         /// 确定获奖等级
         /// </summary>
         /// <param name="prizeCount">中奖号码</param>
+        /// <param name="prizeNo">中奖号码</param>
         /// <param name="testNo">检测号码</param>
-        public virtual int GetPrizeGrade(int[] prizeNo, int[][] testNo)
+        public virtual int GetPrizeGrade(LotTick.LotTickData prizeNo, LotTick.LotTickData testNo)
         {
             throw new System.NotImplementedException();
         }
@@ -163,8 +159,9 @@ namespace LotTick
         /// 最终返回各个等级中奖号码的个数
         /// </summary>
         /// <param name="prizeCount">中奖号码</param>
+        /// <param name="prizeNo">中奖号码</param>
         /// <param name="testNoes">检测号码</param>
-        public virtual int[] GetPrizeGrades(int[] prizeNo, int[][] testNoes)
+        public virtual int[] GetAllPrizeGradesCount(LotTick.LotTickData prizeNo, LotTick.LotTickData[] testNoes)
         {
             throw new System.NotImplementedException();
         }
@@ -181,7 +178,8 @@ namespace LotTick
         /// <summary>
         /// 验证规则列表,根据规则列表的信息进行验证,得到结果
         /// </summary>
-        public virtual void ValidateRuleList()
+        /// <param name="ruleList">规则列表</param>
+        public virtual void ValidateRuleList(LotTick.RuleInfo[] ruleList)
         {
             throw new System.NotImplementedException();
         }
@@ -189,7 +187,8 @@ namespace LotTick
         /// <summary>
         /// 根据规则列表进行过滤
         /// </summary>
-        public virtual void FilteByRuleList()
+        /// <param name="ruleList">规则列表</param>
+        public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList)
         {
             throw new System.NotImplementedException();
         }
