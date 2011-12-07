@@ -11,7 +11,8 @@
     <RootNamespace>LotTick</RootNamespace>
     <AssemblyName>LotTick</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -37,8 +38,9 @@
     <Reference Include="KwCombinatorics">
       <HintPath>..\..\ResouceFiles\Lib\KwCombinatorics.dll</HintPath>
     </Reference>
-    <Reference Include="NewLife.Core">
-      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
+    <Reference Include="NewLife.Core, Version=3.3.4332.20805, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,8 +49,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XCode">
-      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
+    <Reference Include="XCode, Version=8.3.4332.25847, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,12 +74,15 @@
     <Compile Include="指标计算\Index_邻号出现数.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="设计.cd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LotteryTicket.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="NewLife.Core.dll" />
+    <Content Include="XCode.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
