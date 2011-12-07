@@ -11,18 +11,18 @@ namespace DesignPattern
     /// </summary>
     public class DelegateExample
     {
-        static void Main(string[] args)
-        {
-            Cat cat = new Cat("Tom");
+        //static void Main(string[] args)
+        //{
+        //    Cat cat = new Cat("Tom");
 
-            Mouse mouseJerry = new Mouse("Jerry");
-            Mouse mouseJack = new Mouse("Jack");
+        //    Mouse mouseJerry = new Mouse("Jerry");
+        //    Mouse mouseJack = new Mouse("Jack");
          
-            cat.CatShout += new Cat.CatEventHander(mouseJack.Run);
-            cat.CatShout += new Cat.CatEventHander(mouseJerry.Run);
-            cat.Shout();
-            Console.Read();
-        }
+        //    cat.CatShout += new Cat.CatEventHander(mouseJack.Run);
+        //    cat.CatShout += new Cat.CatEventHander(mouseJerry.Run);
+        //    cat.Shout();
+        //    Console.Read();
+        //}
     }
         
     public class Cat
