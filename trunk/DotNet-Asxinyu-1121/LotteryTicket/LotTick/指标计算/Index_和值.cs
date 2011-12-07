@@ -9,18 +9,23 @@ namespace LotTick
     /// 序列和值
     /// </summary>
     public class Index_和值 : LotIndex
-    {
-        public Index_和值(RuleInfo ruleInfo)
-        {
-            this.RuleInfoParams = ruleInfo;
-            this.CurrentMode = EIndexMode.Normal;         
-        }
+    {       
         public override int[] GetAllValue(LotTickData[] data)
         {
             //只计算所需要的行
             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
                 throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows ));
-            return data.Select(n =>n.NormalData.Sum ()).ToArray ();
+            switch (this.RuleInfoParams.CurrentMode )
+            {
+                case EIndexMode.Normal:
+                    return data.Select(n => n.NormalData.Sum()).ToArray();                    
+                case EIndexMode.Special:
+                    return data.Select(n => n.SpecialData).ToArray();
+                case EIndexMode.Mix:
+                    return data.Select(n => n.NormalData.Sum() + n.SpecialData).ToArray();
+                default:
+                    return null;
+            }            
         }
         public override int GetOneResult(int[] data)
         {

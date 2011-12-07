@@ -39,21 +39,19 @@ namespace DesignPattern
                 }
                 string t = new String(cs);
                 //逐一添加到上述集合中
-              
-
+                list.Add(t);
+                ht.Add(t, string.Empty);
+                link.AddLast(t);
             }            
+            //分别测试
             Stopwatch sw = new Stopwatch();
             sw.Start();
             String str = null;
             for (int i = 0; i < max; i++)
             {
-                str = ss[i];
-                if (!ht.ContainsKey(str))
-                {
-                    ht.Add(str, str);
+                str = list[i];
+                if(list.Contains (str ))
 
-                    list.Add(str);
-                }
             }
             sw.Stop();
             Console.WriteLine("双列表：{0}", sw.Elapsed);

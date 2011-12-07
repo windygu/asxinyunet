@@ -23,9 +23,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_邻号出现数">
-    <Position X="5.5" Y="5" Width="1.75" />
+    <Position X="5.5" Y="5.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_邻号出现数.cs</FileName>
       <NewMemberFileName>指标计算\Index_和值.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -33,19 +33,19 @@
   <Class Name="LotTick.LotIndex">
     <Position X="4.5" Y="2.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAgAAAAISAAAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAgAAAAASAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>BasicInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.RuleInfo">
     <Position X="2.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAIAAAAAAAAAAAAAAABAAAAAAAQAAAAQACA=</HashCode>
+      <HashCode>AAgAAAAAAAIAAAAAAAAAAAAAIABAAAAAAAQAAAAQACA=</HashCode>
       <FileName>RuleInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.CompareParams">
-    <Position X="2.5" Y="3.25" Width="1.75" />
+    <Position X="2.5" Y="3" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAABAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>RuleCompareParams.cs</FileName>
@@ -59,7 +59,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_和值">
-    <Position X="3.5" Y="5" Width="1.75" />
+    <Position X="3.5" Y="5.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>指标计算\Index_和值.cs</FileName>

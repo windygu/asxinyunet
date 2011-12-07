@@ -52,16 +52,8 @@ namespace LotTick
         /// </summary>
         /// <remarks>一般只与当期相关的指标不需要邻近行,即为0</remarks>
         /// <value>0</value>
-        public int NeedRows
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int NeedRows { get; set; }
+
         /// <summary>
         /// 根据该指标的规则,验证对历史数据的准确性
         /// </summary>
@@ -73,7 +65,7 @@ namespace LotTick
         /// 根据该规则,对数据集进行过滤,只保留满足规则的书籍
         /// </summary>
         /// <returns>满足规则的数据集</returns>
-        public abstract int[][] GetFilterResult();       
+        public abstract int[][] GetFilterResult();
     }
 
     /// <summary>
@@ -81,34 +73,20 @@ namespace LotTick
     /// </summary>
     public class LotIndex
     {
-
         /// <summary>
-        /// 当期的使用模式
-        /// </summary>
-        public EIndexMode CurrentMode
+        /// 初始化,传入参数对象
+        /// </summary>        
+        public LotIndex(RuleInfo ruleInfo)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            this.RuleInfoParams = ruleInfo;
         }
-
+        public LotIndex()
+        {
+        }
         /// <summary>
         /// 比较规则对象
         /// </summary>
-        public RuleInfo RuleInfoParams
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public RuleInfo RuleInfoParams { get; set; }
 
         /// <summary>
         /// 计算所有数据的指标结果
@@ -137,7 +115,7 @@ namespace LotTick
         public virtual int[][] GetFilterResult(int[][] data)
         {
             throw new System.NotImplementedException();
-}
+        }
 
         /// <summary>
         /// 根据该指标的规则,验证对历史数据的准确性
@@ -148,7 +126,7 @@ namespace LotTick
         public virtual bool[] GetValidateResult(int[][] data)
         {
             throw new System.NotImplementedException();
-}
+        }
     }
 
     /// <summary>
@@ -169,44 +147,17 @@ namespace LotTick
         /// <summary>
         /// 需要计算的数目
         /// </summary>
-        public int CalcuteRows
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int CalcuteRows { get; set; }
 
         /// <summary>
         /// 所有号码列表,常规号码+特殊列表
         /// </summary>
-        public int[] AllData
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int[] AllData { get; set; }
 
         /// <summary>
         /// 指标计算所需的最大行数,结合CalcuteRows获取数据行
         /// </summary>
-        public int MaxNeedRows
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int MaxNeedRows { get; set; }
 
         /// <summary>
         /// 确定获奖等级
