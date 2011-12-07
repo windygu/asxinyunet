@@ -9,12 +9,7 @@ namespace LotTick
     /// 上期的邻号出现个数
     /// </summary>
     public class Index_邻号出现数 : LotIndex
-    {
-        public Index_邻号出现数(RuleInfo ruleInfo)
-        {
-            this.RuleInfoParams = ruleInfo;
-            this.CurrentMode = EIndexMode.Special ;         
-        }
+    {        
         public override int[] GetAllValue(LotTickData[] data)
         {
             //只计算所需要的行

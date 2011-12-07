@@ -100,5 +100,19 @@ namespace LotTick
             {
             }
         }
+
+        /// <summary>
+        /// 当期的使用模式
+        /// </summary>
+        public EIndexMode CurrentMode
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
