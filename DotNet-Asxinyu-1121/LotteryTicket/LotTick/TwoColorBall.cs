@@ -16,13 +16,10 @@ namespace LotTick
         public TwoColorBall(int dataRows = 100)
         {
             //双色球有特殊的蓝球号码
-            this.IsSpecailMode = true;
+            //this.IsSpecailMode = true;
             this.CalcuteRows = dataRows;
             //获取数据集,分别填充NormalData和SpecialData 
-
-        }
-
-        
+        }               
 
         /// <summary>
         /// 获取所有历史数据
@@ -36,7 +33,6 @@ namespace LotTick
         /// </summary>
         public void UpdateRecent()
         {
-
         }
     }
 }
