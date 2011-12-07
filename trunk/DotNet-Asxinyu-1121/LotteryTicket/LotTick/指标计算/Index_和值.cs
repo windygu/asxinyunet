@@ -26,18 +26,28 @@ namespace LotTick
                 default:
                     return null;
             }            
-        }
-        public override int GetOneResult(int[] data)
+        }        
+        public override LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
         {
-            return data.Sum();
+             if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
+                throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows ));
+             switch (this.RuleInfoParams.CurrentMode)
+             {
+                 case EIndexMode.Normal:
+                     return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
+                 case EIndexMode.Special:
+                     return data.Where(n => (n.SpecialData).GetCompareResult(this.RuleInfoParams)).ToArray();
+                 case EIndexMode.Mix:
+                     return data.Where(n => (n.NormalData.Sum() + n.SpecialData).GetCompareResult(this.RuleInfoParams)).ToArray();
+                 default:
+                     return null;
+             }
         }
-        public override int[][] GetFilterResult(int[][] data)
+        public override bool[] GetValidateResult(LotTickData[] data)
         {
-            return data.Where(n => (n.Sum().GetCompareResult(this.RuleInfoParams))).ToArray();
-        }
-        public override bool[] GetValidateResult(int[][] data)
-        {
-            return data.Select(n => (n.Sum().GetCompareResult(this.RuleInfoParams))).ToArray();
+            if (data.GetLength(0) < RuleInfoParams.CalcuteRows)
+                throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows));
+            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
         }
     }
 }

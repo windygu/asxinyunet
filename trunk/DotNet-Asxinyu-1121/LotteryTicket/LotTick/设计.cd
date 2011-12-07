@@ -24,6 +24,9 @@
   </Class>
   <Class Name="LotTick.Index_邻号出现数">
     <Position X="5.5" Y="5.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_邻号出现数.cs</FileName>
@@ -60,8 +63,11 @@
   </Class>
   <Class Name="LotTick.Index_和值">
     <Position X="3.5" Y="5.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_和值.cs</FileName>
     </TypeIdentifier>
   </Class>
