@@ -6,16 +6,13 @@ using System.Text;
 namespace LotTick
 {
     /// <summary>
-    /// 上期的邻号出现个数
+    /// 上期的邻号出现个数（红球）
     /// </summary>
-    public class Index_邻号出现数 : LotIndex
+    public class Index_红邻号出现数 : LotIndex
     {
         public override int[] GetAllValue(LotTickData[] data)
-        {
-            //只计算所需要的行
-            if (data.GetLength(0) < RuleInfoParams.CalcuteRows )
-                throw new Exception(string.Format(ErrorInfo.Error_001, data.GetLength(0), RuleInfoParams.CalcuteRows ));               
-            int[] res = new int[data.GetLength(0) - this.RuleInfoParams.NeedRows]; 
+        {         
+            int[] res = new int[data.Length  - this.RuleInfoParams.NeedRows]; 
             for (int i = 0; i < res.Length ; i++)
             {
                 res[i] = data[i + 1].NormalData.Index_S邻号出现个数(data[i].NormalData );
@@ -24,14 +21,13 @@ namespace LotTick
         }
         public override LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
         {
-            //只需要最近的期数数据即可
-            int[] lastData = data[data.GetLength(0) - 1];
-            return data.Where(n => (n.Index_S邻号出现个数(lastData)).
+            LotTickData lastData = data[data.Length - 1];
+            return data.Where(n => (n.NormalData.Index_S邻号出现个数(lastData.NormalData )).
                 GetCompareResult (this.RuleInfoParams)).ToArray();
         }
-        //public override bool[] GetValidateResult(int[][] data)
-        //{
-        //    return GetAllValue(data).Select(n => n.GetCompareResult(this.RuleInfoParams)).ToArray();
-        //}
+        public override bool[] GetValidateResult(LotTickData[] data)
+        {
+            return GetAllValue(data).Select(n => n.GetCompareResult(this.RuleInfoParams)).ToArray();
+        }
     }
 }

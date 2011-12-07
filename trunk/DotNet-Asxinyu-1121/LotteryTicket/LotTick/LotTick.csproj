@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="KwCombinatorics">
+      <HintPath>..\..\ResouceFiles\Lib\KwCombinatorics.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +47,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="XCode">
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicInfo.cs" />
@@ -52,11 +61,22 @@
     <Compile Include="RuleCompareParams.cs" />
     <Compile Include="RuleInfo.cs" />
     <Compile Include="TwoColorBall.cs" />
+    <Compile Include="实体\tb_IndexInfo.Biz.cs" />
+    <Compile Include="实体\tb_IndexInfo.cs" />
+    <Compile Include="实体\tb_Rules.Biz.cs" />
+    <Compile Include="实体\tb_Rules.cs" />
+    <Compile Include="实体\tb_Ssq.Biz.cs" />
+    <Compile Include="实体\tb_Ssq.cs" />
     <Compile Include="指标计算\Index_和值.cs" />
     <Compile Include="指标计算\Index_邻号出现数.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="设计.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LotteryTicket.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

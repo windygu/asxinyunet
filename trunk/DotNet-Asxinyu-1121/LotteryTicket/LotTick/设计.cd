@@ -3,12 +3,12 @@
   <Class Name="LotTick.BasicLotTick">
     <Position X="0.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAQACIAIAAEAAAAAAAAAAAAAAABAAgAAAACAEA=</HashCode>
+      <HashCode>CAAAAAAQACIAIAAEAAAAAAAAAAAAAAABAAgAAAAAAAA=</HashCode>
       <FileName>BasicInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.TwoColorBall">
-    <Position X="0.5" Y="4" Width="1.75" />
+    <Position X="0.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAAA=</HashCode>
       <FileName>TwoColorBall.cs</FileName>
@@ -22,16 +22,24 @@
       <FileName>LotTickHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotTick.Index_邻号出现数">
-    <Position X="5.5" Y="5.5" Width="1.75" />
+  <Class Name="LotTick.Index_红邻号出现数">
+    <Position X="5.25" Y="5.25" Width="1.75" />
+    <InheritanceLine Type="LotTick.LotIndex" ManuallyRouted="true">
+      <Path>
+        <Point X="5.375" Y="4.567" />
+        <Point X="5.375" Y="5.062" />
+        <Point X="6.125" Y="5.062" />
+        <Point X="6.125" Y="5.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_邻号出现数.cs</FileName>
       <NewMemberFileName>指标计算\Index_和值.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.LotIndex">
-    <Position X="4.5" Y="2.25" Width="1.75" />
+    <Position X="4.5" Y="2.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAgAAAAASAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>BasicInfo.cs</FileName>
@@ -40,7 +48,7 @@
   <Class Name="LotTick.RuleInfo">
     <Position X="2.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAIAAAAAAAAAAAAAIABAAAAAAAQAAAAQACA=</HashCode>
+      <HashCode>AAgAAAAAAAIAAAAAAAAAAAAAAABAAAAAAAQAAAAQACA=</HashCode>
       <FileName>RuleInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -58,8 +66,8 @@
       <FileName>ExtendsExpress.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotTick.Index_和值">
-    <Position X="3.5" Y="5.5" Width="1.75" />
+  <Class Name="LotTick.Index_红和值">
+    <Position X="3.25" Y="5.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_和值.cs</FileName>

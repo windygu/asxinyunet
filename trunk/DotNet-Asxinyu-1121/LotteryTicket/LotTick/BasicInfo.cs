@@ -140,19 +140,9 @@ namespace LotTick
         public LotTick.LotTickData[] LotData { get; set; }
 
         /// <summary>
-        /// 是否特殊模式,即是否存在特殊号码
-        /// </summary>
-        public bool IsSpecailMode { get; set; }
-
-        /// <summary>
         /// 需要计算的数目
         /// </summary>
         public int CalcuteRows { get; set; }
-
-        /// <summary>
-        /// 所有号码列表,常规号码+特殊列表
-        /// </summary>
-        public int[] AllData { get; set; }
 
         /// <summary>
         /// 指标计算所需的最大行数,结合CalcuteRows获取数据行
