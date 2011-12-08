@@ -80,9 +80,9 @@ namespace LotTick
         /// <summary>
         /// 获取枚举类型的所有枚举值
         /// </summary>
-        public static List<string> GetAllEnumNames<T>()
+        public static string[] GetAllEnumNames<T>()
         {
-            return Enum.GetNames(typeof(T)).ToList();
+            return Enum.GetNames(typeof(T)).ToArray ();
         }
         #endregion            
     }

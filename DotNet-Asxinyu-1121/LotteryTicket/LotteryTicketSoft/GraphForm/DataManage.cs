@@ -50,6 +50,8 @@ namespace LotteryTicketSoft.GraphForm
         /// </summary>
         public IEntityOperate EntityOper { get; set; }
 
+        private TwoColorBall twoColorBall;
+
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
@@ -86,6 +88,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
             InitialDataGridView();
+            twoColorBall = new TwoColorBall(500);//设置计算数量
             //GetData();
         }
         #endregion
@@ -108,12 +111,12 @@ namespace LotteryTicketSoft.GraphForm
             for (int i = 0; i < btList.Count; i++) bs.Add(btList[i]);
             dgv.DataSource = bs;//绑定数据
             //移除不需要的列，可以设置为一个开关，根据需要是否打开
-            //if (dgv.Columns.Contains(tb_Rules._.Remark.Description))   dgv.Columns.Remove(tb_Rules._.Remark.Description);           
-            //if (dgv.Columns.Contains(tb_Rules._.Remark.Name ))  dgv.Columns.Remove(tb_Rules._.Remark.Name);         
-            if (dgv.Columns.Contains(tb_Rules._.SchemeId .Description))  dgv.Columns.Remove(tb_Rules._.SchemeId.Description);        
-            if (dgv.Columns.Contains(tb_Rules._.SchemeId.Name)) dgv.Columns.Remove(tb_Rules._.SchemeId.Name);          
-            if (dgv.Columns.Contains(tb_Rules._.UpdateTime .Description))  dgv.Columns.Remove(tb_Rules._.UpdateTime.Description);    
-            if (dgv.Columns.Contains(tb_Rules._.UpdateTime.Name))   dgv.Columns.Remove(tb_Rules._.UpdateTime.Name);     
+            if (dgv.Columns.Contains(tb_Rules._.Remark.Description)) dgv.Columns.Remove(tb_Rules._.Remark.Description);           
+            if (dgv.Columns.Contains(tb_Rules._.Remark.Name)) dgv.Columns.Remove(tb_Rules._.Remark.Name);
+            //if (dgv.Columns.Contains(tb_Rules._.SchemeId.Description)) dgv.Columns.Remove(tb_Rules._.SchemeId.Description);        
+            //if (dgv.Columns.Contains(tb_Rules._.SchemeId.Name)) dgv.Columns.Remove(tb_Rules._.SchemeId.Name);          
+            if (dgv.Columns.Contains(tb_Rules._.UpdateTime.Description)) dgv.Columns.Remove(tb_Rules._.UpdateTime.Description);
+            if (dgv.Columns.Contains(tb_Rules._.UpdateTime.Name)) dgv.Columns.Remove(tb_Rules._.UpdateTime.Name);     
         }
         /// <summary>
         /// 初始化，格式控制
@@ -126,20 +129,21 @@ namespace LotteryTicketSoft.GraphForm
             dgv.Columns.Add(tb1);
             //SchemeId
             DataGridViewTextBoxColumn tbT1 = CreateTextBoxWithNames(tb_Rules._.SchemeId, tb_Rules._.SchemeId.Description);
-            tbT1.Width = 60;
+            tbT1.Width = 90;
             dgv.Columns.Add(tbT1);
-            //DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
-            //tb2.Width = 160;
-            //dgv.Columns.Add(tb2);
-            DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTickHelper.GetAllEnumNames<ECompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
+            DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTickHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
+            tb2.Width = 170;
+            dgv.Columns.Add(tb2);
+            DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTickHelper.GetAllEnumNames<ECompareType>(),
+                tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
             tb3.Width = 130;
             dgv.Columns.Add(tb3);
-            //DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
-            //tb4.Width = 80;
-            //dgv.Columns.Add(tb4);
-            //DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description);
-            //tb5.Width =60;
-            //dgv.Columns.Add(tb5);
+            DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
+            tb4.Width = 80;
+            dgv.Columns.Add(tb4);
+            DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.NeedRows, tb_Rules._.NeedRows.Description);
+            tb5.Width = 80;
+            dgv.Columns.Add(tb5);
             DataGridViewTextBoxColumn tb6 = CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description);
             tb6.Width = 80;
             dgv.Columns.Add(tb6);
@@ -159,7 +163,7 @@ namespace LotteryTicketSoft.GraphForm
             tb9.Width = 60;
             dgv.Columns.Add(tb9);            
         }
-        DataGridViewComboBoxColumn CreateComboBoxWithNames(List<string> dataSource, string dataPropertyName, string DispalyName)
+        DataGridViewComboBoxColumn CreateComboBoxWithNames(string[] dataSource, string dataPropertyName, string DispalyName)
         {
             DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
             combo.DataSource = dataSource;
@@ -214,11 +218,27 @@ namespace LotteryTicketSoft.GraphForm
         }
         #endregion
 
+        #region 获取规则列表
+        public RuleInfo[] GetRuleList()
+        {
+            RuleInfo[] rules = new RuleInfo[dgv.Rows.Count];
+            for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
+            {
+                //先得到一个tb_Rules对象,直接从数据库读取,因为是实时更新
+                tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算    
+                CompareParams ruleParams = new CompareParams(ruleMode.RuleCompareParams);//参数
+                rules[rowIndex] = new RuleInfo(ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP, ruleParams);
+            }
+            return rules;
+        }
+        #endregion
         #region 交叉验证
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
-        {
-            //double res = LotTicketHelper.CrossValidateRules(dgv);
-            //this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):"+(res * 100).ToString("F4"));
+        {            
+            //this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):"+(res * 100).ToString("F4"));           
+            bool[][] result = twoColorBall.ValidateRuleList(GetRuleList ());
+            //结果显示
         }
         #endregion
 
@@ -226,13 +246,12 @@ namespace LotteryTicketSoft.GraphForm
         //右键预测验证频率
         private void toolStripStatics_Click(object sender, EventArgs e)
         {
-            //循环读取当前列表中的规则
-            //LotTicketHelper.CalculateCurrentRow(this.dgv);
+            bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
-            //LotTicketHelper.FilterAllRows(this.dgv, LotTicketHelper.GetInitiaData());
+            LotTickData[] result = twoColorBall.FilteByRuleList (GetRuleList());
         }
         #endregion
         #endregion
