@@ -26,7 +26,7 @@ namespace LotTick
         /// <summary>序号</summary>
         [DisplayName("序号")]
         [Description("序号")]
-        [DataObjectField(true, false, false, 10)]
+        [DataObjectField(true, true, false, 10)]
         [BindColumn(1, "Id", "序号", null, "Long", 10, 0, false)]
         public virtual Int32 Id
         {

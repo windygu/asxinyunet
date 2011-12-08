@@ -11,7 +11,7 @@ using DotNet.Tools.Controls;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using LotteryTicket;
+using LotTick;
 using LotteryTicketSoft.GraphForm;
 using DotNet.Tools.Controls;
 
