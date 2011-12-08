@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\ResouceFiles\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="KwCombinatorics">
       <HintPath>..\..\ResouceFiles\Lib\KwCombinatorics.dll</HintPath>
     </Reference>
@@ -83,6 +86,12 @@
     </Content>
     <Content Include="NewLife.Core.dll" />
     <Content Include="XCode.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

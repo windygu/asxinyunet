@@ -140,9 +140,18 @@ namespace LotTick
         public LotTick.LotTickData[] LotData { get; set; }
 
         /// <summary>
-        /// 指标计算所需的最大行数,结合CalcuteRows获取数据行
+        /// 需要计算的数目
         /// </summary>
-        public int MaxNeedRows { get; set; }
+        public int CalcuteRows
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
         /// <summary>
         /// 确定获奖等级
@@ -169,8 +178,9 @@ namespace LotTick
         /// <summary>
         /// 根据中奖明细统计中奖金额
         /// </summary>
-        /// <param name="prizeCount">相应的中奖号码个数</param>
-        public virtual int GetAllPrizeReward(int[] prizeCount)
+        /// <param name="prizeNo">中奖号码</param>
+        /// <param name="testNoes">检测号码</param>
+        public virtual int GetAllPrizeReward(LotTick.LotTickData prizeNo, LotTick.LotTickData[] testNoes)
         {
             throw new System.NotImplementedException();
         }
@@ -179,7 +189,7 @@ namespace LotTick
         /// 验证规则列表,根据规则列表的信息进行验证,得到结果
         /// </summary>
         /// <param name="ruleList">规则列表</param>
-        public virtual void ValidateRuleList(LotTick.RuleInfo[] ruleList)
+        public virtual bool[][] ValidateRuleList(LotTick.RuleInfo[] ruleList)
         {
             throw new System.NotImplementedException();
         }
