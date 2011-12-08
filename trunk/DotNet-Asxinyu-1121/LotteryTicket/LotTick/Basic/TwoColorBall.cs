@@ -106,11 +106,10 @@ namespace LotTick
         /// 获取所有历史数据
         /// </summary>
         public void UpdateAll()
-        {
-            //TODO:自动获取总页数            
+        {                
             string website;//动态获取的网址				
             tb_Ssq model = new tb_Ssq();
-            int pages = 100;
+            int pages = GetAllPageNumbers ();            
             for (int i = 1; i <= pages; i++)
             {
                 //福彩 /html[1]/body[1]/table[1]/tr[7]
@@ -139,12 +138,47 @@ namespace LotTick
                 }
             }
         }
+        public int GetAllPageNumbers()
+        {
+            string allPagesPath = @"/html[1]/body[1]/table[1]/tr[23]/td[1]/p[2]/strong[1]";
+            string website = @"http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html";
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(website);
+            return Convert.ToInt32 ( doc.DocumentNode.SelectSingleNode(allPagesPath).InnerText) ;
+        }
         /// <summary>
         /// 获取最新数据
         /// </summary>
         public void UpdateRecent()
         {
-
+            string website;//动态获取的网址				
+            tb_Ssq model = new tb_Ssq();
+            int pages = GetAllPageNumbers();
+            for (int i = 1; i <= pages; i++)
+            {
+                //福彩 /html[1]/body[1]/table[1]/tr[7]
+                website = @"http://kaijiang.zhcw.com/zhcw/html/ssq/list_" + i.ToString() + ".html";
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load(website);
+                HtmlNodeCollection hc = doc.DocumentNode.SelectNodes(@"/html[1]/body[1]/table[1]")[0].SelectNodes(@"tr");
+                for (int j = 2; j < hc.Count - 1; j++)
+                {
+                    HtmlNodeCollection hc1 = hc[j].SelectNodes(@"td");
+                    model.开奖日期 = Convert.ToDateTime(hc1[0].InnerText.Trim());
+                    model.期号 = Convert.ToInt32(hc1[1].InnerText.Trim());
+                    double[] tempNo = hc1[2].InnerText.Replace("\r\n", "").Trim().ConvertStrToDoubleList(' ');
+                    model.号码1 = Convert.ToInt32(tempNo[0]);
+                    model.号码2 = Convert.ToInt32(tempNo[1]);
+                    model.号码3 = Convert.ToInt32(tempNo[2]);
+                    model.号码4 = Convert.ToInt32(tempNo[3]);
+                    model.号码5 = Convert.ToInt32(tempNo[4]);
+                    model.号码6 = Convert.ToInt32(tempNo[5]);
+                    model.蓝球 = Convert.ToInt32(tempNo[6]);
+                    if (!model.Exist(new string[] { tb_Ssq._.期号 })) model.Insert();//自动判断是否存在
+                    else return;
+                    Console.WriteLine("第 " + i.ToString() + "页，第 " + j.ToString() + " 条");
+                }
+            }
         }
         #endregion
     }
