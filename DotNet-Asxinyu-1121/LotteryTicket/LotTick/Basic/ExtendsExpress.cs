@@ -121,11 +121,7 @@ namespace LotTick
             int count = 0;
             foreach (int item in source)
             {
-                foreach (int s in compareSouce)
-                {
-                    if (item == s) { count++; break; }
-                    if (item < s) { break; }//后面的已经比其越来越大了
-                }
+                if (compareSouce.Contains(item)) count++;
             }
             return count;
         }
