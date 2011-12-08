@@ -18,12 +18,20 @@
   <Class Name="LotTick.LotTickHelper">
     <Position X="8.25" Y="1.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAQACAAAAAAAAAAAAAAAAAAAggAA=</HashCode>
       <FileName>Basic\LotTickHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红邻号出现数">
-    <Position X="5.25" Y="5.25" Width="1.75" />
+    <Position X="5.5" Y="5.25" Width="1.75" />
+    <InheritanceLine Type="LotTick.LotIndex" ManuallyRouted="true">
+      <Path>
+        <Point X="5.375" Y="4.567" />
+        <Point X="5.375" Y="5.094" />
+        <Point X="6.375" Y="5.094" />
+        <Point X="6.375" Y="5.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_邻号出现数.cs</FileName>
@@ -52,7 +60,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.ExtendsExpress">
-    <Position X="8.25" Y="3.5" Width="2" />
+    <Position X="8.25" Y="3.75" Width="2" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAEAQAAAQQAAAAAAAAQAAEIAAQAAAAAAAAA=</HashCode>
       <FileName>Basic\ExtendsExpress.cs</FileName>

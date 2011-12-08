@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using XCode;
 
 namespace LotTick
 {
@@ -67,7 +68,22 @@ namespace LotTick
         }
         #endregion
 
-        #region
-        #endregion
+        #region 获取所有的方法类型和比较类型
+        /// <summary>
+        /// 加入OM,特殊验证方法,其他指标的名字，通过前缀区分来区分
+        /// </summary>
+        public static string[] GetAllIndexFuncNames()
+        {
+            List<tb_IndexInfo > allRules = tb_IndexInfo.FindAll();
+            return allRules.Select(n => n.IndexName).ToArray();
+        }      
+        /// <summary>
+        /// 获取枚举类型的所有枚举值
+        /// </summary>
+        public static List<string> GetAllEnumNames<T>()
+        {
+            return Enum.GetNames(typeof(T)).ToList();
+        }
+        #endregion            
     }
 }

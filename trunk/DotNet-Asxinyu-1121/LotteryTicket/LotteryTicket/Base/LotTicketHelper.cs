@@ -528,33 +528,6 @@ namespace LotteryTicket
             return "";
         }
         #endregion
-                
-        #region 验证实际预测结果的收获
-        /// <summary>
-        /// 验证实际预测结果的收获
-        /// </summary>
-        /// <param name="dataFilePath">实际预测文件路径名称</param>
-        /// <param name="prizedata">实际中奖数据</param>
-        /// <returns>实际收益(按照所有预测文件单注计算)</returns>
-        //public static double ValidatePrizes(string dataFilePath, double[] prizedata)
-        //{
-        //    //TODO:循环数据 与 正确号码进行对比,确定奖等级
-        //    //直接调用彩票类的兑奖计算
-        //    double[][] data = GetPredictDataFormFile(dataFilePath);
-        //    return TwoColorBall.GetAllPrizeReward(prizedata, data);
-        //}
-
-        /// <summary>
-        /// 验证实际预测结果的收获
-        /// </summary>
-        /// <param name="dataFilePath">实际预测文件路径名称</param>
-        /// <param name="prizedata">实际中奖数据</param>
-        /// <returns>实际收益(按照所有预测文件单注计算)</returns>
-        //public static double ValidatePrizes(double[][] predictData, double[] prizedata)
-        //{
-        //    return TwoColorBall.GetAllPrizeReward(prizedata, predictData);
-        //}
-        #endregion               
         
         #region 获取所有的方法类型和比较类型
         /// <summary>
@@ -578,7 +551,6 @@ namespace LotteryTicket
             index.AddRange(index_S);
             return index;
         }
-
         public static string GetClassNameByIndexName(string indexName)
         {
             if (indexName.Contains("Index_OO")) return "OOIndexCalculate";

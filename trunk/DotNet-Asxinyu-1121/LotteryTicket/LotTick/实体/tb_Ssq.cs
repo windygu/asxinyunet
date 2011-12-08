@@ -20,13 +20,13 @@ namespace LotTick
     
     {
         #region 属性
-        private Double _期号;
+        private Int32 _期号;
         /// <summary>期号</summary>
         [DisplayName("期号")]
         [Description("期号")]
-        [DataObjectField(true, false, true, 15)]
-        [BindColumn(1, "期号", "期号", "0", "Double", 15, 0, false)]
-        public virtual Double 期号
+        [DataObjectField(true, false, true, 10)]
+        [BindColumn(1, "期号", "期号", "0", "Long", 10, 0, false)]
+        public virtual Int32 期号
         {
             get { return _期号; }
             set { if (OnPropertyChanging("期号", value)) { _期号 = value; OnPropertyChanged("期号"); } }
@@ -159,7 +159,7 @@ namespace LotTick
             {
                 switch (name)
                 {
-                    case "期号" : _期号 = Convert.ToDouble(value); break;
+                    case "期号" : _期号 = Convert.ToInt32(value); break;
                     case "开奖日期" : _开奖日期 = Convert.ToDateTime(value); break;
                     case "号码1" : _号码1 = Convert.ToInt32(value); break;
                     case "号码2" : _号码2 = Convert.ToInt32(value); break;
@@ -213,7 +213,7 @@ namespace LotTick
     {
         #region 属性
         /// <summary>期号</summary>
-        Double 期号 { get; set; }
+        Int32 期号 { get; set; }
 
         /// <summary>开奖日期</summary>
         DateTime 开奖日期 { get; set; }

@@ -19,7 +19,7 @@ using DotNet.Tools.Controls;
 using XCode;
 using NewLife;
 using NewLife.Reflection;
-using LotteryTicket;
+using LotTick;
 #endregion
 
 namespace LotteryTicketSoft.GraphForm
@@ -128,18 +128,18 @@ namespace LotteryTicketSoft.GraphForm
             DataGridViewTextBoxColumn tbT1 = CreateTextBoxWithNames(tb_Rules._.SchemeId, tb_Rules._.SchemeId.Description);
             tbT1.Width = 60;
             dgv.Columns.Add(tbT1);
-            DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
-            tb2.Width = 160;
-            dgv.Columns.Add(tb2);
-            DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTicketHelper.GetAllEnumNames<CompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
+            //DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTicketHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
+            //tb2.Width = 160;
+            //dgv.Columns.Add(tb2);
+            DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTickHelper.GetAllEnumNames<ECompareType>(), tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
             tb3.Width = 130;
             dgv.Columns.Add(tb3);
-            DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
-            tb4.Width = 80;
-            dgv.Columns.Add(tb4);
-            DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description);
-            tb5.Width =60;
-            dgv.Columns.Add(tb5);
+            //DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
+            //tb4.Width = 80;
+            //dgv.Columns.Add(tb4);
+            //DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.DataRows, tb_Rules._.DataRows.Description);
+            //tb5.Width =60;
+            //dgv.Columns.Add(tb5);
             DataGridViewTextBoxColumn tb6 = CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description);
             tb6.Width = 80;
             dgv.Columns.Add(tb6);
@@ -217,8 +217,8 @@ namespace LotteryTicketSoft.GraphForm
         #region 交叉验证
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
         {
-            double res = LotTicketHelper.CrossValidateRules(dgv);
-            this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):"+(res * 100).ToString("F4"));
+            //double res = LotTicketHelper.CrossValidateRules(dgv);
+            //this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):"+(res * 100).ToString("F4"));
         }
         #endregion
 
@@ -227,12 +227,12 @@ namespace LotteryTicketSoft.GraphForm
         private void toolStripStatics_Click(object sender, EventArgs e)
         {
             //循环读取当前列表中的规则
-            LotTicketHelper.CalculateCurrentRow(this.dgv);
+            //LotTicketHelper.CalculateCurrentRow(this.dgv);
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
-            LotTicketHelper.FilterAllRows(this.dgv, LotTicketHelper.GetInitiaData());
+            //LotTicketHelper.FilterAllRows(this.dgv, LotTicketHelper.GetInitiaData());
         }
         #endregion
         #endregion

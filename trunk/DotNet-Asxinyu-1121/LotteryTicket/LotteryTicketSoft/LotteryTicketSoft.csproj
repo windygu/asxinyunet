@@ -38,10 +38,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
-    <Reference Include="DotNet.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\DotNet.Tools.dll</HintPath>
-    </Reference>
     <Reference Include="NewLife.Core">
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
@@ -81,12 +77,6 @@
     <Compile Include="GraphForm\DataManageForm.Designer.cs">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GraphForm\FilterNumber.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GraphForm\FilterNumber.Designer.cs">
-      <DependentUpon>FilterNumber.cs</DependentUpon>
-    </Compile>
     <Compile Include="GraphForm\tb_IndexInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,9 +102,6 @@
     <EmbeddedResource Include="GraphForm\DataManageForm.resx">
       <DependentUpon>DataManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GraphForm\FilterNumber.resx">
-      <DependentUpon>FilterNumber.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\tb_IndexInfo.resx">
       <DependentUpon>tb_IndexInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,17 +117,20 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LotteryTicket\LotteryTicket.csproj">
-      <Project>{0E0705A3-789A-4D95-9293-C605171AF53C}</Project>
-      <Name>LotteryTicket</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DotNet.Tools.dll" />
-    <Content Include="LotteryTicket.mdb">
+    <ProjectReference Include="..\..\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{C56F4793-6746-4E12-BC43-91B9D08101DC}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LotTick\LotTick.csproj">
+      <Project>{1A822656-0ABF-407D-A184-7CA95CF32BF9}</Project>
+      <Name>LotTick</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LotTick.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

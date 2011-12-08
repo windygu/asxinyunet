@@ -23,7 +23,7 @@ namespace LotTick
         /// <param name="__期号">期号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static tb_Ssq FindBy期号(Double __期号)
+        public static tb_Ssq FindBy期号(Int32 __期号)
         {
             if (Meta.Count >= 1000)
                 return Find(new String[] { _.期号 }, new Object[] { __期号 });
