@@ -23,11 +23,11 @@ namespace LotTick
         /// <summary>
         /// 双色球构造函数
         /// </summary>
-        public TwoColorBall(int dataRows)
+        public TwoColorBall(int calcuteRows)
         {
             //双色球有特殊的蓝球号码
             //this.IsSpecailMode = true;
-            this.CalcuteRows = dataRows;
+            this.CalcuteRows = calcuteRows;
             //获取数据集,分别填充NormalData和SpecialData 
         }
         #endregion

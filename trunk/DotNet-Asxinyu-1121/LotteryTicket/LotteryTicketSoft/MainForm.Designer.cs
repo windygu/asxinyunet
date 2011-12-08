@@ -54,9 +54,9 @@ namespace LotteryTicketSoft
             // StausShow
             // 
             this.StausShow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StausShow.Location = new System.Drawing.Point(0, 590);
+            this.StausShow.Location = new System.Drawing.Point(0, 499);
             this.StausShow.Name = "StausShow";
-            this.StausShow.Size = new System.Drawing.Size(759, 24);
+            this.StausShow.Size = new System.Drawing.Size(860, 24);
             this.StausShow.TabIndex = 0;
             // 
             // menuStrip1
@@ -68,7 +68,7 @@ namespace LotteryTicketSoft
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(759, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(860, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -149,14 +149,14 @@ namespace LotteryTicketSoft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 614);
+            this.ClientSize = new System.Drawing.Size(860, 523);
             this.Controls.Add(this.StausShow);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LotteryTicketSoft(Beta 0.15 2011-11-27 )";
+            this.Text = "LotteryTicketSoft(Beta 0.5 2011-12-08 )";
             this.Load += new System.EventHandler(this.MainFormLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
