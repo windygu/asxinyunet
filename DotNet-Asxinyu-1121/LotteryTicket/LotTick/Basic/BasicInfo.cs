@@ -202,6 +202,15 @@ namespace LotTick
         {
             throw new System.NotImplementedException();
         }
+
+        /// <summary>
+        /// 最高优先级,杀号处理
+        /// </summary>
+        /// <param name="initialList">初始号码列表</param>
+        public List<Int32> DeleteNumbers(List<int> initialList)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     /// <summary>

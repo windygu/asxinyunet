@@ -15,9 +15,11 @@ namespace LotTick
     /// <summary>
     /// 双色球彩票类
     /// </summary>
-    public class TwoColorBall:BasicLotTick,IGetHistoryData
+    public class TwoColorBall : BasicLotTick, IGetHistoryData
     {
+        #region 公共变量
         private static int[] prizeReward = new int[7] { 0, 5000000, 200000, 3000, 200, 10, 5 };
+        #endregion
 
         #region 构造函数
         /// <summary>
@@ -36,10 +38,10 @@ namespace LotTick
         public override bool[][] ValidateRuleList(RuleInfo[] ruleList)
         {
             bool[][] res = new bool[ruleList.Length][];
-            for (int i = 0; i < ruleList.Length ; i++)
+            for (int i = 0; i < ruleList.Length; i++)
             {
                 //首先获取计算的数据,直接从data中获取
-                LotTickData[] curData = new LotTickData [this.CalcuteRows +ruleList[i ].NeedRows ];
+                LotTickData[] curData = new LotTickData[this.CalcuteRows + ruleList[i].NeedRows];
                 this.LotData.CopyTo(curData, LotData.Length + 1 - this.CalcuteRows - ruleList[i].NeedRows);
                 res[i] = ruleList[i].IndexSelector.GetValidateResult(curData);
             }
@@ -76,21 +78,21 @@ namespace LotTick
             int n = prizeNo.NormalData.Index_S序列重复个数(testNo.NormalData);//红号相同个数
             int m = prizeNo.SpecialData == testNo.SpecialData ? 1 : 0;
             string str = string.Format("{0}-{1}", n, m);
-            if ("0-0,1-0".Contains(str))          return 0;
+            if ("0-0,1-0".Contains(str)) return 0;
             else if ("1-1,0-1,2-1".Contains(str)) return 6;
-            else if ("3-1,4-0".Contains(str))     return 5;
-            else if ("4-1,5-0".Contains(str))     return 4;
-            else if ("5-1".Contains(str))         return 3;
-            else if ("6-0".Contains(str))         return 2;
-            else if ("6-1".Contains(str))         return 1;
-            else                                  return 0;
+            else if ("3-1,4-0".Contains(str)) return 5;
+            else if ("4-1,5-0".Contains(str)) return 4;
+            else if ("5-1".Contains(str)) return 3;
+            else if ("6-0".Contains(str)) return 2;
+            else if ("6-1".Contains(str)) return 1;
+            else return 0;
         }
         public override int[] GetAllPrizeGradesCount(LotTickData prizeNo, LotTickData[] testNoes)
         {
             int[] res = testNoes.Select(n => GetPrizeGrade(prizeNo, n)).ToArray();//每一注的结果，然后统计下
             int[] last = new int[7];
             foreach (var item in res) last[item]++;
-            return last ;
+            return last;
         }
         public override int GetAllPrizeReward(LotTickData prizeNo, LotTickData[] testNoes)
         {
@@ -106,10 +108,10 @@ namespace LotTick
         /// 获取所有历史数据
         /// </summary>
         public void UpdateAll()
-        {                
+        {
             string website;//动态获取的网址				
             tb_Ssq model = new tb_Ssq();
-            int pages = GetAllPageNumbers ();            
+            int pages = GetAllPageNumbers();
             for (int i = 1; i <= pages; i++)
             {
                 //福彩 /html[1]/body[1]/table[1]/tr[7]
@@ -144,7 +146,7 @@ namespace LotTick
             string website = @"http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html";
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(website);
-            return Convert.ToInt32 ( doc.DocumentNode.SelectSingleNode(allPagesPath).InnerText) ;
+            return Convert.ToInt32(doc.DocumentNode.SelectSingleNode(allPagesPath).InnerText);
         }
         /// <summary>
         /// 获取最新数据
