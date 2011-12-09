@@ -3,7 +3,7 @@
   <Class Name="LotTick.BasicLotTick">
     <Position X="0.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAQACIAIAAEAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAAQACIAIAAEAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Basic\BasicInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -23,7 +23,15 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红邻号出现数">
-    <Position X="5.75" Y="5.25" Width="1.75" />
+    <Position X="5.5" Y="5.25" Width="1.75" />
+    <InheritanceLine Type="LotTick.LotIndex" ManuallyRouted="true">
+      <Path>
+        <Point X="5.375" Y="4.235" />
+        <Point X="5.375" Y="5.073" />
+        <Point X="6.375" Y="5.073" />
+        <Point X="6.375" Y="5.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_邻号出现数.cs</FileName>
@@ -31,9 +39,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.LotIndex">
-    <Position X="4.5" Y="2.5" Width="1.75" />
+    <Position X="4.5" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAgAAAAASAAAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAgAACAASAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Basic\BasicInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -70,6 +78,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Basic\BasicInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LotTick.Index_红杀号">
+    <Position X="4.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAIAAAAAAAAAAAACAASAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>指标计算\红杀号.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="LotTick.IGetHistoryData">

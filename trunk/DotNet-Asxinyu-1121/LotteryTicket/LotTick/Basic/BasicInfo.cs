@@ -127,6 +127,16 @@ namespace LotTick
         {
             throw new System.NotImplementedException();
         }
+
+        /// <summary>
+        /// 最高优先级,杀号处理
+        /// </summary>
+        /// <param name="initialList">初始号码列表</param>
+        /// <param name="data">辅助的历史数据</param>
+        public virtual List<Int32> DeleteNumbers(List<int> initialList, LotTickData[] data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     /// <summary>
@@ -199,15 +209,6 @@ namespace LotTick
         /// </summary>
         /// <param name="ruleList">规则列表</param>
         public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// 最高优先级,杀号处理
-        /// </summary>
-        /// <param name="initialList">初始号码列表</param>
-        public List<Int32> DeleteNumbers(List<int> initialList)
         {
             throw new System.NotImplementedException();
         }
