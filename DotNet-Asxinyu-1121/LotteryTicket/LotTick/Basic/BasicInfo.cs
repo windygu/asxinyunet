@@ -76,17 +76,24 @@ namespace LotTick
         /// <summary>
         /// 初始化,传入参数对象
         /// </summary>        
-        public LotIndex(RuleInfo ruleInfo)
+        public LotIndex(RuleInfo ruleInfo,bool isDeleteMode = false)
         {
             this.RuleInfoParams = ruleInfo;
+            IsDeleteNumberMode = isDeleteMode;
         }
         public LotIndex()
         {
+            IsDeleteNumberMode = false;
         }
         /// <summary>
         /// 比较规则对象
         /// </summary>
         public RuleInfo RuleInfoParams { get; set; }
+
+        /// <summary>
+        /// 是否是杀号模式,默认不是
+        /// </summary>
+        public bool IsDeleteNumberMode { get; set; }
 
         /// <summary>
         /// 计算所有数据的指标结果
@@ -110,9 +117,10 @@ namespace LotTick
         /// 根据该规则,对数据集进行过滤,只保留满足规则的书籍
         /// </summary>
         /// <param name="data">所有需要过滤的数据</param>
+        /// <param name="NeedData">需要的历史数据,数目为说需要的行数</param>
         /// <param name="compCoditon">比较参数</param>
         /// <returns>满足规则的数据集</returns>
-        public virtual LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
+        public virtual LotTick.LotTickData[] GetFilterResult(LotTickData[] data, LotTick.LotTickData[] NeedData = null )
         {
             throw new System.NotImplementedException();
         }

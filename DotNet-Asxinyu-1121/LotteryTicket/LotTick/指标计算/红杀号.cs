@@ -10,16 +10,14 @@ namespace LotTick
     /// </summary>
     public class Index_红杀号 : LotIndex
     {
-        public override int[] GetAllValue(LotTickData[] data)
+        public Index_红杀号(RuleInfo ruleInfo)
         {
-            return data.Select(n => n.NormalData.Sum()).ToArray();
-        }
-        public override LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
-        {
-            return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
+            this.RuleInfoParams = ruleInfo;
+            this.IsDeleteNumberMode = true;//默认为杀号模式
         }
         public override bool[] GetValidateResult(LotTickData[] data)
         {
+            //验证杀号是否准确
             return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
         }
         public override List<int> DeleteNumbers(List<int> initialList, LotTickData[] data)

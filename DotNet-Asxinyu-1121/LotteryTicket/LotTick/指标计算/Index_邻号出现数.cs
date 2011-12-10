@@ -19,11 +19,11 @@ namespace LotTick
             }
             return res;
         }
-        public override LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
-        {
-            LotTickData lastData = data[data.Length - 1];
-            return data.Where(n => (n.NormalData.Index_S邻号出现个数(lastData.NormalData )).
-                GetCompareResult (this.RuleInfoParams)).ToArray();
+        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
+        {            
+            LotTickData lastData = NeedData[data.Length - 1];
+            return data.Where(n => (n.NormalData.Index_S邻号出现个数(lastData.NormalData)).
+                GetCompareResult(this.RuleInfoParams)).ToArray();
         }
         public override bool[] GetValidateResult(LotTickData[] data)
         {
