@@ -89,9 +89,11 @@
     <Compile Include="指标计算\Index_红跨度和值.cs" />
     <Compile Include="指标计算\Index_红连号个数.cs" />
     <Compile Include="指标计算\Index_红连号组数.cs" />
-    <Compile Include="指标计算\Index_邻号出现数.cs" />
+    <Compile Include="指标计算\Index_红邻号出现数.cs" />
     <Compile Include="指标计算\Index_红最大跨度.cs" />
     <Compile Include="指标计算\Index_红杀号.cs" />
+    <Compile Include="指标计算\Index_红多期重复数.cs" />
+    <Compile Include="指标计算\Index_红跨度列表.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
