@@ -171,13 +171,8 @@ namespace LotteryTicket
         /// </summary>
         public static int Index_OO奇号连续个数(this int[] source)
         {
-            bool[] res = source.Select(n => n % 2 == 1).ToArray();//是否是奇数
-            int count = 0;
-            for (int i = 0; i < res.Length - 1; i++)
-            {
-                if (res[i + 1] && res[i]) count++;
-            }
-            return count;
+           
+		   
         }
         #endregion
 
@@ -187,7 +182,7 @@ namespace LotteryTicket
         /// </summary>
         public static int Index_OO偶号连续个数(this int[] source)
         {
-            bool[] res = source.Select(n => n % 2 == 0).ToArray();//是否是奇数
+            bool[] res = source.Select(n => n % 2 == 0).ToArray();
             int count = 0;
             for (int i = 0; i < res.Length - 1; i++)
             {

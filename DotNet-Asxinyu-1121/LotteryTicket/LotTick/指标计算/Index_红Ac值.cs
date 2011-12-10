@@ -2,25 +2,31 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections;
 
 namespace LotTick
 {
     /// <summary>
-    /// Index_红Ac值
+    /// Index_红Ac值,修过完成
     /// </summary>
     public class Index_红Ac值 : LotIndex
-    {       
-        public override int[] GetAllValue(LotTickData[] data)
+    {
+        public override int GetOneResult(LotTickData data)
         {
-            return data.Select(n => n.NormalData.Last()-n.NormalData.First ()).ToArray();
-        }
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
-        {
-            return data.Where(n => (n.NormalData.Last() - n.NormalData.First()).GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
-        }
+            ArrayList list = new ArrayList();
+            int temp;
+            for (int i = 0; i < data.NormalData .Length - 1; i++)
+            {
+                for (int j = i + 1; j < data.NormalData .Length; j++)
+                {
+                    temp = data.NormalData [j] - data.NormalData [i];
+                    if (!list.Contains(temp))
+                    {
+                        list.Add(temp);
+                    }
+                }
+            }
+            return list.Count - (data.NormalData .Length - 1);
+        }       
     }
 }

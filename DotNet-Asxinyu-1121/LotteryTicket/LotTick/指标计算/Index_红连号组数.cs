@@ -6,21 +6,27 @@ using System.Linq;
 namespace LotTick
 {
     /// <summary>
-    /// 连号组数
+    /// 连号组数，修改完成
     /// </summary>
     public class Index_红连号组数 : LotIndex
-    {       
-        public override int[] GetAllValue(LotTickData[] data)
+    {
+        public override int GetOneResult(LotTickData data)
         {
-            return data.Select(n => n.NormalData.Sum()).ToArray();
-        }
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
-        {
-            return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
-        }
+            int count = 0;
+            bool flag = false;
+            for (int i = 0; i < data.NormalData .Length - 1; i++)
+            {
+                if (data.NormalData[i + 1] - data.NormalData [i] == 1)
+                {
+                    if (flag)//只第一次加
+                    {
+                        count++;
+                        flag = true;
+                    }
+                }
+                else { flag = false; }
+            }
+            return count;
+        }      
     }
 }

@@ -6,21 +6,13 @@ using System.Linq;
 namespace LotTick
 {
     /// <summary>
-    /// Index_红偶数个数
+    /// Index_红偶数个数，修改完成
     /// </summary>
     public class Index_红偶数个数 : LotIndex
-    {       
-        public override int[] GetAllValue(LotTickData[] data)
+    {
+        public override int GetOneResult(LotTickData data)
         {
-            return data.Select(n => n.NormalData.Sum()).ToArray();
-        }
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
-        {
-            return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
-        }
+            return data.NormalData.Where(n => ((int)n) % 2 == 0).Count();
+        }     
     }
 }
