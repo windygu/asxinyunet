@@ -101,7 +101,7 @@ namespace LotTick
         /// <param name="data">数据</param>
         public virtual int[] GetAllValue(LotTick.LotTickData[] data)
         {
-            throw new System.NotImplementedException();
+            return data.Select(n => GetOneResult(n)).ToArray();
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace LotTick
         /// <returns>满足规则的数据集</returns>
         public virtual LotTick.LotTickData[] GetFilterResult(LotTickData[] data, LotTick.LotTickData[] NeedData = null )
         {
-            throw new System.NotImplementedException();
+            return data.Where(n => (GetOneResult(n)).GetCompareResult(this.RuleInfoParams)).ToArray();
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace LotTick
         /// <returns>返回每一期的正确性</returns>
         public virtual bool[] GetValidateResult(LotTickData[] data)
         {
-            throw new System.NotImplementedException();
+            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
         }
 
         /// <summary>

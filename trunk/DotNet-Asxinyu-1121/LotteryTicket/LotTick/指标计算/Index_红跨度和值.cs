@@ -9,18 +9,10 @@ namespace LotTick
     /// 红跨度和值
     /// </summary>
     public class Index_红跨度和值 : LotIndex
-    {       
-        public override int[] GetAllValue(LotTickData[] data)
+    {
+        public override int GetOneResult(LotTickData data)
         {
-            return data.Select(n => n.NormalData.Last()-n.NormalData.First ()).ToArray();
-        }
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
-        {
-            return data.Where(n => (n.NormalData.Last() - n.NormalData.First()).GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
-        }
+            return data.NormalData.Last() - data.NormalData.First();
+        }        
     }
 }
