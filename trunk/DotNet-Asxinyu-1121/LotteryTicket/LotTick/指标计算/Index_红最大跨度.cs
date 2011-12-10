@@ -12,11 +12,11 @@ namespace LotTick
     {       
         public override int[] GetAllValue(LotTickData[] data)
         {
-            return data.Select(n => n.NormalData.Sum()).ToArray();
+            return data.Select(n => n.NormalData.Last()-n.NormalData.First ()).ToArray();
         }
         public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
         {
-            return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
+            return data.Where(n => (n.NormalData.Last() - n.NormalData.First()).GetCompareResult(this.RuleInfoParams)).ToArray();
         }
         public override bool[] GetValidateResult(LotTickData[] data)
         {

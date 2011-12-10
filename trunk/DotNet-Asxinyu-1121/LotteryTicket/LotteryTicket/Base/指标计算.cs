@@ -49,6 +49,7 @@ namespace LotteryTicket
         {
             return source.Last() - source.First();
         }
+
         /// <summary>
         /// 跨度和值
         /// </summary>
