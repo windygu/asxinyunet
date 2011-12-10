@@ -58,12 +58,12 @@
       <FileName>Basic\ExtendsExpress.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotTick.Index_红最大跨度">
+  <Class Name="LotTick.Index_红最长连续数">
     <Position X="3.25" Y="5.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>指标计算\Index_红最大跨度.cs</FileName>
-      <NewMemberFileName>指标计算\Index_红和值.cs</NewMemberFileName>
+      <FileName>指标计算\Index_红最长连续数.cs</FileName>
+      <NewMemberFileName>指标计算\Index_红Ac值.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.LotTickData">
