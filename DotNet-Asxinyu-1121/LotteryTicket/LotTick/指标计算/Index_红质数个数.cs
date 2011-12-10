@@ -9,18 +9,11 @@ namespace LotTick
     /// Index_红质数个数
     /// </summary>
     public class Index_红质数个数 : LotIndex
-    {       
-        public override int[] GetAllValue(LotTickData[] data)
+    {
+        public static readonly int[] PrimeNumbers = new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 };
+        public override int GetOneResult(LotTickData data)
         {
-            return data.Select(n => n.NormalData.Last()-n.NormalData.First ()).ToArray();
-        }
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
-        {
-            return data.Where(n => (n.NormalData.Last() - n.NormalData.First()).GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
-        }
+            return data.NormalData.Index_S序列重复个数(PrimeNumbers);
+        }        
     }
 }
