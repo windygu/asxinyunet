@@ -76,7 +76,7 @@
     <Compile Include="指标计算\Index_红和值.cs" />
     <Compile Include="指标计算\Index_邻号出现数.cs" />
     <Compile Include="指标计算\Index_红最大跨度.cs" />
-    <Compile Include="指标计算\红杀号.cs" />
+    <Compile Include="指标计算\Index_红杀号.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
