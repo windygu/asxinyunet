@@ -23,15 +23,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红邻号出现数">
-    <Position X="5.5" Y="5.25" Width="1.75" />
-    <InheritanceLine Type="LotTick.LotIndex" ManuallyRouted="true">
-      <Path>
-        <Point X="5.375" Y="4.235" />
-        <Point X="5.375" Y="5.073" />
-        <Point X="6.375" Y="5.073" />
-        <Point X="6.375" Y="5.25" />
-      </Path>
-    </InheritanceLine>
+    <Position X="5.5" Y="5.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_邻号出现数.cs</FileName>
@@ -41,7 +33,7 @@
   <Class Name="LotTick.LotIndex">
     <Position X="4.5" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAgAACAASAAAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAgAACAASAAAAAAAAAAAAAASAA=</HashCode>
       <FileName>Basic\BasicInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -66,11 +58,12 @@
       <FileName>Basic\ExtendsExpress.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotTick.Index_红和值">
+  <Class Name="LotTick.Index_红最大跨度">
     <Position X="3.25" Y="5.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>指标计算\Index_和值.cs</FileName>
+      <FileName>指标计算\Index_红最大跨度.cs</FileName>
+      <NewMemberFileName>指标计算\Index_红和值.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.LotTickData">
@@ -81,9 +74,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红杀号">
-    <Position X="4.5" Y="7" Width="1.5" />
+    <Position X="4.5" Y="7.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAIAAAAAAAAAAAACAASAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\红杀号.cs</FileName>
     </TypeIdentifier>
   </Class>

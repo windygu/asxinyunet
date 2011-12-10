@@ -73,8 +73,9 @@
     <Compile Include="实体\tb_Rules.cs" />
     <Compile Include="实体\tb_Ssq.Biz.cs" />
     <Compile Include="实体\tb_Ssq.cs" />
-    <Compile Include="指标计算\Index_和值.cs" />
+    <Compile Include="指标计算\Index_红和值.cs" />
     <Compile Include="指标计算\Index_邻号出现数.cs" />
+    <Compile Include="指标计算\Index_红最大跨度.cs" />
     <Compile Include="指标计算\红杀号.cs" />
   </ItemGroup>
   <ItemGroup>

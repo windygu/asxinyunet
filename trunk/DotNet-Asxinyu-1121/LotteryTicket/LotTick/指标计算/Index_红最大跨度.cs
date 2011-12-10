@@ -6,15 +6,15 @@ using System.Linq;
 namespace LotTick
 {
     /// <summary>
-    /// 红色号码和值
+    /// 红最大跨度
     /// </summary>
-    public class Index_红和值 : LotIndex
+    public class Index_红最大跨度 : LotIndex
     {       
         public override int[] GetAllValue(LotTickData[] data)
         {
             return data.Select(n => n.NormalData.Sum()).ToArray();
-        }        
-        public override LotTick.LotTickData[] GetFilterResult(LotTickData[] data)
+        }
+        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
         {
             return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
         }
