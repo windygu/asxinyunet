@@ -9,18 +9,28 @@ namespace LotTick
     /// Index_红求余覆盖数
     /// </summary>
     public class Index_红求余覆盖数 : LotIndex
-    {       
-        public override int[] GetAllValue(LotTickData[] data)
+    {
+        int L;
+
+        /// <summary>
+        /// 需要自定义的长度L
+        /// </summary>        
+        public Index_红求余覆盖数(RuleInfo ruleInfo, bool isDeleteMode = false)
         {
-            return data.Select(n => n.NormalData.Sum()).ToArray();
+            this.RuleInfoParams = ruleInfo;
+            IsDeleteNumberMode = isDeleteMode;
+            if (ruleInfo.CondtionParams.ParamsValue != null)
+            {
+                L = Convert.ToInt32(ruleInfo.CondtionParams.ParamsValue);
+            }
+            else
+            {
+                L = 18;
+            }
         }
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
+        public override int GetOneResult(LotTickData data)
         {
-            return data.Where(n => (n.NormalData.Sum()).GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).GetCompareResult(this.RuleInfoParams);
-        }
+            return data.NormalData.Select(n => ((int)n) % L ).Distinct().Count();
+        }       
     }
 }
