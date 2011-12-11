@@ -46,6 +46,8 @@ namespace LotteryTicketSoft
             this.指标信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.更新最近ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.更新所有ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.常规参数设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -54,9 +56,9 @@ namespace LotteryTicketSoft
             // StausShow
             // 
             this.StausShow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StausShow.Location = new System.Drawing.Point(0, 499);
+            this.StausShow.Location = new System.Drawing.Point(0, 591);
             this.StausShow.Name = "StausShow";
-            this.StausShow.Size = new System.Drawing.Size(860, 24);
+            this.StausShow.Size = new System.Drawing.Size(940, 24);
             this.StausShow.TabIndex = 0;
             // 
             // menuStrip1
@@ -68,7 +70,7 @@ namespace LotteryTicketSoft
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(860, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(940, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -127,10 +129,26 @@ namespace LotteryTicketSoft
             // 
             // 数据更新ToolStripMenuItem
             // 
+            this.数据更新ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.更新最近ToolStripMenuItem,
+            this.更新所有ToolStripMenuItem});
             this.数据更新ToolStripMenuItem.Name = "数据更新ToolStripMenuItem";
             this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.数据更新ToolStripMenuItem.Text = "数据更新";
-            this.数据更新ToolStripMenuItem.Click += new System.EventHandler(this.数据更新ToolStripMenuItem_Click_1);
+            // 
+            // 更新最近ToolStripMenuItem
+            // 
+            this.更新最近ToolStripMenuItem.Name = "更新最近ToolStripMenuItem";
+            this.更新最近ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.更新最近ToolStripMenuItem.Text = "更新最近";
+            this.更新最近ToolStripMenuItem.Click += new System.EventHandler(this.更新最近ToolStripMenuItem_Click);
+            // 
+            // 更新所有ToolStripMenuItem
+            // 
+            this.更新所有ToolStripMenuItem.Name = "更新所有ToolStripMenuItem";
+            this.更新所有ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.更新所有ToolStripMenuItem.Text = "更新所有";
+            this.更新所有ToolStripMenuItem.Click += new System.EventHandler(this.更新所有ToolStripMenuItem_Click);
             // 
             // 常规参数设置ToolStripMenuItem
             // 
@@ -149,7 +167,7 @@ namespace LotteryTicketSoft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 523);
+            this.ClientSize = new System.Drawing.Size(940, 615);
             this.Controls.Add(this.StausShow);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -176,5 +194,7 @@ namespace LotteryTicketSoft
         private System.Windows.Forms.ToolStripMenuItem 验证过滤ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 验证过滤管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 指标信息管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 更新最近ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 更新所有ToolStripMenuItem;
 	}
 }

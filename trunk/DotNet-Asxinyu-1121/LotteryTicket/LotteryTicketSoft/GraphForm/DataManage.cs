@@ -233,6 +233,7 @@ namespace LotteryTicketSoft.GraphForm
             return rules;
         }
         #endregion
+
         #region 交叉验证
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
         {            
