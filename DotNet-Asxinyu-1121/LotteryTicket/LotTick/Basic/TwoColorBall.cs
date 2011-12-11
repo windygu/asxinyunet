@@ -15,7 +15,7 @@ namespace LotTick
     /// <summary>
     /// 双色球彩票类
     /// </summary>
-    public class TwoColorBall : BasicLotTick, IGetHistoryData
+    public class TwoColorBall : BasicLotTick
     {
         #region 公共变量
         private static int[] prizeReward = new int[7] { 0, 5000000, 200000, 3000, 200, 10, 5 };
@@ -31,7 +31,30 @@ namespace LotTick
             //this.IsSpecailMode = true;
             this.CalcuteRows = calcuteRows;
             //获取数据集,分别填充NormalData和SpecialData 
+            this.LotData = GetBallData(calcuteRows);
         }
+
+        #region 获取计算数据
+        /// <summary>
+        /// 从数据库获取指定期数红球数据
+        /// </summary>
+        /// <param name="length">最近的期数</param>
+        public static LotTickData[] GetBallData(int selectLength = -1)
+        {
+            //获取数据 order by  desc 降序排列, asc 升序		
+            EntityList<tb_Ssq> list = tb_Ssq.FindAll("", tb_Ssq._.期号 + " asc", "", 0, selectLength);
+         // EntityList<tb_Ssq> list = tb_Ssq.FindAll("select * from tb_ssq order by 期号 asc");//升序
+            LotTickData[] data = new LotTickData[list.Count];
+            for (int i = 0; i < list.Count ; i++)
+            {
+                data[i] = new LotTickData();
+                data[i].NormalData = new int[] { list[i].号码1, list[i].号码2, list[i].号码3, list[i].号码4,
+                list[i].号码5 ,list[i].号码6};
+                data[i].SpecialData = list[i].蓝球;
+            }
+            return data ;
+        }
+        #endregion
         #endregion
 
         #region 对规则列表进行验证和过滤
@@ -107,7 +130,7 @@ namespace LotTick
         /// <summary>
         /// 获取所有历史数据
         /// </summary>
-        public void UpdateAll()
+        public static void UpdateAll()
         {
             string website;//动态获取的网址				
             tb_Ssq model = new tb_Ssq();
@@ -140,7 +163,7 @@ namespace LotTick
                 }
             }
         }
-        public int GetAllPageNumbers()
+        public static int GetAllPageNumbers()
         {
             string allPagesPath = @"/html[1]/body[1]/table[1]/tr[23]/td[1]/p[2]/strong[1]";
             string website = @"http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html";
@@ -151,7 +174,7 @@ namespace LotTick
         /// <summary>
         /// 获取最新数据
         /// </summary>
-        public void UpdateRecent()
+        public static void UpdateRecent()
         {
             string website;//动态获取的网址				
             tb_Ssq model = new tb_Ssq();

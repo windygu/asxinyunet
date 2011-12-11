@@ -42,15 +42,6 @@ namespace LotteryTicketSoft
         {
         }
 
-        private void 数据更新ToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            DataControlParams CP = new DataControlParams(LabAssemblyName,typeof(tb_Rules) ,
-                "LotteryTicketSoft.GraphForm.AddRules");
-            CP.IsEnablePaging = false;
-            LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
-            dt.MdiParent = this;
-            dt.Show();           
-        }
 
         //加载验证过滤管理窗体
         public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
@@ -81,6 +72,16 @@ namespace LotteryTicketSoft
             dt.StartPosition = FormStartPosition.CenterParent;
             dt.MdiParent = this;
             dt.Show();  
+        }
+
+        private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TwoColorBall.UpdateRecent();
+        }
+
+        private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+            TwoColorBall.UpdateAll();
         }
     }
 }
