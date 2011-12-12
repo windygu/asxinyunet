@@ -23,14 +23,6 @@
   </Class>
   <Class Name="LotTick.Index_红邻号出现数">
     <Position X="6" Y="5.25" Width="1.75" />
-    <InheritanceLine Type="LotTick.LotIndex" ManuallyRouted="true">
-      <Path>
-        <Point X="5.375" Y="4.404" />
-        <Point X="5.375" Y="4.875" />
-        <Point X="6.875" Y="4.875" />
-        <Point X="6.875" Y="5.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_红邻号出现数.cs</FileName>

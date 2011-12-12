@@ -174,7 +174,6 @@ namespace LotteryTicketSoft
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LotteryTicketSoft(Beta 0.5 2011-12-08 )";
             this.Load += new System.EventHandler(this.MainFormLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -14,6 +14,9 @@ using System.Windows.Forms;
 using LotTick;
 using LotteryTicketSoft.GraphForm;
 using DotNet.Tools.Controls;
+using XCode.Configuration;
+using XCode;
+using NewLife.Configuration;
 
 namespace LotteryTicketSoft
 {
@@ -31,7 +34,9 @@ namespace LotteryTicketSoft
 
         void MainFormLoad(object sender, EventArgs e)
         {
-
+            this.Text = Config.GetConfig<string>("SoftName") + Config.GetConfig<string>("Version") ;
+            StausShow.SetToolInfo1(Config.GetConfig<string>("SoftName"));
+            StausShow.SetToolInfo3(Config.GetConfig<string>("CustomerCompanyName"));
         }
 
         private void 常规参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
