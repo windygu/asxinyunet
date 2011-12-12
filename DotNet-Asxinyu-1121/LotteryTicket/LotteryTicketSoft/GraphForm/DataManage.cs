@@ -88,7 +88,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
             InitialDataGridView();
-            twoColorBall = new TwoColorBall(500);//设置计算数量
+            twoColorBall = new TwoColorBall(100);//设置计算数量
             //GetData();
         }
         #endregion
@@ -247,7 +247,14 @@ namespace LotteryTicketSoft.GraphForm
         //右键预测验证频率
         private void toolStripStatics_Click(object sender, EventArgs e)
         {
+            //验证
             bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
+            //对结果进行统计
+            double[] res = result.Select(n =>((double)n.Where (k=>k ).Count ()/(double )n.Count ())).ToArray ();
+            for (int i = 0; i < res.Length ; i++)
+            {
+                dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
+            }
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)

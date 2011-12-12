@@ -160,17 +160,7 @@ namespace LotTick
         /// <summary>
         /// 需要计算的数目
         /// </summary>
-        public int CalcuteRows
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
+        public int CalcuteRows { get; set; }
         /// <summary>
         /// 确定获奖等级
         /// </summary>
