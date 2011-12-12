@@ -271,7 +271,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtDataRows.Name = "txtDataRows";
             this.txtDataRows.Size = new System.Drawing.Size(177, 23);
             this.txtDataRows.TabIndex = 10;
-            this.txtDataRows.Text = "1";
+            this.txtDataRows.Text = "0";
             this.txtDataRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
             // txtCorrectRate
