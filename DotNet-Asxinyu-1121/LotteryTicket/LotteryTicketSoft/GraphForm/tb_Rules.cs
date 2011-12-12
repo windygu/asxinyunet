@@ -477,7 +477,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 					if(combIndexSelectorNameTP.Text.Trim()!="") model.IndexSelectorNameTP = combIndexSelectorNameTP.Text.Trim() ;//指标函数
 					if(combCompareRuleNameTP.Text.Trim()!="") model.CompareRuleNameTP = combCompareRuleNameTP.Text.Trim() ;//对比类型
 					if(txtRuleCompareParams.Text.Trim()!="")  model.RuleCompareParams = txtRuleCompareParams.Text.Trim()  ;//比较参数
-                    //if(txtDataRows.Text.Trim()!="")	model.DataRows =Convert.ToInt32(txtDataRows.Text.Trim()) ;//行数
+                    if (txtDataRows.Text.Trim() != "") model.NeedRows  = Convert.ToInt32(txtDataRows.Text.Trim());//行数
 					if(txtCorrectRate.Text.Trim()!="")	model.CorrectRate =Convert.ToDouble(txtCorrectRate.Text.Trim()) ;//正确率
 					if(txtFilterInfo.Text.Trim()!="")  model.FilterInfo = txtFilterInfo.Text.Trim()  ;//过滤信息
 					if(txtEnable.Text.Trim()!="")	model.Enable =Convert.ToBoolean(txtEnable.Text.Trim()) ;//有效

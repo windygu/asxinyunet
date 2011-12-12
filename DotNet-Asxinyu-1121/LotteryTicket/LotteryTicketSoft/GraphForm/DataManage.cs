@@ -52,6 +52,8 @@ namespace LotteryTicketSoft.GraphForm
 
         private TwoColorBall twoColorBall;
 
+        public static int DefaultCalculateRows = 1000;
+
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
@@ -88,7 +90,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
             InitialDataGridView();
-            twoColorBall = new TwoColorBall(100);//设置计算数量
+            twoColorBall = new TwoColorBall(DefaultCalculateRows);//设置计算数量
             //GetData();
         }
         #endregion
@@ -228,7 +230,8 @@ namespace LotteryTicketSoft.GraphForm
                 tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
                 //再根据ruleMode判断规则类别，调用相应的方法进行计算    
                 CompareParams ruleParams = new CompareParams(ruleMode.RuleCompareParams);//参数
-                rules[rowIndex] = new RuleInfo(ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP, ruleParams);
+                rules[rowIndex] = new RuleInfo(ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP, 
+                    ruleParams, DefaultCalculateRows,ruleMode.NeedRows );
             }
             return rules;
         }
