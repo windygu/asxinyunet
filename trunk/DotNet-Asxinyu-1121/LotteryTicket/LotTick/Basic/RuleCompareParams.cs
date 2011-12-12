@@ -29,6 +29,13 @@ namespace LotTick
                 this.CeilLimit = Convert.ToInt32(str[1]);
                 this.CompList = str[2].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
             }
+            else if (str.Length >=4)
+            {
+                this.FloorLimit = Convert.ToInt32(str[0]);
+                this.CeilLimit = Convert.ToInt32(str[1]);
+                this.CompList = str[2].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                this.ParamsValue = str[3];
+            }
         }
         /// <summary>
         /// 范围上限

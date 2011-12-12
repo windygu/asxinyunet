@@ -32,15 +32,15 @@ namespace LotTick
                 case ECompareType.Equal://相等比较第一个
                     return data.Select(n => n == ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
                 case ECompareType.RangeLimite:
-                    return data.Select(n => (n >= ruleInfo.CondtionParams.FloorLimit) && (n <= ruleInfo.CondtionParams.CeilLimit)).Where(n => n).ToArray();
+                    return data.Select(n => (n >= ruleInfo.CondtionParams.FloorLimit) && (n <= ruleInfo.CondtionParams.CeilLimit)).ToArray();
                 case ECompareType.LessThanLimite:
-                    return data.Select(n => n <= ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
+                    return data.Select(n => n <= ruleInfo.CondtionParams.FloorLimit).ToArray();
                 case ECompareType.GreaterThanLimite:
-                    return data.Select(n => n >= ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
+                    return data.Select(n => n >= ruleInfo.CondtionParams.FloorLimit).ToArray();
                 case ECompareType.InList:
-                    return data.Select(n => ruleInfo.CondtionParams.CompList.Contains(n)).Select(n => n).ToArray();
+                    return data.Select(n => ruleInfo.CondtionParams.CompList.Contains(n)).ToArray();
                 case ECompareType.NotInList:
-                    return data.Select(n => !ruleInfo.CondtionParams.CompList.Contains(n)).Select(n => n).ToArray();                  
+                    return data.Select(n => !ruleInfo.CondtionParams.CompList.Contains(n)).ToArray();                  
                 default:
                     return data.Select(n=>false ).ToArray ();
             }

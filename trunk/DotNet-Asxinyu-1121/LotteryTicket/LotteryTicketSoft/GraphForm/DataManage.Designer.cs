@@ -105,7 +105,7 @@ namespace LotteryTicketSoft.GraphForm
             this.toolStripSetting.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSetting.Image")));
             this.toolStripSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSetting.Name = "toolStripSetting";
-            this.toolStripSetting.Size = new System.Drawing.Size(76, 22);
+            this.toolStripSetting.Size = new System.Drawing.Size(73, 22);
             this.toolStripSetting.Text = "参数配置";
             this.toolStripSetting.Click += new System.EventHandler(this.toolStripSetting_Click);
             // 
@@ -114,7 +114,7 @@ namespace LotteryTicketSoft.GraphForm
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(73, 22);
             this.toolStripButton1.Text = "导出数据";
             // 
             // toolStripSeparator2
