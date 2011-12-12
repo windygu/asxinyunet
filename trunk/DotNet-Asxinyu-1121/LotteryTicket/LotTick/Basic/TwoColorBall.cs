@@ -64,8 +64,9 @@ namespace LotTick
             for (int i = 0; i < ruleList.Length; i++)
             {
                 //首先获取计算的数据,直接从data中获取
-                LotTickData[] curData = new LotTickData[this.CalcuteRows + ruleList[i].NeedRows];
-                this.LotData.CopyTo(curData, LotData.Length + 1 - this.CalcuteRows - ruleList[i].NeedRows);
+                LotTickData[] curData = new LotTickData[ruleList[i].CalcuteRows + ruleList[i].NeedRows];
+                this.LotData.CopyTo(curData, LotData.Length  - this.CalcuteRows - ruleList[i].NeedRows);
+                ruleList[i].IndexSelector.RuleInfoParams = ruleList[i]; 
                 res[i] = ruleList[i].IndexSelector.GetValidateResult(curData);
             }
             return res;

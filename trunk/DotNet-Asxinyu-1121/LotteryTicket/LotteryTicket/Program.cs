@@ -81,6 +81,7 @@ using XCode;
 using NewLife.Reflection;
 using XCode.DataAccessLayer;
 using Kw.Combinatorics;
+using System.Linq;
 using System.Data;
 
 namespace LotteryTicket
@@ -92,6 +93,7 @@ namespace LotteryTicket
             //TestMethods.Test05();
             //TestMethods.Test06();
             int[] data = new int[] {1,2,3,7,8,9,10 };
+            
             Console.WriteLine(data.Index_OO最长连续号码数().ToString());
     		Console.ReadKey(true);
     	}
