@@ -18,6 +18,7 @@ using System.Windows.Forms;
 using DotNet.Tools.Controls;
 using XCode;
 using NewLife;
+using NewLife.Configuration ;
 using NewLife.Reflection;
 using LotTick;
 #endregion
@@ -52,7 +53,7 @@ namespace LotteryTicketSoft.GraphForm
 
         private TwoColorBall twoColorBall;
 
-        public static int DefaultCalculateRows = 1000;
+        public static int DefaultCalculateRows = Config.GetConfig<int>("CalculateRows");
 
         /// <summary>
         /// 初始化配置,传入配置信息类
@@ -239,10 +240,22 @@ namespace LotteryTicketSoft.GraphForm
 
         #region 交叉验证
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
-        {            
-            //this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):"+(res * 100).ToString("F4"));           
+        {
             bool[][] result = twoColorBall.ValidateRuleList(GetRuleList ());
             //结果显示
+            int count = 0;
+            for (int i = 0; i < result [0].Length ; i++)
+            {
+                bool flag = false; 
+                for (int j = 0; j < result .GetLength (0); j++)
+                {
+                    if (!result[j][i]) flag = true;
+                }
+                if (!flag)
+                    count++;
+            }
+            double t = ((double )count) /(double )result [0].Length ;
+            this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +(t * 100).ToString("F4"));           
         }
         #endregion
 
@@ -254,15 +267,13 @@ namespace LotteryTicketSoft.GraphForm
             bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
             //对结果进行统计
             double[] res = result.Select(n =>((double)n.Where (k=>k ).Count ()/(double )n.Count ())).ToArray ();
-            for (int i = 0; i < res.Length ; i++)
-            {
-                dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
-            }
+            for (int i = 0; i < res.Length ; i++)  dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
             LotTickData[] result = twoColorBall.FilteByRuleList (GetRuleList());
+
         }
         #endregion
         #endregion

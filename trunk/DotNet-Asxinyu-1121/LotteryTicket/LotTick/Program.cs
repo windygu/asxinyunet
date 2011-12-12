@@ -9,11 +9,8 @@ namespace LotTick
     {
         static void Main(string[] args)
         {
-            //TwoColorBall t = new TwoColorBall(22);            ;
-            //Console.WriteLine(t.GetAllPageNumbers());
-            B b = new B();
-            b.TestA(6);
-            b.TestB(8);
+            //TwoColorBall t = new TwoColorBall(22); 
+            int[][] data = TwoColorBall.GetInitiaData();
             Console.ReadKey();
         }
     }

@@ -206,7 +206,8 @@ namespace LotTick
         /// 根据规则列表进行过滤
         /// </summary>
         /// <param name="ruleList">规则列表</param>
-        public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList)
+        /// <param name="filterInfo">过滤信息</param>
+        public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList, out string filterInfo)
         {
             throw new System.NotImplementedException();
         }

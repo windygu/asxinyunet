@@ -58,6 +58,7 @@ namespace LotTick
         #endregion
 
         #region 对规则列表进行验证和过滤
+        /// <param name="ruleList">规则列表</param>
         public override bool[][] ValidateRuleList(RuleInfo[] ruleList)
         {
             bool[][] res = new bool[ruleList.Length][];
@@ -71,9 +72,13 @@ namespace LotTick
             }
             return res;
         }
-        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList)
+        /// <param name="ruleList">规则列表</param>
+        /// <param name="filterInfo">过滤信息</param>
+        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out string filterInfo)
         {
-            //先按照优先级进行划分,对最高级进行处理后,组合为LotTickData[]，再进行其他的过滤
+            //先按照优先级进行划分,对最高级进行处理后,分为杀红号和杀蓝号
+            //组合为LotTickData[]，再进行其他的过滤，并输出过滤信息,过滤前后的数目
+
             //LotTickData[] res ;
             //for (int i = 0; i < ruleList.Length; i++)
             //{
@@ -83,7 +88,7 @@ namespace LotTick
             //    res[i] = ruleList[i].IndexSelector.GetValidateResult(curData);
             //}
             //return res;
-            return base.FilteByRuleList(ruleList);
+            return base.FilteByRuleList(ruleList,out filterInfo );
         }
         public static int[][] GetInitiaData()
         {
