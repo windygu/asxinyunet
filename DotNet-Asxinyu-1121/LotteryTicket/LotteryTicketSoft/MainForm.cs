@@ -7,15 +7,9 @@
  * 软件GUI工具
  */
 using System;
-using DotNet.Tools.Controls;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
-using LotTick;
-using LotteryTicketSoft.GraphForm;
 using DotNet.Tools.Controls;
-using XCode.Configuration;
-using XCode;
+using LotTick;
 using NewLife.Configuration;
 
 namespace LotteryTicketSoft

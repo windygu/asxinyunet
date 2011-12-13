@@ -8,19 +8,13 @@
  * 
  */
 using System;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Text;
-using DotNet.Tools;
 using System.Data;
-using Kw.Combinatorics;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
-using System.Xml;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using Kw.Combinatorics;
 #endregion
 
 namespace LotteryTicket

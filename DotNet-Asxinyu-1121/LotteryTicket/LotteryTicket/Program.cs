@@ -73,16 +73,8 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.IO;
-using DotNet.Tools;
-using XCode;
-using NewLife.Reflection;
-using XCode.DataAccessLayer;
-using Kw.Combinatorics;
 using System.Linq;
-using System.Data;
+using Kw.Combinatorics;
 
 namespace LotteryTicket
 {

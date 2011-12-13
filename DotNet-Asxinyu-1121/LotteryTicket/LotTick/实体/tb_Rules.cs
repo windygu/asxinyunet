@@ -1,8 +1,6 @@
 ﻿﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using XCode;
-using System.Xml.Serialization;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 

@@ -1,4 +1,5 @@
-﻿/*
+﻿using System.Drawing;
+/*
  * Created by SharpDevelop.
  * User: 董斌辉
  * Date: 2011-2-20
@@ -6,9 +7,7 @@
  * 
  * 基本绘图类库
  */
-using System;
-using ZedGraph ;
-using System.Drawing;
+using ZedGraph;
 
 namespace LotteryTicketSoft.GraphForm
 {

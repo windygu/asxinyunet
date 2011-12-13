@@ -16,17 +16,12 @@
  * 2011-10-09 初步模板调试成功，修改完成，完成初步的控件生成、命名和简单的一列布局模式
  * 2011-10-08 开始设计基本模板，初步成功
  */
- 
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using DotNet.Tools.Controls;
 using LotTick;
-using DotNet.Tools.Controls ;
 
 namespace LotteryTicketSoft.GraphForm
 {	

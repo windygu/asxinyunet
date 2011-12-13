@@ -7,20 +7,14 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Reflection;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Windows.Forms;
 using DotNet.Tools.Controls;
-using XCode;
-using NewLife;
-using NewLife.Configuration ;
-using NewLife.Reflection;
 using LotTick;
+using NewLife.Configuration;
+using XCode;
 #endregion
 
 namespace LotteryTicketSoft.GraphForm
