@@ -171,8 +171,7 @@ namespace LotteryTicket
         /// </summary>
         public static int Index_OO奇号连续个数(this int[] source)
         {
-           
-		   
+            return 3;
         }
         #endregion
 

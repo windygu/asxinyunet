@@ -15,6 +15,7 @@ namespace LotTick
     /// <summary>
     /// 双色球彩票类
     /// </summary>
+    [System.Runtime.InteropServices.GuidAttribute("3AAEA75F-E313-4290-81E3-C6D79F97A0F1")]
     public class TwoColorBall : BasicLotTick
     {
         #region 公共变量
@@ -88,12 +89,12 @@ namespace LotTick
             for (int i = 0; i < Last.Length; i++)
             {
                 //首先获取计算的数据,直接从data中获取
-                LotTickData[] curData = new LotTickData[Last[i].NeedRows];
-                this.LotData.CopyTo(curData, LotData.Length + 1 - Last[i].NeedRows);
-                int firCount = InitData.Length;
-                InitData = Last[i].IndexSelector.GetFilterResult(InitData, curData);
-                int lastCount = InitData.Length;
-                //设置过滤信息
+                LotTickData[] curData = new LotTickData[Last[i].NeedRows] ;
+                this.LotData.CopyTo(curData, LotData.Length + 1 - Last[i].NeedRows) ;
+                int firCount = InitData.Length ;
+                InitData = Last[i].IndexSelector.GetFilterResult(InitData, curData) ;
+                int lastCount = InitData.Length ;
+                //如何返回过滤信息？用字典，加一个规则编号和结果信息
             }
             return InitData;
         }
@@ -108,19 +109,25 @@ namespace LotTick
             {
                 LotTickData[] curData = new LotTickData[ruleList[i].CalcuteRows + ruleList[i].NeedRows];
                 if (ruleList[i].IndexSelector.ToString().Contains("红"))
-                {
                     RedBall = ruleList[i].IndexSelector.DeleteNumbers(RedBall, curData);
-                }
                 else
-                {
                     BlueBall = ruleList[i].IndexSelector.DeleteNumbers(BlueBall , curData);
+            }
+            //对红和蓝进行组合、迭代获取所有组合序列,并对每个序列进行判断         
+            int[][] Red = new Combination(RedBall.Count , 6).Rows.Select(n => Combination.Permute(n, RedBall ).ToArray()).ToArray();
+            LotTickData[] res = new LotTickData[Red.GetLength(0) * BlueBall.Count];//总数
+            int count = 0;
+            for (int i = 0; i < Red.GetLength(0); i++)
+            {
+                for (int j = 0; j < BlueBall.Count ; j++)
+                {
+                    res[count] = new LotTickData();//红蓝组合
+                    res[count].NormalData = Red[i];
+                    res[count++].SpecialData = BlueBall[j];
                 }
             }
-            //对红和蓝进行组合
-            //迭代获取所有组合序列,并对每个序列进行判断         
-            //return new Combination(RedBall.Count , 6).Rows.Select(n => n.ToArray()).ToArray();
-            return null;
-        }      
+            return res ;
+        }
         #endregion
 
         #region 兑奖验证

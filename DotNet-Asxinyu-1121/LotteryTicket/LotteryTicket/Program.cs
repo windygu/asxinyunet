@@ -93,8 +93,8 @@ namespace LotteryTicket
             //TestMethods.Test05();
             //TestMethods.Test06();
             int[] data = new int[] {1,2,3,7,8,9,10 };
-            
-            Console.WriteLine(data.Index_OO最长连续号码数().ToString());
+            int[][] d = new Combination(7, 3).Rows.Select(n => Combination.Permute(n, data).ToArray()).ToArray();
+            CombinationTest();
     		Console.ReadKey(true);
     	}
     	/// <summary>
@@ -103,6 +103,7 @@ namespace LotteryTicket
         public static void CombinationTest()
         {
             int[] data = new int[] { 6,9 , 18, 39,46 };
+            int[][] d = new Combination(5, 3).Rows.Select(n => Combination.Permute(n, data).ToArray()).ToArray();
             foreach (Combination combom in new Combination(5, 3).Rows)
             {
                 foreach (int item in Combination.Permute(combom, data))
