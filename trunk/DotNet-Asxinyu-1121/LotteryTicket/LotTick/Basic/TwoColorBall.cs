@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Net.Cache;
-using System.Threading;
-using XCode;
-using HtmlAgilityPack;
 using System.Linq;
 using DotNet.Tools;
+using HtmlAgilityPack;
 using Kw.Combinatorics;
+using XCode;
 
 namespace LotTick
 {
