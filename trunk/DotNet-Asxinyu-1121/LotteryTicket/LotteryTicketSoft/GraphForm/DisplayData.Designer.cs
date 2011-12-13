@@ -30,8 +30,8 @@ namespace LotteryTicketSoft.GraphForm
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayData));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolAdd = new System.Windows.Forms.ToolStripButton();
             this.toolFind = new System.Windows.Forms.ToolStripButton();
@@ -64,7 +64,7 @@ namespace LotteryTicketSoft.GraphForm
             this.toolExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(720, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(666, 25);
             this.toolStrip1.TabIndex = 38;
             this.toolStrip1.Text = " ";
             // 
@@ -149,8 +149,8 @@ namespace LotteryTicketSoft.GraphForm
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.winPage);
-            this.splitContainer1.Size = new System.Drawing.Size(720, 414);
-            this.splitContainer1.SplitterDistance = 388;
+            this.splitContainer1.Size = new System.Drawing.Size(666, 434);
+            this.splitContainer1.SplitterDistance = 408;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 41;
             // 
@@ -158,28 +158,28 @@ namespace LotteryTicketSoft.GraphForm
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(720, 388);
+            this.dgv.Size = new System.Drawing.Size(666, 408);
             this.dgv.TabIndex = 42;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
@@ -192,19 +192,20 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(237, 0);
+            this.winPage.Location = new System.Drawing.Point(177, 0);
             this.winPage.Name = "winPage";
+            this.winPage.PageSize = 100;
             this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(483, 25);
+            this.winPage.Size = new System.Drawing.Size(489, 25);
             this.winPage.TabIndex = 0;
             this.winPage.PageIndexChanged += new DotNet.Tools.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 
             // stausInfoShow1
             // 
             this.stausInfoShow1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.stausInfoShow1.Location = new System.Drawing.Point(0, 439);
+            this.stausInfoShow1.Location = new System.Drawing.Point(0, 459);
             this.stausInfoShow1.Name = "stausInfoShow1";
-            this.stausInfoShow1.Size = new System.Drawing.Size(720, 24);
+            this.stausInfoShow1.Size = new System.Drawing.Size(666, 24);
             this.stausInfoShow1.TabIndex = 40;
             // 
             // DisplayData
@@ -215,7 +216,7 @@ namespace LotteryTicketSoft.GraphForm
             this.Controls.Add(this.stausInfoShow1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "DisplayData";
-            this.Size = new System.Drawing.Size(720, 463);
+            this.Size = new System.Drawing.Size(666, 483);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
