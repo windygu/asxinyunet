@@ -19,6 +19,9 @@ using XCode;
 
 namespace LotteryTicketSoft.GraphForm
 {
+    /// <summary>
+    /// 过滤后结果的显示及保持
+    /// </summary>
     public partial class DisplayData : UserControl
     {
         #region 初始化,属性及字段
@@ -49,44 +52,24 @@ namespace LotteryTicketSoft.GraphForm
 
         public static int DefaultCalculateRows = Config.GetConfig<int>("CalculateRows");
 
+        private LotTickData[] CurData ;
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
-        public void InitializeSettings(DataControlParams controlParams)
+        public void InitializeSettings(LotTickData[] data)
         {
-            this.ControlParams = controlParams;//先设置属性
+            this.CurData = data;
+
+            //this.ControlParams = controlParams;//先设置属性
             //配置菜单
-            if (controlParams.IsHaveMenu)
-            {
-                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete", "Validate","CrossValidate","Filter" }, new string[] {
-                            "修改", "删除", "验证", "交叉验证", "过滤" },
-                        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
-                        toolStripStatics_Click,toolStripCrossValidate_Click,toolStripFilter_Click});
-            }
-            //动态求和设置
-            if (controlParams.IsHaveSelectSum)
-            {
-                this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
-                this.stausInfoShow1.SetToolInfo1(controlParams.FirStatusInfo);
-                this.stausInfoShow1.SetToolInfo3(controlParams.ThirdStatusInfo);
-            }
-            else
-            {
-                this.stausInfoShow1.SetToolInfo1(controlParams.FirStatusInfo);
-                this.stausInfoShow1.SetToolInfo2(controlParams.SecStatusInfo);
-                this.stausInfoShow1.SetToolInfo3(controlParams.ThirdStatusInfo);
-            }
-            this.winPage.PageSize = controlParams.PageSize;
-            if (controlParams.EntityType != null)
-            {
-                this.EntityOper = EntityFactory.CreateOperate(controlParams.EntityType);
-            }
-            this.winPage.Visible = controlParams.IsEnablePaging;
-            this.cutSql = "";
-            InitialDataGridView();
-            twoColorBall = new TwoColorBall(DefaultCalculateRows);//设置计算数量
-            //GetData();
+            //if (controlParams.IsHaveMenu)
+            //{
+            //    dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
+            //            new string[] { "Edit", "Delete", "Validate","CrossValidate","Filter" }, new string[] {
+            //                "修改", "删除", "验证", "交叉验证", "过滤" },
+            //            new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
+            //            toolStripStatics_Click,toolStripCrossValidate_Click,toolStripFilter_Click});
+            //}
         }
         #endregion
 
@@ -95,85 +78,25 @@ namespace LotteryTicketSoft.GraphForm
         void GetData()
         {
             BindingSource bs = new BindingSource();
-            //开启分页的情况下
-            if (ControlParams.IsEnablePaging)
+            ////开启分页的情况下
+            //if (ControlParams.IsEnablePaging)
+            //{
+            //    btList = EntityOper.FindAll(cutSql, tb_Rules._.Id + " asc", "",
+            //        (winPage.PageIndex - 1) * winPage.PageSize, winPage.PageSize);
+            //}
+            //else //不需要分页的情况下
+            //{
+            //    btList = EntityOper.FindAll(cutSql, tb_Rules._.Id + " asc", "", 0, 0);
+            //}
+            //for (int i = 0; i < btList.Count; i++) bs.Add(btList[i]);
+            //根据页码来处理分页数据
+            int start = (winPage.PageIndex - 1) * winPage.PageSize ;
+            int last = start + winPage.PageIndex ;           
+            for (int i = start ; i <last ; i++)
             {
-                btList = EntityOper.FindAll(cutSql, tb_Rules._.Id + " asc", "",
-                    (winPage.PageIndex - 1) * winPage.PageSize, winPage.PageSize);
+                bs.Add(CurData[i]);
             }
-            else //不需要分页的情况下
-            {
-                btList = EntityOper.FindAll(cutSql, tb_Rules._.Id + " asc", "", 0, 0);
-            }
-            for (int i = 0; i < btList.Count; i++) bs.Add(btList[i]);
-            dgv.DataSource = bs;//绑定数据
-            //移除不需要的列，可以设置为一个开关，根据需要是否打开
-            if (dgv.Columns.Contains(tb_Rules._.Remark.Description)) dgv.Columns.Remove(tb_Rules._.Remark.Description);           
-            if (dgv.Columns.Contains(tb_Rules._.Remark.Name)) dgv.Columns.Remove(tb_Rules._.Remark.Name);
-            //if (dgv.Columns.Contains(tb_Rules._.SchemeId.Description)) dgv.Columns.Remove(tb_Rules._.SchemeId.Description);        
-            //if (dgv.Columns.Contains(tb_Rules._.SchemeId.Name)) dgv.Columns.Remove(tb_Rules._.SchemeId.Name);          
-            if (dgv.Columns.Contains(tb_Rules._.UpdateTime.Description)) dgv.Columns.Remove(tb_Rules._.UpdateTime.Description);
-            if (dgv.Columns.Contains(tb_Rules._.UpdateTime.Name)) dgv.Columns.Remove(tb_Rules._.UpdateTime.Name);     
-        }
-        /// <summary>
-        /// 初始化，格式控制
-        /// </summary>
-        void InitialDataGridView()
-        {
-            //现在初始化列   
-            DataGridViewTextBoxColumn tb1 = CreateTextBoxWithNames(tb_Rules._.Id, tb_Rules._.Id.Description);
-            tb1.Width = 60;
-            dgv.Columns.Add(tb1);
-            //SchemeId
-            DataGridViewTextBoxColumn tbT1 = CreateTextBoxWithNames(tb_Rules._.SchemeId, tb_Rules._.SchemeId.Description);
-            tbT1.Width = 90;
-            dgv.Columns.Add(tbT1);
-            DataGridViewComboBoxColumn tb2 = CreateComboBoxWithNames(LotTickHelper.GetAllIndexFuncNames(), tb_Rules._.IndexSelectorNameTP, tb_Rules._.IndexSelectorNameTP.Description);
-            tb2.Width = 170;
-            dgv.Columns.Add(tb2);
-            DataGridViewComboBoxColumn tb3 = CreateComboBoxWithNames(LotTickHelper.GetAllEnumNames<ECompareType>(),
-                tb_Rules._.CompareRuleNameTP, tb_Rules._.CompareRuleNameTP.Description);
-            tb3.Width = 130;
-            dgv.Columns.Add(tb3);
-            DataGridViewTextBoxColumn tb4 = CreateTextBoxWithNames(tb_Rules._.RuleCompareParams, tb_Rules._.RuleCompareParams.Description);
-            tb4.Width = 80;
-            dgv.Columns.Add(tb4);
-            DataGridViewTextBoxColumn tb5 = CreateTextBoxWithNames(tb_Rules._.NeedRows, tb_Rules._.NeedRows.Description);
-            tb5.Width = 80;
-            dgv.Columns.Add(tb5);
-            DataGridViewTextBoxColumn tb6 = CreateTextBoxWithNames(tb_Rules._.CorrectRate, tb_Rules._.CorrectRate.Description);
-            tb6.Width = 80;
-            dgv.Columns.Add(tb6);
-            DataGridViewTextBoxColumn tb7 = CreateTextBoxWithNames(tb_Rules._.FilterInfo, tb_Rules._.FilterInfo.Description);
-            tb7.Width = 120;
-            dgv.Columns.Add(tb7);
-            //Enable
-            DataGridViewCheckBoxColumn tbT2 = new DataGridViewCheckBoxColumn();
-            tbT2.DataPropertyName = tb_Rules._.Enable;
-            tbT2.Name = tb_Rules._.Enable.Description;
-            tbT2.Width = 40;
-            dgv.Columns.Add(tbT2);
-            DataGridViewTextBoxColumn tb8 = CreateTextBoxWithNames(tb_Rules._.UpdateTime, tb_Rules._.UpdateTime.Description);
-            tb8.Width = 50;
-            dgv.Columns.Add(tb8);
-            DataGridViewTextBoxColumn tb9 = CreateTextBoxWithNames(tb_Rules._.Remark, tb_Rules._.Remark.Description);
-            tb9.Width = 60;
-            dgv.Columns.Add(tb9);            
-        }
-        DataGridViewComboBoxColumn CreateComboBoxWithNames(string[] dataSource, string dataPropertyName, string DispalyName)
-        {
-            DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-            combo.DataSource = dataSource;
-            combo.DataPropertyName = dataPropertyName;
-            combo.Name = DispalyName;
-            return combo;
-        }
-        DataGridViewTextBoxColumn CreateTextBoxWithNames(string dataPropertyName, string DispalyName)
-        {
-            DataGridViewTextBoxColumn combo = new DataGridViewTextBoxColumn();
-            combo.DataPropertyName = dataPropertyName;
-            combo.Name = DispalyName;
-            return combo;
+            dgv.DataSource = bs;//绑定数据          
         }
         #endregion
 

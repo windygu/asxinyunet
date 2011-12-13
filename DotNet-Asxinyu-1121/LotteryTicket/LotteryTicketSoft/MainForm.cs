@@ -50,7 +50,13 @@ namespace LotteryTicketSoft
             dt.StartPosition = FormStartPosition.CenterParent;
             return dt;
         }
-        
+        //public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(LotTickData[] data)
+        //{
+        //    LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
+        //    dt.InitializeSettings(dcp);
+        //    dt.StartPosition = FormStartPosition.CenterParent;
+        //    return dt;
+        //}
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules),
