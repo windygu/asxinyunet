@@ -73,31 +73,54 @@ namespace LotTick
             return res;
         }
         /// <param name="ruleList">规则列表</param>
-        /// <param name="filterInfo">过滤信息</param>
-        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out string filterInfo)
+        /// <param name="filterInfos">过滤信息</param>
+        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out string[] filterInfos)
         {
+            //先获取优先级列表,从指标数据表中获取           
+            RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel==6).ToArray ();
+            RuleInfo[] Last = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel<6).ToArray();
+            filterInfos = new string[ruleList.Length];
             //先按照优先级进行划分,对最高级进行处理后,分为杀红号和杀蓝号
+            LotTickData[] InitData = GetInitiaData(First);
             //组合为LotTickData[]，再进行其他的过滤，并输出过滤信息,过滤前后的数目
-
-            //LotTickData[] res ;
-            //for (int i = 0; i < ruleList.Length; i++)
-            //{
-            //    //首先获取计算的数据,直接从data中获取
-            //    LotTickData[] curData = new LotTickData[ruleList[i].NeedRows];
-            //    this.LotData.CopyTo(curData, LotData.Length + 1 - ruleList[i].NeedRows);
-            //    res[i] = ruleList[i].IndexSelector.GetValidateResult(curData);
-            //}
-            //return res;
-            return base.FilteByRuleList(ruleList,out filterInfo );
+            for (int i = 0; i < Last.Length; i++)
+            {
+                //首先获取计算的数据,直接从data中获取
+                LotTickData[] curData = new LotTickData[Last[i].NeedRows];
+                this.LotData.CopyTo(curData, LotData.Length + 1 - Last[i].NeedRows);
+                int firCount = InitData.Length;
+                InitData = Last[i].IndexSelector.GetFilterResult(InitData, curData);
+                int lastCount = InitData.Length;
+                //设置过滤信息
+            }
+            return InitData;
         }
-        public static int[][] GetInitiaData()
+        public static LotTickData[] GetInitiaData(RuleInfo[] ruleList)
         {
-            int[] data = new int[33];
-            //初始化
-            for (int i = 0; i < data.Length; i++) { data[i] = i + 1; }
+            List<int> RedBall = new List<int>(33);
+            List<int> BlueBall = new List<int>(16);
+            //初始化            
+            for (int i = 0; i <33 ; i++) RedBall.Add (i +1);
+            for (int i = 0; i <16 ; i++) BlueBall.Add (i +1);
+            for (int i = 0; i < ruleList.Length ; i++)
+            {
+                LotTickData[] curData = new LotTickData[ruleList[i].CalcuteRows + ruleList[i].NeedRows];
+                if (ruleList[i].IndexSelector.ToString().Contains("红"))
+                {
+                    RedBall = ruleList[i].IndexSelector.DeleteNumbers(RedBall, curData);
+                }
+                else
+                {
+                    BlueBall = ruleList[i].IndexSelector.DeleteNumbers(BlueBall , curData);
+                }
+            }
+            //对红和蓝进行组合
             //迭代获取所有组合序列,并对每个序列进行判断         
-            return new Combination(data.Length, 6).Rows.Select(n => n.ToArray()).ToArray();
-        }
+            //return new Combination(RedBall.Count , 6).Rows.Select(n => n.ToArray()).ToArray();
+            return null;
+        }      
         #endregion
 
         #region 兑奖验证

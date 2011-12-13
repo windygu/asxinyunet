@@ -272,7 +272,8 @@ namespace LotteryTicketSoft.GraphForm
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
-            LotTickData[] result = twoColorBall.FilteByRuleList (GetRuleList());
+            string[] info ;
+            LotTickData[] result = twoColorBall.FilteByRuleList (GetRuleList(),out info );
 
         }
         #endregion

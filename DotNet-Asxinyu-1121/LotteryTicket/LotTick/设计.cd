@@ -8,9 +8,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.TwoColorBall">
-    <Position X="0.5" Y="4" Width="1.75" />
+    <Position X="0.5" Y="3.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAQEAEAIAAEAAAAAAAAACAAgAIAAAEAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAAQEAkAIAAEAAAAAAAAACAAgAIAAAEAAAAAAAA=</HashCode>
       <FileName>Basic\TwoColorBall.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -22,7 +22,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红邻号出现数">
-    <Position X="6" Y="5.25" Width="1.75" />
+    <Position X="6.25" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_红邻号出现数.cs</FileName>
@@ -73,7 +73,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红杀号">
-    <Position X="4.25" Y="6.75" Width="1.75" />
+    <Position X="4.5" Y="6.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_红杀号.cs</FileName>

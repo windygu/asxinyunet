@@ -200,7 +200,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtPriorLevel.Name = "txtPriorLevel";
             this.txtPriorLevel.Size = new System.Drawing.Size(230, 23);
             this.txtPriorLevel.TabIndex = 6;
-            this.txtPriorLevel.Text = "1";
+            this.txtPriorLevel.Text = "5";
             this.txtPriorLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
             // txtUseExplain
