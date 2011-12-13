@@ -206,7 +206,7 @@ namespace LotTick
         /// </summary>
         /// <param name="ruleList">规则列表</param>
         /// <param name="filterInfos">过滤信息</param>
-        public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList, out string[] filterInfos)
+        public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
             throw new System.NotImplementedException();
         }
@@ -233,25 +233,6 @@ namespace LotTick
     /// </summary>
     public interface IPrizeGrade
     {
-    }
-
-    /// <summary>
-    /// 指标计算的模式
-    /// </summary>
-    public enum EIndexMode
-    {
-        /// <summary>
-        /// 常规模式,即对普通号码操作
-        /// </summary>
-        Normal = 0,
-        /// <summary>
-        /// 特殊模式,即对特殊号码操作
-        /// </summary>
-        Special = 1,
-        /// <summary>
-        /// 混合模式,同时操作所有数据
-        /// </summary>
-        Mix = 2,
     }
 
     #region 比较类型枚举

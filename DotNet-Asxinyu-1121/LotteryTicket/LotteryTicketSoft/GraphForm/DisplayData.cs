@@ -19,10 +19,10 @@ using XCode;
 
 namespace LotteryTicketSoft.GraphForm
 {
-    public partial class DataManage : UserControl
+    public partial class DisplayData : UserControl
     {
         #region 初始化,属性及字段
-        public DataManage()
+        public DisplayData()
         {
             InitializeComponent();
         }

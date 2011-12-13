@@ -10,19 +10,19 @@
   <Class Name="LotTick.TwoColorBall">
     <Position X="0.5" Y="3.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAQEAkAIAAEAAAAAAAAACAAgAIAAAEAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAAQEAEAIAAEAAAAAAAAACAAgAIAAAEAAAAAAAA=</HashCode>
       <FileName>Basic\TwoColorBall.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotTick.LotTickHelper">
-    <Position X="8.25" Y="1.75" Width="2" />
+  <Class Name="LotTick.LotTickHelper" Collapsed="true">
+    <Position X="8.25" Y="1.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQACAAAAAAAAAAAAAAAAAAAggAA=</HashCode>
       <FileName>Basic\LotTickHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红邻号出现数">
-    <Position X="6.25" Y="5" Width="1.75" />
+    <Position X="7.75" Y="4" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_红邻号出现数.cs</FileName>
@@ -30,7 +30,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.LotIndex">
-    <Position X="4.5" Y="2" Width="1.75" />
+    <Position X="4.75" Y="2.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAgAACAASAAAAAAAAAAAAAASAA=</HashCode>
       <FileName>Basic\BasicInfo.cs</FileName>
@@ -39,26 +39,26 @@
   <Class Name="LotTick.RuleInfo">
     <Position X="2.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAIAAAAAAAAAAAAAAABAAAAAAAQAAAAQACA=</HashCode>
+      <HashCode>AAgAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAQAAAAQAiA=</HashCode>
       <FileName>Basic\RuleInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.CompareParams">
-    <Position X="2.5" Y="3" Width="1.75" />
+    <Position X="2.75" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAABAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Basic\RuleCompareParams.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LotTick.ExtendsExpress">
-    <Position X="8.25" Y="3.75" Width="2" />
+  <Class Name="LotTick.ExtendsExpress" Collapsed="true">
+    <Position X="8.25" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAEAQAAAQQAAAAAAAAQAAEIAAQAAAAAAAAA=</HashCode>
       <FileName>Basic\ExtendsExpress.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红最长连续数">
-    <Position X="3.25" Y="5.25" Width="1.75" />
+    <Position X="6.75" Y="6" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>指标计算\Index_红最长连续数.cs</FileName>
@@ -73,27 +73,20 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LotTick.Index_红杀号">
-    <Position X="4.5" Y="6.5" Width="1.75" />
+    <Position X="8.75" Y="5.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>指标计算\Index_红杀号.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="LotTick.IGetHistoryData">
+  <Interface Name="LotTick.IGetHistoryData" Collapsed="true">
     <Position X="8.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAAA=</HashCode>
       <FileName>Basic\BasicInfo.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="LotTick.EIndexMode">
-    <Position X="6.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAACAAAAAAAAAAEAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Basic\BasicInfo.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="LotTick.ECompareType">
+  <Enum Name="LotTick.ECompareType" Collapsed="true">
     <Position X="6.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAJAAAAgAAAAAAAAAAAAABAAAAABAAAAAA=</HashCode>

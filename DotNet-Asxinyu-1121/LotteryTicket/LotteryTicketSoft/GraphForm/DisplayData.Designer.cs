@@ -1,7 +1,7 @@
 ﻿using DotNet.Tools.Controls;
 namespace LotteryTicketSoft.GraphForm
 {
-    partial class DataManage
+    partial class DisplayData
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -29,7 +29,7 @@ namespace LotteryTicketSoft.GraphForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataManage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayData));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -64,7 +64,7 @@ namespace LotteryTicketSoft.GraphForm
             this.toolExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(803, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(720, 25);
             this.toolStrip1.TabIndex = 38;
             this.toolStrip1.Text = " ";
             // 
@@ -149,8 +149,8 @@ namespace LotteryTicketSoft.GraphForm
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.winPage);
-            this.splitContainer1.Size = new System.Drawing.Size(803, 420);
-            this.splitContainer1.SplitterDistance = 394;
+            this.splitContainer1.Size = new System.Drawing.Size(720, 414);
+            this.splitContainer1.SplitterDistance = 388;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 41;
             // 
@@ -179,7 +179,7 @@ namespace LotteryTicketSoft.GraphForm
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(803, 394);
+            this.dgv.Size = new System.Drawing.Size(720, 388);
             this.dgv.TabIndex = 42;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
@@ -192,7 +192,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(320, 0);
+            this.winPage.Location = new System.Drawing.Point(237, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
             this.winPage.Size = new System.Drawing.Size(483, 25);
@@ -202,20 +202,20 @@ namespace LotteryTicketSoft.GraphForm
             // stausInfoShow1
             // 
             this.stausInfoShow1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.stausInfoShow1.Location = new System.Drawing.Point(0, 445);
+            this.stausInfoShow1.Location = new System.Drawing.Point(0, 439);
             this.stausInfoShow1.Name = "stausInfoShow1";
-            this.stausInfoShow1.Size = new System.Drawing.Size(803, 24);
+            this.stausInfoShow1.Size = new System.Drawing.Size(720, 24);
             this.stausInfoShow1.TabIndex = 40;
             // 
-            // DataManage
+            // DisplayData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.stausInfoShow1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "DataManage";
-            this.Size = new System.Drawing.Size(803, 469);
+            this.Name = "DisplayData";
+            this.Size = new System.Drawing.Size(720, 463);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

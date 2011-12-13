@@ -11,12 +11,14 @@ namespace LotTick
         /// <param name="IndexName">指标名称</param>
         /// <param name="ruleName">比较类型名称</param>
         /// <param name="conditions">比较参数</param>
-        public RuleInfo(string IndexName, string ruleName,LotTick.CompareParams conditions,int calculateRows = 100 ,int needRows = 0)
+        public RuleInfo(string IndexName, string ruleName,LotTick.CompareParams conditions,
+            int ruleId,int calculateRows = 100 ,int needRows = 0)
         {
             Assembly indexAssembe = Assembly.LoadFrom("LotTick.exe");
             Type t = indexAssembe.GetType("LotTick.Index_"+IndexName );
             this.IndexSelector = Activator.CreateInstance(t) as LotIndex;
             this.CompareRule = ruleName.ToEnum<ECompareType>();
+            this.RuleID = ruleId;
             this.CondtionParams = conditions;
             this.NeedRows = needRows;
             this.CalcuteRows = calculateRows;
@@ -47,8 +49,8 @@ namespace LotTick
         public int CalcuteRows { get; set; }
 
         /// <summary>
-        /// 指标当前的计算模式
+        /// 规则的编号
         /// </summary>
-        public EIndexMode CurrentIndexMode { get; set; }
+        public int RuleID { get; set; }
     }
 }
