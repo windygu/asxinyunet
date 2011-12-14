@@ -70,7 +70,7 @@ namespace LotteryTicketSoft
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(940, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(940, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -80,19 +80,20 @@ namespace LotteryTicketSoft
             this.指标信息ToolStripMenuItem,
             this.规则信息ToolStripMenuItem});
             this.基本信息ToolStripMenuItem.Name = "基本信息ToolStripMenuItem";
-            this.基本信息ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.基本信息ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.基本信息ToolStripMenuItem.Text = "基本信息";
             // 
             // 指标信息ToolStripMenuItem
             // 
             this.指标信息ToolStripMenuItem.Name = "指标信息ToolStripMenuItem";
-            this.指标信息ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.指标信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.指标信息ToolStripMenuItem.Text = "指标信息";
+            this.指标信息ToolStripMenuItem.Click += new System.EventHandler(this.指标信息ToolStripMenuItem_Click);
             // 
             // 规则信息ToolStripMenuItem
             // 
             this.规则信息ToolStripMenuItem.Name = "规则信息ToolStripMenuItem";
-            this.规则信息ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.规则信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.规则信息ToolStripMenuItem.Text = "规则信息";
             // 
             // 验证过滤ToolStripMenuItem
@@ -101,20 +102,20 @@ namespace LotteryTicketSoft
             this.验证过滤管理ToolStripMenuItem,
             this.指标信息管理ToolStripMenuItem});
             this.验证过滤ToolStripMenuItem.Name = "验证过滤ToolStripMenuItem";
-            this.验证过滤ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.验证过滤ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.验证过滤ToolStripMenuItem.Text = "验证过滤";
             // 
             // 验证过滤管理ToolStripMenuItem
             // 
             this.验证过滤管理ToolStripMenuItem.Name = "验证过滤管理ToolStripMenuItem";
-            this.验证过滤管理ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.验证过滤管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.验证过滤管理ToolStripMenuItem.Text = "验证过滤管理";
             this.验证过滤管理ToolStripMenuItem.Click += new System.EventHandler(this.验证过滤管理ToolStripMenuItem_Click);
             // 
             // 指标信息管理ToolStripMenuItem
             // 
             this.指标信息管理ToolStripMenuItem.Name = "指标信息管理ToolStripMenuItem";
-            this.指标信息管理ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.指标信息管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.指标信息管理ToolStripMenuItem.Text = "指标信息管理";
             this.指标信息管理ToolStripMenuItem.Click += new System.EventHandler(this.指标信息管理ToolStripMenuItem_Click);
             // 
@@ -124,7 +125,7 @@ namespace LotteryTicketSoft
             this.数据更新ToolStripMenuItem,
             this.常规参数设置ToolStripMenuItem});
             this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
-            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统设置ToolStripMenuItem.Text = "系统设置";
             // 
             // 数据更新ToolStripMenuItem
@@ -133,34 +134,34 @@ namespace LotteryTicketSoft
             this.更新最近ToolStripMenuItem,
             this.更新所有ToolStripMenuItem});
             this.数据更新ToolStripMenuItem.Name = "数据更新ToolStripMenuItem";
-            this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.数据更新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据更新ToolStripMenuItem.Text = "数据更新";
             // 
             // 更新最近ToolStripMenuItem
             // 
             this.更新最近ToolStripMenuItem.Name = "更新最近ToolStripMenuItem";
-            this.更新最近ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.更新最近ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.更新最近ToolStripMenuItem.Text = "更新最近";
             this.更新最近ToolStripMenuItem.Click += new System.EventHandler(this.更新最近ToolStripMenuItem_Click);
             // 
             // 更新所有ToolStripMenuItem
             // 
             this.更新所有ToolStripMenuItem.Name = "更新所有ToolStripMenuItem";
-            this.更新所有ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.更新所有ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.更新所有ToolStripMenuItem.Text = "更新所有";
             this.更新所有ToolStripMenuItem.Click += new System.EventHandler(this.更新所有ToolStripMenuItem_Click);
             // 
             // 常规参数设置ToolStripMenuItem
             // 
             this.常规参数设置ToolStripMenuItem.Name = "常规参数设置ToolStripMenuItem";
-            this.常规参数设置ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.常规参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.常规参数设置ToolStripMenuItem.Text = "常规参数设置";
             this.常规参数设置ToolStripMenuItem.Click += new System.EventHandler(this.常规参数设置ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // MainForm

@@ -18,6 +18,11 @@ using DotNet.WinForm.Controls;
 
 namespace DotNet.WinForm
 {
+    public class ConfigDictionary
+    {
+        public Dictionary<string, string> Items { get; set; }
+    }
+
     #region 实体控件中当前实体的状态
     /// <summary>
     /// 控件状态：清空，只读，修改

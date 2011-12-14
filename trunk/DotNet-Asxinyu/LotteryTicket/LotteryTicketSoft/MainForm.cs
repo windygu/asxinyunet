@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DotNet.Tools.Controls;
 using LotTick;
 using NewLife.Configuration;
+using DotNet.WinForm.Controls;
 
 namespace LotteryTicketSoft
 {
@@ -87,6 +88,11 @@ namespace LotteryTicketSoft
         private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
         {            
             TwoColorBall.UpdateAll();
+        }
+
+        private void 指标信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DotNet.WinForm.Controls.ConfigSetting.CreateForm("test.xml").Show();
         }
     }
 }

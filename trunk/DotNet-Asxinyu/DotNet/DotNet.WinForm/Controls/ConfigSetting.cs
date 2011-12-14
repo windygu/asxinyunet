@@ -33,11 +33,18 @@ namespace DotNet.WinForm.Controls
         /// </summary>        
         public ConfigSetting(string DefaultFile)
         {
+            InitializeComponent();
             this.DefaultXmlFileName = DefaultFile;
             Dictionary<string, string> dic = LoadDic(DefaultFile);//读取文件
-            DataGridViewColumnCollection columns = this.dgv.Columns;
-            columns.Add("key", "键");
-            columns.Add("value", "值");
+            //DataGridViewColumnCollection columns = this.dgv.Columns;
+            //columns.Add("key", "键");
+            //columns.Add("value", "值");
+            DataGridViewTextBoxColumn key = new DataGridViewTextBoxColumn();
+            key.Name = "键";
+            this.dgv.Columns.Add(key);
+            DataGridViewTextBoxColumn keyValue = new DataGridViewTextBoxColumn();
+            keyValue.Name = "值";
+            this.dgv.Columns.Add(keyValue);
             foreach (var item in dic)
             {
                 DataGridViewRowCollection rows = this.dgv.Rows;
@@ -72,9 +79,9 @@ namespace DotNet.WinForm.Controls
                 {
                     Object obj = null;
                     xml.Reader = xr;
-                    if (xml.ReadObject(typeof(Dictionary<string,string>), ref obj, null) && obj != null)
+                    if (xml.ReadObject(typeof(ConfigDictionary ), ref obj, null) && obj != null)
                     {
-                        return obj as Dictionary<string, string>;
+                        return (obj as ConfigDictionary).Items  ;
                     }
                     throw new XException (ErrorCode.Serializ_ConvertFailed );                    
                 }
@@ -95,7 +102,10 @@ namespace DotNet.WinForm.Controls
             using (XmlWriter writer = XmlWriter.Create(DefaultXmlFileName))
             {
                 xml.Writer = writer;
-                xml.WriteObject(ReadFromDgv(), typeof(Dictionary<string ,string >), null);
+                Dictionary<string, string> dic = ReadFromDgv();
+                ConfigDictionary temp = new ConfigDictionary();
+                temp.Items = dic;
+                xml.WriteObject(temp , typeof(ConfigDictionary ), null);
             }
         }
         /// <summary>
