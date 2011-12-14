@@ -37,8 +37,6 @@
             // 
             // dgv
             // 
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -60,15 +58,15 @@
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(513, 285);
+            this.dgv.Size = new System.Drawing.Size(454, 317);
             this.dgv.TabIndex = 43;
             // 
             // StatusInfo
             // 
             this.StatusInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StatusInfo.Location = new System.Drawing.Point(0, 261);
+            this.StatusInfo.Location = new System.Drawing.Point(0, 293);
             this.StatusInfo.Name = "StatusInfo";
-            this.StatusInfo.Size = new System.Drawing.Size(513, 24);
+            this.StatusInfo.Size = new System.Drawing.Size(454, 24);
             this.StatusInfo.TabIndex = 44;
             // 
             // ConfigSetting
@@ -78,7 +76,7 @@
             this.Controls.Add(this.StatusInfo);
             this.Controls.Add(this.dgv);
             this.Name = "ConfigSetting";
-            this.Size = new System.Drawing.Size(513, 285);
+            this.Size = new System.Drawing.Size(454, 317);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 

@@ -59,6 +59,7 @@
     <Compile Include="Controls\ConfigSetting.Designer.cs">
       <DependentUpon>ConfigSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DicTest.cs" />
     <Compile Include="Controls\FormModel.cs">
       <SubType>Form</SubType>
     </Compile>

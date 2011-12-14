@@ -128,6 +128,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DotNet\DotNet.Tools\DotNet.Tools.csproj">
+      <Project>{9BFA4F1D-4863-414A-AFED-AE7A5330BA0A}</Project>
+      <Name>DotNet.Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YoungRunControl\YoungRunControl.csproj">
       <Project>{B3281232-CAFF-4B4A-9F76-CD9D01C45638}</Project>
       <Name>YoungRunControl</Name>
