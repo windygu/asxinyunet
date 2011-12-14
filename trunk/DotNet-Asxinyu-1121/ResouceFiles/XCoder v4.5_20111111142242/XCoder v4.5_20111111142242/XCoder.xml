@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?><XConfig><ConnName>LotTick</ConnName><Prefix></Prefix><NameSpace>LotteryTicketSoft.GraphForm</NameSpace><TemplateName>董斌辉-控件</TemplateName><OutputPath>ConnName</OutputPath><EntityConnName>LotTick</EntityConnName><BaseClass>Entity</BaseClass><RenderGenEntity>False</RenderGenEntity><AutoCutPrefix>False</AutoCutPrefix><AutoFixWord>False</AutoFixWord><UseCNFileName>False</UseCNFileName><UseHeadTemplate>False</UseHeadTemplate><HeadTemplate>/*
- * XCoder v&lt;#=Version#&gt;
- * 作者：&lt;#=Environment.UserName + "/" + Environment.MachineName#&gt;
- * 时间：&lt;#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#&gt;
- * 版权：版权所有 (C) 新生命开发团队 &lt;#=DateTime.Now.ToString("yyyy")#&gt;
-*/
-</HeadTemplate><Debug>False</Debug><LastUpdate>2011-11-27 09:23:25</LastUpdate><LastBlogTitle>坚持之随想</LastBlogTitle><Items /></XConfig>
