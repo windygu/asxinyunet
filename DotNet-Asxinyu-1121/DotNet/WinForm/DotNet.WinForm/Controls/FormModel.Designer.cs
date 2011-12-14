@@ -1,4 +1,4 @@
-﻿namespace DotNet.Tools.Controls
+﻿namespace DotNet.WinForm.Controls
 {
     partial class FormModel
     {

@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.StatusInfo = new DotNet.WinForm.Controls.StausInfoShow();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,10 +63,19 @@
             this.dgv.Size = new System.Drawing.Size(513, 285);
             this.dgv.TabIndex = 43;
             // 
+            // StatusInfo
+            // 
+            this.StatusInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.StatusInfo.Location = new System.Drawing.Point(0, 261);
+            this.StatusInfo.Name = "StatusInfo";
+            this.StatusInfo.Size = new System.Drawing.Size(513, 24);
+            this.StatusInfo.TabIndex = 44;
+            // 
             // ConfigSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.StatusInfo);
             this.Controls.Add(this.dgv);
             this.Name = "ConfigSetting";
             this.Size = new System.Drawing.Size(513, 285);
@@ -77,5 +87,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv;
+        private StausInfoShow StatusInfo;
     }
 }

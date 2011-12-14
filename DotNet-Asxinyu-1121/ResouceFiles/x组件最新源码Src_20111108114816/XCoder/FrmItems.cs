@@ -88,7 +88,6 @@ namespace XCoder
             Dictionary<string, string> dic = new Dictionary<string, string>();
             dic.Add("key", "value");
             Dic = dic;
-
         }
 
         #endregion
@@ -131,7 +130,6 @@ namespace XCoder
 
             XConfig.Items = dic;
             XConfig.Save();
-
         }
 
         void DeleteItems()
