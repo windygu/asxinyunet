@@ -326,7 +326,9 @@
     <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Web\Modules\RunTimeModule.cs" />
     <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Web\Modules\SystemStartModule.cs" />
     <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Web\Modules\ViewStateCompressionModule.cs" />
-    <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Web\WebClientX.cs" />
+    <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Web\WebClientX.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Web\WebHelper.cs" />
     <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Xml\ExtendData.cs" />
     <Compile Include="x组件最新源码Src_20111108114816\NewLife.Core\Xml\XMLEntity.cs" />
@@ -755,9 +757,6 @@
     <Content Include="Lib\XCoder.exe" />
     <Content Include="Lib\XCoder.xml" />
     <Content Include="Lib\ZedGraph.dll" />
-    <Content Include="XCoder v4.5_20111111142242\XCoder v4.5_20111111142242\LotteryTicket.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="XCoder v4.5_20111111142242\XCoder v4.5_20111111142242\NewLife.Core.dll" />
     <Content Include="XCoder v4.5_20111111142242\XCoder v4.5_20111111142242\Template\数据字典\连接名数据字典.htm" />
     <Content Include="XCoder v4.5_20111111142242\XCoder v4.5_20111111142242\Template\页面2\类名.aspx" />

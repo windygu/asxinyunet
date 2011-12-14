@@ -168,7 +168,7 @@ namespace XCoder
         }
         #endregion
 
-        #region 加载/保存
+        #region 加载/保存        
         public static XConfig Load()
         {
             if (!File.Exists(DefaultFile)) return Create();
