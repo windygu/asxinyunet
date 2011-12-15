@@ -15,7 +15,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DotNet.Tools.Controls;
 using XCode;
 using NewLife;
 using NewLife.Reflection;
