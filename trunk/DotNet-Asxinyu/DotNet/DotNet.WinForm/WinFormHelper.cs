@@ -27,6 +27,12 @@ namespace DotNet.WinForm
         /// 字典集合
         /// </summary>
         public Dictionary<string, string> Items { get; set; }
+        public static ConfigDictionary Create(Dictionary<string, string> dic)
+        {
+            ConfigDictionary cd = new ConfigDictionary();
+            cd.Items = dic;
+            return cd;
+        }
         /// <summary>
         /// 根据key获取对应的值
         /// </summary>
@@ -188,6 +194,13 @@ namespace DotNet.WinForm
         public string AddFormSearchString { get; set; }
         #endregion
 
+        #region 其他子窗体属性
+        /// <summary>
+        /// 配置文件名称
+        /// </summary>
+        public string SettingFileName;
+        #endregion
+
         #region 构造函数
         /// <summary>
         /// 构造函数
@@ -210,7 +223,7 @@ namespace DotNet.WinForm
             bool isHaveSelectSum = false, bool isEnablePaging = true ,
             string addFormTitleText = "添加数据", string manageFormTitleText = "集中数据管理",
             int pageSize = 20, string firStatusInfo = "数据管理模块",
-            string secStatusInfo = "", string thirdStatusInfo = "开发:asxinyu@qq.com")
+            string secStatusInfo = "", string thirdStatusInfo = "开发:asxinyu@qq.com",string settingFileName=null )
         {
             this.ControlAssemblyName = assemblyName;
             this.ControlName = controlName;
@@ -225,6 +238,7 @@ namespace DotNet.WinForm
             this.FirStatusInfo = firStatusInfo;
             this.SecStatusInfo = secStatusInfo;
             this.ThirdStatusInfo = thirdStatusInfo;
+            this.SettingFileName = settingFileName;
         }
         #endregion
     }

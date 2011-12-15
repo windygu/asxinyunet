@@ -51,7 +51,7 @@ namespace DotNet.WinForm.Controls
         /// 实体操作
         /// </summary>
         public IEntityOperate EntityOper { get; set; }
-        private static string TableName;
+        private static string TableName;//用于配置条件窗体
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
@@ -252,14 +252,18 @@ namespace DotNet.WinForm.Controls
         }
         #endregion
 
-        #region 废弃代码---很有参考价值
-        //IListSource ls=btList as IListSource ;
-        //dgv.DataSource = ls.GetList(); ;// btList ;
-        //Type type = typeof(EntityList<>).MakeGenericType(_entityType);
-        //IList list = TypeX.CreateInstance(type) as System.Collections.IList;	
-        //获取数据并绑定到dgv    列的 SortMode 不能设置为 Automatic。
-        //List<IEntity> btlist;
-        //IEntityList btList; //实体列表
-        #endregion
+        #region 参数配置界面
+        static ConfigDictionary Items;
+        private void toolStripSetting_Click(object sender, EventArgs e)
+        {
+            if (ControlParams.SettingFileName==null )
+            {
+                ControlParams.SettingFileName = EntityOper.Table.Description + "-配置.xml";
+            }
+            ConfigSetting.CreateForm(ControlParams.SettingFileName).ShowDialog ();
+            //需要将配置文件的字典值进行动态的更新才行,需要设置一个静态变量
+            Items = ConfigDictionary.Create (ConfigSetting.LoadDic(ControlParams.SettingFileName));//重新加载一遍           
+        }
+        #endregion       
     }
 }
