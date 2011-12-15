@@ -299,9 +299,9 @@ private System.Windows.Forms.TextBox txtRemark ;
 		}
 		#endregion
 		#endregion
-	
-		#region 构造函数 及初始化
-		public AddIndexInfo()	{InitializeComponent(); CustomerSettings(); }	
+        
+        #region 构造函数 及初始化
+        public AddIndexInfo()	{InitializeComponent(); CustomerSettings(); }	
 		//控件加载事件,完成数据绑定和相关基本设置
 		void AddAddIndexInfoLoad(object sender, EventArgs e){}
 		/// <summary>
@@ -327,7 +327,26 @@ private System.Windows.Forms.TextBox txtRemark ;
             }
 			//TODO:问题，只读显示一条记录时,需要传入当前的Model实体类进行绑定
 		}
-		/// <summary>
+
+
+        #region 获取控件的窗体
+        public static FormModel CreateForm(DataControlParams controlParams)
+        {
+            AddIndexInfo EntityControl = new AddIndexInfo();
+            EntityControl.InitializeSettings(controlParams);           
+            EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            EntityControl.Location = new System.Drawing.Point(0, 0);
+            EntityControl.Name = "AddIndexInfoCtl";
+            EntityControl.TabIndex = 0;
+            FormModel tf = new FormModel();
+            tf.Size = new System.Drawing.Size (EntityControl.Width + 15, EntityControl.Size.Height + 40);
+            tf.Controls.Add(EntityControl);//将控件添加到窗体中            
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            return tf;
+        }
+        #endregion
+
+        /// <summary>
         /// 其他控件的特殊设置
         /// </summary>
         private void CustomerSettings()

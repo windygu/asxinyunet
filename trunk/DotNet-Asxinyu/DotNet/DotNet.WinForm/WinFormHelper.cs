@@ -18,9 +18,29 @@ using DotNet.WinForm.Controls;
 
 namespace DotNet.WinForm
 {
+    /// <summary>
+    /// 配置信息字典
+    /// </summary>
     public class ConfigDictionary
     {
+        /// <summary>
+        /// 字典集合
+        /// </summary>
         public Dictionary<string, string> Items { get; set; }
+        /// <summary>
+        /// 根据key获取对应的值
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="key">key</param>
+        /// <returns>返回值</returns>
+        public string GetStringValueByKey(string key)
+        {
+            return Items.ContainsKey(key) ? Items[key] : string.Empty;         
+        }
+        public int GetIntValueByKey(string key)
+        {
+            return Items.ContainsKey(key) ? Convert.ToInt32(Items[key]) : -1 ;     
+        }
     }
 
     #region 实体控件中当前实体的状态

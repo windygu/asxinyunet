@@ -23,6 +23,10 @@ using NewLife.Reflection;
 
 namespace DotNet.Tools.Controls
 {
+    /// <summary>
+    /// 通用数据管理控件
+    /// 2011-12-15 采用单例模式来提高效率,并改善其他控件的调用方式
+    /// </summary>
     public partial class DataManage : UserControl
     {
         #region 初始化,属性及字段
@@ -30,7 +34,6 @@ namespace DotNet.Tools.Controls
         {
             InitializeComponent();
         }
-
         /// <summary>
         /// 实体列表
         /// </summary>
@@ -43,19 +46,19 @@ namespace DotNet.Tools.Controls
         /// <summary>
         /// 配置参数,主要参数都在此
         /// </summary>
-        public DataControlParams ControlParams { get; set; }
+        private static DataControlParams ControlParams;
 
         /// <summary>
         /// 实体操作
         /// </summary>
         public IEntityOperate EntityOper { get; set; }
-        
+        private static string TableName;
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
         public void InitializeSettings(DataControlParams controlParams)
         {
-            this.ControlParams = controlParams;//先设置属性
+            ControlParams = controlParams;//先设置属性
             //配置菜单
             if (controlParams.IsHaveMenu)
             {
@@ -79,11 +82,28 @@ namespace DotNet.Tools.Controls
             this.winPage.PageSize = controlParams.PageSize;
             if (controlParams.EntityType != null)
             {
-                this.EntityOper  = EntityFactory.CreateOperate(controlParams.EntityType);                
-                //string maininfo = EntityOper.Table.Description;
+                this.EntityOper  = EntityFactory.CreateOperate(controlParams.EntityType);
+                TableName = EntityOper.TableName;
+              
             }
             this.winPage.Visible = controlParams.IsEnablePaging;
             this.cutSql = "";
+        }
+        /// <summary>
+        /// 创建数据管理窗体
+        /// </summary>
+        /// <param name="controlParams">控件参数</param>
+        /// <returns>数据管理控件的窗体</returns>
+        public static FormModel CreateForm(DataControlParams controlParams)
+        {
+            DataManage dm = new DataManage();
+            dm.InitializeSettings(controlParams);
+            dm.Name = "dm";
+            FormModel tf = new FormModel();
+            tf.Size = new Size(dm.Width + 15, dm.Size.Height + 40);
+            tf.Controls.Add(dm);//将控件添加到窗体中            
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            return tf;
         }
         #endregion
 
@@ -150,27 +170,29 @@ namespace DotNet.Tools.Controls
         #endregion
 
         #region 添加 查找 退出
+        private static FormModel AddForm;
+        /// <summary>
+        /// 获取搜索窗体
+        /// </summary>
+        /// <returns></returns>
+        public static FormModel GetAddForm()
+        {
+            if (AddForm == null)
+            {
+                Assembly assembly = Assembly.LoadFrom(ControlParams.ControlAssemblyName);
+                Type T = assembly.GetType(ControlParams.ControlName);
+                MethodInfo mi = T.GetMethod("CreateForm");
+                AddForm = (FormModel )mi.Invoke(null,new object[]{ ControlParams}); 
+            }
+            return AddForm;
+        }
         //添加
         void ToolAddClick(object sender, EventArgs e)
-        {
-            //关键代码,添加对象按钮可用,则再次通过反射，动态加载一个添加控件的窗体对象
+        {           
             if (ControlParams.IsEnableAddBtn )
             {
                 //是否可提出为一个单独的静态方法
-                Assembly assembly = Assembly.LoadFrom(ControlParams.ControlAssemblyName);
-                Type T = assembly.GetType(ControlParams.ControlName);
-                IEntityControl obj = (IEntityControl)Activator.CreateInstance(T, null);
-                obj.InitializeSettings(this.ControlParams );//参数也放到一起去
-                UserControl EntityControl = (UserControl)obj;
-                EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
-                EntityControl.Location = new System.Drawing.Point(0, 0);
-                EntityControl.Name = "EntityControl";
-                EntityControl.TabIndex = 0;                
-                FormModel tf = new FormModel();
-                tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
-                tf.Controls.Add(EntityControl);//将控件添加到窗体中            
-                tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-                tf.Show();
+                GetAddForm().ShowDialog();          
             }
         }
         void ToolFindClick(object sender, EventArgs e)
@@ -192,16 +214,29 @@ namespace DotNet.Tools.Controls
         //设置查询条件
         void ToolExportToExcelClick(object sender, EventArgs e)
         {
-            SearchConditionForm sf = new SearchConditionForm();
-            sf.CutEntityName = EntityOper.TableName;
-            sf.CurConditions = cutSql;
-            if (sf.ShowDialog() == DialogResult.OK)
-            {
+            FormModel fm = GetSearchForm();                        
+            //sf.CurConditions = cutSql;
+            if (fm.ShowDialog() == DialogResult.OK)
+            {    //从fm中取出一个搜索窗体控件       
+                SearchCondition sf = ((SearchCondition)fm.Controls.Find("SC", false)[0]);
                 cutSql = sf.CurConditions;
                 //在此更新所有记录信息
                 winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
                 GetData();
             }
+        }
+        private static FormModel SeachFm;
+        /// <summary>
+        /// 获取搜索窗体
+        /// </summary>
+        /// <returns></returns>
+        public static FormModel GetSearchForm()
+        {
+            if (SeachFm ==null )
+            {
+                SeachFm = SearchCondition.CreateForm(TableName);   
+            }
+            return SeachFm;
         }
         //数据分页事件
         private void winPage_PageIndexChanged(object sender, EventArgs e)

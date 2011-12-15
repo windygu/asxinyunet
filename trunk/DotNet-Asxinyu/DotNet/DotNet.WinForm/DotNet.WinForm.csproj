@@ -59,12 +59,17 @@
     <Compile Include="Controls\ConfigSetting.Designer.cs">
       <DependentUpon>ConfigSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DicTest.cs" />
     <Compile Include="Controls\FormModel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controls\FormModel.Designer.cs">
       <DependentUpon>FormModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchCondition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchCondition.Designer.cs">
+      <DependentUpon>SearchCondition.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\StausInfoShow.cs">
       <SubType>UserControl</SubType>
@@ -82,6 +87,9 @@
     <EmbeddedResource Include="Controls\FormModel.resx">
       <DependentUpon>FormModel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SearchCondition.resx">
+      <DependentUpon>SearchCondition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\StausInfoShow.resx">
       <DependentUpon>StausInfoShow.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +99,9 @@
       <Project>{A98FC0A3-8242-452C-92B3-02220C8A3E48}</Project>
       <Name>DotNet.Core %28DotNet\DotNet.Core\DotNet.Core%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="开发情况.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
