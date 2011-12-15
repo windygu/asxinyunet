@@ -34,7 +34,6 @@
             this.toolFind = new System.Windows.Forms.ToolStripButton();
             this.toolExportToExcel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSetting = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExit = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -56,7 +55,6 @@
             this.toolFind,
             this.toolExportToExcel,
             this.toolStripSetting,
-            this.toolStripButton1,
             this.toolStripSeparator2,
             this.toolExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -82,7 +80,7 @@
             this.toolFind.Image = ((System.Drawing.Image)(resources.GetObject("toolFind.Image")));
             this.toolFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolFind.Name = "toolFind";
-            this.toolFind.Size = new System.Drawing.Size(55, 22);
+            this.toolFind.Size = new System.Drawing.Size(55, 24);
             this.toolFind.Tag = "3";
             this.toolFind.Text = "查询";
             this.toolFind.Click += new System.EventHandler(this.ToolFindClick);
@@ -93,31 +91,24 @@
             this.toolExportToExcel.Image = ((System.Drawing.Image)(resources.GetObject("toolExportToExcel.Image")));
             this.toolExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolExportToExcel.Name = "toolExportToExcel";
-            this.toolExportToExcel.Size = new System.Drawing.Size(83, 22);
+            this.toolExportToExcel.Size = new System.Drawing.Size(83, 24);
             this.toolExportToExcel.Text = "查询条件";
             this.toolExportToExcel.Click += new System.EventHandler(this.ToolExportToExcelClick);
             // 
             // toolStripSetting
             // 
+            this.toolStripSetting.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripSetting.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSetting.Image")));
             this.toolStripSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSetting.Name = "toolStripSetting";
-            this.toolStripSetting.Size = new System.Drawing.Size(76, 22);
+            this.toolStripSetting.Size = new System.Drawing.Size(83, 22);
             this.toolStripSetting.Text = "参数配置";
             this.toolStripSetting.Click += new System.EventHandler(this.toolStripSetting_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButton1.Text = "导出数据";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolExit
             // 
@@ -125,7 +116,7 @@
             this.toolExit.Image = ((System.Drawing.Image)(resources.GetObject("toolExit.Image")));
             this.toolExit.ImageTransparentColor = System.Drawing.SystemColors.Control;
             this.toolExit.Name = "toolExit";
-            this.toolExit.Size = new System.Drawing.Size(55, 22);
+            this.toolExit.Size = new System.Drawing.Size(55, 24);
             this.toolExit.Tag = "7";
             this.toolExit.Text = "退出";
             this.toolExit.Click += new System.EventHandler(this.ToolExitClick);
@@ -209,7 +200,6 @@
             this.PerformLayout();
 
         }
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.SplitContainer splitContainer1;
 
         #endregion

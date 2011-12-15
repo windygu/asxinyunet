@@ -8,10 +8,10 @@
  */
 using System;
 using System.Windows.Forms;
-using DotNet.Tools.Controls;
 using LotTick;
 using NewLife.Configuration;
 using DotNet.WinForm.Controls;
+using DotNet.WinForm;
 
 namespace LotteryTicketSoft
 {
@@ -44,13 +44,13 @@ namespace LotteryTicketSoft
 
 
         //加载验证过滤管理窗体
-        public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
-        {
-            LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
-            dt.InitializeSettings(dcp);
-            dt.StartPosition = FormStartPosition.CenterParent;
-            return dt;
-        }
+        //public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
+        //{
+        //    //LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
+        //    //dt.InitializeSettings(dcp);
+        //    //dt.StartPosition = FormStartPosition.CenterParent;
+        //    //return dt;
+        //}
         //public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(LotTickData[] data)
         //{
         //    LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
@@ -60,12 +60,12 @@ namespace LotteryTicketSoft
         //}
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules),
-                "LotteryTicketSoft.GraphForm.AddRules");
-            CP.IsEnablePaging = false;
-            LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
-            dt.MdiParent = this;
-            dt.Show();  
+            //DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules),
+            //    "LotteryTicketSoft.GraphForm.AddRules");
+            //CP.IsEnablePaging = false;
+            //LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
+            //dt.MdiParent = this;
+            //dt.Show();  
         }
 
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),
                "LotteryTicketSoft.GraphForm.AddIndexInfo");
             CP.IsEnablePaging = false;
-            DataManage.CreateForm(CP).ShowDialog();
+            DotNet.WinForm.Controls.DataManage.CreateForm(CP).ShowDialog();
         }
 
         private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)
