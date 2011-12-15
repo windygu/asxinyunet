@@ -1,5 +1,4 @@
-﻿using DotNet.Tools.Controls;
-namespace LotteryTicketSoft.GraphForm
+﻿namespace DotNet.WinForm.Controls
 {
     partial class DataManage
     {
@@ -30,13 +29,10 @@ namespace LotteryTicketSoft.GraphForm
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataManage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolAdd = new System.Windows.Forms.ToolStripButton();
             this.toolFind = new System.Windows.Forms.ToolStripButton();
             this.toolExportToExcel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSetting = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExit = new System.Windows.Forms.ToolStripButton();
@@ -58,13 +54,12 @@ namespace LotteryTicketSoft.GraphForm
             this.toolAdd,
             this.toolFind,
             this.toolExportToExcel,
-            this.toolStripSetting,
             this.toolStripButton1,
             this.toolStripSeparator2,
             this.toolExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(803, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(618, 25);
             this.toolStrip1.TabIndex = 38;
             this.toolStrip1.Text = " ";
             // 
@@ -99,15 +94,6 @@ namespace LotteryTicketSoft.GraphForm
             this.toolExportToExcel.Size = new System.Drawing.Size(83, 22);
             this.toolExportToExcel.Text = "查询条件";
             this.toolExportToExcel.Click += new System.EventHandler(this.ToolExportToExcelClick);
-            // 
-            // toolStripSetting
-            // 
-            this.toolStripSetting.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSetting.Image")));
-            this.toolStripSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSetting.Name = "toolStripSetting";
-            this.toolStripSetting.Size = new System.Drawing.Size(76, 22);
-            this.toolStripSetting.Text = "参数配置";
-            this.toolStripSetting.Click += new System.EventHandler(this.toolStripSetting_Click);
             // 
             // toolStripButton1
             // 
@@ -149,8 +135,8 @@ namespace LotteryTicketSoft.GraphForm
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.winPage);
-            this.splitContainer1.Size = new System.Drawing.Size(803, 420);
-            this.splitContainer1.SplitterDistance = 394;
+            this.splitContainer1.Size = new System.Drawing.Size(618, 332);
+            this.splitContainer1.SplitterDistance = 306;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 41;
             // 
@@ -158,30 +144,14 @@ namespace LotteryTicketSoft.GraphForm
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(803, 394);
+            this.dgv.Size = new System.Drawing.Size(618, 306);
             this.dgv.TabIndex = 42;
-            this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
             // winPage
             // 
@@ -192,7 +162,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(320, 0);
+            this.winPage.Location = new System.Drawing.Point(135, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
             this.winPage.Size = new System.Drawing.Size(483, 25);
@@ -202,9 +172,9 @@ namespace LotteryTicketSoft.GraphForm
             // stausInfoShow1
             // 
             this.stausInfoShow1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.stausInfoShow1.Location = new System.Drawing.Point(0, 445);
+            this.stausInfoShow1.Location = new System.Drawing.Point(0, 357);
             this.stausInfoShow1.Name = "stausInfoShow1";
-            this.stausInfoShow1.Size = new System.Drawing.Size(803, 24);
+            this.stausInfoShow1.Size = new System.Drawing.Size(618, 24);
             this.stausInfoShow1.TabIndex = 40;
             // 
             // DataManage
@@ -215,7 +185,7 @@ namespace LotteryTicketSoft.GraphForm
             this.Controls.Add(this.stausInfoShow1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "DataManage";
-            this.Size = new System.Drawing.Size(803, 469);
+            this.Size = new System.Drawing.Size(618, 381);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -242,6 +212,5 @@ namespace LotteryTicketSoft.GraphForm
         private DotNet.Tools.Controls.StausInfoShow stausInfoShow1;
         private System.Windows.Forms.DataGridView dgv;
         private WinFormPager winPage;
-        private System.Windows.Forms.ToolStripButton toolStripSetting;
     }
 }
