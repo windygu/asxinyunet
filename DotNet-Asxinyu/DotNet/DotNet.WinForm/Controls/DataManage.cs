@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using XCode;
@@ -258,7 +259,10 @@ namespace DotNet.WinForm.Controls
         {
             if (ControlParams.SettingFileName==null )
             {
-                ControlParams.SettingFileName = EntityOper.Table.Description + "-配置.xml";
+                string direct = Application.StartupPath + @"\Setting\";
+                ControlParams.SettingFileName = direct + EntityOper.Table.TableName + "-配置.xml";
+                if (!Directory.Exists(direct))
+                    Directory.CreateDirectory(direct);
             }
             ConfigSetting.CreateForm(ControlParams.SettingFileName).ShowDialog ();
             //需要将配置文件的字典值进行动态的更新才行,需要设置一个静态变量
