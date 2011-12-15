@@ -83,7 +83,6 @@
             this.toolFind.Size = new System.Drawing.Size(55, 22);
             this.toolFind.Tag = "3";
             this.toolFind.Text = "查询";
-            this.toolFind.Click += new System.EventHandler(this.ToolFindClick);
             // 
             // toolExportToExcel
             // 
@@ -93,7 +92,7 @@
             this.toolExportToExcel.Name = "toolExportToExcel";
             this.toolExportToExcel.Size = new System.Drawing.Size(83, 22);
             this.toolExportToExcel.Text = "查询条件";
-            this.toolExportToExcel.Click += new System.EventHandler(this.ToolExportToExcelClick);
+            this.toolExportToExcel.Click += new System.EventHandler(this.ToolGetConditionClick);
             // 
             // toolStripSetting
             // 
