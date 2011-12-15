@@ -142,7 +142,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::DotNet.Tools.Controls.Resource.PageBg;
+            this.BackgroundImage = global::DotNet.WinForm.Controls.Resource.PageBg;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnToPageIndex);
             this.Controls.Add(this.txtToPageIndex);
