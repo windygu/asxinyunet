@@ -21,7 +21,7 @@ using NewLife;
 using NewLife.Reflection;
 #endregion
 
-namespace DotNet.Tools.Controls
+namespace DotNet.WinForm.Controls
 {
     /// <summary>
     /// 通用数据管理控件

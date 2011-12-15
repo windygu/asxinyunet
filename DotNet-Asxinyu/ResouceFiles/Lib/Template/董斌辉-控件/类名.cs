@@ -5,6 +5,8 @@
  * 时间: 17:17
  *
  * 目标：添加按钮事件、绑定实体
+ * 
+ * 2011-12-15 修改创建窗体方式,更加灵活;修改自增字段时候的一些处理方式
  * 2011-11-23 根据数据管理窗口的统一需求,增加参数类,来传递参数。更加灵活和完整。 
  * 2011-11-08 增加注释，完善格式，完成基本功能调试，修改控件显示Bug
  * 2011-10-18 修改各种状态下的显示Bug,基本满足了大致需求
@@ -25,12 +27,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using LotteryTicket;
+using <#=Config.NameSpace#>;//添加对应的实体命名空间
 using DotNet.Tools.Controls ;
 
 namespace <#=Config.NameSpace#>
 {	<# string className ="Add"+ Table.Alias.Replace ("tb_","")[0].ToString().ToUpper()+Table.Alias.Replace ("tb_","").Substring (1); #>
-	public class <#=className#>: UserControl,IEntityControl 
+	public class <#=className#>: UserControl 
 	{
 		#region 自动生成代码
 		#region Designer.cs必须代码
@@ -53,6 +55,7 @@ namespace <#=Config.NameSpace#>
 		#endregion		
 		#region 控件定义
 		<# foreach(IDataColumn Field in Table.Columns){
+        if(Field.Identity) continue ;
 		if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 		private System.Windows.Forms.ComboBox comb<#=Field.Alias#> ;
 		<#}else if (Field.DataType == typeof(string)) {#>private System.Windows.Forms.TextBox txt<#=Field.Alias#> ;
@@ -84,6 +87,7 @@ namespace <#=Config.NameSpace#>
 			this.lbl<#=Field.Alias#>.Text = "<#=Field.Description#>";
 			this.Controls.Add(this.lbl<#=Field.Alias#>) ;
 		<#}#><#foreach(IDataColumn Field in Table.Columns){
+            if(Field.Identity) continue ;
 		if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 			this.lbl<#=Field.Alias#>.Location = new System.Drawing.Point(<#=cutX#>, <#=cutY#>);
 			<#cutX += (W+2) ;#>
@@ -125,6 +129,7 @@ namespace <#=Config.NameSpace#>
 			this.Controls.Add(this.txt<#=Field.Alias#>) ;
 			this.txt<#=Field.Alias#>.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
 			<# index += 2 ;	cutX -= (W+2) ;cutY += (H+5) ;}}cutX += 20 ;cutY += 20 ;#>
+
 			#region 添加按钮
 			this.btnOK = new System.Windows.Forms.Button();
 			this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -165,6 +170,7 @@ namespace <#=Config.NameSpace#>
 			this.Controls.Add(this.FormPager);
 			this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
 			#endregion
+
 			#region 窗体
 			this.Name = "Add<#=Table.Alias.Replace ("tb_","")[0].ToString().ToUpper()+Table.Alias.Replace ("tb_","").Substring (1)#>";
 			this.Size = new System.Drawing.Size(350, 500);
@@ -212,6 +218,23 @@ namespace <#=Config.NameSpace#>
         {
             //控件的特殊设置，如格式，显示,控件的绑定           
         }
+
+        #region 获取控件的窗体
+        public static FormModel CreateForm(DataControlParams controlParams)
+        {
+            <#=className#> EntityControl = new <#=className#>();
+            EntityControl.InitializeSettings(controlParams);           
+            EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            EntityControl.Location = new System.Drawing.Point(0, 0);
+            EntityControl.Name = "AddIndexInfoCtl";
+            EntityControl.TabIndex = 0;
+            FormModel tf = new FormModel();
+            tf.Size = new System.Drawing.Size (EntityControl.Width + 15, EntityControl.Size.Height + 40);
+            tf.Controls.Add(EntityControl);//将控件添加到窗体中            
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            return tf;
+        }
+        #endregion
 		#endregion
 				
 		#region 相关字段与属性
@@ -232,7 +255,9 @@ namespace <#=Config.NameSpace#>
 
 		#region 验证事件
 		bool ValidateControls()
-		{<# foreach(IDataColumn Field in Table.Columns){if(!Field.Nullable && Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+		{   <# foreach(IDataColumn Field in Table.Columns){
+            if(Field.Identity) continue ;
+            if(!Field.Nullable && Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 			if(comb<#=Field.Alias#>.Text.Trim()=="")//<#=Field.Description#>
 			{
 				errorProvider1.SetError(comb<#=Field.Alias#>,"必填项目");
@@ -258,7 +283,8 @@ namespace <#=Config.NameSpace#>
 			{
 				if(((CutShowMode!= FormShowMode.ReadOnlyForAll) || (CutShowMode != FormShowMode.ReadOnlyForOne)) && ValidateControls() )
 				{
-					<#=Table.Alias#> model = new <#=Table.Alias#>();//定义当前实体 <# foreach(IDataColumn Field in Table.Columns){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+					<#=Table.Alias#> model = new <#=Table.Alias#>();//定义当前实体
+                    <# foreach(IDataColumn Field in Table.Columns){if(Field.Identity) continue ;if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 					if(comb<#=Field.Alias#>.Text.Trim()!="") model.<#=Field.Alias#> = comb<#=Field.Alias#>.Text.Trim() ;//<#=Field.Description#><#}else if (Field.DataType == typeof(string)) {#>
 					if(txt<#=Field.Alias#>.Text.Trim()!="")  model.<#=Field.Alias#> = txt<#=Field.Alias#>.Text.Trim()  ;//<#=Field.Description#><#}else if (Field.DataType == typeof(DateTime)) {#>
 					model.<#=Field.Alias#> = dt<#=Field.Alias#>.Value ;//<#=Field.Description#><#}else {#>
@@ -341,7 +367,7 @@ namespace <#=Config.NameSpace#>
 				btnOK.Enabled = true ;
 				btnOK.Text ="保存";
 				//设置控件清空，并且可用
-				<# foreach(IDataColumn Field in Table.Columns){if(Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>comb<#=Field.Alias#>.Enabled = true ; //<#=Field.Description#>	
+				<# foreach(IDataColumn Field in Table.Columns){ if(Field.Identity) continue ;if(Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>comb<#=Field.Alias#>.Enabled = true ; //<#=Field.Description#>	
 				<#}else{#>txt<#=Field.Alias#>.ReadOnly = false ;//<#=Field.Description#>
 				txt<#=Field.Alias#>.Text = string.Empty  ; 
 				<#}}}#>}
@@ -351,7 +377,8 @@ namespace <#=Config.NameSpace#>
 			if (CutShowMode== FormShowMode.ContinueDisplay || CutShowMode== FormShowMode.DisplayCurrent ) {
 				btnOK .Enabled = true ;
 				btnOK.Text =" 保存";
-				//控件除主键外都可读<#foreach(IDataColumn Field in Table.Columns) {if(Field.PrimaryKey) {if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+				//控件除主键外都可读
+                <#foreach(IDataColumn Field in Table.Columns) { if(Field.Identity) continue ;if(Field.PrimaryKey) {if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 				comb<#=Field.Alias#>.Enabled = false;//<#=Field.Description#><#}else{#>
 				txt<#=Field.Alias#>.ReadOnly = true;//<#=Field.Description#><#}continue;}
 				TypeCode code = Type.GetTypeCode(Field.DataType);#><#if(code == TypeCode.DateTime){#>dt<#=Field.Alias#>.Enabled = true ;//<#=Field.Description#>
@@ -368,7 +395,7 @@ namespace <#=Config.NameSpace#>
 			}
 			if (CutShowMode == FormShowMode.ReadOnlyForOne || CutShowMode== FormShowMode.ReadOnlyForAll ){
 				btnOK.Enabled = false ;
-			}<# foreach(IDataColumn Field in Table.Columns){if(Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
+			}<# foreach(IDataColumn Field in Table.Columns){ if(Field.Identity) continue ;if(Field.DataType != typeof(DateTime)){if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>
 			comb<#=Field.Alias#>.Enabled = false ;//<#=Field.Description#><#}else{#>
 			txt<#=Field.Alias#>.ReadOnly = true  ;//<#=Field.Description#><#}} else {#>
 			dt<#=Field.Alias#>.Enabled = false   ;//<#=Field.Description#><#}}#>
@@ -380,7 +407,7 @@ namespace <#=Config.NameSpace#>
 		/// 加载子窗口:if(Field.PrimaryKey) continue;
 		/// </summary>
 		private void BandingData()
-		{<#foreach(IDataColumn Field in Table.Columns) {TypeCode code = Type.GetTypeCode(Field.DataType);#>
+		{<#foreach(IDataColumn Field in Table.Columns) { if(Field.Identity) continue ;TypeCode code = Type.GetTypeCode(Field.DataType);#>
 			<#if(code == TypeCode.DateTime){#>dt<#=Field.Alias#>.DataBindings.Clear () ;//<#=Field.Description#>
 			dt<#=Field.Alias#>.DataBindings.Add ("Value",CutModel,"<#=Field.Alias#>") ;<#}else if((Field.Alias.Contains("Type"))||(Field.Alias.Contains("TP"))){#>comb<#=Field.Alias#>.DataBindings.Clear () ;//<#=Field.Description#>
 			comb<#=Field.Alias#>.DataBindings.Add ("Text",CutModel,"<#=Field.Alias#>") ;<#} else {#>txt<#=Field.Alias#>.DataBindings.Clear();//<#=Field.Description#>

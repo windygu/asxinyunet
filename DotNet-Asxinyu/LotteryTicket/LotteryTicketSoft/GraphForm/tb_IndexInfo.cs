@@ -356,7 +356,7 @@ private System.Windows.Forms.TextBox txtRemark ;
         }
 		#endregion
 				
-		#region 相关字段与属性		
+		#region 相关字段与属性
 		/// <summary>
 		/// 获取或者设置当前的查询条件
 		/// </summary>
