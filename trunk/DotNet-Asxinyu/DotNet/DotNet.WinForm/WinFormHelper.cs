@@ -417,6 +417,45 @@ namespace DotNet.WinForm
             }
         }
         #endregion       
+
+        #region DataGridView添加列样式
+        /// <summary>
+        /// 返回一个ComboBox列
+        /// </summary>
+        /// <param name="dataSource">ComboBox填充的列表</param>
+        /// <param name="dataPropertyName">绑定数据的属性</param>
+        /// <param name="DispalyName">列的显示名称</param>
+        /// <param name="width">列宽度</param>
+        public static DataGridViewComboBoxColumn CreateDgvComboBox(string[] dataSource, string dataPropertyName,
+            string DispalyName,Type valueType,int width = 80)
+        {
+            DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
+            combo.DataSource = dataSource;
+            combo.DataPropertyName = dataPropertyName;
+            combo.Name = DispalyName;
+            combo.ValueType = valueType;
+            combo.Width = width;
+            return combo;
+        }
+        public static DataGridViewTextBoxColumn CreateDgvTextBox(string dataPropertyName, string DispalyName, Type valueType, int width = 80)
+        {
+            DataGridViewTextBoxColumn combo = new DataGridViewTextBoxColumn();
+            combo.DataPropertyName = dataPropertyName;
+            combo.Name = DispalyName;
+            combo.ValueType = valueType;
+            combo.Width = width;     
+            return combo;
+        }
+        public static DataGridViewCheckBoxColumn CreateDgvCheckBox(string dataPropertyName, string DispalyName, int width = 80)
+        {
+            DataGridViewCheckBoxColumn combo = new DataGridViewCheckBoxColumn();
+            combo.DataPropertyName = dataPropertyName;
+            combo.Name = DispalyName;
+            combo.ValueType = typeof(bool);
+            combo.Width = width;    
+            return combo ;
+        }
+        #endregion
     }
     #endregion
 }

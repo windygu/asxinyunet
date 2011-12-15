@@ -169,7 +169,7 @@ namespace LotteryTicketSoft.GraphForm
             return combo;
         }
         DataGridViewTextBoxColumn CreateTextBoxWithNames(string dataPropertyName, string DispalyName)
-        {
+        {            
             DataGridViewTextBoxColumn combo = new DataGridViewTextBoxColumn();
             combo.DataPropertyName = dataPropertyName;
             combo.Name = DispalyName;

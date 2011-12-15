@@ -25,7 +25,7 @@ namespace DotNet.WinForm.Controls
 {
     /// <summary>
     /// 通用数据管理控件
-    /// 
+    /// //TODO:还需要考虑一种外部数据加载进来,只单纯的显示和分页的情况，即数据显示用
     /// 2011-12-15 进一步优化操作，重构代码和增加配置窗体功能
     /// 2011-11-20 完成基本功能,基本数据浏览，修改等操作
     /// </summary>
@@ -206,7 +206,7 @@ namespace DotNet.WinForm.Controls
         /// 获取分页事件所需要的当前数据
         /// </summary>
         protected virtual void GetData()
-        {
+        {            
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
@@ -321,7 +321,38 @@ namespace DotNet.WinForm.Controls
         #endregion                
 
         #region 数据显示格式,及单元格下拉列表框设置
-
+        /// <summary>
+        /// 初始化Dgv的列
+        /// </summary>
+        /// <param name="removeColumnsName">需要移除的列</param>
+        /// <param name="NamesAndBangdingSource">需要绑定是数据的列,这里仅为CombBox列</param>
+        protected virtual void InitialDgvColumns(string[] removeColumnsName,
+            Dictionary<string,string[]> NamesAndBangdingSource)
+        {
+            //根据实体的信息,来添加列,并除去不必要的列removeColumnsName
+            foreach (var item in EntityOper.Table.AllFields )
+            {
+                //逐一根据类型添加
+                if (item.Name.Contains ("Type")||item.Name.Contains ("TP"))
+                {
+                    string[] list = new string[1] ;
+                    if(NamesAndBangdingSource.ContainsKey (item.Name )) list = NamesAndBangdingSource[item.Name ];
+                    //列宽是固定的,也可以考虑做成配置的
+                    DataGridViewComboBoxColumn dc = WinFormHelper.CreateDgvComboBox(list, item.Name, item.Description, item.Type, 100);
+                    this.dgv.Columns.Add(dc);
+                }
+                else if (item.Type == typeof(bool))
+                {
+                    DataGridViewCheckBoxColumn dc = WinFormHelper.CreateDgvCheckBox(item.Name, item.Description);
+                    this.dgv.Columns.Add(dc);
+                }
+                else //全是TextBox类型
+                {
+                    DataGridViewTextBoxColumn dt = WinFormHelper.CreateDgvTextBox(item.Name, item.Description, item.Type, 100);
+                    this.dgv.Columns.Add(dt);
+                }
+            }
+        }
         #endregion
     }
 }
