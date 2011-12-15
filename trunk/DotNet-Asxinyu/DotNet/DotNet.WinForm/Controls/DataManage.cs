@@ -1,9 +1,9 @@
 ﻿#region 
 /*
- * XCoder v4.3.2011.0915
- * 作者：Administrator/PC2010081511LNR
+ * 作者：asxinyu
  * 时间：2011-09-30 11:54:03
- * 版权：版权所有 (C) 新生命开发团队 2011
+ * 版权：版权所有 (C) asxinyu 2011
+ * 联系：asxinyu@qq.com
  */
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,9 @@ namespace DotNet.WinForm.Controls
 {
     /// <summary>
     /// 通用数据管理控件
-    /// 2011-12-15 采用单例模式来提高效率,并改善其他控件的调用方式
+    /// 
+    /// 2011-12-15 进一步优化操作，重构代码和增加配置窗体功能
+    /// 2011-11-20 完成基本功能,基本数据浏览，修改等操作
     /// </summary>
     public partial class DataManage : UserControl
     {
@@ -37,58 +39,57 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 实体列表
         /// </summary>
-        IEntityList btList; //List<IEntity>
+        protected IEntityList btList; //List<IEntity>
 
         /// <summary>
         /// 当前查询字符串,初始为空
         /// </summary>
-        string cutSql;
+        protected string cutSql;
+        
         /// <summary>
-        /// 配置参数,主要参数都在此
-        /// </summary>
-        private static DataControlParams ControlParams;
-
-        /// <summary>
-        /// 实体操作
+        /// 实体操作对象
         /// </summary>
         public IEntityOperate EntityOper { get; set; }
-        private static string TableName;//用于配置条件窗体
+       
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
-        public void InitializeSettings(DataControlParams controlParams)
+        public virtual void InitializeSettings(DataControlParams controlParams)
         {
             ControlParams = controlParams;//先设置属性
-            //配置菜单
-            if (controlParams.IsHaveMenu)
-            {
-                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete" }, new string[] { "修改", "删除" },
-                        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });                
-            }
-            //动态求和设置
-            if (controlParams.IsHaveSelectSum)
-            {
-                this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
-                this.stausInfoShow1.SetToolInfo1(controlParams.FirStatusInfo);
-                this.stausInfoShow1.SetToolInfo3(controlParams.ThirdStatusInfo);
-            }
-            else
-            {
-                this.stausInfoShow1.SetToolInfo1(controlParams.FirStatusInfo);
-                this.stausInfoShow1.SetToolInfo2(controlParams.SecStatusInfo);
-                this.stausInfoShow1.SetToolInfo3(controlParams.ThirdStatusInfo);
-            }
-            this.winPage.PageSize = controlParams.PageSize;
-            if (controlParams.EntityType != null)
-            {
-                this.EntityOper  = EntityFactory.CreateOperate(controlParams.EntityType);
-                TableName = EntityOper.TableName;
-              
-            }
-            this.winPage.Visible = controlParams.IsEnablePaging;
-            this.cutSql = "";
-        }
+            InitialDgvMenu();//Dgv右键菜单
+            InitialDgvDynamicSum();//单元格动态求和
+            Initial();//其他配置
+        }        
+        #endregion
+
+        #region 静态字段
+        /// <summary>
+        /// 配置参数,主要参数都在此
+        /// </summary>
+        protected static DataControlParams ControlParams;
+        /// <summary>
+        /// 用于配置条件窗体
+        /// </summary>
+        protected static string TableName;
+
+        /// <summary>
+        /// 添加实体窗体对象
+        /// </summary>
+        protected static FormModel AddForm;
+
+        /// <summary>
+        /// 搜索窗体对象
+        /// </summary>
+        protected static FormModel SeachFm;
+
+        /// <summary>
+        /// 相关的配置参数字典类
+        /// </summary>
+        protected static ConfigDictionary Items;
+        #endregion
+
+        #region 静态方法
         /// <summary>
         /// 创建数据管理窗体
         /// </summary>
@@ -103,9 +104,98 @@ namespace DotNet.WinForm.Controls
             FormModel tf = new FormModel();
             tf.Size = new Size(dm.Width + 15, dm.Size.Height + 40);
             tf.Controls.Add(dm);//将控件添加到窗体中            
-            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable ;
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             return tf;
         }
+
+        /// <summary>
+        /// 获取添加实体窗体
+        /// </summary>
+        /// <returns>窗体对象</returns>
+        public static FormModel GetAddForm()
+        {
+            if (AddForm == null)
+            {
+                Assembly assembly = Assembly.LoadFrom(ControlParams.ControlAssemblyName);
+                Type T = assembly.GetType(ControlParams.ControlName);
+                MethodInfo mi = T.GetMethod("CreateForm");
+                AddForm = (FormModel)mi.Invoke(null, new object[] { ControlParams });
+            }
+            return AddForm;
+        }       
+        /// <summary>
+        /// 获取搜索窗体
+        /// </summary>
+        /// <returns></returns>
+        public static FormModel GetSearchForm()
+        {
+            if (SeachFm == null)
+            {
+                SeachFm = SearchCondition.CreateForm(TableName);
+            }
+            return SeachFm;
+        }
+        #endregion
+
+        #region 各个功能模块实现
+        #region 右键菜单配置
+        /// <summary>
+        /// 初始化Dgv右键菜单
+        /// </summary>
+        public virtual void InitialDgvMenu()
+        {
+            //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
+            if (ControlParams.IsHaveMenu)
+            {
+                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
+                        new string[] { "Edit", "Delete" }, new string[] { "修改", "删除" },
+                        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });
+            }
+        }
+
+        #endregion
+
+        #region Dgv动态求和
+        /// <summary>
+        /// Dgv单元格动态求和功能配置
+        /// </summary>
+        public virtual void InitialDgvDynamicSum()
+        {
+            //动态求和设置
+            if (ControlParams.IsHaveSelectSum)
+            {
+                this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
+                this.stausInfoShow1.SetToolInfo1(ControlParams.FirStatusInfo);
+                this.stausInfoShow1.SetToolInfo3(ControlParams.ThirdStatusInfo);
+            }
+            else
+            {
+                this.stausInfoShow1.SetToolInfo1(ControlParams.FirStatusInfo);
+                this.stausInfoShow1.SetToolInfo2(ControlParams.SecStatusInfo);
+                this.stausInfoShow1.SetToolInfo3(ControlParams.ThirdStatusInfo);
+            }            
+        }       
+        #endregion
+
+        #region 其他配置,分页，数据操作对象等
+        public virtual void Initial()
+        {
+            this.winPage.PageSize = ControlParams.PageSize;
+            if (ControlParams.EntityType != null)
+            {
+                this.EntityOper = EntityFactory.CreateOperate(ControlParams.EntityType);
+                TableName = EntityOper.TableName;
+            }
+            this.winPage.Visible = ControlParams.IsEnablePaging;
+            this.cutSql = "";
+        }
+        #endregion
+
+        #region
+        #endregion
+
+        #region
+        #endregion
         #endregion
 
         #region 分页事件--获取数据
@@ -171,22 +261,6 @@ namespace DotNet.WinForm.Controls
         #endregion
 
         #region 添加 查找 退出
-        private static FormModel AddForm;
-        /// <summary>
-        /// 获取搜索窗体
-        /// </summary>
-        /// <returns></returns>
-        public static FormModel GetAddForm()
-        {
-            if (AddForm == null)
-            {
-                Assembly assembly = Assembly.LoadFrom(ControlParams.ControlAssemblyName);
-                Type T = assembly.GetType(ControlParams.ControlName);
-                MethodInfo mi = T.GetMethod("CreateForm");
-                AddForm = (FormModel )mi.Invoke(null,new object[]{ ControlParams}); 
-            }
-            return AddForm;
-        }
         //添加
         void ToolAddClick(object sender, EventArgs e)
         {           
@@ -215,8 +289,7 @@ namespace DotNet.WinForm.Controls
         //设置查询条件
         void ToolExportToExcelClick(object sender, EventArgs e)
         {
-            FormModel fm = GetSearchForm();                        
-            //sf.CurConditions = cutSql;
+            FormModel fm = GetSearchForm();                                   
             if (fm.ShowDialog() == DialogResult.OK)
             {    //从fm中取出一个搜索窗体控件       
                 SearchCondition sf = ((SearchCondition)fm.Controls.Find("SC", false)[0]);
@@ -225,20 +298,7 @@ namespace DotNet.WinForm.Controls
                 winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
                 GetData();
             }
-        }
-        private static FormModel SeachFm;
-        /// <summary>
-        /// 获取搜索窗体
-        /// </summary>
-        /// <returns></returns>
-        public static FormModel GetSearchForm()
-        {
-            if (SeachFm ==null )
-            {
-                SeachFm = SearchCondition.CreateForm(TableName);   
-            }
-            return SeachFm;
-        }
+        }       
         //数据分页事件
         private void winPage_PageIndexChanged(object sender, EventArgs e)
         {
@@ -254,7 +314,6 @@ namespace DotNet.WinForm.Controls
         #endregion
 
         #region 参数配置界面
-        static ConfigDictionary Items;
         private void toolStripSetting_Click(object sender, EventArgs e)
         {
             if (ControlParams.SettingFileName==null )
