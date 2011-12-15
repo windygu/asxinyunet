@@ -7,6 +7,7 @@
  * 软件GUI工具
  */
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using LotTick;
 using NewLife.Configuration;
@@ -60,17 +61,23 @@ namespace LotteryTicketSoft
         //}
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules),
-            //    "LotteryTicketSoft.GraphForm.AddRules");
-            //CP.IsEnablePaging = false;
-            //LotteryTicketSoft.GraphForm.DataManageForm dt = DynamicLoadForm(CP);
-            //dt.MdiParent = this;
-            //dt.Show();  
+            string[] remove = new string[] { tb_Rules._.Remark.Description };
+            Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
+            bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
+            bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
+               "LotteryTicketSoft.GraphForm.AddRules");
+            CP.IsEnablePaging = false;
+            DotNet.WinForm.Controls.DataManage.CreateForm(CP).ShowDialog();
         }
 
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),
+            string[] remove = new string[] {tb_Rules._.Remark.Description };
+            Dictionary<string ,string[]> bandingSource = new Dictionary<string,string[]> ();
+            bandingSource.Add ( tb_Rules._.IndexSelectorNameTP,LotTickHelper.GetAllIndexFuncNames());
+            bandingSource.Add ( tb_Rules._.CompareRuleNameTP,LotTickHelper.GetAllEnumNames<ECompareType>());
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),remove,bandingSource ,
                "LotteryTicketSoft.GraphForm.AddIndexInfo");
             CP.IsEnablePaging = false;
             DotNet.WinForm.Controls.DataManage.CreateForm(CP).ShowDialog();

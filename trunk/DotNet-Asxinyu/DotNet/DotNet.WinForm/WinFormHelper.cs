@@ -206,12 +206,25 @@ namespace DotNet.WinForm
         public string SettingFileName;
         #endregion
 
+        #region Dgv
+        /// <summary>
+        /// 不需要显示的列的名称,默认都显示
+        /// </summary>
+        public string[] DeleteColumnsName { get; set; }
+        /// <summary>
+        /// 需要绑定的列的数据源，键值对(列名：字符串数组)
+        /// </summary>
+        public Dictionary<string, string[]> ColumnsBandingList { get; set; }
+        #endregion
+
         #region 构造函数
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="assemblyName">添加控件所在程序的名称</param>
         /// <param name="entityType">实体类型</param>
+        /// <param name="removeColumnsName"> 不需要显示的列的名称,默认都显示</param>
+        /// <param name="bandingData"> 需要绑定的列的数据源，键值对(列名：字符串数组)</param>
         /// <param name="controlName">控件的类型名称</param>
         /// <param name="isHaveMenu">是否开启右键菜单，默认开启</param>
         /// <param name="isEnableAddBtn">是否使得添加按钮可用，默认：可用</param>
@@ -223,8 +236,9 @@ namespace DotNet.WinForm
         /// <param name="firStatusInfo"> 底部状态栏 第一个的显示信息</param>
         /// <param name="secStatusInfo">底部状态栏 第二个的显示信息</param>
         /// <param name="thirdStatusInfo">底部状态栏 第三个的显示信息</param>
-        public DataControlParams(string assemblyName, Type entityType,string controlName = "",
-            bool isHaveMenu = true ,bool isEnableAddBtn = true ,
+        /// <param name="settingFileName">配置信息名称,默认为null</param>
+        public DataControlParams(string assemblyName, Type entityType,string[] removeColumnsName,Dictionary<string,string[]> bandingData
+            ,string controlName = "",bool isHaveMenu = true ,bool isEnableAddBtn = true ,
             bool isHaveSelectSum = false, bool isEnablePaging = true ,
             string addFormTitleText = "添加数据", string manageFormTitleText = "集中数据管理",
             int pageSize = 20, string firStatusInfo = "数据管理模块",
@@ -233,6 +247,9 @@ namespace DotNet.WinForm
             this.ControlAssemblyName = assemblyName;
             this.ControlName = controlName;
             this.EntityType = entityType;
+            if (removeColumnsName != null) this.DeleteColumnsName = removeColumnsName;
+            else this.DeleteColumnsName = new string[] { string.Empty };//空            
+            this.ColumnsBandingList = bandingData;
             this.IsHaveMenu = isHaveMenu;
             this.IsEnableAddBtn = isEnableAddBtn ;
             this.IsHaveSelectSum = isHaveSelectSum;

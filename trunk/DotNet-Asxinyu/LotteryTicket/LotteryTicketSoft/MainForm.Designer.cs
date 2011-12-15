@@ -36,7 +36,7 @@ namespace LotteryTicketSoft
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.StausShow = new DotNet.Tools.Controls.StausInfoShow();
+            this.StausShow = new DotNet.WinForm .Controls.StausInfoShow();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.基本信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.指标信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,7 +187,7 @@ namespace LotteryTicketSoft
 		private System.Windows.Forms.ToolStripMenuItem 数据更新ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统设置ToolStripMenuItem;
 		private System.Windows.Forms.MenuStrip menuStrip1;
-		private DotNet.Tools.Controls.StausInfoShow StausShow;
+		private DotNet.WinForm.Controls.StausInfoShow StausShow;
         private System.Windows.Forms.ToolStripMenuItem 基本信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 指标信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 规则信息ToolStripMenuItem;

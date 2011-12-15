@@ -11,7 +11,8 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using DotNet.Tools.Controls;
+using DotNet.WinForm.Controls;
+using DotNet.WinForm;
 using LotTick;
 using NewLife.Configuration;
 using XCode;
@@ -340,16 +341,16 @@ namespace LotteryTicketSoft.GraphForm
         //设置查询条件
         void ToolExportToExcelClick(object sender, EventArgs e)
         {
-            SearchConditionForm sf = new SearchConditionForm();
-            sf.CutEntityName = EntityOper.TableName;
-            sf.CurConditions = cutSql;
-            if (sf.ShowDialog() == DialogResult.OK)
-            {
-                cutSql = sf.CurConditions;
-                //在此更新所有记录信息
-                winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
-                GetData();
-            }
+            //SearchConditionForm sf = new SearchConditionForm();
+            //sf.CutEntityName = EntityOper.TableName;
+            //sf.CurConditions = cutSql;
+            //if (sf.ShowDialog() == DialogResult.OK)
+            //{
+            //    cutSql = sf.CurConditions;
+            //    //在此更新所有记录信息
+            //    winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
+            //    GetData();
+            //}
         }
         //数据分页事件
         private void winPage_PageIndexChanged(object sender, EventArgs e)

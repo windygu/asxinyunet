@@ -57,7 +57,7 @@ namespace DotNet.WinForm.Controls
         public DataGridView DgvCtl
         {
             get { return this.dgv ;}
-        }
+        }       
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
@@ -67,6 +67,7 @@ namespace DotNet.WinForm.Controls
             InitialDgvMenu();//Dgv右键菜单
             InitialDgvDynamicSum();//单元格动态求和
             Initial();//其他配置
+            InitialDgvColumns(ControlParams.ColumnsBandingList );//配置dgv列
         }        
         #endregion
 
@@ -217,6 +218,11 @@ namespace DotNet.WinForm.Controls
             ArrayList list = new ArrayList();
             for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);
             dgv.DataSource = list;
+            //每次移除不需要的列
+            foreach (string  item in ControlParams.DeleteColumnsName )
+            {
+                if (dgv.Columns.Contains(item )) dgv.Columns.Remove(item );
+            }
         }
         #endregion
              
@@ -271,7 +277,7 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 搜索数据按钮
         /// </summary>        
-        protected virtual void BtnSearchClick(object sender, EventArgs e)
+        protected virtual void toolFind_Click(object sender, EventArgs e)
         {
             GetData();
         }
@@ -324,14 +330,13 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 初始化Dgv的列
         /// </summary>
-        /// <param name="removeColumnsName">需要移除的列</param>
         /// <param name="NamesAndBangdingSource">需要绑定是数据的列,这里仅为CombBox列</param>
-        protected virtual void InitialDgvColumns(string[] removeColumnsName,
-            Dictionary<string,string[]> NamesAndBangdingSource)
+        protected virtual void InitialDgvColumns(Dictionary<string,string[]> NamesAndBangdingSource)
         {
             //根据实体的信息,来添加列,并除去不必要的列removeColumnsName
-            foreach (var item in EntityOper.Table.AllFields )
+            foreach (var item in EntityOper.Table.Fields )
             {
+                //if (removeColumnsName.Contains(item.Name)) continue;//是删除对象则继续下一条
                 //逐一根据类型添加
                 if (item.Name.Contains ("Type")||item.Name.Contains ("TP"))
                 {
@@ -353,6 +358,6 @@ namespace DotNet.WinForm.Controls
                 }
             }
         }
-        #endregion
+        #endregion       
     }
 }

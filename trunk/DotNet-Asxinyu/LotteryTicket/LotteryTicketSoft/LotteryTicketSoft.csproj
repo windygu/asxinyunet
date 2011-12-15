@@ -131,10 +131,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNet\DotNet.Tools\DotNet.Tools.csproj">
-      <Project>{9BFA4F1D-4863-414A-AFED-AE7A5330BA0A}</Project>
-      <Name>DotNet.Tools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DotNet\DotNet.WinForm\DotNet.WinForm.csproj">
       <Project>{C33A4523-C093-4901-BF6B-73B6AB1AB688}</Project>
       <Name>DotNet.WinForm</Name>

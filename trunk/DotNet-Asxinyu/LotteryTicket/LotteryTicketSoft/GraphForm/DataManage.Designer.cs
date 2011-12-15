@@ -1,4 +1,4 @@
-﻿using DotNet.Tools.Controls;
+﻿using DotNet.WinForm.Controls;
 namespace LotteryTicketSoft.GraphForm
 {
     partial class DataManage
@@ -42,8 +42,8 @@ namespace LotteryTicketSoft.GraphForm
             this.toolExit = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.winPage = new DotNet.Tools.Controls.WinFormPager();
-            this.stausInfoShow1 = new DotNet.Tools.Controls.StausInfoShow();
+            this.winPage = new DotNet.WinForm.Controls.WinFormPager();
+            this.stausInfoShow1 = new DotNet.WinForm.Controls.StausInfoShow();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -197,7 +197,7 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.RecordCount = 0;
             this.winPage.Size = new System.Drawing.Size(483, 25);
             this.winPage.TabIndex = 0;
-            this.winPage.PageIndexChanged += new DotNet.Tools.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
+            this.winPage.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 
             // stausInfoShow1
             // 
@@ -239,7 +239,7 @@ namespace LotteryTicketSoft.GraphForm
         private System.Windows.Forms.ToolStripButton toolExportToExcel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolExit;
-        private DotNet.Tools.Controls.StausInfoShow stausInfoShow1;
+        private DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
         private System.Windows.Forms.DataGridView dgv;
         private WinFormPager winPage;
         private System.Windows.Forms.ToolStripButton toolStripSetting;
