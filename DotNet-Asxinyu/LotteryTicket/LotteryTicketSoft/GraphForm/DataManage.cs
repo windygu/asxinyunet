@@ -360,6 +360,7 @@ namespace LotteryTicketSoft.GraphForm
         private void toolStripSetting_Click(object sender, EventArgs e)
         {
             //增加参数配置界面,形成一个窗体
+
         }
         #endregion
 

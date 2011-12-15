@@ -33,6 +33,7 @@
             this.toolAdd = new System.Windows.Forms.ToolStripButton();
             this.toolFind = new System.Windows.Forms.ToolStripButton();
             this.toolExportToExcel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSetting = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExit = new System.Windows.Forms.ToolStripButton();
@@ -54,12 +55,13 @@
             this.toolAdd,
             this.toolFind,
             this.toolExportToExcel,
+            this.toolStripSetting,
             this.toolStripButton1,
             this.toolStripSeparator2,
             this.toolExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(618, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(655, 25);
             this.toolStrip1.TabIndex = 38;
             this.toolStrip1.Text = " ";
             // 
@@ -94,6 +96,15 @@
             this.toolExportToExcel.Size = new System.Drawing.Size(83, 22);
             this.toolExportToExcel.Text = "查询条件";
             this.toolExportToExcel.Click += new System.EventHandler(this.ToolExportToExcelClick);
+            // 
+            // toolStripSetting
+            // 
+            this.toolStripSetting.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSetting.Image")));
+            this.toolStripSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSetting.Name = "toolStripSetting";
+            this.toolStripSetting.Size = new System.Drawing.Size(76, 22);
+            this.toolStripSetting.Text = "参数配置";
+            this.toolStripSetting.Click += new System.EventHandler(this.toolStripSetting_Click);
             // 
             // toolStripButton1
             // 
@@ -135,8 +146,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.winPage);
-            this.splitContainer1.Size = new System.Drawing.Size(618, 332);
-            this.splitContainer1.SplitterDistance = 306;
+            this.splitContainer1.Size = new System.Drawing.Size(655, 346);
+            this.splitContainer1.SplitterDistance = 320;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 41;
             // 
@@ -150,7 +161,7 @@
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(618, 306);
+            this.dgv.Size = new System.Drawing.Size(655, 320);
             this.dgv.TabIndex = 42;
             // 
             // winPage
@@ -162,7 +173,7 @@
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(135, 0);
+            this.winPage.Location = new System.Drawing.Point(172, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
             this.winPage.Size = new System.Drawing.Size(483, 25);
@@ -172,9 +183,9 @@
             // stausInfoShow1
             // 
             this.stausInfoShow1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.stausInfoShow1.Location = new System.Drawing.Point(0, 357);
+            this.stausInfoShow1.Location = new System.Drawing.Point(0, 371);
             this.stausInfoShow1.Name = "stausInfoShow1";
-            this.stausInfoShow1.Size = new System.Drawing.Size(618, 24);
+            this.stausInfoShow1.Size = new System.Drawing.Size(655, 24);
             this.stausInfoShow1.TabIndex = 40;
             // 
             // DataManage
@@ -185,7 +196,7 @@
             this.Controls.Add(this.stausInfoShow1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "DataManage";
-            this.Size = new System.Drawing.Size(618, 381);
+            this.Size = new System.Drawing.Size(655, 395);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -212,5 +223,6 @@
         private DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
         private System.Windows.Forms.DataGridView dgv;
         private WinFormPager winPage;
+        private System.Windows.Forms.ToolStripButton toolStripSetting;
     }
 }
