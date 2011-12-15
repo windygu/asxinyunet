@@ -65,6 +65,12 @@
     <Compile Include="Controls\DataManage.Designer.cs">
       <DependentUpon>DataManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DataTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataTest.Designer.cs">
+      <DependentUpon>DataTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EntityFormPager.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <EmbeddedResource Include="Controls\DataManage.resx">
       <DependentUpon>DataManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DataTest.resx">
+      <DependentUpon>DataTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\EntityFormPager.resx">
       <DependentUpon>EntityFormPager.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,7 +152,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DotNet.Core\DotNet.Core.csproj">
       <Project>{A98FC0A3-8242-452C-92B3-02220C8A3E48}</Project>
-      <Name>DotNet.Core %28DotNet\DotNet.Core\DotNet.Core%29</Name>
+      <Name>DotNet.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

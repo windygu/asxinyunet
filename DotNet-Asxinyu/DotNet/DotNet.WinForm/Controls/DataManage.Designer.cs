@@ -80,7 +80,7 @@
             this.toolFind.Image = ((System.Drawing.Image)(resources.GetObject("toolFind.Image")));
             this.toolFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolFind.Name = "toolFind";
-            this.toolFind.Size = new System.Drawing.Size(55, 24);
+            this.toolFind.Size = new System.Drawing.Size(55, 22);
             this.toolFind.Tag = "3";
             this.toolFind.Text = "查询";
             this.toolFind.Click += new System.EventHandler(this.ToolFindClick);
@@ -91,7 +91,7 @@
             this.toolExportToExcel.Image = ((System.Drawing.Image)(resources.GetObject("toolExportToExcel.Image")));
             this.toolExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolExportToExcel.Name = "toolExportToExcel";
-            this.toolExportToExcel.Size = new System.Drawing.Size(83, 24);
+            this.toolExportToExcel.Size = new System.Drawing.Size(83, 22);
             this.toolExportToExcel.Text = "查询条件";
             this.toolExportToExcel.Click += new System.EventHandler(this.ToolExportToExcelClick);
             // 
@@ -108,7 +108,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // toolExit
             // 
@@ -116,7 +116,7 @@
             this.toolExit.Image = ((System.Drawing.Image)(resources.GetObject("toolExit.Image")));
             this.toolExit.ImageTransparentColor = System.Drawing.SystemColors.Control;
             this.toolExit.Name = "toolExit";
-            this.toolExit.Size = new System.Drawing.Size(55, 24);
+            this.toolExit.Size = new System.Drawing.Size(55, 22);
             this.toolExit.Tag = "7";
             this.toolExit.Text = "退出";
             this.toolExit.Click += new System.EventHandler(this.ToolExitClick);
@@ -204,15 +204,15 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolAdd;
-        private System.Windows.Forms.ToolStripButton toolFind;
-        private System.Windows.Forms.ToolStripButton toolExportToExcel;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolExit;
-        private DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
-        private System.Windows.Forms.DataGridView dgv;
-        private WinFormPager winPage;
-        private System.Windows.Forms.ToolStripButton toolStripSetting;
+        protected System.Windows.Forms.ToolStrip toolStrip1;
+        protected System.Windows.Forms.ToolStripButton toolAdd;
+        protected System.Windows.Forms.ToolStripButton toolFind;
+        protected System.Windows.Forms.ToolStripButton toolExportToExcel;
+        protected System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        protected System.Windows.Forms.ToolStripButton toolExit;
+        protected DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
+        protected System.Windows.Forms.DataGridView dgv;
+        protected WinFormPager winPage;
+        protected System.Windows.Forms.ToolStripButton toolStripSetting;
     }
 }
