@@ -17,6 +17,10 @@ namespace DotNet.Core.Exceptions
         public static string File_NotExist = "指定文件:{0}不存在";
         #endregion
 
+        #region 数据库操作
+        public static string Db_DeleteError = "删除数据出错:{0}";
+        #endregion
+
         #region 序列化错误
         /// <summary>
         /// 序列化转换失败

@@ -137,12 +137,11 @@ namespace DotNet.WinForm.Controls
         }
         #endregion
 
-        #region 各个功能模块实现
         #region 右键菜单配置
         /// <summary>
         /// 初始化Dgv右键菜单
         /// </summary>
-        public virtual void InitialDgvMenu()
+        protected virtual void InitialDgvMenu()
         {
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
             if (ControlParams.IsHaveMenu)
@@ -159,7 +158,7 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// Dgv单元格动态求和功能配置
         /// </summary>
-        public virtual void InitialDgvDynamicSum()
+        protected virtual void InitialDgvDynamicSum()
         {
             //动态求和设置
             if (ControlParams.IsHaveSelectSum)
@@ -178,7 +177,7 @@ namespace DotNet.WinForm.Controls
         #endregion
 
         #region 其他配置,分页，数据操作对象等
-        public virtual void Initial()
+        protected virtual void Initial()
         {
             this.winPage.PageSize = ControlParams.PageSize;
             if (ControlParams.EntityType != null)
@@ -191,51 +190,42 @@ namespace DotNet.WinForm.Controls
         }
         #endregion
 
-        #region
-        #endregion
-
-        #region
-        #endregion
-        #endregion
-
-        #region 分页事件--获取数据
-        //分页事件-得到数据
-        void GetData()
+        #region 获取分页事件所需要的当前数据
+        /// <summary>
+        /// 获取分页事件所需要的当前数据
+        /// </summary>
+        protected virtual void GetData()
         {
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
-            {
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
                                             winPage.PageSize);
-               // btList = temp.ToList(); 
-            }
             else //不需要分页的情况下
-            {
-                btList = EntityOper.FindAll(cutSql, "", "", 0, 0);//.ToList()               
-            }
+                btList = EntityOper.FindAll(cutSql, "", "", 0, 0);//.ToList() 
             dgv.DataSource = btList;
             ArrayList list = new ArrayList();
-            for (int i = 0; i < btList.Count; i++)
-            {
-                list.Add(btList[i]);
-            }
-            dgv.DataSource = list;            
+            for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);
+            dgv.DataSource = list;
         }
         #endregion
-
-        #region 菜单事件
-        //右键编辑修改
-        private void toolStripMenuEdit_Click(object sender, EventArgs e)
+             
+        #region 右键菜单事件
+        /// <summary>
+        /// 右键菜单-编辑修改事件
+        /// </summary>       
+        protected virtual void toolStripMenuEdit_Click(object sender, EventArgs e)
         {
             if (ControlParams.IsHaveMenu  && dgv.CurrentCell != null)
             {
                 dgv.BeginEdit(false);
             }
         }
-        //右键删除
-        private void toolStripMenuDelete_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 右键菜单删除事件
+        /// </summary>       
+        protected virtual void toolStripMenuDelete_Click(object sender, EventArgs e)
         {
-            if (!ControlParams.IsHaveMenu) return;
+            if (!ControlParams.IsHaveMenu) return;//是否非法删除,没有权限则不能操作
             try
             {
                 if (MessageBox.Show("是否删除选中记录,删除后不可恢复,确认请点'是'", "提示", MessageBoxButtons.YesNo)
@@ -249,31 +239,34 @@ namespace DotNet.WinForm.Controls
                         if (!index.Contains(RowIndex)) btList[RowIndex].Delete();
                     }
                 }
-                else
-                    return;
+                else return;
             }
             catch (Exception err)
             {
-                MessageBox.Show("删除出错:" + err.Message);
+                MessageBox.Show(string.Format(DotNet.Core.Exceptions.ErrorCode.Db_DeleteError,err.Message ));
             }
-            ToolFindClick(sender, e);
+            //ToolFindClick(sender, e);
         }
         #endregion
 
-        #region 添加 查找 退出
-        //添加
-        void ToolAddClick(object sender, EventArgs e)
-        {           
-            if (ControlParams.IsEnableAddBtn )
-            {
-                //是否可提出为一个单独的静态方法
-                GetAddForm().ShowDialog();          
-            }
+        #region 工具栏按钮事件
+        /// <summary>
+        /// 添加实体按钮
+        /// </summary>        
+        protected virtual void ToolAddClick(object sender, EventArgs e)
+        {   //是否有权限
+            if (ControlParams.IsEnableAddBtn ) GetAddForm().ShowDialog();          
         }
-        void ToolFindClick(object sender, EventArgs e)
+        /// <summary>
+        /// 搜索数据按钮
+        /// </summary>        
+        protected virtual void ToolFindClick(object sender, EventArgs e)
         {
             GetData();
         }
+        /// <summary>
+        /// 退出当前窗体
+        /// </summary>
         void ToolExitClick(object sender, EventArgs e)
         {
             this.ParentForm.Close();
@@ -328,5 +321,12 @@ namespace DotNet.WinForm.Controls
             Items = ConfigDictionary.Create (ConfigSetting.LoadDic(ControlParams.SettingFileName));//重新加载一遍           
         }
         #endregion       
+
+        #region
+        #endregion
+
+        #region
+        #endregion
+
     }
 }
