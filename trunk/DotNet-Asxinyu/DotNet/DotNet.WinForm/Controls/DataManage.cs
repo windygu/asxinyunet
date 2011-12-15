@@ -50,7 +50,14 @@ namespace DotNet.WinForm.Controls
         /// 实体操作对象
         /// </summary>
         public IEntityOperate EntityOper { get; set; }
-       
+
+        /// <summary>
+        /// DataGridView控件，用于对DataGridView进行功能扩展
+        /// </summary>
+        public DataGridView DgvCtl
+        {
+            get { return this.dgv ;}
+        }
         /// <summary>
         /// 初始化配置,传入配置信息类
         /// </summary>
@@ -139,9 +146,9 @@ namespace DotNet.WinForm.Controls
 
         #region 右键菜单配置
         /// <summary>
-        /// 初始化Dgv右键菜单
+        /// 初始化Dgv右键菜单:修改和删除
         /// </summary>
-        protected virtual void InitialDgvMenu()
+        public virtual void InitialDgvMenu()
         {
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
             if (ControlParams.IsHaveMenu)
@@ -173,7 +180,11 @@ namespace DotNet.WinForm.Controls
                 this.stausInfoShow1.SetToolInfo2(ControlParams.SecStatusInfo);
                 this.stausInfoShow1.SetToolInfo3(ControlParams.ThirdStatusInfo);
             }            
-        }       
+        }
+        protected virtual void dgv_SelectionChanged(object sender, EventArgs e)
+        {
+            stausInfoShow1.SetToolInfo2("和值:" + WinFormHelper.GetDynamicSecletedInfo(dgv)[0].ToString());
+        }
         #endregion
 
         #region 其他配置,分页，数据操作对象等
@@ -260,7 +271,7 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 搜索数据按钮
         /// </summary>        
-        protected virtual void ToolFindClick(object sender, EventArgs e)
+        protected virtual void BtnSearchClick(object sender, EventArgs e)
         {
             GetData();
         }
@@ -271,18 +282,12 @@ namespace DotNet.WinForm.Controls
         {
             this.ParentForm.Close();
         }
-        #endregion
-
-        #region 按钮事件--搜索--查询条件
-        //搜索事件
-        void BtnSearchClick(object sender, EventArgs e)
+        /// <summary>
+        /// 设置查询条件,显示窗体，并设置条件
+        /// </summary>        
+        protected virtual void ToolGetConditionClick(object sender, EventArgs e)
         {
-            GetData();
-        }
-        //设置查询条件
-        void ToolExportToExcelClick(object sender, EventArgs e)
-        {
-            FormModel fm = GetSearchForm();                                   
+            FormModel fm = GetSearchForm();
             if (fm.ShowDialog() == DialogResult.OK)
             {    //从fm中取出一个搜索窗体控件       
                 SearchCondition sf = ((SearchCondition)fm.Controls.Find("SC", false)[0]);
@@ -291,42 +296,32 @@ namespace DotNet.WinForm.Controls
                 winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);
                 GetData();
             }
-        }       
+        }
         //数据分页事件
         private void winPage_PageIndexChanged(object sender, EventArgs e)
         {
             GetData();
         }
-        #endregion
-
-        #region 求和操作
-        private void dgv_SelectionChanged(object sender, EventArgs e)
+        /// <summary>
+        /// 配置设置
+        /// </summary>
+        protected virtual void toolStripSetting_Click(object sender, EventArgs e)
         {
-            stausInfoShow1.SetToolInfo2("和值:" + WinFormHelper.GetDynamicSecletedInfo(dgv)[0].ToString());
-        }
-        #endregion
-
-        #region 参数配置界面
-        private void toolStripSetting_Click(object sender, EventArgs e)
-        {
-            if (ControlParams.SettingFileName==null )
+            if (ControlParams.SettingFileName == null)
             {
                 string direct = Application.StartupPath + @"\Setting\";
                 ControlParams.SettingFileName = direct + EntityOper.Table.TableName + "-配置.xml";
                 if (!Directory.Exists(direct))
                     Directory.CreateDirectory(direct);
             }
-            ConfigSetting.CreateForm(ControlParams.SettingFileName).ShowDialog ();
+            ConfigSetting.CreateForm(ControlParams.SettingFileName).ShowDialog();
             //需要将配置文件的字典值进行动态的更新才行,需要设置一个静态变量
-            Items = ConfigDictionary.Create (ConfigSetting.LoadDic(ControlParams.SettingFileName));//重新加载一遍           
+            Items = ConfigDictionary.Create(ConfigSetting.LoadDic(ControlParams.SettingFileName));//重新加载一遍           
         }
-        #endregion       
+        #endregion                
 
-        #region
+        #region 数据显示格式,及单元格下拉列表框设置
+
         #endregion
-
-        #region
-        #endregion
-
     }
 }
