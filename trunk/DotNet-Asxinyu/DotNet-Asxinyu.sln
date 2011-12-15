@@ -37,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Tools", "DotNet\DotN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.WinForm", "DotNet\DotNet.WinForm\DotNet.WinForm.csproj", "{C33A4523-C093-4901-BF6B-73B6AB1AB688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTest", "DotNet\DotNetTest\DotNetTest.csproj", "{EA630D42-3147-4D9B-9F11-C538293D91FC}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -266,21 +264,6 @@ Global
 		{C33A4523-C093-4901-BF6B-73B6AB1AB688}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C33A4523-C093-4901-BF6B-73B6AB1AB688}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C33A4523-C093-4901-BF6B-73B6AB1AB688}.Release|x86.ActiveCfg = Release|Any CPU
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}..Net 2.0|Any CPU.ActiveCfg = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}..Net 2.0|Mixed Platforms.ActiveCfg = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}..Net 2.0|Mixed Platforms.Build.0 = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}..Net 2.0|x86.ActiveCfg = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}..Net 2.0|x86.Build.0 = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Debug|x86.ActiveCfg = Debug|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Debug|x86.Build.0 = Debug|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Release|Any CPU.ActiveCfg = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Release|Mixed Platforms.Build.0 = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Release|x86.ActiveCfg = Release|x86
-		{EA630D42-3147-4D9B-9F11-C538293D91FC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -299,6 +282,5 @@ Global
 		{A98FC0A3-8242-452C-92B3-02220C8A3E48} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{9BFA4F1D-4863-414A-AFED-AE7A5330BA0A} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{C33A4523-C093-4901-BF6B-73B6AB1AB688} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
-		{EA630D42-3147-4D9B-9F11-C538293D91FC} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 	EndGlobalSection
 EndGlobal
