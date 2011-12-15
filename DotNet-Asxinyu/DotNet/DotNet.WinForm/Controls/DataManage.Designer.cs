@@ -83,6 +83,7 @@
             this.toolFind.Size = new System.Drawing.Size(55, 22);
             this.toolFind.Tag = "3";
             this.toolFind.Text = "查询";
+            this.toolFind.Click += new System.EventHandler(this.toolFind_Click);
             // 
             // toolExportToExcel
             // 

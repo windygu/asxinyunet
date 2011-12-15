@@ -7,7 +7,8 @@
  * 要改变这种模板请点击 工具|选项|代码编写|编辑标准头文件
  */
 using System.Windows.Forms;
-using DotNet.Tools.Controls;
+using DotNet.WinForm.Controls;
+using DotNet.WinForm;
 
 namespace LotteryTicketSoft.GraphForm
 {

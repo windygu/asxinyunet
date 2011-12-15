@@ -21,12 +21,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DotNet.Tools.Controls;
+using DotNet.WinForm.Controls;
+using DotNet.WinForm;
 using LotTick;
 
 namespace LotteryTicketSoft.GraphForm
 {	
-	public class AddRules: UserControl,IEntityControl 
+	public class AddRules: UserControl 
 	{
 		#region 自动生成代码
 		#region Designer.cs必须代码
@@ -74,7 +75,7 @@ private System.Windows.Forms.TextBox txtRemark ;
    private System.Windows.Forms.ErrorProvider errorProvider1 ;
 		private System.Windows.Forms.Button btnOK ;
 		private System.Windows.Forms.Button btnCancle ;
-		private DotNet.Tools.Controls.EntityFormPager FormPager;
+        private DotNet.WinForm.Controls.EntityFormPager FormPager;
 		#endregion
 		
 		#region 组件设计器生成的代码
@@ -82,7 +83,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRules));
-            this.FormPager = new DotNet.Tools.Controls.EntityFormPager();
+            this.FormPager = new DotNet.WinForm .Controls.EntityFormPager();
             this.lblSchemeId = new System.Windows.Forms.Label();
             this.lblIndexSelectorNameTP = new System.Windows.Forms.Label();
             this.lblCompareRuleNameTP = new System.Windows.Forms.Label();
@@ -123,7 +124,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.RecordCount = 0;
             this.FormPager.Size = new System.Drawing.Size(238, 29);
             this.FormPager.TabIndex = 100;
-            this.FormPager.PageIndexChanged += new DotNet.Tools.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
+            this.FormPager.PageIndexChanged += new DotNet.WinForm.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
             // 
             // lblSchemeId
             // 
