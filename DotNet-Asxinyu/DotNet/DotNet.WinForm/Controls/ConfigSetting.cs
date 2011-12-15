@@ -36,14 +36,13 @@ namespace DotNet.WinForm.Controls
             InitializeComponent();
             this.DefaultXmlFileName = DefaultFile;
             Dictionary<string, string> dic = LoadDic(DefaultFile);//读取文件
-            //DataGridViewColumnCollection columns = this.dgv.Columns;
-            //columns.Add("key", "键");
-            //columns.Add("value", "值");
             DataGridViewTextBoxColumn key = new DataGridViewTextBoxColumn();
             key.Name = "键";
+            key.Width = 140;
             this.dgv.Columns.Add(key);
             DataGridViewTextBoxColumn keyValue = new DataGridViewTextBoxColumn();
             keyValue.Name = "值";
+            keyValue.Width = 200;
             this.dgv.Columns.Add(keyValue);
             foreach (var item in dic)
             {
@@ -53,6 +52,7 @@ namespace DotNet.WinForm.Controls
             dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
                       new string[] {"Save"}, new string[] {"保存" },
                       new EventHandler[] { toolStripMenuSave_Click});
+            StatusInfo.SetAllToolInfo("通用组件", "配置信息管理", "asxinyu@qq.com");
         }
         #endregion
 
@@ -65,13 +65,12 @@ namespace DotNet.WinForm.Controls
 
         #region 读取
         /// <summary>
-        /// 读取配置文件的配置信息
+        /// 读取配置文件的配置信息:可能在首次使用初始化的时候存在异常
         /// </summary>   
         public static Dictionary<string, string> LoadDic(string DefaultFile)
         {
-            if (!File.Exists(DefaultFile))
-                return new Dictionary<string, string>();
-                //throw new XException(string.Format(ErrorCode.File_NotExist,DefaultFile ));
+            if (!File.Exists(DefaultFile))                
+                return new Dictionary<string, string>();               
             NewLife.Xml.XmlReaderX xml = new NewLife.Xml.XmlReaderX();
             using (XmlReader xr = XmlReader.Create(DefaultFile))
             {

@@ -58,15 +58,15 @@
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(454, 317);
+            this.dgv.Size = new System.Drawing.Size(397, 308);
             this.dgv.TabIndex = 43;
             // 
             // StatusInfo
             // 
             this.StatusInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StatusInfo.Location = new System.Drawing.Point(0, 293);
+            this.StatusInfo.Location = new System.Drawing.Point(0, 284);
             this.StatusInfo.Name = "StatusInfo";
-            this.StatusInfo.Size = new System.Drawing.Size(454, 24);
+            this.StatusInfo.Size = new System.Drawing.Size(397, 24);
             this.StatusInfo.TabIndex = 44;
             // 
             // ConfigSetting
@@ -76,7 +76,7 @@
             this.Controls.Add(this.StatusInfo);
             this.Controls.Add(this.dgv);
             this.Name = "ConfigSetting";
-            this.Size = new System.Drawing.Size(454, 317);
+            this.Size = new System.Drawing.Size(397, 308);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 

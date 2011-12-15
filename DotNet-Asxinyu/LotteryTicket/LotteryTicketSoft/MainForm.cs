@@ -73,11 +73,7 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),
                "LotteryTicketSoft.GraphForm.AddIndexInfo");
             CP.IsEnablePaging = false;
-            DotNet.Tools.Controls.DataManageForm dt = new DotNet.Tools.Controls.DataManageForm();
-            dt.InitializeSettings(CP );
-            dt.StartPosition = FormStartPosition.CenterParent;
-            dt.MdiParent = this;
-            dt.Show();  
+            DataManage.CreateForm(CP).ShowDialog();
         }
 
         private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)

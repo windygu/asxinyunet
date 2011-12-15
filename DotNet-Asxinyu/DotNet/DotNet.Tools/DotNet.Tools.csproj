@@ -110,12 +110,6 @@
     <Compile Include="BaseUtilities\RandomHelper.cs" />
     <Compile Include="BaseUtilities\StringHelper.cs" />
     <Compile Include="BaseUtilities\Validator.cs" />
-    <Compile Include="Controls\ConfigSetting.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ConfigSetting.Designer.cs">
-      <DependentUpon>ConfigSetting.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\FormModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,12 +130,6 @@
     </Compile>
     <Compile Include="Controls\CicleLevel.Designer.cs">
       <DependentUpon>CicleLevel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ConfigForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ConfigForm.Designer.cs">
-      <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\DataManage.cs">
       <SubType>UserControl</SubType>
@@ -251,12 +239,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\CicleLevel.resx">
       <DependentUpon>CicleLevel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ConfigForm.resx">
-      <DependentUpon>ConfigForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ConfigSetting.resx">
-      <DependentUpon>ConfigSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DataManage.resx">
       <DependentUpon>DataManage.cs</DependentUpon>

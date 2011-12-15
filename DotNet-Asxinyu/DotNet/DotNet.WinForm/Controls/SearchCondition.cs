@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using XCode ;
 using XCode.Configuration;
 
-namespace DotNet.Tools.Controls
+namespace DotNet.WinForm.Controls
 {
 	public partial class SearchCondition : UserControl
 	{
@@ -33,28 +33,8 @@ namespace DotNet.Tools.Controls
 		bool IsSetConditon ;//是否设置过条件，否则将按照默认条件进行处理
 		#endregion
 
-        #region 得到包含此控件的窗体
+        #region 属性
         /// <summary>
-        /// 得到控件的窗体
-        /// </summary>
-        /// <param name="curEntityName">当前实体的类型名称</param>
-        /// <returns>窗体</returns>
-        public static FormModel CreateForm(string curEntityName)
-        {
-            SearchCondition sc = new SearchCondition();
-            sc.CurConditions = curEntityName;
-            sc.Name = "SC";
-            FormModel tf = new FormModel();
-            tf.Size = new Size(sc.Width + 15, sc.Size.Height + 40);
-            tf.Controls.Add(sc );//将控件添加到窗体中            
-            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            return tf;
-        }
-
-        #endregion
-
-		#region 属性
-		/// <summary>
 		/// 设置列名称
 		/// </summary>
 		public string[] ColumnsName
