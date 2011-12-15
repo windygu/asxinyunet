@@ -18,6 +18,7 @@ using DotNet.WinForm.Controls;
 
 namespace DotNet.WinForm
 {
+    #region 字典集合类-为配置窗体特有
     /// <summary>
     /// 配置信息字典
     /// </summary>
@@ -27,6 +28,9 @@ namespace DotNet.WinForm
         /// 字典集合
         /// </summary>
         public Dictionary<string, string> Items { get; set; }
+        /// <summary>
+        /// 创建一个对象
+        /// </summary>
         public static ConfigDictionary Create(Dictionary<string, string> dic)
         {
             ConfigDictionary cd = new ConfigDictionary();
@@ -45,9 +49,10 @@ namespace DotNet.WinForm
         }
         public int GetIntValueByKey(string key)
         {
-            return Items.ContainsKey(key) ? Convert.ToInt32(Items[key]) : -1 ;     
-        }
+            return Items.ContainsKey(key) ? Convert.ToInt32(Items[key]) : -1 ;
+        }    
     }
+    #endregion
 
     #region 实体控件中当前实体的状态
     /// <summary>
@@ -411,37 +416,7 @@ namespace DotNet.WinForm
                 throw new Exception(err.Message);
             }
         }
-        #endregion
-
-        #region 根据实体类型及程序集名称动态加载窗体
-        //public static DataManageForm DynamicLoadForm(DataControlParams dcp)
-        //{            
-        //    DataManageForm dt = new DataManageForm();
-        //    dt.InitializeSettings(dcp );            
-        //    dt.StartPosition = FormStartPosition.CenterParent;
-        //    return dt;
-        //}
-        #endregion
-
-        #region 根据控件和窗体模板得到显示的窗体
-        /// <summary>
-        /// 根据控件的类型得到窗体,可以进行快速测试，不用每一个都写窗体
-        /// </summary>
-        //public static FormModel GetControlForm<T>(DataControlParams cp) where T : UserControl, IEntityControl, new()
-        //{
-        //    T EntityControl = new T();
-        //    EntityControl.Dock = System.Windows.Forms.DockStyle.Fill;
-        //    EntityControl.Location = new System.Drawing.Point(0, 0);
-        //    EntityControl.Name = "EntityControl";
-        //    EntityControl.TabIndex = 0;
-        //    EntityControl.InitializeSettings(cp);
-        //    FormModel tf = new FormModel();
-        //    tf.Size = new Size(EntityControl.Width + 10, EntityControl.Size.Height + 35);
-        //    tf.Controls.Add(EntityControl);//将控件添加到窗体中            
-        //    tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-        //    return tf;
-        //}
-        #endregion
+        #endregion       
     }
     #endregion
 }
