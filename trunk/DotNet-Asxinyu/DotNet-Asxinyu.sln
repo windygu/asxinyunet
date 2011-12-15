@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Tools", "DotNet\DotN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.WinForm", "DotNet\DotNet.WinForm\DotNet.WinForm.csproj", "{C33A4523-C093-4901-BF6B-73B6AB1AB688}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenSource", "OpenSource", "{567AC4C6-4805-4036-8112-CFD8D85C8FB2}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
