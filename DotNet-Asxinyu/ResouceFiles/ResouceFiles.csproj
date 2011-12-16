@@ -681,6 +681,7 @@
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\对象操作.xt" />
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\扩展属性.xt" />
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\扩展查询.xt" />
+    <None Include="XCoder v4.5.rar" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\access.xml" />
