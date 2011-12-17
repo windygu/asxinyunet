@@ -694,6 +694,7 @@
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\System.Data.SQLite.dll" />
     <Content Include="Lib\ZedGraph.dll" />
+    <Content Include="paper.txt" />
     <Content Include="Xcode-Src_20111108\NewLife.CommonEntity\mssql_Common.xml" />
     <Content Include="Xcode-Src_20111108\NewLife.CommonEntity\NewLife.CommonEntity.csproj" />
     <Content Include="Xcode-Src_20111108\NewLife.CommonEntity\NewLife.CommonEntity.csproj.user" />
