@@ -50,6 +50,7 @@
       <HintPath>.\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -100,7 +101,9 @@
     <Compile Include="指标计算\Index_红跨度列表.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="设计.cd" />
   </ItemGroup>
   <ItemGroup>

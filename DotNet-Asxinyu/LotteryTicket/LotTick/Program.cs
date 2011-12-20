@@ -11,8 +11,16 @@
 
 
 using System;
-using XCode.Configuration;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Configuration;
+using System.Net.Configuration;
+using System.IO;
 using NewLife.Configuration;
+
 
 namespace LotTick
 {
@@ -20,7 +28,8 @@ namespace LotTick
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Config.GetMutilConfig<string>("aa", "username"));            
+            object e = ConfigurationManager.AppSettings["MySection111"];
+            //Console.WriteLine();            
             Console.WriteLine(Config.GetConfig<string>("url"));
             //TwoColorBall t = new TwoColorBall(22); 
             //int[][] data = TwoColorBall.GetInitiaData();
