@@ -192,10 +192,10 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(320, 0);
+            this.winPage.Location = new System.Drawing.Point(311, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(483, 25);
+            this.winPage.Size = new System.Drawing.Size(492, 25);
             this.winPage.TabIndex = 0;
             this.winPage.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 

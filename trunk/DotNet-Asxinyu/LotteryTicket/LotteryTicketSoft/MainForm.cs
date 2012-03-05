@@ -27,7 +27,6 @@ namespace LotteryTicketSoft
         }
         static string LabAssemblyName = "LotteryTicketSoft.exe";
 
-
         void MainFormLoad(object sender, EventArgs e)
         {
             this.Text = Config.GetConfig<string>("SoftName") + Config.GetConfig<string>("Version") ;
@@ -68,7 +67,8 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
                "LotteryTicketSoft.GraphForm.AddRules");
             CP.IsEnablePaging = false;
-            DotNet.WinForm.Controls.DataManage.CreateForm(CP).Show ();
+            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            
         }
 
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
