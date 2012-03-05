@@ -1079,7 +1079,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Xcode-Src_20111108\XCoder\Web References\" />
-    <Folder Include="XCoder v4.6_20120229103751\Template\董斌辉-控件\" />
     <Folder Include="XCoder v4.6_20120229103751\Template\董斌辉-窗体\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
