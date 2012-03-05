@@ -86,11 +86,13 @@ namespace LotteryTicketSoft
         private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TwoColorBall.UpdateRecent();
+            MessageBox.Show("更新成功");
         }
 
         private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
         {            
             TwoColorBall.UpdateAll();
+            MessageBox.Show("更新成功");
         }
 
         private void 指标信息ToolStripMenuItem_Click(object sender, EventArgs e)

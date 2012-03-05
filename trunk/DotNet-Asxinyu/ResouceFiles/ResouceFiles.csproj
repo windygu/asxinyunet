@@ -681,7 +681,7 @@
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\对象操作.xt" />
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\扩展属性.xt" />
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\扩展查询.xt" />
-    <None Include="XCoder v4.5.rar" />
+    <None Include="XCoder v4.6_20120229103751\XCoder.exe.config" />
     <None Include="张艳0721170414天津-张惠娟12.21.doc" />
   </ItemGroup>
   <ItemGroup>
@@ -693,6 +693,7 @@
     <Content Include="Lib\nunit.framework.dll" />
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\System.Data.SQLite.dll" />
+    <Content Include="Lib\XTemplate.dll" />
     <Content Include="Lib\ZedGraph.dll" />
     <Content Include="paper.txt" />
     <Content Include="Xcode-Src_20111108\NewLife.CommonEntity\mssql_Common.xml" />
@@ -1011,6 +1012,10 @@
     <Content Include="Xcode-Src_20111108\XControl\说明.txt" />
     <Content Include="Xcode-Src_20111108\YWS\mssql_YWS.xml" />
     <Content Include="Xcode-Src_20111108\YWS\YWS.csproj" />
+    <Content Include="XCoder v4.6_20120229103751\NewLife.Core.dll" />
+    <Content Include="XCoder v4.6_20120229103751\XCode.dll" />
+    <Content Include="XCoder v4.6_20120229103751\XCoder.exe" />
+    <Content Include="XCoder v4.6_20120229103751\XTemplate.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Lib\Template\董斌辉-控件\类名.resx">
