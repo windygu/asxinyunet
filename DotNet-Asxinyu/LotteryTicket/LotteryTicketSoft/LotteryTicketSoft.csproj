@@ -74,12 +74,6 @@
     <Compile Include="GraphForm\tb_IndexInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GraphForm\DisplayData.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GraphForm\DisplayData.Designer.cs">
-      <DependentUpon>DisplayData.cs</DependentUpon>
-    </Compile>
     <Compile Include="GraphForm\tb_Rules.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,9 +92,6 @@
     </Compile>
     <EmbeddedResource Include="GraphForm\tb_IndexInfo.resx">
       <DependentUpon>tb_IndexInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GraphForm\DisplayData.resx">
-      <DependentUpon>DisplayData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\tb_Rules.resx">
       <DependentUpon>tb_Rules.cs</DependentUpon>

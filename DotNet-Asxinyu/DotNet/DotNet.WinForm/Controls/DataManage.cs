@@ -168,7 +168,7 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// Dgv单元格动态求和功能配置
         /// </summary>
-        protected virtual void InitialDgvDynamicSum()
+        protected void InitialDgvDynamicSum()
         {
             //动态求和设置
             if (ControlParams.IsHaveSelectSum)
