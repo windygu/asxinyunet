@@ -105,7 +105,7 @@ namespace LotteryTicketSoft.GraphForm
             this.toolStripSetting.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSetting.Image")));
             this.toolStripSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSetting.Name = "toolStripSetting";
-            this.toolStripSetting.Size = new System.Drawing.Size(76, 22);
+            this.toolStripSetting.Size = new System.Drawing.Size(73, 22);
             this.toolStripSetting.Text = "参数配置";
             this.toolStripSetting.Click += new System.EventHandler(this.toolStripSetting_Click);
             // 
@@ -114,7 +114,7 @@ namespace LotteryTicketSoft.GraphForm
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(73, 22);
             this.toolStripButton1.Text = "导出数据";
             // 
             // toolStripSeparator2
@@ -192,11 +192,11 @@ namespace LotteryTicketSoft.GraphForm
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(183, 0);
+            this.winPage.Location = new System.Drawing.Point(177, 0);
             this.winPage.Name = "winPage";
             this.winPage.PageSize = 100;
             this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(483, 25);
+            this.winPage.Size = new System.Drawing.Size(489, 25);
             this.winPage.TabIndex = 0;
             this.winPage.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 
