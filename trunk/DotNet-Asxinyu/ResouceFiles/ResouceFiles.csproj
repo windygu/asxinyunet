@@ -617,6 +617,29 @@
     <Compile Include="Xcode-Src_20111108\YWS\Entities\维修保养记录.cs" />
     <Compile Include="Xcode-Src_20111108\YWS\Properties\AssemblyInfo.cs" />
     <Compile Include="Xcode-Src_20111108\YWS\YWSManageProvider.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\AddCtl类名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\AddCtl类名.Designer.cs">
+      <DependentUpon>AddCtl类名.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\Ctl类名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\Ctl类名.Designer.cs">
+      <DependentUpon>Ctl类名.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XCoder v4.6_20120229103751\Template\实体业务\中文名.Biz.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\实体数据\中文名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\纯属性\I中文名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\纯属性\中文名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\董斌辉-控件\类名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\董斌辉-窗体\添加类名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\页面\类名.aspx.cs">
+      <DependentUpon>类名.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XCoder v4.6_20120229103751\Template\页面\类名Form.aspx.cs">
+      <DependentUpon>类名Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XCoder v4.6_20120229103751\Template\页面基类\MyEntityForm.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\页面基类\MyEntityList.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\页面基类\MyEntityUserControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -681,6 +704,9 @@
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\对象操作.xt" />
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\扩展属性.xt" />
     <None Include="Xcode-Src_20111108\XCoder\Template\实体\扩展查询.xt" />
+    <None Include="XCoder v4.6_20120229103751\Template\实体业务\对象操作.xt" />
+    <None Include="XCoder v4.6_20120229103751\Template\实体业务\扩展属性.xt" />
+    <None Include="XCoder v4.6_20120229103751\Template\实体业务\扩展查询.xt" />
     <None Include="XCoder v4.6_20120229103751\XCoder.exe.config" />
     <None Include="张艳0721170414天津-张惠娟12.21.doc" />
   </ItemGroup>
@@ -1012,7 +1038,13 @@
     <Content Include="Xcode-Src_20111108\XControl\说明.txt" />
     <Content Include="Xcode-Src_20111108\YWS\mssql_YWS.xml" />
     <Content Include="Xcode-Src_20111108\YWS\YWS.csproj" />
+    <Content Include="XCoder v4.6_20120229103751\LotTick.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="XCoder v4.6_20120229103751\NewLife.Core.dll" />
+    <Content Include="XCoder v4.6_20120229103751\Template\数据字典\连接名数据字典.htm" />
+    <Content Include="XCoder v4.6_20120229103751\Template\页面\类名.aspx" />
+    <Content Include="XCoder v4.6_20120229103751\Template\页面\类名Form.aspx" />
     <Content Include="XCoder v4.6_20120229103751\XCode.dll" />
     <Content Include="XCoder v4.6_20120229103751\XCoder.exe" />
     <Content Include="XCoder v4.6_20120229103751\XTemplate.dll" />
@@ -1041,6 +1073,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xcode-Src_20111108\XCoder\FrmText.resx">
       <DependentUpon>FrmText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XCoder v4.6_20120229103751\Template\董斌辉-控件\类名.resx">
+      <DependentUpon>类名.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
