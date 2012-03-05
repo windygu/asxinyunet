@@ -8,12 +8,17 @@ using System.Text;
 using System.Windows.Forms;
 using DotNet.WinForm.Controls;
 using DotNet.WinForm;
+using NewLife.Configuration;
 using LotTick;
 
 namespace LotteryTicketSoft.GraphForm
 {
-    public partial class DataPrediction : DotNet.WinForm.Controls.DataManage 
-    {     
+    /// <summary>
+    /// 集成通用管理窗体，完成更丰富的数据操作功能
+    /// </summary>
+    public partial class DataPrediction : DotNet.WinForm.Controls.DataManage
+    {
+        #region 重写的方法
         /// <summary>
         /// 创建数据管理窗体
         /// </summary>
@@ -21,6 +26,7 @@ namespace LotteryTicketSoft.GraphForm
         /// <returns>数据管理控件的窗体</returns>
         public static FormModel CreateForm2(DataControlParams controlParams)
         {
+            //默认的集成不能完成，需要修改生成的主窗体
             DataPrediction dm = new DataPrediction();
             dm.InitializeSettings(controlParams);
             dm.Name = "dm";
@@ -36,14 +42,10 @@ namespace LotteryTicketSoft.GraphForm
         /// 配置右键菜单
         /// </summary>
         public override void InitialDgvMenu()
-        {
+        {            
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
             if (ControlParams.IsHaveMenu)
             {
-                //dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                //        new string[] { "Edit", "Delete" }, new string[] { "修改", "删除" },
-                //        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });
-
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
                         new string[] { "Edit", "Delete", "Validate", "CrossValidate", "Filter" }, new string[] {
                             "修改", "删除", "验证", "交叉验证", "过滤" },
@@ -51,23 +53,28 @@ namespace LotteryTicketSoft.GraphForm
                         toolStripStatics_Click,toolStripCrossValidate_Click,toolStripFilter_Click});
             }             
         }
+        #endregion
 
         #region 右键菜单事件
         #region 获取规则列表
+        /// <summary>
+        /// 获取当前dgv中的规则列表
+        /// </summary>
+        /// <returns></returns>
         public RuleInfo[] GetRuleList()
         {
-            List<RuleInfo> rules = new List<RuleInfo>();
-            //RuleInfo[] rules = new RuleInfo[dgv.Rows.Count];
+            twoColorBall = new TwoColorBall(500);
+            List<RuleInfo> rules = new List<RuleInfo>();           
             for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
             {
                 //先得到一个tb_Rules对象,直接从数据库读取,因为是实时更新
                 tb_Rules ruleMode = tb_Rules.FindById((int)dgv.Rows[rowIndex].Cells[0].Value);
-                //再根据ruleMode判断规则类别，调用相应的方法进行计算   
+                //再根据ruleMode判断规则类别，调用相应的方法进行计算
                 if (ruleMode.Enable)//可用才添加
                 {
                     CompareParams ruleParams = new CompareParams(ruleMode.RuleCompareParams);//参数
                     rules.Add(new RuleInfo(ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,
-                        ruleParams, ruleMode.Id, 0, ruleMode.NeedRows));
+                        ruleParams, ruleMode.Id, Config.GetConfig<int>("CalculateRows"), ruleMode.NeedRows));
                 }
             }
             return rules.ToArray();
@@ -75,6 +82,9 @@ namespace LotteryTicketSoft.GraphForm
         #endregion
 
         #region 交叉验证
+        /// <summary>
+        /// 交叉验证功能:几个规则同时进行验证，准确率在下方状态显示
+        /// </summary>
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
         {
             bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
@@ -99,21 +109,11 @@ namespace LotteryTicketSoft.GraphForm
         //右键预测验证频率
         private void toolStripStatics_Click(object sender, EventArgs e)
         {
-            //验证
-            bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
+            RuleInfo[] rules = GetRuleList();
+            bool[][] result = twoColorBall.ValidateRuleList(rules );
             //对结果进行统计
-            double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
+            double[] res = result.Select(n => ((double)n.Where(k => k).Count() /(double)n.Count())).ToArray();
             for (int i = 0; i < res.Length; i++) dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
-            //bool[][] reverse = new bool[result[0].Length][];
-            //for (int i = 0; i < reverse.GetLength (0); i++)
-            //{
-            //    reverse[i] = new bool[result.GetLength(0)];
-            //    for (int j = 0; j < reverse[i].Length ; j++)
-            //    {
-            //        reverse[i][j] = result[j][i];
-            //    }
-            //}
-            //int[] Temp = reverse.Select (n => n.Where(k => k).Count()).ToArray();
         }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
