@@ -65,17 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphForm\BaseGraphClass.cs" />
-    <Compile Include="GraphForm\DataManage.cs">
+    <Compile Include="GraphForm\DataPrediction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GraphForm\DataManage.Designer.cs">
-      <DependentUpon>DataManage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GraphForm\DataManageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GraphForm\DataManageForm.Designer.cs">
-      <DependentUpon>DataManageForm.cs</DependentUpon>
+    <Compile Include="GraphForm\DataPrediction.Designer.cs">
+      <DependentUpon>DataPrediction.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphForm\tb_IndexInfo.cs">
       <SubType>UserControl</SubType>
@@ -102,12 +96,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GraphForm\DataManage.resx">
-      <DependentUpon>DataManage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GraphForm\DataManageForm.resx">
-      <DependentUpon>DataManageForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\tb_IndexInfo.resx">
       <DependentUpon>tb_IndexInfo.cs</DependentUpon>
     </EmbeddedResource>
