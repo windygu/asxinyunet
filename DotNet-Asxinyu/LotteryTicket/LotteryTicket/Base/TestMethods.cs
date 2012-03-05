@@ -121,8 +121,9 @@ namespace LotteryTicket
                 bool flag = true ;
                 for (int j = 0; j < list.Count ; j++)
                 {
+                    
                     int temp = ((int)data[i].期号 * list[j].Multi + list[j].Add +
-                    (int)tb_Ssq.GetValue(data[i], "号码" + list[j].Sub.ToString())) % list[j].Divisor;
+                    (int)(data[i]["号码" + list[j].Sub.ToString()])) % list[j].Divisor;
                     Console.Write("{0},",temp );
                     //余数是否为下期的蓝号
                     if (temp == data[i + 1].蓝球)//只要一次不满足就跳出
@@ -144,7 +145,7 @@ namespace LotteryTicket
             for (int i = 0; i < data.Count -1; i++)
             {
                 int temp = (int)data[i].期号 * multiplicator+addend +
-                    (int)tb_Ssq.GetValue(data[i], "号码" + RedNumberId.ToString());               
+                    (int)(data[i]["号码" + RedNumberId.ToString()]);               
                 //余数是否为下期的蓝号
                 if ((temp %divisor )!=data [i +1].蓝球 )
                 {
