@@ -84,7 +84,8 @@ private System.Windows.Forms.TextBox txtRemark ;
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            this.FormPager = new EntityFormPager();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRules));
+            this.FormPager = new DotNet.WinForm.Controls.EntityFormPager();
             this.lblId = new System.Windows.Forms.Label();
             this.lblSchemeId = new System.Windows.Forms.Label();
             this.lblIndexSelectorNameTP = new System.Windows.Forms.Label();
@@ -118,15 +119,16 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.AutoSize = true;
             this.FormPager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FormPager.BackColor = System.Drawing.Color.Transparent;
+            this.FormPager.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FormPager.BackgroundImage")));
             this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.FormPager.Location = new System.Drawing.Point(12, 336);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
-            this.FormPager.Size = new System.Drawing.Size(238, 29);
+            this.FormPager.Size = new System.Drawing.Size(242, 29);
             this.FormPager.TabIndex = 100;
-            this.FormPager.PageIndexChanged += new EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
+            this.FormPager.PageIndexChanged += new DotNet.WinForm.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
             // 
             // lblId
             // 
@@ -243,7 +245,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtId.Location = new System.Drawing.Point(74, 4);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(150, 23);
+            this.txtId.Size = new System.Drawing.Size(172, 23);
             this.txtId.TabIndex = 0;
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
@@ -252,7 +254,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtSchemeId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtSchemeId.Location = new System.Drawing.Point(74, 31);
             this.txtSchemeId.Name = "txtSchemeId";
-            this.txtSchemeId.Size = new System.Drawing.Size(150, 23);
+            this.txtSchemeId.Size = new System.Drawing.Size(172, 23);
             this.txtSchemeId.TabIndex = 2;
             // 
             // combIndexSelectorNameTP
@@ -261,7 +263,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.combIndexSelectorNameTP.FormattingEnabled = true;
             this.combIndexSelectorNameTP.Location = new System.Drawing.Point(74, 58);
             this.combIndexSelectorNameTP.Name = "combIndexSelectorNameTP";
-            this.combIndexSelectorNameTP.Size = new System.Drawing.Size(150, 22);
+            this.combIndexSelectorNameTP.Size = new System.Drawing.Size(172, 22);
             this.combIndexSelectorNameTP.TabIndex = 4;
             // 
             // combCompareRuleNameTP
@@ -270,7 +272,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.combCompareRuleNameTP.FormattingEnabled = true;
             this.combCompareRuleNameTP.Location = new System.Drawing.Point(74, 85);
             this.combCompareRuleNameTP.Name = "combCompareRuleNameTP";
-            this.combCompareRuleNameTP.Size = new System.Drawing.Size(150, 22);
+            this.combCompareRuleNameTP.Size = new System.Drawing.Size(172, 22);
             this.combCompareRuleNameTP.TabIndex = 6;
             // 
             // txtRuleCompareParams
@@ -278,7 +280,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtRuleCompareParams.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtRuleCompareParams.Location = new System.Drawing.Point(74, 112);
             this.txtRuleCompareParams.Name = "txtRuleCompareParams";
-            this.txtRuleCompareParams.Size = new System.Drawing.Size(150, 23);
+            this.txtRuleCompareParams.Size = new System.Drawing.Size(172, 23);
             this.txtRuleCompareParams.TabIndex = 8;
             // 
             // txtNeedRows
@@ -286,7 +288,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtNeedRows.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtNeedRows.Location = new System.Drawing.Point(74, 139);
             this.txtNeedRows.Name = "txtNeedRows";
-            this.txtNeedRows.Size = new System.Drawing.Size(150, 23);
+            this.txtNeedRows.Size = new System.Drawing.Size(172, 23);
             this.txtNeedRows.TabIndex = 10;
             this.txtNeedRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
@@ -295,7 +297,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtCorrectRate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCorrectRate.Location = new System.Drawing.Point(74, 166);
             this.txtCorrectRate.Name = "txtCorrectRate";
-            this.txtCorrectRate.Size = new System.Drawing.Size(150, 23);
+            this.txtCorrectRate.Size = new System.Drawing.Size(172, 23);
             this.txtCorrectRate.TabIndex = 12;
             this.txtCorrectRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
@@ -304,7 +306,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtFilterInfo.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtFilterInfo.Location = new System.Drawing.Point(74, 193);
             this.txtFilterInfo.Name = "txtFilterInfo";
-            this.txtFilterInfo.Size = new System.Drawing.Size(150, 23);
+            this.txtFilterInfo.Size = new System.Drawing.Size(172, 23);
             this.txtFilterInfo.TabIndex = 14;
             // 
             // txtEnable
@@ -312,7 +314,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtEnable.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtEnable.Location = new System.Drawing.Point(74, 220);
             this.txtEnable.Name = "txtEnable";
-            this.txtEnable.Size = new System.Drawing.Size(150, 23);
+            this.txtEnable.Size = new System.Drawing.Size(172, 23);
             this.txtEnable.TabIndex = 16;
             this.txtEnable.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
@@ -322,7 +324,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.dtUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dtUpdateTime.Location = new System.Drawing.Point(74, 247);
             this.dtUpdateTime.Name = "dtUpdateTime";
-            this.dtUpdateTime.Size = new System.Drawing.Size(150, 23);
+            this.dtUpdateTime.Size = new System.Drawing.Size(172, 23);
             this.dtUpdateTime.TabIndex = 18;
             // 
             // txtRemark
@@ -330,13 +332,13 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtRemark.Location = new System.Drawing.Point(74, 274);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(150, 23);
+            this.txtRemark.Size = new System.Drawing.Size(172, 23);
             this.txtRemark.TabIndex = 20;
             // 
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOK.Location = new System.Drawing.Point(65, 303);
+            this.btnOK.Location = new System.Drawing.Point(86, 303);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 27);
             this.btnOK.TabIndex = 22;
@@ -347,7 +349,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancle.Location = new System.Drawing.Point(145, 303);
+            this.btnCancle.Location = new System.Drawing.Point(166, 303);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(78, 27);
             this.btnCancle.TabIndex = 24;
@@ -389,7 +391,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.FormPager);
             this.Name = "AddRules";
-            this.Size = new System.Drawing.Size(230, 335);
+            this.Size = new System.Drawing.Size(253, 335);
             this.Load += new System.EventHandler(this.AddAddRulesLoad);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
