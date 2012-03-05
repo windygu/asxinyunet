@@ -707,6 +707,7 @@
     <None Include="XCoder v4.6_20120229103751\Template\实体业务\扩展属性.xt" />
     <None Include="XCoder v4.6_20120229103751\Template\实体业务\扩展查询.xt" />
     <None Include="XCoder v4.6_20120229103751\XCoder.exe.config" />
+    <None Include="XCoder v4.6_20120229103751\XCoder.exe.重命名" />
     <None Include="张艳0721170414天津-张惠娟12.21.doc" />
   </ItemGroup>
   <ItemGroup>

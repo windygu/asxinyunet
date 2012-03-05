@@ -95,6 +95,8 @@ namespace DotNet.WinForm.Controls
         /// 相关的配置参数字典类
         /// </summary>
         protected static ConfigDictionary Items;
+
+
         #endregion
 
         #region 静态方法
