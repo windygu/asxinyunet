@@ -68,7 +68,7 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
                "LotteryTicketSoft.GraphForm.AddRules");
             CP.IsEnablePaging = false;
-            DotNet.WinForm.Controls.DataManage.CreateForm(CP).ShowDialog();
+            DotNet.WinForm.Controls.DataManage.CreateForm(CP).Show ();
         }
 
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),remove,bandingSource ,
                "LotteryTicketSoft.GraphForm.AddIndexInfo");
             CP.IsEnablePaging = false;
-            DotNet.WinForm.Controls.DataManage.CreateForm(CP).ShowDialog();
+            DotNet.WinForm.Controls.DataManage.CreateForm(CP).Show ();
         }
 
         private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)
