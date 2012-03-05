@@ -629,8 +629,7 @@
     <Compile Include="XCoder v4.6_20120229103751\Template\实体数据\中文名.cs" />
     <Compile Include="XCoder v4.6_20120229103751\Template\纯属性\I中文名.cs" />
     <Compile Include="XCoder v4.6_20120229103751\Template\纯属性\中文名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\董斌辉-控件\类名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\董斌辉-窗体\添加类名.cs" />
+    <Compile Include="XCoder v4.6_20120229103751\Template\董斌辉控件\类名.cs" />
     <Compile Include="XCoder v4.6_20120229103751\Template\页面\类名.aspx.cs">
       <DependentUpon>类名.aspx</DependentUpon>
     </Compile>
@@ -1074,7 +1073,7 @@
     <EmbeddedResource Include="Xcode-Src_20111108\XCoder\FrmText.resx">
       <DependentUpon>FrmText.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XCoder v4.6_20120229103751\Template\董斌辉-控件\类名.resx">
+    <EmbeddedResource Include="XCoder v4.6_20120229103751\Template\董斌辉控件\类名.resx">
       <DependentUpon>类名.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

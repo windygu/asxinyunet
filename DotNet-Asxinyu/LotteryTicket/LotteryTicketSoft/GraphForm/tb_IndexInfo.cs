@@ -47,6 +47,7 @@ namespace LotteryTicketSoft.GraphForm
 			base.Dispose(disposing);
 		}
 		#endregion		
+
 		#region 控件定义
 		private System.Windows.Forms.TextBox txtId ;
         private System.Windows.Forms.Label lblId;
