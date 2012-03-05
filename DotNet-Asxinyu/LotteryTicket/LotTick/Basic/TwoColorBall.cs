@@ -245,9 +245,12 @@ namespace LotTick
                     model.号码4 = Convert.ToInt32(tempNo[3]);
                     model.号码5 = Convert.ToInt32(tempNo[4]);
                     model.号码6 = Convert.ToInt32(tempNo[5]);
-                    model.蓝球 = Convert.ToInt32(tempNo[6]);
-                    if (!model.Exist(new string[] { tb_Ssq._.期号 })) model.Insert();//自动判断是否存在
-                    else return;
+                    model.蓝球 = Convert.ToInt32(tempNo[6]);                    
+                    //bool s = !model.Exist(new string[] {tb_Ssq._.期号 });
+                    if (tb_Ssq.FindBy期号(model.期号)==null )
+                        model.Insert();//自动判断是否存在
+                    else
+                        return;
                     Console.WriteLine("第 " + i.ToString() + "页，第 " + j.ToString() + " 条");
                 }
             }
