@@ -90,6 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GraphForm\DataPrediction.resx">
+      <DependentUpon>DataPrediction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\tb_IndexInfo.resx">
       <DependentUpon>tb_IndexInfo.cs</DependentUpon>
     </EmbeddedResource>

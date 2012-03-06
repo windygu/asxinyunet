@@ -28,8 +28,21 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
-                        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.SuspendLayout();
+            // 
+            // winPage
+            // 
+            this.winPage.Location = new System.Drawing.Point(172, 0);
+            this.winPage.Size = new System.Drawing.Size(483, 25);
+            // 
+            // DataPrediction
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "DataPrediction";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 		}
 
 		#endregion
