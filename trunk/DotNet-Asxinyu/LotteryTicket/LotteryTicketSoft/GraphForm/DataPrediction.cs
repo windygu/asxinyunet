@@ -10,6 +10,7 @@ using DotNet.WinForm.Controls;
 using DotNet.WinForm;
 using NewLife.Configuration;
 using LotTick;
+using System.Threading.Tasks;
 
 namespace LotteryTicketSoft.GraphForm
 {
@@ -88,11 +89,14 @@ namespace LotteryTicketSoft.GraphForm
         {
             if (twoColorBall ==null )
                 twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
-            bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());     
-            double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
-            for (int i = 0; i < res.Length; i++) dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
-            this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
-                (TwoColorBall.CrossValidate(result) * 100).ToString("F4"));
+            var t = Task.Factory.StartNew (()=>
+            {
+                bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
+                double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
+                for (int i = 0; i < res.Length; i++) dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
+                this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
+                    (TwoColorBall.CrossValidate(result) * 100).ToString("F4"));
+            });
         }
         #endregion
 
@@ -102,16 +106,19 @@ namespace LotteryTicketSoft.GraphForm
         {
             if (twoColorBall == null)
                 twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
-            Dictionary<int, string> dic;
-            LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
-            //过滤结果写入数据库，并刷新
-            foreach (var item in dic)
+            var t = Task.Factory.StartNew(()=>
             {
-                tb_Rules temp = tb_Rules.FindById(item.Key);
-                temp.FilterInfo = item.Value;
-                temp.Update();
-            }
-            GetData();
+                Dictionary<int, string> dic;
+                LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
+                //过滤结果写入数据库，并刷新
+                foreach (var item in dic)
+                {
+                    tb_Rules temp = tb_Rules.FindById(item.Key);
+                    temp.FilterInfo = item.Value;
+                    temp.Update();
+                }
+                GetData();
+            });           
         }
         #endregion
         #endregion

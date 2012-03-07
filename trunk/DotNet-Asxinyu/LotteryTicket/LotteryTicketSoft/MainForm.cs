@@ -25,6 +25,7 @@ namespace LotteryTicketSoft
         public MainForm()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
         static string LabAssemblyName = "LotteryTicketSoft.exe";
 
@@ -51,6 +52,11 @@ namespace LotteryTicketSoft
         //}
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FilterNumbers();
+        }
+        //过滤操作
+        private void FilterNumbers()
+        {
             string[] remove = new string[] { tb_Rules._.Remark.Description };
             Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
             bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
@@ -59,7 +65,8 @@ namespace LotteryTicketSoft
                "LotteryTicketSoft.GraphForm.AddRules");
             CP.IsEnablePaging = false;
             //FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
-            FormModel frm =LotteryTicketSoft.GraphForm.DataPrediction.CreateForm2(CP);
+            FormModel frm = LotteryTicketSoft.GraphForm.DataPrediction.CreateForm2(CP);
+            frm.MdiParent = this;
             frm.Show();
         }
 
@@ -72,7 +79,9 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo ),remove,bandingSource ,
                "LotteryTicketSoft.GraphForm.AddIndexInfo");
             CP.IsEnablePaging = false;
-            DotNet.WinForm.Controls.DataManage.CreateForm(CP).Show ();
+            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP) ;
+            frm.MdiParent = this ;
+            frm.Show ();
         }
 
         /// <summary>
@@ -80,16 +89,16 @@ namespace LotteryTicketSoft
         /// </summary>        
         private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Task taskone = new Task(delegate() {
+            var t = Task.Factory.StartNew(()=>
+            {
                 TwoColorBall.UpdateRecent();
                 MessageBox.Show("近期数据更新成功","任务提示");//可以考虑其他地方显示该信息
             });
-            taskone.Start();
         }
 
         private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Task taskone = new Task(delegate()
+            Task taskone = new Task(()=>
             {
                 TwoColorBall.UpdateAll();
                 MessageBox.Show("所有数据更新成功", "任务提示");
