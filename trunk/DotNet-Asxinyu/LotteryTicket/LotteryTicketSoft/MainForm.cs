@@ -13,6 +13,7 @@ using LotTick;
 using NewLife.Configuration;
 using DotNet.WinForm.Controls;
 using DotNet.WinForm;
+using System.Threading.Tasks;
 
 namespace LotteryTicketSoft
 {
@@ -33,16 +34,6 @@ namespace LotteryTicketSoft
             StausShow.SetToolInfo1(Config.GetConfig<string>("SoftName"));
             StausShow.SetToolInfo3(Config.GetConfig<string>("CustomerCompanyName"));            
         }
-
-        private void 常规参数设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-        }
-
-        private void 数据更新ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-
         //加载验证过滤管理窗体
         //public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
         //{
@@ -84,16 +75,26 @@ namespace LotteryTicketSoft
             DotNet.WinForm.Controls.DataManage.CreateForm(CP).Show ();
         }
 
+        /// <summary>
+        /// 异步调用，更新数据
+        /// </summary>        
         private void 更新最近ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TwoColorBall.UpdateRecent();
-            MessageBox.Show("更新成功");
+            Task taskone = new Task(delegate() {
+                TwoColorBall.UpdateRecent();
+                MessageBox.Show("近期数据更新成功","任务提示");//可以考虑其他地方显示该信息
+            });
+            taskone.Start();
         }
 
         private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-            TwoColorBall.UpdateAll();
-            MessageBox.Show("更新成功");
+        {
+            Task taskone = new Task(delegate()
+            {
+                TwoColorBall.UpdateAll();
+                MessageBox.Show("所有数据更新成功", "任务提示");
+            });
+            taskone.Start();
         }
 
         private void 指标信息ToolStripMenuItem_Click(object sender, EventArgs e)
