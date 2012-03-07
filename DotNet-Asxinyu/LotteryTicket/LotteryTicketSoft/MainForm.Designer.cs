@@ -156,7 +156,7 @@ namespace LotteryTicketSoft
             this.常规参数设置ToolStripMenuItem.Name = "常规参数设置ToolStripMenuItem";
             this.常规参数设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.常规参数设置ToolStripMenuItem.Text = "常规参数设置";
-            this.常规参数设置ToolStripMenuItem.Click += new System.EventHandler(this.常规参数设置ToolStripMenuItem_Click);
+            
             // 
             // 帮助ToolStripMenuItem
             // 

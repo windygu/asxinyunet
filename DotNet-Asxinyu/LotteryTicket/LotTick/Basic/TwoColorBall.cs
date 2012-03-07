@@ -255,6 +255,25 @@ namespace LotTick
                 }
             }
         }
+        #endregion      
+
+        #region 规则验证与预测
+        public static double CrossValidate(bool[][] result)
+        {            
+            //对Result结果进行处理，得到交叉验证的概率
+            int count = 0;
+            for (int i = 0; i < result[0].Length; i++)
+            {
+                bool flag = false;
+                for (int j = 0; j < result.GetLength(0); j++)
+                {
+                    if (!result[j][i]) flag = true;
+                }
+                if (!flag)
+                    count++;
+            }
+           return ((double)count) / (double)result[0].Length;           
+        }
         #endregion
     }
 }

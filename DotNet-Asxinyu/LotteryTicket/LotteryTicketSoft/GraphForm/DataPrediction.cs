@@ -18,7 +18,7 @@ namespace LotteryTicketSoft.GraphForm
     /// </summary>
     public partial class DataPrediction : DotNet.WinForm.Controls.DataManage
     {
-        #region 重写的方法
+        #region 重写的方法       
         /// <summary>
         /// 创建数据管理窗体
         /// </summary>
@@ -47,10 +47,10 @@ namespace LotteryTicketSoft.GraphForm
             if (ControlParams.IsHaveMenu)
             {
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete", "Validate", "CrossValidate", "Filter" }, new string[] {
-                            "修改", "删除", "验证", "交叉验证", "过滤" },
+                        new string[] { "Edit", "Delete", "CrossValidate", "Filter" }, new string[] {
+                            "修改", "删除", "交叉验证", "过滤" },
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
-                        toolStripStatics_Click,toolStripCrossValidate_Click,toolStripFilter_Click});
+                        toolStripCrossValidate_Click,toolStripFilter_Click});
             }             
         }
         #endregion
@@ -62,8 +62,7 @@ namespace LotteryTicketSoft.GraphForm
         /// </summary>
         /// <returns></returns>
         public RuleInfo[] GetRuleList()
-        {
-            twoColorBall = new TwoColorBall(500);
+        {            
             List<RuleInfo> rules = new List<RuleInfo>();           
             for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
             {
@@ -83,41 +82,26 @@ namespace LotteryTicketSoft.GraphForm
 
         #region 交叉验证
         /// <summary>
-        /// 交叉验证功能:几个规则同时进行验证，准确率在下方状态显示
+        /// 交叉验证功能:几个规则同时进行验证，准确率在下方状态显示，也包括了单独的验证
         /// </summary>
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
         {
-            bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
-            //结果显示
-            int count = 0;
-            for (int i = 0; i < result[0].Length; i++)
-            {
-                bool flag = false;
-                for (int j = 0; j < result.GetLength(0); j++)
-                {
-                    if (!result[j][i]) flag = true;
-                }
-                if (!flag)
-                    count++;
-            }
-            double t = ((double)count) / (double)result[0].Length;
-            this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" + (t * 100).ToString("F4"));
+            if (twoColorBall ==null )
+                twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
+            bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());     
+            double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
+            for (int i = 0; i < res.Length; i++) dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
+            this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
+                (TwoColorBall.CrossValidate(result) * 100).ToString("F4"));
         }
         #endregion
 
         #region 右键预测与过滤
-        //右键预测验证频率
-        private void toolStripStatics_Click(object sender, EventArgs e)
-        {
-            RuleInfo[] rules = GetRuleList();
-            bool[][] result = twoColorBall.ValidateRuleList(rules );
-            //对结果进行统计
-            double[] res = result.Select(n => ((double)n.Where(k => k).Count() /(double)n.Count())).ToArray();
-            for (int i = 0; i < res.Length; i++) dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
-        }
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
+            if (twoColorBall == null)
+                twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
             Dictionary<int, string> dic;
             LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
             //过滤结果写入数据库，并刷新
