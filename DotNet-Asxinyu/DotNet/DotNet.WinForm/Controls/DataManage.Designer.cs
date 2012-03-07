@@ -145,7 +145,6 @@
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 0);
@@ -153,6 +152,7 @@
             this.dgv.RowTemplate.Height = 23;
             this.dgv.Size = new System.Drawing.Size(655, 320);
             this.dgv.TabIndex = 42;
+            this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
             // winPage
             // 
@@ -163,10 +163,10 @@
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(172, 0);
+            this.winPage.Location = new System.Drawing.Point(163, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(483, 25);
+            this.winPage.Size = new System.Drawing.Size(492, 25);
             this.winPage.TabIndex = 0;
             this.winPage.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 

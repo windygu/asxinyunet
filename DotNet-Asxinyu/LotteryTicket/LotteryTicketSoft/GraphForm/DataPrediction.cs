@@ -11,6 +11,7 @@ using DotNet.WinForm;
 using NewLife.Configuration;
 using LotTick;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace LotteryTicketSoft.GraphForm
 {
@@ -19,7 +20,7 @@ namespace LotteryTicketSoft.GraphForm
     /// </summary>
     public partial class DataPrediction : DotNet.WinForm.Controls.DataManage
     {
-        #region 重写的方法       
+        #region 重写的方法
         /// <summary>
         /// 创建数据管理窗体
         /// </summary>
@@ -48,10 +49,11 @@ namespace LotteryTicketSoft.GraphForm
             if (ControlParams.IsHaveMenu)
             {
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete", "CrossValidate", "Filter" }, new string[] {
-                            "修改", "删除", "交叉验证", "过滤" },
+                        new string[] { "Edit", "Delete", "CrossValidate", "Filter","Remove","SaveProject"},
+                        new string[] {"修改记录", "删除记录", "交叉验证", "过滤","移除记录","保存方案"},
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
-                        toolStripCrossValidate_Click,toolStripFilter_Click});
+                        toolStripCrossValidate_Click,toolStripFilter_Click,toolStripRemove_Click,
+                        toolStripSaveProject_Click});
             }             
         }
         #endregion
@@ -121,6 +123,41 @@ namespace LotteryTicketSoft.GraphForm
             });           
         }
         #endregion
+
+        #region 移除记录
+        private void toolStripRemove_Click(object sender, EventArgs e)
+        {
+            var t = btList.Find(tb_Rules._.Id, this.dgv[0, this.dgv.CurrentCell.RowIndex].Value );
+            //直接在dgv中删除
+            this.btList.Remove(t );
+            ArrayList list = new ArrayList();
+            for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);//需要转换一下才行
+            dgv.DataSource = list;
+            this.dgv.DataSource = list ;
+        }
+        #endregion
+
+        #region 保存方案数据
+        private void toolStripSaveProject_Click(object sender, EventArgs e)
+        {
+            //if (twoColorBall == null)
+            //    twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
+            //var t = Task.Factory.StartNew(() =>
+            //{
+            //    Dictionary<int, string> dic;
+            //LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
+            //    //过滤结果写入数据库，并刷新
+            //    foreach (var item in dic)
+            //    {
+            //        tb_Rules temp = tb_Rules.FindById(item.Key);
+            //        temp.FilterInfo = item.Value;
+            //        temp.Update();
+            //    }
+            //    GetData();
+            //});  
+        }
+        #endregion
+
         #endregion
     }
 }

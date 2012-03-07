@@ -25,31 +25,17 @@ namespace LotteryTicketSoft
         public MainForm()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
+            CheckForIllegalCrossThreadCalls = false;//运行其他线程访问主线程定义的控件
         }
         static string LabAssemblyName = "LotteryTicketSoft.exe";
 
         void MainFormLoad(object sender, EventArgs e)
         {
+            //加载主要的配置信息
             this.Text = Config.GetConfig<string>("SoftName") + Config.GetConfig<string>("Version") ;
             StausShow.SetToolInfo1(Config.GetConfig<string>("SoftName"));
             StausShow.SetToolInfo3(Config.GetConfig<string>("CustomerCompanyName"));            
-        }
-        //加载验证过滤管理窗体
-        //public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(DataControlParams dcp)
-        //{
-        //    //LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
-        //    //dt.InitializeSettings(dcp);
-        //    //dt.StartPosition = FormStartPosition.CenterParent;
-        //    //return dt;
-        //}
-        //public static LotteryTicketSoft.GraphForm.DataManageForm DynamicLoadForm(LotTickData[] data)
-        //{
-        //    LotteryTicketSoft.GraphForm.DataManageForm dt = new LotteryTicketSoft.GraphForm.DataManageForm();
-        //    dt.InitializeSettings(dcp);
-        //    dt.StartPosition = FormStartPosition.CenterParent;
-        //    return dt;
-        //}
+        }       
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterNumbers();
@@ -63,8 +49,7 @@ namespace LotteryTicketSoft
             bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
                "LotteryTicketSoft.GraphForm.AddRules");
-            CP.IsEnablePaging = false;
-            //FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            CP.IsEnablePaging = false;            
             FormModel frm = LotteryTicketSoft.GraphForm.DataPrediction.CreateForm2(CP);
             frm.MdiParent = this;
             frm.Show();
@@ -98,12 +83,11 @@ namespace LotteryTicketSoft
 
         private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Task taskone = new Task(()=>
+            Task.Factory.StartNew(() =>
             {
                 TwoColorBall.UpdateAll();
                 MessageBox.Show("所有数据更新成功", "任务提示");
-            });
-            taskone.Start();
+            });          
         }
 
         private void 指标信息ToolStripMenuItem_Click(object sender, EventArgs e)
