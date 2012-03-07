@@ -70,7 +70,7 @@ namespace LotTick
         }
         /// <param name="ruleList">规则列表</param>
         /// <param name="filterInfos">过滤信息</param>
-        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out System.Collections.Generic.Dictionary<int, string> filterInfos)
+        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
             //先获取优先级列表,从指标数据表中获取           
             RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
@@ -273,6 +273,13 @@ namespace LotTick
                     count++;
             }
            return ((double)count) / (double)result[0].Length;           
+        }
+        #endregion
+
+        #region 保存方案数据
+        public static void SaveProjectData(RuleInfo[] ruleList)
+        {
+
         }
         #endregion
     }

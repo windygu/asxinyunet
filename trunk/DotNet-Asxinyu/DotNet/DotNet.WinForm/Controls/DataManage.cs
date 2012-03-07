@@ -217,7 +217,7 @@ namespace DotNet.WinForm.Controls
                                             winPage.PageSize);
             else //不需要分页的情况下
                 btList = EntityOper.FindAll(cutSql, "", "", 0, 0);//.ToList() 
-            dgv.DataSource = btList;
+            //dgv.DataSource = btList;
             ArrayList list = new ArrayList();
             for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);
             dgv.DataSource = list;
@@ -256,7 +256,7 @@ namespace DotNet.WinForm.Controls
                     for (int i = 0; i < count; i++)
                     {
                         int RowIndex = dgv.SelectedCells[i].RowIndex;
-                        if (!index.Contains(RowIndex)) btList[RowIndex].Delete();
+                        if (!index.Contains(RowIndex)) btList[RowIndex].Delete();                        
                     }
                 }
                 else return;
@@ -362,5 +362,10 @@ namespace DotNet.WinForm.Controls
             }
         }
         #endregion       
+
+        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            //不做任何处理
+        }
     }
 }
