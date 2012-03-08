@@ -71,34 +71,45 @@ namespace LotTick
         }
         
         /// <summary>
-        /// 根据过滤规则数据，对数据进行过滤
+        /// 根据过滤规则数据，对数据进行过滤:这是不使用提前方案，直接对所有数据过滤，速度较慢
         /// </summary>
         /// <param name="ruleList">规则列表</param>
         /// <param name="filterInfos">过滤信息</param>
         /// <returns>过滤后的数据集合</returns>
-        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
+        /// <param name="fileName">需要加载的初始数据文件名称</param>
+        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, 
+            out Dictionary<int, string> filterInfos,string fileName = null )
+        {
+            if (fileName == null)
+                return FilterByNotUsePrepareData(ruleList, out filterInfos);//不使用预处理数据
+            else
+                return null;
+        }
+        //不使用提前方案，直接进行过滤，需要对规则分类，杀号优先处理后，再组合
+        private LotTickData[] FilterByNotUsePrepareData(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
             //先获取优先级列表,从指标数据表中获取           
             RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
-                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel==6).ToArray ();
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel == 6).ToArray();
             RuleInfo[] Last = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
-                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel<6).ToArray();
-            filterInfos = new Dictionary<int,string> ();
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel < 6).ToArray();
+            filterInfos = new Dictionary<int, string>();
             //先按照优先级进行划分,对最高级进行处理后,分为杀红号和杀蓝号
             LotTickData[] InitData = GetInitiaData(First);
             //组合为LotTickData[]，再进行其他的过滤，并输出过滤信息,过滤前后的数目
             for (int i = 0; i < Last.Length; i++)
             {
                 //首先获取计算的数据,直接从data中获取              
-                Last[i].IndexSelector.RuleInfoParams = Last[i]; 
-                int firCount = InitData.Length ;
-                InitData = Last[i].IndexSelector.GetFilterResult(InitData,GetNeedData (Last[i].NeedRows )) ;
-                int lastCount = InitData.Length ;
+                Last[i].IndexSelector.RuleInfoParams = Last[i];
+                int firCount = InitData.Length;
+                InitData = Last[i].IndexSelector.GetFilterResult(InitData, GetNeedData(Last[i].NeedRows));
+                int lastCount = InitData.Length;
                 //如何返回过滤信息？用字典，加一个规则编号和结果信息
                 filterInfos.Add(Last[i].RuleID, (firCount - lastCount).ToString());
             }
             return InitData;
         }
+
         /// <summary>
         /// 获取计算所需数据
         /// </summary>        
@@ -111,7 +122,7 @@ namespace LotTick
                 this.LotData.CopyTo(curData, LotData.Length - needRows);
                 return curData;
             }
-        }
+        }       
         /// <summary>
         /// 获取杀号类型规则后形成的列表
         /// </summary>
@@ -283,7 +294,7 @@ namespace LotTick
         }
         #endregion
 
-        #region 保存方案数据
+        #region 保存方案数据和规则
         /// <summary>
         /// 保存方案和数据
         /// </summary>
