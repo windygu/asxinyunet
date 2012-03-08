@@ -5,6 +5,8 @@ using DotNet.Tools;
 using HtmlAgilityPack;
 using Kw.Combinatorics;
 using XCode;
+using System.IO;
+using System.Xml;
 
 namespace LotTick
 {
@@ -60,16 +62,20 @@ namespace LotTick
             bool[][] res = new bool[ruleList.Length][];
             for (int i = 0; i < ruleList.Length; i++)
             {
-                //首先获取计算的数据,直接从data中获取
-                //LotTickData[] curData = new LotTickData[ruleList[i].CalcuteRows + ruleList[i].NeedRows];
-                //this.LotData.CopyTo(curData, LotData.Length  - this.CalcuteRows - ruleList[i].NeedRows);
+                //首先获取计算的数据,直接从data中获取              
                 ruleList[i].IndexSelector.RuleInfoParams = ruleList[i];
-                res[i] = ruleList[i].IndexSelector.GetValidateResult(GetNeedData(ruleList[i].CalcuteRows + ruleList[i].NeedRows));
+                res[i] = ruleList[i].IndexSelector.GetValidateResult
+                    (GetNeedData(ruleList[i].CalcuteRows + ruleList[i].NeedRows));
             }
             return res;
         }
+        
+        /// <summary>
+        /// 根据过滤规则数据，对数据进行过滤
+        /// </summary>
         /// <param name="ruleList">规则列表</param>
         /// <param name="filterInfos">过滤信息</param>
+        /// <returns>过滤后的数据集合</returns>
         public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
             //先获取优先级列表,从指标数据表中获取           
@@ -119,13 +125,14 @@ namespace LotTick
             for (int i = 0; i < ruleList.Length ; i++)
             {
                 LotTickData[] curData = new LotTickData[ruleList[i].CalcuteRows + ruleList[i].NeedRows];
-                if (ruleList[i].IndexSelector.ToString().Contains("红"))
+                if (ruleList[i].IndexSelector.ToString().Contains("红")) //杀红
                     RedBall = ruleList[i].IndexSelector.DeleteNumbers(RedBall, curData);
-                else
+                else                                                     //杀篮
                     BlueBall = ruleList[i].IndexSelector.DeleteNumbers(BlueBall , curData);
             }
             //对红和蓝进行组合、迭代获取所有组合序列,并对每个序列进行判断         
-            int[][] Red = new Combination(RedBall.Count , 6).Rows.Select(n => Combination.Permute(n, RedBall ).ToArray()).ToArray();
+            int[][] Red = new Combination(RedBall.Count , 6).Rows.Select
+                (n => Combination.Permute(n, RedBall ).ToArray()).ToArray();
             LotTickData[] res = new LotTickData[Red.GetLength(0) * BlueBall.Count];//总数
             int count = 0;
             for (int i = 0; i < Red.GetLength(0); i++)
@@ -277,8 +284,32 @@ namespace LotTick
         #endregion
 
         #region 保存方案数据
-        public static void SaveProjectData(RuleInfo[] ruleList)
+        /// <summary>
+        /// 保存方案和数据
+        /// </summary>
+        /// <param name="ruleList">规则列表</param>
+        /// <param name="fileName">保存的文件名称</param>
+        /// <param name="isSaveData">是否保存数据,false则只保存规则</param>
+        public static void SaveProjectData(RuleInfo[] ruleList,string fileName ,bool isSaveData = false )
         {
+            SaveRules(ruleList, fileName);//先保存规则信息
+            if (isSaveData)
+                SaveData(ruleList, fileName); //保存数据
+        }
+        private static void SaveRules(RuleInfo[] ruleList, string fileName)
+        {
+            //保存规则
+            if (File.Exists(fileName)) File.Delete(fileName);
+            NewLife.Xml.XmlWriterX xml = new NewLife.Xml.XmlWriterX();
+            using (XmlWriter writer = XmlWriter.Create(fileName))
+            {
+                xml.Writer = writer;
+                xml.WriteObject(ruleList, typeof(RuleInfo[]), null);
+            }
+        }
+        private static void SaveData(RuleInfo[] ruleList, string fileName)
+        {
+            //方案保存不涉及最高优先级的杀号，因此可以直接进行过滤操作
 
         }
         #endregion

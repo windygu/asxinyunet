@@ -19,10 +19,10 @@ namespace LotteryTicketSoft.GraphForm
     /// 集成通用管理窗体，完成更丰富的数据操作功能
     /// </summary>
     public partial class DataPrediction : DotNet.WinForm.Controls.DataManage
-    {
-        #region 重写的方法
+    {        
+        #region 创建数据管理窗体
         /// <summary>
-        /// 创建数据管理窗体
+        /// 创建数据管理窗体,需要重新写
         /// </summary>
         /// <param name="controlParams">控件参数</param>
         /// <returns>数据管理控件的窗体</returns>
@@ -39,6 +39,9 @@ namespace LotteryTicketSoft.GraphForm
             tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             return tf;
         }
+        #endregion
+
+        #region 配置右键菜单
         private TwoColorBall twoColorBall;
         /// <summary>
         /// 配置右键菜单
@@ -48,16 +51,19 @@ namespace LotteryTicketSoft.GraphForm
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
             if (ControlParams.IsHaveMenu)
             {
-                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete", "CrossValidate", "Filter","Remove","SaveProject"},
-                        new string[] {"修改记录", "删除记录", "交叉验证", "过滤","移除记录","保存方案"},
-                        new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click,
-                        toolStripCrossValidate_Click,toolStripFilter_Click,toolStripRemove_Click,
-                        toolStripSaveProject_Click});
-            }             
+                string[] menuNames = { "Edit", "Delete", "CrossValidate", "Filter", "Remove", "SaveProject" };
+                string[] dispTexts = { "修改记录", "删除记录", "交叉验证", "过滤", "移除记录", "保存方案" };
+                EventHandler[] eventNames ={ toolStripMenuEdit_Click,//修改
+                                               toolStripMenuDelete_Click,//删除
+                        toolStripCrossValidate_Click,//交叉验证
+                        toolStripFilter_Click,//过滤
+                        toolStripRemove_Click,//移除记录
+                        toolStripSaveProject_Click}; //保存方案
+                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(menuNames ,dispTexts ,eventNames );
+            }
         }
         #endregion
-
+     
         #region 右键菜单事件
         #region 获取规则列表
         /// <summary>
@@ -140,24 +146,12 @@ namespace LotteryTicketSoft.GraphForm
         #region 保存方案数据
         private void toolStripSaveProject_Click(object sender, EventArgs e)
         {
-            //if (twoColorBall == null)
-            //    twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
-            //var t = Task.Factory.StartNew(() =>
-            //{
-            //    Dictionary<int, string> dic;
-            //LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
-            //    //过滤结果写入数据库，并刷新
-            //    foreach (var item in dic)
-            //    {
-            //        tb_Rules temp = tb_Rules.FindById(item.Key);
-            //        temp.FilterInfo = item.Value;
-            //        temp.Update();
-            //    }
-            //    GetData();
-            //});  
+            //TODO:注意文件名称的处理
+            RuleInfo[] rules = GetRuleList();
+            TwoColorBall.SaveProjectData(rules, "temp.xml", false);
+            MessageBox.Show("导出方案成功","提示");
         }
         #endregion
-
         #endregion
     }
 }
