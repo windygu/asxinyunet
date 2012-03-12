@@ -332,7 +332,7 @@ namespace LotTick
         /// <param name="ruleList">规则列表</param>
         /// <param name="fileName">保存的文件名称</param>
         /// <param name="isSaveData">是否保存数据,false则只保存规则</param>
-        public static void SaveProjectData(RuleInfo[] ruleList,string fileName ,bool isSaveData = false )
+        public void SaveProjectData(RuleInfo[] ruleList,string fileName ,bool isSaveData = false )
         {
             SaveRules(ruleList, fileName);//先保存规则信息
             if (isSaveData)
@@ -362,12 +362,13 @@ namespace LotTick
             //方案保存不涉及最高优先级的杀号，因此可以直接进行过滤操作
             if (!File.Exists(fileName)) throw new Exception("文件不存在");
             NewLife.Serialization.BinaryWriterX binX = new NewLife.Serialization.BinaryWriterX();            
+            
             binX.WriteObject (ruleList,typeof (LotTickData[]),null );
         }
         //读取方案数据
         private static LotTickData[] ReadData(string fileName)
         {
-            
+            NewLife.Serialization.BinaryReaderX reader = new NewLife.Serialization.BinaryReaderX();
         }
         #endregion
     }
