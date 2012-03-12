@@ -361,14 +361,18 @@ namespace LotTick
             LotTickData[] data = FilterByRules(res ,ruleList , out filterInfos);
             //方案保存不涉及最高优先级的杀号，因此可以直接进行过滤操作
             if (!File.Exists(fileName)) throw new Exception("文件不存在");
-            NewLife.Serialization.BinaryWriterX binX = new NewLife.Serialization.BinaryWriterX();            
-            
+            NewLife.Serialization.BinaryWriterX binX = new NewLife.Serialization.BinaryWriterX();
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+            binX.Writer = new BinaryWriter(fs); 
             binX.WriteObject (ruleList,typeof (LotTickData[]),null );
         }
         //读取方案数据
         private static LotTickData[] ReadData(string fileName)
         {
             NewLife.Serialization.BinaryReaderX reader = new NewLife.Serialization.BinaryReaderX();
+            FileStream fs = new FileStream(fileName, FileMode.Open );
+            reader.Reader = new BinaryReader(fs);
+            return (LotTickData[])reader.ReadObject(typeof(LotTickData[]));
         }
         #endregion
     }
