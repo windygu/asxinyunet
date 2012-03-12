@@ -56,6 +56,7 @@ namespace LotTick
         #endregion
 
         #region 对规则列表进行验证和过滤
+        #region 过滤方法-封装加载初始配置和不加载的情况
         /// <param name="ruleList">规则列表</param>
         public override bool[][] ValidateRuleList(RuleInfo[] ruleList)
         {
@@ -71,7 +72,8 @@ namespace LotTick
         }
         
         /// <summary>
-        /// 根据过滤规则数据，对数据进行过滤:这是不使用提前方案，直接对所有数据过滤，速度较慢
+        /// 根据过滤规则数据，对数据进行过滤:这是不使用提前方案
+        /// 直接对所有数据过滤，速度较慢
         /// </summary>
         /// <param name="ruleList">规则列表</param>
         /// <param name="filterInfos">过滤信息</param>
@@ -83,50 +85,57 @@ namespace LotTick
             if (fileName == null)
                 return FilterByNotUsePrepareData(ruleList, out filterInfos);//不使用预处理数据
             else
-                return null;
+                return FilterByUsePrepareData(ruleList,out filterInfos,fileName );//使用初始数据
         }
-        //不使用提前方案，直接进行过滤，需要对规则分类，杀号优先处理后，再组合
+        #endregion
+
+        #region 不使用提前方案，直接进行过滤，需要对规则分类，杀号优先处理后，再组合
         private LotTickData[] FilterByNotUsePrepareData(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
             //先获取优先级列表,从指标数据表中获取           
             RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
                 n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel == 6).ToArray();
             RuleInfo[] Last = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
-                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel < 6).ToArray();
-            filterInfos = new Dictionary<int, string>();
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel < 6).ToArray();           
             //先按照优先级进行划分,对最高级进行处理后,分为杀红号和杀蓝号
-            LotTickData[] InitData = GetInitiaData(First);
+            LotTickData[] InitData = GetInitiaDataByNotUserPrepareData(First);
             //组合为LotTickData[]，再进行其他的过滤，并输出过滤信息,过滤前后的数目
-            for (int i = 0; i < Last.Length; i++)
+            return FilterByRules(InitData, Last, out filterInfos);
+        }
+        #endregion
+
+        #region 根据规则数组批量过滤
+        private LotTickData[] FilterByRules(LotTickData[] InitData,RuleInfo[] rules, out Dictionary<int, string> filterInfos)
+        {
+            filterInfos = new Dictionary<int, string>();
+            for (int i = 0; i < rules.Length; i++)
             {
                 //首先获取计算的数据,直接从data中获取              
-                Last[i].IndexSelector.RuleInfoParams = Last[i];
+                rules[i].IndexSelector.RuleInfoParams = rules[i];
                 int firCount = InitData.Length;
-                InitData = Last[i].IndexSelector.GetFilterResult(InitData, GetNeedData(Last[i].NeedRows));
+                InitData = rules[i].IndexSelector.GetFilterResult(InitData, GetNeedData(rules[i].NeedRows));
                 int lastCount = InitData.Length;
                 //如何返回过滤信息？用字典，加一个规则编号和结果信息
-                filterInfos.Add(Last[i].RuleID, (firCount - lastCount).ToString());
+                filterInfos.Add(rules[i].RuleID, (firCount - lastCount).ToString());
             }
             return InitData;
         }
+        #endregion
 
-        /// <summary>
-        /// 获取计算所需数据
-        /// </summary>        
-        LotTickData[] GetNeedData(int needRows)
+        #region 使用指定初始数据进行过滤
+        private LotTickData[] FilterByUsePrepareData(RuleInfo[] ruleList,
+            out Dictionary<int, string> filterInfos, string fileName = null)
         {
-            if (needRows <= 0) return null;
-            else  
-            {
-                LotTickData[] curData = new LotTickData[needRows ];
-                this.LotData.CopyTo(curData, LotData.Length - needRows);
-                return curData;
-            }
-        }       
+            //先加载初始数据，初始数据只有红球，然后对最高优先级进行处理，然后合并，再进行其他处理
+            
+        }
+        #endregion
+
+        #region 不是用预处理直接获取数据初始化
         /// <summary>
-        /// 获取杀号类型规则后形成的列表
+        /// 获取杀号类型规则后形成的列表:适用于不是用预处理直接获取数据的情况
         /// </summary>
-        public static LotTickData[] GetInitiaData(RuleInfo[] ruleList)
+        public static LotTickData[] GetInitiaDataByNotUserPrepareData(RuleInfo[] ruleList)
         {
             List<int> RedBall = new List<int>(33);
             List<int> BlueBall = new List<int>(16);
@@ -157,6 +166,7 @@ namespace LotTick
             }
             return res ;
         }
+        #endregion
         #endregion
 
         #region 兑奖验证
@@ -275,7 +285,28 @@ namespace LotTick
         }
         #endregion      
 
+        #region 获取计算所需数据
+        /// <summary>
+        /// 获取计算所需数据
+        /// </summary>        
+        LotTickData[] GetNeedData(int needRows)
+        {
+            if (needRows <= 0) return null;
+            else
+            {
+                LotTickData[] curData = new LotTickData[needRows];
+                this.LotData.CopyTo(curData, LotData.Length - needRows);
+                return curData;
+            }
+        }
+        #endregion
+
         #region 规则验证与预测
+        /// <summary>
+        /// 获取交叉验证的概率
+        /// </summary>
+        /// <param name="result">交叉验证中每条规则的结果</param>
+        /// <returns>成功率</returns>
         public static double CrossValidate(bool[][] result)
         {            
             //对Result结果进行处理，得到交叉验证的概率
@@ -318,10 +349,25 @@ namespace LotTick
                 xml.WriteObject(ruleList, typeof(RuleInfo[]), null);
             }
         }
-        private static void SaveData(RuleInfo[] ruleList, string fileName)
+        //保存方案数据
+        private void SaveData(RuleInfo[] ruleList, string fileName)
         {
+            List<int> RedBall = new List<int>(33);
+            for (int i = 0; i <33 ; i++) RedBall.Add (i +1);
+            int[][] Red = new Combination(RedBall.Count , 6).Rows.Select
+                (n => Combination.Permute(n, RedBall ).ToArray()).ToArray();
+            LotTickData[] res = Red.Select (n=>new LotTickData (n )).ToArray ();
+            Dictionary<int, string> filterInfos = new Dictionary<int,string> ();
+            LotTickData[] data = FilterByRules(res ,ruleList , out filterInfos);
             //方案保存不涉及最高优先级的杀号，因此可以直接进行过滤操作
-
+            if (!File.Exists(fileName)) throw new Exception("文件不存在");
+            NewLife.Serialization.BinaryWriterX binX = new NewLife.Serialization.BinaryWriterX();            
+            binX.WriteObject (ruleList,typeof (LotTickData[]),null );
+        }
+        //读取方案数据
+        private static LotTickData[] ReadData(string fileName)
+        {
+            
         }
         #endregion
     }

@@ -287,5 +287,13 @@ namespace LotTick
         /// 特殊数据
         /// </summary>
         public int SpecialData;
+
+        public LotTickData()
+        {
+        }
+        public LotTickData(int[] normalData)
+        {
+            this.NormalData = normalData;
+        }
     }
 }
