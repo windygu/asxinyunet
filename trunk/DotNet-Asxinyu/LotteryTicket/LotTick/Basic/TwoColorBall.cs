@@ -34,7 +34,7 @@ namespace LotTick
 
         #region 获取计算数据
         /// <summary>
-        /// 从数据库获取指定期数红球数据
+        /// 从数据库获取指定期数数据
         /// </summary>
         /// <param name="length">最近的期数</param>
         public static LotTickData[] GetBallData(int selectLength = -1)
@@ -52,6 +52,24 @@ namespace LotTick
             }
             return data ;
         }
+        /// <summary>
+        /// 获取计算所需数据,从已有的数据中直接获取,用于过滤
+        /// </summary>        
+        LotTickData[] GetNeedDataByCache(int needRows)
+        {
+            if (needRows <= 0) return null;
+            else
+            {
+                LotTickData[] curData = new LotTickData[needRows];
+                this.LotData.CopyTo(curData, LotData.Length - needRows);
+                return curData;
+            }
+        }
+        //
+        public static LotTickData[] GetNeedDataByNo()
+        {
+
+        }
         #endregion
         #endregion
 
@@ -66,7 +84,7 @@ namespace LotTick
                 //首先获取计算的数据,直接从data中获取              
                 ruleList[i].IndexSelector.RuleInfoParams = ruleList[i];
                 res[i] = ruleList[i].IndexSelector.GetValidateResult
-                    (GetNeedData(ruleList[i].CalcuteRows + ruleList[i].NeedRows));
+                    (GetNeedDataByCache(ruleList[i].CalcuteRows + ruleList[i].NeedRows));
             }
             return res;
         }
@@ -305,23 +323,7 @@ namespace LotTick
             }
         }
         #endregion      
-
-        #region 获取计算所需数据
-        /// <summary>
-        /// 获取计算所需数据
-        /// </summary>        
-        LotTickData[] GetNeedData(int needRows)
-        {
-            if (needRows <= 0) return null;
-            else
-            {
-                LotTickData[] curData = new LotTickData[needRows];
-                this.LotData.CopyTo(curData, LotData.Length - needRows);
-                return curData;
-            }
-        }
-        #endregion
-
+        
         #region 规则验证与预测
         /// <summary>
         /// 获取交叉验证的概率
