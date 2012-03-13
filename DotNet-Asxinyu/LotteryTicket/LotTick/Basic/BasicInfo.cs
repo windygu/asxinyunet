@@ -140,10 +140,10 @@ namespace LotTick
         /// </summary>
         /// <param name="initialList">初始号码列表</param>
         /// <param name="data">辅助的历史数据</param>
-        public virtual List<Int32> DeleteNumbers(List<int> initialList, LotTickData[] data)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public virtual List<Int32> DeleteNumbers(List<int> initialList, LotTickData[] data)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 
     /// <summary>
