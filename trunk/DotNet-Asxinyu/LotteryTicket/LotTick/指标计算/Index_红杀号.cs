@@ -4,7 +4,7 @@ using System.Linq;
 namespace LotTick
 {
     /// <summary>
-    /// 红色号码和值
+    /// 红杀号:未完成
     /// </summary>
     public class Index_红杀号 : LotIndex
     {
