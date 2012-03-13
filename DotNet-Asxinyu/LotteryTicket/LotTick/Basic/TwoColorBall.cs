@@ -124,10 +124,31 @@ namespace LotTick
 
         #region 使用指定初始数据进行过滤
         private LotTickData[] FilterByUsePrepareData(RuleInfo[] ruleList,
-            out Dictionary<int, string> filterInfos, string fileName = null)
+            out Dictionary<int, string> filterInfos, string fileName )
         {
             //先加载初始数据，初始数据只有红球，然后对最高优先级进行处理，然后合并，再进行其他处理
-            
+            LotTickData[] firData = ReadData(fileName);
+            //TODO:最高优先级处理，并杀号，再组合，并进行其他过滤
+            RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel == 6).ToArray();
+            //排序，按照优先级大小进行
+            RuleInfo[] LastOrder = ruleList.OrderByDescending(n=>tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel).ToArray();
+            return FilterByRules(firData, LastOrder, out filterInfos);
+        }
+        #endregion
+
+        #region 最高优先级杀号处理
+        public static LotTickData[] DeleteNoProcess(LotTickData[] preData, RuleInfo[] ruleList)
+        {
+            for (int i = 0; i < ruleList.Length; i++)
+            {               
+                if (ruleList[i].IndexSelector.ToString().Contains("红")) //杀红
+                    RedBall = ruleList[i].IndexSelector.DeleteNumbers(RedBall, curData);
+                else //杀蓝 默认的，最高优先级就只有杀红和杀蓝2种情况
+                    BlueBall = ruleList[i].IndexSelector.DeleteNumbers(BlueBall, curData);
+            }
+            return preData;
         }
         #endregion
 

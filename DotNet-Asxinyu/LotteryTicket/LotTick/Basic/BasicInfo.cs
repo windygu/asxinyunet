@@ -116,7 +116,7 @@ namespace LotTick
         /// 根据该规则,对数据集进行过滤,只保留满足规则的书籍
         /// </summary>
         /// <param name="data">所有需要过滤的数据</param>
-        /// <param name="NeedData">需要的历史数据,数目为说需要的行数</param>
+        /// <param name="NeedData">需要的历史数据,数目为所需要的行数</param>
         /// <param name="compCoditon">比较参数</param>
         /// <returns>满足规则的数据集</returns>
         public virtual LotTick.LotTickData[] GetFilterResult(LotTickData[] data, LotTick.LotTickData[] NeedData = null )
