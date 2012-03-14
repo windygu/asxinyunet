@@ -41,6 +41,7 @@ namespace LotTick
     }
     #endregion
 
+    #region 彩票指标计算抽象类
     /// <summary>
     /// 彩票指标计算抽象类
     /// </summary>
@@ -66,7 +67,9 @@ namespace LotTick
         /// <returns>满足规则的数据集</returns>
         public abstract int[][] GetFilterResult();
     }
+    #endregion
 
+    #region 彩票指标计算抽象类
     /// <summary>
     /// 彩票指标计算抽象类
     /// </summary>
@@ -136,16 +139,17 @@ namespace LotTick
         }
 
         /// <summary>
-        /// 最高优先级,杀号处理
-        /// </summary>
-        /// <param name="initialList">初始号码列表</param>
+        /// 最高优先级,杀号处理，根据计算，返回需要去除的数字列表
+        /// </summary>        
         /// <param name="data">辅助的历史数据</param>
-        //public virtual List<Int32> DeleteNumbers(List<int> initialList, LotTickData[] data)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
+        public virtual List<Int32> DeleteNumbers(LotTickData[] data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
+    #endregion
 
+    #region 抽象彩票基类
     /// <summary>
     /// 抽象彩票基类
     /// </summary>
@@ -213,7 +217,9 @@ namespace LotTick
             throw new System.NotImplementedException();
         }
     }
+    #endregion
 
+    #region 获取历史开奖数据接口和兑奖接口
     /// <summary>
     /// 获取历史开奖数据接口
     /// </summary>
@@ -236,6 +242,7 @@ namespace LotTick
     public interface IPrizeGrade
     {
     }
+    #endregion
 
     #region 比较类型枚举
     /// <summary>
@@ -274,6 +281,7 @@ namespace LotTick
     }
     #endregion
 
+    #region 双色球彩票数据结构
     /// <summary>
     /// 每期的彩票数据,重新封装一下
     /// </summary>
@@ -296,4 +304,5 @@ namespace LotTick
             this.NormalData = normalData;
         }
     }
+    #endregion
 }

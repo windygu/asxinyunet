@@ -55,21 +55,21 @@ namespace LotTick
         /// <summary>
         /// 获取计算所需数据,从已有的数据中直接获取,用于过滤
         /// </summary>        
-        LotTickData[] GetNeedDataByCache(int needRows)
-        {
+       public static LotTickData[] GetNeedDataByCache(int needRows)
+        {            
             if (needRows <= 0) return null;
             else
             {
+                LotTickData[] data = GetBallData();
                 LotTickData[] curData = new LotTickData[needRows];
-                this.LotData.CopyTo(curData, LotData.Length - needRows);
+                data.CopyTo(curData, data.Length - needRows);
                 return curData;
             }
         }
-        //
-        public static LotTickData[] GetNeedDataByNo()
-        {
-
-        }
+        //根据期号获取最近的几期数据
+        //public static LotTickData[] GetNeedDataByNo()
+        //{
+        //}
         #endregion
         #endregion
 
@@ -123,7 +123,8 @@ namespace LotTick
         #endregion
 
         #region 根据规则数组批量过滤
-        private LotTickData[] FilterByRules(LotTickData[] InitData,RuleInfo[] rules, out Dictionary<int, string> filterInfos)
+        public static LotTickData[] FilterByRules(LotTickData[] InitData,RuleInfo[] rules,
+            out Dictionary<int, string> filterInfos)
         {
             filterInfos = new Dictionary<int, string>();
             for (int i = 0; i < rules.Length; i++)
@@ -131,7 +132,8 @@ namespace LotTick
                 //首先获取计算的数据,直接从data中获取              
                 rules[i].IndexSelector.RuleInfoParams = rules[i];
                 int firCount = InitData.Length;
-                InitData = rules[i].IndexSelector.GetFilterResult(InitData, GetNeedData(rules[i].NeedRows));
+                InitData = rules[i].IndexSelector.GetFilterResult(InitData,
+                    GetNeedDataByCache(rules[i].NeedRows));
                 int lastCount = InitData.Length;
                 //如何返回过滤信息？用字典，加一个规则编号和结果信息
                 filterInfos.Add(rules[i].RuleID, (firCount - lastCount).ToString());
@@ -149,9 +151,10 @@ namespace LotTick
             //TODO:最高优先级处理，并杀号，再组合，并进行其他过滤
             RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
                 n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel == 6).ToArray();
+            LotTickData[] secData = FilterByRules(firData, First, out filterInfos);//过滤
             //排序，按照优先级大小进行
             RuleInfo[] LastOrder = ruleList.OrderByDescending(n=>tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
-                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel).ToArray();
+                n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel).ToArray();            
             return FilterByRules(firData, LastOrder, out filterInfos);
         }
         #endregion
@@ -160,11 +163,8 @@ namespace LotTick
         public static LotTickData[] DeleteNoProcess(LotTickData[] preData, RuleInfo[] ruleList)
         {
             for (int i = 0; i < ruleList.Length; i++)
-            {               
-                if (ruleList[i].IndexSelector.ToString().Contains("红")) //杀红
-                    RedBall = ruleList[i].IndexSelector.DeleteNumbers(RedBall, curData);
-                else //杀蓝 默认的，最高优先级就只有杀红和杀蓝2种情况
-                    BlueBall = ruleList[i].IndexSelector.DeleteNumbers(BlueBall, curData);
+            {
+                preData = ruleList[i].IndexSelector.GetFilterResult(preData);             
             }
             return preData;
         }
@@ -174,6 +174,7 @@ namespace LotTick
         /// <summary>
         /// 获取杀号类型规则后形成的列表:适用于不是用预处理直接获取数据的情况
         /// </summary>
+        /// <param name="ruleList">杀号规则列表</param>
         public static LotTickData[] GetInitiaDataByNotUserPrepareData(RuleInfo[] ruleList)
         {
             List<int> RedBall = new List<int>(33);
@@ -185,9 +186,9 @@ namespace LotTick
             {
                 LotTickData[] curData = new LotTickData[ruleList[i].CalcuteRows + ruleList[i].NeedRows];
                 if (ruleList[i].IndexSelector.ToString().Contains("红")) //杀红
-                    RedBall = ruleList[i].IndexSelector.DeleteNumbers(RedBall, curData);
+                    RedBall =RedBall.Except(ruleList[i].IndexSelector.DeleteNumbers(curData)).ToList ();
                 else                                                     //杀篮
-                    BlueBall = ruleList[i].IndexSelector.DeleteNumbers(BlueBall , curData);
+                    BlueBall =BlueBall.Except(ruleList[i].IndexSelector.DeleteNumbers(curData)).ToList ();
             }
             //对红和蓝进行组合、迭代获取所有组合序列,并对每个序列进行判断         
             int[][] Red = new Combination(RedBall.Count , 6).Rows.Select
