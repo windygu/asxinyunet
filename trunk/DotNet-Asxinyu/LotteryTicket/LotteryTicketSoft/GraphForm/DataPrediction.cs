@@ -19,7 +19,15 @@ namespace LotteryTicketSoft.GraphForm
     /// 集成通用管理窗体，完成更丰富的数据操作功能
     /// </summary>
     public partial class DataPrediction : DotNet.WinForm.Controls.DataManage
-    {        
+    {
+        #region 构造函数
+        public DataPrediction()
+            : base()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
         #region 创建数据管理窗体
         /// <summary>
         /// 创建数据管理窗体,需要重新写
@@ -147,9 +155,12 @@ namespace LotteryTicketSoft.GraphForm
         private void toolStripSaveProject_Click(object sender, EventArgs e)
         {
             //TODO:注意文件名称的处理
-            RuleInfo[] rules = GetRuleList();
-            TwoColorBall.SaveProjectData(rules, "temp.xml", false);
-            MessageBox.Show("导出方案成功","提示");
+            if (SaveFileDialog.ShowDialog ()== DialogResult.OK )
+            {
+                RuleInfo[] rules = GetRuleList();
+                TwoColorBall.SaveProjectData(rules,SaveFileDialog.FileName  , false);
+                MessageBox.Show("导出方案成功", "提示");
+            }            
         }
         #endregion
         #endregion

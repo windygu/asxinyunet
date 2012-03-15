@@ -4,8 +4,9 @@ using System.Linq;
 namespace LotTick
 {
     /// <summary>
-    /// 杀号基类:
-    /// 杀号直接进行过滤和验证操作，不需要进行单个的计算
+    /// 杀号基类:杀号直接进行过滤和验证操作，不需要进行单个的计算
+    /// 1.计算要杀的号码列表
+    /// 2.杀号和过滤
     /// </summary>
     public class Index_Base杀号 : LotIndex
     {

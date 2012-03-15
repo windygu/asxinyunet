@@ -129,7 +129,7 @@ namespace LotTick
 
         /// <summary>
         /// 根据该指标的规则,验证对历史数据的准确性
-        /// </summary>
+        /// </summary>`
         /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
         /// <param name="data">计算的原始数据</param>
         /// <returns>返回每一期的正确性</returns>
