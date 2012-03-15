@@ -108,7 +108,7 @@ namespace LotTick
         #endregion
 
         #region 不使用提前方案，直接进行过滤，需要对规则分类，杀号优先处理后，再组合
-        private LotTickData[] FilterByNotUsePrepareData(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
+        public static LotTickData[] FilterByNotUsePrepareData(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
             //先获取优先级列表,从指标数据表中获取           
             RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
@@ -143,7 +143,7 @@ namespace LotTick
         #endregion
 
         #region 使用指定初始数据进行过滤
-        private LotTickData[] FilterByUsePrepareData(RuleInfo[] ruleList,
+        public static LotTickData[] FilterByUsePrepareData(RuleInfo[] ruleList,
             out Dictionary<int, string> filterInfos, string fileName )
         {
             //先加载初始数据，初始数据只有红球，然后对最高优先级进行处理，然后合并，再进行其他处理
@@ -356,13 +356,13 @@ namespace LotTick
         /// <param name="ruleList">规则列表</param>
         /// <param name="fileName">保存的文件名称</param>
         /// <param name="isSaveData">是否保存数据,false则只保存规则</param>
-        public void SaveProjectData(RuleInfo[] ruleList,string fileName ,bool isSaveData = false )
+        public static void SaveProjectData(RuleInfo[] ruleList,string fileName ,bool isSaveData = false )
         {
             SaveRules(ruleList, fileName);//先保存规则信息
             if (isSaveData)
                 SaveData(ruleList, fileName); //保存数据
         }
-        private static void SaveRules(RuleInfo[] ruleList, string fileName)
+        public static void SaveRules(RuleInfo[] ruleList, string fileName)
         {
             //保存规则
             if (File.Exists(fileName)) File.Delete(fileName);
@@ -374,7 +374,7 @@ namespace LotTick
             }
         }
         //保存方案数据
-        private void SaveData(RuleInfo[] ruleList, string fileName)
+        public static void SaveData(RuleInfo[] ruleList, string fileName)
         {
             List<int> RedBall = new List<int>(33);
             for (int i = 0; i <33 ; i++) RedBall.Add (i +1);
@@ -391,7 +391,7 @@ namespace LotTick
             binX.WriteObject (ruleList,typeof (LotTickData[]),null );
         }
         //读取方案数据
-        private static LotTickData[] ReadData(string fileName)
+        public static LotTickData[] ReadData(string fileName)
         {
             NewLife.Serialization.BinaryReaderX reader = new NewLife.Serialization.BinaryReaderX();
             FileStream fs = new FileStream(fileName, FileMode.Open );

@@ -28,12 +28,20 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // winPage
             // 
             this.winPage.Location = new System.Drawing.Point(172, 0);
             this.winPage.Size = new System.Drawing.Size(483, 25);
+            // 
+            // SaveFileDialog
+            // 
+            this.SaveFileDialog.CheckFileExists = true;
+            this.SaveFileDialog.DefaultExt = "xml";
+            this.SaveFileDialog.Filter = "\"XML文件|*.xml\"";
+            this.SaveFileDialog.Title = "保存文件";
             // 
             // DataPrediction
             // 
@@ -46,5 +54,7 @@
 		}
 
 		#endregion
+
+        private System.Windows.Forms.SaveFileDialog SaveFileDialog;
 	}
 }
