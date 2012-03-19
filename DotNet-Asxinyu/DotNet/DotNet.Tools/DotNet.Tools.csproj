@@ -117,6 +117,7 @@
       <DependentUpon>FormModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Image\ImageHelper.cs" />
+    <Compile Include="LivingService.cs" />
     <Compile Include="Other.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
