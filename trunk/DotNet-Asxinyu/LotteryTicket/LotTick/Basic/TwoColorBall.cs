@@ -97,7 +97,7 @@ namespace LotTick
         /// <param name="filterInfos">过滤信息</param>
         /// <returns>过滤后的数据集合</returns>
         /// <param name="fileName">需要加载的初始数据文件名称</param>
-        public override LotTickData[] FilteByRuleList(RuleInfo[] ruleList, 
+        public static LotTickData[] FilteByRuleList(RuleInfo[] ruleList, 
             out Dictionary<int, string> filterInfos,string fileName = null )
         {
             if (fileName == null)

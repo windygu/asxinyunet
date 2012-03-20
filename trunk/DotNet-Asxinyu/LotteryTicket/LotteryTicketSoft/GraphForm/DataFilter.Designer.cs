@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataFilter));
             this.gpbFilter = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblPrepareDataPath = new System.Windows.Forms.Label();
-            this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnOPenDataFile = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.btnSaveFile = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnOPenDataFile = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblPrepareDataPath = new System.Windows.Forms.Label();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.formPager = new DotNet.WinForm.Controls.WinFormPager();
-            this.btnOK = new System.Windows.Forms.Button();
             this.gpbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -63,39 +63,15 @@
             this.gpbFilter.TabStop = false;
             this.gpbFilter.Text = "过滤设置";
             // 
-            // textBox1
+            // btnOK
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 26);
-            this.textBox1.TabIndex = 3;
-            // 
-            // lblPrepareDataPath
-            // 
-            this.lblPrepareDataPath.AutoSize = true;
-            this.lblPrepareDataPath.Location = new System.Drawing.Point(4, 26);
-            this.lblPrepareDataPath.Name = "lblPrepareDataPath";
-            this.lblPrepareDataPath.Size = new System.Drawing.Size(104, 16);
-            this.lblPrepareDataPath.TabIndex = 0;
-            this.lblPrepareDataPath.Text = "初始数据路径";
-            // 
-            // dgv
-            // 
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(-1, 101);
-            this.dgv.Name = "dgv";
-            this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(489, 291);
-            this.dgv.TabIndex = 2;
-            // 
-            // btnOPenDataFile
-            // 
-            this.btnOPenDataFile.Location = new System.Drawing.Point(363, 21);
-            this.btnOPenDataFile.Name = "btnOPenDataFile";
-            this.btnOPenDataFile.Size = new System.Drawing.Size(54, 26);
-            this.btnOPenDataFile.TabIndex = 4;
-            this.btnOPenDataFile.Text = "打开";
-            this.btnOPenDataFile.UseVisualStyleBackColor = true;
+            this.btnOK.Location = new System.Drawing.Point(417, 56);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(66, 27);
+            this.btnOK.TabIndex = 8;
+            this.btnOK.Text = "计算";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnSaveFile
             // 
@@ -122,6 +98,40 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "数据保存路径";
             // 
+            // btnOPenDataFile
+            // 
+            this.btnOPenDataFile.Location = new System.Drawing.Point(363, 21);
+            this.btnOPenDataFile.Name = "btnOPenDataFile";
+            this.btnOPenDataFile.Size = new System.Drawing.Size(54, 26);
+            this.btnOPenDataFile.TabIndex = 4;
+            this.btnOPenDataFile.Text = "打开";
+            this.btnOPenDataFile.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(108, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(256, 26);
+            this.textBox1.TabIndex = 3;
+            // 
+            // lblPrepareDataPath
+            // 
+            this.lblPrepareDataPath.AutoSize = true;
+            this.lblPrepareDataPath.Location = new System.Drawing.Point(4, 26);
+            this.lblPrepareDataPath.Name = "lblPrepareDataPath";
+            this.lblPrepareDataPath.Size = new System.Drawing.Size(104, 16);
+            this.lblPrepareDataPath.TabIndex = 0;
+            this.lblPrepareDataPath.Text = "初始数据路径";
+            // 
+            // dgv
+            // 
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Location = new System.Drawing.Point(-1, 101);
+            this.dgv.Name = "dgv";
+            this.dgv.RowTemplate.Height = 23;
+            this.dgv.Size = new System.Drawing.Size(489, 291);
+            this.dgv.TabIndex = 2;
+            // 
             // OpenFile
             // 
             this.OpenFile.Filter = "\"Lot数据文件|*.lot\"";
@@ -146,16 +156,7 @@
             this.formPager.RecordCount = 0;
             this.formPager.Size = new System.Drawing.Size(483, 27);
             this.formPager.TabIndex = 1;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(417, 56);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(66, 27);
-            this.btnOK.TabIndex = 8;
-            this.btnOK.Text = "计算";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.formPager.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.formPager_PageIndexChanged);
             // 
             // DataFilter
             // 
