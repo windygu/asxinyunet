@@ -120,21 +120,22 @@ namespace LotteryTicketSoft.GraphForm
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
         {
-            if (twoColorBall == null)
-                twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
-            var t = Task.Factory.StartNew(()=>
-            {
-                Dictionary<int, string> dic;
-                LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
-                //过滤结果写入数据库，并刷新
-                foreach (var item in dic)
-                {
-                    tb_Rules temp = tb_Rules.FindById(item.Key);
-                    temp.FilterInfo = item.Value;
-                    temp.Update();
-                }
-                GetData();
-            });           
+            //DataFilter.CreateForm().Show ();
+            //if (twoColorBall == null)
+            //    twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
+            //var t = Task.Factory.StartNew(()=>
+            //{
+            //    Dictionary<int, string> dic;
+            //    LotTickData[] result = twoColorBall.FilteByRuleList(GetRuleList(), out dic);
+            //    //过滤结果写入数据库，并刷新
+            //    foreach (var item in dic)
+            //    {
+            //        tb_Rules temp = tb_Rules.FindById(item.Key);
+            //        temp.FilterInfo = item.Value;
+            //        temp.Update();
+            //    }
+            //    GetData();
+            //});           
         }
         #endregion
 
