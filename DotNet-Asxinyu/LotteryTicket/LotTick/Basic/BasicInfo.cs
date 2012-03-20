@@ -211,11 +211,11 @@ namespace LotTick
         /// <param name="ruleList">规则列表</param>
         /// <param name="filterInfos">过滤信息</param>
         /// <param name="fileName">需要加载的初始数据文件名称</param>
-        public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList,
-            out Dictionary<int, string> filterInfos, string fileName = null )
-        {
-            throw new System.NotImplementedException();
-        }
+        //public virtual LotTick.LotTickData[] FilteByRuleList(LotTick.RuleInfo[] ruleList,
+        //    out Dictionary<int, string> filterInfos, string fileName = null )
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
     #endregion
 
