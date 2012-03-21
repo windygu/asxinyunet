@@ -169,7 +169,7 @@
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DataFilter";
-            this.Size = new System.Drawing.Size(491, 428);
+            this.Size = new System.Drawing.Size(486, 427);
             this.gpbFilter.ResumeLayout(false);
             this.gpbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
