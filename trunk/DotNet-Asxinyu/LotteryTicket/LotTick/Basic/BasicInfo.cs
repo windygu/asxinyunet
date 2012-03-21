@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 namespace LotTick
 {
@@ -303,6 +304,45 @@ namespace LotTick
         {
             this.NormalData = normalData;
         }
+        /// <summary>
+        /// 获取数据
+        /// </summary>
+        /// <returns></returns>
+        public SSQ_temp GetEntity()
+        {
+            SSQ_temp t = new SSQ_temp();
+            t.号码1 = NormalData[0];
+            t.号码2 = NormalData[1];
+            t.号码3 = NormalData[2];
+            t.号码4 = NormalData[3];
+            t.号码5 = NormalData[4];
+            t.号码6 = NormalData[5];
+            t.蓝球 = SpecialData;
+            return t;
+        }
     }
-    #endregion
+    public class SSQ_temp
+    {      
+        private Int32 _号码1;      
+        public Int32 号码1 {get ;set ;}
+       
+        private Int32 _号码2;      
+        public virtual Int32 号码2 {get ;set ;}
+
+        private Int32 _号码3;
+        public virtual Int32 号码3 {get ;set ;}
+
+        private Int32 _号码4;       
+        public virtual Int32 号码4 {get ;set ;}
+
+        private Int32 _号码5;      
+        public virtual Int32 号码5 {get ;set ;}
+
+        private Int32 _号码6;       
+        public virtual Int32 号码6 {get ;set ;}
+
+        private Int32 _蓝球;      
+        public virtual Int32 蓝球 {get ;set ;}
+        #endregion
+    }   
 }

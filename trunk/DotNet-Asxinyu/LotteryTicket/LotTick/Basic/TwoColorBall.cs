@@ -62,7 +62,7 @@ namespace LotTick
             {
                 LotTickData[] data = GetBallData();
                 LotTickData[] curData = new LotTickData[needRows];
-                data.CopyTo(curData, data.Length - needRows);
+                Array.Copy(data, data.Length - needRows, curData, 0, needRows);
                 return curData;
             }
         }

@@ -9,6 +9,8 @@ using LotTick;
 using System.Windows.Forms;
 using DotNet.WinForm.Controls ;
 using System.Threading.Tasks;
+using System.Collections;
+using XCode;
 
 namespace LotteryTicketSoft.GraphForm
 {
@@ -26,7 +28,7 @@ namespace LotteryTicketSoft.GraphForm
         /// 所有的规则，用来过滤
         /// </summary>
         public RuleInfo[] AllRules { get; set; }
-        private LotTickData[] data { get; set; }
+        private SSQ_temp[] data { get; set; }
         /// <summary>
         /// 返回一个本控件的窗体
         /// </summary>
@@ -44,7 +46,10 @@ namespace LotteryTicketSoft.GraphForm
         //过滤计算
         private void btnOK_Click(object sender, EventArgs e)
         {
-            data = FilterData(AllRules ); //获取过滤后的数据
+            data = FilterData(AllRules).Select(n => n.GetEntity()).ToArray () ; //获取过滤后的数据
+            formPager.PageSize = 20;
+            formPager.RecordCount = data.Length;
+            formPager_PageIndexChanged(sender, e);
         }
 
         private static LotTickData[] FilterData(RuleInfo[] rules)
@@ -70,7 +75,11 @@ namespace LotteryTicketSoft.GraphForm
                 return;
             else
             {
-
+                ArrayList list = new ArrayList();
+                int fir = (formPager.PageIndex - 1) * formPager.PageSize;
+                int last = formPager.PageIndex * formPager.PageSize - 1;
+                for (int i = fir ; i <= last ; i++) list.Add(data[i]);
+                dgv.DataSource = list;
             }
         }
     }
