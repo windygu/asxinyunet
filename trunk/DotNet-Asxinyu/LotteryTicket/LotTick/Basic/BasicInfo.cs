@@ -342,7 +342,7 @@ namespace LotTick
         public virtual Int32 号码6 {get ;set ;}
 
         private Int32 _蓝球;      
-        public virtual Int32 蓝球 {get ;set ;}
-        #endregion
+        public virtual Int32 蓝球 {get ;set ;}       
     }   
+    #endregion
 }

@@ -42,6 +42,7 @@
             this.SaveFileDialog.DefaultExt = "xml";
             this.SaveFileDialog.Filter = "\"XML文件|*.xml\"";
             this.SaveFileDialog.Title = "保存文件";
+            this.SaveFileDialog.ValidateNames = false;
             // 
             // DataPrediction
             // 

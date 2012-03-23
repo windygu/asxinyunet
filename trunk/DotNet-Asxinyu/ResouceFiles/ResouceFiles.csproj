@@ -643,6 +643,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="CleanSolution.bat" />
+    <None Include="CodeRepository.db3" />
     <None Include="DesignFiles\永润数据字典-1019.doc" />
     <None Include="Images\application.ico" />
     <None Include="Images\apply.ico" />

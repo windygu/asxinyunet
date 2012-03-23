@@ -367,8 +367,13 @@ namespace LotTick
             //保存规则
             if (File.Exists(fileName)) File.Delete(fileName);
             NewLife.Xml.XmlWriterX xml = new NewLife.Xml.XmlWriterX();
-            using (XmlWriter writer = XmlWriter.Create(fileName))
-            {
+            //写入格式控制
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.OmitXmlDeclaration = true;
+            settings.NewLineOnAttributes = true;
+            using (XmlWriter writer = XmlWriter.Create(fileName,settings ))
+            {                 
                 xml.Writer = writer;
                 xml.WriteObject(ruleList, typeof(RuleInfo[]), null);
             }
