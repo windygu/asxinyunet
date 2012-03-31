@@ -123,19 +123,6 @@
   <metadata name="epVI.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>143, 17</value>
   </metadata>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>   宁波永润化验室计算工具0.2版本主要功能有粘度指数和粘度调和计算功能。
-
-   本工具可以在宁波永润公司内完全使用
-   工具计算结果只对宁波永润石化科技有限公司负责．
-   相关计算只供实验参考
-
-开发进度：
-2011.3    调和粘度计算与调和比例计算
-2010.8    粘度指数计算
-2012.3    完全按照国家标准附录的计算过程
-如程序错误和有相关改进意见,请联系:asxinyu@qq.com</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -423,5 +410,20 @@
         AAD+AAAB/AAAAPwAAAP8AAAA/AAAB/wAAAD8AAAf/AAAAPwAAH/8AAAA+AAP//wAAAD4A/////////Af
         ////////8P/////////j/////////+////////////////////8=
 </value>
+  </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>   宁波永润化验室计算工具0.2版本主要功能有粘度指数和粘度调和计算功能。
+
+   本工具可以在宁波永润公司内完全使用
+   工具计算结果只对宁波永润石化科技有限公司负责．
+   相关计算只供实验参考
+
+开发进度：
+2012.3    增加计算V100和粘温预测功能
+2012.3    完全按照国家标准附录的计算过程
+2011.3    调和粘度计算与调和比例计算
+2010.8    粘度指数计算
+
+如程序错误和有相关改进意见,请联系:asxinyu@qq.com</value>
   </data>
 </root>

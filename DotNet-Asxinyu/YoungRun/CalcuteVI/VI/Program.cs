@@ -18,13 +18,25 @@ namespace VI
 			{
 				Console.Write("V40 = ") ;
 				double v40 =Convert.ToDouble (Console.ReadLine ());
-				
-				Console.Write("VI = ") ;
-				int VI =Convert.ToInt32 (Console.ReadLine ());
+                Console.Write("V100 = ");
+                double v100 = Convert.ToDouble(Console.ReadLine());
+				Console.Write("T = ") ;
+                double T = Convert.ToDouble(Console.ReadLine());
 
-                Console.WriteLine("V100 = " + CalcuteV100ByVIAndV40(v40,VI ).ToString());
+                Console.WriteLine("V = " + GetTempVtByV400V100 (v40 ,v100,T ).ToString());
 			}	
 		}
+        public static double GetTempVtByV400V100(double V40, double V100, double T)
+        {
+            double a =Math.Log(Math.Log(V40 + 0.6,Math.E ),Math.E );            
+            double b =Math.Log(Math.Log(V100 + 0.6,Math.E ),Math.E );            
+            b = (a - b) / (Math.Log10(100 + 273) - Math.Log10(40 + 273));
+            a = a + b * Math.Log10(40 + 273);
+            double v3 = a - b * Math.Log10(T + 273);
+            v3 = Math.Exp(v3);
+            v3 = Math.Exp(v3) - 0.6;
+            return v3;
+        }
         public static double CalcuteV100ByVIAndV40(double V40, int VI)
         {
             //先计算初始的数据,然后在小的范围内搜索确定目标
