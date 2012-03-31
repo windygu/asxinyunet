@@ -156,5 +156,36 @@ namespace YR_CalcuteVI
             txtPer2.Text = "";
         }
         #endregion 
+
+        #region 粘温计算 和重置
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (textBox4.Text =="")
+            {
+                epVI.SetError(textBox4, "V40不能为空");
+                return;
+            }
+            if (textBox3.Text =="")
+            {
+                epVI.SetError(textBox3, "V100不能为空");
+                return;
+            }
+            if (textBox2.Text =="")
+            {
+                epVI.SetError(textBox2, "指定温度");
+                return;
+            }
+            textBox5.Text = LubeCalculateHelper.GetTempVtByV400V100(Convert.ToDouble(textBox4.Text),
+                Convert.ToDouble(textBox3.Text), Convert.ToDouble(textBox2.Text)).ToString ();
+
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = string.Empty;
+            textBox3.Text = string.Empty;
+            textBox4.Text = string.Empty;
+            textBox5.Text = string.Empty;
+        }
+        #endregion      
     }
 }
