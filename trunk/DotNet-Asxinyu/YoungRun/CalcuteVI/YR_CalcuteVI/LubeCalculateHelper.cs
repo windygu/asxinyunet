@@ -151,12 +151,54 @@ namespace YR_CalcuteVI
         #endregion
 
         #region 调和粘度计算
+        /// <summary>
+        /// 计算2种油品按照一定比例混合后的粘度
+        /// </summary>
+        /// <param name="KV1">油品1粘度</param>
+        /// <param name="KV2">油品2粘度</param>
+        /// <param name="percent">油品1的比例</param>
+        /// <param name="i">温度序号，40度为0,100度为1</param>
+        public static double CalcuateMixV(double KV1, double KV2, double percent, int i)
+        {
+            int[] Kvalue = new int[] { 4, 2 };   //40度和100度的k值
+            int K = Kvalue[i];
+            double x1 = percent / 100;
+            return Math.Round(100 * (Math.Exp(Math.Log(KV2 + K) * Math.Exp(x1 * Math.Log(Math.Log(KV1 + K) / Math.Log(KV2 + K)))) - K)) / 100;
+        }
         #endregion
 
-        #region 调和比例计算 
+        #region 调和比例计算
+        /// <summary>
+        /// 根据2种油品的粘度 和 需要调和的粘度 计算得到 调和比例
+        /// </summary>
+        /// <param name="KV1">油品1粘度</param>
+        /// <param name="KV2">油品2粘度</param>
+        /// <param name="KV">目标粘度</param>
+        /// <param name="i">温度序号，40度为0,100度为1</param>
+        /// <returns>油品1的比例</returns>
+        public static double CalcuateMixVs(double KV1, double KV2, double KV, int i)
+        {
+            int[] Kvalue = new int[] { 4, 2 };   //40度和100度的k值
+            int K = Kvalue[i];
+            double a = Math.Log(KV + K);
+            double b = Math.Log(KV1 + K);
+            double c = Math.Log(KV2 + K);
+            return Math.Round(10000 * (Math.Log(a / c) / Math.Log(b / c))) / 100;
+        }
         #endregion
 
         #region 粘温计算
+        public static double GetTempVtByV400V100(double V40, double V100,double T)
+        {
+            double a = Math.Log(Math.Log(V40 + 0.6, Math.E), Math.E);
+            double b = Math.Log(Math.Log(V100 + 0.6, Math.E), Math.E);
+            b = (a - b) / (Math.Log10(100 + 273) - Math.Log10(40 + 273));
+            a = a + b * Math.Log10(40 + 273);
+            double v3 = a - b * Math.Log10(T + 273);
+            v3 = Math.Exp(v3);
+            v3 = Math.Exp(v3) - 0.6;
+            return v3;
+        }
         #endregion
 
         #region

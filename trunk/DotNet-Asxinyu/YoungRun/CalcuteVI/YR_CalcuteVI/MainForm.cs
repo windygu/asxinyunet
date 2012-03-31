@@ -17,76 +17,70 @@ namespace YR_CalcuteVI
 	/// Description of MainForm.
 	/// </summary>
 	public partial class MainForm : Form
-	{
-		public MainForm()
+    {
+        #region 公共方法
+        public MainForm()
 		{
 			InitializeComponent();			
 			combTemp.SelectedIndex = 0 ;
 			combTemp1.SelectedIndex = 0 ;
+            comboBox1.SelectedIndex = 0;
 		}
-		
-		void BtnOKClick(object sender, EventArgs e)
+        public void SetControlOnlyValue(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == (char)8 || e.KeyChar == '.' || e.KeyChar == '-');
+            if (!e.Handled)
+                (sender as TextBox).Tag = (sender as TextBox).Text;//记录最后一次正确输入
+        }
+        #endregion
+
+        #region 粘度指数计算 和重置
+        void BtnOKClick(object sender, EventArgs e)
 		{
-			if (txtV40.Text =="")
-			{
-				epVI.SetError (txtV40 ,"不能为空");
-				return ;
-			}
-			if (txtV100 .Text =="")
-			{
-				epVI.SetError (txtV100,"不能为空");
-				return ;
-			}
-			epVI.Clear () ;
-			txtVI .Text =LubeCalculateHelper.CalcuteVIAccordGB(Convert.ToDouble (txtV40 .Text.Trim ()),
-			                         Convert.ToDouble (txtV100 .Text .Trim ())).ToString ();
+            if (comboBox1.SelectedIndex == 0)
+            {
+                if (txtV40.Text == "")
+                {
+                    epVI.SetError(txtV40, "不能为空");
+                    return;
+                }
+                if (txtV100.Text == "")
+                {
+                    epVI.SetError(txtV100, "不能为空");
+                    return;
+                }
+                epVI.Clear();
+                txtVI.Text = LubeCalculateHelper.CalcuteVIAccordGB(Convert.ToDouble(txtV40.Text.Trim()),
+                                         Convert.ToDouble(txtV100.Text.Trim())).ToString();
+            }
+            else
+            {
+                if (txtV40.Text == "")
+                {
+                    epVI.SetError(txtV40, "不能为空");
+                    return;
+                }
+                if (txtVI .Text == "")
+                {
+                    epVI.SetError(txtVI , "不能为空");
+                    return;
+                }
+                epVI.Clear();
+                txtV100 .Text = LubeCalculateHelper.CalcuteV100ByVIAndV40 (Convert.ToDouble(txtV40.Text.Trim()),
+                                         Convert.ToInt32 (txtVI.Text.Trim())).ToString();
+            }
 		}
-		#region 函数			
-		public static double CalcuateMixV(double KV1,double KV2,double percent,int i)
-		{
-			int[] Kvalue = new int[]{4,2} ;   //40度和100度的k值
-			int K = Kvalue[i ] ;
-			double x1 = percent /100 ;
-			return Math.Round(100*(Math.Exp(Math.Log(KV2+K)*Math.Exp(x1*Math.Log (Math.Log (KV1+K)/Math.Log (KV2+K))))-K))/100;
-		}
-		
-		public static double CalcuateMixVs(double KV1,double KV2,double KV,int i)
-		{
-			int[] Kvalue = new int[]{4,2} ;   //40度和100度的k值
-			int K = Kvalue[i ] ;
-			double a=Math.Log (KV+K);
-			double b=Math.Log (KV1+K);
-			double c=Math.Log (KV2+K);
-			return Math.Round(10000*(Math.Log(a/c)/Math.Log(b/c)))/100;
-		}
-		#endregion
-		void BtnResetClick(object sender, EventArgs e)
-		{
-			txtV40.Text ="";
-			txtV100 .Text="";
-			txtVI .Text ="" ;
-		}
-		
-		void Button1Click(object sender, EventArgs e)
-		{
-			txtVa.Text = "" ;
-			txtVb .Text = "" ;
-			txtPer.Text = "" ;
-			combTemp.SelectedIndex = 0 ;
-			txtResult .Text = "" ;
-		}
-		
-		void Button3Click(object sender, EventArgs e)
-		{
-			txtV1.Text = "" ;
-			txtV2.Text = "" ;
-			txtV .Text = "" ;
-			combTemp1.SelectedIndex = 0 ;
-			txtPer1.Text = "" ;
-			txtPer2 .Text = "" ;
-		}
-		
-		void Button2Click(object sender, EventArgs e)
+        void BtnResetClick(object sender, EventArgs e)
+        {
+            txtV40.Text = "";
+            txtV100.Text = "";
+            txtVI.Text = "";
+            comboBox1.SelectedIndex = 0;
+        }
+        #endregion 
+
+        #region 调和粘度计算 和重置
+        void Button2Click(object sender, EventArgs e)
 		{
 			if (txtVa.Text =="")
 			{
@@ -106,7 +100,7 @@ namespace YR_CalcuteVI
 			epVI.Clear () ;
             try
             {
-                txtResult.Text = CalcuateMixV(Convert.ToDouble(txtVa.Text),
+                txtResult.Text =LubeCalculateHelper. CalcuateMixV(Convert.ToDouble(txtVa.Text),
                                               Convert.ToDouble(txtVb.Text),
                                               Convert.ToDouble(txtPer.Text),
                                               combTemp.SelectedIndex).ToString();
@@ -115,8 +109,18 @@ namespace YR_CalcuteVI
             {
                 MessageBox.Show(err.Message);
             }
-		}       
-		
+		}
+        void Button1Click(object sender, EventArgs e)
+        {
+            txtVa.Text = "";
+            txtVb.Text = "";
+            txtPer.Text = "";
+            combTemp.SelectedIndex = 0;
+            txtResult.Text = "";
+        }
+        #endregion
+
+        #region 调和比例计算 和重置
         void Button4Click(object sender, EventArgs e)
 		{
 			if (txtV1.Text =="")
@@ -135,12 +139,22 @@ namespace YR_CalcuteVI
 				return ;
 			}				
 			epVI.Clear () ;
-			double res = CalcuateMixVs (Convert.ToDouble (txtV1.Text ),
+			double res =LubeCalculateHelper.CalcuateMixVs (Convert.ToDouble (txtV1.Text ),
 			                            Convert.ToDouble (txtV2.Text ),
 			                            Convert.ToDouble (txtV.Text ) ,
 			                            combTemp1.SelectedIndex ) ;
 			txtPer1.Text = res.ToString () ;
 			txtPer2.Text = (100 - res ).ToString () ;
-		}
-	}
+        }
+        void Button3Click(object sender, EventArgs e)
+        {
+            txtV1.Text = "";
+            txtV2.Text = "";
+            txtV.Text = "";
+            combTemp1.SelectedIndex = 0;
+            txtPer1.Text = "";
+            txtPer2.Text = "";
+        }
+        #endregion 
+    }
 }

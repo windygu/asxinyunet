@@ -45,6 +45,8 @@ namespace YR_CalcuteVI
             this.epVI = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtVI = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -143,6 +145,8 @@ namespace YR_CalcuteVI
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.btnReset);
             this.tabPage1.Controls.Add(this.txtVI);
             this.tabPage1.Controls.Add(this.label3);
@@ -160,10 +164,30 @@ namespace YR_CalcuteVI
             this.tabPage1.Text = "粘度指数计算";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "粘度指数",
+            "根据粘指计算V100"});
+            this.comboBox1.Location = new System.Drawing.Point(129, 26);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(180, 24);
+            this.comboBox1.TabIndex = 25;
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label16.Location = new System.Drawing.Point(47, 26);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(90, 26);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "计算类型:";
+            // 
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReset.Location = new System.Drawing.Point(183, 165);
+            this.btnReset.Location = new System.Drawing.Point(208, 189);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(74, 29);
             this.btnReset.TabIndex = 21;
@@ -174,15 +198,16 @@ namespace YR_CalcuteVI
             // txtVI
             // 
             this.txtVI.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtVI.Location = new System.Drawing.Point(159, 107);
+            this.txtVI.Location = new System.Drawing.Point(129, 140);
             this.txtVI.Name = "txtVI";
-            this.txtVI.Size = new System.Drawing.Size(124, 26);
+            this.txtVI.Size = new System.Drawing.Size(183, 26);
             this.txtVI.TabIndex = 23;
+            this.txtVI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(79, 110);
+            this.label3.Location = new System.Drawing.Point(49, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 26);
             this.label3.TabIndex = 22;
@@ -191,23 +216,25 @@ namespace YR_CalcuteVI
             // txtV100
             // 
             this.txtV100.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtV100.Location = new System.Drawing.Point(159, 66);
+            this.txtV100.Location = new System.Drawing.Point(129, 99);
             this.txtV100.Name = "txtV100";
-            this.txtV100.Size = new System.Drawing.Size(124, 26);
+            this.txtV100.Size = new System.Drawing.Size(183, 26);
             this.txtV100.TabIndex = 17;
+            this.txtV100.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // txtV40
             // 
             this.txtV40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtV40.Location = new System.Drawing.Point(159, 27);
+            this.txtV40.Location = new System.Drawing.Point(129, 60);
             this.txtV40.Name = "txtV40";
-            this.txtV40.Size = new System.Drawing.Size(124, 26);
+            this.txtV40.Size = new System.Drawing.Size(183, 26);
             this.txtV40.TabIndex = 16;
+            this.txtV40.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(39, 69);
+            this.label2.Location = new System.Drawing.Point(9, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 26);
             this.label2.TabIndex = 19;
@@ -216,7 +243,7 @@ namespace YR_CalcuteVI
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(47, 30);
+            this.label1.Location = new System.Drawing.Point(17, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 26);
             this.label1.TabIndex = 18;
@@ -225,7 +252,7 @@ namespace YR_CalcuteVI
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOK.Location = new System.Drawing.Point(79, 165);
+            this.btnOK.Location = new System.Drawing.Point(104, 189);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(69, 29);
             this.btnOK.TabIndex = 20;
@@ -315,6 +342,7 @@ namespace YR_CalcuteVI
             this.txtPer.Size = new System.Drawing.Size(71, 26);
             this.txtPer.TabIndex = 31;
             this.txtPer.Tag = "13";
+            this.txtPer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // label4
             // 
@@ -333,6 +361,7 @@ namespace YR_CalcuteVI
             this.txtVb.Size = new System.Drawing.Size(71, 26);
             this.txtVb.TabIndex = 25;
             this.txtVb.Tag = "12";
+            this.txtVb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // txtVa
             // 
@@ -342,6 +371,7 @@ namespace YR_CalcuteVI
             this.txtVa.Size = new System.Drawing.Size(71, 26);
             this.txtVa.TabIndex = 24;
             this.txtVa.Tag = "11";
+            this.txtVa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // label5
             // 
@@ -481,6 +511,7 @@ namespace YR_CalcuteVI
             this.txtV.Name = "txtV";
             this.txtV.Size = new System.Drawing.Size(71, 26);
             this.txtV.TabIndex = 43;
+            this.txtV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // label11
             // 
@@ -498,6 +529,7 @@ namespace YR_CalcuteVI
             this.txtV2.Name = "txtV2";
             this.txtV2.Size = new System.Drawing.Size(71, 26);
             this.txtV2.TabIndex = 37;
+            this.txtV2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // txtV1
             // 
@@ -506,6 +538,7 @@ namespace YR_CalcuteVI
             this.txtV1.Name = "txtV1";
             this.txtV1.Size = new System.Drawing.Size(71, 26);
             this.txtV1.TabIndex = 36;
+            this.txtV1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
             // 
             // label12
             // 
@@ -636,5 +669,7 @@ namespace YR_CalcuteVI
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox comboBox1;
 	}
 }
