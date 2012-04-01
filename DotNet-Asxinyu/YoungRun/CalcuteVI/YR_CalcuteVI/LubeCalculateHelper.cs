@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Collections.Generic;
 using System.Text;
 
@@ -203,7 +205,17 @@ namespace YR_CalcuteVI
         }
         #endregion
 
-        #region
+        #region 数据保存
+        /// <summary>
+        /// 保存有错误的粘指计算
+        /// </summary>
+        public static void SaveData(string logString)
+        {
+            using ()
+            {
+                
+            }
+        }
         #endregion
     }
 }
