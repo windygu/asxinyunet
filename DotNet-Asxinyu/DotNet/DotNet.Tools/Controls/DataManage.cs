@@ -117,8 +117,7 @@ namespace DotNet.Tools.Controls
             {
                 winPage.RecordCount = EntityOper.FindCount();
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
-                                            winPage.PageSize);
-               // btList = temp.ToList(); 
+                                            winPage.PageSize);             
             }
             else //不需要分页的情况下
             {
