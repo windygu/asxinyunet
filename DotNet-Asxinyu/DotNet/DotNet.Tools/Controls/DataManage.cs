@@ -115,6 +115,7 @@ namespace DotNet.Tools.Controls
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
             {
+                winPage.RecordCount = EntityOper.FindCount();
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
                                             winPage.PageSize);
                // btList = temp.ToList(); 

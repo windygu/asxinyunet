@@ -210,7 +210,7 @@ namespace DotNet.WinForm.Controls
         /// 获取分页事件所需要的当前数据
         /// </summary>
         protected virtual void GetData()
-        {            
+        {
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
@@ -360,11 +360,11 @@ namespace DotNet.WinForm.Controls
                 }
             }
         }
-        #endregion       
 
         private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             //不做任何处理
         }
+        #endregion       
     }
 }
