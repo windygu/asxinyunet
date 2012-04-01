@@ -6,6 +6,8 @@ namespace YR_CalcuteVI
 {
     /// <summary>
     /// 润滑油检测相关计算
+    /// TODO:1.增加保存功能，对粘指计算采用2种方法，计算结果差别大于或等于2，则保存此记录数据
+    ///      2.增加油品标准功能
     /// </summary>
     public class LubeCalculateHelper
     {
