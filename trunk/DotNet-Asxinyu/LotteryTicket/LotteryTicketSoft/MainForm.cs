@@ -94,5 +94,15 @@ namespace LotteryTicketSoft
         {
             DotNet.WinForm.Controls.ConfigSetting.CreateForm("test.xml").Show();
         }
+
+        private void 历史数据预览ToolStripMenuItem_Click(object sender, EventArgs e)
+        {  
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Ssq ), null , null );
+            CP.IsEnablePaging = true ;
+            CP.IsEnableAddBtn = false;
+            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
