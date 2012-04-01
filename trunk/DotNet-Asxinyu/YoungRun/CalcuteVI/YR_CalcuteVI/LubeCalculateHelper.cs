@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
-using System.Text;
 
 namespace YR_CalcuteVI
 {
@@ -10,6 +9,7 @@ namespace YR_CalcuteVI
     /// 润滑油检测相关计算
     /// TODO:1.增加保存功能，对粘指计算采用2种方法，计算结果差别大于或等于2，则保存此记录数据
     ///      2.增加油品标准功能
+    ///      3.增加调油比例的统计功能，以后则可以根据以前的经验来预测
     /// </summary>
     public class LubeCalculateHelper
     {
@@ -205,16 +205,19 @@ namespace YR_CalcuteVI
         }
         #endregion
 
-        #region 数据保存
+        #region 错误记录保存
         /// <summary>
         /// 保存有错误的粘指计算
         /// </summary>
-        public static void SaveData(string logString)
-        {
-            using ()
+        public static void SaveLogData(string logString)
+        {   
+            FileStream fs = new FileStream ("log", FileMode.Append );                        
+            using(StreamWriter sw = new StreamWriter (fs ))
             {
-                
+                sw.WriteLine(DateTime.Now.ToLongDateString() +" "+DateTime.Now.ToLongTimeString()
+                    +"    "+logString );
             }
+            fs.Close();
         }
         #endregion
     }
