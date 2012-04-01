@@ -213,8 +213,11 @@ namespace DotNet.WinForm.Controls
         {
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
+            {
+                winPage.RecordCount = EntityOper.FindCount();
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
                                             winPage.PageSize);
+            }
             else //不需要分页的情况下
                 btList = EntityOper.FindAll(cutSql, "", "", 0, 0);//.ToList() 
             //dgv.DataSource = btList;
