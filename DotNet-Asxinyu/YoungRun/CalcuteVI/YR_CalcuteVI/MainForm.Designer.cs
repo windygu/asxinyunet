@@ -55,6 +55,17 @@ namespace YR_CalcuteVI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -86,25 +97,14 @@ namespace YR_CalcuteVI
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epVI)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -129,13 +129,13 @@ namespace YR_CalcuteVI
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(14, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(17, 17);
             this.toolStripStatusLabel2.Text = "||";
             // 
             // toolStripStatusLabel5
             // 
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(104, 17);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(101, 17);
             this.toolStripStatusLabel5.Text = "开发维护：董斌辉";
             // 
             // epVI
@@ -170,10 +170,10 @@ namespace YR_CalcuteVI
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnOK);
             this.tabPage1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(387, 235);
+            this.tabPage1.Size = new System.Drawing.Size(387, 236);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "粘指计算";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -274,6 +274,123 @@ namespace YR_CalcuteVI
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.BtnOKClick);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.button5);
+            this.tabPage5.Controls.Add(this.button6);
+            this.tabPage5.Controls.Add(this.textBox5);
+            this.tabPage5.Controls.Add(this.label20);
+            this.tabPage5.Controls.Add(this.textBox2);
+            this.tabPage5.Controls.Add(this.label17);
+            this.tabPage5.Controls.Add(this.textBox3);
+            this.tabPage5.Controls.Add(this.textBox4);
+            this.tabPage5.Controls.Add(this.label18);
+            this.tabPage5.Controls.Add(this.label19);
+            this.tabPage5.Location = new System.Drawing.Point(4, 23);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(387, 236);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "粘温计算";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button5.Location = new System.Drawing.Point(220, 188);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(74, 29);
+            this.button5.TabIndex = 43;
+            this.button5.Text = "重置";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button6.Location = new System.Drawing.Point(100, 188);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(69, 29);
+            this.button6.TabIndex = 42;
+            this.button6.Text = "计算";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox5.Location = new System.Drawing.Point(156, 140);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(183, 26);
+            this.textBox5.TabIndex = 31;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label20.Location = new System.Drawing.Point(52, 139);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(117, 26);
+            this.label20.TabIndex = 30;
+            this.label20.Text = "结果(粘度)：";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Location = new System.Drawing.Point(155, 101);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(183, 26);
+            this.textBox2.TabIndex = 29;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label17.Location = new System.Drawing.Point(33, 100);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(136, 26);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "需要计算的温度：";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox3.Location = new System.Drawing.Point(155, 60);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(183, 26);
+            this.textBox3.TabIndex = 25;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox4.Location = new System.Drawing.Point(155, 21);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(183, 26);
+            this.textBox4.TabIndex = 24;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label18.Location = new System.Drawing.Point(38, 59);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(131, 26);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "100度运动粘度：";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label19.Location = new System.Drawing.Point(46, 20);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(123, 26);
+            this.label19.TabIndex = 26;
+            this.label19.Text = "40度运动粘度：";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.txtResult);
@@ -288,10 +405,10 @@ namespace YR_CalcuteVI
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(387, 235);
+            this.tabPage2.Size = new System.Drawing.Size(387, 236);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "调和粘度计算";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -434,10 +551,10 @@ namespace YR_CalcuteVI
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.button4);
             this.tabPage3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(387, 235);
+            this.tabPage3.Size = new System.Drawing.Size(387, 236);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "调和比例计算";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -587,9 +704,9 @@ namespace YR_CalcuteVI
             // 
             this.tabPage4.Controls.Add(this.textBox1);
             this.tabPage4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(387, 235);
+            this.tabPage4.Size = new System.Drawing.Size(387, 236);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "说明";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -602,126 +719,9 @@ namespace YR_CalcuteVI
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(387, 235);
+            this.textBox1.Size = new System.Drawing.Size(387, 236);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.button5);
-            this.tabPage5.Controls.Add(this.button6);
-            this.tabPage5.Controls.Add(this.textBox5);
-            this.tabPage5.Controls.Add(this.label20);
-            this.tabPage5.Controls.Add(this.textBox2);
-            this.tabPage5.Controls.Add(this.label17);
-            this.tabPage5.Controls.Add(this.textBox3);
-            this.tabPage5.Controls.Add(this.textBox4);
-            this.tabPage5.Controls.Add(this.label18);
-            this.tabPage5.Controls.Add(this.label19);
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(387, 235);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "粘温计算";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(155, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 26);
-            this.textBox2.TabIndex = 29;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
-            // 
-            // label17
-            // 
-            this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(33, 100);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(136, 26);
-            this.label17.TabIndex = 28;
-            this.label17.Text = "需要计算的温度：";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox3.Location = new System.Drawing.Point(155, 60);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(183, 26);
-            this.textBox3.TabIndex = 25;
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox4.Location = new System.Drawing.Point(155, 21);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(183, 26);
-            this.textBox4.TabIndex = 24;
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SetControlOnlyValue);
-            // 
-            // label18
-            // 
-            this.label18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(38, 59);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(131, 26);
-            this.label18.TabIndex = 27;
-            this.label18.Text = "100度运动粘度：";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label19
-            // 
-            this.label19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label19.Location = new System.Drawing.Point(46, 20);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(123, 26);
-            this.label19.TabIndex = 26;
-            this.label19.Text = "40度运动粘度：";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label20
-            // 
-            this.label20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(52, 139);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(117, 26);
-            this.label20.TabIndex = 30;
-            this.label20.Text = "结果(粘度)：";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox5.Location = new System.Drawing.Point(156, 140);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 26);
-            this.textBox5.TabIndex = 31;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button5.Location = new System.Drawing.Point(220, 188);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(74, 29);
-            this.button5.TabIndex = 43;
-            this.button5.Text = "重置";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button6.Location = new System.Drawing.Point(100, 188);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(69, 29);
-            this.button6.TabIndex = 42;
-            this.button6.Text = "计算";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // MainForm
             // 
@@ -737,21 +737,21 @@ namespace YR_CalcuteVI
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "宁波永润化验室计算工具(0.5)(2012-3-31)";
+            this.Text = "宁波永润多功能计算器1.0正式版";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epVI)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

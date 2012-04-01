@@ -52,6 +52,7 @@ namespace YR_CalcuteVI
                 epVI.Clear();
                 txtVI.Text = LubeCalculateHelper.CalcuteVIAccordGB(Convert.ToDouble(txtV40.Text.Trim()),
                                          Convert.ToDouble(txtV100.Text.Trim())).ToString();
+                LubeCalculateHelper.SaveLogData(txtV40.Text + "-" + txtV100.Text  + ":" + txtVI.Text );
             }
             else
             {
