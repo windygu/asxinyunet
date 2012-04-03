@@ -14,6 +14,7 @@ using NewLife.Configuration;
 using DotNet.WinForm.Controls;
 using DotNet.WinForm;
 using System.Threading.Tasks;
+using LotteryTicketSoft.GraphForm;
 
 namespace LotteryTicketSoft
 {
@@ -22,6 +23,7 @@ namespace LotteryTicketSoft
     /// </summary>
     public partial class MainForm : Form
     {
+        #region 初始信息
         public MainForm()
         {
             InitializeComponent();
@@ -35,7 +37,10 @@ namespace LotteryTicketSoft
             this.Text = Config.GetConfig<string>("SoftName") + Config.GetConfig<string>("Version") ;
             StausShow.SetToolInfo1(Config.GetConfig<string>("SoftName"));
             StausShow.SetToolInfo3(Config.GetConfig<string>("CustomerCompanyName"));            
-        }       
+        }
+        #endregion
+
+        #region 核心功能区
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterNumbers();
@@ -68,7 +73,18 @@ namespace LotteryTicketSoft
             frm.MdiParent = this ;
             frm.Show ();
         }
+        private void 历史数据预览ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Ssq), null, null);
+            CP.IsEnablePaging = true;
+            CP.IsEnableAddBtn = false;
+            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+        #endregion
 
+        #region 其他功能--数据更新，关于
         /// <summary>
         /// 异步调用，更新数据
         /// </summary>        
@@ -89,20 +105,14 @@ namespace LotteryTicketSoft
                 MessageBox.Show("所有数据更新成功", "任务提示");
             });          
         }
-
         private void 指标信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DotNet.WinForm.Controls.ConfigSetting.CreateForm("test.xml").Show();
         }
-
-        private void 历史数据预览ToolStripMenuItem_Click(object sender, EventArgs e)
-        {  
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Ssq ), null , null );
-            CP.IsEnablePaging = true ;
-            CP.IsEnableAddBtn = false;
-            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
-            frm.MdiParent = this;
-            frm.Show();
+        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm.CreateForm().ShowDialog();
         }
+        #endregion
     }
 }

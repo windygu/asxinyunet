@@ -32,10 +32,10 @@
             this.gpbFilter = new System.Windows.Forms.GroupBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnSaveFile = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSaveFileName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOPenDataFile = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtInitFileName = new System.Windows.Forms.TextBox();
             this.lblPrepareDataPath = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
@@ -49,16 +49,16 @@
             // 
             this.gpbFilter.Controls.Add(this.btnOK);
             this.gpbFilter.Controls.Add(this.btnSaveFile);
-            this.gpbFilter.Controls.Add(this.textBox2);
+            this.gpbFilter.Controls.Add(this.txtSaveFileName);
             this.gpbFilter.Controls.Add(this.label1);
             this.gpbFilter.Controls.Add(this.btnOPenDataFile);
-            this.gpbFilter.Controls.Add(this.textBox1);
+            this.gpbFilter.Controls.Add(this.txtInitFileName);
             this.gpbFilter.Controls.Add(this.lblPrepareDataPath);
             this.gpbFilter.Location = new System.Drawing.Point(1, 2);
             this.gpbFilter.Margin = new System.Windows.Forms.Padding(4);
             this.gpbFilter.Name = "gpbFilter";
             this.gpbFilter.Padding = new System.Windows.Forms.Padding(4);
-            this.gpbFilter.Size = new System.Drawing.Size(489, 92);
+            this.gpbFilter.Size = new System.Drawing.Size(486, 92);
             this.gpbFilter.TabIndex = 0;
             this.gpbFilter.TabStop = false;
             this.gpbFilter.Text = "过滤设置";
@@ -79,15 +79,16 @@
             this.btnSaveFile.Name = "btnSaveFile";
             this.btnSaveFile.Size = new System.Drawing.Size(54, 26);
             this.btnSaveFile.TabIndex = 7;
-            this.btnSaveFile.Text = "打开";
+            this.btnSaveFile.Text = "保存";
             this.btnSaveFile.UseVisualStyleBackColor = true;
+            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
             // 
-            // textBox2
+            // txtSaveFileName
             // 
-            this.textBox2.Location = new System.Drawing.Point(107, 56);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(256, 26);
-            this.textBox2.TabIndex = 6;
+            this.txtSaveFileName.Location = new System.Drawing.Point(107, 56);
+            this.txtSaveFileName.Name = "txtSaveFileName";
+            this.txtSaveFileName.Size = new System.Drawing.Size(256, 26);
+            this.txtSaveFileName.TabIndex = 6;
             // 
             // label1
             // 
@@ -100,19 +101,20 @@
             // 
             // btnOPenDataFile
             // 
-            this.btnOPenDataFile.Location = new System.Drawing.Point(363, 21);
+            this.btnOPenDataFile.Location = new System.Drawing.Point(364, 21);
             this.btnOPenDataFile.Name = "btnOPenDataFile";
             this.btnOPenDataFile.Size = new System.Drawing.Size(54, 26);
             this.btnOPenDataFile.TabIndex = 4;
             this.btnOPenDataFile.Text = "打开";
             this.btnOPenDataFile.UseVisualStyleBackColor = true;
+            this.btnOPenDataFile.Click += new System.EventHandler(this.btnOPenDataFile_Click);
             // 
-            // textBox1
+            // txtInitFileName
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 26);
-            this.textBox1.TabIndex = 3;
+            this.txtInitFileName.Location = new System.Drawing.Point(108, 21);
+            this.txtInitFileName.Name = "txtInitFileName";
+            this.txtInitFileName.Size = new System.Drawing.Size(256, 26);
+            this.txtInitFileName.TabIndex = 3;
             // 
             // lblPrepareDataPath
             // 
@@ -126,19 +128,20 @@
             // dgv
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(-1, 101);
+            this.dgv.Location = new System.Drawing.Point(-2, 99);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(489, 291);
+            this.dgv.Size = new System.Drawing.Size(489, 302);
             this.dgv.TabIndex = 2;
             // 
             // OpenFile
             // 
-            this.OpenFile.Filter = "\"Lot数据文件|*.lot\"";
+            this.OpenFile.Filter = "Lot数据文件|*.lot";
             this.OpenFile.Title = "打开Lot数据文件";
             // 
             // SaveFile
             // 
+            this.SaveFile.Filter = "Lot数据文件|*.lot";
             this.SaveFile.Title = "保存Lot数据文件";
             // 
             // formPager
@@ -150,12 +153,12 @@
             this.formPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.formPager.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.formPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.formPager.Location = new System.Drawing.Point(1, 399);
+            this.formPager.Location = new System.Drawing.Point(3, 401);
             this.formPager.Margin = new System.Windows.Forms.Padding(4);
             this.formPager.Name = "formPager";
             this.formPager.RecordCount = 0;
             this.formPager.Size = new System.Drawing.Size(483, 27);
-            this.formPager.TabIndex = 1;
+            this.formPager.TabIndex = 3;
             this.formPager.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.formPager_PageIndexChanged);
             // 
             // DataFilter
@@ -163,8 +166,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.dgv);
             this.Controls.Add(this.formPager);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.gpbFilter);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -181,16 +184,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gpbFilter;
-        private DotNet.WinForm.Controls.WinFormPager formPager;
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtInitFileName;
         private System.Windows.Forms.Label lblPrepareDataPath;
         private System.Windows.Forms.Button btnOPenDataFile;
         private System.Windows.Forms.Button btnSaveFile;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSaveFileName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog OpenFile;
         private System.Windows.Forms.SaveFileDialog SaveFile;
         private System.Windows.Forms.Button btnOK;
+        private DotNet.WinForm.Controls.WinFormPager formPager;
     }
 }

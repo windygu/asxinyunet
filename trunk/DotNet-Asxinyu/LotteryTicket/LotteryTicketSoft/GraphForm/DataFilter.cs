@@ -20,6 +20,7 @@ namespace LotteryTicketSoft.GraphForm
     /// </summary>
     public partial class DataFilter : UserControl
     {
+        #region 初始化
         public DataFilter()
         {
             InitializeComponent();
@@ -38,18 +39,24 @@ namespace LotteryTicketSoft.GraphForm
             dm.AllRules = rules;           
             dm.Dock = DockStyle.Fill;
             FormModel tf = new FormModel();
-            tf.Size = new Size(dm.Width + 15, dm.Size.Height + 40);
+            tf.Size = new Size(dm.Width + 17, dm.Size.Height + 40);
             tf.Controls.Add(dm);//将控件添加到窗体中            
-            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             return tf;           
-        }        
+        }
+        #endregion
+
+        #region 过滤计算
         //过滤计算
         private void btnOK_Click(object sender, EventArgs e)
         {
-            data = FilterData(AllRules).Select(n => n.GetEntity()).ToArray () ; //获取过滤后的数据
-            formPager.PageSize = 20;
-            formPager.RecordCount = data.Length;
-            formPager_PageIndexChanged(sender, e);
+            var t = Task.Factory.StartNew(() =>
+            {
+                data = FilterData(AllRules).Select(n => n.GetEntity()).ToArray(); //获取过滤后的数据
+                formPager.PageSize = 20;
+                formPager.RecordCount = data.Length;
+                formPager_PageIndexChanged(sender, e);
+            });
         }
 
         private static LotTickData[] FilterData(RuleInfo[] rules)
@@ -65,7 +72,9 @@ namespace LotteryTicketSoft.GraphForm
             }
             return result;           
         }
+        #endregion
 
+        #region 分页等其他
         /// <summary>
         /// 分页事件
         /// </summary>
@@ -82,5 +91,21 @@ namespace LotteryTicketSoft.GraphForm
                 dgv.DataSource = list;
             }
         }
+        //打开数据文件
+        private void btnOPenDataFile_Click(object sender, EventArgs e)
+        {
+            if (OpenFile.ShowDialog ()== DialogResult.OK )
+            {
+                txtInitFileName.Text = OpenFile.FileName;
+            }
+        }
+        private void btnSaveFile_Click(object sender, EventArgs e)
+        {
+            if (SaveFile.ShowDialog ()== DialogResult.OK )
+            {
+                txtSaveFileName.Text = SaveFile.FileName;
+            }
+        }
+        #endregion       
     }
 }

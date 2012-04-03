@@ -15,5 +15,15 @@ namespace LotteryTicketSoft.GraphForm
         {
             InitializeComponent();
         }
+        public static AboutForm af;
+        /// <summary>
+        /// 得到关于窗体
+        /// </summary>        
+        public static AboutForm CreateForm()
+        {
+            if (af == null)
+                af = new AboutForm();
+            return af;
+        }
     }
 }
