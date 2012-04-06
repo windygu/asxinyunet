@@ -102,12 +102,6 @@
     <Compile Include="Controls\ValidateCode.Designer.cs">
       <DependentUpon>ValidateCode.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WinFormPager.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\WinFormPager.designer.cs">
-      <DependentUpon>WinFormPager.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinFormHelper.cs" />
   </ItemGroup>
@@ -141,12 +135,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ValidateCode.resx">
       <DependentUpon>ValidateCode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WinFormPager.resx">
-      <DependentUpon>WinFormPager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WinFormPager.sq.resx">
-      <DependentUpon>WinFormPager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
