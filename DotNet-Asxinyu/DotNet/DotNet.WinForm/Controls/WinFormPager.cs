@@ -22,7 +22,7 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 分页数据信息
         /// </summary>
-        private string PagerText = "{0},当前第{1}页,共{2}页,每页{3}条记录";
+        private string PagerText = "总记录数:{0},第{1}页,共{2}页,{3}条/页";
 
         #region 跳转按钮文字
         /// <summary>
