@@ -55,7 +55,7 @@ namespace LotteryTicketSoft.GraphForm
         /// 配置右键菜单
         /// </summary>
         public override void InitialDgvMenu()
-        {            
+        {
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
             if (ControlParams.IsHaveMenu)
             {
@@ -67,11 +67,11 @@ namespace LotteryTicketSoft.GraphForm
                         toolStripFilter_Click,//过滤
                         toolStripRemove_Click,//移除记录
                         toolStripSaveProject_Click}; //保存方案
-                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(menuNames ,dispTexts ,eventNames );
+                dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
             }
         }
         #endregion
-     
+
         #region 右键菜单事件
         #region 获取规则列表
         /// <summary>
@@ -79,8 +79,8 @@ namespace LotteryTicketSoft.GraphForm
         /// </summary>
         /// <returns></returns>
         public RuleInfo[] GetRuleList()
-        {            
-            List<RuleInfo> rules = new List<RuleInfo>();           
+        {
+            List<RuleInfo> rules = new List<RuleInfo>();
             for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
             {
                 //先得到一个tb_Rules对象,直接从数据库读取,因为是实时更新
@@ -103,9 +103,9 @@ namespace LotteryTicketSoft.GraphForm
         /// </summary>
         private void toolStripCrossValidate_Click(object sender, EventArgs e)
         {
-            if (twoColorBall ==null )
+            if (twoColorBall == null)
                 twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
-            var t = Task.Factory.StartNew (()=>
+            var t = Task.Factory.StartNew(() =>
             {
                 bool[][] result = twoColorBall.ValidateRuleList(GetRuleList());
                 double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
@@ -119,24 +119,24 @@ namespace LotteryTicketSoft.GraphForm
         #region 右键预测与过滤
         //右键过滤
         private void toolStripFilter_Click(object sender, EventArgs e)
-        {            
+        {
             if (twoColorBall == null)
                 twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
-            DataFilter.CreateForm(GetRuleList ()).ShowDialog ();      
-            GetData();         
+            DataFilter.CreateForm(GetRuleList()).ShowDialog();
+            GetData();
         }
         #endregion
 
         #region 移除记录
         private void toolStripRemove_Click(object sender, EventArgs e)
         {
-            var t = btList.Find(tb_Rules._.Id, this.dgv[0, this.dgv.CurrentCell.RowIndex].Value );
+            var t = btList.Find(tb_Rules._.Id, this.dgv[0, this.dgv.CurrentCell.RowIndex].Value);
             //直接在dgv中删除
-            this.btList.Remove(t );
+            this.btList.Remove(t);
             ArrayList list = new ArrayList();
             for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);//需要转换一下才行
             dgv.DataSource = list;
-            this.dgv.DataSource = list ;
+            this.dgv.DataSource = list;
         }
         #endregion
 
@@ -144,12 +144,12 @@ namespace LotteryTicketSoft.GraphForm
         private void toolStripSaveProject_Click(object sender, EventArgs e)
         {
             //TODO:注意文件名称的处理
-            if (SaveFileDialog.ShowDialog ()== DialogResult.OK )
+            if (SaveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 RuleInfo[] rules = GetRuleList();
-                TwoColorBall.SaveProjectData(rules,SaveFileDialog.FileName  , false);
+                TwoColorBall.SaveProjectData(rules, SaveFileDialog.FileName, false);
                 MessageBox.Show("导出方案成功", "提示");
-            }            
+            }
         }
         #endregion
         #endregion
