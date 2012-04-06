@@ -126,13 +126,13 @@
     <value>4, 7</value>
   </data>
   <data name="lblPager.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 12</value>
+    <value>185, 12</value>
   </data>
   <data name="lblPager.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblPager.Text" xml:space="preserve">
-    <value>总共0条记录,当前第1页,共1页,每页20条记录</value>
+    <value>总记录数:0,第0页,共0页,20条/页</value>
   </data>
   <data name="&gt;&gt;lblPager.Name" xml:space="preserve">
     <value>lblPager</value>
@@ -167,7 +167,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAk
-        CgAAAk1TRnQBSQFMAgEBBAEAAQwBAAEMAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBBAEAARQBAAEUAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
