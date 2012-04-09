@@ -1,4 +1,4 @@
-namespace Devv.Core.Utils
+namespace DotNet.Core
 {
     using System;
 

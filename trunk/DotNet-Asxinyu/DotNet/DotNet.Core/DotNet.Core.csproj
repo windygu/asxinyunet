@@ -42,8 +42,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WHC.OrderWater.Commons">
+      <HintPath>..\..\ResouceFiles\Lib\WHC.OrderWater.Commons.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commons\SecurityUtil.cs" />
     <Compile Include="Exceptions\ErrorCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
