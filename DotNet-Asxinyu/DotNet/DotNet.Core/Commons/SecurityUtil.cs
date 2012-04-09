@@ -1,4 +1,4 @@
-namespace DotNet.Core
+namespace DotNet.Core.Commons
 {
     using System;
 
