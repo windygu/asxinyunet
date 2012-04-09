@@ -49,10 +49,14 @@ namespace YR_CalcuteVI
                     epVI.SetError(txtV100, "不能为空");
                     return;
                 }
-                epVI.Clear();
-                txtVI.Text = LubeCalculateHelper.CalcuteVIAccordGB(Convert.ToDouble(txtV40.Text.Trim()),
-                                         Convert.ToDouble(txtV100.Text.Trim())).ToString();
-                LubeCalculateHelper.SaveLogData(txtV40.Text + "-" + txtV100.Text  + ":" + txtVI.Text );
+                epVI.Clear();                
+                int gb = LubeCalculateHelper.CalcuteVIAccordGB(Convert.ToDouble(txtV40.Text.Trim()),
+                                         Convert.ToDouble(txtV100.Text.Trim()));
+                int ks = LubeCalculateHelper.CalcuteVIAccordDocu (Convert.ToDouble(txtV40.Text.Trim()),
+                                         Convert.ToDouble(txtV100.Text.Trim()));
+                txtVI.Text = gb.ToString();
+                if (Math.Abs (gb -ks )>1.9)
+                    LubeCalculateHelper.SaveLogData("V40 = "+txtV40.Text + ",V100 = " + txtV100.Text  + ",VI-GB =" + txtVI.Text +",VI-KS = "+ks.ToString ());
             }
             else
             {
