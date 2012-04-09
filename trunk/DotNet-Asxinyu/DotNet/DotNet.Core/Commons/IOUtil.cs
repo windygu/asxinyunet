@@ -1,16 +1,15 @@
-namespace Devv.Core.Utils
+namespace DotNet.Core.Commons
 {
     using Microsoft.VisualBasic.CompilerServices;
     using System;
     using System.IO;
     using System.Text;
 
+    /// <summary>
+    /// 文件处理类
+    /// </summary>
     public class IOUtil
-    {
-        private IOUtil()
-        {
-        }
-
+    {       
         public static bool CopyFolder(string strPathSrc, string strPathDest)
         {
             return CopyFolder(strPathSrc, strPathDest, true);
