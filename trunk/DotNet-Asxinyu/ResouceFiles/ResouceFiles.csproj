@@ -719,6 +719,8 @@
     <Content Include="Lib\nunit.framework.dll" />
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\System.Data.SQLite.dll" />
+    <Content Include="Lib\WHC.OrderWater.Commons.dll" />
+    <Content Include="Lib\WHC.OrderWater.Commons.XML" />
     <Content Include="Lib\XTemplate.dll" />
     <Content Include="Lib\ZedGraph.dll" />
     <Content Include="Xcode-Src_20111108\NewLife.CommonEntity\mssql_Common.xml" />
