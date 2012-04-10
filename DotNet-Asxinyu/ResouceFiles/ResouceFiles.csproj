@@ -666,6 +666,8 @@
     <None Include="Images\yes.ico" />
     <None Include="Lib\HtmlAgilityPack.dll" />
     <None Include="Lib\HtmlAgilityPack.XML" />
+    <None Include="Lib\Lephone.CodeGen.exe.config" />
+    <None Include="Lib\Lephone.Processor.exe.config" />
     <None Include="Lib\Log.ico" />
     <None Include="Lib\NewLife.CommonEntity.dll" />
     <None Include="Lib\NewLife.CommonEntity.XML" />
@@ -715,6 +717,17 @@
     <Content Include="Lib\ControlLibrary.dll" />
     <Content Include="Lib\EntLib.Controls.WinForm.dll" />
     <Content Include="Lib\KwCombinatorics.dll" />
+    <Content Include="Lib\Lephone.CodeGen.exe" />
+    <Content Include="Lib\Lephone.Core.dll" />
+    <Content Include="Lib\Lephone.Data.dll" />
+    <Content Include="Lib\Lephone.Data.Oracle8.dll" />
+    <Content Include="Lib\Lephone.Extra.dll" />
+    <Content Include="Lib\Lephone.MSBuild.dll" />
+    <Content Include="Lib\Lephone.Processor.exe" />
+    <Content Include="Lib\Lephone.Web.dll" />
+    <Content Include="Lib\Mono.Cecil.dll" />
+    <Content Include="Lib\Mono.Cecil.Mdb.dll" />
+    <Content Include="Lib\Mono.Cecil.Pdb.dll" />
     <Content Include="Lib\mssql_Common.xml" />
     <Content Include="Lib\MySql.Data.dll" />
     <Content Include="Lib\nunit.framework.dll" />
