@@ -5,7 +5,7 @@ namespace DotNet.Core.Commons
     /// <summary>
     /// 安全工具类：随机密码生成，加解密等
     /// </summary>
-    public class SecurityUtil
+    public class SecurityHelper
     {
         #region 生成随机密码
         //字符元素集合
