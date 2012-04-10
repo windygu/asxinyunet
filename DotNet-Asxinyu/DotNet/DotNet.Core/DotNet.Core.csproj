@@ -48,8 +48,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commons\IOUtil.cs" />
-    <Compile Include="Commons\SecurityUtil.cs" />
+    <Compile Include="Commons\IOHelper.cs" />
+    <Compile Include="Commons\SecurityHelper.cs" />
     <Compile Include="Exceptions\ErrorCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
