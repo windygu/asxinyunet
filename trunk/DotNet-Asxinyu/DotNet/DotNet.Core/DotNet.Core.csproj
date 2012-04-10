@@ -50,7 +50,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commons\AppMessage.cs" />
+    <Compile Include="Commons\Convertor.cs" />
+    <Compile Include="Commons\DateHelper.cs" />
+    <Compile Include="Commons\EnumHelper.cs" />
+    <Compile Include="Commons\ExtendProperty.cs" />
+    <Compile Include="Commons\FileHelper.cs" />
     <Compile Include="Commons\IOHelper.cs" />
+    <Compile Include="Commons\RandomHelper.cs" />
+    <Compile Include="Commons\Serialize.cs" />
+    <Compile Include="Commons\StringHelper.cs" />
+    <Compile Include="Commons\Validator.cs" />
     <Compile Include="Exceptions\ErrorCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
