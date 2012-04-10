@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Xml;
 using System.Runtime.Serialization.Formatters.Binary;
-namespace DotNet.Tools.BaseUtilities
+namespace DotNet.Core.Commons
 {
     public class Serialize
     {

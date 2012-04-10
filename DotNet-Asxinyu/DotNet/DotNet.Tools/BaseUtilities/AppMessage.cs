@@ -8,7 +8,7 @@
  */
 using System;
 
-namespace DotNet.Tools.BaseUtilities
+namespace DotNet.Core.Commons
 {
 	 public class AppMessage
     {
