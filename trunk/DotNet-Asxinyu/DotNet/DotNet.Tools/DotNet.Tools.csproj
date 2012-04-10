@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUtilities\AppMessage.cs" />
-    <Compile Include="BaseUtilities\Class1.cs" />
+    <Compile Include="BaseUtilities\Serialize.cs" />
     <Compile Include="BaseUtilities\Convertor.cs" />
     <Compile Include="BaseUtilities\EnumHelper.cs" />
     <Compile Include="BaseUtilities\ExtendProperty.cs" />
@@ -282,9 +282,7 @@
       <DependentUpon>WinFormPager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Authority\Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
