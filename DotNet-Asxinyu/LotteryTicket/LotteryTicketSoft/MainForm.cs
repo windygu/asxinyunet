@@ -114,5 +114,11 @@ namespace LotteryTicketSoft
             AboutForm.CreateForm().ShowDialog();
         }
         #endregion
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestForm tf = new TestForm();
+            tf.Show ();
+        }
     }
 }

@@ -38,6 +38,9 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
+    <Reference Include="ControlLibrary">
+      <HintPath>..\..\ResouceFiles\Lib\ControlLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="NewLife.Core">
       <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
@@ -54,6 +57,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WHC.OrderWater.Commons">
+      <HintPath>..\..\ResouceFiles\Lib\WHC.OrderWater.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="WHC.Pager.Entity">
+      <HintPath>..\..\ResouceFiles\Lib\WHC.Pager.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="WHC.Pager.WinControl">
+      <HintPath>..\..\ResouceFiles\Lib\WHC.Pager.WinControl.dll</HintPath>
     </Reference>
     <Reference Include="XCode, Version=8.3.4336.36706, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -89,6 +101,12 @@
     <Compile Include="GraphForm\tb_Rules.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GraphForm\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphForm\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\tb_Rules.resx">
       <DependentUpon>tb_Rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphForm\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

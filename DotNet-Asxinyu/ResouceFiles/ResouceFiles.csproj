@@ -712,6 +712,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\access.xml" />
+    <Content Include="Lib\ControlLibrary.dll" />
     <Content Include="Lib\EntLib.Controls.WinForm.dll" />
     <Content Include="Lib\KwCombinatorics.dll" />
     <Content Include="Lib\mssql_Common.xml" />
@@ -721,6 +722,8 @@
     <Content Include="Lib\System.Data.SQLite.dll" />
     <Content Include="Lib\WHC.OrderWater.Commons.dll" />
     <Content Include="Lib\WHC.OrderWater.Commons.XML" />
+    <Content Include="Lib\WHC.Pager.Entity.dll" />
+    <Content Include="Lib\WHC.Pager.WinControl.dll" />
     <Content Include="Lib\XTemplate.dll" />
     <Content Include="Lib\ZedGraph.dll" />
     <Content Include="Xcode-Src_20111108\NewLife.CommonEntity\mssql_Common.xml" />
