@@ -113,6 +113,12 @@
     <Content Include="NewLife.Core.dll" />
     <Content Include="XCode.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNet\DotNet.Core\DotNet.Core.csproj">
+      <Project>{A98FC0A3-8242-452C-92B3-02220C8A3E48}</Project>
+      <Name>DotNet.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DotNet.Tools;
+using DotNet.Core.Commons ;
 using HtmlAgilityPack;
 using Kw.Combinatorics;
 using XCode;
