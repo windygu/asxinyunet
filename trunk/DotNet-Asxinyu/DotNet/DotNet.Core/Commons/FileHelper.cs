@@ -5,7 +5,7 @@ using System.Text;
 using System.Web ;
 using System.Web.UI.WebControls;
 
-namespace DotNet.Tools
+namespace DotNet.Core.Commons
 {
 	/// <summary>
 	/// 文件操作常见类库
