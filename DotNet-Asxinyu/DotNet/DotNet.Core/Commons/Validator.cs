@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace DotNet.Tools
+namespace DotNet.Core.Commons
 {
 	public class Validator
 	{

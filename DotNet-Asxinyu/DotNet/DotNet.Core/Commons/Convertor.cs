@@ -5,14 +5,14 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic;
 using System.Data;
-using System.Windows.Forms;
+
 using NPOI.Util;
 using NPOI.HSSF.Model;
 using NPOI.HSSF.UserModel;
 using NPOI.HSSF;
 using System.Web;
 
-namespace DotNet.Tools
+namespace DotNet.Core.Commons
 {
 	/// <summary>
 	/// 常见的数据转换类

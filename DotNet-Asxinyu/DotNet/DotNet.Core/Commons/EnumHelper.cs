@@ -8,7 +8,7 @@
  */
 using System;
 
-namespace DotNet.Tools.BaseUtilities
+namespace DotNet.Core.Commons
 {
 	#region 数据库枚举定义
 	/// <summary>

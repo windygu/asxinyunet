@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DotNet.Tools
+namespace DotNet.Core.Commons
 {
 	public class RandomHelper
 	{

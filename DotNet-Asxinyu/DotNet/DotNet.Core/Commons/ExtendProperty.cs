@@ -10,7 +10,7 @@ using System;
 using System.Collections;
 using NPOI.HSSF.Record.Formula.Functions;
 
-namespace DotNet.Tools
+namespace DotNet.Core.Commons
 {
 	/// <summary>
 	/// 扩展属性类
