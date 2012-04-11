@@ -131,7 +131,7 @@
             this.dgv.Location = new System.Drawing.Point(-2, 99);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(489, 302);
+            this.dgv.Size = new System.Drawing.Size(489, 295);
             this.dgv.TabIndex = 2;
             // 
             // OpenFile
@@ -157,7 +157,7 @@
             this.formPager.Margin = new System.Windows.Forms.Padding(4);
             this.formPager.Name = "formPager";
             this.formPager.RecordCount = 0;
-            this.formPager.Size = new System.Drawing.Size(492, 27);
+            this.formPager.Size = new System.Drawing.Size(423, 27);
             this.formPager.TabIndex = 3;
             this.formPager.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.formPager_PageIndexChanged);
             // 
