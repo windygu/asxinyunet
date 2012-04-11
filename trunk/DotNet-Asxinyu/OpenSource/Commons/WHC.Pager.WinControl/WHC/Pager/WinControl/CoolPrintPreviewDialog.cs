@@ -29,7 +29,7 @@
         private ToolStripMenuItem _itemPageWidth;
         private ToolStripMenuItem _itemTwoPages;
         private ToolStripLabel _lblPageCount;
-        private Control0 _preview;
+        
         private ToolStrip _toolStrip;
         private ToolStripTextBox _txtStartPage;
         private IContainer icontainer_0;
