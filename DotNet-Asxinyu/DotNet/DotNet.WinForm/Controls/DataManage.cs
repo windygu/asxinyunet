@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using XCode;
 using NewLife;
 using NewLife.Reflection;
+using WHC.Pager.WinControl;
 #endregion
 
 namespace DotNet.WinForm.Controls
@@ -329,6 +330,16 @@ namespace DotNet.WinForm.Controls
             //需要将配置文件的字典值进行动态的更新才行,需要设置一个静态变量
             Items = ConfigDictionary.Create(ConfigSetting.LoadDic(ControlParams.SettingFileName));//重新加载一遍           
         }
+
+        /// <summary>
+        /// 打印表格中的数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolPrint_Click(object sender, EventArgs e)
+        {
+            PrintDGV.Print_DataGridView(dgv, "测试数据");
+        }
         #endregion                
 
         #region 数据显示格式,及单元格下拉列表框设置
@@ -368,6 +379,6 @@ namespace DotNet.WinForm.Controls
         {
             //不做任何处理
         }
-        #endregion       
+        #endregion              
     }
 }

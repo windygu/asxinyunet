@@ -48,6 +48,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WHC.Pager.WinControl">
+      <HintPath>..\..\ResouceFiles\Lib\WHC.Pager.WinControl.dll</HintPath>
+    </Reference>
     <Reference Include="XCode">
       <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
