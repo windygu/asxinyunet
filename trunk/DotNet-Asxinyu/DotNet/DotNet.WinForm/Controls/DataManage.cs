@@ -39,6 +39,10 @@ namespace DotNet.WinForm.Controls
             InitializeComponent();
         }
         /// <summary>
+        /// 表单标题,用于打印
+        /// </summary>
+        protected string Title { get; set; }
+        /// <summary>
         /// 实体列表
         /// </summary>
         protected IEntityList btList; //List<IEntity>
@@ -163,7 +167,6 @@ namespace DotNet.WinForm.Controls
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });
             }
         }
-
         #endregion
 
         #region Dgv动态求和
@@ -338,7 +341,7 @@ namespace DotNet.WinForm.Controls
         /// <param name="e"></param>
         private void toolPrint_Click(object sender, EventArgs e)
         {
-            PrintDGV.Print_DataGridView(dgv, "测试数据");
+            PrintDGV.Print_DataGridView(dgv,Title);
         }
         #endregion                
 
@@ -380,5 +383,39 @@ namespace DotNet.WinForm.Controls
             //不做任何处理
         }
         #endregion              
+
+        #region 显示数据行的信息
+        private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
+                {
+                    StringBuilder builder = new StringBuilder();
+                    builder.AppendFormat("行数据基本信息：\r\n\t", new object[0]);
+                    for (int j = 0; j < this.dgv.Rows[e.RowIndex].Cells.Count; j++)
+                    {
+                        if (this.dgv.Columns[j].Visible)
+                        {
+                            DataGridViewCell cell = this.dgv.Rows[e.RowIndex].Cells[j];
+                            builder.AppendFormat("{0}：{1}\r\n\t", this.dgv.Columns[j].HeaderText, cell.Value);
+                        }
+                    }
+                    this.dgv[i, e.RowIndex].ToolTipText = builder.ToString();
+                }
+            }
+            catch
+            {
+            }
+        }      
+        //离开当前行后
+        private void dgv_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
+            {
+                this.dgv[i, e.RowIndex].ToolTipText = string.Empty;
+            }
+        }
+        #endregion
     }
 }
