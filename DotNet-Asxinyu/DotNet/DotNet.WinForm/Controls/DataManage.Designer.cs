@@ -35,10 +35,10 @@
             this.toolExportToExcel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSetting = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolPrint = new System.Windows.Forms.ToolStripButton();
             this.toolExit = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.toolPrint = new System.Windows.Forms.ToolStripButton();
             this.winPage = new DotNet.WinForm.Controls.WinFormPager();
             this.stausInfoShow1 = new DotNet.WinForm.Controls.StausInfoShow();
             this.toolStrip1.SuspendLayout();
@@ -57,8 +57,8 @@
             this.toolExportToExcel,
             this.toolStripSetting,
             this.toolStripSeparator2,
-            this.toolExit,
-            this.toolPrint});
+            this.toolPrint,
+            this.toolExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(655, 25);
@@ -112,6 +112,15 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolPrint
+            // 
+            this.toolPrint.Image = ((System.Drawing.Image)(resources.GetObject("toolPrint.Image")));
+            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrint.Name = "toolPrint";
+            this.toolPrint.Size = new System.Drawing.Size(49, 22);
+            this.toolPrint.Text = "打印";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
             // toolExit
             // 
             this.toolExit.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -155,15 +164,8 @@
             this.dgv.Size = new System.Drawing.Size(655, 320);
             this.dgv.TabIndex = 42;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
-            // 
-            // toolPrint
-            // 
-            this.toolPrint.Image = ((System.Drawing.Image)(resources.GetObject("toolPrint.Image")));
-            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrint.Name = "toolPrint";
-            this.toolPrint.Size = new System.Drawing.Size(49, 22);
-            this.toolPrint.Text = "打印";
-            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
+            this.dgv.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowLeave);
             // 
             // winPage
             // 

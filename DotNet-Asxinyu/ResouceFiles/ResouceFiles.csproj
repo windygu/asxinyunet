@@ -713,6 +713,7 @@
     <None Include="XCoder v4.6_20120229103751\XCoder.exe.重命名" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Print.ico" />
     <Content Include="Lib\access.xml" />
     <Content Include="Lib\ControlLibrary.dll" />
     <Content Include="Lib\EntLib.Controls.WinForm.dll" />

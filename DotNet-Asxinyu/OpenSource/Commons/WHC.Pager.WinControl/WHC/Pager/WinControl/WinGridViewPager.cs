@@ -23,6 +23,7 @@
         private Dictionary<string, int> dictionary_0 = new Dictionary<string, int>();
         private Dictionary<string, string> dictionary_1 = new Dictionary<string, string>();
         private IContainer icontainer_0 = null;
+        //5个默认的菜单
         private ToolStripMenuItem menu_Add;
         private ToolStripMenuItem menu_Delete;
         private ToolStripMenuItem menu_Edit;
@@ -32,6 +33,7 @@
         private Pager pager;
         private WHC.Pager.Entity.PagerInfo pagerInfo_0 = null;
         private Panel panel1;
+        //进度条
         public System.Windows.Forms.ProgressBar ProgressBar;
         private ToolStripMenuItem PtgOfUaBU;
         private SaveFileDialog saveFileDialog_0 = new SaveFileDialog();
@@ -66,7 +68,7 @@
                 this.PtgOfUaBU.Visible = false;
             }
         }
-
+        //添加列名
         public void AddColumnAlias(string key, string alias)
         {
             if (!(string.IsNullOrEmpty(key) || string.IsNullOrEmpty(alias)) && !this.dictionary_1.ContainsKey(key))
@@ -74,7 +76,7 @@
                 this.dictionary_1.Add(key, alias);
             }
         }
-
+        //单元格双击事件
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.eventHandler_3 != null)
@@ -82,7 +84,7 @@
                 this.eventHandler_3(this.dataGridView1, new EventArgs());
             }
         }
-
+        //数据完成绑定
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -94,7 +96,7 @@
                 }
             }
         }
-
+        //数据源发生改变
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
             int num;
@@ -125,7 +127,7 @@
                 }
             }
         }
-
+        //显示数据行的提示信息
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
