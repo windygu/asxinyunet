@@ -151,7 +151,7 @@
             {
             }
         }
-
+        //离开数据行
         private void dataGridView1_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             for (int i = 0; i < this.dataGridView1.Rows[e.RowIndex].Cells.Count; i++)
@@ -168,7 +168,7 @@
             }
             base.Dispose(disposing);
         }
-
+        //控件初始化
         private void InitializeComponent()
         {
             this.icontainer_0 = new Container();
@@ -265,6 +265,7 @@
             base.ResumeLayout(false);
         }
 
+        //右键菜单--添加
         private void menu_Add_Click(object sender, EventArgs e)
         {
             if (this.eventHandler_6 != null)
@@ -272,7 +273,7 @@
                 this.eventHandler_6(this.dataGridView1, new EventArgs());
             }
         }
-
+        //右键菜单--删除
         private void menu_Delete_Click(object sender, EventArgs e)
         {
             if (this.eventHandler_4 != null)
@@ -280,7 +281,7 @@
                 this.eventHandler_4(this.dataGridView1, new EventArgs());
             }
         }
-
+        //右键菜单--编辑
         private void menu_Edit_Click(object sender, EventArgs e)
         {
             if (this.eventHandler_3 != null)
@@ -288,12 +289,12 @@
                 this.eventHandler_3(this.dataGridView1, new EventArgs());
             }
         }
-
+        //右键菜单--打印
         private void menu_Print_Click(object sender, EventArgs e)
         {
             PrintDGV.Print_DataGridView(this.dataGridView1, this.string_1);
         }
-
+        //右键菜单--刷新
         private void menu_Refresh_Click(object sender, EventArgs e)
         {
             if (this.eventHandler_5 != null)
@@ -626,4 +627,3 @@
         }
     }
 }
-
