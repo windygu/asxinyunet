@@ -82,28 +82,28 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 配置参数,主要参数都在此
         /// </summary>
-        protected static DataControlParams ControlParams;
+        public static DataControlParams ControlParams;
         /// <summary>
         /// 用于配置条件窗体
         /// </summary>
-        protected static string TableName;
+        public static string TableName;
 
         /// <summary>
         /// 添加实体窗体对象
         /// </summary>
-        protected static FormModel AddForm;
+        public static FormModel AddForm;
 
         /// <summary>
         /// 搜索窗体对象
         /// </summary>
-        protected static FormModel SeachFm;
+        public static FormModel SeachFm;
 
         /// <summary>
         /// 相关的配置参数字典类
         /// </summary>
-        protected static ConfigDictionary Items;
+        public static ConfigDictionary Items;
 
-
+        
         #endregion
 
         #region 静态方法
@@ -164,7 +164,7 @@ namespace DotNet.WinForm.Controls
             if (ControlParams.IsHaveMenu)
             {
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
-                        new string[] { "Edit", "Delete" }, new string[] { "修改", "删除" },
+                        new string[] { "Edit", "Delete" }, new string[] { "修改记录", "删除记录" },
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });
             }
         }
@@ -231,7 +231,7 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 获取分页事件所需要的当前数据
         /// </summary>
-        protected virtual void GetData()
+        public virtual void GetData()
         {
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)

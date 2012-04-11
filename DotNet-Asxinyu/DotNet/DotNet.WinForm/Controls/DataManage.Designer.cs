@@ -222,8 +222,8 @@
         protected System.Windows.Forms.ToolStripButton toolExportToExcel;
         protected System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         protected System.Windows.Forms.ToolStripButton toolExit;
-        protected DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
-        protected System.Windows.Forms.DataGridView dgv;
+        public DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
+        public System.Windows.Forms.DataGridView dgv;
         protected WinFormPager winPage;
         protected System.Windows.Forms.ToolStripButton toolStripSetting;
         private System.Windows.Forms.ToolStripButton toolPrint;
