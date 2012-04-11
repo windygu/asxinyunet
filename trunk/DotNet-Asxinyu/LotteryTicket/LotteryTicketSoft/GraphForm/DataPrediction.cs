@@ -44,7 +44,7 @@ namespace LotteryTicketSoft.GraphForm
             FormModel tf = new FormModel();
             tf.Size = new Size(dm.Width + 15, dm.Size.Height + 40);
             tf.Controls.Add(dm);//将控件添加到窗体中            
-            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle ;
             return tf;
         }
         #endregion
