@@ -38,6 +38,7 @@
             this.toolExit = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.toolPrint = new System.Windows.Forms.ToolStripButton();
             this.winPage = new DotNet.WinForm.Controls.WinFormPager();
             this.stausInfoShow1 = new DotNet.WinForm.Controls.StausInfoShow();
             this.toolStrip1.SuspendLayout();
@@ -56,7 +57,8 @@
             this.toolExportToExcel,
             this.toolStripSetting,
             this.toolStripSeparator2,
-            this.toolExit});
+            this.toolExit,
+            this.toolPrint});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(655, 25);
@@ -154,6 +156,15 @@
             this.dgv.TabIndex = 42;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
+            // toolPrint
+            // 
+            this.toolPrint.Image = ((System.Drawing.Image)(resources.GetObject("toolPrint.Image")));
+            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrint.Name = "toolPrint";
+            this.toolPrint.Size = new System.Drawing.Size(49, 22);
+            this.toolPrint.Text = "打印";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
             // winPage
             // 
             this.winPage.AutoSize = true;
@@ -163,10 +174,10 @@
             this.winPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.winPage.Dock = System.Windows.Forms.DockStyle.Right;
             this.winPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.winPage.Location = new System.Drawing.Point(172, 0);
+            this.winPage.Location = new System.Drawing.Point(232, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(483, 25);
+            this.winPage.Size = new System.Drawing.Size(423, 25);
             this.winPage.TabIndex = 0;
             this.winPage.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 
@@ -213,5 +224,6 @@
         protected System.Windows.Forms.DataGridView dgv;
         protected WinFormPager winPage;
         protected System.Windows.Forms.ToolStripButton toolStripSetting;
+        private System.Windows.Forms.ToolStripButton toolPrint;
     }
 }
