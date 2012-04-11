@@ -42,16 +42,16 @@ namespace DotNet.WinForm.Controls
         /// <summary>
         /// 表单标题,用于打印
         /// </summary>
-        protected string Title { get; set; }
+        public string Title { get; set; }
         /// <summary>
         /// 实体列表
         /// </summary>
-        protected IEntityList btList; //List<IEntity>
+        public IEntityList btList; //List<IEntity>
 
         /// <summary>
         /// 当前查询字符串,初始为空
         /// </summary>
-        protected string cutSql;
+        public string cutSql;
         
         /// <summary>
         /// 实体操作对象
