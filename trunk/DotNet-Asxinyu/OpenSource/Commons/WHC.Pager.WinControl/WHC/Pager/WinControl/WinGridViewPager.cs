@@ -535,6 +535,7 @@
             }
         }
 
+        //添加外部菜单
         public ContextMenuStrip AppendedMenu
         {
             get

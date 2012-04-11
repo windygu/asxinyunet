@@ -157,7 +157,7 @@
             this.formPager.Margin = new System.Windows.Forms.Padding(4);
             this.formPager.Name = "formPager";
             this.formPager.RecordCount = 0;
-            this.formPager.Size = new System.Drawing.Size(423, 27);
+            this.formPager.Size = new System.Drawing.Size(483, 27);
             this.formPager.TabIndex = 3;
             this.formPager.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.formPager_PageIndexChanged);
             // 
