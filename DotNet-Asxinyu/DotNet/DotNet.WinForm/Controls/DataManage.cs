@@ -27,6 +27,7 @@ namespace DotNet.WinForm.Controls
     /// <summary>
     /// 通用数据管理控件
     /// //TODO:还需要考虑一种外部数据加载进来,只单纯的显示和分页的情况，即数据显示用
+    /// 2012-04-11 开始借鉴WHC控件的功能，增加打印，并优化菜单生成方式，数据行显示
     /// 2012-03-05 可以在此基础上，对控件进行集成，以完成更多的综合操作功能。特别是对dgv中数据的操作
     /// 2011-12-15 进一步优化操作，重构代码和增加配置窗体功能
     /// 2011-11-20 完成基本功能,基本数据浏览，修改等操作
@@ -165,6 +166,23 @@ namespace DotNet.WinForm.Controls
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
                         new string[] { "Edit", "Delete" }, new string[] { "修改", "删除" },
                         new EventHandler[] { toolStripMenuEdit_Click, toolStripMenuDelete_Click });
+            }
+        }
+        /// <summary>
+        /// 添加外部菜单
+        /// </summary>
+        public ContextMenuStrip AppendedMenu
+        {
+            get { return this.dgv.ContextMenuStrip ;}
+            set
+            {
+                if (value != null)
+                {                    
+                    for (int i = 0; i<value.Items.Count ; i++)
+                    {
+                        this.dgv.ContextMenuStrip.Items.Insert(i, value.Items[0]);
+                    }                    
+                }
             }
         }
         #endregion
