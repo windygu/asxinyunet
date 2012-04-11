@@ -31,12 +31,13 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\..\..\Disassembler\TestWinPager_Demo\Reference\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Drawing" />
     <Reference Include="System" />
-    <Reference Include="WHC.Pager.Entity" />
     <Reference Include="System.Data" />
-    <Reference Include="Aspose.Cells" />
     <Reference Include="Microsoft.Office.Interop.Excel" />
     <Reference Include="office" />
     <Reference Include="System.Xml" />
@@ -51,7 +52,6 @@
     <Compile Include="WHC\Pager\WinControl\CoolPrintPreviewDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Class0.cs" />
     <Compile Include="WHC\Pager\WinControl\PrintOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,9 +62,6 @@
     <Compile Include="WHC\Pager\WinControl\ExportCurrentEventHandler.cs" />
     <Compile Include="WHC\Pager\WinControl\ExportAllEventHandler.cs" />
     <Compile Include="WHC\Pager\WinControl\Pager.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Control0.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="WHC\Pager\WinControl\MyConstants.cs" />
@@ -82,7 +79,6 @@
     <Compile Include="WHC\Pager\WinControl\Base64Util.cs" />
     <Compile Include="WHC\Pager\WinControl\EncodeHelper.cs" />
     <Compile Include="WHC\Pager\WinControl\MD5Util.cs" />
-    <Compile Include="_Module_{D3CBBC80-37C2-4766-A57C-691DEA3BA76A}.cs" />
     <EmbeddedResource Include="WHC.Pager.WinControl.WinGridViewPager.resources" />
     <EmbeddedResource Include="WHC.Pager.WinControl.CoolPrintPreviewDialog.resources" />
     <EmbeddedResource Include="WHC.Pager.WinControl.Pager.resources" />
@@ -91,5 +87,8 @@
     <EmbeddedResource Include="WHC.Pager.WinControl.WinListViewPager.resources" />
     <EmbeddedResource Include="aR3nbf8dQp2feLmk31.rFohpatkdxsVcxLfJKhM7.resources" />
     <EmbeddedResource Include="aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources" />
+    <Reference Include="WHC.Pager.Entity">
+      <HintPath>..\..\..\Disassembler\TestWinPager_Demo\Reference\WHC.Pager.Entity.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

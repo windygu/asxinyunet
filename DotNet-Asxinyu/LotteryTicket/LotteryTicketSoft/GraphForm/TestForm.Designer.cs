@@ -40,14 +40,14 @@
             this.winGridViewPager1.MinimumSize = new System.Drawing.Size(540, 0);
             this.winGridViewPager1.Name = "winGridViewPager1";
             this.winGridViewPager1.PrintTitle = "";
-            this.winGridViewPager1.Size = new System.Drawing.Size(717, 427);
+            this.winGridViewPager1.Size = new System.Drawing.Size(643, 354);
             this.winGridViewPager1.TabIndex = 1;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 434);
+            this.ClientSize = new System.Drawing.Size(641, 355);
             this.Controls.Add(this.winGridViewPager1);
             this.Name = "TestForm";
             this.Text = "TestForm";

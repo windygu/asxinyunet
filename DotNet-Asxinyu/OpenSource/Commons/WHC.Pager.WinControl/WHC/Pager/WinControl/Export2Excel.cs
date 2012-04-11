@@ -12,7 +12,7 @@
 
     public class Export2Excel
     {
-        private Application application_0;
+        private System.Windows.Forms.Application application_0;
         private int int_0;
         private List<DataView> list_0;
         private Sheets sheets_0;
