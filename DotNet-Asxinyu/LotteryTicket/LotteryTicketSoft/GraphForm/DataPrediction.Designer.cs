@@ -33,8 +33,8 @@
             // 
             // winPage
             // 
-            this.winPage.Location = new System.Drawing.Point(172, 0);
-            this.winPage.Size = new System.Drawing.Size(483, 25);
+            this.winPage.Location = new System.Drawing.Point(232, 0);
+            this.winPage.Size = new System.Drawing.Size(423, 25);
             // 
             // SaveFileDialog
             // 
