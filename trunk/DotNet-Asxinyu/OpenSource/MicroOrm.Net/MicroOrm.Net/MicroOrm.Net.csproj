@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{324F98D0-C435-442B-A827-27CAFD5C8FF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MicroOrm</RootNamespace>
+    <AssemblyName>MicroOrm.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clauses\DistinctClause.cs" />
+    <Compile Include="Clauses\GroupByClause.cs" />
+    <Compile Include="Clauses\HavingClause.cs" />
+    <Compile Include="Clauses\OnClause.cs" />
+    <Compile Include="Clauses\WithClause.cs" />
+    <Compile Include="Commands\CommandProviderFactory.cs" />
+    <Compile Include="Commands\CommandProvider.cs" />
+    <Compile Include="Dynamic\Column.cs" />
+    <Compile Include="Dynamic\Database.cs" />
+    <Compile Include="Dynamic\Record.cs" />
+    <Compile Include="Dynamic\Result.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="Interfaces\IMethod.cs" />
+    <Compile Include="Interfaces\ISchemaProvider.cs" />
+    <Compile Include="Schemas\RelationSchema.cs" />
+    <Compile Include="Schemas\ColumnSchema.cs" />
+    <Compile Include="Schemas\TableSchema.cs" />
+    <Compile Include="Schemas\SchemaProviderFactory.cs" />
+    <Compile Include="Schemas\SqlSchemaProvider.cs" />
+    <Compile Include="Extensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Methods\DeleteMethod.cs" />
+    <Compile Include="Methods\MethodSignature.cs" />
+    <Compile Include="Interfaces\ICommandProvider.cs" />
+    <Compile Include="Methods\InsertMethod.cs" />
+    <Compile Include="Clauses\JoinClause.cs" />
+    <Compile Include="MathE.cs" />
+    <Compile Include="Methods\MethodFactory.cs" />
+    <Compile Include="Clauses\OrderByClause.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dynamic\Query.cs" />
+    <Compile Include="Clauses\ClauseBase.cs" />
+    <Compile Include="Methods\QueryMember.cs" />
+    <Compile Include="Clauses\SelectClause.cs" />
+    <Compile Include="Expression.cs" />
+    <Compile Include="Dynamic\DynamicBase.cs" />
+    <Compile Include="Clauses\SkipClause.cs" />
+    <Compile Include="Commands\SqlCommandProvider.cs" />
+    <Compile Include="Dynamic\Table.cs" />
+    <Compile Include="Clauses\TakeClause.cs" />
+    <Compile Include="Methods\UpdateMethod.cs" />
+    <Compile Include="Clauses\WhereClause.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt" />
+    <Content Include="Resources\sql_trace.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
