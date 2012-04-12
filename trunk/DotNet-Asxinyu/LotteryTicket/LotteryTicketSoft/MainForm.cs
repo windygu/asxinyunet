@@ -45,46 +45,7 @@ namespace LotteryTicketSoft
         #endregion
 
         #region 核心功能区
-        private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FilterNumbers();
-        }
-        //过滤操作
-        private void FilterNumbers()
-        {
-            string[] remove = new string[] { tb_Rules._.Remark.Description };
-            Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
-            bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
-            bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
-               "LotteryTicketSoft.GraphForm.AddRules");
-            CP.IsEnablePaging = false;
-            //增加菜单的相关代码
-            string[] menuNames = { "CrossValidate", "Filter", "Remove", "SaveProject" };
-            string[] dispTexts = { "交叉验证", "过滤", "移除记录", "保存方案" };
-            EventHandler[] eventNames ={ toolStripCrossValidate_Click,//交叉验证
-                        toolStripFilter_Click,//过滤
-                        toolStripRemove_Click,//移除记录
-                        toolStripSaveProject_Click}; //保存方案
-            //默认的集成不能完成，需要修改生成的主窗体
-            DataManage dm = new DataManage();
-            dm.InitializeSettings(CP );
-            dm.Name = "dm";
-            dm.Dock = DockStyle.Fill;
-            FormModel tf = new FormModel();
-            tf.Size = new Size(dm.Width + 15, dm.Size.Height + 40);
-            tf.Controls.Add(dm);//将控件添加到窗体中            
-            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-            //增加
-            dm.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
-
-            tf.MdiParent = this;
-            tf.Show();
-            //FormModel frm = LotteryTicketSoft.GraphForm.DataPrediction.CreateForm2(CP);
-            //frm.MdiParent = this;
-            //frm.Show();
-        }
-
+      
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] remove = new string[] { tb_Rules._.Remark.Description };
@@ -146,11 +107,11 @@ namespace LotteryTicketSoft
         #endregion
 
         #region 交叉验证
-        public RuleInfo[] GetRuleList(DataManage dm)
+        public RuleInfo[] GetRuleList(object sender, EventArgs e)
         {
             List<RuleInfo> rules = new List<RuleInfo>();
-            //DataGridView dgv =(DataGridView )(((ToolStripItem)sender).GetCurrentParent().Parent.Parent );
-            DataGridView dgv = ((DataManage)sender).dgv;
+            DataGridView dgv = (DataGridView)(((ToolStripItem)sender).GetCurrentParent().Parent.Parent);
+            //DataGridView dgv = ((DataManage)sender).dgv;
             for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
             {
                 //先得到一个tb_Rules对象,直接从数据库读取,因为是实时更新
