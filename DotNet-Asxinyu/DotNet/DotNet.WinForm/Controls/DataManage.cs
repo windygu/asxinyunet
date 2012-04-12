@@ -402,14 +402,14 @@ namespace DotNet.WinForm.Controls
         }
         #endregion              
 
-        #region 显示数据行的信息
-        private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        #region 设置数据行的提示信息
+        private void dgv_RowEnter()
         {
             try
             {
                 for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
                 {
-                    StringBuilder builder = new StringBuilder();
+                StringBuilder builder = new StringBuilder();
                     builder.AppendFormat("行数据基本信息：\r\n\t", new object[0]);
                     for (int j = 0; j < this.dgv.Rows[e.RowIndex].Cells.Count; j++)
                     {
@@ -419,8 +419,10 @@ namespace DotNet.WinForm.Controls
                             builder.AppendFormat("{0}：{1}\r\n\t", this.dgv.Columns[j].HeaderText, cell.Value);
                         }
                     }
-                    this.dgv[i, e.RowIndex].ToolTipText = builder.ToString();
-                }
+                    
+                        this.dgv[i,e.RowIndex].ToolTipText = builder.ToString();
+                    }                    
+           
             }
             catch
             {
@@ -429,10 +431,10 @@ namespace DotNet.WinForm.Controls
         //离开当前行后
         private void dgv_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            //for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
-            //{
-            //    this.dgv[i, e.RowIndex].ToolTipText = string.Empty;
-            //}
+            for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
+            {
+                this.dgv[i, e.RowIndex].ToolTipText = string.Empty;
+            }
         }
         #endregion
     }

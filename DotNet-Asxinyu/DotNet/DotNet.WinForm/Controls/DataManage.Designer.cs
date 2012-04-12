@@ -164,8 +164,6 @@
             this.dgv.Size = new System.Drawing.Size(655, 320);
             this.dgv.TabIndex = 42;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
-            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
-            this.dgv.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowLeave);
             // 
             // winPage
             // 
