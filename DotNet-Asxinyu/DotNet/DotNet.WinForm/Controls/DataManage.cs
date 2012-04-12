@@ -429,10 +429,10 @@ namespace DotNet.WinForm.Controls
         //离开当前行后
         private void dgv_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
-            {
-                this.dgv[i, e.RowIndex].ToolTipText = string.Empty;
-            }
+            //for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
+            //{
+            //    this.dgv[i, e.RowIndex].ToolTipText = string.Empty;
+            //}
         }
         #endregion
     }
