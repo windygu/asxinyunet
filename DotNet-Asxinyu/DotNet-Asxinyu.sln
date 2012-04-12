@@ -40,8 +40,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VI", "YoungRun\CalcuteVI\VI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WHC.Pager.WinControl", "OpenSource\Commons\WHC.Pager.WinControl\WHC.Pager.WinControl.csproj", "{562FD83D-BDFF-40A8-8B2F-BF8304F4FE54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroOrm.Net", "OpenSource\MicroOrm.Net\MicroOrm.Net\MicroOrm.Net.csproj", "{324F98D0-C435-442B-A827-27CAFD5C8FF7}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -329,24 +327,6 @@ Global
 		{562FD83D-BDFF-40A8-8B2F-BF8304F4FE54}.Release|Mixed Platforms.Build.0 = Release|x86
 		{562FD83D-BDFF-40A8-8B2F-BF8304F4FE54}.Release|x86.ActiveCfg = Release|x86
 		{562FD83D-BDFF-40A8-8B2F-BF8304F4FE54}.Release|x86.Build.0 = Release|x86
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}..Net 2.0|.NET.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}..Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}..Net 2.0|Any CPU.Build.0 = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}..Net 2.0|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}..Net 2.0|Mixed Platforms.Build.0 = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}..Net 2.0|x86.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Release|.NET.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -366,6 +346,5 @@ Global
 		{A98FC0A3-8242-452C-92B3-02220C8A3E48} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{C33A4523-C093-4901-BF6B-73B6AB1AB688} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{562FD83D-BDFF-40A8-8B2F-BF8304F4FE54} = {567AC4C6-4805-4036-8112-CFD8D85C8FB2}
-		{324F98D0-C435-442B-A827-27CAFD5C8FF7} = {567AC4C6-4805-4036-8112-CFD8D85C8FB2}
 	EndGlobalSection
 EndGlobal
