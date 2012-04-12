@@ -149,7 +149,8 @@ namespace LotteryTicketSoft
         public RuleInfo[] GetRuleList(object sender,EventArgs e)
         {
             List<RuleInfo> rules = new List<RuleInfo>();
-            DataGridView dgv = ((DataManage)sender).dgv ;
+            DataGridView dgv =(DataGridView )(((ToolStripItem)sender).GetCurrentParent().Parent.Parent );
+            //DataGridView dgv = ((DataManage)sender).dgv ;
             for (int rowIndex = 0; rowIndex < dgv.Rows.Count; rowIndex++)
             {
                 //先得到一个tb_Rules对象,直接从数据库读取,因为是实时更新
