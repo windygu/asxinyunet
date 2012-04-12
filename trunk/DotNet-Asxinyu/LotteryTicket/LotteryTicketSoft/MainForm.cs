@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using LotteryTicketSoft.GraphForm;
 using System.Drawing;
 using System.Linq;
+using XCode;
+using System.Collections;
 
 namespace LotteryTicketSoft
 {
@@ -64,7 +66,7 @@ namespace LotteryTicketSoft
                         toolStripFilter_Click,//过滤
                         toolStripRemove_Click,//移除记录
                         toolStripSaveProject_Click}; //保存方案
-             //默认的集成不能完成，需要修改生成的主窗体
+            //默认的集成不能完成，需要修改生成的主窗体
             DataManage dm = new DataManage();
             dm.InitializeSettings(CP );
             dm.Name = "dm";
@@ -76,7 +78,8 @@ namespace LotteryTicketSoft
             //增加
             dm.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
 
-
+            tf.MdiParent = this;
+            tf.Show();
             //FormModel frm = LotteryTicketSoft.GraphForm.DataPrediction.CreateForm2(CP);
             //frm.MdiParent = this;
             //frm.Show();
@@ -91,7 +94,6 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo), remove, bandingSource,
                "LotteryTicketSoft.GraphForm.AddIndexInfo");
             CP.IsEnablePaging = false;
-
             FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
             frm.MdiParent = this;
             frm.Show();
@@ -173,8 +175,8 @@ namespace LotteryTicketSoft
             {
                 bool[][] result = twoColorBall.ValidateRuleList(GetRuleList(sender,e ));
                 double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
-                for (int i = 0; i < res.Length; i++) dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
-                this.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
+                for (int i = 0; i < res.Length; i++) ((DataManage)sender).dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
+                ((DataManage)sender).stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
                     (TwoColorBall.CrossValidate(result) * 100).ToString("F4"));
             });
         }
@@ -186,7 +188,7 @@ namespace LotteryTicketSoft
         {
             TwoColorBall twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
             DataFilter.CreateForm(GetRuleList(sender,e )).ShowDialog();
-            GetData();
+            ((DataManage)sender).GetData();
         }
         #endregion
 
@@ -194,13 +196,13 @@ namespace LotteryTicketSoft
         private void toolStripRemove_Click(object sender, EventArgs e)
         {
             DataGridView dgv = ((DataManage)sender).dgv;
+            IEntityList btList = ((DataManage)sender).btList;
             var t = btList.Find(tb_Rules._.Id, dgv[0, dgv.CurrentCell.RowIndex].Value);
             //直接在dgv中删除
-            this.btList.Remove(t);
+            btList.Remove(t);
             ArrayList list = new ArrayList();
             for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);//需要转换一下才行
-            dgv.DataSource = list;
-            this.dgv.DataSource = list;
+            dgv.DataSource = list;          
         }
         #endregion
 
@@ -208,12 +210,12 @@ namespace LotteryTicketSoft
         private void toolStripSaveProject_Click(object sender, EventArgs e)
         {
             //TODO:注意文件名称的处理
-            if (SaveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                RuleInfo[] rules = GetRuleList();
-                TwoColorBall.SaveProjectData(rules, SaveFileDialog.FileName, false);
-                MessageBox.Show("导出方案成功", "提示");
-            }
+            //if (((DataManage)sender).SaveFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    RuleInfo[] rules = GetRuleList();
+            //    TwoColorBall.SaveProjectData(rules, SaveFileDialog.FileName, false);
+            //    MessageBox.Show("导出方案成功", "提示");
+            //}
         }
         #endregion
     }
