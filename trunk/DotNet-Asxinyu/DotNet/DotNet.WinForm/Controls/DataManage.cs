@@ -177,10 +177,11 @@ namespace DotNet.WinForm.Controls
             set
             {
                 if (value != null)
-                {                    
-                    for (int i = 0; i<value.Items.Count ; i++)
+                {
+                    int count = value.Items.Count;
+                    for (int i = 0; i< count ; i++)
                     {
-                        this.dgv.ContextMenuStrip.Items.Insert(i, value.Items[0]);
+                        this.dgv.ContextMenuStrip.Items.Add (value.Items[0]);
                     }                    
                 }
             }
@@ -241,16 +242,16 @@ namespace DotNet.WinForm.Controls
                                             winPage.PageSize);
             }
             else //不需要分页的情况下
-                btList = EntityOper.FindAll(cutSql, "", "", 0, 0);//.ToList() 
-            //dgv.DataSource = btList;
+                btList = EntityOper.FindAll(cutSql, "", "", 0, 0);           
             ArrayList list = new ArrayList();
-            for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);
+            for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);            
             dgv.DataSource = list;
             //每次移除不需要的列
             foreach (string  item in ControlParams.DeleteColumnsName )
             {
                 if (dgv.Columns.Contains(item )) dgv.Columns.Remove(item );
             }
+
         }
         #endregion
              
@@ -283,6 +284,7 @@ namespace DotNet.WinForm.Controls
                         int RowIndex = dgv.SelectedCells[i].RowIndex;
                         if (!index.Contains(RowIndex)) btList[RowIndex].Delete();                        
                     }
+                    GetData();//刷新
                 }
                 else return;
             }
@@ -403,13 +405,13 @@ namespace DotNet.WinForm.Controls
         #endregion              
 
         #region 设置数据行的提示信息
-        private void dgv_RowEnter()
+        private void SetCellToolTipText(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 for (int i = 0; i < this.dgv.Rows[e.RowIndex].Cells.Count; i++)
                 {
-                StringBuilder builder = new StringBuilder();
+                    StringBuilder builder = new StringBuilder();
                     builder.AppendFormat("行数据基本信息：\r\n\t", new object[0]);
                     for (int j = 0; j < this.dgv.Rows[e.RowIndex].Cells.Count; j++)
                     {
@@ -419,10 +421,8 @@ namespace DotNet.WinForm.Controls
                             builder.AppendFormat("{0}：{1}\r\n\t", this.dgv.Columns[j].HeaderText, cell.Value);
                         }
                     }
-                    
-                        this.dgv[i,e.RowIndex].ToolTipText = builder.ToString();
-                    }                    
-           
+                    this.dgv[i, e.RowIndex].ToolTipText = builder.ToString();
+                }                    
             }
             catch
             {
