@@ -26,7 +26,7 @@ namespace LotteryTicketSoft
     /// 验证过滤管理
     /// </summary>
     public partial class MainForm
-    {       
+    {
         #region 初始化
         private static DataManage _filterDM;
         //过滤管理窗体
