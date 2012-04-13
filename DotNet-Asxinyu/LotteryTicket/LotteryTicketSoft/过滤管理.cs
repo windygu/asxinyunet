@@ -27,9 +27,10 @@ namespace LotteryTicketSoft
     /// </summary>
     public partial class MainForm
     {
+        #region 窗体属性
         private static DataManage _filterDM;
         //过滤管理窗体
-        public static DataManage FilterDM 
+        public static DataManage FilterDM
         {
             get { 
                 if(_filterDM ==null )
@@ -39,6 +40,11 @@ namespace LotteryTicketSoft
             }
             set{_filterDM = value ;}
         }
+        public static void dm_Disposed(object sender, EventArgs e)
+        {
+            _filterDM = null;
+        }
+
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterNumbers();
@@ -56,13 +62,13 @@ namespace LotteryTicketSoft
             //增加菜单的相关代码
             string[] menuNames = { "CrossValidate", "Filter", "Remove", "SaveProject" };
             string[] dispTexts = { "交叉验证", "过滤", "移除记录", "保存方案" };
-            EventHandler[] eventNames ={ toolStripCrossValidate_Click,//交叉验证
-                        toolStripFilter_Click,//过滤
-                        toolStripRemove_Click,//移除记录
+            EventHandler[] eventNames ={ toolStripCrossValidate_Click,
+                        toolStripFilter_Click,
+                        toolStripRemove_Click,
                         toolStripSaveProject_Click}; //保存方案
             //默认的集成不能完成，需要修改生成的主窗体
             FilterDM.InitializeSettings(CP);
-            FilterDM.InitializeSettings(CP);
+            //FilterDM.InitializeSettings(CP);
             FilterDM.Name = "dm";
             FilterDM.Dock = DockStyle.Fill;
             FormModel tf = new FormModel();
@@ -71,12 +77,8 @@ namespace LotteryTicketSoft
             tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             //增加
             FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
-
             tf.MdiParent = this;
-            tf.Show();
-            //FormModel frm = LotteryTicketSoft.GraphForm.DataPrediction.CreateForm2(CP);
-            //frm.MdiParent = this;
-            //frm.Show();
+            tf.Show();            
         }
 
         #region 交叉验证
@@ -152,10 +154,6 @@ namespace LotteryTicketSoft
             //}
         }
         #endregion
-
-        public  static void dm_Disposed(object sender,EventArgs e)
-        {
-            _filterDM = null;
-        }
+      
     }
 }
