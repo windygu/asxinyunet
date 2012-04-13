@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{50D7FAE5-2304-4395-A6FA-7D35279D9D84}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewLife.CommonEntity</RootNamespace>
+    <AssemblyName>NewLife.CommonEntity</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\生成\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\生成\NewLife.CommonEntity.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\生成\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\生成\NewLife.CommonEntity.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NewLife.Core, Version=3.4.4356.17832, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\DLL\NewLife.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XCode, Version=8.3.4352.37758, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\XCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommonService.cs" />
+    <Compile Include="Common\CommonEntityBase.cs" />
+    <Compile Include="Exceptions\EntityException.cs" />
+    <Compile Include="Interfaces\ICommonManageProvider.cs" />
+    <Compile Include="Interfaces\IEntityForm.cs" />
+    <Compile Include="Interfaces\IManageProvider.cs" />
+    <Compile Include="Interfaces\IManagePage.cs" />
+    <Compile Include="Interfaces\IManageUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\AttachmentHttpHandler.cs" />
+    <Compile Include="Web\DownloadFile.cs" />
+    <Compile Include="Web\EntityForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\EntityForm2.cs" />
+    <Compile Include="Web\ShowPicture.cs" />
+    <Compile Include="Web\WebPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="实体\Guid分类.Biz.cs">
+      <DependentUpon>Guid分类.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\Guid分类.cs" />
+    <!--<Compile Include="实体\分类.Biz.cs" />-->
+    <Compile Include="实体\分类.cs" />
+    <Compile Include="实体\分类.Biz.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>分类.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\地区.Biz.cs">
+      <DependentUpon>地区.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\地区.cs" />
+    <Compile Include="实体\地区.Init.cs">
+      <DependentUpon>地区.cs</DependentUpon>
+    </Compile>
+    <None Include="实体\地区编码.Biz.cs">
+      <DependentUpon>地区编码.cs</DependentUpon>
+    </None>
+    <None Include="实体\地区编码.cs" />
+    <Compile Include="实体\序列.Biz.cs">
+      <DependentUpon>序列.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\序列.cs" />
+    <Compile Include="实体\用户配置.Biz.cs">
+      <DependentUpon>用户配置.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\用户配置.cs" />
+    <Compile Include="实体\简单信息.Biz.cs">
+      <DependentUpon>简单信息.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\简单信息.cs" />
+    <Compile Include="实体\简单分类.Biz.cs">
+      <DependentUpon>简单分类.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\简单分类.cs">
+    </Compile>
+    <Compile Include="实体\设置.Biz.cs">
+      <DependentUpon>设置.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\设置.cs" />
+    <Compile Include="模版\模版.Biz.cs">
+      <DependentUpon>模版.cs</DependentUpon>
+    </Compile>
+    <Compile Include="模版\模版.cs" />
+    <Compile Include="模版\模版内容.Biz.cs">
+      <DependentUpon>模版内容.cs</DependentUpon>
+    </Compile>
+    <Compile Include="模版\模版内容.cs" />
+    <Compile Include="模版\模版项.Biz.cs">
+      <DependentUpon>模版项.cs</DependentUpon>
+    </Compile>
+    <Compile Include="模版\模版项.cs" />
+    <Compile Include="管理和授权\日志.Biz.cs">
+      <DependentUpon>日志.cs</DependentUpon>
+    </Compile>
+    <Compile Include="管理和授权\日志.cs" />
+    <Compile Include="管理和授权\用户.Biz.cs">
+      <DependentUpon>用户.cs</DependentUpon>
+    </Compile>
+    <Compile Include="管理和授权\用户.cs" />
+    <Compile Include="管理和授权\管理员.Biz.cs">
+      <DependentUpon>管理员.cs</DependentUpon>
+    </Compile>
+    <Compile Include="管理和授权\管理员.cs" />
+    <Compile Include="实体\统计.Biz.cs">
+      <DependentUpon>统计.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\统计.cs" />
+    <Compile Include="管理和授权\菜单.Biz.cs">
+      <DependentUpon>菜单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="管理和授权\菜单.cs" />
+    <Compile Include="管理和授权\角色.Biz.cs">
+      <DependentUpon>角色.cs</DependentUpon>
+    </Compile>
+    <Compile Include="管理和授权\角色.cs" />
+    <Compile Include="管理和授权\角色和菜单.Biz.cs">
+      <DependentUpon>角色和菜单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="管理和授权\角色和菜单.cs" />
+    <Compile Include="实体\附件.Biz.cs">
+      <DependentUpon>附件.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实体\附件.cs">
+    </Compile>
+    <Compile Include="管理和授权\默认后台.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UpdateInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Web\nopic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mssql_Common.xml" />
+    <EmbeddedResource Include="实体\AreaCode.txt">
+      <DependentUpon>地区.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="模版\模版.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="任务\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
