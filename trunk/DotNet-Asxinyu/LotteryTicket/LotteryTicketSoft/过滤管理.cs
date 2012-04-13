@@ -26,8 +26,8 @@ namespace LotteryTicketSoft
     /// 验证过滤管理
     /// </summary>
     public partial class MainForm
-    {
-        #region 窗体属性
+    {       
+        #region 初始化
         private static DataManage _filterDM;
         //过滤管理窗体
         public static DataManage FilterDM
@@ -44,21 +44,34 @@ namespace LotteryTicketSoft
         {
             _filterDM = null;
         }
+        #endregion
 
+        #region 过滤主函数
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FilterNumbers();
+            DataControlParams CP = GetFilterControlParams();//得到参数
+            SetFilterDM(CP);//设置控件
+            ShowFilterForm().Show();//设置窗体并
         }
-        //过滤操作
-        private void FilterNumbers()
+        /// <summary>
+        /// 设置窗体的相关属性
+        /// </summary>        
+        private FormModel ShowFilterForm()
         {
-            string[] remove = new string[] { tb_Rules._.Remark.Description };
-            Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
-            bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
-            bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
-               "LotteryTicketSoft.GraphForm.AddRules");
-            CP.IsEnablePaging = false;
+            FormModel tf = new FormModel();
+            tf.Size = new Size(FilterDM.Width + 15, FilterDM.Size.Height + 40);
+            tf.Controls.Add(FilterDM);//将控件添加到窗体中
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            tf.Text = "";  //设置标题
+            tf.MdiParent = this;
+            return tf;
+        }
+        /// <summary>
+        /// 设置控件的菜单及相关属性
+        /// </summary>
+        /// <param name="CP"></param>
+        private void SetFilterDM(DataControlParams CP)
+        {
             //增加菜单的相关代码
             string[] menuNames = { "CrossValidate", "Filter", "Remove", "SaveProject" };
             string[] dispTexts = { "交叉验证", "过滤", "移除记录", "保存方案" };
@@ -68,19 +81,27 @@ namespace LotteryTicketSoft
                         toolStripSaveProject_Click}; //保存方案
             //默认的集成不能完成，需要修改生成的主窗体
             FilterDM.InitializeSettings(CP);
-            //FilterDM.InitializeSettings(CP);
             FilterDM.Name = "dm";
             FilterDM.Dock = DockStyle.Fill;
-            FormModel tf = new FormModel();
-            tf.Size = new Size(FilterDM.Width + 15, FilterDM.Size.Height + 40);
-            tf.Controls.Add(FilterDM);//将控件添加到窗体中            
-            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-            //增加
             FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
-            tf.MdiParent = this;
-            tf.Show();            
         }
+        /// <summary>
+        /// 获取窗体中数据管理控件的配置信息
+        /// </summary>        
+        private static DataControlParams GetFilterControlParams()
+        {
+            string[] remove = new string[] { tb_Rules._.Remark.Description };
+            Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
+            bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
+            bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
+               "LotteryTicketSoft.GraphForm.AddRules");
+            CP.IsEnablePaging = false;
+            return CP;
+        }
+        #endregion
 
+        #region 菜单事件
         #region 交叉验证
         public RuleInfo[] GetRuleList(object sender, EventArgs e)
         {
@@ -154,6 +175,6 @@ namespace LotteryTicketSoft
             //}
         }
         #endregion
-      
+        #endregion
     }
 }
