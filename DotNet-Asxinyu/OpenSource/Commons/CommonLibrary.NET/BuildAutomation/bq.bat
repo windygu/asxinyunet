@@ -1,1 +1,0 @@
-nant.exe -buildfile:%1.xml -D:args.settings.file="_commonlibrary.settings.xml"
