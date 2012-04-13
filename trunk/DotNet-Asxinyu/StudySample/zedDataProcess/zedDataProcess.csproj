@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{FF030E0F-EABB-45DA-8C72-5143950E817A}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>zedDataProcess</RootNamespace>
+    <AssemblyName>zedDataProcess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\..\代码生成\zedDataProcess\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ZedGraph">
+      <HintPath>..\..\ResouceFiles\Lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnalysisChart\EveryNumCycle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\EveryNumCycle.Designer.cs">
+      <DependentUpon>EveryNumCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\FormModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\FormModel.Designer.cs">
+      <DependentUpon>FormModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\MeanAndLinComplex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\MeanAndLinComplex.Designer.cs">
+      <DependentUpon>MeanAndLinComplex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\OneNumSameCycle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\OneNumSameCycle.Designer.cs">
+      <DependentUpon>OneNumSameCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\SingleNumCycle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\SingleNumCycle.Designer.cs">
+      <DependentUpon>SingleNumCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\EveryNoCycle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\EveryNoCycle.Designer.cs">
+      <DependentUpon>EveryNoCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\ThreeSameCycle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\ThreeSameCycle.Designer.cs">
+      <DependentUpon>ThreeSameCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\TwoNumSameCycle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\TwoNumSameCycle.Designer.cs">
+      <DependentUpon>TwoNumSameCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisChart\TwoSameInOneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisChart\TwoSameInOneForm.Designer.cs">
+      <DependentUpon>TwoSameInOneForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="B_Malgorithm.cs" />
+    <Compile Include="DataProcess.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="someValidate.cs" />
+    <Compile Include="Test.cs" />
+    <EmbeddedResource Include="AnalysisChart\EveryNumCycle.resx">
+      <DependentUpon>EveryNumCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\FormModel.resx">
+      <DependentUpon>FormModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\MeanAndLinComplex.resx">
+      <DependentUpon>MeanAndLinComplex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\OneNumSameCycle.resx">
+      <DependentUpon>OneNumSameCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\SingleNumCycle.resx">
+      <DependentUpon>SingleNumCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\EveryNoCycle.resx">
+      <DependentUpon>EveryNoCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\ThreeSameCycle.resx">
+      <DependentUpon>ThreeSameCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\TwoNumSameCycle.resx">
+      <DependentUpon>TwoNumSameCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisChart\TwoSameInOneForm.resx">
+      <DependentUpon>TwoSameInOneForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
