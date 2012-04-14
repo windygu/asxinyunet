@@ -120,7 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="过滤管理.cs" />
+    <Compile Include="FilterDmHelper.cs" />
     <EmbeddedResource Include="GraphForm\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
