@@ -27,6 +27,7 @@ namespace DotNet.WinForm.Controls
     /// <summary>
     /// 通用数据管理控件
     /// //TODO:还需要考虑一种外部数据加载进来,只单纯的显示和分页的情况，即数据显示用
+    /// 2012-04-14 增加右键菜单属性，进一步重构与精简
     /// 2012-04-11 开始借鉴WHC控件的功能，增加打印，并优化菜单生成方式，数据行显示
     /// 2012-03-05 可以在此基础上，对控件进行集成，以完成更多的综合操作功能。特别是对dgv中数据的操作
     /// 2011-12-15 进一步优化操作，重构代码和增加配置窗体功能
@@ -34,38 +35,11 @@ namespace DotNet.WinForm.Controls
     /// </summary>
     public partial class DataManage : UserControl
     {
-        #region 初始化,属性及字段
+        #region 初始化
         public DataManage()
         {
             InitializeComponent();
-        }
-        /// <summary>
-        /// 表单标题,用于打印
-        /// </summary>
-        public string Title { get; set; }
-        /// <summary>
-        /// 实体列表
-        /// </summary>
-        public IEntityList btList; //List<IEntity>
-
-        /// <summary>
-        /// 当前查询字符串,初始为空
-        /// </summary>
-        public string cutSql;
-        
-        /// <summary>
-        /// 实体操作对象
-        /// </summary>
-        public IEntityOperate EntityOper { get; set; }
-
-        /// <summary>
-        /// DataGridView控件，用于对DataGridView进行功能扩展
-        /// </summary>
-        public DataGridView DgvCtl
-        {
-            get { return this.dgv ;}
-        }       
-        /// <summary>
+        }        
         /// 初始化配置,传入配置信息类
         /// </summary>
         public virtual void InitializeSettings(DataControlParams controlParams)
@@ -78,31 +52,48 @@ namespace DotNet.WinForm.Controls
         }        
         #endregion
 
-        #region 静态字段
+        #region 字段
+        /// <summary>
+        /// 窗体标题文本,也可以用于打印
+        /// </summary>
+        public string Title;
+        /// <summary>
+        /// 实体列表
+        /// </summary>
+        public IEntityList btList; //List<IEntity>
+
+        /// <summary>
+        /// 当前查询字符串,初始为空
+        /// </summary>
+        public string cutSql;
+
+        /// <summary>
+        /// 实体操作对象
+        /// </summary>
+        public IEntityOperate EntityOper;
         /// <summary>
         /// 配置参数,主要参数都在此
         /// </summary>
-        public static DataControlParams ControlParams;
+        public DataControlParams ControlParams;
         /// <summary>
         /// 用于配置条件窗体
         /// </summary>
-        public static string TableName;
+        public string TableName;
 
         /// <summary>
         /// 添加实体窗体对象
         /// </summary>
-        public static FormModel AddForm;
+        public FormModel AddForm;
 
         /// <summary>
         /// 搜索窗体对象
         /// </summary>
-        public static FormModel SeachFm;
+        public FormModel SeachFm;
 
         /// <summary>
         /// 相关的配置参数字典类
         /// </summary>
-        public static ConfigDictionary Items;
-
+        public ConfigDictionary Items;
         
         #endregion
 
@@ -129,7 +120,7 @@ namespace DotNet.WinForm.Controls
         /// 获取添加实体窗体
         /// </summary>
         /// <returns>窗体对象</returns>
-        public static FormModel GetAddForm()
+        public FormModel GetAddForm()
         {
             if (AddForm == null)
             {
@@ -144,7 +135,7 @@ namespace DotNet.WinForm.Controls
         /// 获取搜索窗体
         /// </summary>
         /// <returns></returns>
-        public static FormModel GetSearchForm()
+        public FormModel GetSearchForm()
         {
             if (SeachFm == null)
             {
@@ -215,15 +206,23 @@ namespace DotNet.WinForm.Controls
         #endregion
 
         #region 其他配置,分页，数据操作对象等
+        /// <summary>
+        /// 初始化其他属性
+        /// </summary>
         protected virtual void Initial()
         {
-            this.winPage.PageSize = ControlParams.PageSize;
+            this.winPage.PageSize = ControlParams.PageSize;//设置每页数目
             if (ControlParams.EntityType != null)
             {
                 this.EntityOper = EntityFactory.CreateOperate(ControlParams.EntityType);
                 TableName = EntityOper.TableName;
             }
             this.winPage.Visible = ControlParams.IsEnablePaging;
+            if (!ControlParams.IsEnablePaging )
+            {
+                //不分页,这隐藏掉分页控件
+                this.splitContainer1.SplitterDistance = this.Size.Height - toolStrip1.Height - stausInfoShow1.Height;
+            }
             this.cutSql = "";
         }
         #endregion

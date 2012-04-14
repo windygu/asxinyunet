@@ -135,21 +135,25 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(1);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgv);
+            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.splitContainer1.Panel1MinSize = 310;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.winPage);
+            this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.splitContainer1.Panel2MinSize = 0;
+            this.splitContainer1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Size = new System.Drawing.Size(655, 346);
-            this.splitContainer1.SplitterDistance = 320;
+            this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 41;
             // 
@@ -161,7 +165,7 @@
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(655, 320);
+            this.dgv.Size = new System.Drawing.Size(655, 317);
             this.dgv.TabIndex = 42;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SetCellToolTipText);
@@ -179,7 +183,7 @@
             this.winPage.Location = new System.Drawing.Point(232, 0);
             this.winPage.Name = "winPage";
             this.winPage.RecordCount = 0;
-            this.winPage.Size = new System.Drawing.Size(423, 25);
+            this.winPage.Size = new System.Drawing.Size(423, 28);
             this.winPage.TabIndex = 0;
             this.winPage.PageIndexChanged += new DotNet.WinForm.Controls.WinFormPager.EventHandler(this.winPage_PageIndexChanged);
             // 
@@ -224,8 +228,8 @@
         protected System.Windows.Forms.ToolStripButton toolExit;
         public DotNet.WinForm.Controls.StausInfoShow stausInfoShow1;
         public System.Windows.Forms.DataGridView dgv;
-        protected WinFormPager winPage;
         protected System.Windows.Forms.ToolStripButton toolStripSetting;
         private System.Windows.Forms.ToolStripButton toolPrint;
+        protected WinFormPager winPage;
     }
 }
