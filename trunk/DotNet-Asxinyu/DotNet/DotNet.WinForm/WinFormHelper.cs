@@ -473,6 +473,23 @@ namespace DotNet.WinForm
             return combo ;
         }
         #endregion
+
+        #region 获取FormModel窗体，传入一个控件
+        /// <summary>
+        /// 获取控件的窗体，并设置标题
+        /// </summary>
+        /// <param name="cl">控件</param>
+        /// <param name="titleText">标题文本</param>        
+        public static FormModel GetControlForm(Control cl,string titleText = "")
+        {
+            FormModel tf = new FormModel();            
+            tf.Size = new Size(cl.Width + 15, cl.Size.Height + 40);
+            tf.Controls.Add(cl);//将控件添加到窗体中
+            tf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            tf.Text = titleText;
+            return tf;
+        }
+        #endregion
     }
     #endregion
 }
