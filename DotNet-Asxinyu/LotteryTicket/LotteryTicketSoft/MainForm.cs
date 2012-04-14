@@ -48,20 +48,21 @@ namespace LotteryTicketSoft
       
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string[] remove = new string[] { tb_Rules._.Remark.Description };
             Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
             bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
             bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo), remove, bandingSource,
-               "LotteryTicketSoft.GraphForm.AddIndexInfo");
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo));
+            CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
             CP.IsEnablePaging = false;
+            CP.ColumnsBandingList = bandingSource ;
+            CP.ControlAssemblyName = "LotteryTicketSoft.GraphForm.AddIndexInfo";
             FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
             frm.MdiParent = this;
             frm.Show();
         }
         private void 历史数据预览ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Ssq), null, null);
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Ssq));
             CP.IsEnablePaging = true;
             CP.IsEnableAddBtn = false;
             FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
@@ -119,14 +120,15 @@ namespace LotteryTicketSoft
         /// 获取窗体中数据管理控件的配置信息
         /// </summary>        
         private static DataControlParams GetFilterControlParams()
-        {
-            string[] remove = new string[] { tb_Rules._.Remark.Description };
+        {            
             Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
             bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
             bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
-            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
-               "LotteryTicketSoft.GraphForm.AddRules");
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules));
             CP.IsEnablePaging = false;
+            CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
+            CP.ColumnsBandingList = bandingSource;
+            CP.ControlName = "LotteryTicketSoft.GraphForm.AddRules";
             //TODO:需要把菜单、名称、都包括进去，省略SetFilterDM方法，直接初始化得到窗体
             return CP;
         }
@@ -144,7 +146,6 @@ namespace LotteryTicketSoft
                 MessageBox.Show("近期数据更新成功", "任务提示");//可以考虑其他地方显示该信息
             });
         }
-
         private void 更新所有ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Task.Factory.StartNew(() =>
@@ -160,12 +161,11 @@ namespace LotteryTicketSoft
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm.CreateForm().ShowDialog();
-        }
-        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        }        
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TestForm tf = new TestForm();
-            tf.Show();
+            Application.Exit();
         }
-        #endregion       
+        #endregion  
     }
 }
