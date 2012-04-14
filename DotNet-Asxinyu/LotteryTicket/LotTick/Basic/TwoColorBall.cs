@@ -25,8 +25,7 @@ namespace LotTick
         /// 双色球构造函数
         /// </summary>
         public TwoColorBall(int calcuteRows)
-        {
-            //双色球有特殊的蓝球号码            
+        {               
             this.CalcuteRows = calcuteRows;
             //获取数据集,分别填充NormalData和SpecialData 
             this.LotData = GetBallData(calcuteRows);
