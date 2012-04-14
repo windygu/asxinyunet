@@ -17,19 +17,25 @@ namespace LotTick
     public class TwoColorBall : BasicLotTick
     {
         #region 公共变量
+        /// <summary>
+        /// 奖金数量
+        /// </summary>
         private static int[] prizeReward = new int[7] { 0, 5000000, 200000, 3000, 200, 10, 5 };
         #endregion
 
         #region 构造函数
+
+
         /// <summary>
         /// 双色球构造函数
         /// </summary>
         public TwoColorBall(int calcuteRows)
-        {               
+        {
             this.CalcuteRows = calcuteRows;
-            //获取数据集,分别填充NormalData和SpecialData 
+            //获取数据集,分别填充NormalData和SpecialData
             this.LotData = GetBallData(calcuteRows);
         }
+
 
         #region 获取计算数据
         /// <summary>
