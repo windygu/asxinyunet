@@ -184,22 +184,22 @@ namespace DotNet.WinForm
         /// <summary>
         /// 是否开启右键菜单，默认开启
         /// </summary>
-        public bool IsHaveMenu { get; set; }               
+        public bool IsEnableMenu { get; set; }               
 
         /// <summary>
         /// 是否开启鼠标选择动态求和功能：默认关闭
         /// </summary>
-        public bool IsHaveSelectSum { get; set; }
+        public bool IsEnableSelectSum { get; set; }
 
         /// <summary>
-        /// 是否开启分页功能：默认开启
+        /// 是否开启分页功能：默认关闭
         /// </summary>
         public bool IsEnablePaging { get; set; }
 
         /// <summary>
         /// 开启分页后，每页的记录数,默认20
         /// </summary>
-        public int PageSize { get; set; }                
+        public int PageSize { get; set; }
         #endregion
 
         #region 子窗体属性
@@ -221,6 +221,7 @@ namespace DotNet.WinForm
         /// 配置文件名称
         /// </summary>
         public string SettingFileName { get; set; }
+
         #endregion
 
         #region Dgv 格式控制
@@ -269,59 +270,39 @@ namespace DotNet.WinForm
         /// <param name="firSi"></param>
         /// <param name="SecSi"></param>
         /// <param name="ThirdSi"></param>
-        public void SetText(string formText, string firSi, string SecSi, string ThirdSi)
+        public void SetText(string formText , string firSi = "", string SecSi = "", string ThirdSi = "")
         {
             this.FormText = formText;
             this.FirStatusInfo = firSi;
             this.SecStatusInfo = SecSi;
             this.ThirdStatusInfo = ThirdSi;
         }
+        /// <summary>
+        /// 设置右键菜单及分页控件
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="isEnableMenu"></param>
+        /// <param name="isEnableSelectSum"></param>
+        /// <param name="isEnablePage"></param>
+        public void SetMenuAndPager(int pageSize = 20, bool isEnableMenu = true,
+                                    bool isEnableSelectSum = false, bool isEnablePage = false)
+        {
+            this.PageSize = pageSize;
+            this.IsEnableMenu = isEnableMenu;
+            this.IsEnableSelectSum = isEnableSelectSum;
+            this.IsEnablePaging = isEnablePage;
+        }
         #endregion
 
         #region 构造函数
         /// <summary>
-        /// 构造函数
+        /// 构造函数, 大部分默认配置
         /// </summary>
-        /// <param name="assemblyName">添加控件所在程序的名称</param>
-        /// <param name="entityType">实体类型</param>
-        /// <param name="removeColumnsName"> 不需要显示的列的名称,默认都显示</param>
-        /// <param name="bandingData"> 需要绑定的列的数据源，键值对(列名：字符串数组)</param>
-        /// <param name="controlName">控件的类型名称</param>
-        /// <param name="isHaveMenu">是否开启右键菜单，默认开启</param>
-        /// <param name="isEnableAddBtn">是否使得添加按钮可用，默认：可用</param>
-        /// <param name="isHaveSelectSum">是否开启鼠标选择动态求和功能：默认关闭</param>
-        /// <param name="isEnablePaging">是否开启分页功能：默认开启</param>
-        /// <param name="addFormTitleText"> 添加窗体的标题，默认：添加数据</param>
-        /// <param name="manageFormTitleText">管理窗体标题，默认：集中数据管理</param>
-        /// <param name="pageSize">开启分页后，每页的记录数</param>
-        /// <param name="firStatusInfo"> 底部状态栏 第一个的显示信息</param>
-        /// <param name="secStatusInfo">底部状态栏 第二个的显示信息</param>
-        /// <param name="thirdStatusInfo">底部状态栏 第三个的显示信息</param>
-        /// <param name="settingFileName">配置信息名称,默认为null</param>
-        public DataControlParams(string assemblyName, Type entityType,string[] removeColumnsName,Dictionary<string,string[]> bandingData
-            ,string controlName = "",bool isHaveMenu = true ,bool isEnableAddBtn = true ,
-            bool isHaveSelectSum = false, bool isEnablePaging = true ,
-            string addFormTitleText = "添加数据", string manageFormTitleText = "集中数据管理",
-            int pageSize = 20, string firStatusInfo = "数据管理模块",
-            string secStatusInfo = "", string thirdStatusInfo = "开发:asxinyu@qq.com",string settingFileName=null )
+        public DataControlParams(string assemblyName, Type entityType)
         {
-            this.ControlAssemblyName = assemblyName;
-            this.ControlName = controlName;
-            this.EntityType = entityType;
-            if (removeColumnsName != null) this.DeleteColumnsName = removeColumnsName;
-            else this.DeleteColumnsName = new string[] { string.Empty };//空            
-            this.ColumnsBandingList = bandingData;
-            this.IsHaveMenu = isHaveMenu;
-            this.IsEnableAddBtn = isEnableAddBtn ;
-            this.IsHaveSelectSum = isHaveSelectSum;
-            this.IsEnablePaging = isEnablePaging;
-            this.AddFormTitleText = addFormTitleText;
-            
-            this.PageSize = pageSize;
-            this.FirStatusInfo = firStatusInfo;
-            this.SecStatusInfo = secStatusInfo;
-            this.ThirdStatusInfo = thirdStatusInfo;
-            this.SettingFileName = settingFileName;
+            SetAssemblyType(assemblyName,entityType );
+            SetEnableToolBtn();
+            SetMenuAndPager();
         }
         #endregion
     }
