@@ -78,6 +78,7 @@ namespace LotTick
     {
         /// <summary>
         /// 初始化,传入参数对象
+        /// 设置一个
         /// </summary>        
         public LotIndex(RuleInfo ruleInfo,bool isDeleteMode = false)
         {
@@ -86,7 +87,7 @@ namespace LotTick
         }
         public LotIndex()
         {
-            IsDeleteNumberMode = false;
+            IsDeleteNumberMode = false;//默认不是杀号模式
         }
         /// <summary>
         /// 比较规则对象
