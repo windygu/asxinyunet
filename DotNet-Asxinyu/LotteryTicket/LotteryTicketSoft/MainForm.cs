@@ -70,6 +70,67 @@ namespace LotteryTicketSoft
         }
         #endregion
 
+        #region 过滤管理事件
+        private static DataManage _filterDM;
+        //过滤管理窗体
+        public static DataManage FilterDM
+        {
+            get
+            {
+                if (_filterDM == null)
+                    _filterDM = new DataManage();
+                _filterDM.Disposed += new EventHandler(dm_Disposed);//单例模式解决无法访问的问题
+                return _filterDM;
+            }
+            set { _filterDM = value; }
+        }
+        public static void dm_Disposed(object sender, EventArgs e)
+        {
+            _filterDM = null;
+        }
+        private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataControlParams CP = GetFilterControlParams();//得到参数
+            SetFilterDM(CP);//设置控件
+            FormModel fm = WinFormHelper.GetControlForm(FilterDM, "");
+            fm.MdiParent = this;
+            fm.Show();
+        }
+        /// <summary>
+        /// 设置控件的菜单及相关属性
+        /// </summary>
+        /// <param name="CP"></param>
+        private void SetFilterDM(DataControlParams CP)
+        {
+            //增加菜单的相关代码
+            string[] menuNames = { "CrossValidate", "Filter", "Remove", "SaveProject" };
+            string[] dispTexts = { "交叉验证", "过滤", "移除记录", "保存方案" };
+            EventHandler[] eventNames ={ FilterDmHelper.toolStripCrossValidate_Click,
+                        FilterDmHelper.toolStripFilter_Click,
+                        FilterDmHelper.toolStripRemove_Click,
+                        FilterDmHelper.toolStripSaveProject_Click}; //保存方案
+            //默认的集成不能完成，需要修改生成的主窗体
+            FilterDM.InitializeSettings(CP);
+            FilterDM.Name = "dm";
+            FilterDM.Dock = DockStyle.Fill;
+            FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
+        }
+        /// <summary>
+        /// 获取窗体中数据管理控件的配置信息
+        /// </summary>        
+        private static DataControlParams GetFilterControlParams()
+        {
+            string[] remove = new string[] { tb_Rules._.Remark.Description };
+            Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
+            bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
+            bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
+            DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
+               "LotteryTicketSoft.GraphForm.AddRules");
+            CP.IsEnablePaging = false;
+            return CP;
+        }
+        #endregion
+
         #region 其他功能--数据更新，关于
         /// <summary>
         /// 异步调用，更新数据
