@@ -12,7 +12,7 @@ namespace LotTick
         /// <param name="ruleName">比较类型名称</param>
         /// <param name="conditions">比较参数</param>
         public RuleInfo(string IndexName, string ruleName,LotTick.CompareParams conditions,
-            int ruleId,int calculateRows = 100 ,int needRows = 0)
+            int ruleId,int calculateRows = 1000 ,int needRows = 0)
         {
             Assembly indexAssembe = Assembly.LoadFrom("LotTick.exe");
             Type t = indexAssembe.GetType("LotTick.Index_"+IndexName );
