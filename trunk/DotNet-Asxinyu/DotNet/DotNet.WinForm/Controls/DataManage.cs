@@ -246,11 +246,13 @@ namespace DotNet.WinForm.Controls
             for (int i = 0; i < btList.Count; i++) list.Add(btList[i]);            
             dgv.DataSource = list;
             //每次移除不需要的列
-            foreach (string  item in ControlParams.DeleteColumnsName )
+            if (ControlParams.DeleteColumnsName !=null )
             {
-                if (dgv.Columns.Contains(item )) dgv.Columns.Remove(item );
+                foreach (string item in ControlParams.DeleteColumnsName)
+                {
+                    if (dgv.Columns.Contains(item)) dgv.Columns.Remove(item);
+                }
             }
-
         }
         #endregion
              
