@@ -121,9 +121,9 @@ namespace DotNet.WinForm
     /// </summary>
     public class DataControlParams
     {
-        #region 数据管理窗体的属性
+        #region 程序集和实体类型
         /// <summary>
-        /// 添加控件所在程序的名称
+        /// 添加实体控件所在程序的名称
         /// </summary>
         public string ControlAssemblyName { get; set; }
 
@@ -131,46 +131,38 @@ namespace DotNet.WinForm
         /// 控件的类型名称
         /// </summary>
         public string ControlName { get; set; }
-
-        /// <summary>
-		/// 是否开启右键菜单，默认开启
-		/// </summary>
-        public bool IsHaveMenu { get; set; }
-
+                
         /// <summary>
 		/// 实体类型
 		/// </summary>
         public Type EntityType { get; set; }
+        #endregion
 
+        #region 工具栏可用性
         /// <summary>
         /// 是否使得添加按钮可用，默认：可用
         /// </summary>
         public bool IsEnableAddBtn { get; set; }
-
+        
         /// <summary>
-        /// 添加窗体的标题，默认：添加数据
+        /// 是否开启搜索窗体，默认：可用
         /// </summary>
-        public string AddFormTitleText { get; set; }
-
+        public bool IsEnableSearchBtn { get; set; }
         /// <summary>
-        /// 管理窗体标题，默认：集中数据管理
+        /// 是否开启配置窗体，默认：可用
         /// </summary>
-        public string ManageFormTitleText { get; set; }
-
+        public bool IsEnableSettingBtn { get; set; }
         /// <summary>
-        /// 是否开启鼠标选择动态求和功能：默认关闭
+        /// 是否开启打印功能，默认：可用
         /// </summary>
-        public bool IsHaveSelectSum { get; set; }
+        public bool IsEnablePrintBtn { get; set; }
+        #endregion
 
+        #region 标题、状态栏等
         /// <summary>
-        /// 是否开启分页功能：默认开启
+        /// 窗体标题文本,默认：集中数据管理
         /// </summary>
-        public bool IsEnablePaging { get; set; }
-
-        /// <summary>
-        /// 开启分页后，每页的记录数
-        /// </summary>
-        public int PageSize { get; set; }
+        public string FormText { get; set; }
 
         /// <summary>
         /// 底部状态栏 第一个的显示信息
@@ -185,10 +177,37 @@ namespace DotNet.WinForm
         /// <summary>
         /// 底部状态栏 第三个的显示信息
         /// </summary>
-        public string ThirdStatusInfo { get; set; }
+        public string ThirdStatusInfo { get; set; }        
         #endregion
 
-        #region 添加实体窗体属性
+        #region 菜单、分页控件
+        /// <summary>
+        /// 是否开启右键菜单，默认开启
+        /// </summary>
+        public bool IsHaveMenu { get; set; }               
+
+        /// <summary>
+        /// 是否开启鼠标选择动态求和功能：默认关闭
+        /// </summary>
+        public bool IsHaveSelectSum { get; set; }
+
+        /// <summary>
+        /// 是否开启分页功能：默认开启
+        /// </summary>
+        public bool IsEnablePaging { get; set; }
+
+        /// <summary>
+        /// 开启分页后，每页的记录数,默认20
+        /// </summary>
+        public int PageSize { get; set; }                
+        #endregion
+
+        #region 子窗体属性
+        /// <summary>
+        /// 添加窗体的标题，默认：添加数据
+        /// </summary>
+        public string AddFormTitleText { get; set; }
+
         /// <summary>
         /// 添加实体窗体的显示模式
         /// </summary>
@@ -197,16 +216,14 @@ namespace DotNet.WinForm
         /// 添加窗体的搜索字符串
         /// </summary>
         public string AddFormSearchString { get; set; }
-        #endregion
 
-        #region 其他子窗体属性
         /// <summary>
         /// 配置文件名称
         /// </summary>
-        public string SettingFileName;
+        public string SettingFileName { get; set; }
         #endregion
 
-        #region Dgv
+        #region Dgv 格式控制
         /// <summary>
         /// 不需要显示的列的名称,默认都显示
         /// </summary>
@@ -215,6 +232,50 @@ namespace DotNet.WinForm
         /// 需要绑定的列的数据源，键值对(列名：字符串数组)
         /// </summary>
         public Dictionary<string, string[]> ColumnsBandingList { get; set; }
+        #endregion
+
+        #region  初始化方法--分开进行
+        /// <summary>
+        /// 设置程序集及实体类型、名称
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <param name="entityTyp"></param>
+        /// <param name="controlName"></param>
+        public void SetAssemblyType(string assemblyName, Type entityTyp, string controlName = "")
+        {
+            this.ControlAssemblyName = assemblyName;
+            this.EntityType = entityTyp;
+            this.ControlName = ControlName;
+        }
+        /// <summary>
+        /// 设置工具栏的可用性，默认都为可用
+        /// </summary>
+        /// <param name="isEnableAddBtn"></param>
+        /// <param name="isEnableSearchBtn"></param>
+        /// <param name="isEnableSetBtn"></param>
+        /// <param name="isEnablePrintBtn"></param>
+        public void SetEnableToolBtn(bool isEnableAddBtn = true, bool isEnableSearchBtn = true,
+                                     bool isEnableSetBtn = true, bool isEnablePrintBtn = true)
+        {
+            this.IsEnableAddBtn = isEnableAddBtn;
+            this.IsEnableSearchBtn = isEnableSearchBtn;
+            this.IsEnableSettingBtn = isEnableSetBtn;
+            this.IsEnablePrintBtn = isEnablePrintBtn;
+        }
+        /// <summary>
+        /// 设置窗体文本和状态栏文本
+        /// </summary>
+        /// <param name="formText"></param>
+        /// <param name="firSi"></param>
+        /// <param name="SecSi"></param>
+        /// <param name="ThirdSi"></param>
+        public void SetText(string formText, string firSi, string SecSi, string ThirdSi)
+        {
+            this.FormText = formText;
+            this.FirStatusInfo = firSi;
+            this.SecStatusInfo = SecSi;
+            this.ThirdStatusInfo = ThirdSi;
+        }
         #endregion
 
         #region 构造函数
@@ -255,7 +316,7 @@ namespace DotNet.WinForm
             this.IsHaveSelectSum = isHaveSelectSum;
             this.IsEnablePaging = isEnablePaging;
             this.AddFormTitleText = addFormTitleText;
-            this.ManageFormTitleText = manageFormTitleText;
+            
             this.PageSize = pageSize;
             this.FirStatusInfo = firStatusInfo;
             this.SecStatusInfo = secStatusInfo;

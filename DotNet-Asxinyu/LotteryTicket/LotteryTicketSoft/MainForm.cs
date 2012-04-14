@@ -91,8 +91,8 @@ namespace LotteryTicketSoft
         private void 验证过滤管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataControlParams CP = GetFilterControlParams();//得到参数
-            SetFilterDM(CP);//设置控件
-            FormModel fm = WinFormHelper.GetControlForm(FilterDM, "");
+            SetFilterDM(CP);//设置控件,
+            FormModel fm = WinFormHelper.GetControlForm(FilterDM, "");//
             fm.MdiParent = this;
             fm.Show();
         }
@@ -127,6 +127,7 @@ namespace LotteryTicketSoft
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules), remove, bandingSource,
                "LotteryTicketSoft.GraphForm.AddRules");
             CP.IsEnablePaging = false;
+            //TODO:需要把菜单、名称、都包括进去，省略SetFilterDM方法，直接初始化得到窗体
             return CP;
         }
         #endregion
