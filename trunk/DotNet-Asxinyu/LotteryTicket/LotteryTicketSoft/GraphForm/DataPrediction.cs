@@ -57,7 +57,7 @@ namespace LotteryTicketSoft.GraphForm
         public override void InitialDgvMenu()
         {
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
-            if (ControlParams.IsHaveMenu)
+            if (ControlParams.IsEnableMenu)
             {
                 string[] menuNames = { "Edit", "Delete", "CrossValidate", "Filter", "Remove", "SaveProject" };
                 string[] dispTexts = { "修改记录", "删除记录", "交叉验证", "过滤", "移除记录", "保存方案" };

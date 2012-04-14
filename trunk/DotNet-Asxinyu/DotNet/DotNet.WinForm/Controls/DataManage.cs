@@ -152,7 +152,7 @@ namespace DotNet.WinForm.Controls
         public virtual void InitialDgvMenu()
         {
             //配置菜单,这一功能提供让在基类中实现,提供基本的增删查改等常规菜单代码
-            if (ControlParams.IsHaveMenu)
+            if (ControlParams.IsEnableMenu)
             {
                 dgv.ContextMenuStrip = WinFormHelper.GetContextMenuStrip(
                         new string[] { "Edit", "Delete" }, new string[] { "修改记录", "删除记录" },
@@ -186,7 +186,7 @@ namespace DotNet.WinForm.Controls
         protected void InitialDgvDynamicSum()
         {
             //动态求和设置
-            if (ControlParams.IsHaveSelectSum)
+            if (ControlParams.IsEnableSelectSum)
             {
                 this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
                 this.stausInfoShow1.SetToolInfo1(ControlParams.FirStatusInfo);
@@ -260,7 +260,7 @@ namespace DotNet.WinForm.Controls
         /// </summary>       
         protected virtual void toolStripMenuEdit_Click(object sender, EventArgs e)
         {
-            if (ControlParams.IsHaveMenu  && dgv.CurrentCell != null)
+            if (ControlParams.IsEnableMenu  && dgv.CurrentCell != null)
             {
                 dgv.BeginEdit(false);
             }
@@ -270,7 +270,7 @@ namespace DotNet.WinForm.Controls
         /// </summary>       
         protected virtual void toolStripMenuDelete_Click(object sender, EventArgs e)
         {
-            if (!ControlParams.IsHaveMenu) return;//是否非法删除,没有权限则不能操作
+            if (!ControlParams.IsEnableMenu) return;//是否非法删除,没有权限则不能操作
             try
             {
                 if (MessageBox.Show("是否删除选中记录,删除后不可恢复,确认请点'是'", "提示", MessageBoxButtons.YesNo)
