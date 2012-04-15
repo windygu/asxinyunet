@@ -298,9 +298,7 @@ namespace LotTick
         /// </summary>
         public int SpecialData;
 
-        public LotTickData()
-        {
-        }
+        public LotTickData(){}
         public LotTickData(int[] normalData)
         {
             this.NormalData = normalData;
@@ -308,7 +306,6 @@ namespace LotTick
         /// <summary>
         /// 获取数据
         /// </summary>
-        /// <returns></returns>
         public SSQ_temp GetEntity()
         {
             SSQ_temp t = new SSQ_temp();

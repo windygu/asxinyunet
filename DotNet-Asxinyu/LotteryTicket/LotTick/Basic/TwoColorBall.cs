@@ -20,7 +20,7 @@ namespace LotTick
         /// <summary>
         /// 奖金数量
         /// </summary>
-        private static int[] prizeReward = new int[7] { 0, 5000000, 200000, 3000, 200, 10, 5 };
+        private static int[] prizeReward = new int[7] { 0, 5000000, 200000, 3000, 200, 10, 5 };        
         #endregion
 
         #region 构造函数
@@ -33,9 +33,8 @@ namespace LotTick
         {
             this.CalcuteRows = calcuteRows;
             //获取数据集,分别填充NormalData和SpecialData
-            this.LotData = GetBallData(calcuteRows);
+            this.LotData = GetBallData(-1);
         }
-
 
         #region 获取计算数据
         /// <summary>
@@ -61,7 +60,7 @@ namespace LotTick
         /// 获取计算所需数据,从已有的数据中直接获取,用于过滤
         /// </summary>        
        public static LotTickData[] GetNeedDataByCache(int needRows)
-        {            
+       {
             if (needRows <= 0) return null;
             else
             {
@@ -70,11 +69,7 @@ namespace LotTick
                 Array.Copy(data, data.Length - needRows, curData, 0, needRows);
                 return curData;
             }
-        }
-        //根据期号获取最近的几期数据
-        //public static LotTickData[] GetNeedDataByNo()
-        //{
-        //}
+        }       
         #endregion
         #endregion
 
