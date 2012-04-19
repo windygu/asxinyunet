@@ -1,0 +1,748 @@
+﻿//-----------------------------------------------------------------
+// All Rights Reserved , Copyright (C) 2012 , Hairihan TECH, Ltd .
+//-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using DotNet.Business;
+using DotNet.Utilities;
+
+public partial class ShowUserBill3 : BasePage
+{
+    public string CategoryCode
+    {
+        get
+        {
+            return this.txtCategoryCode.Value;
+        }
+        set
+        {
+            this.txtCategoryCode.Value = value;
+        }
+    }
+
+    public string ObjectId
+    {
+        get
+        {
+            return this.txtObjectId.Value;
+        }
+        set
+        {
+            this.txtObjectId.Value = value;
+        }
+    }
+
+    public string CurrentId
+    {
+        get
+        {
+            return this.txtCurrentId.Value;
+        }
+        set
+        {
+            this.txtCurrentId.Value = value;
+        }
+    }
+
+    #region private void GetParamters() 读取参数
+    /// <summary>
+    /// 读取参数
+    /// </summary>
+    private void GetParamters()
+    {
+        if (Page.Request["CategoryCode"] != null)
+        {
+            this.CategoryCode = Page.Request["CategoryCode"].ToString();
+        }
+        if (Page.Request["ObjectId"] != null)
+        {
+            this.ObjectId = Page.Request["ObjectId"].ToString();
+        }
+        if (Page.Request["Id"] != null)
+        {
+            this.CurrentId = Page.Request["Id"].ToString();
+        }
+        if (Page.Request["CurrentId"] != null)
+        {
+            this.CurrentId = Page.Request["CurrentId"].ToString();
+        }
+    }
+    #endregion
+
+    /// <summary>
+    /// 显示单据内容
+    /// </summary>
+    public void ShowDetails()
+    {
+        BaseWorkFlowCurrentEntity workFlowCurrentEntity = null;
+        BaseWorkFlowCurrentManager workFlowCurrentManager = null;
+        if (!string.IsNullOrEmpty(this.CurrentId))
+        {
+            workFlowCurrentManager = new BaseWorkFlowCurrentManager(this.WorkFlowDbHelper, this.UserInfo);
+            workFlowCurrentEntity = workFlowCurrentManager.GetEntity(this.CurrentId);
+            // 从模板表里有效状态区分,是否模板还是报表
+            this.ObjectId = workFlowCurrentEntity.ObjectId;
+            this.CategoryCode = workFlowCurrentEntity.CategoryCode;
+        }
+        if (!string.IsNullOrEmpty(this.ObjectId))
+        {
+            UserBillManager userBillManager = new UserBillManager(this.WorkFlowDbHelper, this.UserInfo);
+            BaseNewsEntity newsEntity = userBillManager.GetEntity(this.ObjectId);
+            if (newsEntity != null)
+            {
+                this.lblUserBill.Text = newsEntity.Contents;
+                this.CategoryCode = newsEntity.CategoryCode;
+                this.ObjectId = newsEntity.Id;
+                if (Page.Request["ReadOnly"] != null)
+                {
+                    this.GetReportSignature();
+                }
+                else
+                {
+                    if (newsEntity.CreateUserId.Equals(this.UserInfo.Id))
+                    {
+
+                        if (string.IsNullOrEmpty(newsEntity.AuditStatus)
+                            || newsEntity.AuditStatus.Equals(AuditStatus.Draft.ToString())
+                            || newsEntity.AuditStatus.Equals(AuditStatus.AuditReject.ToString()))
+                        {
+                            this.tbUser.Visible = true;
+                            this.btnAutoStatr.Visible = true;
+                            // 这里需要获取第一步审核的审核步骤信息
+                            string workFlowCode = this.UserInfo.Id + "_" + this.CategoryCode;
+                            // 这里控制，现实几个审核记录的功能才对。
+                            BaseWorkFlowActivityManager workFlowActivityManager = new BaseWorkFlowActivityManager(this.WorkFlowDbHelper, this.UserInfo);
+                            DataTable dtWorkFlowActivity = workFlowActivityManager.GetActivityDTByCode(workFlowCode);
+                            this.ShowWorkFlowActivity(dtWorkFlowActivity);
+                            /*
+                            workFlowCurrentManager = new BaseWorkFlowCurrentManager(this.WorkFlowDbHelper, this.UserInfo); 
+                            BaseWorkFlowActivityEntity workFlowActivityEntity = workFlowCurrentManager.GetFirstActivityEntity(workFlowCode);
+                            if (workFlowActivityEntity != null)
+                            {
+                                if (workFlowActivityEntity.AuditUserId.Equals("Anyone"))
+                                {
+                                    this.ShowToUser();
+                                    this.GetOrganizeTree();
+                                }
+                            }
+                            */
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private DataTable GetReportSignatureDate(BaseWorkFlowCurrentEntity workFlowCurrentEntity)
+    {
+        DataTable signatureDateDT = null;
+        if (!string.IsNullOrEmpty(workFlowCurrentEntity.Id))
+        {
+            BaseWorkFlowHistoryManager workFlowHistoryManager = new BaseWorkFlowHistoryManager(this.UserInfo);
+            signatureDateDT = workFlowHistoryManager.GetDataTable(new KeyValuePair<string, object>(BaseWorkFlowHistoryTable.FieldCurrentFlowId, workFlowCurrentEntity.Id), BaseWorkFlowHistoryTable.FieldCreateOn + " DESC");
+        }
+        return signatureDateDT;
+    }
+
+    private string GetReportSignatureDate(DataTable signatureDateDT, string activityId, out string userId)
+    {
+        userId = string.Empty;
+        string returnValue = string.Empty;
+        if (signatureDateDT != null)
+        {
+            foreach (DataRow dataRow in signatureDateDT.Rows)
+            {
+                // if (dataRow[BaseWorkFlowHistoryTable.FieldAuditUserId].ToString().Equals(userId))
+                if (dataRow[BaseWorkFlowHistoryTable.FieldActivityId].ToString().Equals(activityId))
+                {
+                    if (dataRow[BaseWorkFlowHistoryTable.FieldAuditStatus].ToString().Equals(AuditStatus.AuditPass.ToString())
+                        || dataRow[BaseWorkFlowHistoryTable.FieldAuditStatus].ToString().Equals(AuditStatus.AuditComplete.ToString())
+                        || dataRow[BaseWorkFlowHistoryTable.FieldAuditStatus].ToString().Equals(AuditStatus.WaitForAudit.ToString())
+                        )
+                    {
+                        userId = dataRow[BaseWorkFlowHistoryTable.FieldAuditUserId].ToString();
+                        returnValue = dataRow[BaseWorkFlowHistoryTable.FieldAuditDate].ToString();
+                        break;
+                    }
+                }
+            }
+        }
+        return returnValue;
+    }
+
+    public string UserSignatureDate1 = string.Empty;
+    public string UserSignatureDate2 = string.Empty;
+    public string UserSignatureDate3 = string.Empty;
+    public string UserSignatureDate4 = string.Empty; 
+    public string UserSignatureDate5 = string.Empty;
+    public string UserSignatureDate6 = string.Empty;
+    public string UserSignatureDate7 = string.Empty;
+    public string UserSignatureDate8 = string.Empty;
+
+    #region private void GetReportSignature()
+    /// <summary>
+    /// 获取报表签名
+    /// </summary>
+    private void GetReportSignature()
+    {
+        if (string.IsNullOrEmpty(this.CurrentId))
+        {
+            return;
+        }
+        BaseWorkFlowCurrentManager workFlowCurrentManager = new BaseWorkFlowCurrentManager(this.UserInfo);
+        BaseWorkFlowCurrentEntity workFlowCurrentEntity = workFlowCurrentManager.GetEntity(this.CurrentId);
+        // 通过当前的工作流主键,获得当前的审批流程主键
+        BaseWorkFlowActivityManager workFlowActivityManager = new BaseWorkFlowActivityManager(this.UserInfo);
+        // 通过审批步骤,获取当前的用户
+        // 再看当前用户,有审批通过否?再能确认是否审核通过
+        // 当前是审核到了第几步了.是否有被退回情况等,需要确认.
+        DataTable dt = null;
+        string userId = string.Empty;
+        if (workFlowCurrentEntity.AuditStatus.Equals(AuditStatus.AuditPass.ToString())
+            || workFlowCurrentEntity.AuditStatus.Equals(AuditStatus.WaitForAudit.ToString()))
+        {
+            dt = workFlowActivityManager.GetBackToDT(workFlowCurrentEntity);
+        }
+        else if (workFlowCurrentEntity.AuditStatus.Equals(AuditStatus.AuditComplete.ToString()))
+        {
+            dt = workFlowActivityManager.GetBackToDT(workFlowCurrentEntity.Id, workFlowCurrentEntity.WorkFlowId.ToString());
+        }
+        if (dt != null)
+        {
+            DataTable signatureDateDT = GetReportSignatureDate(workFlowCurrentEntity);
+            int userSignature = 0;
+            string activityId = string.Empty;
+            string userSignatureDate = string.Empty;
+            userSignature = 1;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate1 = DateTime.Parse(userSignatureDate).ToString("MM-dd HH:mm");
+                }
+            }
+            userSignature = 2;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate2 = DateTime.Parse(userSignatureDate).ToString("MM-dd HH:mm");
+                }
+            }
+            userSignature = 3;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate3 = DateTime.Parse(userSignatureDate).ToString("MM-dd HH:mm");
+                }
+            }
+            userSignature = 4;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate4 = DateTime.Parse(userSignatureDate).ToString("yy-MM-dd");
+                }
+            }
+            userSignature = 5;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate5 = DateTime.Parse(userSignatureDate).ToString("MM-dd HH:mm");
+                }
+            }
+            userSignature = 6;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate6 = DateTime.Parse(userSignatureDate).ToString("MM-dd HH:mm");
+                }
+            }
+            userSignature = 7;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate7 = DateTime.Parse(userSignatureDate).ToString("MM-dd HH:mm");
+                }
+            }
+            userSignature = 8;
+            if (dt.Rows.Count >= userSignature)
+            {
+                activityId = dt.Rows[userSignature - 1][BaseWorkFlowActivityEntity.FieldId].ToString();
+                userSignatureDate = GetReportSignatureDate(signatureDateDT, activityId, out userId);
+                if (!string.IsNullOrEmpty(userSignatureDate))
+                {
+                    UserSignatureDate8 = DateTime.Parse(userSignatureDate).ToString("yy-MM-dd");
+                }
+            }
+        }
+    }
+    #endregion
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        // 应该是检查是否已登录
+        if (!Page.IsPostBack)
+        {
+            this.GetParamters();
+            this.ShowDetails();            
+        }
+    }
+
+    /*
+    private void ShowToUser()
+    {
+        this.lblDepartment.Visible = true;
+        this.cmbDepartment01.Visible = true;
+        this.lblUser.Visible = true;
+        this.cmbUser01.Visible = true;
+    }
+    */
+
+    #region private void GetOrganizeTree() 绑定下拉筐数据
+    /// <summary>
+    /// 绑定下拉筐数据
+    /// </summary>
+    private void GetOrganizeTree()
+    {
+        BaseOrganizeManager organizeManager = new BaseOrganizeManager(this.UserCenterDbHelper, this.UserInfo);
+        DataTable organizeTable = organizeManager.GetOrganizeTree();
+        if (this.cmbDepartment01.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment01, organizeTable);
+        }
+        if (this.cmbDepartment02.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment02, organizeTable);
+        }
+        if (this.cmbDepartment03.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment03, organizeTable);
+        }
+        if (this.cmbDepartment04.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment04, organizeTable);
+        }
+        if (this.cmbDepartment05.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment05, organizeTable);
+        }
+        if (this.cmbDepartment06.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment06, organizeTable);
+        }
+        if (this.cmbDepartment07.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment07, organizeTable);
+        }
+        if (this.cmbDepartment08.Visible)
+        {
+            this.SetDepartmentList(this.cmbDepartment08, organizeTable);
+        }
+    }
+    #endregion
+
+    #region private void SetDepartmentList(DropDownList cmbDepartment, DataTable organizeTable)
+    /// <summary>
+    /// 设置部门
+    /// </summary>
+    /// <param name="cmbDepartment">部门</param>
+    /// <param name="organizeTable">数据</param>
+    private void SetDepartmentList(DropDownList cmbDepartment, DataTable organizeTable)
+    {
+        cmbDepartment.DataValueField = BaseOrganizeEntity.FieldId;
+        cmbDepartment.DataTextField = BaseOrganizeEntity.FieldFullName;
+        cmbDepartment.DataSource = organizeTable;
+        cmbDepartment.DataBind();
+        cmbDepartment.Items.Insert(0, new ListItem());
+    }
+    #endregion
+
+    #region private void SetUserList(DropDownList cmbDepartment, DropDownList cmbUser)
+    /// <summary>
+    /// 显示部门人员
+    /// </summary>
+    /// <param name="cmbDepartment">部门</param>
+    /// <param name="cmbUser">人员</param>
+    private void SetUserList(DropDownList cmbDepartment, DropDownList cmbUser)
+    {
+        cmbUser.Items.Clear();
+        if (!string.IsNullOrEmpty(cmbDepartment.SelectedValue))
+        {
+            BaseUserManager userManager = new BaseUserManager(this.UserCenterDbHelper, this.UserInfo);
+            DataTable userTable = userManager.GetDataTableByDepartment(cmbDepartment.SelectedValue);
+            cmbUser.DataValueField = BaseUserEntity.FieldId;
+            cmbUser.DataTextField = BaseUserEntity.FieldRealName;
+            cmbUser.DataSource = userTable;
+            cmbUser.DataBind();
+            cmbUser.Items.Insert(0, new ListItem());
+        }
+    }
+    #endregion
+
+    protected void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DropDownList cmbDepartment = (DropDownList)sender;
+        DropDownList cmbUser = (DropDownList)this.FindControl(cmbDepartment.ToolTip);
+        this.SetUserList(cmbDepartment, cmbUser);
+    }
+
+    #region private bool CheckInput()
+    /// <summary>
+    /// 检查输入的有效性
+    /// </summary>
+    /// <returns>有效</returns>
+    private bool CheckInput()
+    {
+        bool returnValue = true;
+        // 检查下一个审核人是否为空?
+        if (!this.CheckInput(cmbDepartment01, cmbUser01))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment02, cmbUser02))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment03, cmbUser03))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment04, cmbUser04))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment05, cmbUser05))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment06, cmbUser06))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment07, cmbUser07))
+        {
+            return false;
+        }
+        if (!this.CheckInput(cmbDepartment08, cmbUser08))
+        {
+            return false;
+        }
+        return returnValue;
+    }
+    #endregion
+
+    #region private bool CheckInput(DropDownList cmbDepartment, DropDownList cmbUser)
+    /// <summary>
+    /// 检查输入情况
+    /// </summary>
+    /// <param name="cmbDepartment">部门</param>
+    /// <param name="cmbUser">人员</param>
+    /// <returns>是否正确</returns>
+    private bool CheckInput(DropDownList cmbDepartment, DropDownList cmbUser)
+    {
+        bool returnValue = true;
+        // 检查下一个审核人是否为空?
+        if (cmbDepartment.Visible)
+        {
+            if (cmbDepartment.Text.Trim().Length == 0)
+            {
+                ScriptUtil.AlertAndRedirect("提示信息：请选择审核部门。", Page.Request.RawUrl);
+                return false;
+            }
+        }
+        if (cmbUser.Visible)
+        {
+            if (cmbUser.Text.Trim().Length == 0)
+            {
+                ScriptUtil.AlertAndRedirect("提示信息：请选择审核人。", Page.Request.RawUrl);
+                return false;
+            }
+        }
+        return returnValue;
+    }
+    #endregion
+
+    protected string AutoStatr()
+    {
+        string returnValue = string.Empty;
+        try
+        {
+            this.WorkFlowDbHelper.Open();
+            UserBillManager newsManager = new UserBillManager(this.WorkFlowDbHelper, this.UserInfo);
+            string workFlowCode = this.UserInfo.Id + "_" + this.CategoryCode;
+            // 这里控制，现实几个审核记录的功能才对。
+            BaseWorkFlowActivityManager workFlowActivityManager = new BaseWorkFlowActivityManager(this.WorkFlowDbHelper, this.UserInfo);
+            DataTable dtWorkFlowActivity = workFlowActivityManager.GetActivityDTByCode(workFlowCode);
+            this.GetWorkFlowActivity(dtWorkFlowActivity);
+            returnValue = newsManager.AutoStatr(this.ObjectId, string.Empty, dtWorkFlowActivity);
+        }
+        catch (Exception ex)
+        {
+            // this.WorkFlowDbHelper.RollbackTransaction();
+            this.LogException(ex);
+            throw ex;
+        }
+        finally
+        {
+            this.WorkFlowDbHelper.Close();
+        }
+        // 是否显示提示信息
+        if (Utilities.ShowInformation)
+        {
+            if (!string.IsNullOrEmpty(returnValue))
+            {
+                ScriptUtil.AlertAndCloseWindow("提示信息：单据提交成功。");
+                // ScriptUtil.AlertAndRedirect("提示信息：单据提交成功。", "UserDraftAdmin.aspx");
+            }
+            else
+            {
+                ScriptUtil.AlertMessage("提示信息：单据提交失败。");
+            }
+        }
+        return returnValue;
+    }
+
+    protected void btnAutoStatr_Click(object sender, EventArgs e)
+    {
+        if (this.CheckInput())
+        {
+            this.AutoStatr();
+        }
+    }
+
+    #region private DataTable GetWorkFlowActivity(DataTable dtWorkFlowActivity)
+    /// <summary>
+    /// 获取审核流程
+    /// </summary>
+    /// <param name="dtWorkFlowActivity">审核流程定义</param>
+    /// <returns>用户选择的流程</returns>
+    private DataTable GetWorkFlowActivity(DataTable dtWorkFlowActivity)
+    {
+        if (this.cmbDepartment01.Visible)
+        {
+            dtWorkFlowActivity.Rows[0][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment01.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[0][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment01.SelectedItem.Text.Replace("-", "").Replace("|","");
+        }
+        if (this.cmbUser01.Visible)
+        {
+            dtWorkFlowActivity.Rows[0][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser01.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[0][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser01.SelectedItem.Text;
+        }
+        if (this.cmbDepartment02.Visible)
+        {
+            dtWorkFlowActivity.Rows[1][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment02.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[1][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment02.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser02.Visible)
+        {
+            dtWorkFlowActivity.Rows[1][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser02.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[1][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser02.SelectedItem.Text;
+        }
+        if (this.cmbDepartment03.Visible)
+        {
+            dtWorkFlowActivity.Rows[2][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment03.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[2][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment03.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser03.Visible)
+        {
+            dtWorkFlowActivity.Rows[2][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser03.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[2][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser03.SelectedItem.Text;
+        }
+        if (this.cmbDepartment04.Visible)
+        {
+            dtWorkFlowActivity.Rows[3][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment04.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[3][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment04.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser04.Visible)
+        {
+            dtWorkFlowActivity.Rows[3][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser04.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[3][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser04.SelectedItem.Text;
+        }
+        if (this.cmbDepartment05.Visible)
+        {
+            dtWorkFlowActivity.Rows[4][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment05.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[4][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment05.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser05.Visible)
+        {
+            dtWorkFlowActivity.Rows[4][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser05.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[4][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser05.SelectedItem.Text;
+        }
+        if (this.cmbDepartment06.Visible)
+        {
+            dtWorkFlowActivity.Rows[5][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment06.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[5][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment06.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser06.Visible)
+        {
+            dtWorkFlowActivity.Rows[5][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser06.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[5][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser06.SelectedItem.Text;
+        }
+        if (this.cmbDepartment07.Visible)
+        {
+            dtWorkFlowActivity.Rows[6][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment07.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[6][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment07.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser07.Visible)
+        {
+            dtWorkFlowActivity.Rows[6][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser07.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[6][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser07.SelectedItem.Text;
+        }
+        if (this.cmbDepartment08.Visible)
+        {
+            dtWorkFlowActivity.Rows[7][BaseWorkFlowActivityEntity.FieldAuditDepartmentId] = this.cmbDepartment08.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[7][BaseWorkFlowActivityEntity.FieldAuditDepartmentName] = this.cmbDepartment08.SelectedItem.Text.Replace("-", "").Replace("|", "");
+        }
+        if (this.cmbUser08.Visible)
+        {
+            dtWorkFlowActivity.Rows[7][BaseWorkFlowActivityEntity.FieldAuditUserId] = this.cmbUser08.SelectedItem.Value;
+            dtWorkFlowActivity.Rows[7][BaseWorkFlowActivityEntity.FieldAuditUserRealName] = this.cmbUser08.SelectedItem.Text;
+        }
+        return dtWorkFlowActivity;
+    }
+    #endregion
+
+    #region private void ShowWorkFlowActivity(DataTable dtWorkFlowActivity)
+    /// <summary>
+    /// 显示工作流程
+    /// </summary>
+    /// <param name="dtWorkFlowActivity">审核步骤</param>
+    private void ShowWorkFlowActivity(DataTable dtWorkFlowActivity)
+    {
+        this.ShowStep(dtWorkFlowActivity.Rows.Count);
+
+        this.GetOrganizeTree();
+
+        if (dtWorkFlowActivity.Rows.Count > 0)
+        {
+            SetStepValue(cmbDepartment01, dtWorkFlowActivity.Rows[0][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser01, dtWorkFlowActivity.Rows[0][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 1)
+        {
+            SetStepValue(cmbDepartment02, dtWorkFlowActivity.Rows[1][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser02, dtWorkFlowActivity.Rows[1][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 2)
+        {
+            SetStepValue(cmbDepartment03, dtWorkFlowActivity.Rows[2][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser03, dtWorkFlowActivity.Rows[2][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 3)
+        {
+            SetStepValue(cmbDepartment04, dtWorkFlowActivity.Rows[3][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser04, dtWorkFlowActivity.Rows[3][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 4)
+        {
+            SetStepValue(cmbDepartment05, dtWorkFlowActivity.Rows[4][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser05, dtWorkFlowActivity.Rows[4][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 5)
+        {
+            SetStepValue(cmbDepartment06, dtWorkFlowActivity.Rows[5][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser06, dtWorkFlowActivity.Rows[5][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 6)
+        {
+            SetStepValue(cmbDepartment07, dtWorkFlowActivity.Rows[6][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser07, dtWorkFlowActivity.Rows[6][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+        if (dtWorkFlowActivity.Rows.Count > 7)
+        {
+            SetStepValue(cmbDepartment08, dtWorkFlowActivity.Rows[7][BaseWorkFlowActivityEntity.FieldAuditDepartmentId].ToString(), cmbUser08, dtWorkFlowActivity.Rows[7][BaseWorkFlowActivityEntity.FieldAuditUserId].ToString());
+        }
+    }
+    #endregion
+
+    #region private void SetStepValue(DropDownList cmbDepartment, string departmentId, DropDownList cmbUser, string userId)
+    /// <summary>
+    /// 绑定部门、用户
+    /// </summary>
+    /// <param name="cmbDepartment">部门</param>
+    /// <param name="departmentId">部门主键</param>
+    /// <param name="cmbUser">用户</param>
+    /// <param name="userId">用户主键</param>
+    private void SetStepValue(DropDownList cmbDepartment, string departmentId, DropDownList cmbUser, string userId)
+    {
+        if (string.IsNullOrEmpty(departmentId) || departmentId.Equals("Anyone"))
+        {
+            cmbDepartment.Enabled = true;
+        }
+        else
+        {
+            Utilities.SetDropDownListValue(cmbDepartment, departmentId);
+            cmbDepartment.Enabled = false;
+            this.SetUserList(cmbDepartment, cmbUser);
+        }
+        if (string.IsNullOrEmpty(userId) || userId.Equals("Anyone"))
+        {
+            cmbUser.Enabled = true;
+        }
+        else
+        {
+            Utilities.SetDropDownListValue(cmbUser, userId);
+            cmbUser.Enabled = false;
+        }
+    }
+    #endregion
+
+    #region private void ShowStep(int topN)
+    /// <summary>
+    /// 显示前几个审核步骤
+    /// </summary>
+    /// <param name="topN">个数</param>
+    private void ShowStep(int topN)
+    {
+        if (topN > 0)
+        {
+            this.rowStep1.Visible = true;
+        }
+        if (topN > 1)
+        {
+            this.rowStep2.Visible = true;
+        }
+        if (topN > 2)
+        {
+            this.rowStep3.Visible = true;
+        }
+        if (topN > 3)
+        {
+            this.rowStep4.Visible = true;
+        }
+        if (topN > 4)
+        {
+            this.rowStep5.Visible = true;
+        }
+        if (topN > 5)
+        {
+            this.rowStep6.Visible = true;
+        }
+        if (topN > 6)
+        {
+            this.rowStep7.Visible = true;
+        }
+        if (topN > 7)
+        {
+            this.rowStep8.Visible = true;
+        }
+    }
+    #endregion
+}

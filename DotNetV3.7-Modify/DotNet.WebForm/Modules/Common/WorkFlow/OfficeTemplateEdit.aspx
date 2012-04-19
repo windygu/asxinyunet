@@ -1,0 +1,207 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OfficeTemplateEdit.aspx.cs"
+    Inherits="OfficeTemplateEdit" %>
+
+<html>
+<head id="Head1" runat="server">
+    <title>编辑单据模板</title>
+    <meta name="Coding" content="杭州海日涵科技有限公司" />
+    <meta name="Author" content="JiRiGaLa_Bao@Hotmail.com">
+    <base target="_self" />
+    <script language='javascript' src='../../../JavaScript/Default.js'></script>
+    <link href="../../../Themes/Blue/Blue_tmp.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../../Themes/Default/Global.css">
+    <link rel="stylesheet" type="text/css" href="../../../Themes/Default/Portal.css">
+    <link rel="stylesheet" type="text/css" href="../../../Themes/Default/Style.css">
+    <style>
+        .Button
+        {
+            background-image: url(../../../Themes/Default/Images/Button.gif);
+        }
+        .ButtonLarge
+        {
+            background-image: url(../../../Themes/Default/Images/ButtonLarge.gif);
+        }
+    </style>
+    <% 
+        //获取服务器的地址
+        string PostURL = this.Session["PostURL"].ToString();
+        // 获取服务器的地址
+        string FileURL = this.Session["FileURL"].ToString();
+    %>
+    <script id="clientEventHandlersJS" language="javascript">
+<!--
+        function WebOffice1_NotifyCtrlReady() {
+            // LoadOriginalFile接口装载文件,
+            // 如果是编辑已有文件，则文件路径传给LoadOriginalFile的第一个参数
+            document.all.WebOffice1.LoadOriginalFile("<%=FileURL %>", "xls");
+
+            //屏蔽标准工具栏的前几个按钮
+            document.all.WebOffice1.SetToolBarButton2("Standard", 1, 1);
+            document.all.WebOffice1.SetToolBarButton2("Standard", 2, 1);
+            document.all.WebOffice1.SetToolBarButton2("Standard", 3, 1);
+            document.all.WebOffice1.SetToolBarButton2("Standard", 6, 1);
+
+            //屏蔽文件菜单项
+            document.all.WebOffice1.SetToolBarButton2("Worksheet Menu Bar", 1, 1);
+        }
+//-->
+    </script>
+    <!-- --------------------===  Weboffice初始化完成事件--------------------- -->
+    <script language="javascript" for="WebOffice1" event="NotifyCtrlReady">
+<!--
+ WebOffice1_NotifyCtrlReady() // 在装载完Weboffice(执行<object>...</object>)控件后自动执行WebOffice1_NotifyCtrlReady方法
+//-->
+    </script>
+    <script language="javascript" type="text/javascript">
+        // ---------------------== 关闭页面时调用此函数，关闭文档--------------------- //
+        function window_onunload() {
+            document.all.WebOffice1.Close();
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+    // -----------------------------== 保存文档 ==------------------------------------ //
+    function SaveDoc() {
+	 if(myform.txtTitle.value ==""){
+		alert("模板标题")
+		myform.txtTitle.focus();
+		return false;
+	 }
+
+	 if(myform.txtCode.value ==""){
+		alert("模板编号")
+		myform.txtCode.focus();
+		return false;
+	 }
+
+	//恢复被屏蔽的菜单项和快捷键
+    document.all.WebOffice1.SetToolBarButton2("Standard",1,3);
+    document.all.WebOffice1.SetToolBarButton2("Standard",2,3);
+    document.all.WebOffice1.SetToolBarButton2("Standard",3,3);
+    document.all.WebOffice1.SetToolBarButton2("Standard",6,3);           
+        //恢复文件菜单项
+        document.all.WebOffice1.SetToolBarButton2("Worksheet Menu Bar",1,4);         
+//初始化Http引擎
+	document.all.WebOffice1.HttpInit();			
+//添加相应的Post元素
+	<%
+	if(this.TemplateId != ""){          
+	%>
+	document.all.WebOffice1.SetTrackRevisions(0);
+	document.all.WebOffice1.ShowRevisions(0);
+	document.all.WebOffice1.HttpAddPostString("ID","<%=this.TemplateId%>");
+	 <%
+	 }
+	 %>	
+	document.all.WebOffice1.HttpAddPostString("DocTitle", escape(myform.txtTitle.value));
+	document.all.WebOffice1.HttpAddPostString("DocCode", escape(myform.txtCode.value));
+    document.all.WebOffice1.HttpAddPostString("DocCategory", escape(myform.cmbCategory.value));
+    document.all.WebOffice1.HttpAddPostString("DocIntroduction", escape(myform.txtIntroduction.value));
+    document.all.WebOffice1.HttpAddPostString("DocType","xls");
+	//把当前文档添加到Post元素列表中，文件的标识符䶿DocContent
+	document.all.WebOffice1.HttpAddPostCurrFile("DocContent","");		
+	var vtRet;
+    //HttpPost执行上传的动仿WebOffice支持Http的直接上传，在upload.aspx的页面中,解析Post过去的数据
+    //拆分出Post元素和文件数据，可以有选择性的保存到数据库中，或保存在服务器的文件中⾿
+	//HttpPost的返回值，根据upload.aspx中的设置，返回upload.aspx中Response.Write回来的数据
+
+	vtRet = document.all.WebOffice1.HttpPost("<%=PostURL %>/OfficeTemplateUpload.aspx");
+
+ 	    //alert(vtRet);
+ 	    if("succeed" == vtRet){
+            if(window.opener && !window.opener.closed){
+                window.opener.location.href=window.opener.location.href;
+            }
+            alert("文件上传成功。");
+            document.all.WebOffice1.Close();
+            window.opener=null;
+            window.open('','_self');
+            window.close();
+	        // window.location.href = "OfficeTemplateAdmin.aspx";
+	    }
+        else
+        {
+		    alert(vtRet);
+		    alert("文件上传失败。");
+	    }
+    }
+    </script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <form id="myform" method="post" runat="server">
+    <table width="100%" height="100%" cellspacing="2">
+        <tr>
+            <td>
+                <div class="breadcrumbHeader">
+                    <b>编辑单据模板</b>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td width="100%" height="100%" valign="top" colspan="2">
+                <div style="overflow: auto; width: 100%; height: 100%">
+                    <table id="table_taskallot" class="table" width="100%" height="100%" border="0" cellpadding="0"
+                        cellspacing="0">
+                        <tr>
+                            <td class="td-title" width="100px">
+                                <font color="red">*</font> 模板标题：
+                            </td>
+                            <td class="td-content" colspan="3">
+                                <asp:TextBox ID="txtTitle" runat="server" MaxLength="200" Width="100%" CssClass="ColorBlur"
+                                    onBlur="this.className='ColorBlur';" onfocus="this.className='ColorFocus';"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-title">
+                                <font color="red">*</font> 模板编号：
+                            </td>
+                            <td class="td-content" style="padding-top: 3" width="30%">
+                                <asp:TextBox ID="txtCode" runat="server" MaxLength="100" Width="100%" CssClass="ColorBlur"
+                                    onBlur="this.className='ColorBlur';" onfocus="this.className='ColorFocus';"></asp:TextBox>
+                            </td>
+                            <td class="td-title">
+                                模板分类：
+                            </td>
+                            <td class="td-content" style="padding-top: 3">
+                                <asp:DropDownList ID="cmbCategory" Width="200px" TabIndex="1" runat="server">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-title">
+                                标准流程：
+                            </td>
+                            <td class="td-content" style="padding-top: 3" colspan="3">
+                                <asp:TextBox ID="txtIntroduction" runat="server" MaxLength="400" Width="100%" CssClass="ColorBlur"
+                                    onBlur="this.className='ColorBlur';" onfocus="this.className='ColorFocus';"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-title" height="100%">
+                                模板内容：
+                            </td>
+                            <td class="td-content" style="padding-top: 3" colspan="3" valign="top">
+                                <!-- -----------------------------== 装载weboffice控件 ==----------------------------------->
+                                <script src="../../../JavaScript/LoadWebOffice.js"></script>
+                                <!-- --------------------------------==  结束装载控件 ==------------------------------------->
+                            </td>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" valign="middle" style="height: 20px; margin: auto auto auto auto"
+                colspan="4">
+                <asp:Button ID="btnSave" runat="server" CssClass="Button" Text="保存(S)" AccessKey="S"
+                    TabIndex="3" OnClientClick="return SaveDoc()" onmouseover="this.style.backgroundImage='url(../../../Themes/Default/Images/Buttonm.gif)';"
+                    onmouseout="this.style.backgroundImage='url(../../../Themes/Default/Images/Button.gif)';" />
+                <asp:Button ID="btnReturn" runat="server" CssClass="Button" Text="返回" AccessKey="R"
+                    TabIndex="3" OnClick="btnReturn_Click" onmouseover="this.style.backgroundImage='url(../../../Themes/Default/Images/Buttonm.gif)';"
+                    onmouseout="this.style.backgroundImage='url(../../../Themes/Default/Images/Button.gif)';" />
+            </td>
+        </tr>
+    </table>
+    <asp:HiddenField ID="txtId" runat="server" />
+    <asp:HiddenField ID="txtReturnURL" runat="server" />
+    </form>
+</body>
+</html>

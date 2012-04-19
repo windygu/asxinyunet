@@ -1,0 +1,237 @@
+A
+{
+    font-size: 9pt;
+    font-family: Arial,verdana;
+    text-decoration: none;
+}
+TR
+{
+    font-size: 9pt;
+    font-family: Arial,verdana;
+    text-decoration: none;
+}
+TD
+{
+    font-size: 9pt;
+    font-family: Arial,verdana;
+    text-decoration: none;
+}
+BODY
+{
+    font-size: 12px;
+    scrollbar-face-color: #dee3e7;
+    scrollbar-highlight-color: #ffffff;
+    scrollbar-shadow-color: #dee3e7;
+    color: #000003;
+    scrollbar-3dlight-color: #d1d7dc;
+    line-height: 135%;
+    scrollbar-arrow-color: #006699;
+    scrollbar-track-color: #f6f6f6;
+    scrollbar-darkshadow-color: #98aab1;
+    background-color: #ffffff;
+}
+INPUT
+{
+    border-top-style: none;
+    border-bottom: #9999cc 1px solid;
+    border-right-style: none;
+    border-left-style: none;
+    background-color: transparent;
+}
+.edlineindex
+{
+    border-right: medium none;
+    border-top: medium none;
+    border-left: medium none;
+    border-bottom: #ff9801 1px solid;
+    background-color: transparent;
+    font-size: 9pt;
+    font-family: Arial;
+}
+
+TEXTAREA
+{
+    font-size: 9pt;
+    font-family: Arial,verdana;
+    text-decoration: none;
+}
+SELECT
+{
+    font-size: 9pt;
+    font-family: Arial,verdana;
+    text-decoration: none;
+}
+
+A:LINK
+{
+    color: #039;
+}
+A:VISITED
+{
+    color: #000000;
+}
+A:HOVER
+{
+    color: red;
+}
+
+.grey3d
+{
+    border-right: #1a7c00 1px solid;
+    border-top: #cfff47 1px solid;
+    background: #95e400;
+    border-left: #cfff47 1px solid;
+    border-bottom: #1a7c00 1px solid;
+}
+.grey3db
+{
+    border-right: #666666 1px solid;
+    border-top: #ffffff 1px solid;
+    background: #bfe774;
+    border-left: #ffffff 1px solid;
+    border-bottom: #666666 1px solid;
+}
+.grey3d2
+{
+    border-right: #666666 1px solid;
+    border-top: #ffffff 1px solid;
+    background: #dddddd;
+    border-left: #ffffff 1px solid;
+    color: #333333;
+    border-bottom: #666666 1px solid;
+}
+.grey3d3
+{
+    border-right: #666666 1px solid;
+    border-top: #ffffff 1px solid;
+    background: #eeeeee;
+    border-left: #ffffff 1px solid;
+    color: #000000;
+    border-bottom: #666666 1px solid;
+}
+.gline
+{
+    border-right: #dddddd 1px solid;
+    border-top: #ffffff 1px solid;
+    background: #ffffff;
+    border-left: #ffffff 1px solid;
+    color: #666666;
+    border-bottom: #dddddd 1px solid;
+}
+.grey3d4
+{
+    border-right: #849eb7 1px solid;
+    border-top: #d0e0f1 1px solid;
+    background: url(images/menubg01.gif) #abbdd1;
+    border-left: #d0e0f1 1px solid;
+    color: #000000;
+    border-bottom: #849eb7 1px solid;
+}
+.grey3d4b
+{
+    border-right: #c5c5c5 1px solid;
+    border-top: #f1f1f1 1px solid;
+    background: url(images/menubg02.gif) #f1f1f1;
+    border-left: #f1f1f1 1px solid;
+    color: #000000;
+    border-bottom: #c5c5c5 1px solid;
+}
+.grey3d5
+{
+    border-right: #849eb7 1px solid;
+    border-top: #d0e0f1 1px solid;
+    background: #d0e0f1;
+    border-left: #d0e0f1 1px solid;
+    color: #000000;
+    border-bottom: #849eb7 1px solid;
+}
+.grey3d5b
+{
+    border-right: #e4e4e4 2px solid;
+    border-top: #999999 2px solid;
+    background: #ffffff;
+    border-left: #999999 2px solid;
+    color: #000000;
+    border-bottom: #e4e4e4 2px solid;
+}
+.engtext
+{
+    font-size: 9px;
+    font-family: verdana;
+}
+.labtext
+{
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial;
+}
+.latext
+{
+    font-size: 14px;
+    font-family: Arial;
+}
+.InputButton
+{
+    border-right: #404040 1px ridge;
+    border-top: #ffffff 1px ridge;
+    padding-left: 3px;
+    font-size: 12px;
+    border-left: #ffffff 1px ridge;
+    color: #000000;
+    padding-top: 3px;
+    border-bottom: #404040 1px ridge;
+    height: 24px;
+    background-color: #dee3e7;
+}
+.input02
+{
+    border-right: #404040 1px ridge;
+    border-top: #ffffff 1px ridge;
+    padding-left: 2px;
+    font-size: 12px;
+    border-left: #ffffff 1px ridge;
+    color: #000000;
+    padding-top: 2px;
+    border-bottom: #404040 1px ridge;
+    height: 20px;
+    background-color: #e3e3e3;
+}
+.dtext
+{
+    color: #333333;
+    line-height: 17px;
+    font-family: "Arial";
+    text-decoration: underline;
+}
+A.dtext:link
+{
+    font-size: 12px;
+    color: #333333;
+    line-height: 17px;
+    font-family: "Arial";
+    text-decoration: underline;
+}
+A.dtext:visited
+{
+    font-size: 12px;
+    color: #333333;
+    line-height: 17px;
+    font-family: "Arial";
+    text-decoration: underline;
+}
+A.dtext:hover
+{
+    font-size: 12px;
+    color: #309800;
+    line-height: 17px;
+    font-family: "Arial";
+}
+
+.bg
+{
+    background-color: #eeeeee;
+}
+.bg1
+{
+    background-color: "";
+}
