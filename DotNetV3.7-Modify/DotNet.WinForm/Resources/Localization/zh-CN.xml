@@ -1,0 +1,2992 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <language>zh-CN</language>
+  <displayName>简体中文</displayName>
+  <version>1.0</version>
+  <author>吉日嘎拉</author>
+  <description>简体中文语言包</description>
+  <items>
+    <!-- Global Language Resources Begin JiRiGaLa -->
+    <item key="MSG0000">提示信息</item>
+    <item key="MSG0001">发生未知错误。</item>
+    <item key="MSG0002">数据库联接不正常。</item>
+    <item key="MSG0003">WebService联接不正常。</item>
+    <item key="MSG0004">任何数据未被修改。</item>
+    <item key="MSG0005">记录未找到,可能已被其他人删除。</item>
+    <item key="MSG0006">数据已被其他人修改,请按F5键重新刷新获得数据。</item>
+    <item key="MSG0007">请输入{0}，不允许为空。</item>
+    <item key="MSG0008">{0}已重复。</item>
+    <item key="MSG0009">新增成功。</item>
+    <item key="MSG0010">更新成功。</item>
+    <item key="MSG0011">保存成功。</item>
+    <item key="MSG0012">批量保存成功。</item>
+    <item key="MSG0013">删除成功。</item>
+    <item key="MSG0014">批量删除成功。</item>
+    <item key="MSG0015">您确认删除吗？</item>
+    <item key="MSG0016">您确认删除 {0}吗？</item>
+    <item key="MSG0017">当前记录不允许被删除</item>
+    <item key="MSG0018">当前记录 {0} 不允许被删除。</item>
+    <item key="MSG0019">当前记录不允许被编辑,请按F5键,重新获取数据最新数据。</item>
+    <item key="MSG0020">当前记录 {0} 不允许被编辑,请按F5键,重新获取数据最新数据。</item>
+    <item key="MSG0021">当前记录已是第一条记录。</item>
+    <item key="MSG0022">当前记录已是最后一条记录。</item>
+    <item key="MSG0023">请至少选择一项。</item>
+    <item key="MSG0024">请至少选择一项 {0}。</item>
+    <item key="MSG0025">{0}不能大于{1}。</item>
+    <item key="MSG0026">{0}不能小于{1}。</item>
+    <item key="MSG0027">{0}不能等于{1}。</item>
+    <item key="MSG0028">{0}不是有效的日期。</item>
+    <item key="MSG0029">{0}不是有效的字符。</item>
+    <item key="MSG0030">{0}不是有效的数字。</item>
+    <item key="MSG0031">{0}不是有效的金额。</item>
+    <item key="MSG0032">{0} 名包含非法字符。</item>
+    <item key="MSG0033">数据已经被引用，有关联数据在。 </item>
+    <item key="MSG0034">数据已经被引用，有关联数据在，是否强制删除数据？</item>
+    <item key="MSG0035">{0} 有子节点不允许被删除，有子节点还未被删除。</item>
+    <item key="MSG0036">{0} 不能移动到 {1}.</item>
+    <item key="MSG0037">{0} 下的子节点不能移动到 {1}.</item>
+    <item key="MSG0038">确认移动 {0} 到 {1} 吗？</item>
+    <item key="MSG0039">{0} 不等于 {1}</item>
+    <item key="MSG0040">{0} 错误。</item>
+    <item key="MSG0041">确认审核通过吗？</item>
+    <item key="MSG0042">确认审核退回吗？</item>
+    <item key="MSG0043">不能锁定数据。</item>
+    <item key="MSG0044">成功锁定数据。</item>
+    <item key="MSG0045">数据已经改变，想保存数据吗？</item>
+    <item key="MSG0046">最近 {0} 次内密码不能重复。</item>
+    <item key="MSG0047">密码已过期，用户被锁定，请联系系统管理员。</item>
+    <item key="MSG0048">拒绝登录，用户已经在线上。</item>
+    <item key="MSG0049">拒绝登录，网卡Mac地址不符限制条件。</item>
+    <item key="MSG0050">拒绝登录，IP地址不符限制条件。</item>
+    <item key="MSG0051">已到在线用户最大数量限制。</item>
+    <item key="MSG0052">IP位置格式不正确。</item>
+    <item key="MSG0053">MAC位置格式不正确。</item>
+    <item key="MSG0054">请填写IP位置或MAC位置信息。</item>
+    <item key="MSG0055">存在相同的IP位置。</item>
+    <item key="MSG0056">IP位置新增成功。</item>
+    <item key="MSG0057">IP位置新增失败。</item>
+    <item key="MSG0058">存在相同的MAC位置。</item>
+    <item key="MSG0059">  MAC位置新增成功。</item>
+    <item key="MSG0060">请先创建该员工的登录系统的用户信息。</item>
+    <item key="MSG0061">  MAC位置新增失败。</item>
+    <item key="MSG0062">请设定新密码，原始密码未曾修改过。</item>
+    <item key="MSG0063">请设定新密码，30天内未曾修改过密码。</item>
+    <item key="MSG0064">您输入的分钟数值不正确，请检查。</item>
+    <item key="MSG0065">数据已经改变，不保存数据？</item>
+    <item key="MSG0075">您确认移除吗？</item>
+    <item key="MSG0076">您确认移除 {0} 吗？</item>
+    <item key="MSG0077">成功删除 {0} 条记录。</item>
+    <item key="MSG0078">用户登入被拒，用户审核中。</item>
+    <item key="MSG0079">用户被锁定，登入被拒绝，请联系系统管理员。</item>
+    <item key="MSG0080">用户账号未被激活，请及时激活用户账号。</item>
+    <item key="MSG0081">用户被锁定，登入被拒绝，不可早于：</item>
+    <item key="MSG0082">用户被锁定，登入被拒绝，不可晚于：</item>
+    <item key="MSG0083">用户被锁定，登入被拒绝，锁定开始日期：</item>
+    <item key="MSG0084">用户被锁定，登入被拒绝，锁定结束日期：</item>
+    <item key="MSG0085">IP Address 不正确。</item>
+    <item key="MSG0086">MAC Address 不正确。</item>
+    <item key="MSG0087">用户已经上线，不允许重复登入。</item>
+    <item key="MSG0088">密码错误，登入被拒绝。</item>
+    <item key="MSG0089">已超出用户在线数量上限：</item>
+    <item key="MSG0090">登入被拒绝。</item>
+    <item key="MSG0091">新增操作权限项。</item>
+    <item key="MSG0092">登入开始时间</item>
+    <item key="MSG0093">登入结束时间</item>
+    <item key="MSG0094">暂停开始日期</item>
+    <item key="MSG0095">暂停结束日期</item>
+    <item key="MSG0700">已经成功连接到目标数据。</item>
+    <item key="MSG0800">调用被拒绝，未经授权的访问。</item>
+    <item key="MSG0900">服务调用被拒绝，使用者未登入。</item>
+    <item key="MSG1000">系统设定讯息错误，请与软体开发商联系。</item>
+    <item key="MSG1001">您确认重置功能选单吗？</item>
+    <item key="MSG2000">{0} 不正确，请重新输入。</item>
+    <item key="MSG3000">您确认初始化系统吗？</item>
+    <item key="MSG3010">操作成功。</item>
+    <item key="MSG3020">操作失败。</item>
+    <item key="MSG9800">值</item>
+    <item key="MSG9900">公司</item>
+    <item key="MSG9901">部门</item>
+    <item key="MSG9910">用户未设置电子邮件地址。</item>
+    <item key="MSG9911">用户被锁定。</item>
+    <item key="MSG9912">用户还未激活。</item>
+    <item key="MSG9913">用户已被激活。</item>
+    <item key="MSG9914">使用者關聯</item>
+    <item key="MSG9915">请设置约束条件。</item>
+    <item key="MSG9916">显示   ▽</item>
+    <item key="MSG9917">隐藏   △</item>
+    <item key="MSG9918">验证表达式成功。</item>
+    <item key="MSG9919">请输入条件。</item>
+    <item key="MSG9920">请输入内容。</item>
+    <item key="MSG9921">缺少（ 符号。</item>
+    <item key="MSG9922">缺少 ）符号。</item>
+    <item key="MSGS857">簽名私鑰。</item>
+    <item key="MSGS864">簽名密碼。</item>
+    <item key="MSGS957">通訊使用者名稱。</item>
+    <item key="MSGS964">通訊密碼。</item>
+    <item key="MSG8000">密碼強度不符合要求，密碼至少為6位數，且為數字加字母的組合。</item>
+    <item key="MSG8900">工号</item>
+    <item key="MSG9000">用户名或密码错误。</item>
+    <item key="MSG9955">資料。</item>
+    <item key="MSG9956">未找到满足条件的记录。</item>
+    <item key="MSG9957">用户名</item>
+    <item key="MSG9958">密码强度不符合要求，密码至少为6位数，且为数字加字母的组合。</item>
+    <item key="MSG9959">新密码</item>
+    <item key="MSG9960">确认密码</item>
+    <item key="MSG9961">原密码</item>
+    <item key="MSG9962">修改 {0} 成功。</item>
+    <item key="MSG9963">设置 {0} 成功。</item>
+    <item key="MSG9964">密码</item>
+    <item key="MSG9965">操作成功。</item>
+    <item key="MSG9966">用户没有找到，请注意大小写。</item>
+    <item key="MSG9967">密码错误，请注意大小写。</item>
+    <item key="MSG9968">登录被拒绝，请与管理员联系。</item>
+    <item key="MSG9969">基础编码</item>
+    <item key="MSG9970">员工</item>
+    <item key="MSG9971">组织机构</item>
+    <item key="MSG9972">角色</item>
+    <item key="MSG9973">模块</item>
+    <item key="MSG9974">文件夹</item>
+    <item key="MSG9975">权限</item>
+    <item key="MSG9976">主键</item>
+    <item key="MSG9977">编号</item>
+    <item key="MSG9978">名称</item>
+    <item key="MSG9979">父节点主键</item>
+    <item key="MSG9980">父节点名称</item>
+    <item key="MSG9981">功能分类主键</item>
+    <item key="MSG9982">唯一识别主键</item>
+    <item key="MSG9983">主题</item>
+    <item key="MSG9984">内容</item>
+    <item key="MSG9985">状态码</item>
+    <item key="MSG9986">次数</item>
+    <item key="MSG9987">有效</item>
+    <item key="MSG9988">描述</item>
+    <item key="MSG9989">排序码</item>
+    <item key="MSG9990">创建者主键</item>
+    <item key="MSG9991">创建时间</item>
+    <item key="MSG9992">最后修改者主键</item>
+    <item key="MSG9993">最后修改时间</item>
+    <item key="MSG9994">排序</item>
+    <item key="MSG9995">主键</item>
+    <item key="MSG9996">索引</item>
+    <item key="MSG9997">字段</item>
+    <item key="MSG9998">表</item>
+    <item key="MSG9999">数据库</item>
+    <!-- Global Language Resources End -->
+
+    <!-- 韩峰修改20101106 -->
+    <item key="MSG0201">您选择的文件不存在，请重新选择。</item>
+    <item key="MSG0202">提示信息</item>
+    <item key="MSG0203">您确认移动 \" {0} \" 到 \" {1} \" 吗？</item>
+    <item key="MSG0204">您确认退出应用程序吗？</item>
+    <item key="MSG0205">文件 {0} 已存在，要覆盖服务器上的文件吗？</item>
+    <item key="MSG0206">已经超过了上传限制，请检查要上传的文件大小。</item>
+    <item key="MSG0207">您确认要删除图片吗?</item>
+    <item key="MSG0208">开始时间不能大于结束时间。</item>
+    <item key="MSG0209">清除成功。</item>
+    <item key="MSG0210">重置成功。</item>
+    <item key="MSG0211">已输入{0}次错误密码，不再允许继续登录，请重新启动程序进行登录。</item>
+    <item key="MSG0212">查询内容</item>
+    <item key="MSG0213">编号总长度不要超过40位。</item>
+    <item key="MSG0214">编号生成成功。</item>
+    <item key="MSG0215">增序列</item>
+    <item key="MSG0216">减序列</item>
+    <item key="MSG0217">步调</item>
+    <item key="MSG0218">序列重置成功。</item>
+    <item key="MSG0219">您确认重置序列吗？</item>
+    <item key="MSG0223">用户名 不允许为空，请输入。</item>
+    <item key="MSG0225">目前节点上有数据。</item>
+    <item key="MSG0226">无法删除自己</item>
+    <item key="MSG0228">设置关联用户成功。</item>
+    <item key="MSG0229">所在单位 不允许为空，请选择。</item>
+    <item key="MSG0230">申请更新成功，请等待审核。</item>
+    <item key="MSG0231">密码 不等于 确认密码，请确认后重新输入。</item>
+    <item key="MSG0232">用户名</item>
+    <item key="MSG0233">姓名</item>
+    <item key="MSG0234">E-Mail 格式不正确，请重新输入。</item>
+    <item key="MSG0235">申请用户成功，请等待审核。</item>
+    <item key="MSG0236">导出的目标文件已存在要覆盖 \"{0}\" 吗？</item>
+    <item key="MSG0237">成功发送电子邮件。</item>
+    <item key="MSG0238">清除异常信息成功。</item>
+    <item key="MSG0239">您确认清除异常信息吗？</item>
+    <item key="MSG0240">内容不能为空。</item>
+    <item key="MSG0241">发送邮件失败。</item>
+    <item key="MSG0242">移动成功。</item>
+    <item key="MSG0243">程式異常報告</item>
+    <item key="MSG0244">您选择的文档不存在，请重新选择。</item>
+    <item key="MSG0245">用户、角色必须选择一个。</item>
+    <item key="MSG0246">没有要复制的数据！</item>
+    <item key="MSG0247">审批通过 {0}项。</item>
+    <item key="MSG0248">审批通过失败。</item>
+    <item key="MSG0249">请选需要处理的数据。</item>
+    <item key="MSG0250">您确认审批通过此单据吗？</item>
+    <item key="MSG0251">成功退回单据。</item>
+    <item key="MSG0252">请选需要处理的数据。</item>
+    <item key="MSG0253">您确认不输入退回理由吗？</item>
+    <item key="MSG0255">您确认退回此单据吗？</item>
+    <item key="MSG0256">工作流程发送成功。</item>
+    <item key="MSG0257">工作流程发送失败。</item>
+    <item key="MSG0258">审批通过单据。</item>
+    <item key="MSG0259">请选需要处理的数据。</item>
+    <item key="MSG0260">请选择提交给哪位用户。</item>
+    <item key="MSG0261">最终审批通过 {0}项。</item>
+    <item key="MSG0262">最终审批失败。</item>
+    <item key="MSG0263">请选需要处理的数据。</item>
+    <item key="MSG0264">成功退回单据。</item>
+    <item key="MSG0265">请选需要处理的数据。</item>
+    <item key="MSG0266">您确认不输入退回理由吗？</item>
+    <item key="MSG0267">您确认退回此单据吗？</item>
+    <item key="MSG0268">审批流程发送成功。</item>
+    <item key="MSG0269">请选需要处理的数据。</item>
+    <item key="MSG0270">请选择提交给哪位用户。</item>
+    <item key="MSG0271">您确认提交给 {0}吗？</item>
+    <item key="MSG0272">审批流程撤消成功{0}项。</item>
+    <item key="MSG0273">审批流程撤消失败。</item>
+    <item key="MSG0274">请选需要处理的数据。</item>
+    <item key="MSG0275">您确认不输入退回理由吗？</item>
+    <item key="MSG0276">您确认撤销撤消审批流程中的单据吗？</item>
+    <item key="MSG0277">请选择提交给哪个用户审批。</item>
+    <item key="MSG0278">您确认提交给用户 {0}审批吗？</item>
+    <item key="MSG0279">工作流程发送成功。</item>
+    <item key="MSG0280">工作流程发送失败。</item>
+    <item key="MSG0281">您确认替换文件 {0} 吗？</item>
+    <item key="MSG0282">上级机构</item>
+    <item key="MSG0283">编号生成成功</item>
+    <item key="MSG0284">已修改配置信息，需要保存吗？</item>
+    <item key="MSG0285">没有要保存的数据！</item>
+    <item key="MSG0286">单位名称</item>
+    <item key="MSG0300">下线通知，您的账号在另一地点登录，您被迫下线。</item>
+    <item key="MSGReLogOn">重新登录</item>
+
+    <!-- BaseUserManager Message Begin -->
+    <item key="BaseUserManager">登入服务</item>
+    <item key="BaseUserManager_LogOn">登入操作</item>
+    <item key="BaseUserManager_LogOnSuccess">登入成功</item>
+    <!-- BaseUserManager Message End -->
+
+    <!-- ExceptionService Message Begin -->
+    <item key="ExceptionService">异常纪录服务</item>
+    <item key="ExceptionService_GetDataTable">取得异常列表</item>
+    <item key="ExceptionService_Delete">删除异常</item>
+    <item key="ExceptionService_BatchDelete">批次删除异常</item>
+    <item key="ExceptionService_Truncate">清除异常</item>
+    <!-- ExceptionService Message End -->
+
+    <!-- FileService Message Begin -->
+    <item key="FileService">档案服务</item>
+    <item key="FileService_SystemCreateDirectory">系统创建目录</item>
+    <item key="FileService_UserSpace">用户空间</item>
+    <item key="FileService_Folder"> 的文件夾</item>
+    <item key="FileService_SendFile">发送的文件</item>
+    <item key="FileService_File"> 的文件</item>
+    <item key="FileService_ReceiveFile">收到的文件</item>
+    <item key="FileService_SendFileFrom">发送文件</item>
+    <item key="FileService_CheckReceiveFile">，请注意查收。</item>
+    <item key="FileService_GetEntity">取得实体</item>
+    <item key="FileService_Exists">判断是否存在</item>
+    <item key="FileService_Download">下载档案</item>
+    <item key="FileService_Upload">上传档案</item>
+    <item key="FileService_GetDataTableByFolder">依资料夹取得列表</item>
+    <item key="FileService_DeleteByFolder">依资料夹删除档案</item>
+    <!-- FileService Message End -->
+
+    <!-- FolderService Message Begin -->
+    <item key="FolderService">资料夹服务</item>
+    <!-- FolderService Message End -->
+
+    <!-- ItemDetailsService Message Begin -->
+    <item key="ItemDetailsService">选项明细管理服务</item>
+    <item key="ItemDetailsService_GetDataTable">取得列表</item>
+    <item key="ItemDetailsService_GetDataTableByParent">依父节点取得列表</item>
+    <item key="ItemDetailsService_GetDataTableByCode">依编号取得列表</item>
+    <item key="ItemDetailsService_GetDSByCodes">批次取得资料</item>
+    <item key="ItemDetailsService_GetEntity">取得实体</item>
+    <item key="ItemDetailsService_Add">新增实体</item>
+    <item key="ItemDetailsService_Update">更新实体</item>
+    <item key="ItemDetailsService_Delete">删除实体</item>
+    <item key="ItemDetailsService_BatchMoveTo">批次移动</item>
+    <item key="ItemDetailsService_BatchDelete">批次删除</item>
+    <item key="ItemDetailsService_BatchSave">批次储存</item>
+    <!-- ItemDetailsService Message End -->
+
+    <!-- ItemsService Message Begin -->
+    <item key="ItemsService">选项管理服务</item>
+    <item key="ItemsService_GetDataTable">取得列表</item>
+    <item key="ItemsService_GetEntity">取得实体</item>
+    <item key="ItemsService_GetDataTableByParent">依父节点取得列表</item>
+    <item key="ItemsService_Add">新增实体</item>
+    <item key="ItemsService_Update">更新实体</item>
+    <item key="ItemsService_CreateTable">新增资料表</item>
+    <item key="ItemsService_Delete">删除实体</item>
+    <item key="ItemsService_BatchMoveTo">批次移动</item>
+    <item key="ItemsService_BatchDelete">批次删除</item>
+    <item key="ItemsService_BatchSave">批次储存</item>
+    <!-- ItemsService Message End -->
+
+    <!-- LogOnService Message Begin -->
+    <item key="LogOnService">登入服务</item>
+    <item key="LogOnService_GetUserDT">取得使用者列表</item>
+    <item key="LogOnService_GetStaffUserDT">取得内部员工列表</item>
+    <item key="LogOnService_OnLine">使用者在线报导</item>
+    <item key="LogOnService_OnExit">使用者离开应用程式</item>
+    <item key="LogOnService_SetPassword">设定使用者密码</item>
+    <item key="LogOnService_ChangePassword">使用者变更密码</item>
+    <item key="LogOnService_ChangeCommunicationPassword">使用者变更通讯密码</item>
+    <item key="LogOnService_CommunicationPassword">验证使用者通讯密码</item>
+    <item key="LogOnService_CreateDigitalSignature">建立数字证书签名</item>
+    <item key="LogOnService_GetPublicKey">取得当前使用者的公钥</item>
+    <item key="LogOnService_ChangeSignedPassword">使用者变更签名密码</item>
+    <item key="LogOnService_SignedPassword">验证使用者数字签名密码</item>
+    <!-- LogOnService Message End -->
+
+    <!-- LogService Message Begin -->
+    <item key="LogService">日志服务</item>
+    <item key="LogService_GetLogGeneral">取得使用者访问情况日志</item>
+    <item key="LogService_ResetVisitInfo">重置使用者访问情况</item>
+    <item key="LogService_GetDataTableByDate">依日期取得日志</item>
+    <item key="LogService_GetDataTableByModul">依选单取得日志</item>
+    <item key="LogService_GetDataTableByUser">依使用者取得日志</item>
+    <item key="LogService_Delete">删除日志</item>
+    <item key="LogService_BatchDelete">批次删除日志</item>
+    <item key="LogService_Truncate">清除全部日志</item>
+    <item key="LogService_GetDataTableApplicationByDate">依日期取得日志(商务)</item>
+    <item key="LogService_BatchDeleteApplication">批次删除日志(商务)</item>
+    <item key="LogService_TruncateApplication">清除全部日志(商务)</item>
+    <!-- LogService Message End -->
+
+    <!-- MessageService Message Begin -->
+    <item key="MessageService">讯息服务</item>
+    <item key="MessageService_GetInnerOrganize">取得内部组织机构</item>
+    <item key="MessageService_GetUserDTByDepartment">依部门取得使用者讯息</item>
+    <item key="MessageService_BatchSend">批次发送站内讯息</item>
+    <item key="MessageService_Send">发送讯息</item>
+    <item key="MessageService_MessageChek">取得讯息状态</item>
+    <item key="MessageService_ReadFromReceiver">取得特定使用者的新讯息</item>
+    <item key="MessageService_Read">阅读讯息</item>
+    <!-- MessageService Message End -->
+
+    <!-- ModuleService Message Begin -->
+    <item key="ModuleService">选单服务</item>
+    <item key="ModuleService_GetDataTable">取得列表</item>
+    <item key="ModuleService_GetEntity">取得实体</item>
+    <item key="ModuleService_GetFullNameByCode">透过编号取得选单名称</item>
+    <item key="ModuleService_Add">新增选单</item>
+    <item key="ModuleService_Update">更新选单</item>
+    <item key="ModuleService_GetDataTableByParent">依父节点取得列表</item>
+    <item key="ModuleService_Delete">删除选单</item>
+    <item key="ModuleService_BatchDelete">批次删除</item>
+    <item key="ModuleService_SetDeleted">批次标示删除标志</item>
+    <item key="ModuleService_MoveTo">移动选单</item>
+    <item key="ModuleService_BatchMoveTo">批次移动</item>
+    <item key="ModuleService_BatchSave">批次储存</item>
+    <item key="ModuleService_SetSortCode">储存排序顺序</item>
+    <item key="ModuleService_GetPermissionDT">取得关联的权限项列表</item>
+    <item key="ModuleService_GetIdsByPermission">依操作权限项取得关联的选单主键</item>
+    <item key="ModuleService_BatchAddPermissions">选单批次新增关联操作权限项</item>
+    <item key="ModuleService_BatchAddModules">新增操作权限项关联选单</item>
+    <item key="ModuleService_BatchDletePermissions">删除选单与操作权限项的关联</item>
+    <item key="ModuleService_BatchDleteModules">删除操作权限项与选单的关联</item>
+    <!-- ModuleService Message End -->
+
+    <!-- OrganizeService Message Begin -->
+    <item key="OrganizeService">组织机构服务</item>
+    <item key="OrganizeService_Add">新增实体</item>
+    <item key="OrganizeService_AddByDetail">依明细情况新增实体</item>
+    <item key="OrganizeService_GetEntity">取得实体</item>
+    <item key="OrganizeService_GetDataTable">取得列表</item>
+    <item key="OrganizeService_GetDataTableByParent">依父节点取得列表</item>
+    <item key="OrganizeService_GetInnerOrganizeDT">取得内部组织机构</item>
+    <item key="OrganizeService_GetCompanyDT">取得公司列表</item>
+    <item key="OrganizeService_GetDepartmentDT">取得部门列表</item>
+    <item key="OrganizeService_Search">搜寻组织机构</item>
+    <item key="OrganizeService_Update">更新组织机构</item>
+    <item key="OrganizeService_Delete">删除组织机构</item>
+    <item key="OrganizeService_BatchDelete">批次删除</item>
+    <item key="OrganizeService_SetDeleted">批次标示删除标志</item>
+    <item key="OrganizeService_BatchSave">批次储存</item>
+    <item key="OrganizeService_MoveTo">移动组织机构</item>
+    <item key="OrganizeService_BatchMoveTo">批次移动</item>
+    <item key="OrganizeService_BatchSetCode">批次重新产生编号</item>
+    <item key="OrganizeService_BatchSetSortCode">批次重新产生排序码</item>
+    <!-- OrganizeService Message End -->
+
+    <!-- ParameterService Message Begin -->
+    <item key="ParameterService">参数服务</item>
+    <item key="ParameterService_GetParameter">取得参数值</item>
+    <item key="ParameterService_SetParameter">设置参数值</item>
+    <item key="ParameterService_GetDataTableByParameter">取得列表</item>
+    <item key="ParameterService_GetDataTableParameterCode">依编号取得列表</item>
+    <item key="ParameterService_DeleteByParameter">删除参数</item>
+    <item key="ParameterService_DeleteByParameterCode">依参数编号删除</item>
+    <item key="ParameterService_Delete">删除参数</item>
+    <item key="ParameterService_BatchDelete">批次删除参数</item>
+    <!-- ParameterService Message End -->
+
+    <!-- PermissionItemService Message Begin -->
+    <item key="PermissionItemService">操作权限项定义服务</item>
+    <item key="PermissionItemService_Add">新增操作权限项</item>
+    <item key="PermissionItemService_GetDataTable">取得列表</item>
+    <item key="PermissionItemService_GetDataTableByParent">依父节点取得列表</item>
+    <item key="PermissionItemService_GetLicensedDT">取得授权范围</item>
+    <item key="PermissionItemService_GetEntity">取得实体</item>
+    <item key="PermissionItemService_GetEntityByCode">依编号取得实体</item>
+    <item key="PermissionItemService_Update">更新实体</item>
+    <item key="PermissionItemService_MoveTo">移动实体</item>
+    <item key="PermissionItemService_BatchMoveTo">批次移动实体</item>
+    <item key="PermissionItemService_Delete">删除实体</item>
+    <item key="PermissionItemService_BatchDelete">批次删除实体</item>
+    <item key="PermissionItemService_SetDeleted">批次标示删除标志</item>
+    <item key="PermissionItemService_BatchSave">批次储存</item>
+    <item key="PermissionItemService_BatchSetSortCode">重新产生排序码</item>
+    <!-- PermissionItemService Message End -->
+
+    <!-- PermissionService Message Begin -->
+    <item key="PermissionService">权限判断服务</item>
+    <item key="PermissionService_IsInRole">使用者是否在指定的角色中</item>
+    <item key="PermissionService_IsAuthorizedByUser">该使用者是否有相应的操作权限</item>
+    <item key="PermissionService_IsAuthorizedByRole">该角色是否有相应的操作权限</item>
+    <item key="PermissionService_IsAdministratorByUser">该使用者是否为超级管理员</item>
+    <item key="PermissionService_GetPermissionDTByUser">取得该使用者的所有权限列表</item>
+    <item key="PermissionService_IsModuleAuthorized">目前使用者是否对某个选单有相应的权限</item>
+    <item key="PermissionService_IsModuleAuthorizedByUser">该使用者是否对那些选单有相应的权限</item>
+    <item key="PermissionService_GetUserPermissionScope">取得使用者的资料集权限范围</item>
+    <item key="PermissionService_GetOrganizeDTByPermission">依某个权限域取得组织机构列表</item>
+    <item key="PermissionService_GetOrganizeIdsByPermission">依某个资料集权限取得组织机构主键阵列</item>
+    <item key="PermissionService_GetRoleDTByPermission">依某个权限域取得角色列表</item>
+    <item key="PermissionService_GetRoleIdsByPermission">依某个资料集权限取得角色主键阵列</item>
+    <item key="PermissionService_GetUserDTByPermission">依某个权限域取得使用者列表</item>
+    <item key="PermissionService_GetUserIdsByPermission">依某个资料集权限取得使用者主键阵列</item>
+    <item key="PermissionService_GetModuleDTByPermission">依某个权限域取得选单列表</item>
+    <item key="PermissionService_GetPermissionItemDTByPermission">使用者的所有可授权范围(有授权权限的权限列表)</item>
+    <item key="PermissionService_GetRolePermissionIds">取得角色权限主键阵列</item>
+    <item key="PermissionService_GrantRolePermissions">授予角色的权限</item>
+    <item key="PermissionService_GrantRolePermissionById">授予角色的权限</item>
+    <item key="PermissionService_RevokeRolePermissions">删除角色的权限</item>
+    <item key="PermissionService_ClearRolePermission">清除角色权限</item>
+    <item key="PermissionService_RevokeRolePermissionById">删除角色的权限</item>
+    <item key="PermissionService_GetRoleScopeUserIds">取得角色的某个权限域的组织范围</item>
+    <item key="PermissionService_GetRoleScopeRoleIds">取得角色的某个权限域的组织范围</item>
+    <item key="PermissionService_GetRoleScopeOrganizeIds">取得角色的某个权限域的组织范围</item>
+    <item key="PermissionService_GrantRoleUserScopes">授予角色的某个权限域的组织范围</item>
+    <item key="PermissionService_RevokeRoleUserScopes">删除角色的某个权限域的组织范围</item>
+    <item key="PermissionService_GrantRoleRoleScopes">授予角色的某个权限域的组织范围</item>
+    <item key="PermissionService_RevokeRoleRoleScopes">删除角色的某个权限域的组织范围</item>
+    <item key="PermissionService_GrantRoleOrganizeScopes">授予角色的某个权限域的组织范围</item>
+    <item key="PermissionService_RevokeRoleOrganizeScopes">删除角色的某个权限域的组织范围</item>
+    <item key="PermissionService_GetRoleScopePermissionIds">取得角色授权权限列表</item>
+    <item key="PermissionService_GrantRolePermissionItemScopes">授予角色的授权权限范围</item>
+    <item key="PermissionService_RevokeRolePermissionItemScopes">授予角色的授权权限范围</item>
+    <item key="PermissionService_ClearRolePermissionScope">清除角色权限范围</item>
+    <item key="PermissionService_GetUserPermissionIds">取得使用者权限主键阵列</item>
+    <item key="PermissionService_GrantUserPermissions">授予使用者操作权限</item>
+    <item key="PermissionService_GrantUserPermissionById">授予使用者操作权限</item>
+    <item key="PermissionService_RevokeUserPermission">删除使用者操作权限</item>
+    <item key="PermissionService_RevokeUserPermissionById">删除使用者操作权限</item>
+    <item key="PermissionService_GetUserScopeOrganizeIds">取得使用者的某个权限域的组织范围</item>
+    <item key="PermissionService_GrantUserOrganizeScopes">设置使用者的某个权限域的组织范围</item>
+    <item key="PermissionService_RevokeUserOrganizeScopes">设置使用者的某个权限域的组织范围</item>
+    <item key="PermissionService_GetUserScopeUserIds">取得使用者的某个权限域的组织范围</item>
+    <item key="PermissionService_GrantUserUserScopes">设置使用者的某个权限域的组织范围</item>
+    <item key="PermissionService_RevokeUserUserScopes">设置使用者的某个权限域的使用者范围</item>
+    <item key="PermissionService_GetUserScopeRoleIds">取得使用者的某个权限域的使用者范围</item>
+    <item key="PermissionService_GrantUserRoleScopes">设置使用者的某个权限域的使用者范围</item>
+    <item key="PermissionService_RevokeUserRoleScopes">设置使用者的某个权限域的使用者范围</item>
+    <item key="PermissionService_GetUserScopePermissionIds">取得使用者授权权限列表</item>
+    <item key="PermissionService_GrantUserPermissionItemScopes">授予使用者的授权权限范围</item>
+    <item key="PermissionService_RevokeUserPermissionItemScopes">删除使用者的授权权限范围</item>
+    <item key="PermissionService_ClearUserPermission">清除使用者权限</item>
+    <item key="PermissionService_ClearUserPermissionScope">清除使用者权限范围</item>
+    <item key="PermissionService_GetModuleDTByUser">取得使用者有访问权限的选单</item>
+    <item key="PermissionService_GetUserScopeModuleIds">取得使用者选单权限范围主键阵列</item>
+    <item key="PermissionService_GrantUserModuleScopes">授予使用者选单的权限范围</item>
+    <item key="PermissionService_GrantUserModuleScope">授予使用者选单的权限范围</item>
+    <item key="PermissionService_RevokeUserModuleScope">删除使用者选单的权限范围</item>
+    <item key="PermissionService_RevokeUserModuleScopes">删除使用者选单的权限范围</item>
+    <item key="PermissionService_GetRoleScopeModuleIds">取得使用者选单权限范围主键阵列</item>
+    <item key="PermissionService_GrantRoleModuleScopes">授予使用者选单的权限范围</item>
+    <item key="PermissionService_GrantRoleModuleScope">授予使用者选单的权限范围</item>
+    <item key="PermissionService_RevokeRoleModuleScopes">删除使用者选单的权限范围</item>
+    <item key="PermissionService_RevokeRoleModuleScope">删除使用者选单的权限范围</item>
+    <item key="PermissionService_GetResourcePermissionIds">取得资源权限主键阵列</item>
+    <item key="PermissionService_GrantResourcePermission">授予资源的权限</item>
+    <item key="PermissionService_RevokeResourcePermission">删除资源的权限</item>
+    <item key="PermissionService_GetPermissionScopeTargetIds">取得资源权限范围主键阵列</item>
+    <item key="PermissionService_RevokePermissionScopeTargets">删除资源的权限范围</item>
+    <item key="PermissionService_ClearPermissionScopeTarget">删除资源的权限范围</item>
+    <item key="PermissionService_GetResourceScopeIds">取得使用者的某个资源的权限范围</item>
+    <item key="PermissionService_GetTreeResourceScopeIds">取得使用者的某个资源的权限范围(树型资源)</item>
+    <!-- PermissionService Message End -->
+
+    <!-- RoleService Message Begin -->
+    <item key="RoleService">角色管理服务</item>
+    <item key="RoleService_Add">新增角色</item>
+    <item key="RoleService_GetDataTable">取得列表</item>
+    <item key="RoleService_GetDataTableByOrganize">依组织机构取得角色列表</item>
+    <item key="RoleService_GetEntity">取得实体</item>
+    <item key="RoleService_Update">更新实体</item>
+    <item key="RoleService_GetDataTableByIds">依主键阵列取得角色列表</item>
+    <item key="RoleService_Search">搜寻角色列表</item>
+    <item key="RoleService_BatchSave">批次储存角色</item>
+    <item key="RoleService_MoveTo">移动角色资料</item>
+    <item key="RoleService_BatchMoveTo">批次移动角色资料</item>
+    <item key="RoleService_ResetSortCode">排序角色顺序</item>
+    <item key="RoleService_GetRoleUserIds">取得角色中的使用者主键</item>
+    <item key="RoleService_AddUserToRole">使用者新增至角色</item>
+    <item key="RoleService_RemoveUserFromRole">将使用者从角色中移除</item>
+    <item key="RoleService_Delete">删除角色</item>
+    <item key="RoleService_BatchDelete">批次删除角色</item>
+    <item key="RoleService_SetDeleted">批次标示删除标志</item>
+    <item key="RoleService_ClearRoleUser">清除角色使用者关联</item>
+    <!-- RoleService Message End -->
+
+    <!-- SequenceService Message Begin -->
+    <item key="SequenceService">序列管理服务</item>
+    <item key="SequenceService_Add">新增序列</item>
+    <item key="SequenceService_GetDataTable">取得列表</item>
+    <item key="SequenceService_GetEntity">取得实体</item>
+    <item key="SequenceService_Update">更新序列</item>
+    <item key="SequenceService_Reset">批次重置序列</item>
+    <item key="SequenceService_Delete">删除序列</item>
+    <item key="SequenceService_BatchDelete">批次删除序列</item>
+    <!-- SequenceService Message End -->
+
+    <!-- StaffService Message Begin -->
+    <item key="StaffService">职员管理服务</item>
+    <item key="StaffService_GetAddressDT">取得内部通讯录</item>
+    <item key="StaffService_GetAddressPageDT">取得内部通讯录</item>
+    <item key="StaffService_UpdateAddres">更新通讯地址</item>
+    <item key="StaffService_BatchUpdateAddress">批次更新通讯地址</item>
+    <item key="StaffService_AddStaff">新增职员</item>
+    <item key="StaffService_UpdateStaff">更新职员</item>
+    <item key="StaffService_GetDataTable">取得列表</item>
+    <item key="StaffService_GetEntity">取得实体</item>
+    <item key="StaffService_GetDataTableByIds">取得职员列表</item>
+    <item key="StaffService_GetDataTableByDepartment">依部门取得列表</item>
+    <item key="StaffService_GetDataTableByOrganize">依公司取得列表</item>
+    <item key="StaffService_SetStaffUser">职员关联使用者</item>
+    <!-- StaffService Message End -->
+
+    <!-- TableColumnsService Message Begin -->
+    <item key="TableColumnsService">表栏位权限服务</item>
+    <item key="TableColumnsService_GetDataTableByTable">依表明取得栏位列表</item>
+    <item key="TableColumnsService_GetConstraintDT">取得约束条件(所有的约束)</item>
+    <item key="TableColumnsService_GetUserConstraint">取得当前使用者的条件约束表达式</item>
+    <item key="TableColumnsService_SetConstraint">设置条件约束表达式</item>
+    <item key="TableColumnsService_BatchDeleteConstraint">批次删除</item>
+    <!-- TableColumnsService Message End -->
+
+    <!-- UserService Message Begin -->
+    <item key="UserService">使用者管理服务</item>
+    <item key="UserService_Check">请审核。</item>
+    <item key="UserService_Application"> 申请使用者：</item>
+    <item key="UserService_AddUser">新增使用者</item>
+    <item key="UserService_GetDataTableByDepartment">依部门取得使用者列表</item>
+    <item key="UserService_GetEntity">取得实体</item>
+    <item key="UserService_GetDataTable">取得列表</item>
+    <item key="UserService_GetDataTableByRole">依角色取得列表</item>
+    <item key="UserService_GetDataTableByIds">依主键取得列表</item>
+    <item key="UserService_GetRoleDT">取得使用者的角色列表</item>
+    <item key="UserService_UserInRole">判断使用者是否在某个角色中</item>
+    <item key="UserService_UpdateUser">更新使用者</item>
+    <item key="UserService_Search">搜寻使用者</item>
+    <item key="UserService_SetUserAuditStates">设置使用者审核状态</item>
+    <item key="UserService_SetDefaultRole">设置使用者的预设角色</item>
+    <!-- UserService Message End -->
+
+    <!-- WorkFlowActivityAdminService Message Begin -->
+    <item key="WorkFlowActivityAdminService">工作流程定义服务</item>
+    <!-- WorkFlowActivityAdminService Message End -->
+
+    <!-- WorkFlowCurrentService Message Begin -->
+    <item key="WorkFlowCurrentService">当前工作流程服务</item>
+    <!-- WorkFlowCurrentService Message End -->
+
+    <!-- WorkFlowProcessAdminService Message Begin -->
+    <item key="WorkFlowProcessAdminService">工作流程处理过程服务</item>
+    <!-- WorkFlowProcessAdminService Message End -->
+
+    <!-- BillTemplateService Message Begin -->
+    <item key="BillTemplateService">单据模板服务</item>
+    <!-- BillTemplateService Message End -->
+
+    <!-- FrmBusinessCardAdd Begin -->
+    <item key="FrmBusinessCardAdd">添加名片</item>
+    <item key="FrmBusinessCardAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmBusinessCardAdd_lblPhone">私人电话：</item>
+    <item key="FrmBusinessCardAdd_lblQQ">QQ：</item>
+    <item key="FrmBusinessCardAdd_lblCompany">公司(&amp;C)：</item>
+    <item key="FrmBusinessCardAdd_lblAddress">地址：</item>
+    <item key="FrmBusinessCardAdd_lblOuterPhone">办公电话：</item>
+    <item key="FrmBusinessCardAdd_lblMobile">移动电话：</item>
+    <item key="FrmBusinessCardAdd_lblMail">电子邮箱：</item>
+    <item key="FrmBusinessCardAdd_lblBank">开户银行：</item>
+    <item key="FrmBusinessCardAdd_lblBankAccount">帐号：</item>
+    <item key="FrmBusinessCardAdd_lblTaxAccount">税号：</item>
+    <item key="FrmBusinessCardAdd_chkPersonal">私人名片：</item>
+    <item key="FrmBusinessCardAdd_lblTitle">职位：</item>
+    <item key="FrmBusinessCardAdd_lblPostalcode">邮编：</item>
+    <item key="FrmBusinessCardAdd_lblFax">传真(&amp;F)：</item>
+    <item key="FrmBusinessCardAdd_lblWeb">网址：</item>
+    <item key="FrmBusinessCardAdd_lblDescription">描述：</item>
+    <item key="FrmBusinessCardAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmBusinessCardAdd_btnDelete">删除(&amp;D)</item>
+    <item key="FrmBusinessCardAdd_btnClose">关闭</item>
+    <item key="FrmBusinessCardAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmBusinessCardAdd_btnCancel">取消</item>
+    <!-- FrmBusinessCardAdd End -->
+
+    <!--FrmBusinessCardAdmin Begin -->
+    <item key="FrmBusinessCardAdmin">名片管理</item>
+    <item key="FrmBusinessCardAdmin_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmBusinessCardAdmin_btnSearch">查询(&amp;S)</item>
+    <item key="FrmBusinessCardAdmin_rbtnAll">全部</item>
+    <item key="FrmBusinessCardAdmin_rbtnPublic">公开</item>
+    <item key="FrmBusinessCardAdmin_rbtnPersonal">私人</item>
+    <item key="FrmBusinessCardAdmin_colSelected">选择</item>
+    <item key="FrmBusinessCardAdmin_colStaffFullName">名称</item>
+    <item key="FrmBusinessCardAdmin_colCompany">公司</item>
+    <item key="FrmBusinessCardAdmin_colTitle">职位</item>
+    <item key="FrmBusinessCardAdmin_chkPersonal">私人</item>
+    <item key="FrmBusinessCardAdmin_colOfficePhone">办公电话</item>
+    <item key="FrmBusinessCardAdmin_colMobile">手机</item>
+    <item key="FrmBusinessCardAdmin_colEmail">电子邮箱</item>
+    <item key="FrmBusinessCardAdmin_colQQ">QQ</item>
+    <item key="FrmBusinessCardAdmin_colDescription">描述</item>
+    <item key="FrmBusinessCardAdmin_colCreateBy">创建者</item>
+    <item key="FrmBusinessCardAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmBusinessCardAdmin_btnEdit">编辑(&amp;E)</item>
+    <item key="FrmBusinessCardAdmin_btnExport">导出 Excel</item>
+    <item key="FrmBusinessCardAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmBusinessCardAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmBusinessCardAdmin_btnClose">关闭</item>
+    <!--FrmBusinessCardAdmin End -->
+
+    <!-- FrmBusinessCardEdit Begin -->
+    <item key="FrmBusinessCardEdit">编辑名片</item>
+    <item key="FrmBusinessCardEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmBusinessCardEdit_lblPhone">私人电话：</item>
+    <item key="FrmBusinessCardEdit_lblQQ">QQ：</item>
+    <item key="FrmBusinessCardEdit_lblCompany">公司(&amp;C)：</item>
+    <item key="FrmBusinessCardEdit_lblAddress">地址：</item>
+    <item key="FrmBusinessCardEdit_lblOuterPhone">办公电话：</item>
+    <item key="FrmBusinessCardEdit_lblMobile">手机：</item>
+    <item key="FrmBusinessCardEdit_lblMail">电子邮箱：</item>
+    <item key="FrmBusinessCardEdit_lblBank">开户银行：</item>
+    <item key="FrmBusinessCardEdit_lblBankAccount">帐号：</item>
+    <item key="FrmBusinessCardEdit_lblTaxAccount">税号：</item>
+    <item key="FrmBusinessCardEdit_chkPersonal">私人名片</item>
+    <item key="FrmBusinessCardEdit_lblTitle">职位：</item>
+    <item key="FrmBusinessCardEdit_lblPostalcode">邮编：</item>
+    <item key="FrmBusinessCardEdit_lblFax">传真(&amp;F)：</item>
+    <item key="FrmBusinessCardEdit_lblWeb">网址：</item>
+    <item key="FrmBusinessCardEdit_lblDescription">描述：</item>
+    <item key="FrmBusinessCardEdit_btnPrint">打印(&amp;P)</item>
+    <item key="FrmBusinessCardEdit_btnDelete">删除(&amp;D)</item>
+    <item key="FrmBusinessCardEdit_btnClose">关闭</item>
+    <item key="FrmBusinessCardEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmBusinessCardEdit_btnCancel">取消</item>
+    <!-- FrmBusinessCardEdit End -->
+
+    <!--FrmCodeGenerator Begin -->
+    <item key="FrmCodeGenerator">C# 代码批量生成器 V3.7</item>
+    <item key="FrmCodeGenerator_lblDesign">设计文档：</item>
+    <item key="FrmCodeGenerator_lblOutput">输出目录：</item>
+    <item key="FrmCodeGenerator_rbtnUserCenter">用户中心库</item>
+    <item key="FrmCodeGenerator_rbtnBusiness">业务中心库</item>
+    <item key="FrmCodeGenerator_rbtnWorkFlow">工作流程库</item>
+    <item key="FrmCodeGenerator_lblCompany">公司：</item>
+    <item key="FrmCodeGenerator_lblYearCreated">创建年份：</item>
+    <item key="FrmCodeGenerator_lblTables">数据表：</item>
+    <item key="FrmCodeGenerator_lblProject">项目：</item>
+    <item key="FrmCodeGenerator_lblAuthor">作者：</item>
+    <item key="FrmCodeGenerator_lblDateCreated">创建日期：</item>
+    <item key="FrmCodeGenerator_lblClassName">实体类：</item>
+    <item key="FrmCodeGenerator_lblFileName">文件名：</item>
+    <item key="FrmCodeGenerator_btnBuilderTable">存储表</item>
+    <item key="FrmCodeGenerator_btnBuilderEntity">实体类</item>
+    <item key="FrmCodeGenerator_btnBuilderManager">管理器</item>
+    <item key="FrmCodeGenerator_btnService">服务</item>
+    <item key="FrmCodeGenerator_btnIService">服务接口</item>
+    <item key="FrmCodeGenerator_btnTableColumns">数据权限配置项</item>
+    <item key="FrmCodeGenerator_btnAddPage">添加页面</item>
+    <item key="FrmCodeGenerator_btnEditPage">编辑页面</item>
+    <item key="FrmCodeGenerator_btnShowPage">显示页面</item>
+    <item key="FrmCodeGenerator_btnListPage">列表页面</item>
+    <item key="FrmCodeGenerator_btnSearchPage">查询页面</item>
+    <item key="FrmCodeGenerator_btnAdminPage">管理页面</item>
+    <item key="FrmCodeGenerator_btnAddCode">添加代码</item>
+    <item key="FrmCodeGenerator_btnEditCode">编辑代码</item>
+    <item key="FrmCodeGenerator_btnShowCode">显示代码</item>
+    <item key="FrmCodeGenerator_btnListCode">列表代码</item>
+    <item key="FrmCodeGenerator_btnSearchCode">查询代码</item>
+    <item key="FrmCodeGenerator_btnAdminCode">管理代码</item>
+    <item key="FrmCodeGenerator_chkOverwrite">覆盖</item>
+    <item key="FrmCodeGenerator_btnCopyCode">复制</item>
+    <item key="FrmCodeGenerator_btnBuilder">生成</item>
+    <item key="FrmCodeGenerator_btnBuilderAll">全部生成</item>
+    <item key="FrmCodeGenerator_btnSaveCode">保存</item>
+    <item key="FrmCodeGenerator_btnClose">关闭</item>
+    <item key="FrmCodeGenerator_btnApply">应用</item>
+    <!--FrmCodeGenerator End -->
+
+    <!-- FormException Begin -->
+    <item key="FrmException">系统异常情况记录</item>
+    <item key="FrmException_lblCustomer">公司：</item>
+    <item key="FrmException_lblSoftFullName">软件名称：</item>
+    <item key="FrmException_lblOperator">用户：</item>
+    <item key="FrmException_lblOccurTime">发生时间：</item>
+    <item key="FrmException_lblExceptionInfo">错误信息：</item>
+    <item key="FrmException_btnPrintScreen">屏幕打印 (&amp;S)</item>
+    <item key="FrmException_btnPrint">打印(&amp;P)</item>
+    <item key="FrmException_btnReport">反馈错误(&amp;R)</item>
+    <item key="FrmException_btnClose">关闭</item>
+    <!-- FormException End -->
+
+    <!-- FormExceptionAdmin Begin -->
+    <item key="FrmExceptionAdmin">系统异常情况记录</item>
+    <item key="FrmExceptionAdmin_colSelected">选择</item>
+    <item key="FrmExceptionAdmin_colMessage">异常信息</item>
+    <item key="FrmExceptionAdmin_colThreadName">异常信息来源</item>
+    <item key="FrmExceptionAdmin_colFormattedMessage">异常信息描述</item>
+    <item key="FrmExceptionAdmin_colCreateBy">创建者</item>
+    <item key="FrmExceptionAdmin_colCreateOn">发生时间</item>
+    <item key="FrmExceptionAdmin_btnSelectAll">全选</item>
+    <item key="FrmExceptionAdmin_btnInvertSelect">反选</item>
+    <item key="FrmExceptionAdmin_btnClearException">全部清除(&amp;C)</item>
+    <item key="FrmExceptionAdmin_btnExport">导出Excel...</item>
+    <item key="FrmExceptionAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmExceptionAdmin_btnClose">关闭</item>
+    <!-- FormExceptionAdmin End -->
+
+    <!-- FormFileAdmin Begin -->
+    <item key="FrmFileAdmin">文档管理</item>
+    <item key="FrmFileAdmin_colSelected">选择</item>
+    <item key="FrmFileAdmin_colFileName">文件名</item>
+    <item key="FrmFileAdmin_colFileSize">大小</item>
+    <item key="FrmFileAdmin_ColReadCount">下载</item>
+    <item key="FrmFileAdmin_colModifiedBy">修改人</item>
+    <item key="FrmFileAdmin_colModifiedOn">修改时间</item>
+    <item key="FrmFileAdmin_colDescription">描述</item>
+    <item key="FrmFileAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmFileAdmin_btnEdit">编辑(&amp;E)</item>
+    <item key="FrmFileAdmin_btnMove">移动(&amp;M)</item>
+    <item key="FrmFileAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmFileAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmFileAdmin_btnClose">关闭</item>
+    <item key="FrmFileAdmin_btnSelectAll">全选</item>
+    <item key="FrmFileAdmin_btnInvertSelect">反选</item>
+    <item key="FrmFileAdmin_btnFolderAdmin">文件夹(&amp;F)</item>
+    <item key="FrmFileAdmin_mItmAddUrl">添加...</item>
+    <item key="FrmFileAdmin_mItmAddFile">添加文件...</item>
+    <item key="FrmFileAdmin_mItmAddFolder">添加文件夹..</item>
+    <item key="FrmFileAdmin_mItmEdit">编辑文件夹...</item>
+    <item key="FrmFileAdmin_mItmMove">移动文件夹...</item>
+    <item key="FrmFileAdmin_mItmDelete">删除文件夹</item>
+    <item key="FrmFileAdmin_mItmAddRootFolder">添加根文件夹...</item>
+    <item key="FrmFileAdmin_mItmFrmFolderAdmin">文件夹管理...</item>
+    <!-- FormFileAdmin End -->
+
+    <!-- FormFolderAdmin Begin -->
+    <item key="FrmFolderAdmin">文件夹管理</item>
+    <item key="FrmFolderAdmin_colSelected">选择</item>
+    <item key="FrmFolderAdmin_colFullName">名称</item>
+    <item key="FrmFolderAdmin_colDescription">描述</item>
+    <item key="FrmFolderAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmFolderAdmin_btnEdit">编辑(&amp;E)</item>
+    <item key="FrmFolderAdmin_btnSelectAll">全选</item>
+    <item key="FrmFolderAdmin_btnInvertSelect">反选</item>
+    <item key="FrmFolderAdmin_btnMove">移动(&amp;M)</item>
+    <item key="FrmFolderAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmFolderAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmFolderAdmin_btnClose">关闭</item>
+    <item key="FrmFolderAdmin_mItmAdd">添加(&amp;A)...</item>
+    <item key="FrmFolderAdmin_mItmEdit">编辑(&amp;E)...</item>
+    <item key="FrmFolderAdmin_mItmMove">移动(&amp;M)...</item>
+    <item key="FrmFolderAdmin_mItmDelete">删除(&amp;D)...</item>
+    <item key="FrmFolderAdmin_mItmAddRootFolder">添加根文件夹(&amp;F)...</item>
+    <!-- FormFolderAdmin End -->
+
+    <!-- FormFolderMultiSelect Begin -->
+    <item key="FrmFolderMultiSelect">选择文件夹</item>
+    <item key="FrmFolderMultiSelect_btnSelectAll">全选</item>
+    <item key="FrmFolderMultiSelect_btnInvertSelect">反选</item>
+    <item key="FrmFolderMultiSelect_btnConfirm">确定</item>
+    <item key="FrmFolderMultiSelect_btnCancel">取消</item>
+    <!-- FormFolderMultiSelect End -->
+
+    <!-- FormFolderSelectOne Begin -->
+    <item key="FrmFolderSelectOne">选择文件夹</item>
+    <item key="FrmFolderSelectOne_btnConfirm">确定</item>
+    <item key="FrmFolderSelectOne_btnCancel">取消</item>
+    <!-- FormFolderSelectOne End -->
+
+    <!-- FrmPicture Begin -->
+    <item key="FrmPicture">查看图片</item>
+    <item key="FrmPicture_btnDownLoad">下载(&amp;D)</item>
+    <item key="FrmPicture_btnClose">关闭</item>
+    <!-- FrmPicture End -->
+
+    <!-- FrmResourcePermission Begin -->
+    <item key="FrmResourcePermission">资源权限设置（列表资源）</item>
+    <item key="FrmResourcePermission_lblResource">当前对象：</item>
+    <item key="FrmResourcePermission_lblPermissionItem">操作权限：</item>
+    <item key="FrmResourcePermission_tpTargetResource">目标资源</item>
+    <item key="FrmResourcePermission_colSelected">选择</item>
+    <item key="FrmResourcePermission_colRealName">名称</item>
+    <item key="FrmResourcePermission_colDescription">描述</item>
+    <item key="FrmResourcePermission_btnSelectAll">全选</item>
+    <item key="FrmResourcePermission_btnInvertSelect">反选</item>
+    <item key="FrmResourcePermission_btnConfirm">保存(&amp;S)</item>
+    <item key="FrmResourcePermission_btnCancel">取消</item>
+    <!-- FrmResourcePermission End -->
+
+    <!-- FrmResourceSetPermission Begin -->
+    <item key="FrmResourceSetPermission">资源权限设置</item>
+    <item key="FrmResourceSetPermission_lblTargetResource">当前资源：</item>
+    <item key="FrmResourceSetPermission_tpUser">用户</item>
+    <item key="FrmResourceSetPermission_tpRole">角色</item>
+    <item key="FrmResourceSetPermission_lblPermissionItem">操作权限：</item>
+    <item key="FrmResourceSetPermission_colSelected">选择</item>
+    <item key="FrmResourceSetPermission_colUserName">用户</item>
+    <item key="FrmResourceSetPermission_colRealName">名称</item>
+    <item key="FrmResourceSetPermission_colDescription">描述</item>
+    <item key="FrmResourceSetPermission_dataGridViewCheckBoxColumn1">选择</item>
+    <item key="FrmResourceSetPermission_dataGridViewTextBoxColumn1">名称</item>
+    <item key="FrmResourceSetPermission_dataGridViewTextBoxColumn2">描述</item>
+    <item key="FrmResourceSetPermission_btnSelectAll">全选</item>
+    <item key="FrmResourceSetPermission_btnInvertSelect">反选</item>
+    <item key="FrmResourceSetPermission_btnConfirm">保存(&amp;S)</item>
+    <item key="FrmResourceSetPermission_btnCancel">取消</item>
+    <!-- FrmResourceSetPermission End -->
+
+    <!-- FrmTreeResourcePermission Begin -->
+    <item key="FrmTreeResourcePermission">资源权限设置（树型资源）</item>
+    <item key="FrmTreeResourcePermission_lblResource">目标对象：</item>
+    <item key="FrmTreeResourcePermission_lblPermissionItem">操作权限：</item>
+    <item key="FrmTreeResourcePermission_tpTargetResource">目标资源</item>
+    <item key="FrmTreeResourcePermission_colSelected">选择</item>
+    <item key="FrmTreeResourcePermission_colRealName">名称</item>
+    <item key="FrmTreeResourcePermission_colDescription">描述</item>
+    <item key="FrmTreeResourcePermission_btnSelectAll">全选</item>
+    <item key="FrmTreeResourcePermission_btnInvertSelect">反选</item>
+    <item key="FrmTreeResourcePermission_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmTreeResourcePermission_btnClose">关闭</item>
+    <!-- FrmTreeResourcePermission End -->
+
+    <!-- FrmFolderSelect Begin -->
+    <item key="FrmFolderSelect">选择文件夹</item>
+    <item key="FrmFolderSelect_btnConfirm">确定(&amp;C)</item>
+    <item key="FrmFolderSelect_btnCancel">取消</item>
+    <item key="FrmFolderSelect_btnSetNull">置空</item>
+    <!-- FrmFolderSelect End -->
+
+    <!-- FrmFolderPermission Begin -->
+    <item key="FrmFolderPermission">文件夹权限</item>
+    <item key="FrmFolderPermission_checkBox1">查看</item>
+    <item key="FrmFolderPermission_checkBox3">建子目录</item>
+    <item key="FrmFolderPermission_checkBox5">删除子目录</item>
+    <item key="FrmFolderPermission_checkBox2">创建文件</item>
+    <item key="FrmFolderPermission_checkBox4">删除文件</item>
+    <item key="FrmFolderPermission_checkBox7">更新他人文件</item>
+    <item key="FrmFolderPermission_checkBox6">删除他人文件</item>
+    <item key="FrmFolderPermission_checkBox8">下载他人文件</item>
+    <!-- FrmFolderPermission End -->
+
+    <!-- FormItemDetailsAdd Begin -->
+    <item key="FrmItemDetailsAdd">选项添加</item>
+    <item key="FrmItemDetailsAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmItemDetailsAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmItemDetailsAdd_lblValue">值(&amp;V)：</item>
+    <item key="FrmItemDetailsAdd_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmItemDetailsAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmItemDetailsAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmItemDetailsAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmItemDetailsAdd_btnCancel">取消</item>
+    <!-- FormItemDetailsAdd End -->
+
+    <!-- FormItemDetailsEdit Begin -->
+    <item key="FrmItemDetailsEdit">选项编辑</item>
+    <item key="FrmItemDetailsEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmItemDetailsEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmItemDetailsEdit_lblValue">值(&amp;V)：</item>
+    <item key="FrmItemDetailsEdit_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmItemDetailsEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmItemDetailsEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmItemDetailsEdit_btnCancel">取消</item>
+    <!-- FormItemDetailsEdit End -->
+
+    <!-- FormItemsAdd Begin -->
+    <item key="FrmItemsAdd">选项添加</item>
+    <item key="FrmItemsAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmItemsAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmItemsAdd_lblTargetTable">目标表(&amp;T)：</item>
+    <item key="FrmItemsAdd_lblUseItemCode">编号字段：</item>
+    <item key="FrmItemsAdd_lblUseItemName">名称字段：</item>
+    <item key="FrmItemsAdd_lblUseItemValue">值字段：</item>
+    <item key="FrmItemsAdd_chkIsTree">树型</item>
+    <item key="FrmItemsAdd_chkEnabled">有效</item>
+    <item key="FrmItemsAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmItemsAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmItemsAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmItemsAdd_btnCancel">取消</item>
+    <!-- FormItemsAdd End -->
+
+    <!-- FrmItemsEdit Begin -->
+    <item key="FrmItemsEdit">选项编辑</item>
+    <item key="FrmItemsEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmItemsEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmItemsEdit_lblTargetTable">目标表(&amp;T)：</item>
+    <item key="FrmItemsEdit_lblUseItemCode">编号字段：</item>
+    <item key="FrmItemsEdit_lblUseItemName">名称字段：</item>
+    <item key="FrmItemsEdit_lblUseItemValue">值字段：</item>
+    <item key="FrmItemsEdit_chkIsTree">树型</item>
+    <item key="FrmItemsEdit_chkEnabled">有效</item>
+    <item key="FrmItemsEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmItemsEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmItemsEdit_btnCancel">取消</item>
+    <!-- FrmItemsEdit End -->
+
+    <!-- FormItemDetailsAdmin Begin -->
+    <item key="FrmItemDetailsAdmin">选项明细管理</item>
+    <item key="FrmItemDetailsAdmin_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmItemDetailsAdmin_colSelected">选择</item>
+    <item key="FrmItemDetailsAdmin_colItemCode">编号</item>
+    <item key="FrmItemDetailsAdmin_colItemName">名称</item>
+    <item key="FrmItemDetailsAdmin_colItemValue">值</item>
+    <item key="FrmItemDetailsAdmin_colEnabled">有效</item>
+    <item key="FrmItemDetailsAdmin_colDescription">描述</item>
+    <item key="FrmItemDetailsAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmItemDetailsAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmItemDetailsAdmin_btnExport">导出Excel...</item>
+    <item key="FrmItemDetailsAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmItemDetailsAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmItemDetailsAdmin_btnClose">关闭</item>
+    <!-- FormItemDetailsAdmin End -->
+
+    <!-- FrmItemsAdmin Begin -->
+    <item key="FrmItemsAdmin">选项管理</item>
+    <item key="FrmItemsAdmin_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmItemsAdmin_chkEnabled">只显示有效的</item>
+    <item key="FrmItemsAdmin_btnUserResourcePermission">用户权限...</item>
+    <item key="FrmItemsAdmin_btnRoleResourcePermission">角色权限...</item>
+    <item key="FrmItemsAdmin_colSelected">选择</item>
+    <item key="FrmItemsAdmin_colCode">编号</item>
+    <item key="FrmItemsAdmin_colFullName">名称</item>
+    <item key="FrmItemsAdmin_colTargetTable">目标表</item>
+    <item key="FrmItemsAdmin_colDescription">描述</item>
+    <item key="FrmItemsAdmin_colEnabled">有效</item>
+    <item key="FrmItemsAdmin_colUseItemCode">编号字段</item>
+    <item key="FrmItemsAdmin_colUseItemName">名称字段</item>
+    <item key="FrmItemsAdmin_colUseItemValue">值字段</item>
+    <item key="FrmItemsAdmin_btnDetails">选项明细...</item>
+    <item key="FrmItemsAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmItemsAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmItemsAdmin_btnExport">导出Excel...</item>
+    <item key="FrmItemsAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmItemsAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmItemsAdmin_btnClose">关闭</item>
+    <!-- FrmItemsAdmin End -->
+
+    <!-- FrmItemDetailsMultiSelect Begin -->
+    <item key="FrmItemDetailsMultiSelect">选择选项</item>
+    <item key="FrmItemDetailsMultiSelect_colSelected">选择</item>
+    <item key="FrmItemDetailsMultiSelect_colCode">编号</item>
+    <item key="FrmItemDetailsMultiSelect_colItemName">名称</item>
+    <item key="FrmItemDetailsMultiSelect_colDescription">描述</item>
+    <item key="FrmItemDetailsMultiSelect_btnSelectAll">全选</item>
+    <item key="FrmItemDetailsMultiSelect_btnInvertSelect">反选</item>
+    <item key="FrmItemDetailsMultiSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmItemDetailsMultiSelect_btnConfirm">确定</item>
+    <item key="FrmItemDetailsMultiSelect_btnCancel">取消</item>
+    <!-- FrmItemDetailsMultiSelect End -->
+
+    <!-- FrmItemDetailsSelect Begin -->
+    <item key="FrmItemDetailsSelect">选择选项</item>
+    <item key="FrmItemDetailsSelect_colSelected">选择</item>
+    <item key="FrmItemDetailsSelect_colCode">编号</item>
+    <item key="FrmItemDetailsSelect_colItemName">名称</item>
+    <item key="FrmItemDetailsSelect_colDescription">描述</item>
+    <item key="FrmItemDetailsSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmItemDetailsSelect_btnConfirm">确定</item>
+    <item key="FrmItemDetailsSelect_btnCancel">取消</item>
+    <!-- FrmItemDetailsSelect End -->
+
+    <!-- FrmItemDetailsTreeSelect Begin -->
+    <item key="FrmItemDetailsTreeSelect">选择选项</item>
+    <item key="FrmItemDetailsTreeSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmItemDetailsTreeSelect_btnConfirm">确定</item>
+    <item key="FrmItemDetailsTreeSelect_btnCancel">取消</item>
+    <!-- FrmItemDetailsTreeSelect End -->
+
+    <!-- FormItemDetailsSelectOne Begin -->
+    <item key="FrmItemDetailsSelectOne">Select ItemDetail</item>
+    <item key="FrmItemDetailsSelectOne_btnOk">确定</item>
+    <item key="FrmItemDetailsSelectOne_btnCancel">取消</item>
+    <!-- FormItemDetailsSelectOne End -->
+
+    <!-- FrmSystemLogByDate Begin -->
+    <item key="FrmSystemLogByDate">按日期查询</item>
+    <item key="FrmSystemLogByDate_lblStartDate">开始日期：</item>
+    <item key="FrmSystemLogByDate_lblEndDate">结束日期：</item>
+    <item key="FrmSystemLogByDate_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmSystemLogByDate_colSelected">选择</item>
+    <item key="FrmSystemLogByDate_colProcessName">模块</item>
+    <item key="FrmSystemLogByDate_colUserRealName">姓名</item>
+    <item key="FrmSystemLogByDate_colCreateOn">访问时间</item>
+    <item key="FrmSystemLogByDate_colIPAddress">IP地址</item>
+    <item key="FrmSystemLogByDate_colMethodName">操作</item>
+    <item key="FrmSystemLogByDate_colDescription">描述</item>
+    <item key="FrmSystemLogByDate_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmSystemLogByDate_btnSelectAll">全选</item>
+    <item key="FrmSystemLogByDate_btnInvertSelect">反选</item>
+    <item key="FrmSystemLogByDate_btnClear">全部清除(&amp;C)</item>
+    <item key="FrmSystemLogByDate_btnExport">导出Excel...</item>
+    <item key="FrmSystemLogByDate_btnClose">关闭</item>
+    <!-- FormLogByDate End -->
+
+    <!-- FrmLogByModule Begin -->
+    <item key="FrmLogByModule">按菜单查询</item>
+    <item key="FrmLogByModule_lblModule">模块（菜单)：</item>
+    <item key="FrmLogByModule_lblStartDate">开始日期：</item>
+    <item key="FrmLogByModule_lblEndDate">结束日期：</item>
+    <item key="FrmLogByModule_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmLogByModule_colSelected">选择</item>
+    <item key="FrmLogByModule_colProcessName">模块</item>
+    <item key="FrmLogByModule_colUserRealName">姓名</item>
+    <item key="FrmLogByModule_colCreateOn">访问时间</item>
+    <item key="FrmLogByModule_colIPAddress">IP地址</item>
+    <item key="FrmLogByModule_colMethodName">操作</item>
+    <item key="FrmLogByModule_colDescription">描述</item>
+    <item key="FrmLogByModule_btnSelectAll">全选</item>
+    <item key="FrmLogByModule_btnInvertSelect">反选</item>
+    <item key="FrmLogByModule_btnClear">全部清除(&amp;C)</item>
+    <item key="FrmLogByModule_btnExport">导出Excel...</item>
+    <item key="FrmLogByModule_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmLogByModule_btnClose">关闭</item>
+    <!-- FrmLogByModule End -->
+
+    <!-- FormLogGeneral Begin -->
+    <item key="FrmLogGeneral">按用户访问情况</item>
+    <item key="FrmLogGeneral_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmLogGeneral_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmLogGeneral_chkOnlyOnLine">只显示在线用户</item>
+    <item key="FrmLogGeneral_colSelected">选择</item>
+    <item key="FrmLogGeneral_colCode">编号</item>
+    <item key="FrmLogGeneral_colUserName">用户名</item>
+    <item key="FrmLogGeneral_colUserRealName">姓名</item>
+    <item key="FrmLogGeneral_colIsStaff">员工</item>
+    <item key="FrmLogGeneral_colIsVisible">显示</item>
+    <item key="FrmLogGeneral_colEnabled">有效</item>
+    <item key="FrmLogGeneral_colFirstVisit">首次访问</item>
+    <item key="FrmLogGeneral_colLastVisit">上次访问</item>
+    <item key="FrmLogGeneral_colLatestVisit">最后访问</item>
+    <item key="FrmLogGeneral_colLogCount">登录次数</item>
+    <item key="FrmLogGeneral_colUserOnLine">在线</item>
+    <item key="FrmLogGeneral_colIPAddress">IP地址</item>
+    <item key="FrmLogGeneral_colMACAddress">MAC地址</item>
+    <item key="FrmLogGeneral_btnSelectAll">全选</item>
+    <item key="FrmLogGeneral_btnInvertSelect">反选</item>
+    <item key="FrmLogGeneral_btnVisitDetail">访问详情(&amp;V)...</item>
+    <item key="FrmLogGeneral_btnExport">导出Excel...</item>
+    <item key="FrmLogGeneral_btnReset">重置(&amp;R)</item>
+    <item key="FrmLogGeneral_btnClose">关闭</item>
+    <!-- FormLogGeneral End -->
+
+    <!-- FrmLogOn Begin -->
+    <item key="FrmLogOn">登录</item>
+    <item key="FrmLogOn_grpLogOn">登录</item>
+    <item key="FrmLogOn_lblUser">用户(&amp;U)：</item>
+    <item key="FrmLogOn_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmLogOn_chkRememberPassword">记住密码</item>
+    <item key="FrmLogOn_btnConfirm">登录(&amp;L)</item>
+    <item key="FrmLogOn_btnExit">退出(&amp;E)</item>
+    <item key="FrmLogOn_btnCancel">取消</item>
+    <!-- FrmLogOn End -->
+
+    <!-- FrmLogOnSelect Begin -->
+    <item key="FrmLogOnSelect">登录</item>
+    <item key="FrmLogOnSelect_grpLogOn">登录</item>
+    <item key="FrmLogOnSelect_lblUser">用户(&amp;U)：</item>
+    <item key="FrmLogOnSelect_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmLogOnSelect_lblLogOnTo">登录到(&amp;T)：</item>
+    <item key="FrmLogOnSelect_btnConfirm">登录(&amp;L)</item>
+    <item key="FrmLogOnSelect_btnCancel">取消</item>
+    <!-- FrmLogOnSelect End -->
+
+    <!-- FrmSelectNetworkBegin -->
+    <item key="FrmSelectNetwork">选择网络连接模式</item>
+    <item key="FrmSelectNetwork_btnInnern">内网访问</item>
+    <item key="FrmSelectNetwork_btnOuter">外网访问</item>
+    <item key="FrmSelectNetwork_btnExit">退出</item>
+    <!-- FrmSelectNetwork End -->
+
+    <!-- FormModuleAdd Begin -->
+    <item key="FrmModuleAdd">添加菜单</item>
+    <item key="FrmModuleAdd_grbModule">模块菜单</item>
+    <item key="FrmModuleAdd_lblParent">父模块(&amp;P)：</item>
+    <item key="FrmModuleAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmModuleAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmModuleAdd_lblTarget">目标(&amp;T)：</item>
+    <item key="FrmModuleAdd_lblNavigateUrl">Web网址：</item>
+    <item key="FrmModuleAdd_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmModuleAdd_chkIsPublic">公开</item>
+    <item key="FrmModuleAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmModuleAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmModuleAdd_btnConfirm">确定</item>
+    <item key="FrmModuleAdd_btnCancel">取消</item>
+    <!-- FormModuleAdd End -->
+
+    <!-- FrmModuleEdit Begin -->
+    <item key="FrmModuleEdit">编辑菜单</item>
+    <item key="FrmModuleEdit_grbModule">模块菜单</item>
+    <item key="FrmModuleEdit_lblParent">父节点(&amp;P)：</item>
+    <item key="FrmModuleEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmModuleEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmModuleEdit_lblTarget">目标(&amp;T)：</item>
+    <item key="FrmModuleEdit_lblId">主键：</item>
+    <item key="FrmModuleEdit_lblNavigateUrl">Web网址：</item>
+    <item key="FrmModuleEdit_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmModuleEdit_chkIsPublic">公开</item>
+    <item key="FrmModuleEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmModuleEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmModuleEdit_btnCancel">取消</item>
+    <item key="FrmModuleEdit_btnModulePermission">关联操作权限(&amp;P)...</item>
+    <!-- FrmModuleEdit End -->
+
+    <!-- FormModuleAdmin Begin -->
+    <item key="FrmModuleAdmin">菜单管理</item>
+    <item key="FrmModuleAdmin_lblSystem">业务系统：</item>
+    <item key="FrmModuleAdmin_btnModuleConfig">菜单配置...</item>
+    <item key="FrmModuleAdmin_btnModulePermissionRelation">关联操作权限...</item>
+    <item key="FrmModuleAdmin_btnExportAll">全部导出Excel...</item>
+    <item key="FrmModuleAdmin_colSelected">选择</item>
+    <item key="FrmModuleAdmin_colCode">编号</item>
+    <item key="FrmModuleAdmin_colFullName">名称</item>
+    <item key="FrmModuleAdmin_colNavigateUrl">Web地址</item>
+    <item key="FrmModuleAdmin_colDescription">描述</item>
+    <item key="FrmModuleAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmModuleAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmModuleAdmin_btnMove">移动(&amp;M)...</item>
+    <item key="FrmModuleAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmModuleAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmModuleAdmin_btnClose">关闭</item>
+    <item key="FrmModuleAdmin_colEnabled">有效</item>
+    <item key="FrmModuleAdmin_colIsPublic">公开</item>
+    <item key="FrmModuleAdmin_btnExport">导出 Excel</item>
+    <item key="FrmModuleAdmin_btnModuleSetPermission">关联操作权限(&amp;P)...</item>
+    <item key="FrmModuleAdmin_mItmAdd">添加...</item>
+    <item key="FrmModuleAdmin_mItmEdit">编辑...</item>
+    <item key="FrmModuleAdmin_mItmMove">移动...</item>
+    <item key="FrmModuleAdmin_mItmDelete">删除</item>
+    <item key="FrmModuleAdmin_mItmAddRoot">添加根菜单...</item>
+    <item key="FrmModuleAdmin_mItmModulePermission">关联操作权限...</item>
+    <item key="FrmModuleAdmin_mItmSetSortCode">保存排序顺序</item>
+    <!-- FormModuleAdmin End -->
+
+    <!-- FrmModulePermissionItemBatchSet Begin -->
+    <item key="FrmModulePermissionItemBatchSet">菜单关联操作权限</item>
+    <item key="FrmModulePermissionItemBatchSet_tpModule">菜单</item>
+    <item key="FrmModulePermissionItemBatchSet_tpPermissionItem">操作权限</item>
+    <!-- FrmModulePermissionItemBatchSet End -->
+
+    <!-- FormModuleConfig Begin -->
+    <item key="FrmModuleConfig">菜单配置</item>
+    <item key="FrmModuleConfig_btnSelectAll">全选</item>
+    <item key="FrmModuleConfig_btnInvertSelect">反选</item>
+    <item key="FrmModuleConfig_btnConfirm">确定</item>
+    <item key="FrmModuleConfig_btnCancel">取消</item>
+    <!-- FormModuleConfig End -->
+
+    <!-- FrmModuleMultiSelect Begin -->
+    <item key="FrmModuleMultiSelect">菜单配置</item>
+    <item key="FrmModuleMultiSelect_btnSelectAll">全选</item>
+    <item key="FrmModuleMultiSelect_btnInvertSelect">反选</item>
+    <item key="FrmModuleMultiSelect_btnConfirm">确定(&amp;C)</item>
+    <item key="FrmModuleMultiSelect_btnCancel">取消</item>
+    <!-- FrmModuleMultiSelect End -->
+
+    <!-- FrmModuleSelect Begin -->
+    <item key="FrmModuleSelect">选择菜单</item>
+    <item key="FrmModuleSelect_btnConfirm">确定</item>
+    <item key="FrmModuleSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmModuleSelect_btnCancel">取消</item>
+    <!-- FrmModuleSelect End -->
+
+    <!-- FrmModulePermissionAdmin Begin -->
+    <item key="FrmModulePermissionAdmin">菜单关联操作权限</item>
+    <item key="FrmModulePermissionAdmin_lblModule">模块（菜单)：</item>
+    <item key="FrmModulePermissionAdmin_colSelected">选择</item>
+    <item key="FrmModulePermissionAdmin_colCode">编号</item>
+    <item key="FrmModulePermissionAdmin_colFullName">名称</item>
+    <item key="FrmModulePermissionAdmin_colDescription">描述</item>
+    <item key="FrmModulePermissionAdmin_btnSelectAll">全选</item>
+    <item key="FrmModulePermissionAdmin_btnInvertSelect">反选</item>
+    <item key="FrmModulePermissionAdmin_btnAddPermission">关联操作权限(&amp;S)...</item>
+    <item key="FrmModulePermissionAdmin_btnMove">移除(&amp;M)</item>
+    <item key="FrmModulePermissionAdmin_btnClose">关闭</item>
+    <!-- FrmModulePermissionAdmin End -->
+
+    <!-- FrmIPLimitr Begin -->
+    <item key="FrmIPLimitr">IP访问限制</item>
+    <item key="FrmIPLimitr_colSelected">选择</item>
+    <item key="FrmIPLimitr_lblUser">用户(&amp;U)：</item>
+    <item key="FrmIPLimitr_btnAdd">添加(&amp;A)</item>
+    <item key="FrmIPLimitr_btnSelectAll">全选</item>
+    <item key="FrmIPLimitr_btnInvertSelect">反选</item>
+    <item key="FrmIPLimitr_btnClose">关闭</item>
+    <item key="FrmIPLimitr_btnDelete">删除(&amp;D)</item>
+    <!-- FrmIPLimitr End -->
+
+    <!-- FrmOrganizeCodeBuilder Begin -->
+    <item key="FrmOrganizeCodeBuilder">编号产生器设置</item>
+    <item key="FrmOrganizeCodeBuilder_lblCodeLength">编号位数设定：</item>
+    <item key="FrmOrganizeCodeBuilder_btnAdvice">设置建议</item>
+    <item key="FrmOrganizeCodeBuilder_btnCodeBuilder">生成编号</item>
+    <item key="FrmOrganizeCodeBuilder_btnConfirm">确定</item>
+    <item key="FrmOrganizeCodeBuilder_btnCancel">取消</item>
+    <!-- FrmOrganizeCodeBuilder End -->
+
+    <!-- FormOrganizeAdd Begin -->
+    <item key="FrmOrganizeAdd">添加组织机构</item>
+    <item key="FrmOrganizeAdd_lblParentOrganize">父节点(&amp;P)：</item>
+    <item key="FrmOrganizeAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmOrganizeAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmOrganizeAdd_lblCategory">分类(&amp;G)：</item>
+    <item key="FrmOrganizeAdd_lblManager">主管：</item>
+    <item key="FrmOrganizeAdd_lblAssistantManager">副主管：</item>
+    <item key="FrmOrganizeAdd_lblOuterPhone">电话(&amp;O)：</item>
+    <item key="FrmOrganizeAdd_lblInnerPhone">内线(&amp;I)：</item>
+    <item key="FrmOrganizeAdd_lblFax">传真(&amp;F)：</item>
+    <item key="FrmOrganizeAdd_lblPostalcode">邮编：</item>
+    <item key="FrmOrganizeAdd_lblAddress">地址：</item>
+    <item key="FrmOrganizeAdd_lblWeb">网址：</item>
+    <item key="FrmOrganizeAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmOrganizeAdd_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmOrganizeAdd_chkIsInnerOrganize">内部组织</item>
+    <item key="FrmOrganizeAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmOrganizeAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmOrganizeAdd_btnCancel">取消</item>
+    <!-- FormOrganizeAdd End -->
+
+    <!-- FormOrganizeAdmin Begin -->
+    <item key="FrmOrganizeAdmin">组织机构管理</item>
+    <item key="FrmOrganizeAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmOrganizeAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmOrganizeAdmin_colSelected">选择</item>
+    <item key="FrmOrganizeAdmin_colCode">编号</item>
+    <item key="FrmOrganizeAdmin_colFullName">名称</item>
+    <item key="FrmOrganizeAdmin_colDescription">描述</item>
+    <item key="FrmOrganizeAdmin_btnMove">移动(&amp;M)...</item>
+    <item key="FrmOrganizeAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmOrganizeAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmOrganizeAdmin_btnSaveSort">保存顺序(&amp;R)</item>
+    <item key="FrmOrganizeAdmin_btnClose">关闭</item>
+    <item key="FrmOrganizeAdmin_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmOrganizeAdmin_btnSearch">查询(&amp;S)</item>
+    <item key="FrmOrganizeAdmin_chkRefresh">即时刷新</item>
+    <item key="FrmOrganizeAdmin_colIsInnerOrganize">内部组织</item>
+    <item key="FrmOrganizeAdmin_btnExport">导出Excel...</item>
+    <item key="FrmOrganizeAdmin_mItmAdd">添加...</item>
+    <item key="FrmOrganizeAdmin_mItmEdit">编辑...</item>
+    <item key="FrmOrganizeAdmin_mItmMove">移动...</item>
+    <item key="FrmOrganizeAdmin_mItmDelete">删除</item>
+    <item key="FrmOrganizeAdmin_mItmAddRoot">添加根组织机构...</item>
+    <item key="FrmOrganizeAdmin_mItmUserAdd">添加用户...</item>
+    <item key="FrmOrganizeAdmin_mItmStaffAdd">添加员工...</item>
+    <item key="FrmOrganizeAdmin_mItemRoleAdd">添加角色...</item>
+    <item key="FrmOrganizeAdmin_mItmOrganizeCategory">组织机构类别维护...</item>
+    <item key="FrmOrganizeAdmin_mItmFrmUserPermissionReport">用户权限报表...</item>
+    <item key="FrmOrganizeAdmin_mItmFrmCodeGenerator">编号生成器...</item>
+    <item key="FrmOrganizeAdmin_mItmSetSortCode">保存排序顺序</item>
+    <!-- FormOrganizeAdmin End -->
+
+    <!-- FrmOrganizeEdit Begin -->
+    <item key="FrmOrganizeEdit">编辑组织机构</item>
+    <item key="FrmOrganizeEdit_grbOrganize">组织机构</item>
+    <item key="FrmOrganizeEdit_lblId">主键</item>
+    <item key="FrmOrganizeEdit_lblParentOrganize">父节点(&amp;P)：</item>
+    <item key="FrmOrganizeEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmOrganizeEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmOrganizeEdit_lblCategory">分类(&amp;G)：</item>
+    <item key="FrmOrganizeEdit_lblManager">主管：</item>
+    <item key="FrmOrganizeEdit_lblAssistantManager">副主管：</item>
+    <item key="FrmOrganizeEdit_lblOuterPhone">电话(&amp;O)：</item>
+    <item key="FrmOrganizeEdit_lblInnerPhone">内线(&amp;I)：</item>
+    <item key="FrmOrganizeEdit_lblFax">传真(&amp;F)：</item>
+    <item key="FrmOrganizeEdit_lblPostalcode">邮编：</item>
+    <item key="FrmOrganizeEdit_lblAddress">地址：</item>
+    <item key="FrmOrganizeEdit_lblWeb">网址：</item>
+    <item key="FrmOrganizeEdit_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmOrganizeEdit_chkIsInnerOrganize">内部组织</item>
+    <item key="FrmOrganizeEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmOrganizeEdit_grbDuty">岗位</item>
+    <item key="FrmOrganizeEdit_btnLeadership">领导</item>
+    <item key="FrmOrganizeEdit_btnAssistantLeadership">分管领导</item>
+    <item key="FrmOrganizeEdit_btnManager">主管</item>
+    <item key="FrmOrganizeEdit_btnAssistantManager">副主管</item>
+    <item key="FrmOrganizeEdit_btnFinancial">财务主管</item>
+    <item key="FrmOrganizeEdit_btnAccounting">会计</item>
+    <item key="FrmOrganizeEdit_btnCashier">出纳</item>
+    <item key="FrmOrganizeEdit_btnSystemManager">系统管理员</item>
+    <item key="FrmOrganizeEdit_btnPermission">权限(&amp;P)...</item>
+    <item key="FrmOrganizeEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmOrganizeEdit_btnCancel">取消</item>
+    <!-- FrmOrganizeEdit End -->
+
+    <!-- FrmOrganizeSelect Begin -->
+    <item key="FrmOrganizeSelect">选择组织机构</item>
+    <item key="FrmOrganizeSelect_tpOrganizeTree">组织机构</item>
+    <item key="FrmOrganizeSelect_tpOrganizeList">查询</item>
+    <item key="FrmOrganizeSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmOrganizeSelect_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmOrganizeSelect_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmOrganizeSelect_colSelected">选择</item>
+    <item key="FrmOrganizeSelect_colCode">编号</item>
+    <item key="FrmOrganizeSelect_colFullName">名称</item>
+    <item key="FrmOrganizeSelect_colIsInnerOrganize">内部组织</item>
+    <item key="FrmOrganizeSelect_colDescription">描述</item>
+    <item key="FrmOrganizeSelect_btnConfirm">确定</item>
+    <item key="FrmOrganizeSelect_btnCancel">取消</item>
+    <!-- FrmOrganizeSelect End -->
+
+    <!-- FormOrganizeMultiSelect Begin -->
+    <item key="FrmOrganizeMultiSelect">选择组织机构</item>
+    <item key="FrmOrganizeMultiSelect_btnSelectAll">全选</item>
+    <item key="FrmOrganizeMultiSelect_btnInvertSelect">反选</item>
+    <item key="FrmOrganizeMultiSelect_btnConfirm">确定</item>
+    <item key="FrmOrganizeMultiSelect_btnCancel">取消</item>
+    <!-- FormOrganizeMultiSelect End -->
+
+    <!-- FormOrganizeSelectOne Begin -->
+    <item key="FrmOrganizeSelectOne">选择组织机构</item>
+    <item key="FrmOrganizeSelectOne_btnSetNull">Set &amp;Null</item>
+    <item key="FrmOrganizeSelectOne_btnConfirm">确定</item>
+    <item key="FrmOrganizeSelectOne_btnCancel">取消</item>
+    <!-- FormOrganizeSelectOne End -->
+
+    <!-- FrmOrganizePermission Begin -->
+    <item key="FrmOrganizePermission">组织机构权限设置</item>
+    <item key="FrmOrganizePermission_lblParent">组织机构(&amp;O)：</item>
+    <item key="FrmOrganizePermission_btnClearPermission">清除权限</item>
+    <item key="FrmOrganizePermission_btnCopy">复制权限</item>
+    <item key="FrmOrganizePermission_btnPaste">粘贴权限</item>
+    <item key="FrmOrganizePermission_tpModule">菜单访问权限</item>
+    <item key="FrmOrganizePermission_tpPermissionItem">拥有操作权限</item>
+    <!-- FrmOrganizePermission End -->
+
+    <!-- FrmPermissionItemAdd Begin -->
+    <item key="FrmPermissionItemAdd">添加操作权限项</item>
+    <item key="FrmPermissionItemAdd_lblParent">父节点(&amp;P)：</item>
+    <item key="FrmPermissionItemAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmPermissionItemAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmPermissionItemAdd_chkIsScope">数据权限</item>
+    <item key="FrmPermissionItemAdd_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmPermissionItemAdd_lblDescription">描述(&amp;D)</item>
+    <item key="FrmPermissionItemAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmPermissionItemAdd_btnConfirm">确定</item>
+    <item key="FrmPermissionItemAdd_btnCancel">取消</item>
+    <!-- FrmPermissionItemAdd End -->
+
+    <!-- FrmPermissionItemEdit Begin -->
+    <item key="FrmPermissionItemEdit">编辑操作权限项</item>
+    <item key="FrmPermissionItemEdit_lblParent">父节点(&amp;P)：</item>
+    <item key="FrmPermissionItemEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmPermissionItemEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmPermissionItemEdit_chkIsScope">数据权限</item>
+    <item key="FrmPermissionItemEdit_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmPermissionItemEdit_lblDescription">描述(&amp;D)</item>
+    <item key="FrmPermissionItemEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmPermissionItemEdit_btnCancel">取消</item>
+    <!-- FrmPermissionItemEdit End -->
+
+    <!-- FrmPermissionItemModuleBatchSet Begin -->
+    <item key="FrmPermissionItemModuleBatchSet">操作权限关联菜单</item>
+    <item key="FrmPermissionItemModuleBatchSet_tpPermissionItem">操作权限</item>
+    <item key="FrmPermissionItemModuleBatchSet_tpModule">菜单</item>
+    <!-- FrmPermissionItemModuleBatchSet End -->
+
+    <!-- FrmPermissionModule Begin -->
+    <item key="FrmPermissionModule">操作权限项关联菜单</item>
+    <item key="FrmPermissionModule_lblPermission">操作权限项(&amp;P)：</item>
+    <item key="FrmPermissionModule_btnAdd">关联菜单(&amp;M)</item>
+    <item key="FrmPermissionModule_btnRemove">移除(&amp;R)</item>
+    <item key="FrmPermissionModule_btnCancel">关闭</item>
+    <item key="FrmPermissionModule_btnSelectAll">全选</item>
+    <item key="FrmPermissionModule_btnInvertSelect">反选</item>
+    <item key="FrmPermissionModule_colSelected">选择</item>
+    <item key="FrmPermissionModule_colCode">编号</item>
+    <item key="FrmPermissionModule_colFullName">名称</item>
+    <item key="FrmPermissionModule_colDescription">描述</item>
+    <!-- FrmPermissionModule End -->
+
+    <!-- FrmPermissionSelect Begin -->
+    <item key="FrmPermissionSelect">选择操作权限项</item>
+    <item key="FrmPermissionSelect_btnSelectAll">全选</item>
+    <item key="FrmPermissionSelect_btnInvertSelect">反选</item>
+    <item key="FrmPermissionSelect_btnSetNull">置空</item>
+    <item key="FrmPermissionSelect_btnConfirm">确定</item>
+    <item key="FrmPermissionSelect_btnCancel">取消</item>
+    <!-- FrmPermissionSelect End -->
+
+    <!-- FrmRoleModulePermission Begin -->
+    <item key="FrmRoleModulePermission">角色菜单权限</item>
+    <item key="FrmRoleModulePermission_lblUser">角色(&amp;R)：</item>
+    <item key="FrmRoleModulePermission_btnSelectAll">全选</item>
+    <item key="FrmRoleModulePermission_btnInvertSelect">反选</item>
+    <item key="FrmRoleModulePermission_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmRoleModulePermission_btnClose">关闭</item>
+    <!-- FrmRoleModulePermission End -->
+
+    <!-- FrmRolePermission Begin -->
+    <item key="FrmRolePermission">角色权限设定</item>
+    <item key="FrmRolePermission_lblParent">角色(&amp;R)：</item>
+    <item key="FrmRolePermission_btnClearPermission">清除权限</item>
+    <item key="FrmRolePermission_btnCopy">复制权限</item>
+    <item key="FrmRolePermission_btnPaste">贴上权限</item>
+    <item key="FrmRolePermission_tpModule">选单访问权限</item>
+    <item key="FrmRolePermission_tpPermissionItem">拥有操作权限</item>
+    <!-- FrmRolePermission End -->
+
+    <!-- FrmScopePermissionSelect Begin -->
+    <item key="FrmScopePermissionSelect">选择数据权限项</item>
+    <item key="FrmScopePermissionSelect_colSelected">选择</item>
+    <item key="FrmScopePermissionSelect_colCode">编号</item>
+    <item key="FrmScopePermissionSelect_colFullName">名称</item>
+    <item key="FrmScopePermissionSelect_colDescription">描述</item>
+    <item key="FrmScopePermissionSelect_btnConfirm">确定</item>
+    <item key="FrmScopePermissionSelect_btnCancel">取消</item>
+    <item key="FrmScopePermissionSelect_btnSetNull">置空(&amp;N)</item>
+    <!-- FrmScopePermissionSelect End -->
+
+    <!-- FrmRolePermissionScope Begin -->
+    <item key="FrmRolePermissionScope">角色数据权限设置</item>
+    <item key="FrmRolePermissionScope_lblRole">角色：</item>
+    <item key="FrmRolePermissionScope_lblPermissionScope">数据权限：</item>
+    <item key="FrmRolePermissionScope_grbPermissionScope">权限范围</item>
+    <item key="FrmRolePermissionScope_rdbAll">所有数据</item>
+    <item key="FrmRolePermissionScope_rdbUserCompany">所在公司</item>
+    <item key="FrmRolePermissionScope_rdbUserDepartment">所在部门</item>
+    <item key="FrmRolePermissionScope_rdbUserWorkgroup">所在工作组</item>
+    <item key="FrmRolePermissionScope_rdbUser">仅本人</item>
+    <item key="FrmRolePermissionScope_rdbDetail">按明细设置</item>
+    <item key="FrmRolePermissionScope_rdbNone">无</item>
+    <item key="FrmRolePermissionScope_btnSelectAll">全选</item>
+    <item key="FrmRolePermissionScope_btnInvertSelect">反选</item>
+    <item key="FrmRolePermissionScope_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmRolePermissionScope_btnCancel">取消</item>
+    <!-- FrmRolePermissionScope End -->
+
+    <!-- FrmRolePermissionScopes Begin -->
+    <item key="FrmRolePermissionScopes">角色授权范围设定</item>
+    <item key="FrmRolePermissionScopes_btnClearPermission">清除权限</item>
+    <item key="FrmRolePermissionScopes_btnCopy">复制权限</item>
+    <item key="FrmRolePermissionScopes_btnPaste">贴上权限</item>
+    <item key="FrmRolePermissionScopes_lblParent">角色(&amp;R)：</item>
+    <item key="FrmRolePermissionScopes_lblPermissionScope">资料集权限：</item>
+    <item key="FrmRolePermissionScopes_tpUser">使用者</item>
+    <item key="FrmRolePermissionScopes_tpRole">角色</item>
+    <item key="FrmRolePermissionScopes_tpOrganize">组织机构</item>
+    <item key="FrmRolePermissionScopes_tpModule">选单</item>
+    <item key="FrmRolePermissionScopes_tpPermissionItem">可分配操作权限</item>
+    <!-- FrmRolePermissionScopes End -->
+
+    <!-- FrmTableScope Begin -->
+    <item key="FrmTableScope">资料集权限设定</item>
+    <item key="FrmTableScope_lblUserOrRole">使用者/角色(&amp;R)</item>
+    <item key="FrmTableScope_colSelected">选择</item>
+    <item key="FrmTableScope_colTableCode">资料表</item>
+    <item key="FrmTableScope_colTableName">名称</item>
+    <item key="FrmTableScope_colPermissionConstraint">约束条件</item>
+    <item key="FrmTableScope_btnSelectAll">全选(&amp;A)</item>
+    <item key="FrmTableScope_btnInvertSelect">反选(&amp;I)</item>
+    <item key="FrmTableScope_btnDeleteCondition">删除条件表达式</item>
+    <item key="FrmTableScope_btnSetCondition">设置条件表达式</item>
+    <item key="FrmTableScope_btnCancel">取消</item>
+    <!-- FrmTableScope End -->
+
+    <!-- FrmTableColumnPermission Begin -->
+    <item key="FrmTableColumnPermission">资料表栏位权限设定</item>
+    <item key="FrmTableColumnPermission_lblUserOrRole">使用者/角色(&amp;R)：</item>
+    <item key="FrmTableColumnPermission_colTableCode">栏位</item>
+    <item key="FrmTableColumnPermission_colPublic">公开</item>
+    <item key="FrmTableColumnPermission_colAccess">访问权限</item>
+    <item key="FrmTableColumnPermission_ColEdit">编辑权限</item>
+    <item key="FrmTableColumnPermission_colDeney">拒绝访问</item>
+    <item key="FrmTableColumnPermission_btnSave">保存</item>
+    <item key="FrmTableColumnPermission_btnCancel">取消</item>
+    <!-- FrmTableColumnPermission End -->
+
+    <!-- FrmTableScopeConstraint Begin -->
+    <item key="FrmTableScopeConstraint">资料集权限约束表达式设计工具</item>
+    <item key="FrmTableScopeConstraint_lblUserOrRole">用户/角色(&amp;R)：</item>
+    <item key="FrmTableScopeConstraint_chkEnabled">限制</item>
+    <item key="FrmTableScopeConstraint_btnShowConstraint">查看数据结果集...</item>
+    <item key="FrmTableScopeConstraint_lblConstraint">约束条件：</item>
+    <item key="FrmTableScopeConstraint_lblSetConstraint">设定约束：</item>
+    <item key="FrmTableScopeConstraint_lblParameterReference">参数备注：</item>
+    <item key="FrmTableScopeConstraint_btnShowHide">显示   ▽</item>
+    <item key="FrmTableScopeConstraint_btnDelete">清除表达式</item>
+    <item key="FrmTableScopeConstraint_btnTestConstraint">验证表达式</item>
+    <item key="FrmTableScopeConstraint_btnSave">保存(&amp;S)</item>
+    <item key="FrmTableScopeConstraint_btnCancel">取消</item>
+    <!-- FrmTableScopeConstraint End -->
+
+    <!-- FrmShowConstraintTable Begin -->
+    <item key="FrmShowConstraintTable">查看数据结果集</item>
+    <item key="FrmShowConstraintTable_labelTarget">目标表(&amp;T)：</item>
+    <item key="FrmShowConstraintTable_btnExport">导出Excel...</item>
+    <item key="FrmShowConstraintTable_btnCancel">取消</item>
+    <!-- FrmShowConstraintTable End -->
+
+    <!-- FrmRolePermissionItemScope Begin -->
+    <item key="FrmRolePermissionItemScope">角色可授权范围设置</item>
+    <item key="FrmRolePermissionItemScope_lblParent">角色(&amp;R)：</item>
+    <item key="FrmRolePermissionItemScope_tpPermission">操作权限</item>
+    <item key="FrmRolePermissionItemScope_btnSelectAll">全选</item>
+    <item key="FrmRolePermissionItemScope_btnInvertSelect">反选</item>
+    <item key="FrmRolePermissionItemScope_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmRolePermissionItemScope_btnCancel">取消</item>
+    <!-- FrmRolePermissionItemScope End -->
+
+    <!-- FrmUserSetPassword Begin -->
+    <item key="FrmUserSetPassword">重置密码</item>
+    <item key="FrmUserSetPassword_btnSetUserCode">设置为工号</item>
+    <item key="FrmUserSetPassword_btnSetUserName">设置为用户名</item>
+    <item key="FrmUserSetPassword_btnSetDefaultPassword">设置为系统默认密码</item>
+    <item key="FrmUserSetPassword_grpSetPassword">设置密码</item>
+    <item key="FrmUserSetPassword_lblNewPassword">新密码(&amp;N)：</item>
+    <item key="FrmUserSetPassword_lblConfirmPassword">确认密码(&amp;C)：</item>
+    <item key="FrmUserSetPassword_btnDeletePassword">删除密码</item>
+    <item key="FrmUserSetPassword_btnConfirm">确定</item>
+    <item key="FrmUserSetPassword_btnCancel">取消</item>
+    <!-- FrmUserSetPassword End -->
+
+    <!-- FrmUserModulePermission Begin -->
+    <item key="FrmUserModulePermission">用户-菜单訪問权限設定</item>
+    <item key="FrmUserModulePermission_lblUser">用户(&amp;U)：</item>
+    <item key="FrmUserModulePermission_tpModule">模組（菜单）</item>
+    <item key="FrmUserModulePermission_btnSelectAll">全选</item>
+    <item key="FrmUserModulePermission_btnInvertSelect">反选</item>
+    <item key="FrmUserModulePermission_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserModulePermission_btnClose">关闭</item>
+    <!-- FrmUserModulePermission End -->
+
+    <!-- FrmUserModulePermissionItem Begin -->
+    <item key="FrmUserModulePermissionItem">用户权限</item>
+    <item key="FrmUserModulePermissionItem_lblUser">用户(&amp;U)：</item>
+    <item key="FrmUserModulePermissionItem_tpModule">用户权限</item>
+    <item key="FrmUserModulePermissionItem_btnSelectAll">全选</item>
+    <item key="FrmUserModulePermissionItem_btnInvertSelect">反选</item>
+    <item key="FrmUserModulePermissionItem_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserModulePermissionItem_btnClose">关闭</item>
+    <!-- FrmUserModulePermissionItem End -->
+
+    <!-- FrmUserModulePermissionBatchSet Begin -->
+    <item key="FrmUserModulePermissionBatchSet">用户菜单权限</item>
+    <item key="FrmUserModulePermissionBatchSet_lblUser">用户(&amp;U)：</item>
+    <item key="FrmUserModulePermissionBatchSet_btnSelectAll">全选</item>
+    <item key="FrmUserModulePermissionBatchSet_btnInvertSelect">反选</item>
+    <item key="FrmUserModulePermissionBatchSet_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserModulePermissionBatchSet_btnClose">关闭</item>
+    <!-- FrmUserModulePermissionBatchSet End -->
+
+    <!-- FrmUserRoleAdmin Begin -->
+    <item key="FrmUserRoleAdmin">用户角色关联</item>
+    <item key="FrmUserRoleAdmin_lblStaff">用户(&amp;U)：</item>
+    <item key="FrmUserRoleAdmin_lblRole">默认角色(&amp;R)：</item>
+    <item key="FrmUserRoleAdmin_colSelected">选择</item>
+    <item key="FrmUserRoleAdmin_colRealName">名称</item>
+    <item key="FrmUserRoleAdmin_colDescription">描述</item>
+    <item key="FrmUserRoleAdmin_btnAddToRole">添加角色...</item>
+    <item key="FrmUserRoleAdmin_btnRemove">移除</item>
+    <item key="FrmUserRoleAdmin_btnSelectAll">全选</item>
+    <item key="FrmUserRoleAdmin_btnInvertSelect">反选</item>
+    <item key="FrmUserRoleAdmin_btnRolePermission">查看角色权限(&amp;P)...</item>
+    <item key="FrmUserRoleAdmin_btnCancel">取消</item>
+    <!-- FrmUserRoleAdmin End -->
+
+    <!-- FrmUserSelect Begin -->
+    <item key="FrmUserSelect">选择用户</item>
+    <item key="FrmUserSelect_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmUserSelect_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmUserSelect_lblRoleCategories">角色：</item>
+    <item key="FrmUserSelect_colSelected">选择</item>
+    <item key="FrmUserSelect_colUserName">用户名</item>
+    <item key="FrmUserSelect_colRealName">姓名</item>
+    <item key="FrmUserSelect_colDepartment">部门</item>
+    <item key="FrmUserSelect_colDescription">描述</item>
+    <item key="FrmUserSelect_btnSelectAll">全选</item>
+    <item key="FrmUserSelect_btnInvertSelect">反选</item>
+    <item key="FrmUserSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmUserSelect_btnConfirm">确定</item>
+    <item key="FrmUserSelect_btnCancel">取消</item>
+    <!-- FrmUserSelect End -->
+
+    <!-- FrmUserPermission Begin -->
+    <item key="FrmUserPermission">用户权限设置</item>
+    <item key="FrmUserPermission_lblUser">用户(&amp;U)：</item>
+    <item key="FrmUserPermission_lblRole">默认角色(&amp;R)：</item>
+    <item key="FrmUserPermission_btnLicensed">授权范围...</item>
+    <item key="FrmUserPermission_btnUserModulePermission">菜单访问权限...</item>
+    <item key="FrmUserPermission_btnPermissionScope">数据权限(&amp;P)...</item>
+    <item key="FrmUserPermission_btnTableColumnsPermission">表字段权限...</item>
+    <item key="FrmUserPermission_btnIPLimitr">IP访问限制...</item>
+    <item key="FrmUserPermission_colSelected">选择</item>
+    <item key="FrmUserPermission_colRealName">名称</item>
+    <item key="FrmUserPermission_colDescription">描述</item>
+    <item key="FrmUserPermission_tpUserPermission">操作权限</item>
+    <item key="FrmUserPermission_tpUserRole">所属角色</item>
+    <item key="FrmUserPermission_btnSelectAll">全选</item>
+    <item key="FrmUserPermission_btnInvertSelect">反选</item>
+    <item key="FrmUserPermission_btnAddToRole">加入到角色</item>
+    <item key="FrmUserPermission_btnRemove">移除</item>
+    <item key="FrmUserPermission_btnPermission">权限...</item>
+    <item key="FrmUserPermission_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserPermission_btnClose">关闭</item>
+    <!-- FrmUserPermission End -->
+
+    <!-- FrmUserPermissionItemScope Begin -->
+    <item key="FrmUserPermissionItemScope">用户可授权范围设置</item>
+    <item key="FrmUserPermissionItemScope_lblUser">用户(&amp;U)：</item>
+    <item key="FrmUserPermissionItemScope_btnSelectAll">全选</item>
+    <item key="FrmUserPermissionItemScope_btnInvertSelect">反选</item>
+    <item key="FrmUserPermissionItemScope_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserPermissionItemScope_btnClose">关闭</item>
+    <!-- FrmUserPermissionItemScope End -->
+
+    <!-- FrmUserPermissionScope Begin -->
+    <item key="FrmUserPermissionScope">用户数据权限设置</item>
+    <item key="FrmUserPermissionScope_lblUser">用户：</item>
+    <item key="FrmUserPermissionScope_lblPermissionScope">数据权限：</item>
+    <item key="FrmUserPermissionScope_grbPermissionScope">权限范围</item>
+    <item key="FrmUserPermissionScope_rdbAll">所有数据</item>
+    <item key="FrmUserPermissionScope_rdbUserCompany">所在公司</item>
+    <item key="FrmUserPermissionScope_rdbUserDepartment">所在部门</item>
+    <item key="FrmUserPermissionScope_rdbUserWorkgroup">所在工作组</item>
+    <item key="FrmUserPermissionScope_rdbUser">仅本人</item>
+    <item key="FrmUserPermissionScope_rdbDetail">按明细设置</item>
+    <item key="FrmUserPermissionScope_rdbNone">无</item>
+    <item key="FrmUserPermissionScope_btnSelectAll">全选</item>
+    <item key="FrmUserPermissionScope_btnInvertSelect">反选</item>
+    <item key="FrmUserPermissionScope_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserPermissionScope_btnCancel">取消</item>
+    <!-- FrmUserPermissionScope End -->
+
+    <!-- FormRoleAdd Begin -->
+    <item key="FrmRoleAdd">添加角色管理</item>
+    <item key="FrmRoleAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmRoleAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmRoleAdd_lblCategory">分类(&amp;G)：</item>
+    <item key="FrmRoleAdd_chkEnabled">有效</item>
+    <item key="FrmRoleAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmRoleAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmRoleAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmRoleAdd_btnCancel">取消</item>
+    <!-- FormRoleAdd End -->
+
+    <!-- FormRoleAdmin Begin -->
+    <item key="FrmRoleAdmin">角色管理</item>
+    <item key="FrmRoleAdmin_btnFrmRoleOrganizeScope">数据权限...</item>
+    <item key="FrmRoleAdmin_btnBatchPermission">批量设置权限...</item>
+    <item key="FrmRoleAdmin_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmRoleAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmRoleAdmin_lblRoleCategories">角色分类：</item>
+    <item key="FrmRoleAdmin_colSelected">选择</item>
+    <item key="FrmRoleAdmin_colCode">编号</item>
+    <item key="FrmRoleAdmin_colFullName">名称</item>
+    <item key="FrmRoleAdmin_colEnabled">有效</item>
+    <item key="FrmRoleAdmin_colDescription">描述</item>
+    <item key="FrmRoleAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmRoleAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmRoleAdmin_btnRoleUser">用户(&amp;U)...</item>
+    <item key="FrmRoleAdmin_btnRolePermission">权限(&amp;P)...</item>
+    <item key="FrmRoleAdmin_btnExport">导出Excel...</item>
+    <item key="FrmRoleAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmRoleAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmRoleAdmin_btnClose">关闭</item>
+    <!-- FormRoleAdmin End -->
+
+    <!-- FormRoleEdit Begin -->
+    <item key="FrmRoleEdit">编辑角色</item>
+    <item key="FrmRoleEdit_grpRole">角色</item>
+    <item key="FrmRoleEdit_lblId">主键</item>
+    <item key="FrmRoleEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmRoleEdit_lblFullName">名称(&amp;F)：</item>
+    <item key="FrmRoleEdit_lblCategory">分类：</item>
+    <item key="FrmRoleEdit_chkEnabled">有效</item>
+    <item key="FrmRoleEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmRoleEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmRoleEdit_btnCancel">取消</item>
+    <!-- FormRoleEdit End -->
+
+    <!-- FrmRoleSelect Begin -->
+    <item key="FrmRoleSelect">选择角色</item>
+    <item key="FrmRoleSelect_lblRoleCategroy">角色分类：</item>
+    <item key="FrmRoleSelect_colSelected">选择</item>
+    <item key="FrmRoleSelect_colRealName">名称</item>
+    <item key="FrmRoleSelect_colDescription">描述</item>
+    <item key="FrmRoleSelect_btnSelectAll">全选(&amp;A)</item>
+    <item key="FrmRoleSelect_btnInvertSelect">反选(&amp;I)</item>
+    <item key="FrmRoleSelect_btnSetNull">置空(&amp;R)</item>
+    <item key="FrmRoleSelect_btnConfirm">确定</item>
+    <item key="FrmRoleSelect_btnCancel">取消</item>
+    <!-- FrmRoleSelect End -->
+
+    <!-- FrmRoleUserAdmin Begin -->
+    <item key="FrmRoleUserAdmin">角色-用户管理</item>
+    <item key="FrmRoleUserAdmin_lblRole">角色(&amp;R)：</item>
+    <item key="FrmRoleUserAdmin_btnSearch">查询(&amp;F)</item>
+    <item key="FrmRoleUserAdmin_colSelected">选择</item>
+    <item key="FrmRoleUserAdmin_colUserName">用户名</item>
+    <item key="FrmRoleUserAdmin_colDepartment">部门</item>
+    <item key="FrmRoleUserAdmin_colRealName">名称</item>
+    <item key="FrmRoleUserAdmin_colDescription">描述</item>
+    <item key="FrmRoleUserAdmin_btnSelectAll">全选(&amp;A)</item>
+    <item key="FrmRoleUserAdmin_btnInvertSelect">反选(&amp;I)</item>
+    <item key="FrmRoleUserAdmin_btnAdd">添加用户(&amp;D)...</item>
+    <item key="FrmRoleUserAdmin_btnRemove">移除(&amp;R)</item>
+    <item key="FrmRoleUserAdmin_btnCancel">取消</item>
+    <!-- FrmRoleUserAdmin End -->
+
+    <!-- FormRoleMultiSelect Begin -->
+    <item key="FrmRoleMultiSelect">选择角色</item>
+    <item key="FrmRoleMultiSelect_colSelected">选择</item>
+    <item key="FrmRoleMultiSelect_colFullName">姓名</item>
+    <item key="FrmRoleMultiSelect_colDescription">描述</item>
+    <item key="FrmRoleMultiSelect_btnSelectAll">全选</item>
+    <item key="FrmRoleMultiSelect_btnInvertSelection">反选</item>
+    <item key="FrmRoleMultiSelect_btnConfirm">确定</item>
+    <item key="FrmRoleMultiSelect_btnCancel">取消</item>
+    <!-- FormRoleMultiSelect End -->
+
+    <!-- FormRoleSelectOne Begin -->
+    <item key="FrmRoleSelectOne">选择角色</item>
+    <item key="FrmRoleSelectOne_colSelected">选择</item>
+    <item key="FrmRoleSelectOne_colFullName">姓名</item>
+    <item key="FrmRoleSelectOne_colDescription">描述</item>
+    <item key="FrmRoleSelectOne_btnConfirm">确定</item>
+    <item key="FrmRoleSelectOne_btnCancel">取消</item>
+    <!-- FormRoleSelectOne End -->
+
+    <!-- FormRoleModuleAdmin Begin -->
+    <item key="FrmRoleModuleAdmin">Role ModuleRight Set</item>
+    <item key="FrmRoleModuleAdmin_lblParent">&amp;Role Name：</item>
+    <item key="FrmRoleModuleAdmin_btnSelect">Se&amp;lect...</item>
+    <item key="FrmRoleModuleAdmin_btnSelectAll">全选</item>
+    <item key="FrmRoleModuleAdmin_btnInvertSelection">Select &amp;Invert</item>
+    <item key="FrmRoleModuleAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmRoleModuleAdmin_btnCancel">取消</item>
+    <!-- FormRoleModuleAdmin End -->
+
+    <!-- FormSequenceAdd Begin -->
+    <item key="FrmSequenceAdd">添加序号（流水号）</item>
+    <item key="FrmSequenceAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmSequenceAdd_lblPrefix">前缀：</item>
+    <item key="FrmSequenceAdd_lblSeparator">分割符：</item>
+    <item key="FrmSequenceAdd_lblSequence">增序列：</item>
+    <item key="FrmSequenceAdd_lblReduction">减序列：</item>
+    <item key="FrmSequenceAdd_lblStep">步调：</item>
+    <item key="FrmSequenceAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmSequenceAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmSequenceAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmSequenceAdd_btnCancel">取消</item>
+    <!-- FormSequenceAdd End -->
+
+    <!-- FormSequenceAdmin Begin -->
+    <item key="FrmSequenceAdmin">序号（流水号）管理</item>
+    <item key="FrmSequenceAdmin_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmSequenceAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmSequenceAdmin_colSelected">选择</item>
+    <item key="FrmSequenceAdmin_colFullName">名称</item>
+    <item key="FrmSequenceAdmin_colPrefix">前缀</item>
+    <item key="FrmSequenceAdmin_colSeparator">分隔符</item>
+    <item key="FrmSequenceAdmin_colSequence">递增序列</item>
+    <item key="FrmSequenceAdmin_colReduction">递减序列</item>
+    <item key="FrmSequenceAdmin_colStep">步调</item>
+    <item key="FrmSequenceAdmin_colDescription">描述</item>
+    <item key="FrmSequenceAdmin_btnSelectAll">全选</item>
+    <item key="FrmSequenceAdmin_btnInvertSelect">反选</item>
+    <item key="FrmSequenceAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmSequenceAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmSequenceAdmin_btnReset">重置(&amp;R)</item>
+    <item key="FrmSequenceAdmin_btnExport">导出Excel...</item>
+    <item key="FrmSequenceAdmin_btnDelete">删除(&amp;D)</item>
+    <item key="FrmSequenceAdmin_btnClose">关闭</item>
+    <!-- FormSequenceAdmin End -->
+
+    <!-- FormSequenceAdd Begin -->
+    <item key="FrmSequenceEdit">编辑序号（流水号）</item>
+    <item key="FrmSequenceEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmSequenceEdit_lblPrefix">前缀：</item>
+    <item key="FrmSequenceEdit_lblSeparator">分割符：</item>
+    <item key="FrmSequenceEdit_lblSequence">增序列：</item>
+    <item key="FrmSequenceEdit_lblReduction">减序列：</item>
+    <item key="FrmSequenceEdit_lblStep">步调：</item>
+    <item key="FrmSequenceEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmSequenceEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmSequenceEdit_btnCancel">取消</item>
+    <!-- FormSequenceAdd End -->
+
+    <!-- FormImpersonation Begin -->
+    <item key="FrmImpersonation">Impersonation</item>
+    <item key="FrmImpersonation_colSelected">选择</item>
+    <item key="FrmImpersonation_colFullName">FullName</item>
+    <item key="FrmImpersonation_colDepartmentName">Department Full Name</item>
+    <item key="FrmImpersonation_btnImpersonation">&amp;Impersonation</item>
+    <item key="FrmImpersonation_btnClose">关闭</item>
+    <!-- FormImpersonation End -->
+
+    <!-- FrmPermissionItemAdmin Begin -->
+    <item key="FrmPermissionItemAdmin">操作权限项定义</item>
+    <item key="FrmPermissionItemAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmPermissionItemAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmPermissionItemAdmin_colSelected">选择</item>
+    <item key="FrmPermissionItemAdmin_colFullName">名称</item>
+    <item key="FrmPermissionItemAdmin_colDescription">描述</item>
+    <item key="FrmPermissionItemAdmin_btnMove">移动(&amp;R)</item>
+    <item key="FrmPermissionItemAdmin_colIsScope">数据权限</item>
+    <item key="FrmPermissionItemAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmPermissionItemAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmPermissionItemAdmin_btnClose">关闭</item>
+    <item key="FrmPermissionItemAdmin_btnExport">导出Excel...</item>
+    <item key="FrmPermissionItemAdmin_colCode">编号</item>
+    <item key="FrmPermissionItemAdmin_btnModulePermission">关联菜单...</item>
+    <item key="FrmPermissionItemAdmin_mItmAdd">添加...</item>
+    <item key="FrmPermissionItemAdmin_mItmEdit">编辑...</item>
+    <item key="FrmPermissionItemAdmin_mItmMove">移动...</item>
+    <item key="FrmPermissionItemAdmin_mItmDelete">删除</item>
+    <item key="FrmPermissionItemAdmin_mItmRootAdd">添加根权限...</item>
+    <item key="FrmPermissionItemAdmin_mItmUserPermission">用户权限</item>
+    <item key="FrmPermissionItemAdmin_mItmModulePermission">关联菜单...</item>
+    <item key="FrmPermissionItemAdmin_mItmSetSortCode">保存排序顺序</item>
+    <!-- FrmPermissionItemAdmin End -->
+
+    <!-- FrmUserPermissionItem Begin -->
+    <item key="FrmUserPermissionItem">用户操作权限设置</item>
+    <item key="FrmUserPermissionItem_btnClearPermission">清除权限</item>
+    <item key="FrmUserPermissionItem_btnCopy">复制权限</item>
+    <item key="FrmUserPermissionItem_btnPaste">贴上权限</item>
+    <item key="FrmUserPermissionItem_tpUser">用户</item>
+    <item key="FrmUserPermissionItem_tpPermissionItem">拥有操作权限</item>
+    <item key="FrmUserPermissionItem_btnOK">确定</item>
+    <item key="FrmUserPermissionItem_btnCancel">取消</item>
+    <!-- FrmUserPermissionItem End -->
+
+    <!-- FrmRolePermissionItem Begin -->
+    <item key="FrmRolePermissionItem">角色操作权限设置</item>
+    <item key="FrmRolePermissionItem_btnClearPermission">清除权限</item>
+    <item key="FrmRolePermissionItem_btnCopy">复制权限</item>
+    <item key="FrmRolePermissionItem_btnPaste">贴上权限</item>
+    <item key="FrmRolePermissionItem_tpRole">角色</item>
+    <item key="FrmRolePermissionItem_tpPermissionItem">拥有操作权限</item>
+    <item key="FrmRolePermissionItem_btnOK">确定</item>
+    <item key="FrmRolePermissionItem_btnCancel">取消</item>
+    <!-- FrmRolePermissionItem End -->
+
+    <!-- FrmModulePermissionBatchSet Begin -->
+    <item key="FrmModulePermissionBatchSet">操作权限與菜單關聯设定</item>
+    <item key="FrmModulePermissionBatchSet_tpPermissionItem">擁有操作权限</item>
+    <item key="FrmModulePermissionBatchSet_tpModule">可訪問菜單</item>
+    <!-- FrmModulePermissionBatchSet End -->
+
+    <!-- FrmRequestAnAccount Begin -->
+    <item key="FrmRequestAnAccount">申请用户</item>
+    <item key="FrmRequestAnAccount_rbtnUserInput">用户输入</item>
+    <item key="FrmRequestAnAccount_rbtnDefaultPassword">系统默认密码</item>
+    <item key="FrmRequestAnAccount_rbtnUserNamePassword">用户名与密码相同</item>
+    <item key="FrmRequestAnAccount_grpRequestAnAccount">用户</item>
+    <item key="FrmRequestAnAccount_lblUserName">用户名(&amp;U)：</item>
+    <item key="FrmRequestAnAccount_lblFullName">姓名(&amp;N)：</item>
+    <item key="FrmRequestAnAccount_lblGender">性别(&amp;G)：</item>
+    <item key="FrmRequestAnAccount_lblCode">工号(&amp;W)：</item>
+    <item key="FrmRequestAnAccount_lblMobilePhone">手机(&amp;M)：</item>
+    <item key="FrmRequestAnAccount_lblE_mail">E-Mail(&amp;E)：</item>
+    <item key="FrmRequestAnAccount_lblTelephone">电话(&amp;T)：</item>
+    <item key="FrmRequestAnAccount_lblRole">默认角色(&amp;R)：</item>
+    <item key="FrmRequestAnAccount_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmRequestAnAccount_lblConfirmPassword">确认密码(&amp;C)：</item>
+    <item key="FrmRequestAnAccount_lblCompanyName">所在单位：</item>
+    <item key="FrmRequestAnAccount_lblDepartment">所在部门：</item>
+    <item key="FrmRequestAnAccount_lblWorkgroup">所在工作组：</item>
+    <item key="FrmRequestAnAccount_chkEnabled">有效</item>
+    <item key="FrmRequestAnAccount_lblDescription">描述：</item>
+    <item key="FrmRequestAnAccount_chkClose">申请成功后关闭窗体</item>
+    <item key="FrmRequestAnAccount_btnRequestAnAccount">申请用户...</item>
+    <item key="FrmRequestAnAccount_btnCancel">取消</item>
+    <!-- FrmRequestAnAccount End -->
+
+    <!-- FrmStaffAddressEdit Begin -->
+    <item key="FrmStaffAddressEdit">编辑通讯录</item>
+    <item key="FrmStaffAddressEdit_lblFullName">姓名：</item>
+    <item key="FrmStaffAddressEdit_lblCompany">公司：</item>
+    <item key="FrmStaffAddressEdit_lblDep">部门：</item>
+    <item key="FrmStaffAddressEdit_lblDuty">职位：</item>
+    <item key="FrmStaffAddressEdit_lblTEl">办公电话：</item>
+    <item key="FrmStaffAddressEdit_lblMobile">手机：</item>
+    <item key="FrmStaffAddressEdit_lblShortNumber">短号：</item>
+    <item key="FrmStaffAddressEdit_lblMail">电子邮箱：</item>
+    <item key="FrmStaffAddressEdit_lblDescription">描述：</item>
+    <item key="FrmStaffAddressEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmStaffAddressEdit_btnCancel">取消</item>
+    <!-- FrmStaffAddressEdit End -->
+
+    <!-- FrmStaffOrganizeSelect Begin -->
+    <item key="FrmStaffOrganizeSelect">选择员工</item>
+    <item key="FrmStaffOrganizeSelect_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmStaffOrganizeSelect_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmStaffOrganizeSelect_chkContainChildren">含子部门员工</item>
+    <item key="FrmStaffOrganizeSelect_colSelected">选择</item>
+    <item key="FrmStaffOrganizeSelect_colRealName">姓名</item>
+    <item key="FrmStaffOrganizeSelect_colUserName">用户名</item>
+    <item key="FrmStaffOrganizeSelect_colCode">编号</item>
+    <item key="FrmStaffOrganizeSelect_colDescription">描述</item>
+    <item key="FrmStaffOrganizeSelect_btnSelectAll">全选</item>
+    <item key="FrmStaffOrganizeSelect_btnInvertSelect">反选</item>
+    <item key="FrmStaffOrganizeSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmStaffOrganizeSelect_btnConfirm">确定</item>
+    <item key="FrmStaffOrganizeSelect_btnCancel">取消</item>
+    <!-- FrmStaffOrganizeSelect End -->
+
+    <!-- FrmStaffSelect Begin -->
+    <item key="FrmStaffSelect">选择员工</item>
+    <item key="FrmStaffSelect_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmStaffSelect_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmStaffSelect_colSelected">选择</item>
+    <item key="FrmStaffSelect_colRealName">姓名</item>
+    <item key="FrmStaffSelect_colUserName">用户名</item>
+    <item key="FrmStaffSelect_colCode">编号</item>
+    <item key="FrmStaffSelect_colDescription">描述</item>
+    <item key="FrmStaffSelect_btnSelectAll">全选</item>
+    <item key="FrmStaffSelect_btnInvertSelect">反选</item>
+    <item key="FrmStaffSelect_btnSetNull">置空(&amp;N)</item>
+    <item key="FrmStaffSelect_btnConfirm">确定</item>
+    <item key="FrmStaffSelect_btnCancel">取消</item>
+    <!-- FrmStaffSelect End -->
+
+    <!-- FrmStaffChangeDepartment Begin -->
+    <item key="FrmStaffChangeDepartment">员工移动部门</item>
+    <item key="FrmStaffChangeDepartment_lblFullName">姓名：</item>
+    <item key="FrmStaffChangeDepartment_lblCompany">公司：</item>
+    <item key="FrmStaffChangeDepartment_lblDep">部门：</item>
+    <item key="FrmStaffChangeDepartment_lblDuty">职位：</item>
+    <item key="FrmStaffChangeDepartment_lblDescription">描述：</item>
+    <item key="FrmStaffChangeDepartment_lblCompanyName">公司(&amp;C)：</item>
+    <item key="FrmStaffChangeDepartment_lblDepartment">部门(&amp;D)：</item>
+    <item key="FrmStaffChangeDepartment_btnConfirm">确定</item>
+    <item key="FrmStaffChangeDepartment_btnCancel">取消</item>
+    <!-- FrmStaffChangeDepartment End -->
+
+    <!-- FormStaffAddressAdmin Begin -->
+    <item key="FrmStaffAddressAdmin">内部通讯录</item>
+    <item key="FrmStaffAddressAdmin_colSelected">选择</item>
+    <item key="FrmStaffAddressAdmin_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmStaffAddressAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmStaffAddressAdmin_btnMyAddress">我的联系方式(&amp;M)...</item>
+    <item key="FrmStaffAddressAdmin_btnSendEmail">发送邮件通知</item>
+    <item key="FrmStaffAddressAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmStaffAddressAdmin_lblOrganize">公司/部门(&amp;D)：</item>
+    <item key="FrmStaffAddressAdmin_btnAll">全部</item>
+    <item key="FrmStaffAddressAdmin_colRealName">姓名</item>
+    <item key="FrmStaffAddressAdmin_colShortNumber">短号</item>
+    <item key="FrmStaffAddressAdmin_colDepFullName">部门</item>
+    <item key="FrmStaffAddressAdmin_colDuty">职位</item>
+    <item key="FrmStaffAddressAdmin_colTel">办公电话</item>
+    <item key="FrmStaffAddressAdmin_colMobile">手机</item>
+    <item key="FrmStaffAddressAdmin_colEmail">电子邮箱</item>
+    <item key="FrmStaffAddressAdmin_colDescription">描述</item>
+    <item key="FrmStaffAddressAdmin_btnExport">导出Excel...</item>
+    <item key="FrmStaffAddressAdmin_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmStaffAddressAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmStaffAddressAdmin_btnClose">关闭</item>
+    <!-- FormStaffAddressAdmin End -->
+
+    <!-- FormStaffAdd Begin -->
+    <item key="FrmStaffAdd">添加员工</item>
+    <item key="FrmStaffAdd_grpStaffAdd">员工</item>
+    <item key="FrmStaffAdd_lblFullName">姓名：</item>
+    <item key="FrmStaffAdd_lblGender">性别：</item>
+    <item key="FrmStaffAdd_lblCode">编号：</item>
+    <item key="FrmStaffAdd_lblParty">政治面貌：</item>
+    <item key="FrmStaffAdd_lblCompanyName">公司：</item>
+    <item key="FrmStaffAdd_lblDepartment">部门：</item>
+    <item key="FrmStaffAdd_lblWorkgroup">工作组：</item>
+    <item key="FrmStaffAdd_lblJoinInDate">加入本单位：</item>
+    <item key="FrmStaffAdd_lblWorkingProperty">用工性质：</item>
+    <item key="FrmStaffAdd_lblOfficePhone">办公电话：</item>
+    <item key="FrmStaffAdd_lblEmail">电子邮件：</item>
+    <item key="FrmStaffAdd_lblMobile">手机：</item>
+    <item key="FrmStaffAdd_lblBankCode">工资卡号：</item>
+    <item key="FrmStaffAdd_lblUserName">登录用户名(&amp;U)：</item>
+    <item key="FrmStaffAdd_lblRole">默认角色(&amp;R)：</item>
+    <item key="FrmStaffAdd_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmStaffAdd_lblConfirmPassword">确认密码(&amp;F)：</item>
+    <item key="FrmStaffAdd_chbCreateUser">创建用户</item>
+    <item key="FrmStaffAdd_chbEnabled">有效</item>
+    <item key="FrmStaffAdd_lblBirthday">生日：</item>
+    <item key="FrmStaffAdd_lblNationality">民族：</item>
+    <item key="FrmStaffAdd_lblDuty">职务：</item>
+    <item key="FrmStaffAdd_lblTitle">职称：</item>
+    <item key="FrmStaffAdd_lblWorkingDate">参加工作：</item>
+    <item key="FrmStaffAdd_lblIdCard">身份证：</item>
+    <item key="FrmStaffAdd_lblOICQ">QQ：</item>
+    <item key="FrmStaffAdd_lblShortNumber">短号：</item>
+    <item key="FrmStaffAdd_lblSchool">毕业学校：</item>
+    <item key="FrmStaffAdd_lblMajor">所学专业：</item>
+    <item key="FrmStaffAdd_lblEducation">学历：</item>
+    <item key="FrmStaffAdd_lblDegree">学位：</item>
+    <item key="FrmStaffAdd_lblHomeAddress">住宅地址：</item>
+    <item key="FrmStaffAdd_lblHomePhone">住宅电话：</item>
+    <item key="FrmStaffAdd_lblCarCode">车牌号：</item>
+    <item key="FrmStaffAdd_lblEmergencyContact">紧急联系：</item>
+    <item key="FrmStaffAdd_lblDescription">描述：</item>
+    <item key="FrmStaffAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmStaffAdd_btnCancel">取消</item>
+    <!-- FormStaffAdd End -->
+
+    <!-- FrmStaffEdit Begin -->
+    <item key="FrmStaffEdit">编辑员工</item>
+    <item key="FrmStaffEdit_grpStaffAdd">员工</item>
+    <item key="FrmStaffEdit_lblFullName">姓名：</item>
+    <item key="FrmStaffEdit_lblGender">性别：</item>
+    <item key="FrmStaffEdit_lblCode">编号：</item>
+    <item key="FrmStaffEdit_lblParty">政党：</item>
+    <item key="FrmStaffEdit_lblCompanyName">公司：</item>
+    <item key="FrmStaffEdit_lblDepartment">部门：</item>
+    <item key="FrmStaffEdit_lblWorkgroup">工作组别：</item>
+    <item key="FrmStaffEdit_lblJoinInDate">加入本单位：</item>
+    <item key="FrmStaffEdit_lblWorkingProperty">劳工性质：</item>
+    <item key="FrmStaffEdit_lblOfficePhone">办公电话：</item>
+    <item key="FrmStaffEdit_lblEmail">电子邮件：</item>
+    <item key="FrmStaffEdit_lblMobile">手机：</item>
+    <item key="FrmStaffEdit_lblBankCode">工资卡号：</item>
+    <item key="FrmStaffEdit_lblIdentificationCode">个人识别码：</item>
+    <item key="FrmStaffEdit_lblUserName">用戶名称(&amp;U)：</item>
+    <item key="FrmStaffEdit_lblRole">确认角色(&amp;R)：</item>
+    <item key="FrmStaffEdit_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmStaffEdit_lblConfirmPassword">确认密码(&amp;F)：</item>
+    <item key="FrmStaffEdit_chbCreateUser">添加用戶</item>
+    <item key="FrmStaffEdit_chbEnabled">有效</item>
+    <item key="FrmStaffEdit_lblBirthday">生日：</item>
+    <item key="FrmStaffEdit_lblNationality">国别：</item>
+    <item key="FrmStaffEdit_lblDuty">职务：</item>
+    <item key="FrmStaffEdit_lblTitle">职称：</item>
+    <item key="FrmStaffEdit_lblWorkingDate">参加工作：</item>
+    <item key="FrmStaffEdit_lblIdCard">身分证：</item>
+    <item key="FrmStaffEdit_lblOICQ">QQ：</item>
+    <item key="FrmStaffEdit_lblShortNumber">群组短号：</item>
+    <item key="FrmStaffEdit_lblSchool">毕业学校：</item>
+    <item key="FrmStaffEdit_lblMajor">所学专业：</item>
+    <item key="FrmStaffEdit_lblEducation">学历：</item>
+    <item key="FrmStaffEdit_lblDegree">学位：</item>
+    <item key="FrmStaffEdit_lblHomeAddress">通讯地址：</item>
+    <item key="FrmStaffEdit_lblHomePhone">通讯电话：</item>
+    <item key="FrmStaffEdit_lblCarCode">车牌牌号：</item>
+    <item key="FrmStaffEdit_lblEmergencyContact">紧急联络：</item>
+    <item key="FrmStaffEdit_lblDescription">描述：</item>
+    <item key="FrmStaffEdit_btnSetStaffUser">关联用戶</item>
+    <item key="FrmStaffEdit_btnUserProperty">用戶属性</item>
+    <item key="FrmStaffEdit_btnUserPermission">用戶权限...</item>
+    <item key="FrmStaffEdit_btnDeleteStaffUser">删除用戶关联</item>
+    <item key="FrmStaffEdit_btnConfirm">保存(&amp;S)</item>
+    <item key="FrmStaffEdit_btnCancel">取消</item>
+    <!-- FrmStaffEdit End -->
+
+    <!--FrmOrganizeRoleAdd Begin -->
+    <item key="FrmOrganizeRoleAdd">添加角色</item>
+    <item key="FrmOrganizeRoleAdd_lblOrganize">部门：</item>
+    <item key="FrmOrganizeRoleAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmOrganizeRoleAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmOrganizeRoleAdd_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmOrganizeRoleAdd_lblDescription">描述(&amp;D)</item>
+    <item key="FrmOrganizeRoleAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmOrganizeRoleAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmOrganizeRoleAdd_btnCancel">取消</item>
+    <item key="FrmOrganizeRoleAdd_btnLeadership">领导</item>
+    <item key="FrmOrganizeRoleAdd_btnAssistantLeadership">分管领导</item>
+    <item key="FrmOrganizeRoleAdd_btnManager">主管</item>
+    <item key="FrmOrganizeRoleAdd_btnAssistantManager">副主管</item>
+    <item key="FrmOrganizeRoleAdd_btnFinancial">财务主管</item>
+    <item key="FrmOrganizeRoleAdd_btnAccounting">会计</item>
+    <item key="FrmOrganizeRoleAdd_btnCashier">出纳</item>
+    <item key="FrmOrganizeRoleAdd_btnSystemManager">系统管理员</item>
+    <!--FrmOrganizeRoleAdd End -->
+
+    <!-- FrmOrganizeRoleEdit Begin -->
+    <item key="FrmOrganizeRoleEdit">编辑角色</item>
+    <item key="FrmOrganizeRoleEdit_lblOrganize">部门：</item>
+    <item key="FrmOrganizeRoleEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmOrganizeRoleEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmOrganizeRoleEdit_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmOrganizeRoleEdit_lblDescription">描述(&amp;D)</item>
+    <item key="FrmOrganizeRoleEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmOrganizeRoleEdit_btnCancel">取消</item>
+    <!-- FrmOrganizeRoleEdit End -->
+
+    <!-- FrmOrganizeRoleSelect Begin -->
+    <item key="FrmOrganizeRoleSelect">选择角色</item>
+    <item key="FrmOrganizeRoleSelect_colSelected">选择</item>
+    <item key="FrmOrganizeRoleSelect_colRealName">名称</item>
+    <item key="FrmOrganizeRoleSelect_colDescription">描述</item>
+    <item key="FrmOrganizeRoleSelect_btnConfirm">确定</item>
+    <item key="FrmOrganizeRoleSelect_btnCancel">取消</item>
+    <item key="FrmOrganizeRoleSelect_btnSetNull">置空(&amp;N)</item>
+    <!-- FrmOrganizeRoleSelect End -->
+
+    <!--FrmOrganizeRoleAdmin Begin -->
+    <item key="FrmOrganizeRoleAdmin">職位管理</item>
+    <item key="FrmOrganizeRoleAdmin_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmOrganizeRoleAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmOrganizeRoleAdmin_colSelected">选择</item>
+    <item key="FrmOrganizeRoleAdmin_colRealName">名称</item>
+    <item key="FrmOrganizeRoleAdmin_colEnabled">有效</item>
+    <item key="FrmOrganizeRoleAdmin_colDescription">描述</item>
+    <item key="FrmOrganizeRoleAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmOrganizeRoleAdmin_btnEdit">编辑(&amp;E)</item>
+    <item key="FrmOrganizeRoleAdmin_btnMove">移动(&amp;R)</item>
+    <item key="FrmOrganizeRoleAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmOrganizeRoleAdmin_btnRolePermission">权限(&amp;P)</item>
+    <item key="FrmOrganizeRoleAdmin_btnRoleUser">用户(&amp;U)</item>
+    <item key="FrmOrganizeRoleAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmOrganizeRoleAdmin_btnClose">关闭</item>
+    <!--FrmOrganizeRoleAdmin End -->
+
+    <!-- FrmCompanySelect Begin -->
+    <item key="FrmCompanySelect_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmCompanySelect_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmCompanySelect_btnConfirm">确定</item>
+    <item key="FrmCompanySelect_btnCancel">取消</item>
+    <!-- FrmCompanySelect End -->
+
+    <!-- FormAccountEdit Begin -->
+    <item key="FrmAccountEdit">用户编辑</item>
+    <item key="FrmAccountEdit_tpUser">用户信息</item>
+    <item key="FrmAccountEdit_grpRequestAnAccount">用户</item>
+    <item key="FrmAccountEdit_tpUserOrganize">兼任职务</item>
+    <item key="FrmAccountEdit_lblUserName">登录用户名(&amp;U)：</item>
+    <item key="FrmAccountEdit_lblFullName">姓名(&amp;N)：</item>
+    <item key="FrmAccountEdit_lblCode">工号(&amp;W)：</item>
+    <item key="FrmAccountEdit_label2">手机(&amp;M)：</item>
+    <item key="FrmAccountEdit_lblE_mail">E-Mail(&amp;E)：</item>
+    <item key="FrmAccountEdit_lblRole">默认角色(&amp;R)：</item>
+    <item key="FrmAccountEdit_lblCompanyName">所在单位(&amp;P)：</item>
+    <item key="FrmAccountEdit_lblDepartment">所在部门(&amp;D)：</item>
+    <item key="FrmAccountEdit_lblWorkgroup">所在工作组(&amp;W)：</item>
+    <item key="FrmAccountEdit_chbEnabled">有效</item>
+    <item key="FrmAccountEdit_lblDescription">描述：</item>
+    <item key="FrmAccountEdit_btnSave">更新用户</item>
+    <item key="FrmAccountEdit_btnCancel">取消</item>
+    <item key="FrmAccountEdit_colSelected">选择</item>
+    <item key="FrmAccountEdit_colCompanyName">单位</item>
+    <item key="FrmAccountEdit_colDepartmentName">部门</item>
+    <item key="FrmAccountEdit_colWorkgroupName">工作组</item>
+    <item key="FrmAccountEdit_colRoleName">角色</item>
+    <item key="FrmAccountEdit_btnSelectAll">全选</item>
+    <item key="FrmAccountEdit_btnInvertSelect">反选</item>
+    <item key="FrmAccountEdit_btnAddToOrganize">添加兼任(&amp;A)...</item>
+    <item key="FrmAccountEdit_btnRemove">移除</item>
+    <!-- FormAccountEdit End -->
+
+    <!-- FrmSignature Begin -->
+    <item key="FrmSignature">用户签名</item>
+    <!-- FrmSignature End -->
+
+    <!-- FormUserAdd Begin -->
+    <item key="FrmUserAdd">添加用户</item>
+    <item key="FrmUserAdd_grpOperatorAdd">用户</item>
+    <item key="FrmUserAdd_lblUserName">登录用户名(&amp;U)：</item>
+    <item key="FrmUserAdd_lblFullName">姓名(&amp;N)：</item>
+    <item key="FrmUserAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmUserAdd_lblDefaultRole">默认角色(&amp;R)：</item>
+    <item key="FrmUserAdd_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmUserAdd_lblConfirmPassword">确认密码(&amp;C)：</item>
+    <item key="FrmUserAdd_chbEnabled">有效</item>
+    <item key="FrmUserAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmUserAdd_btnCancel">取消</item>
+    <!-- FormUserAdd End -->
+
+    <!-- FormUserEdit Begin -->
+    <item key="FrmUserEdit">用户属性</item>
+    <item key="FrmUserEdit_grpUser">用户</item>
+    <item key="FrmUserEdit_lblId">主键</item>
+    <item key="FrmUserEdit_lblUserName">登录用户名(&amp;U)：</item>
+    <item key="FrmUserEdit_lblFullName">姓名(&amp;N)：</item>
+    <item key="FrmUserEdit_lblCode">工号(&amp;C)：</item>
+    <item key="FrmUserEdit_lblDefaultRole">默认角色(&amp;R)：</item>
+    <item key="FrmUserEdit_lblSecurityLevel">安全級別(&amp;S)：</item>
+    <item key="FrmUserEdit_lblAllowTime">允許登入時間(&amp;T)：</item>
+    <item key="FrmUserEdit_lblTimeTo">至</item>
+    <item key="FrmUserEdit_lblLockDate">暫停(&amp;P)：</item>
+    <item key="FrmUserEdit_lblDateTo">至</item>
+    <item key="FrmUserEdit_chkLock">封鎖</item>
+    <item key="FrmUserEdit_btnIPLimitr">IP位置限制(&amp;I)...</item>
+    <item key="FrmUserEdit_btnSetCommunicationPassword">设置通讯密码(&amp;P)...</item>
+    <item key="FrmUserEdit_btnHandwrittenSignature">用户签名(&amp;D)...</item>
+    <item key="FrmUserEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmUserEdit_btnCancel">取消</item>
+    <!-- FormUserEdit End -->
+
+    <!-- FrmUserSetCommunicationPassword Begin -->
+    <item key="FrmUserSetCommunicationPassword">设置通讯密码</item>
+    <item key="FrmUserSetCommunicationPassword_grpSetPassword">设置通讯密码</item>
+    <item key="FrmUserSetCommunicationPassword_lblNewPassword">新密码(&amp;N)：</item>
+    <item key="FrmUserSetCommunicationPassword_lblConfirmPassword">确认密码(&amp;C)：</item>
+    <item key="FrmUserSetCommunicationPassword_btnConfirm">确定</item>
+    <item key="FrmUserSetCommunicationPassword_btnCancel">取消</item>
+    <!-- FrmUserSetCommunicationPassword End -->
+
+    <!-- FrmUserOrganizeRoleAdmin Begin -->
+    <item key="FrmUserOrganizeRoleAdmin">用户角色管理</item>
+    <item key="FrmUserOrganizeRoleAdmin_lblStaff">用户(&amp;U)：</item>
+    <item key="FrmUserOrganizeRoleAdmin_btnSelectAll">全选(&amp;A)</item>
+    <item key="FrmUserOrganizeRoleAdmin_btnInvertSelect">反选</item>
+    <item key="FrmUserOrganizeRoleAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserOrganizeRoleAdmin_btnCancel">取消</item>
+    <!-- FrmUserOrganizeRoleAdmin End -->
+
+    <!-- FrmUserAddToOrganize Begin -->
+    <item key="FrmUserAddToOrganize">用户兼任职务</item>
+    <item key="FrmUserAddToOrganize_grpRequestAnAccount">用户</item>
+    <item key="FrmUserAddToOrganize_lblUserName">用户名(&amp;U)：</item>
+    <item key="FrmUserAddToOrganize_lblFullName">姓名(&amp;F)：</item>
+    <item key="FrmUserAddToOrganize_lblRole">职务：</item>
+    <item key="FrmUserAddToOrganize_colCompanyName">所在单位：</item>
+    <item key="FrmUserAddToOrganize_colDepartmentName">所在部门(&amp;D)：</item>
+    <item key="FrmUserAddToOrganize_colWorkgroupName">所在工作组(&amp;W)：</item>
+    <item key="FrmUserAddToOrganize_chbEnabled">有效</item>
+    <item key="FrmUserAddToOrganize_btnAddToOrganize">确定(&amp;C)</item>
+    <item key="FrmUserAddToOrganize_lblDescription">描述：</item>
+    <item key="FrmUserAddToOrganize_btnCancel">取消</item>
+    <!-- FrmUserAddToOrganize End -->
+
+    <!-- FormStaffAdmin Begin -->
+    <item key="FrmStaffAdmin">员工管理</item>
+    <item key="FrmStaffAdmin_lblSearch">内容：</item>
+    <item key="FrmStaffAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmStaffAdmin_chkNotIsUser">无帐号的</item>
+    <item key="FrmStaffAdmin_chkEnabled">有效的</item>
+    <item key="FrmStaffAdmin_colSelected">选择</item>
+    <item key="FrmStaffAdmin_colCode">编号</item>
+    <item key="FrmStaffAdmin_colRealName">姓名</item>
+    <item key="FrmStaffAdmin_colGender">性別</item>
+    <item key="FrmStaffAdmin_colMobile">手机</item>
+    <item key="FrmStaffAdmin_colOfficePhone">电话</item>
+    <item key="FrmStaffAdmin_colDescription">描述</item>
+    <item key="FrmStaffAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmStaffAdmin_btnEdit">编辑(&amp;E)</item>
+    <item key="FrmStaffAdmin_btnMove">移动(&amp;M)</item>
+    <item key="FrmStaffAdmin_btnSetPassword">设置密码</item>
+    <item key="FrmStaffAdmin_btnUserPermission">权限</item>
+    <item key="FrmStaffAdmin_btnExport">导出Excel...</item>
+    <item key="FrmStaffAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmStaffAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmStaffAdmin_btnClose">关闭</item>    
+    <item key="FrmStaffAdmin_mItmStaffAdd">添加员工...</item>
+    <item key="FrmStaffAdmin_mItemRoleAdd">添加角色...</item>
+    <item key="FrmStaffAdmin_mItmAdd">添加...</item>
+    <item key="FrmStaffAdmin_mItmEdit">编辑</item>
+    <item key="FrmStaffAdmin_mItmMove">移动</item>
+    <item key="FrmStaffAdmin_mItmDelete">删除</item>
+    <item key="FrmStaffAdmin_mItmGender">性别维护...</item>
+    <item key="FrmStaffAdmin_mItmParty">政治面貌维护...</item>
+    <item key="FrmStaffAdmin_mItmNationality">民族维护...</item>
+    <item key="FrmStaffAdmin_mItmTitle">职称维护...</item>
+    <item key="FrmStaffAdmin_mItmDuty">职务维护...</item>
+    <item key="FrmStaffAdmin_mItmEducation">学历维护...</item>
+    <item key="FrmStaffAdmin_mItmDegree">学位维护...</item>
+    <item key="FrmStaffAdmin_mItmWorkingProperty">用工性质维护...</item>
+    <item key="FrmStaffAdmin_mItemResetSortCode">保存排序顺序</item>
+    <!-- FormStaffAdmin End -->
+
+    <!-- FormStaffModuleAdmin Begin -->
+    <item key="FrmStaffModuleAdmin">Staff ModuleRight Set</item>
+    <item key="FrmStaffModuleAdmin_lblParent">Staff &amp;Name：</item>
+    <item key="FrmStaffModuleAdmin_btnSelect">Se&amp;lect...</item>
+    <item key="FrmStaffModuleAdmin_btnSelectAll">全选</item>
+    <item key="FrmStaffModuleAdmin_btnInvertSelection">Select &amp;Invert</item>
+    <item key="FrmStaffModuleAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmStaffModuleAdmin_btnCancel">取消</item>
+    <!-- FormStaffModuleAdmin End -->
+
+    <!-- SDIMainForm Begin -->
+    <item key="SDIMainForm">.NET通用权限管理系统</item>
+    <item key="SDIMainForm_mitmFrmRequestAnAccount">申请用户</item>
+    <item key="SDIMainForm_mitmFrmUserAudit">用户审核</item>
+    <item key="SDIMainForm_mitmFrmUserAdmin">用户管理</item>
+    <item key="SDIMainForm_mitmFrmAccredit">用户授权</item>
+    <item key="SDIMainForm_mitmFrmImpersonation">扮演用户</item>
+    <item key="SDIMainForm_mitmFrmOrganizeAdmin">组织机构管理</item>
+    <item key="SDIMainForm_mitmFrmRoleAdmin">角色管理</item>
+    <item key="SDIMainForm_mitmFrmStaffAdmin">员工管理</item>
+    <item key="SDIMainForm_mitmFrmOrganizeRoleAdmin">岗位管理</item>
+    <item key="SDIMainForm_mitmFrmPermissionItemAdmin">操作权限项定义</item>
+    <item key="SDIMainForm_mitmFrmModuleAdmin">菜单管理</item>
+    <item key="SDIMainForm_mitmFrmUserPermissionAdmin">用户权限管理</item>
+    <item key="SDIMainForm_mitmFrmRolePermissionAdmin">角色权限管理</item>
+    <item key="SDIMainForm_mitmFrmStaffAddressAdmin">内部通讯录</item>
+    <item key="SDIMainForm_mitmFrmStaffAddressEdit">我的联系方式</item>
+    <item key="SDIMainForm_mitmOnLine1">上线</item>
+    <item key="SDIMainForm_mitmOnLine2">下线</item>
+    <item key="SDIMainForm_mitmOnLine3">下线</item>
+    <item key="SDIMainForm_mitmOnLine4">忙碌</item>
+    <item key="SDIMainForm_mitmOnLine5">隐身</item>
+    <item key="SDIMainForm_mitmFrmMessage">即时通讯</item>
+    <item key="SDIMainForm_mitmFrmMessageSend">发送信息</item>
+    <item key="SDIMainForm_mitmFrmMessageBroadcast">廣播訊息</item>
+    <item key="SDIMainForm_mitmAppliction">业务应用</item>
+    <item key="SDIMainForm_mitmFrmItemsAdmin">选项管理</item>
+    <item key="SDIMainForm_mitmFrmSequenceAdmin">序号（流水号）管理</item>
+    <item key="SDIMainForm_mitmWinWorkFlow">行政审批流程管理</item>
+    <item key="SDIMainForm_mitmFrmCodeGenerator">代码批量生成器...</item>
+    <item key="SDIMainForm_mitmLogAdmin">系统日志管理</item>
+    <item key="SDIMainForm_mitmFeedback">在线技术支持</item>
+    <item key="SDIMainForm_mitmHelp">关于本软件</item>
+    <item key="SDIMainForm_mitmFrmUserPermission">我的权限</item>
+    <item key="SDIMainForm_mitmFrmConfig">系统配置...</item>
+    <item key="SDIMainForm_mitmFrmUserChangePassword">修改密码</item>
+    <item key="SDIMainForm_mitmFrmLogOn">重新登录</item>
+    <item key="SDIMainForm_mitmFrmScreenLock">锁屏</item>
+    <item key="SDIMainForm_mItemExit">退出</item>
+    <item key="SDIMainForm_mitmFrmWorkReportAdd">分配工作任务</item>
+    <item key="SDIMainForm_mitmFrmWorkReportList">查看工作日志</item>
+    <item key="SDIMainForm_mitmFrmWorkReportManger">管理工作日志</item>
+    <item key="SDIMainForm_mitmFrmFileAdmin">文档管理</item>
+    <item key="SDIMainForm_mitmFrmBusinessCardAdmin">名片管理</item>
+    <item key="SDIMainForm_mitmFrmWorkFlowStatr">启动审批流程</item>
+    <item key="SDIMainForm_mitmFrmWorkFlowWaitForAudit">待审批流程</item>
+    <item key="SDIMainForm_mitmFrmWorkFlowMonitor">审批流监控器</item>
+    <item key="SDIMainForm_mitmFrmWorkFlowProcessAdmin">审批流程定义管理</item>
+    <item key="SDIMainForm_mitmFrmLogGeneral">按用户访问情况</item>
+    <item key="SDIMainForm_mitmFrmLogByUser">按查询用户</item>
+    <item key="SDIMainForm_mitmFrmLogByModule">按菜单查询</item>
+    <item key="SDIMainForm_mitmFrmSystemLogByDate">按日期查询</item>
+    <item key="SDIMainForm_mitmFrmExceptionAdmin">系统异常情况记录</item>
+    <item key="SDIMainForm_notifyIcon">.NET通用快速开发架构</item>
+    <!-- SDIMainForm End -->
+
+    <!-- FrmUserAudit Begin -->
+    <item key="FrmUserAudit">用户审核</item>
+    <item key="FrmUserAudit_lblUserName">用户名(&amp;U)：</item>
+    <item key="FrmUserAudit_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmUserAudit_lblAudited">审核状态(&amp;H)：</item>
+    <item key="FrmUserAudit_lblDefaultRole">默认角色：</item>
+    <item key="FrmUserAudit_colSelected">选择</item>
+    <item key="FrmUserAudit_colUsername">用户名</item>
+    <item key="FrmUserAudit_colRealname">姓名</item>
+    <item key="FrmUserAudit_colDefaultRole">默认角色</item>
+    <item key="FrmUserAudit_colAudited">审核</item>
+    <item key="FrmUserAudit_colDepartment">部门</item>
+    <item key="FrmUserAudit_colDescription">描述</item>
+    <item key="FrmUserAudit_btnSelectAll">全选</item>
+    <item key="FrmUserAudit_btnInvertSelect">反选</item>
+    <item key="FrmUserAudit_btnApproved">通过(&amp;A)</item>
+    <item key="FrmUserAudit_btnReject">退回(&amp;R)</item>
+    <item key="FrmUserAudit_btnEdit">编辑(&amp;E)...</item>
+    <item key="FrmUserAudit_btnExport">导出Excel...</item>
+    <item key="FrmUserAudit_btnDelete">删除(&amp;D)</item>
+    <item key="FrmUserAudit_btnClose">关闭</item>
+    <item key="FrmUserAudit_btnSave">保存(&amp;S)</item>
+    <item key="FrmUserAudit_btnCancel">取消</item>
+    <!-- FrmUserAudit End -->
+
+    <!-- FrmUserAdmin Begin -->
+    <item key="FrmUserAdmin">用户管理</item>
+    <item key="FrmUserAdmin_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmUserAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmUserAdmin_chkEnabled">只显示有效的</item>
+    <item key="FrmUserAdmin_colSelected">选择</item>
+    <item key="FrmUserAdmin_colUserName">用户名</item>
+    <item key="FrmUserAdmin_colCode">工号</item>
+    <item key="FrmUserAdmin_colRealName">姓名</item>
+    <item key="FrmUserAdmin_colDepartmentName">部门</item>
+    <item key="FrmUserAdmin_colEmail">E-Mail</item>
+    <item key="FrmUserAdmin_colTelephone">电话</item>
+    <item key="FrmUserAdmin_colMobile">手机</item>
+    <item key="FrmUserAdmin_colDefaultRole">默认角色</item>
+    <item key="FrmUserAdmin_colEnabled">有效</item>
+    <item key="FrmUserAdmin_colDescription">描述</item>
+    <item key="FrmUserAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmUserAdmin_btnProperty">属性(&amp;P)...</item>
+    <item key="FrmUserAdmin_btnSetPassword">设置密码(&amp;S)...</item>
+    <item key="FrmUserAdmin_btnExport">导出Excel...</item>
+    <item key="FrmUserAdmin_btnDelete">删除(&amp;D)</item>
+    <item key="FrmUserAdmin_btnClose">关闭</item>
+    <item key="FrmUserAdmin_btnBatchSave">保存</item>
+    <!-- FrmUserAdmin End -->
+
+    <!-- FrmUserPermissionAdmin Begin -->
+    <item key="FrmUserPermissionAdmin">用户权限管理</item>
+    <item key="FrmUserPermissionAdmin_btnFrmUserOrganizeScope">数据权限...</item>
+    <item key="FrmUserPermissionAdmin_btnBatchPermission">批量设置权限...</item>
+    <item key="FrmUserPermissionAdmin_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmUserPermissionAdmin_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmUserPermissionAdmin_chkEnabled">只显示有效的</item>
+    <item key="FrmUserPermissionAdmin_colSelected">选择</item>
+    <item key="FrmUserPermissionAdmin_colUserName">用户名</item>
+    <item key="FrmUserPermissionAdmin_colRealName">姓名</item>
+    <item key="FrmUserPermissionAdmin_colRole">默认角色</item>
+    <item key="FrmUserPermissionAdmin_colDepartmentName">部门</item>
+    <item key="FrmUserPermissionAdmin_colEnabled">有效</item>
+    <item key="FrmUserPermissionAdmin_colDescription">描述</item>
+    <item key="FrmUserPermissionAdmin_btnAdd">添加(&amp;A)...</item>
+    <item key="FrmUserPermissionAdmin_btnProperty">属性...</item>
+    <item key="FrmUserPermissionAdmin_btnSetPassword">设置密码(&amp;S)...</item>
+    <item key="FrmUserPermissionAdmin_btnExport">导出Excel...</item>
+    <item key="FrmUserPermissionAdmin_btnDelete">删除(&amp;D)</item>
+    <item key="FrmUserPermissionAdmin_btnClose">关闭</item>
+    <item key="FrmUserPermissionAdmin_btnPermission">权限(&amp;P)...</item>
+    <item key="FrmUserPermissionAdmin_btnUserRole">用户角色(&amp;U)...</item>
+    <!-- FrmUserPermissionAdmin End -->
+
+    <!-- FrmLogByUser Begin -->
+    <item key="FrmLogByUser">按查询用户</item>
+    <item key="FrmLogByUser_lblUser">用户：</item>
+    <item key="FrmLogByUser_lblStartDate">开始日期：</item>
+    <item key="FrmLogByUser_lblEndDate">结束日期：</item>
+    <item key="FrmLogByUser_btnSearch">查询(&amp;Q)</item>
+    <item key="FrmLogByUser_colSelected">选择</item>
+    <item key="FrmLogByUser_colProcessName">模块</item>
+    <item key="FrmLogByUser_colUserRealName">姓名</item>
+    <item key="FrmLogByUser_colCreateOn">访问时间</item>
+    <item key="FrmLogByUser_colIPAddress">IP地址</item>
+    <item key="FrmLogByUser_colMethodName">操作</item>
+    <item key="FrmLogByUser_colDescription">描述</item>
+    <item key="FrmLogByUser_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmLogByUser_btnSelectAll">全选</item>
+    <item key="FrmLogByUser_btnInvertSelect">反选</item>
+    <item key="FrmLogByUser_btnClear">全部清除(&amp;C)</item>
+    <item key="FrmLogByUser_btnExport">导出Excel...</item>
+    <item key="FrmLogByUser_btnDelete">删除</item>
+    <item key="FrmLogByUser_btnClose">关闭</item>
+    <!-- FrmLogByUser End -->
+
+    <!-- FrmMessageSend Begin -->
+    <item key="FrmMessageSend">发送信息</item>
+    <item key="FrmMessageSend_lblSendTo">发送给(&amp;T)：</item>
+    <item key="FrmMessageSend_lblContents">内容(&amp;C)：</item>
+    <item key="FrmMessageSend_btnSend">发送(&amp;S)</item>
+    <item key="FrmMessageSend_btnCancel">取消</item>
+    <!-- FrmMessageSend End -->
+
+    <!-- FrmUserChangePassword Begin -->
+    <item key="FrmUserChangePassword">修改密码</item>
+    <item key="FrmUserChangePassword_grpSetPassword">修改密码</item>
+    <item key="FrmUserChangePassword_lblOldPassword">原密码(&amp;O)：</item>
+    <item key="FrmUserChangePassword_lblNewPassword">新密码(&amp;N)：</item>
+    <item key="FrmUserChangePassword_lblConfirmPassword">确认密码(&amp;C)：</item>
+    <item key="FrmUserChangePassword_btnConfirm">确定</item>
+    <item key="FrmUserChangePassword_btnCancel">取消</item>
+    <!-- FrmUserChangePassword End -->
+
+    <!-- FrmMessageRead Begin -->
+    <item key="FrmMessageRead">即时通讯</item>
+    <item key="FrmMessageRead_btnSend">发送(&amp;S)</item>
+    <item key="FrmMessageRead_btnCancel">取消</item>
+    <item key="FrmMessageRead_lblDescription">回复内容(&amp;C)：</item>
+    <!-- FrmMessageRead End -->
+
+    <!-- FrmMessage Begin -->
+    <item key="FrmMessage">即时通讯</item>
+    <item key="FrmMessage_tpOrganize">组织机构</item>
+    <item key="FrmMessage_tpApplicationRole">业务角色</item>
+    <item key="FrmMessage_tpUserGroup">用户群组</item>
+    <item key="FrmMessage_mitmFrmMessageSend">发送消息...</item>
+    <item key="FrmMessage_mitmFrmWorkReportAdd">分配工作任务...</item>
+    <item key="FrmMessage_mitmFrmWorkReportList">查看工作日志...</item>
+    <item key="FrmMessage_mitmFrmUserPermission">查看用户权限...</item>
+    <item key="FrmMessage_mitmFrmUserEdit">编辑用户信息...</item>
+    <item key="FrmMessage_mitmFrmUserRoleAdmin">用户角色关联...</item>
+    <item key="FrmMessage_mitmFrmUserPermissionAdmin">用户权限...</item>
+    <item key="FrmMessage_mitmApplicationRole">业务角色管理</item>
+    <item key="FrmMessage_mitmUserGroup">用户群组管理</item>
+    <item key="FrmMessage_mitmFrmStaffAddressEdit">内部通讯录...</item>
+    <item key="FrmMessage_mitmFrmLogByUser">系统操作日志...</item>
+    <!-- FrmMessage End -->
+
+    <!-- FrmMessageRemind Begin -->
+    <item key="FrmMessageRemind">消息提醒</item>
+    <item key="FrmMessageRemind_lblContents">查询内容(&amp;C)：</item>
+    <item key="FrmMessageRemind_btnReply">回复</item>
+    <item key="FrmMessageRemind_btnConfirml">确定</item>
+    <item key="FrmMessageRemind_btnCancel">取消</item>
+    <!-- FrmMessageRemind End -->
+
+    <!-- FrmMessageBroadcast Begin -->
+    <item key="FrmMessageBroadcast">广播消息</item>
+    <item key="FrmMessageBroadcast_lblContents">内容(&amp;C)：</item>
+    <item key="FrmMessageBroadcast_btnSend">发送(&amp;S)</item>
+    <item key="FrmMessageBroadcast_btnCancel">取消</item>
+    <!-- FrmMessageBroadcast End -->
+
+    <!-- UserControl UCFreeWorkFlow Begin -->
+    <item key="UCFreeWorkFlow_lblSendTo">提交给：</item>
+    <item key="UCFreeWorkFlow_btnSelect">选择</item>
+    <item key="UCFreeWorkFlow_lblAuditIdea">批示：</item>
+    <item key="UCFreeWorkFlow_btnAuditPass">通过</item>
+    <item key="UCFreeWorkFlow_btnAuditReject">退回</item>
+    <item key="UCFreeWorkFlow_btnTransmit">转发</item>
+    <item key="UCFreeWorkFlow_btnAuditDetail">明细...</item>
+    <item key="UCFreeWorkFlow_btnAuditQuash">撤销</item>
+    <!-- UserControl UCFreeWorkFlow End -->
+
+    <!-- UserControl UCAutoWorkFlow Begin -->
+    <item key="UCAutoWorkFlow_lblAuditIdea">批示：</item>
+    <item key="UCAutoWorkFlow_btnAuditPass">通过</item>
+    <item key="UCAutoWorkFlow_btnAuditReject">退回</item>
+    <item key="UCAutoWorkFlow_btnAuditDetail">明细</item>
+    <!-- UserControl UCAutoWorkFlow End -->
+
+    <!-- UserControl UCAutoWorkFlowStatr Begin -->
+    <item key="UCAutoWorkFlowStatr_lblAuditIdea">批示：</item>
+    <item key="UCAutoWorkFlowStatr_btnSendTo">提交</item>
+    <!-- UserControl UCAutoWorkFlowStatr End -->
+
+    <!-- UserControl UCFreeWorkFlowStatr Begin -->
+    <item key="UCFreeWorkFlowStatr_lblSendTo">提交给：</item>
+    <item key="UCFreeWorkFlowStatr_btnUserSelect">选择</item>
+    <item key="UCFreeWorkFlowStatr_lblAuditIdea">批示：</item>
+    <!-- UserControl UCFreeWorkFlowStatr End -->
+
+    <!-- UserControl UCOrganizeSelect Begin -->
+    <item key="UCOrganizeSelect_btnSelect">选择...</item>
+    <item key="UCOrganizeSelect_btnSetNull">置空</item>
+    <!-- UserControl UCOrganizeSelect End -->
+
+    <!-- UserControl UCPermissionSelect Begin -->
+    <item key="UCPermissionSelect_btnSelect">选择...</item>
+    <item key="UCPermissionSelect_btnSetNull">置空</item>
+    <!-- UserControl UCPermissionSelect End -->
+
+    <!-- UserControl UCUserSelect Begin -->
+    <item key="UCUserSelect_btnSelect">选择...</item>
+    <item key="UCUserSelect_btnSetNull">置空</item>
+    <!-- UserControl UCUserSelect End -->
+
+    <!-- UCStaffSelect Begin -->
+    <item key="UCStaffSelect_btnSelect">选择...</item>
+    <item key="UCStaffSelect_btnSetNull">置空</item>
+    <!-- UCStaffSelect End -->
+
+    <!-- UCRoleSelect Begin -->
+    <item key="UCRoleSelect_btnSelect">选择...</item>
+    <item key="UCRoleSelect_btnSetNull">置空</item>
+    <!-- UCRoleSelect End -->
+
+    <!-- UCModuleSelect Begin -->
+    <item key="UCModuleSelect_btnSelect">选择...</item>
+    <item key="UCModuleSelect_btnSetNull">置空</item>
+    <!-- UCModuleSelect End -->
+
+    <!-- UCFolderSelect Begin -->
+    <item key="UCFolderSelect_btnSelectFolder">选择...</item>
+    <item key="UCFolderSelect_btnSetNull">置空</item>
+    <!-- UCFolderSelect End -->
+
+    <!-- UCPicture Begin -->
+    <item key="UCPicture_btnSelect">选择...</item>
+    <item key="UCPicture_btnClear">清除</item>
+    <item key="UCPicture_btnDelete">删除</item>
+    <!-- UCPicture End -->
+
+    <!-- UCItemDetailsTreeSelect Begin -->
+    <item key="UCItemDetailsTreeSelect_btnSelectItemDetails">选择...</item>
+    <item key="UCItemDetailsTreeSelecte_btnParent">上级...</item>
+    <!-- UCItemDetailsTreeSelect End -->
+
+    <!-- UCAttachmentt Begin -->
+    <item key="UCAttachment_colSelected">选择...</item>
+    <item key="UCAttachment_colFullName">Name</item>
+    <item key="UCAttachment_colFileSize">Size</item>
+    <item key="UCAttachment_colDescription">描述</item>
+    <item key="UCAttachment_btnSelectAll">Select &amp;All</item>
+    <item key="UCAttachment_btnInvertSelect">反选</item>
+    <item key="UCAttachment_btnSelect">Add...</item>
+    <item key="UCAttachment_btnUpload">Upload</item>
+    <item key="UCAttachment_btnDownload">Download</item>
+    <item key="UCAttachment_btnDelete">删除</item>
+    <!-- UCAttachmentt End -->
+
+    <!-- UserControl UCScopePermissionSelect Begin -->
+    <item key="UCScopePermissionSelect_btnSelect">选择...</item>
+    <item key="UCScopePermissionSelect_btnSetNull">置空</item>
+    <!-- UserControl UCScopePermissionSelect End -->
+
+    <!-- FrmDocumentAdd Begin -->
+    <item key="FrmDocumentAdd">添加文本文档</item>
+    <item key="FrmDocumentAdd_lblTitle">标题(&amp;T)：</item>
+    <item key="FrmDocumentAdd_lblContent">查询内容(&amp;C)：</item>
+    <item key="FrmDocumentAdd_lblDescription">描述(&amp;D)</item>
+    <item key="FrmDocumentAdd_chbEnabled">有效</item>
+    <item key="FrmDocumentAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmDocumentAdd_btnSave">保存(&amp;S)</item>
+    <item key="FrmDocumentAdd_btnCancel">取消</item>
+    <!-- FrmDocumentAdd End -->
+
+    <!-- FrmDocumentEdit Begin -->
+    <item key="FrmDocumentEdit">编辑文本文档</item>
+    <item key="FrmDocumentEdit_lblTitle">标题(&amp;T)：</item>
+    <item key="FrmDocumentEdit_lblContent">查询内容(&amp;C)：</item>
+    <item key="FrmDocumentEdit_lblDescription">描述(&amp;D)</item>
+    <item key="FrmDocumentEdit_chbEnabled">有效</item>
+    <item key="FrmDocumentEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmDocumentEdit_btnCancel">取消</item>
+    <!-- FrmDocumentEdit End -->
+
+    <!-- FrmFileEdit Begin -->
+    <item key="FrmFileEdit">编辑文件</item>
+    <item key="FrmFileEdit_lblSelect">选择文件夹(&amp;F)：</item>
+    <item key="FrmFileEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmFileEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmFileEdit_btnDownLoad">下载</item>
+    <item key="FrmFileEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmFileEdit_btnCancel">取消</item>
+    <!-- FrmFileEdit End -->
+
+    <!-- FrmFolderAdd Begin -->
+    <item key="FrmFolderAdd">添加文件夹</item>
+    <item key="FrmFolderAdd_lblParent">父节点(&amp;P)：</item>
+    <item key="FrmFolderAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmFolderAdd_lblDescription">描述(&amp;D)</item>
+    <item key="FrmFolderAdd_chbEnabled">有效</item>
+    <item key="FrmFolderAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmFolderAdd_btnCancel">取消</item>
+    <!-- FrmFolderAdd End -->
+
+    <!-- FrmWorkFlowActivityAdmin Begin -->
+    <item key="FrmWorkFlowActivityAdmin">审批流程步骤定义</item>
+    <item key="FrmWorkFlowActivityAdmin_lblWorkFlowCode">审批流程编号：</item>
+    <item key="FrmWorkFlowActivityAdmin_lblWorkFlowFullName">审批流程名称：</item>
+    <item key="FrmWorkFlowActivityAdmin_colSelected">选择</item>
+    <item key="FrmWorkFlowActivityAdmin_colFullName">审核</item>
+    <item key="FrmWorkFlowActivityAdmin_colAuditUserRealName">用户</item>
+    <item key="FrmWorkFlowActivityAdmin_colAuditRoleRealName">角色</item>
+    <item key="FrmWorkFlowActivityAdmin_colDescription">描述</item>
+    <item key="FrmWorkFlowActivityAdmin_grpActivity">审批流程步骤</item>
+    <item key="FrmWorkFlowActivityAdmin_lblFullName">审核：</item>
+    <item key="FrmWorkFlowActivityAdmin_lblUser">用户(&amp;U)：</item>
+    <item key="FrmWorkFlowActivityAdmin_lblRole">角色(&amp;R)：</item>
+    <item key="FrmWorkFlowActivityAdmin_lblDescription">描述：</item>
+    <item key="FrmWorkFlowActivityAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmWorkFlowActivityAdmin_btnClose">关闭</item>
+    <item key="FrmWorkFlowActivityAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmWorkFlowActivityAdmin_btnDelete">删除(&amp;D)</item>
+    <!-- FrmWorkFlowActivityAdmin End -->
+
+    <!-- FrmWorkFlowStatr Begin -->
+    <item key="FrmWorkFlowStatr">启动审批流程</item>
+    <item key="FrmWorkFlowStatr_lblCategoryId">单据分类代码（表名）|  CategoryId：</item>
+    <item key="FrmWorkFlowStatr_lblCategoryFullName">单据分类名称| CategoryFullName：</item>
+    <item key="FrmWorkFlowStatr_lblObjectId">订单代码（Id）| ObjectId：</item>
+    <item key="FrmWorkFlowStatr_lblObjectFullName">订单名称| ObjectFullName：</item>
+    <item key="FrmWorkFlowStatr_rbByRole">ByRole 按角色审核</item>
+    <item key="FrmWorkFlowStatr_rbByUser">ByUser 按用户审核</item>
+    <!-- FrmWorkFlowStatr End -->
+
+    <!-- FrmWorkFlowTest Begin -->
+    <item key="FrmWorkFlowTest">工作流测试</item>
+    <item key="FrmWorkFlowTest_btnStart">启动工作流</item>
+    <item key="FrmWorkFlowTest_btnWorkFlowMonitor">工作流状态监控</item>
+    <item key="FrmWorkFlowTest_btnMyWorkFlow">待审批流程（我的）</item>
+    <item key="FrmWorkFlowTest_lblWorkFlowId">当前工作流代码（自动产生） WorkFlowId:</item>
+    <item key="FrmWorkFlowTest_lblCategoryId">单据分类代码（表名） CategoryId:</item>
+    <item key="FrmWorkFlowTest_lblCategoryFullName">单据分类名称 CategoryFullName:</item>
+    <item key="FrmWorkFlowTest_lblObjectId">订单代码（Id）ObjectId:</item>
+    <item key="FrmWorkFlowTest_lblObjectFullName">订单名称 ObjectFullName:</item>
+    <item key="FrmWorkFlowTest_chkPermissionAuditing">最终审核权限 Auditing</item>
+    <item key="FrmWorkFlowTest_btnInit">初始化工作流</item>
+    <!-- FrmWorkFlowTest End -->
+
+    <!-- FrmWorkFlowWaitForAudit Begin -->
+    <item key="FrmWorkFlowWaitForAudit">待审批流程</item>
+    <item key="FrmWorkFlowWaitForAudit_colSelected">选择</item>
+    <item key="FrmWorkFlowWaitForAudit_colObjectFullName">名称</item>
+    <item key="FrmWorkFlowWaitForAudit_colSendDate">审核日期</item>
+    <item key="FrmWorkFlowWaitForAudit_colAuditUserRealName">审核人</item>
+    <item key="FrmWorkFlowWaitForAudit_colAuditIder">批示</item>
+    <item key="FrmWorkFlowWaitForAudit_colToDepartmentName">待审部门</item>
+    <item key="FrmWorkFlowWaitForAudit_colToRoleRealName">待审角色</item>
+    <item key="FrmWorkFlowWaitForAudit_colToUserRealName">待审人</item>
+    <item key="FrmWorkFlowWaitForAudit_colAuditState">审核状态</item>
+    <item key="FrmWorkFlowWaitForAudit_rbByRole">ByRole 按角色审批</item>
+    <item key="FrmWorkFlowWaitForAudit_rbByUser">ByUser 按用户审批</item>
+    <item key="FrmWorkFlowWaitForAudit_btnClose">关闭</item>
+    <!-- FrmWorkFlowWaitForAudit End -->
+
+    <!-- FrmWorkFlowMonitor Begin -->
+    <item key="FrmWorkFlowMonitor">审批流程监控器</item>
+    <item key="FrmWorkFlowMonitor_lblCategory">单据分类：</item>
+    <item key="FrmWorkFlowMonitor_lblSearch">查询内容(&amp;C)：</item>
+    <item key="FrmWorkFlowMonitor_btnSearch">查询(&amp;Q)：</item>
+    <item key="FrmWorkFlowMonitor_colCategoryFullName">分类</item>
+    <item key="FrmWorkFlowMonitor_colObjectFullName">名称</item>
+    <item key="FrmWorkFlowMonitor_colCreateBy">发起人</item>
+    <item key="FrmWorkFlowMonitor_colAuditUserRealName">审核人</item>
+    <item key="FrmWorkFlowMonitor_colSendDate">审核日期</item>
+    <item key="FrmWorkFlowMonitor_colAuditIder">批示</item>
+    <item key="FrmWorkFlowMonitor_colToDepartmentName">待审部门</item>
+    <item key="FrmWorkFlowMonitor_colToUserRealName">待审人</item>
+    <item key="FrmWorkFlowMonitor_colToRoleRealName">待审角色</item>
+    <item key="FrmWorkFlowMonitor_colAuditStatus">审核状态</item>
+    <item key="FrmWorkFlowMonitor_btnAuditDetail">审核明细</item>
+    <item key="FrmWorkFlowMonitor_btnClose">取消</item>
+    <!-- FrmWorkFlowMonitor End -->
+
+    <!-- FrmWorkFlowAuditDetail Begin -->
+    <item key="FrmWorkFlowAuditDetail">审批流程明细</item>
+    <item key="FrmWorkFlowAuditDetail_colSendDate">发出日期</item>
+    <item key="FrmWorkFlowAuditDetail_colAuditUserRealName">发出人</item>
+    <item key="FrmWorkFlowAuditDetail_colAuditIder">批示</item>
+    <item key="FrmWorkFlowAuditDetail_colToDepartmentName">审核部门</item>
+    <item key="FrmWorkFlowAuditDetail_colToRoleRealName">审核角色</item>
+    <item key="FrmWorkFlowAuditDetail_colToUserRealName">审核人</item>
+    <item key="FrmWorkFlowAuditDetail_colAuditStatus">审核状态</item>
+    <item key="FrmWorkFlowAuditDetail_colAuditDate">审核日期</item>
+    <item key="FrmWorkFlowAuditDetail_btnClose">取消</item>
+    <!-- FrmWorkFlowAuditDetail End -->
+
+    <!-- FrmWorkFlowProcessAdmin Begin -->
+    <item key="FrmWorkFlowProcessAdmin">审批流程定义管理</item>
+    <item key="FrmWorkFlowProcessAdmin_lblOrganize">组织机构(&amp;O)：</item>
+    <item key="FrmWorkFlowProcessAdmin_colSelected">选择</item>
+    <item key="FrmWorkFlowProcessAdmin_colCode">编号</item>
+    <item key="FrmWorkFlowProcessAdmin_colFullName">名称(&amp;N)</item>
+    <item key="FrmWorkFlowProcessAdmin_colDescription">描述</item>
+    <item key="FrmWorkFlowProcessAdmin_btnAdd">添加(&amp;A)</item>
+    <item key="FrmWorkFlowProcessAdmin_btnEdit">编辑(&amp;E)</item>
+    <item key="FrmWorkFlowProcessAdmin_btnStepAdmin">工作流步骤定义(&amp;W)</item>
+    <item key="FrmWorkFlowProcessAdmin_btnBatchDelete">删除(&amp;D)</item>
+    <item key="FrmWorkFlowProcessAdmin_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmWorkFlowProcessAdmin_btnClose">关闭</item>
+    <!-- FrmWorkFlowProcessAdmin End -->
+
+    <!-- FrmWorkFlowProcessAdd Begin -->
+    <item key="FrmWorkFlowProcessAdd">添加审批流程</item>
+    <item key="FrmWorkFlowProcessAdd_lblParent">组织机构(&amp;O)：</item>
+    <item key="FrmWorkFlowProcessAdd_lblCode">编号(&amp;C)：</item>
+    <item key="FrmWorkFlowProcessAdd_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmWorkFlowProcessAdd_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmWorkFlowProcessAdd_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmWorkFlowProcessAdd_btnAdd">添加(&amp;A)</item>
+    <item key="FrmWorkFlowProcessAdd_btnCancel">取消</item>
+    <!-- FrmWorkFlowProcessAdd End -->
+
+    <!-- FrmWorkFlowProcessEdit Begin -->
+    <item key="FrmWorkFlowProcessEdit">编辑审批程序</item>
+    <item key="FrmWorkFlowProcessEdit_lblParent">组织机构(&amp;O)：</item>
+    <item key="FrmWorkFlowProcessEdit_lblCode">编号(&amp;C)：</item>
+    <item key="FrmWorkFlowProcessEdit_lblFullName">名称(&amp;N)：</item>
+    <item key="FrmWorkFlowProcessEdit_chkEnabled">有效(&amp;E)</item>
+    <item key="FrmWorkFlowProcessEdit_lblDescription">描述(&amp;D)：</item>
+    <item key="FrmWorkFlowProcessEdit_btnSave">保存(&amp;S)</item>
+    <item key="FrmWorkFlowProcessEdit_btnCancel">取消</item>
+    <!-- FrmWorkFlowProcessEdit End -->
+
+    <!-- FrmUserPermissionBatchSet Begin -->
+    <item key="FrmUserPermissionBatchSet">用户权限批量设置</item>
+    <item key="FrmUserPermissionBatchSet_tabPage1">归属角色</item>
+    <item key="FrmUserPermissionBatchSet_tabPage2">拥有操作权限</item>
+    <item key="FrmUserPermissionBatchSet_tabPage3">菜单访问权限</item>
+    <item key="FrmUserPermissionBatchSet_tabPage4">用户</item>
+    <!-- FrmUserPermissionBatchSet End -->
+
+    <!-- FrmRolePermissionBatchSet Begin -->
+    <item key="FrmRolePermissionBatchSet">角色权限批量设置</item>
+    <item key="FrmRolePermissionBatchSet_tabPage1">归属用户（账户）</item>
+    <item key="FrmRolePermissionBatchSet_tabPage2">拥有操作权限</item>
+    <item key="FrmRolePermissionBatchSet_tabPage3">菜单访问权限</item>
+    <item key="FrmRolePermissionBatchSet_tabPage4">角色</item>
+    <!-- FrmUserPermissionBatchSet End -->
+
+    <!-- FrmUserOrganizeScope Begin -->
+    <item key="FrmUserOrganizeScope">用户数据权限范围设置</item>
+    <item key="FrmUserOrganizeScope_lblPermissionScope">数据权限：</item>
+    <item key="FrmUserOrganizeScope_lblContents">查询(&amp;S)：</item>
+    <item key="FrmUserOrganizeScope_btnSearch">查询(&amp;F)</item>
+    <item key="FrmUserOrganizeScope_colRealName">名称</item>
+    <item key="FrmUserOrganizeScope_colAll">全部</item>
+    <item key="FrmUserOrganizeScope_colUserCompany">所在公司</item>
+    <item key="FrmUserOrganizeScope_colUserDepartment">所在部门</item>
+    <item key="FrmUserOrganizeScope_colUserWorkgroup">所在工作组</item>
+    <item key="FrmUserOrganizeScope_colUser">仅本人</item>
+    <item key="FrmUserOrganizeScope_colNone">无</item>
+    <item key="FrmUserOrganizeScope_colDetail">设置明细</item>
+    <item key="FrmUserOrganizeScope_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmUserOrganizeScope_btnClose">关闭</item>
+    <!-- FrmUserOrganizeScope End -->
+
+    <!-- FrmRoleOrganizeScope Begin -->
+    <item key="FrmRoleOrganizeScope">角色数据权限范围设置</item>
+    <item key="FrmRoleOrganizeScope_lblPermissionScope">数据权限：</item>
+    <item key="FrmRoleOrganizeScope_lblRoleCategories">角色分类：</item>
+    <item key="FrmRoleOrganizeScope_colRealName">名称</item>
+    <item key="FrmRoleOrganizeScope_colAll">全部</item>
+    <item key="FrmRoleOrganizeScope_colUserCompany">所在公司</item>
+    <item key="FrmRoleOrganizeScope_colUserDepartment">所在部门</item>
+    <item key="FrmRoleOrganizeScope_colUserWorkgroup">所在工作组</item>
+    <item key="FrmRoleOrganizeScope_colUser">仅本人</item>
+    <item key="FrmRoleOrganizeScope_colNone">无</item>
+    <item key="FrmRoleOrganizeScope_colDetail">设置明细</item>
+    <item key="FrmRoleOrganizeScope_btnBatchSave">保存(&amp;S)</item>
+    <item key="FrmRoleOrganizeScope_btnClose">关闭</item>
+    <!-- FrmUserOrganizeScope End -->
+
+    <!-- FrmLogOnByName Begin -->
+    <item key="FrmLogOnByName">登录</item>
+    <item key="FrmLogOnByName_btnRequestAnAccount">申请用户...</item>
+    <item key="FrmLogOnByName_grpLogOn">登录</item>
+    <item key="FrmLogOnByName_lblUser">用户(&amp;U)：</item>
+    <item key="FrmLogOnByName_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmLogOnByName_chkRememberPassword">记住密码</item>
+    <item key="FrmLogOnByName_chbAutoLogOn">自动登录</item>
+    <item key="FrmLogOnByName_btnConfig">系统配置...</item>
+    <item key="FrmLogOnByName_btnConfirm">登录(&amp;L)</item>
+    <item key="FrmLogOnByName_btnExit">退出(&amp;E)</item>
+    <item key="FrmLogOnByName_btnCancel">取消</item>
+    <!-- FrmLogOnByName End -->
+
+    <!-- FrmLogOnByCertificates Begin -->
+    <item key="FrmLogOnByCertificates">登录</item>
+    <item key="FrmLogOnByCertificates_grpLogOn">登录</item>
+    <item key="FrmLogOnByCertificates_lblUser">用户(&amp;U)：</item>
+    <item key="FrmLogOnByCertificates_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmLogOnByCertificates_lblVerifyCode">驗證码(&amp;V)：</item>
+    <item key="FrmLogOnByCertificates_chkRememberPassword">记住密码</item>
+    <item key="FrmLogOnByCertificates_btnConfig">系统配置...</item>
+    <item key="FrmLogOnByCertificates_btnConfirm">登录(&amp;L)</item>
+    <item key="FrmLogOnByCertificates_btnExit">退出(&amp;E)</item>
+    <item key="FrmLogOnByCertificates_btnCancel">取消(&amp;C)</item>
+    <!-- FrmLogOnByCertificates End -->
+
+    <!-- FrmDataGridViewSetting Begin -->
+    <item key="FrmDataGridViewSetting">数据栏设置</item>
+    <item key="FrmDataGridViewSetting_grbSetting">设置</item>
+    <item key="FrmDataGridViewSetting_HeaderText">列名</item>
+    <item key="FrmDataGridViewSetting_Width">宽度</item>
+    <item key="FrmDataGridViewSetting_Visible">显示</item>
+    <item key="FrmDataGridViewSetting_Frozen">冻结</item>
+    <item key="FrmDataGridViewSetting_btnSave">保存(&amp;S)</item>
+    <item key="FrmDataGridViewSetting_btnCancel">取消(&amp;C)</item>
+    <!-- FrmDataGridViewSetting End -->
+
+    <!-- FrmConfig Begin -->
+    <item key="FrmConfig">系统配置</item>
+    <item key="FrmConfig_lblCustomerCompanyName">单位名称(&amp;C)：</item>
+    <item key="FrmConfig_tpClient">客户端配置</item>
+    <item key="FrmConfig_tpServer">服务器端配置</item>
+    <item key="FrmConfig_lblUser">用户(&amp;U)：</item>
+    <item key="FrmConfig_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmConfig_lblCurrentLanguage">系统语言(&amp;L)：</item>
+    <item key="FrmConfig_chkRememberPassword">记住密码</item>
+    <item key="FrmConfig_chbAutoLogOn">自动登录</item>
+    <item key="FrmConfig_chkUseMessage">启用即时通讯</item>
+    <item key="FrmConfig_chkEncryptPassword">加密存储密码</item>
+    <item key="FrmConfig_lblMainForm">主窗体(&amp;M)：</item>
+    <item key="FrmConfig_btnSDIMainForm">系统工具方式运行</item>
+    <item key="FrmConfig_btnTabsMainForm">主应用程序方式运行</item>
+    <item key="FrmConfig_lblLogOnForm">系统登录窗体(&amp;F)：</item>
+    <item key="FrmConfig_lblService">运行模式((&amp;R)：</item>
+    <item key="FrmConfig_lblRootMenuCode">系统根菜单编号(&amp;R)：</item>
+    <item key="FrmConfig_chkCheckOnLine">允许用户重复登录</item>
+    <item key="FrmConfig_chkAllowUserRegister">允许用户注册</item>
+    <item key="FrmConfig_chkRecordLog">记录系统日志</item>
+    <item key="FrmConfig_chkUseOrganizePermission">启用按组织机构授权</item>
+    <item key="FrmConfig_chkUseUserPermission">启用按用户授权</item>
+    <item key="FrmConfig_chkUseModulePermission">启用模块菜单权限</item>
+    <item key="FrmConfig_chkUsePermissionScope">启用分级管理权限</item>
+    <item key="FrmConfig_chkUseLicensedPermission">启用逐级授权</item>
+    <item key="FrmConfig_chkUseTableColumnPermission">启用表字段权限</item>
+    <item key="FrmConfig_chkUseTableScopePermission">启用表约束条件</item>
+    <item key="FrmConfig_lblOnLineLimit">在线用户数限制：</item>
+    <item key="FrmConfig_chkEncryptDbConnection">加密数据库连接串</item>
+    <item key="FrmConfig_lblUserCenterDbConnection">权限数据库连接(&amp;C)：</item>
+    <item key="FrmConfig_lblBusinessDbConnection">业务数据库连接(&amp;B)：</item>
+    <item key="FrmConfig_lblWorkFlowDbConnection">工作流数据库连接(&amp;W)：</item>
+    <item key="FrmConfig_btnSystemSecurity">系统安全设置...</item>
+    <item key="FrmConfig_btnDecrypt">解密</item>
+    <item key="FrmConfig_btnEncrypt">加密</item>
+    <item key="FrmConfig_btnInitialize">初始化系统</item>
+    <item key="FrmConfig_btnConfirm">保存</item>
+    <item key="FrmConfig_btnCancel">取消</item>
+    <!-- FrmConfig End -->
+
+    <!-- FrmSystemSecurity Begin -->
+    <item key="FrmSystemSecurity">系统安全设置</item>
+    <item key="FrmSystemSecurity_grpPasswordSecurity">密码安全</item>
+    <item key="FrmSystemSecurity_chkServerEncryptPassword">服务器上加密存储密码</item>
+    <item key="FrmSystemSecurity_lblPasswordMiniLength">密码最小长度：</item>
+    <item key="FrmSystemSecurity_chkNumericCharacters">必须字母+数字组合</item>
+    <item key="FrmSystemSecurity_lblPasswordChangeCycle">密码修改周期(月)：</item>
+    <item key="FrmSystemSecurity_grpAccountSecurity">帐户安全</item>
+    <item key="FrmSystemSecurity_chkCheckOnLine">禁止用户重复登录</item>
+    <item key="FrmSystemSecurity_lblAccountMinimumLength">用户名最小长度：</item>
+    <item key="FrmSystemSecurity_grpBruteForce">防暴力破解</item>
+    <item key="FrmSystemSecurity_lblPasswordErrowLock">密码错误锁定次数：</item>
+    <item key="FrmSystemSecurity_lblPasswordLockCycle">密码错误锁定周期(分钟)：</item>
+    <item key="FrmSystemSecurity_btnConfirm">保存(&amp;S)</item>
+    <item key="FrmSystemSecurity_btnCancel">取消</item>
+    <!-- FrmSystemSecurity End -->
+
+    <!-- DataGridView RightClickMenu Begin -->
+    <item key="clickToolStripMenuItem">数据栏设置</item>
+    <!-- DataGridView RightClickMenu End -->
+
+    <!-- BaseForm LoadWindow Begin -->
+    <item key="LoadWindow">加载窗体</item>
+    <!-- BaseForm LoadWindow End -->
+
+    <!-- FrmAboutThis Begin -->
+    <item key="FrmAboutThis">关于本软件</item>
+    <item key="FrmAboutThis_btnConfirm">确定</item>
+    <!-- FrmAboutThis End -->
+
+    <!-- FrmScreenLock Begin -->
+    <item key="FrmScreenLock">锁屏</item>
+    <item key="FrmScreenLock_grpLogOn">锁屏</item>
+    <item key="FrmScreenLock_lblMessage">请输入您的密码解除锁定。</item>
+    <item key="FrmScreenLock_lblPassword">密码(&amp;P)：</item>
+    <item key="FrmScreenLock_ckbIsLock">下次自动锁定</item>
+    <item key="FrmScreenLock_lblWait">闲置时间：</item>
+    <item key="FrmScreenLock_lblMinute">分钟</item>
+    <item key="FrmScreenLock_btnConfirm">解锁(&amp;U)</item>
+    <!-- FrmScreenLock End -->
+
+    <!-- TabsMainForm Begin -->
+    <item key="TabsMainForm">C#.NET通用快速开发架构</item>
+    <item key="TabsMainForm_btnSystem">系统(&amp;S)</item>
+    <item key="TabsMainForm_btnReLogin">重新登录</item>
+    <item key="TabsMainForm_btnModifPWD">更改密码</item>
+    <item key="TabsMainForm_btnQuit">退出系统</item>
+    <item key="TabsMainForm_btnWindows">窗口(&amp;W)</item>
+    <item key="TabsMainForm_btnMainTabs">主窗体</item>
+    <item key="TabsMainForm_btnRemoveSelectedTab">关闭当前窗体</item>
+    <item key="TabsMainForm_btnTool">工具(&amp;T)</item>
+    <item key="TabsMainForm_btnCalculator">计算器</item>
+    <item key="TabsMainForm_btnNoteBook">记事本</item>
+    <item key="TabsMainForm_btnOthers">其它(&amp;O)</item>
+    <item key="TabsMainForm_btnSelectTheme">风格选择</item>
+    <item key="TabsMainForm_btn预设风格">默认风格</item>
+    <item key="TabsMainForm_btnWindowsXP预设">WindowsXP默认</item>
+    <item key="TabsMainForm_btnWindows7蓝">Windows7蓝</item>
+    <item key="TabsMainForm_btnOffice2007蓝">Office2007蓝</item>
+    <item key="TabsMainForm_btnOffice2007银">Office2007银</item>
+    <item key="TabsMainForm_btnOffice2007黑">Office2007黑</item>
+    <item key="TabsMainForm_btnOffice2007Vista">Office2007Vista</item>
+    <item key="TabsMainForm_btnOffice2010银">Office2010银</item>
+    <item key="TabsMainForm_btnHelps">帮助(&amp;H)</item>
+    <item key="TabsMainForm_btnAbout">关于(&amp;A)</item>
+    <item key="TabsMainForm_lblBottomInfo">欢迎使用C#.NET通用权限管理系统组件</item>
+    <item key="TabsMainForm_barLeft">功能导航菜单</item>
+    <item key="TabsMainForm_barRight">即时通信</item>
+    <item key="TabsMainForm_barRightN">备忘录</item>
+    <item key="TabsMainForm_btnSaveNoteBook">保存</item>
+    <item key="TabsMainForm_btnToMain">主窗体</item>
+    <item key="TabsMainForm_btnReLoadMenu">重置功能菜单</item>
+    <item key="TabsMainForm_btnQuitSystem">退出系统</item>
+    <item key="TabsMainForm_tabItemMain">主界面</item>
+    <item key="TabsMainForm_tsMenuItemCloseThis">关闭当前窗体</item>
+    <item key="TabsMainForm_tsMenuItemCloseOther">除此之外全部关闭</item>
+    <item key="TabsMainForm_btnLanguages">语言选择</item>
+    <item key="TabsMainForm_btLangCN">中文(简体)</item>
+    <item key="TabsMainForm_btnLangTW">中文(繁体)</item>
+    <item key="TabsMainForm_btnLangUS">英文</item>
+    <!-- TabsMainForm End -->
+  </items>
+</resources>
