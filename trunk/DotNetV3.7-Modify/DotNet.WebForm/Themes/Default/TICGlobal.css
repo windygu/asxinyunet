@@ -1,0 +1,291 @@
+/*----------------------------------------------------------
+Comment Here！！！
+----------------------------------------------------------*/
+body {
+   margin:0; padding:0; font-size:12px; line-height:25px; text-align: left !important;text-align: center;
+}
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td,img,button {
+    margin: 0;
+    padding: 0;
+}
+img, body, html {
+    border: 0 none;
+}
+tr,td{ line-height:30px;}
+ol li, ul li 
+{
+    list-style:none none none
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+A:link 
+{
+	COLOR: #000000;TEXT-DECORATION: none;
+}
+A:active 
+{
+	COLOR: #000000;TEXT-DECORATION: none
+}
+A:visited 
+{
+	COLOR: #000000;TEXT-DECORATION: none
+}
+A:hover 
+{
+	COLOR: #ff0000;TEXT-DECORATION: none
+}
+/* function
+----------------------------------------------------------*/
+
+.noborder{ border:0}
+.nobackground{ background:none}
+.clear{ clear:both}
+.left{ float:left}
+.right{ float:right}
+.center{ margin:0 auto;}
+.top{ vertical-align:top}
+.middle{ vertical-align:middle}
+.bottom{ vertical-align:bottom}
+.fontcenter{ text-align:center; }
+.fontleft{text-align:left;}
+.fontrihgt{text-align:right;}
+.letterspace{ letter-spacing:2px;}
+
+.mr5{ margin-right:5px;}
+.mr10{ margin-right:10px;}
+.mr20{ margin-right:20px}
+.mt10{ margin-top:10px;}
+.ml10{ margin-left:10px}
+.mt5{ margin-top:5px}
+.ml20{ margin-left:20px}
+.mt20{ margin-top:20px}
+.maxwidth{ width:1000px;}
+
+.pt10{ padding-top:10px;}
+.pt5{ padding-top:5px;}
+.pt20{ padding-top:20px;}
+.pb10{ padding-bottom:10px;}
+.pl10{ padding-left:10px;}
+.pr10{ padding-right:10px;}
+
+.font12{ font-size:12px;}
+.font14{ font-size:14.7px}
+.fontred{ color:#be1800;}
+
+.more{margin:15px 10px 0 0;float:right; font-size:12px;}
+.nowposition{margin:20px 50px 0 0;float:right; font-size:14px;}
+.div5px{ height:5px;}
+.minhight500{ min-height:500px}
+.height30{ height:30px;}
+.width150{ width:150px;}
+.borderbt{border-bottom: #c0c0c0 dashed 1px;}
+.blod{ font-weight:bold}
+.indent{ text-indent:2em}
+
+.autowh{ width:100%; height:100%; overflow:hidden}
+.autoheight{ height:100%; overflow:hidden}
+.autowidth{width:100%; overflow:hidden}
+
+.lineheight20{ line-height:20px;}
+
+.indent{ text-indent:2em}
+.top{ z-index:100}
+
+.space{ height:10px; line-height:10px;}
+.space20{ height:20px;}
+.space5{ height:5px; line-height:5px;}
+.justy{text-align:justify;}
+.hidden{ display:none}
+.show{ display:block;}
+ .leftblank{ padding-left:5px;}
+ .rightblank{ padding-right:5px;}
+ .blank{ padding-left:5px; padding-right:5px;}
+
+/*input
+-----------------------------------------------*/
+input{ height:25px; line-height:25px;}
+.ColorFocus
+{
+    border: 1px gold double;
+    background-color: white;
+}
+.ColorBlur 
+{
+    border: 1px #CCCCCC double;
+    background-color: white;
+ }
+ .ColorBlur:hover
+ {
+     border: 1px gold double;
+    background-color: white;
+ }
+ /*select
+-------------------------------------------------*/
+select{height:20px; line-height:20px; border:1px solid #ccc; }
+/*---button
+----------------------------------------------------------------*/
+.button
+{
+	border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    background-image: url('Images/Button.gif');
+	background-color: white;
+	cursor: hand;
+	width: 79px;
+	line-height:22px;
+	height:22px;
+	}
+.button:hover
+{
+	background-image: url('Images/Buttonm.gif');
+}
+.buttonsmall
+{
+	background-image: url('Images/ButtonSmall.gif');
+	background-color: white;
+	cursor: hand;
+	border: none;
+	width: 50px;
+	height: 22px;
+	line-height:22px;
+}
+.buttonsmall:hover
+{
+    background-image: url('Images/ButtonSmallm.gif');
+    }
+.buttonlarge
+{
+	background-image: url('Images/ButtonLarge.gif');
+	background-color: white;
+	cursor: hand;
+	border-style: none;
+	width: 106px;
+	height: 22px;
+	line-height:22px;
+}
+.buttonlarge:hover
+{
+    background-image: url('Images/ButtonLargem.gif')
+    }
+
+
+/*news 
+style1: dot+title+date
+-------------------------------------------------*/
+#news{ width:95%; margin:20px auto;}
+#news .decoration,#news .datetime,#news .articlebody{ border-bottom:1px dashed #ccc}
+#news .decoration{width:5px;}
+#news .articlebody{padding-left:10px;line-height:30px; height:30px}
+#news .datetime{width:100px;}
+/*newswithsummary 
+style2: dot+title
+        summary
+-------------------------------------------------*/
+#newswithsummary{ width:95%; margin:20px auto; text-align:left;}
+#newswithsummary .arttitle{ padding-left:20px;line-height:30px; height:30px; }
+#newswithsummary .arttitle a{font-size:14px; font-weight:bold; display:inline}
+#newswithsummary .more{text-align:right;vertical-align:top;}
+#newswithsummary .more a{ float:right;color:#237ea6}
+#newswithsummary .artsummary{text-indent:2em; font-size:14px; vertical-align:top;}
+#newswithsummary img{ margin:5px; padding:3px; border:1px solid #ccc;}
+#newswithsummary .articlebody{padding-left:10px;line-height:30px; height:30px}
+
+/*内容页新闻样式
+-------------------------*/
+.art_title{text-align:left; height:50px; line-height:50px; font-size:15px; font-weight:bold; color:#1d5173}
+.art_subtitle{text-align:center; height:30px; line-height:30px;font-size:12px; font-weight:blod; color:#333; border-bottom:1px dashed #666; }
+.art_content{ text-align:left; text-indent:2em; line-height:25px; }
+
+/*CSS flickr style pagination 分页效果
+--------------------------------------------------*/
+.paging {padding:3px; text-align:center;}
+.paging a {padding:2px 6px 2px 6px;border:#deddfde 1px solid;background-position: 50% bottom;color: #0061de;}
+.paging a:hover {border:#000 1px solid;color: #fff; background-color: #d33616;}
+.paging .meneame a:active {border: #000 1px solid; background-color: #0061de;color: #fff;}
+.paging span.current {margin-right:3px;padding:2px 6px 2px 6px; font-weight:bold; color:#ff0084;}
+.paging span.disabled {padding:2px 6px 2px 6px; color: #adaaad; margin-right:3px;}
+
+
+/*table
+-------------------------------------------*/
+/*普通表格菜单列*/
+.table
+{
+	border-collapse:collapse;
+	background-color: #ffffff;
+	text-align:left;
+	
+}
+.caption
+{
+    background: #EEEEEE;
+	border-bottom: 1px solid #CCCCCC;
+	font-family: Verdana;
+	font-size: 10pt;
+	padding: 5px;
+	padding-left: 10px;
+	font-weight:bold;
+	text-align:left;
+	height:30px;
+	line-height:30px;
+}
+.tr-foot
+{
+    border:1px solid #ccc;
+    background-color:#Efefef;
+    }
+	
+.td-title
+{
+    padding: 2px 4px 0px 2px;
+    border:1px solid #94bbd1;
+	background-color: #edf8fc;
+	font-size: 12px;
+	font-weight: bold;
+	text-align:right;
+}
+.td-content
+{
+    padding: 3px 2px 0px 4px;
+	border:1px solid #94bbd1;
+}
+.tr-header
+{
+    background-color:#EFEFEF;
+    text-align:center;
+    vertical-align:middle;
+    font-size:12px;
+    }
+.tr-content
+{
+    background-color:#fff;
+    text-align:left;
+    vertical-align:middle;
+    font-size:12px;
+    }
+.tr-content:hover{ background-color:LemonChiffon;}
+.tr-toggle
+{
+    background-color:#EFEFEF;
+    text-align:center;
+    vertical-align:middle;
+    font-size:12px;
+    }
+.tr-toggle:hover{ background-color:LemonChiffon;}
+
+/*searchArea
+--------------------------------------------------------------*/
+#searchArea{ width:97%; border:1px solid #ccc; margin:10px auto; padding:5px;  text-align:center; }
+
+/*sortArea
+---------------------------------------------------------------*/
+#sortArea{ width:100px; height:100%; float:left; text-align:center; }
+
+/*pageArea
+---------------------------------------------------------------*/
+#pageArea{float:right;}
+#pageArea .customInfo{height:100%; vertical-align:bottom; padding-top:5px}
+#pageArea .txtPageSize{ height:15px; line-height:15px; padding:0}
+#pageArea .linkPageSize{ height:15px; line-height:15px; width:40px; text-decoration:underline}
