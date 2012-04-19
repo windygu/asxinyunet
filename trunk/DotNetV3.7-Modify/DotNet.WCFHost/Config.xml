@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <!-- 登录时的配置文件选项 -->
+    <add key="CurrentUsername" value="Administrator"/>
+    <add key="CurrentPassword" value=""/>
+    <add key="RememberPassword" value="True"/>
+
+    <add key="RecordLog" value="True"/>
+    <add key="PersistCookie" value="True"/>
+
+    <!-- 客户等相关信息配置 -->
+    <add key="CustomerCompanyName" value="杭州海日涵科技"/>
+    <add key="ConfigurationFrom" value="UserConfig"/>
+    <add key="SoftName" value="DotNet"/>
+    <add key="SoftFullName" value=".NET通用快速开发架构"/>
+    <add key="Version" value="3.0" />
+    <add key="RootMenuCode" value="Water"/>
+    <add key="CurrentLanguage" value="zh-CHS"/>
+
+    <!-- 启用分级管理范围权限设置 -->
+    <add key="UsePermissionScope" value="False"/>
+    <!-- 启用逐级授权 -->
+    <add key="UseLicensedPermission" value="False"/>
+    <!-- 登录窗体 -->
+    <add key="LoginAssembly" value="DotNet.WinFormin"/>
+    <add key="LoginForm" value="FrmLogin"/>
+    <add key="MainForm" value="SDIMainForm"/>
+    <!-- 默认加载用户 -->
+    <add key="LoadUser" value="True"/>
+    <!-- 允许用户注册 -->
+    <add key="AllowUserRegister" value="False"/>
+
+    <!-- 不检查在线状态 -->
+    <add key="CheckOnLine" value="False"/>
+    <!-- 服务器端加密存储密码 -->
+    <add key="ServerEncryptPassword" value="True" />
+    
+    <add key="RegisterKey" value="125O8O9O4O2O1O371O272O120O79O75O39O32O14O12O4O2O1O1O1O0O0O0O0O11O415O353O572O1293O793O1955O1616O8709O12046O26173O24945O67637O49437O207130O118290O433900O569186O281334O379729O2310391O2168260O2335649O2370981"/>
+
+    <add key="ServiceFactory" value="DotNetServiceFactory"/>
+    <add key="ServicePath" value="DotNet.Business"/>
+
+    <add key="DbType" value="Sqlserver"/>
+
+    <add key="UserCenterDbConnection" value="Server=JIRIGALA-PC;Database=UserCenterV36;Uid=sa;Pwd=Password@sa;Pooling=True;Max Pool Size=50; Min Pool Size=5;Connect Timeout=60;"/>
+    <add key="WorkFlowDbConnection" value="Server=JIRIGALA-PC;Database=WorkFlowV36;Uid=sa;Pwd=Password@sa;"/>
+    <add key="BusinessDbConnection" value="Server=JIRIGALA-PC;Database=UserCenterV36;Uid=sa;Pwd=Password@sa;"/>
+
+    <!-- 远程调用Service用户名（为了提高软件的安全性） -->
+    <add key="ServiceUserName" value="JiRiGaLa" />
+    <!-- 远程调用Service密码（为了提高软件的安全性） -->
+    <add key="ServicePassword" value="JiRiGaLa" />
+
+    <!-- 软件的错误报告发给谁 -->
+    <add key="ErrorReportTo" value="Jirigala_bao@hotmail.com, jirgl@itouch.com.cn"/>
+    <!-- 发出错误邮箱的地址 -->
+    <add key="ErrorReportMailUsername" value="Jirigala@gmail.com"/>
+    <!-- 发出错误邮箱的密码 -->
+    <add key="ErrorReportMailPassword" value="C81A0F07FEE506BD522015F8AE206ED7"/>
+
+  </appSettings>
+</configuration>
