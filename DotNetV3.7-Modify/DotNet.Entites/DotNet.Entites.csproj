@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{96F8587B-8CDE-4529-BA93-352D864809DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNet.Entites</RootNamespace>
+    <AssemblyName>DotNet.Entites</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\Xcoder -0413\NewLife.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XCode">
+      <HintPath>..\Xcoder -0413\XCode.dll</HintPath>
+    </Reference>
+    <Reference Include="XTemplate">
+      <HintPath>..\Xcoder -0413\XTemplate.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business实体类\Base_Comment.Biz.cs" />
+    <Compile Include="Business实体类\Base_Comment.cs" />
+    <Compile Include="Business实体类\Base_Sequence.Biz.cs" />
+    <Compile Include="Business实体类\Base_Sequence.cs" />
+    <Compile Include="Business实体类\Project.Biz.cs" />
+    <Compile Include="Business实体类\Project.cs" />
+    <Compile Include="Business实体类\UserByGUID.Biz.cs" />
+    <Compile Include="Business实体类\UserByGUID.cs" />
+    <Compile Include="Business实体类\UserByIdentity.Biz.cs" />
+    <Compile Include="Business实体类\UserByIdentity.cs" />
+    <Compile Include="Business实体类\UserByInt.Biz.cs" />
+    <Compile Include="Business实体类\UserByInt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCenter实体类\BaseComment.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseComment.cs" />
+    <Compile Include="UserCenter实体类\BaseContact.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseContact.cs" />
+    <Compile Include="UserCenter实体类\BaseContactDetails.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseContactDetails.cs" />
+    <Compile Include="UserCenter实体类\BaseException.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseException.cs" />
+    <Compile Include="UserCenter实体类\BaseFile.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseFile.cs" />
+    <Compile Include="UserCenter实体类\BaseFolder.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseFolder.cs" />
+    <Compile Include="UserCenter实体类\BaseItems.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseItems.cs" />
+    <Compile Include="UserCenter实体类\BaseLog.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseLog.cs" />
+    <Compile Include="UserCenter实体类\BaseLogOnLog.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseLogOnLog.cs" />
+    <Compile Include="UserCenter实体类\BaseMessage.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseMessage.cs" />
+    <Compile Include="UserCenter实体类\BaseModule.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseModule.cs" />
+    <Compile Include="UserCenter实体类\BaseNews.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseNews.cs" />
+    <Compile Include="UserCenter实体类\BaseOrganize.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseOrganize.cs" />
+    <Compile Include="UserCenter实体类\BaseParameter.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseParameter.cs" />
+    <Compile Include="UserCenter实体类\BasePermission.Biz.cs" />
+    <Compile Include="UserCenter实体类\BasePermission.cs" />
+    <Compile Include="UserCenter实体类\BasePermissionItem.Biz.cs" />
+    <Compile Include="UserCenter实体类\BasePermissionItem.cs" />
+    <Compile Include="UserCenter实体类\BasePermissionScope.Biz.cs" />
+    <Compile Include="UserCenter实体类\BasePermissionScope.cs" />
+    <Compile Include="UserCenter实体类\BaseProject.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseProject.cs" />
+    <Compile Include="UserCenter实体类\BaseRole.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseRole.cs" />
+    <Compile Include="UserCenter实体类\BaseSequence.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseSequence.cs" />
+    <Compile Include="UserCenter实体类\BaseStaff.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseStaff.cs" />
+    <Compile Include="UserCenter实体类\BaseStaffOrganize.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseStaffOrganize.cs" />
+    <Compile Include="UserCenter实体类\BaseTableColumns.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseTableColumns.cs" />
+    <Compile Include="UserCenter实体类\BaseUser.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseUser.cs" />
+    <Compile Include="UserCenter实体类\BaseUserAddress.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseUserAddress.cs" />
+    <Compile Include="UserCenter实体类\BaseUserOrganize.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseUserOrganize.cs" />
+    <Compile Include="UserCenter实体类\BaseUserRole.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseUserRole.cs" />
+    <Compile Include="UserCenter实体类\BaseWorkReport.Biz.cs" />
+    <Compile Include="UserCenter实体类\BaseWorkReport.cs" />
+    <Compile Include="UserCenter实体类\BusinessCard.Biz.cs" />
+    <Compile Include="UserCenter实体类\BusinessCard.cs" />
+    <Compile Include="UserCenter实体类\China71ab_Module.Biz.cs" />
+    <Compile Include="UserCenter实体类\China71ab_Module.cs" />
+    <Compile Include="UserCenter实体类\China71ab_Permission.Biz.cs" />
+    <Compile Include="UserCenter实体类\China71ab_Permission.cs" />
+    <Compile Include="UserCenter实体类\China71ab_PermissionItem.Biz.cs" />
+    <Compile Include="UserCenter实体类\China71ab_PermissionItem.cs" />
+    <Compile Include="UserCenter实体类\China71ab_Role.Biz.cs" />
+    <Compile Include="UserCenter实体类\China71ab_Role.cs" />
+    <Compile Include="UserCenter实体类\China71ab_UserRole.Biz.cs" />
+    <Compile Include="UserCenter实体类\China71ab_UserRole.cs" />
+    <Compile Include="UserCenter实体类\ItemDetails.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemDetails.cs" />
+    <Compile Include="UserCenter实体类\ItemsAllowDelete.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsAllowDelete.cs" />
+    <Compile Include="UserCenter实体类\ItemsAllowEdit.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsAllowEdit.cs" />
+    <Compile Include="UserCenter实体类\ItemsArea.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsArea.cs" />
+    <Compile Include="UserCenter实体类\ItemsAuditStatus.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsAuditStatus.cs" />
+    <Compile Include="UserCenter实体类\ItemsBugCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsBugCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsBugLevel.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsBugLevel.cs" />
+    <Compile Include="UserCenter实体类\ItemsCondition.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsCondition.cs" />
+    <Compile Include="UserCenter实体类\ItemsDegree.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsDegree.cs" />
+    <Compile Include="UserCenter实体类\ItemsDeletionStateCode.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsDeletionStateCode.cs" />
+    <Compile Include="UserCenter实体类\ItemsDisability.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsDisability.cs" />
+    <Compile Include="UserCenter实体类\ItemsDuty.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsDuty.cs" />
+    <Compile Include="UserCenter实体类\ItemsEducation.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsEducation.cs" />
+    <Compile Include="UserCenter实体类\ItemsEnabled.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsEnabled.cs" />
+    <Compile Include="UserCenter实体类\ItemsExpress.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsExpress.cs" />
+    <Compile Include="UserCenter实体类\ItemsGender.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsGender.cs" />
+    <Compile Include="UserCenter实体类\ItemsHousehold.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsHousehold.cs" />
+    <Compile Include="UserCenter实体类\ItemsLeaveCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsLeaveCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsLinks.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsLinks.cs" />
+    <Compile Include="UserCenter实体类\ItemsLockWaitMinute.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsLockWaitMinute.cs" />
+    <Compile Include="UserCenter实体类\ItemsMembershipLevels.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsMembershipLevels.cs" />
+    <Compile Include="UserCenter实体类\ItemsNationality.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsNationality.cs" />
+    <Compile Include="UserCenter实体类\ItemsNewsCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsNewsCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilAlarmFiltering.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilAlarmFiltering.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilDataSource.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilDataSource.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilEventGroup.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilEventGroup.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilEventType.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilEventType.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilEventType_Old.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilEventType_Old.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilInstallations.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOilInstallations.cs" />
+    <Compile Include="UserCenter实体类\ItemsOnSale.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOnSale.cs" />
+    <Compile Include="UserCenter实体类\ItemsOrganizeCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsOrganizeCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsParty.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsParty.cs" />
+    <Compile Include="UserCenter实体类\ItemsPattern.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsPattern.cs" />
+    <Compile Include="UserCenter实体类\ItemsPayCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsPayCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsPostCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsPostCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsRoleCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsRoleCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsSalaryItemCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsSalaryItemCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsSecurityLevel.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsSecurityLevel.cs" />
+    <Compile Include="UserCenter实体类\ItemsSendCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsSendCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsSystem.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsSystem.cs" />
+    <Compile Include="UserCenter实体类\ItemsTablePermissionScope.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsTablePermissionScope.cs" />
+    <Compile Include="UserCenter实体类\ItemsTitle.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsTitle.cs" />
+    <Compile Include="UserCenter实体类\ItemsTrueFalse.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsTrueFalse.cs" />
+    <Compile Include="UserCenter实体类\ItemsUnits.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsUnits.cs" />
+    <Compile Include="UserCenter实体类\ItemsWed.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsWed.cs" />
+    <Compile Include="UserCenter实体类\ItemsWorkCategory.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsWorkCategory.cs" />
+    <Compile Include="UserCenter实体类\ItemsWorkFlowCategories.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsWorkFlowCategories.cs" />
+    <Compile Include="UserCenter实体类\ItemsWorkingProperty.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsWorkingProperty.cs" />
+    <Compile Include="UserCenter实体类\ItemsYesNo.Biz.cs" />
+    <Compile Include="UserCenter实体类\ItemsYesNo.cs" />
+    <Compile Include="UserCenter实体类\Maintain.Biz.cs" />
+    <Compile Include="UserCenter实体类\Maintain.cs" />
+    <Compile Include="UserCenter实体类\ViewApplicationRole.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewApplicationRole.cs" />
+    <Compile Include="UserCenter实体类\ViewDuty.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewDuty.cs" />
+    <Compile Include="UserCenter实体类\ViewInnerOrganize.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewInnerOrganize.cs" />
+    <Compile Include="UserCenter实体类\ViewModulePermission.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewModulePermission.cs" />
+    <Compile Include="UserCenter实体类\ViewRolePermission.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewRolePermission.cs" />
+    <Compile Include="UserCenter实体类\ViewSystemRole.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewSystemRole.cs" />
+    <Compile Include="UserCenter实体类\ViewUserAddressList.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewUserAddressList.cs" />
+    <Compile Include="UserCenter实体类\ViewUserOrganize.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewUserOrganize.cs" />
+    <Compile Include="UserCenter实体类\ViewUserPermission.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewUserPermission.cs" />
+    <Compile Include="UserCenter实体类\ViewWebLog.Biz.cs" />
+    <Compile Include="UserCenter实体类\ViewWebLog.cs" />
+    <Compile Include="WorkFlow实体类\BaseComment.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseComment.cs" />
+    <Compile Include="WorkFlow实体类\BaseException.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseException.cs" />
+    <Compile Include="WorkFlow实体类\BaseLog.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseLog.cs" />
+    <Compile Include="WorkFlow实体类\BaseParameter.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseParameter.cs" />
+    <Compile Include="WorkFlow实体类\BaseSequence.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseSequence.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowActivity.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowActivity.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowCurrent.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowCurrent.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowHistory.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowHistory.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowProcess.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowProcess.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowStep.Biz.cs" />
+    <Compile Include="WorkFlow实体类\BaseWorkFlowStep.cs" />
+    <Compile Include="WorkFlow实体类\Leave.Biz.cs" />
+    <Compile Include="WorkFlow实体类\Leave.cs" />
+    <Compile Include="WorkFlow实体类\Maintain.Biz.cs" />
+    <Compile Include="WorkFlow实体类\Maintain.cs" />
+    <Compile Include="WorkFlow实体类\MeterSubmission.Biz.cs" />
+    <Compile Include="WorkFlow实体类\MeterSubmission.cs" />
+    <Compile Include="WorkFlow实体类\ModifyEquipmentAccounting.Biz.cs" />
+    <Compile Include="WorkFlow实体类\ModifyEquipmentAccounting.cs" />
+    <Compile Include="WorkFlow实体类\ModifyInformation.Biz.cs" />
+    <Compile Include="WorkFlow实体类\ModifyInformation.cs" />
+    <Compile Include="WorkFlow实体类\ProcurementEquipment.Biz.cs" />
+    <Compile Include="WorkFlow实体类\ProcurementEquipment.cs" />
+    <Compile Include="WorkFlow实体类\View_BillTemplate.Biz.cs" />
+    <Compile Include="WorkFlow实体类\View_BillTemplate.cs" />
+    <Compile Include="WorkFlow实体类\WorkFlowBillTemplate.Biz.cs" />
+    <Compile Include="WorkFlow实体类\WorkFlowBillTemplate.cs" />
+    <Compile Include="WorkFlow实体类\WorkFlowUserBill.Biz.cs" />
+    <Compile Include="WorkFlow实体类\WorkFlowUserBill.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
