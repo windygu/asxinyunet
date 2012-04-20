@@ -89,12 +89,6 @@
     <Compile Include="GraphForm\DataFilter.Designer.cs">
       <DependentUpon>DataFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="GraphForm\DataPrediction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GraphForm\DataPrediction.Designer.cs">
-      <DependentUpon>DataPrediction.cs</DependentUpon>
-    </Compile>
     <Compile Include="GraphForm\tb_IndexInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\DataFilter.resx">
       <DependentUpon>DataFilter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GraphForm\DataPrediction.resx">
-      <DependentUpon>DataPrediction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm\tb_IndexInfo.resx">
       <DependentUpon>tb_IndexInfo.cs</DependentUpon>
