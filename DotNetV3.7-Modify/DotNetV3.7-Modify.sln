@@ -71,7 +71,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotNet.WebForm", "..\DotNet
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "2220"
+		VWDPort = "3719"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Business", "..\DotNet.CommonV3.7_0415\DotNet.Business\DotNet.Business.csproj", "{450103A5-67AA-485E-A745-958CC9499AD7}"
