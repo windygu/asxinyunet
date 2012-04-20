@@ -126,7 +126,7 @@
             this.txtCompany.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompany.Location = new System.Drawing.Point(1008, 62);
             this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(137, 22);
+            this.txtCompany.Size = new System.Drawing.Size(137, 21);
             this.txtCompany.TabIndex = 13;
             // 
             // txtProject
@@ -134,7 +134,7 @@
             this.txtProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProject.Location = new System.Drawing.Point(1008, 119);
             this.txtProject.Name = "txtProject";
-            this.txtProject.Size = new System.Drawing.Size(137, 22);
+            this.txtProject.Size = new System.Drawing.Size(137, 21);
             this.txtProject.TabIndex = 17;
             // 
             // lblProject
@@ -152,7 +152,7 @@
             this.txtYearCreated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtYearCreated.Location = new System.Drawing.Point(1008, 89);
             this.txtYearCreated.Name = "txtYearCreated";
-            this.txtYearCreated.Size = new System.Drawing.Size(137, 22);
+            this.txtYearCreated.Size = new System.Drawing.Size(137, 21);
             this.txtYearCreated.TabIndex = 15;
             // 
             // lblYearCreated
@@ -170,7 +170,7 @@
             this.txtAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAuthor.Location = new System.Drawing.Point(1008, 147);
             this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(137, 22);
+            this.txtAuthor.Size = new System.Drawing.Size(137, 21);
             this.txtAuthor.TabIndex = 19;
             // 
             // lblAuthor
@@ -188,7 +188,7 @@
             this.txtDateCreated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDateCreated.Location = new System.Drawing.Point(1008, 175);
             this.txtDateCreated.Name = "txtDateCreated";
-            this.txtDateCreated.Size = new System.Drawing.Size(137, 22);
+            this.txtDateCreated.Size = new System.Drawing.Size(137, 21);
             this.txtDateCreated.TabIndex = 21;
             // 
             // lblDateCreated
@@ -217,7 +217,7 @@
             // 
             this.txtClassName.Location = new System.Drawing.Point(89, 202);
             this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Size = new System.Drawing.Size(167, 22);
+            this.txtClassName.Size = new System.Drawing.Size(167, 21);
             this.txtClassName.TabIndex = 9;
             // 
             // lblClassName
@@ -299,7 +299,7 @@
             this.txtDesign.Location = new System.Drawing.Point(89, 63);
             this.txtDesign.Name = "txtDesign";
             this.txtDesign.ReadOnly = true;
-            this.txtDesign.Size = new System.Drawing.Size(380, 22);
+            this.txtDesign.Size = new System.Drawing.Size(380, 21);
             this.txtDesign.TabIndex = 1;
             // 
             // lblOutput
@@ -316,7 +316,7 @@
             this.txtOutput.Location = new System.Drawing.Point(89, 91);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(380, 22);
+            this.txtOutput.Size = new System.Drawing.Size(380, 21);
             this.txtOutput.TabIndex = 5;
             // 
             // btnOutput
@@ -470,9 +470,9 @@
             // 
             this.rbenUS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbenUS.AutoSize = true;
-            this.rbenUS.Location = new System.Drawing.Point(1087, 30);
+            this.rbenUS.Location = new System.Drawing.Point(1080, 30);
             this.rbenUS.Name = "rbenUS";
-            this.rbenUS.Size = new System.Drawing.Size(58, 16);
+            this.rbenUS.Size = new System.Drawing.Size(65, 16);
             this.rbenUS.TabIndex = 24;
             this.rbenUS.Tag = "en-US";
             this.rbenUS.Text = "English";
@@ -532,9 +532,9 @@
             // 
             // txtCode
             // 
-            this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCode.Location = new System.Drawing.Point(71, 261);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(1066, 267);
@@ -600,7 +600,7 @@
             // 
             this.txtFileName.Location = new System.Drawing.Point(341, 202);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(167, 22);
+            this.txtFileName.Size = new System.Drawing.Size(167, 21);
             this.txtFileName.TabIndex = 11;
             // 
             // lblFileName
