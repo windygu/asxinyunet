@@ -24,8 +24,6 @@ namespace LotTick
         #endregion
 
         #region 构造函数
-
-
         /// <summary>
         /// 双色球构造函数
         /// </summary>
@@ -74,7 +72,7 @@ namespace LotTick
         #endregion
 
         #region 对规则列表进行验证和过滤
-        #region 过滤方法-封装加载初始配置和不加载的情况
+        #region 规则验证
         /// <param name="ruleList">规则列表</param>
         public override bool[][] ValidateRuleList(RuleInfo[] ruleList)
         {
@@ -110,7 +108,7 @@ namespace LotTick
         #region 不使用提前方案，直接进行过滤，需要对规则分类，杀号优先处理后，再组合
         public static LotTickData[] FilterByNotUsePrepareData(RuleInfo[] ruleList, out Dictionary<int, string> filterInfos)
         {
-            //先获取优先级列表,从指标数据表中获取           
+            //先获取优先级列表,从指标数据表中获取
             RuleInfo[] First = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
                 n.IndexSelector.ToString().Replace("LotTick.Index_", "")).PriorLevel == 6).ToArray();
             RuleInfo[] Last = ruleList.Where(n => tb_IndexInfo.Find(tb_IndexInfo._.IndexName,
