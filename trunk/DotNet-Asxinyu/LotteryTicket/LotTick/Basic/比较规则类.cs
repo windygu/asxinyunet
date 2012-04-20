@@ -9,7 +9,7 @@ namespace LotTick
     public class CompareParams
     {
         /// <summary>
-        /// 参数类构造函数
+        /// 参数类构造函数，下限-上限- 数字1，数字2，数字3-其他参数
         /// </summary>
         /// <param name="IndexName">条件字符串形式,格式：2-2-1,2,3-2,3-2</param>
         public CompareParams(string conditions)
@@ -25,7 +25,7 @@ namespace LotTick
             {
                 this.FloorLimit = Convert.ToInt32(str[0]);
                 this.CeilLimit = Convert.ToInt32(str[1]);
-                this.CompList = str[2].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                this.CompList = str[2].Split(',').Select(n =>Convert.ToInt32(n)).ToArray();
             }
             else if (str.Length >=4)
             {

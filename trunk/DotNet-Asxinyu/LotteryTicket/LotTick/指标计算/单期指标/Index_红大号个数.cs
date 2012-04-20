@@ -10,6 +10,6 @@ namespace LotTick
         public override int GetOneResult(LotTickData data)
         {
             return data.NormalData.Where(k => k >= 17).Count();
-        }      
+        }
     }
 }
