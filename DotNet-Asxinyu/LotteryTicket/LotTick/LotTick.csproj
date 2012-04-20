@@ -121,6 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="指标计算\多期指标\" />
+    <Folder Include="指标计算\多次分析指标\" />
+    <Folder Include="指标计算\常规单次指标\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
