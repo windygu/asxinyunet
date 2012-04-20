@@ -136,11 +136,8 @@ namespace DotNet.Business
             }
             return returnValue;
         }
-
-
-        //
-        //  撤销授权范围的实现部分
-        //
+                
+        //  撤销授权范围的实现部分        
 
         #region private int RevokeModule(BasePermissionScopeManager permissionScopeManager, string organizeId, string permissionItemCode, string revokeModuleId) 为了提高授权的运行速度
         /// <summary>
