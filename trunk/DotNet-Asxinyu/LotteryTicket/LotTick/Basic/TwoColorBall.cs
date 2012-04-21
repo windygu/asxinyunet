@@ -29,7 +29,7 @@ namespace LotTick
         /// </summary>
         public TwoColorBall(int calcuteRows)
         {
-            this.CalcuteRows = calcuteRows;
+            //this.CalcuteRows = calcuteRows;
             //获取数据集,分别填充NormalData和SpecialData
             this.LotData = GetBallData(-1);
         }

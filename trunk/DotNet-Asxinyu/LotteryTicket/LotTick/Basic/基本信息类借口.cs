@@ -41,35 +41,7 @@ namespace LotTick
         NotInList
     }
     #endregion
-
-    #region 彩票指标计算抽象类
-    /// <summary>
-    /// 彩票指标计算抽象类
-    /// </summary>
-    public abstract class ABSLotIndex
-    {
-        /// <summary>
-        /// 计算指标所需要的邻近行的数目
-        /// </summary>
-        /// <remarks>一般只与当期相关的指标不需要邻近行,即为0</remarks>
-        /// <value>0</value>
-        public int NeedRows { get; set; }
-
-        /// <summary>
-        /// 根据该指标的规则,验证对历史数据的准确性
-        /// </summary>
-        /// <remarks>验证历史数据库中,最近的N期数据,数据按照时间升序排列</remarks>
-        /// <returns>返回每一期的正确性</returns>
-        public abstract bool[] GetValidateResult();
-
-        /// <summary>
-        /// 根据该规则,对数据集进行过滤,只保留满足规则的书籍
-        /// </summary>
-        /// <returns>满足规则的数据集</returns>
-        public abstract int[][] GetFilterResult();
-    }
-    #endregion
-
+    
     #region 彩票指标计算抽象类
     /// <summary>
     /// 彩票指标计算抽象类
@@ -78,7 +50,7 @@ namespace LotTick
     {
         /// <summary>
         /// 初始化,传入参数对象
-        /// 设置一个
+        /// TODO:传入一个实际的彩票类型对象（包括了需要计算的数据和参数），指标根据参数计算得到需要计算的数据
         /// </summary>        
         public LotIndex(RuleInfo ruleInfo,bool isDeleteMode = false)
         {
@@ -93,6 +65,11 @@ namespace LotTick
         /// 比较规则对象
         /// </summary>
         public RuleInfo RuleInfoParams { get; set; }
+
+        /// <summary>
+        ///  当前的彩票对象
+        /// </summary>
+        //public BasicLotTick CurrentLotTickObject { get; set; }
 
         /// <summary>
         /// 是否是杀号模式,默认不是
