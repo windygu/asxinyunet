@@ -663,6 +663,7 @@ namespace XCoder
             try
             {
                 List<IDataTable> list = DAL.Import(File.ReadAllText(openFileDialog1.FileName));
+                
 
                 Engine = null;
                 Engine.Tables = list;

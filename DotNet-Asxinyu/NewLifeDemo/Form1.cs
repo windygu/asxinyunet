@@ -22,10 +22,14 @@ namespace NewLifeDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DAL dal = DAL.Create("Common");
-            EntityFactory.LoadEntities 
-            dal.CheckTables();
-           
+            Administrator user = new Administrator();
+            user.Name = "admin";
+            user.Password = NewLife.Security.DataHelper.Hash("admin");
+            user.DisplayName = "管理员";
+            user.RoleID = 1;
+            user.IsEnable = true;
+            user.Insert();
+        
         }
     }
 }
