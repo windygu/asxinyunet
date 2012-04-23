@@ -277,7 +277,7 @@ namespace XCode
             {
                 values[i] = this[names[i]];
             }
-
+            
             FieldItem field = Meta.Unique;
             // 如果是空主键，则采用直接判断记录数的方式，以加快速度
             if (Helper.IsNullKey(this[field.Name])) return FindCount(names, values) > 0;
