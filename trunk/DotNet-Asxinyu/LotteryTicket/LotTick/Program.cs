@@ -28,11 +28,13 @@ namespace LotTick
     {
         static void Main(string[] args)
         {
-            object e = ConfigurationManager.AppSettings["MySection111"];
+            //object e = ConfigurationManager.AppSettings["MySection111"];
             //Console.WriteLine();            
-            Console.WriteLine(Config.GetConfig<string>("url"));
+            //Console.WriteLine(Config.GetConfig<string>("url"));
             //TwoColorBall t = new TwoColorBall(22); 
             //int[][] data = TwoColorBall.GetInitiaData();
+
+           
             Console.ReadKey();
         }
     }
