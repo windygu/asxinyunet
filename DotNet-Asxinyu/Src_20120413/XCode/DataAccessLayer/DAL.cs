@@ -433,6 +433,49 @@ namespace XCode.DataAccessLayer
                 WriteLog("检查连接[{0}/{1}]的数据库架构耗时{2}", ConnName, DbType, sw.Elapsed);
             }
         }
+
+        public void CheckTables(List<IDataTable> list)
+        {
+            WriteLog("开始检查连接[{0}/{1}]的数据库架构……", ConnName, DbType);
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            try
+            {               
+                if (list != null && list.Count > 0)
+                {
+                    // 全都标为已初始化的
+                    foreach (IDataTable item in list)
+                    {
+                        if (!HasCheckTables.Contains(item.Name)) HasCheckTables.Add(item.Name);
+                    }
+
+                    // 过滤掉被排除的表名
+                    if (NegativeExclude.Count > 0)
+                    {
+                        for (int i = list.Count - 1; i >= 0; i--)
+                        {
+                            if (NegativeExclude.Contains(list[i].Name)) list.RemoveAt(i);
+                        }
+                    }
+                    // 过滤掉视图
+                    list.RemoveAll(dt => dt.IsView);
+                    if (list != null && list.Count > 0)
+                    {
+                        WriteLog(ConnName + "待检查表架构的实体个数：" + list.Count);
+
+                        Db.CreateMetaData().SetTables(list.ToArray());
+                    }
+                }
+            }
+            finally
+            {
+                sw.Stop();
+
+                WriteLog("检查连接[{0}/{1}]的数据库架构耗时{2}", ConnName, DbType, sw.Elapsed);
+            }
+        }
         #endregion
 
         #region 创建数据操作实体
