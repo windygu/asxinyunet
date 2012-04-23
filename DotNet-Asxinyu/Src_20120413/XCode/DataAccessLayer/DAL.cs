@@ -396,7 +396,6 @@ namespace XCode.DataAccessLayer
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
-
             try
             {
                 List<IDataTable> list = EntityFactory.GetTables(ConnName);
@@ -437,10 +436,8 @@ namespace XCode.DataAccessLayer
         public void CheckTables(List<IDataTable> list)
         {
             WriteLog("开始检查连接[{0}/{1}]的数据库架构……", ConnName, DbType);
-
             Stopwatch sw = new Stopwatch();
             sw.Start();
-
             try
             {               
                 if (list != null && list.Count > 0)

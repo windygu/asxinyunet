@@ -55,6 +55,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="实体\tb_IndexInfo.Biz.cs" />
+    <Compile Include="实体\tb_IndexInfo.cs" />
+    <Compile Include="实体\tb_Rules.Biz.cs" />
+    <Compile Include="实体\tb_Rules.cs" />
+    <Compile Include="实体\tb_Ssq.Biz.cs" />
+    <Compile Include="实体\tb_Ssq.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
