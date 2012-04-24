@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using XCode;
 using XCode.DataAccessLayer;
 using NewLife.Security;
-
+using XCode.Configuration;
 
 namespace NewLifeDemo
 {
@@ -25,9 +25,21 @@ namespace NewLifeDemo
             //不用实体来操作数据库Demo
             DAL dal = DAL.Create("Common");
             IEntityOperate entity = dal.CreateOperate("Administrator");
-            IEntity model = entity.Create();
-            //model.SetItem
+            for (int i = 0; i < 1000; i++)
+			{
+			    IEntity model = entity.Create();
+                FieldItem[] filds = entity.Fields ;
+                int fildsCount = filds.Count() ;
+                for (int j = 0; j <fildsCount ; j++)
+                {
+                    if (!filds[j].IsIdentity)
+                    {
+                        model.SetItem(filds[j].Name, 32);
+                    }
+                }
+			}            
         }
+
         private void Demo1()
         {
             //反向工程Demo

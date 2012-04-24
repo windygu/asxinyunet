@@ -398,7 +398,7 @@ namespace XCode.DataAccessLayer
             sw.Start();
             try
             {
-                List<IDataTable> list = EntityFactory.GetTables(ConnName);
+                List<IDataTable> list = EntityFactory.GetTables(ConnName,true );
                 if (list != null && list.Count > 0)
                 {
                     // 全都标为已初始化的

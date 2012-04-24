@@ -36,6 +36,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NewLife.CommonEntity">
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.CommonEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="NewLife.Core">
+      <HintPath>..\..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\..\ResouceFiles\Lib\NPOI.dll</HintPath>
     </Reference>
@@ -52,11 +58,15 @@
     <Reference Include="WHC.OrderWater.Commons">
       <HintPath>..\..\ResouceFiles\Lib\WHC.OrderWater.Commons.dll</HintPath>
     </Reference>
+    <Reference Include="XCode">
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commons\AppMessage.cs" />
     <Compile Include="Commons\Convertor.cs" />
     <Compile Include="Commons\DateHelper.cs" />
+    <Compile Include="Commons\DbHelper.cs" />
     <Compile Include="Commons\EnumHelper.cs" />
     <Compile Include="Commons\ExtendProperty.cs" />
     <Compile Include="Commons\FileHelper.cs" />
