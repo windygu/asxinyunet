@@ -149,8 +149,7 @@ namespace XCode
         public static List<Type> LoadEntities()
         {
             return AssemblyX.FindAllPlugins(typeof(IEntity)).ToList();
-        }
-
+        }        
         /// <summary>获取指定连接名下的所有实体类</summary>
         /// <param name="connName"></param>
         /// <returns></returns>
@@ -159,6 +158,60 @@ namespace XCode
             return AssemblyX.FindAllPlugins(typeof(IEntity)).Where(t => TableItem.Create(t).ConnName == connName);
         }
 
+        /// <summary>
+        /// 获取指定连接名下的所有实体数据表
+        /// </summary>
+        /// <param name="connName">数据库连接名称</param>
+        /// <param name="isLoadAssembly">是否加载外部程序集</param>
+        /// <returns>IDataTable集合</returns>
+        public static List<IDataTable> GetTables(String connName,bool isLoadAssembly)
+        {
+            var tables = new List<IDataTable>();
+            // 记录每个表名对应的实体类
+            var dic = new Dictionary<String, Type>(StringComparer.OrdinalIgnoreCase);
+            var list = new List<String>();
+            IEnumerable<Type> Cur = AssemblyX.FindAllPlugins(typeof(IEntity),isLoadAssembly).Where(t => TableItem.Create(t).ConnName == connName);
+            foreach (Type item in Cur )
+            {
+                list.Add(item.Name);
+                // 过滤掉第一次使用才加载的
+                var att = ModelCheckModeAttribute.GetCustomAttribute(item);
+                if (att != null && att.Mode != ModelCheckModes.CheckAllTablesWhenInit) continue;
+                var table = TableItem.Create(item).DataTable;
+                //判断表名是否已存在
+                Type type = null;
+                if (dic.TryGetValue(table.Name, out type))
+                {
+                    // 两个实体类，只能要一个当前实体类是，跳过
+                    if (IsCommonEntity(item))
+                        continue;
+                    // 前面那个是，排除
+                    else if (IsCommonEntity(type))
+                    {
+                        dic[table.Name] = item;
+                        // 删除原始实体类
+                        tables.RemoveAll((tb) => tb.Name == table.Name);
+                    }
+                    // 两个都不是，报错吧！
+                    else
+                    {
+                        String msg = String.Format("设计错误！发现表{0}同时被两个实体类（{1}和{2}）使用！", table.Name, type.FullName, item.FullName);
+                        XTrace.WriteLine(msg);
+                        throw new XCodeException(msg);
+                    }
+                }
+                else
+                {
+                    dic.Add(table.Name, item);
+                }
+
+                tables.Add(table);
+            }
+
+            if (DAL.Debug) DAL.WriteLog("[{0}]的所有实体类（{1}个）：{2}", connName, list.Count, String.Join(",", list.ToArray()));
+
+            return tables;
+        }
         /// <summary>获取指定连接名下的所有实体数据表</summary>
         /// <param name="connName"></param>
         /// <returns></returns>
@@ -178,7 +231,7 @@ namespace XCode
 
                 var table = TableItem.Create(item).DataTable;
 
-                // 判断表名是否已存在
+                //判断表名是否已存在
                 Type type = null;
                 if (dic.TryGetValue(table.Name, out type))
                 {
