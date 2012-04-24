@@ -60,8 +60,7 @@ namespace XCode
             // 确保实体类已被初始化，实际上，因为实体类静态构造函数中会注册IEntityOperate，所以下面的委托按理应该再也不会被执行了
             EnsureInit(type);
 
-            return op_cache.GetItem(type, delegate(Type key)
-            {
+            return op_cache.GetItem(type,delegate (Type key){
                 Type optype = null;
                 if (typeof(IEntityOperate).IsAssignableFrom(key))
                 {
@@ -85,8 +84,7 @@ namespace XCode
 
                 return op;
             });
-        }
-
+        }     
         static Type GetEntityOperateType(Type type)
         {
             //return type.GetNestedType("EntityOperate", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);

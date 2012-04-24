@@ -111,7 +111,6 @@ namespace XCode.DataAccessLayer
             {
                 //List<IDataColumn> list = Columns.FindAll(item => item.PrimaryKey);
                 //return list == null || list.Count < 1 ? new IDataColumn[0] : list.ToArray();
-
                 return Columns.FindAll(item => item.PrimaryKey).ToArray();
             }
         }
