@@ -14,9 +14,17 @@ namespace DotNet.Core.Commons
         private static int MaxYear = 2012;
         #endregion
 
-        #region 产生随机字符
+        #region 随机产生单个字符
+        public static char GetRandomChar()
+        {
+            // A-Z  65-90;a-z:97-122
+            return GetRandomBool() ? Convert.ToChar(GetRandomInt(65, 90)) : Convert.ToChar(GetRandomInt (97,122));
+        }
+        #endregion
+
+        #region 产生随机字符串
         /// <summary>
-		/// 产生随机字符
+		/// 产生随机字符串
 		/// </summary>
 		/// <returns>字符串</returns>
         public static string GetRandomString(int RandomLength = 6)
@@ -55,6 +63,15 @@ namespace DotNet.Core.Commons
         public static byte GetRandomByte()
         {
             return (byte)Random.Next(0, 255);
+        }
+        #endregion
+
+        #region  生成byte[]数组
+        public static byte[] GetRandomByteArray(int length = 4)
+        {
+            byte[] res = new byte[length];
+            Random.NextBytes(res);
+            return res;
         }
         #endregion
 
