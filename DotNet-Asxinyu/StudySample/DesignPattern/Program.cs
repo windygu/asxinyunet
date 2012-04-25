@@ -12,7 +12,8 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            DbHelper.FillDataForDb("Common");
+            //DbHelper.FillDataForDb("Common", 50);
+            DbHelper.CopyDataBase("Common", "CopyTest",20);
         }
         
         /// 数据集合、哈希表及链表的速度测试,验证石头的总结：
