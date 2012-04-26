@@ -142,14 +142,23 @@ namespace DotNet.Core.Commons
                 //分页获取数据，并更新到新的数据库，通过更改数据库连接来完成
                 int allCount = Factory.FindCount ();
                 if (perCount < 0) perCount = GetDataRowsPerConvert (allCount );
-                int pages = (int)Math.Ceiling ((double)((double )allCount/(double )perCount));
-                for (int i = 0; i < pages ; i++)
+                //int pages = (int)Math.Ceiling ((double)((double )allCount/(double )perCount));
+                int curPage = 0 ;
+                while (curPage *perCount <allCount )//改用while循环分页获取数据
                 {
                     Factory.ConnName = originConn;
-                    IEntityList modelList = Factory.FindAll(string.Empty, string.Empty, string.Empty, i * perCount, perCount);
+                    IEntityList modelList = Factory.FindAll("","","",curPage*perCount , perCount);
                     Factory.ConnName = desConn;
                     modelList.Insert(true);
+                    curPage++;
                 }
+                //for (int i = 0; i < pages ; i++)
+                //{
+                //    Factory.ConnName = originConn;
+                //    IEntityList modelList = Factory.FindAll("","","",i * perCount, perCount);
+                //    Factory.ConnName = desConn;
+                //    modelList.Insert(true);
+                //}
                 Console.WriteLine("数据库{0} 数据转移完成！",item.Name );
             }
         }
@@ -166,6 +175,18 @@ namespace DotNet.Core.Commons
             else if (allCount < 50000) return 1000;
             else return 1500;
         }
+        #endregion
+
+        #region 备份数据库
+        public static void BackupDataBase(string connStr, string fileName, bool isOnlyDbSchema = true )
+        {
+            //思路：利用拷贝数据库功能,将数据库拷贝到Sqlite中，因为这是一个文件，方便
+            
+        }
+        #endregion
+
+        #region 还原数据库
+
         #endregion
     }
 }
