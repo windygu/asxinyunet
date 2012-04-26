@@ -13,7 +13,9 @@ namespace DesignPattern
         static void Main(string[] args)
         {
             //DbHelper.FillDataForDb("Common", 50);
-            DbHelper.CopyDataBase("Common", "CopyTest",20);
+            //DbHelper.CopyDataBase("Common", "CommonMysql", 20);
+            DbHelper.CopyDataBase("CommonMysql", "CommonSqlite", 50);
+            //DbHelper.CopyDataBase("CommonSqlite", "Common", 50);
         }
         
         /// 数据集合、哈希表及链表的速度测试,验证石头的总结：
