@@ -13,7 +13,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            //CopyDataBase("Common", "CommonSqlite");
+            //CopyDataBase("Common", "Common3");
             //CopyDataBase("CommonSqlite", "Common3");
             CopyDataBase("Common3", "CommonSqlite");
         }
@@ -50,14 +50,7 @@ namespace Test
                     Factory.ConnName = desConn;
                     modelList.Insert(true);
                     curPage++;
-                }
-                //for (int i = 0; i < pages ; i++)
-                //{
-                //    Factory.ConnName = originConn;
-                //    IEntityList modelList = Factory.FindAll("","","",i * perCount, perCount);
-                //    Factory.ConnName = desConn;
-                //    modelList.Insert(true);
-                //}
+                }             
                 Console.WriteLine("数据库{0} 数据转移完成！", item.Name);
             }
         }
@@ -75,5 +68,13 @@ namespace Test
             else return 1500;
         }
         #endregion
+
+        //for (int i = 0; i < pages ; i++)
+        //{
+        //    Factory.ConnName = originConn;
+        //    IEntityList modelList = Factory.FindAll("","","",i * perCount, perCount);
+        //    Factory.ConnName = desConn;
+        //    modelList.Insert(true);
+        //}
     }
 }

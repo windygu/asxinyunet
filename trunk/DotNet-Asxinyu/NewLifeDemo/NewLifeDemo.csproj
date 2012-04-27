@@ -86,6 +86,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Src_20120413\NewLife.CommonEntity\NewLife.CommonEntity.csproj">
+      <Project>{50D7FAE5-2304-4395-A6FA-7D35279D9D84}</Project>
+      <Name>NewLife.CommonEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Src_20120413\NewLife.Core\NewLife.Core.csproj">
       <Project>{5813C22E-EEB3-4DEE-A45C-BB218041193A}</Project>
       <Name>NewLife.Core</Name>

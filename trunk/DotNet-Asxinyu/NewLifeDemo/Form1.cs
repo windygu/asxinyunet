@@ -10,6 +10,7 @@ using XCode;
 using XCode.DataAccessLayer;
 using NewLife.Security;
 using XCode.Configuration;
+using NewLife.CommonEntity;
 
 namespace NewLifeDemo
 {
@@ -22,22 +23,9 @@ namespace NewLifeDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //不用实体来操作数据库Demo
-            DAL dal = DAL.Create("Common");
-            IEntityOperate entity = dal.CreateOperate("Administrator");
-            for (int i = 0; i < 1000; i++)
-			{
-			    IEntity model = entity.Create();
-                FieldItem[] filds = entity.Fields ;
-                int fildsCount = filds.Count() ;
-                for (int j = 0; j <fildsCount ; j++)
-                {
-                    if (!filds[j].IsIdentity)
-                    {
-                        model.SetItem(filds[j].Name, 32);
-                    }
-                }
-			}            
+            Log log = Log.FindByKey(2008);
+            log.IP = "修改后";
+            log.Update();
         }
 
         private void Demo1()
