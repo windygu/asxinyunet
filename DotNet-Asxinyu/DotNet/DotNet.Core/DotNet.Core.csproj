@@ -74,6 +74,7 @@
     <Compile Include="Commons\IOHelper.cs" />
     <Compile Include="Commons\LivingService.cs" />
     <Compile Include="Commons\RandomHelper.cs" />
+    <Compile Include="Commons\SeqenceHelper.cs" />
     <Compile Include="Commons\Serialize.cs" />
     <Compile Include="Commons\StringHelper.cs" />
     <Compile Include="Commons\Validator.cs" />
