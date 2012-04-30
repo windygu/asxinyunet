@@ -104,7 +104,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FormPager.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormPager.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.FormPager.Location = new System.Drawing.Point(9, 282);
+            this.FormPager.Location = new System.Drawing.Point(37, 330);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
             this.FormPager.Size = new System.Drawing.Size(238, 29);
@@ -292,7 +292,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.FormPager);
             this.Name = "AddIndexInfo";
-            this.Size = new System.Drawing.Size(320, 283);
+            this.Size = new System.Drawing.Size(316, 294);
             this.Load += new System.EventHandler(this.AddAddIndexInfoLoad);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -303,7 +303,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		#endregion
         
         #region 构造函数 及初始化
-        public AddIndexInfo()	{InitializeComponent(); CustomerSettings(); }	
+        public AddIndexInfo()	{InitializeComponent();CustomerSettings(); }
 		//控件加载事件,完成数据绑定和相关基本设置
 		void AddAddIndexInfoLoad(object sender, EventArgs e){}
 		/// <summary>
@@ -329,7 +329,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             }
 			//TODO:问题，只读显示一条记录时,需要传入当前的Model实体类进行绑定
 		}
-
 
         #region 获取控件的窗体
         public static FormModel CreateForm(DataControlParams controlParams)
@@ -357,7 +356,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             txtIndexName.Items.AddRange(LotTickHelper.GetAllIndexFuncNames());//获取所有指标名称
         }
 		#endregion
-				
+
 		#region 相关字段与属性
 		/// <summary>
 		/// 获取或者设置当前的查询条件
