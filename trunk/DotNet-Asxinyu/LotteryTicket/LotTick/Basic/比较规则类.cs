@@ -3,6 +3,43 @@ using System.Linq;
 
 namespace LotTick
 {
+    #region 比较类型枚举
+    /// <summary>
+    /// 比较类型
+    /// </summary>
+    public enum ECompareType
+    {
+        /// <summary>
+        /// 相等匹配
+        /// </summary>
+        Equal,
+
+        /// <summary>
+        /// 一定范围内,上下限:[a,b]
+        /// </summary>
+        RangeLimite,
+
+        /// <summary>
+        /// 小于或等于
+        /// </summary>
+        LessThanLimite,
+
+        /// <summary>
+        /// 大于或等于
+        /// </summary>
+        GreaterThanLimite,
+
+        /// <summary>
+        /// 包含在列表中
+        /// </summary>
+        InList,
+        /// <summary>
+        /// 不包含在列表中
+        /// </summary>
+        NotInList
+    }
+    #endregion
+
     /// <summary>
     /// 比较参数类
     /// </summary>

@@ -5,43 +5,6 @@ using System.Collections;
 
 namespace LotTick
 {
-    #region 比较类型枚举
-    /// <summary>
-    /// 比较类型
-    /// </summary>
-    public enum ECompareType
-    {
-        /// <summary>
-        /// 相等匹配
-        /// </summary>
-        Equal,
-
-        /// <summary>
-        /// 一定范围内,上下限:[a,b]
-        /// </summary>
-        RangeLimite,
-
-        /// <summary>
-        /// 小于或等于
-        /// </summary>
-        LessThanLimite,
-
-        /// <summary>
-        /// 大于或等于
-        /// </summary>
-        GreaterThanLimite,
-
-        /// <summary>
-        /// 包含在列表中
-        /// </summary>
-        InList,
-        /// <summary>
-        /// 不包含在列表中
-        /// </summary>
-        NotInList
-    }
-    #endregion
-    
     #region 彩票指标计算抽象类
     /// <summary>
     /// 彩票指标计算抽象类
@@ -65,11 +28,6 @@ namespace LotTick
         /// 比较规则对象
         /// </summary>
         public RuleInfo RuleInfoParams { get; set; }
-
-        /// <summary>
-        ///  当前的彩票对象
-        /// </summary>
-        //public BasicLotTick CurrentLotTickObject { get; set; }
 
         /// <summary>
         /// 是否是杀号模式,默认不是
@@ -135,7 +93,7 @@ namespace LotTick
     public class BasicLotTick
     {
         /// <summary>
-        /// 号码数据列表
+        /// 所有历史开奖号码数据列表
         /// </summary>
         public LotTick.LotTickData[] LotData { get; set; }
 
@@ -143,6 +101,7 @@ namespace LotTick
         /// 需要计算的数目
         /// </summary>
         public int CalcuteRows { get; set; }
+
         /// <summary>
         /// 确定获奖等级
         /// </summary>
@@ -221,103 +180,6 @@ namespace LotTick
     public interface IPrizeGrade
     {
     }
-    #endregion
-
-    #region 比较类型枚举
-    /// <summary>
-    /// 比较类型
-    /// </summary>
-    public enum CompareType
-    {
-        /// <summary>
-        /// 相等匹配
-        /// </summary>
-        Equal,
-
-        /// <summary>
-        /// 一定范围内,上下限:[a,b]
-        /// </summary>
-        RangeLimite,
-
-        /// <summary>
-        /// 小于或等于
-        /// </summary>
-        LessThanLimite,
-
-        /// <summary>
-        /// 大于或等于
-        /// </summary>
-        GreaterThanLimite,
-
-        /// <summary>
-        /// 包含在列表中
-        /// </summary>
-        InList,
-        /// <summary>
-        /// 不包含在列表中
-        /// </summary>
-        NotInList
-    }
-    #endregion
-
-    #region 双色球彩票数据结构
-    /// <summary>
-    /// 每期的彩票数据,重新封装一下
-    /// </summary>
-    public class LotTickData
-    {
-        /// <summary>
-        /// 常规数据
-        /// </summary>
-        public int[] NormalData;
-        /// <summary>
-        /// 特殊数据
-        /// </summary>
-        public int SpecialData;
-
-        public LotTickData(){}
-        public LotTickData(int[] normalData)
-        {
-            this.NormalData = normalData;
-        }
-        /// <summary>
-        /// 获取数据
-        /// </summary>
-        public SSQ_temp GetEntity()
-        {
-            SSQ_temp t = new SSQ_temp();
-            t.号码1 = NormalData[0];
-            t.号码2 = NormalData[1];
-            t.号码3 = NormalData[2];
-            t.号码4 = NormalData[3];
-            t.号码5 = NormalData[4];
-            t.号码6 = NormalData[5];
-            t.蓝球 = SpecialData;
-            return t;
-        }
-    }
-    public class SSQ_temp
-    {      
-        private Int32 _号码1;      
-        public Int32 号码1 {get ;set ;}
-       
-        private Int32 _号码2;      
-        public virtual Int32 号码2 {get ;set ;}
-
-        private Int32 _号码3;
-        public virtual Int32 号码3 {get ;set ;}
-
-        private Int32 _号码4;       
-        public virtual Int32 号码4 {get ;set ;}
-
-        private Int32 _号码5;      
-        public virtual Int32 号码5 {get ;set ;}
-
-        private Int32 _号码6;       
-        public virtual Int32 号码6 {get ;set ;}
-
-        private Int32 _蓝球;      
-        public virtual Int32 蓝球 {get ;set ;}       
-    }   
-    #endregion
+    #endregion    
+   
 }

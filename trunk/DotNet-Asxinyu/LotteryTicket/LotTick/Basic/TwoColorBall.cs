@@ -403,4 +403,65 @@ namespace LotTick
         }
         #endregion
     }
+
+    #region 双色球彩票数据结构
+    /// <summary>
+    /// 每期的彩票数据,重新封装一下
+    /// </summary>
+    public class LotTickData
+    {
+        /// <summary>
+        /// 常规数据
+        /// </summary>
+        public int[] NormalData;
+        /// <summary>
+        /// 特殊数据
+        /// </summary>
+        public int SpecialData;
+
+        public LotTickData() { }
+        public LotTickData(int[] normalData)
+        {
+            this.NormalData = normalData;
+        }
+        /// <summary>
+        /// 获取数据
+        /// </summary>
+        public SSQ_temp GetEntity()
+        {
+            SSQ_temp t = new SSQ_temp();
+            t.号码1 = NormalData[0];
+            t.号码2 = NormalData[1];
+            t.号码3 = NormalData[2];
+            t.号码4 = NormalData[3];
+            t.号码5 = NormalData[4];
+            t.号码6 = NormalData[5];
+            t.蓝球 = SpecialData;
+            return t;
+        }
+    }
+    public class SSQ_temp
+    {
+        private Int32 _号码1;
+        public Int32 号码1 { get; set; }
+
+        private Int32 _号码2;
+        public virtual Int32 号码2 { get; set; }
+
+        private Int32 _号码3;
+        public virtual Int32 号码3 { get; set; }
+
+        private Int32 _号码4;
+        public virtual Int32 号码4 { get; set; }
+
+        private Int32 _号码5;
+        public virtual Int32 号码5 { get; set; }
+
+        private Int32 _号码6;
+        public virtual Int32 号码6 { get; set; }
+
+        private Int32 _蓝球;
+        public virtual Int32 蓝球 { get; set; }
+    }
+    #endregion
 }
