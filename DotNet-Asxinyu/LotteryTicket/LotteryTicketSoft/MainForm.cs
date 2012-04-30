@@ -45,7 +45,6 @@ namespace LotteryTicketSoft
         #endregion
 
         #region 核心功能区
-      
         private void 指标信息管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
@@ -55,7 +54,7 @@ namespace LotteryTicketSoft
             CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
             CP.IsEnablePaging = false;
             CP.ColumnsBandingList = bandingSource ;
-            CP.ControlAssemblyName = "LotteryTicketSoft.GraphForm.AddIndexInfo";
+            CP.ControlName = "LotteryTicketSoft.GraphForm.AddIndexInfo";
             FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
             frm.MdiParent = this;
             frm.Show();
