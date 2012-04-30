@@ -121,10 +121,10 @@
   <data name="FormPager.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAYAAAAaCAIAAAAburr/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAJJJREFUKFPVz1kO
-        wjAMBNC5/5lYTkJVoAmh0C1JUykbGFJVyDdAerJm7C/jKOe9tBuqcP7FoFsyg37JzD+t6JunS53LpAQ8
-        XGLQzp9V+1UC7jYxUDbdTKZZDspkSJOZdSV0Enq9QerY6HidQjMFoSNVXMZwHkOZJaAefD2EqveEAlVU
-        nT/9oAplIoODmHfCbqi+ARrLuzPOMYlJAAAAAElFTkSuQmCC
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAJVJREFUKFPVz2kO
+        gjAQBeCH9z+S0ZNIcCkiytZCSboMjhaNmRvYfJm8N/Or2b6cCAs+b4MM1i0CmpkEtDMJ/7Ti3zxsbCyx
+        FHC3UUA9vVb1Wwq4jVFANcarIZ7pUBlCaUhYV0pHpdcbSh0uOpwHfxm80oErTr0/9j7NFFB0ruh83jrG
+        gSvyxh1+cEVlgoCdmrZq/OL6BHpcsD7+jCpTAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
