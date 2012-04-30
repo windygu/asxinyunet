@@ -51,9 +51,8 @@ namespace LotteryTicketSoft.GraphForm
 		#endregion		
 
 		#region 控件定义
-		private System.Windows.Forms.TextBox txtId ;
-		private System.Windows.Forms.Label    lblId ;
-private System.Windows.Forms.TextBox txtSchemeId ;
+
+        private System.Windows.Forms.TextBox txtSchemeId ;
 		private System.Windows.Forms.Label    lblSchemeId ;
 
 		private System.Windows.Forms.ComboBox combIndexSelectorNameTP ;
@@ -87,7 +86,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRules));
             this.FormPager = new DotNet.WinForm.Controls.EntityFormPager();
-            this.lblId = new System.Windows.Forms.Label();
             this.lblSchemeId = new System.Windows.Forms.Label();
             this.lblIndexSelectorNameTP = new System.Windows.Forms.Label();
             this.lblCompareRuleNameTP = new System.Windows.Forms.Label();
@@ -98,7 +96,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.lblEnable = new System.Windows.Forms.Label();
             this.lblUpdateTime = new System.Windows.Forms.Label();
             this.lblRemark = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtSchemeId = new System.Windows.Forms.TextBox();
             this.combIndexSelectorNameTP = new System.Windows.Forms.ComboBox();
             this.combCompareRuleNameTP = new System.Windows.Forms.ComboBox();
@@ -131,21 +128,11 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.TabIndex = 100;
             this.FormPager.PageIndexChanged += new DotNet.WinForm.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblId.Location = new System.Drawing.Point(37, 9);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(35, 14);
-            this.lblId.TabIndex = 200;
-            this.lblId.Text = "序号";
-            // 
             // lblSchemeId
             // 
             this.lblSchemeId.AutoSize = true;
             this.lblSchemeId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSchemeId.Location = new System.Drawing.Point(9, 36);
+            this.lblSchemeId.Location = new System.Drawing.Point(6, 11);
             this.lblSchemeId.Name = "lblSchemeId";
             this.lblSchemeId.Size = new System.Drawing.Size(63, 14);
             this.lblSchemeId.TabIndex = 200;
@@ -155,7 +142,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblIndexSelectorNameTP.AutoSize = true;
             this.lblIndexSelectorNameTP.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblIndexSelectorNameTP.Location = new System.Drawing.Point(9, 63);
+            this.lblIndexSelectorNameTP.Location = new System.Drawing.Point(6, 38);
             this.lblIndexSelectorNameTP.Name = "lblIndexSelectorNameTP";
             this.lblIndexSelectorNameTP.Size = new System.Drawing.Size(63, 14);
             this.lblIndexSelectorNameTP.TabIndex = 200;
@@ -165,7 +152,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblCompareRuleNameTP.AutoSize = true;
             this.lblCompareRuleNameTP.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblCompareRuleNameTP.Location = new System.Drawing.Point(9, 90);
+            this.lblCompareRuleNameTP.Location = new System.Drawing.Point(6, 65);
             this.lblCompareRuleNameTP.Name = "lblCompareRuleNameTP";
             this.lblCompareRuleNameTP.Size = new System.Drawing.Size(63, 14);
             this.lblCompareRuleNameTP.TabIndex = 200;
@@ -175,7 +162,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblRuleCompareParams.AutoSize = true;
             this.lblRuleCompareParams.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblRuleCompareParams.Location = new System.Drawing.Point(9, 117);
+            this.lblRuleCompareParams.Location = new System.Drawing.Point(6, 92);
             this.lblRuleCompareParams.Name = "lblRuleCompareParams";
             this.lblRuleCompareParams.Size = new System.Drawing.Size(63, 14);
             this.lblRuleCompareParams.TabIndex = 200;
@@ -185,7 +172,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblNeedRows.AutoSize = true;
             this.lblNeedRows.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblNeedRows.Location = new System.Drawing.Point(9, 144);
+            this.lblNeedRows.Location = new System.Drawing.Point(6, 119);
             this.lblNeedRows.Name = "lblNeedRows";
             this.lblNeedRows.Size = new System.Drawing.Size(63, 14);
             this.lblNeedRows.TabIndex = 200;
@@ -195,7 +182,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblCorrectRate.AutoSize = true;
             this.lblCorrectRate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblCorrectRate.Location = new System.Drawing.Point(23, 171);
+            this.lblCorrectRate.Location = new System.Drawing.Point(20, 146);
             this.lblCorrectRate.Name = "lblCorrectRate";
             this.lblCorrectRate.Size = new System.Drawing.Size(49, 14);
             this.lblCorrectRate.TabIndex = 200;
@@ -205,7 +192,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblFilterInfo.AutoSize = true;
             this.lblFilterInfo.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblFilterInfo.Location = new System.Drawing.Point(9, 198);
+            this.lblFilterInfo.Location = new System.Drawing.Point(6, 173);
             this.lblFilterInfo.Name = "lblFilterInfo";
             this.lblFilterInfo.Size = new System.Drawing.Size(63, 14);
             this.lblFilterInfo.TabIndex = 200;
@@ -215,7 +202,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblEnable.AutoSize = true;
             this.lblEnable.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblEnable.Location = new System.Drawing.Point(37, 225);
+            this.lblEnable.Location = new System.Drawing.Point(34, 200);
             this.lblEnable.Name = "lblEnable";
             this.lblEnable.Size = new System.Drawing.Size(35, 14);
             this.lblEnable.TabIndex = 200;
@@ -225,7 +212,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblUpdateTime.AutoSize = true;
             this.lblUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUpdateTime.Location = new System.Drawing.Point(9, 252);
+            this.lblUpdateTime.Location = new System.Drawing.Point(6, 227);
             this.lblUpdateTime.Name = "lblUpdateTime";
             this.lblUpdateTime.Size = new System.Drawing.Size(63, 14);
             this.lblUpdateTime.TabIndex = 200;
@@ -235,25 +222,16 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblRemark.AutoSize = true;
             this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblRemark.Location = new System.Drawing.Point(37, 279);
+            this.lblRemark.Location = new System.Drawing.Point(34, 254);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(35, 14);
             this.lblRemark.TabIndex = 200;
             this.lblRemark.Text = "备注";
             // 
-            // txtId
-            // 
-            this.txtId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtId.Location = new System.Drawing.Point(74, 4);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(172, 23);
-            this.txtId.TabIndex = 0;
-            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-            // 
             // txtSchemeId
             // 
             this.txtSchemeId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSchemeId.Location = new System.Drawing.Point(74, 31);
+            this.txtSchemeId.Location = new System.Drawing.Point(71, 6);
             this.txtSchemeId.Name = "txtSchemeId";
             this.txtSchemeId.Size = new System.Drawing.Size(172, 23);
             this.txtSchemeId.TabIndex = 2;
@@ -262,7 +240,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.combIndexSelectorNameTP.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.combIndexSelectorNameTP.FormattingEnabled = true;
-            this.combIndexSelectorNameTP.Location = new System.Drawing.Point(74, 58);
+            this.combIndexSelectorNameTP.Location = new System.Drawing.Point(71, 33);
             this.combIndexSelectorNameTP.Name = "combIndexSelectorNameTP";
             this.combIndexSelectorNameTP.Size = new System.Drawing.Size(172, 22);
             this.combIndexSelectorNameTP.TabIndex = 4;
@@ -271,7 +249,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.combCompareRuleNameTP.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.combCompareRuleNameTP.FormattingEnabled = true;
-            this.combCompareRuleNameTP.Location = new System.Drawing.Point(74, 85);
+            this.combCompareRuleNameTP.Location = new System.Drawing.Point(71, 60);
             this.combCompareRuleNameTP.Name = "combCompareRuleNameTP";
             this.combCompareRuleNameTP.Size = new System.Drawing.Size(172, 22);
             this.combCompareRuleNameTP.TabIndex = 6;
@@ -279,7 +257,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtRuleCompareParams
             // 
             this.txtRuleCompareParams.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtRuleCompareParams.Location = new System.Drawing.Point(74, 112);
+            this.txtRuleCompareParams.Location = new System.Drawing.Point(71, 87);
             this.txtRuleCompareParams.Name = "txtRuleCompareParams";
             this.txtRuleCompareParams.Size = new System.Drawing.Size(172, 23);
             this.txtRuleCompareParams.TabIndex = 8;
@@ -287,7 +265,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtNeedRows
             // 
             this.txtNeedRows.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtNeedRows.Location = new System.Drawing.Point(74, 139);
+            this.txtNeedRows.Location = new System.Drawing.Point(71, 114);
             this.txtNeedRows.Name = "txtNeedRows";
             this.txtNeedRows.Size = new System.Drawing.Size(172, 23);
             this.txtNeedRows.TabIndex = 10;
@@ -296,7 +274,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtCorrectRate
             // 
             this.txtCorrectRate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCorrectRate.Location = new System.Drawing.Point(74, 166);
+            this.txtCorrectRate.Location = new System.Drawing.Point(71, 141);
             this.txtCorrectRate.Name = "txtCorrectRate";
             this.txtCorrectRate.Size = new System.Drawing.Size(172, 23);
             this.txtCorrectRate.TabIndex = 12;
@@ -305,7 +283,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtFilterInfo
             // 
             this.txtFilterInfo.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtFilterInfo.Location = new System.Drawing.Point(74, 193);
+            this.txtFilterInfo.Location = new System.Drawing.Point(71, 168);
             this.txtFilterInfo.Name = "txtFilterInfo";
             this.txtFilterInfo.Size = new System.Drawing.Size(172, 23);
             this.txtFilterInfo.TabIndex = 14;
@@ -313,7 +291,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtEnable
             // 
             this.txtEnable.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtEnable.Location = new System.Drawing.Point(74, 220);
+            this.txtEnable.Location = new System.Drawing.Point(71, 195);
             this.txtEnable.Name = "txtEnable";
             this.txtEnable.Size = new System.Drawing.Size(172, 23);
             this.txtEnable.TabIndex = 16;
@@ -323,7 +301,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.dtUpdateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.dtUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dtUpdateTime.Location = new System.Drawing.Point(74, 247);
+            this.dtUpdateTime.Location = new System.Drawing.Point(71, 222);
             this.dtUpdateTime.Name = "dtUpdateTime";
             this.dtUpdateTime.Size = new System.Drawing.Size(172, 23);
             this.dtUpdateTime.TabIndex = 18;
@@ -331,7 +309,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtRemark
             // 
             this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtRemark.Location = new System.Drawing.Point(74, 274);
+            this.txtRemark.Location = new System.Drawing.Point(71, 249);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(172, 23);
             this.txtRemark.TabIndex = 20;
@@ -339,7 +317,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOK.Location = new System.Drawing.Point(86, 303);
+            this.btnOK.Location = new System.Drawing.Point(83, 278);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 27);
             this.btnOK.TabIndex = 22;
@@ -350,7 +328,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancle.Location = new System.Drawing.Point(166, 303);
+            this.btnCancle.Location = new System.Drawing.Point(163, 278);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(78, 27);
             this.btnCancle.TabIndex = 24;
@@ -366,7 +344,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblSchemeId);
             this.Controls.Add(this.lblIndexSelectorNameTP);
             this.Controls.Add(this.lblCompareRuleNameTP);
@@ -377,7 +354,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.lblEnable);
             this.Controls.Add(this.lblUpdateTime);
             this.Controls.Add(this.lblRemark);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtSchemeId);
             this.Controls.Add(this.combIndexSelectorNameTP);
             this.Controls.Add(this.combCompareRuleNameTP);
@@ -392,7 +368,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.FormPager);
             this.Name = "AddRules";
-            this.Size = new System.Drawing.Size(253, 335);
+            this.Size = new System.Drawing.Size(261, 311);
             this.Load += new System.EventHandler(this.AddAddRulesLoad);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -473,12 +449,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 
 		#region 验证事件
 		bool ValidateControls()
-		{   
-			if(txtId.Text.Trim()=="")//序号
-			{
-				errorProvider1.SetError(txtId,"必填项目");
-				return false ;
-			}
+		{   			
 			if(txtSchemeId.Text.Trim()=="")//方案编号
 			{
 				errorProvider1.SetError(txtSchemeId,"必填项目");
@@ -514,9 +485,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 			{
 				if(((CutShowMode!= FormShowMode.ReadOnlyForAll) || (CutShowMode != FormShowMode.ReadOnlyForOne)) && ValidateControls() )
 				{
-					tb_Rules model = new tb_Rules();//定义当前实体
-                    
-					if(txtId.Text.Trim()!="")	model.Id =Convert.ToInt32(txtId.Text.Trim()) ;//序号
+					tb_Rules model = new tb_Rules();//定义当前实体             
 					if(txtSchemeId.Text.Trim()!="")  model.SchemeId = txtSchemeId.Text.Trim()  ;//方案编号
 					if(combIndexSelectorNameTP.Text.Trim()!="") model.IndexSelectorNameTP = combIndexSelectorNameTP.Text.Trim() ;//指标函数
 					if(combCompareRuleNameTP.Text.Trim()!="") model.CompareRuleNameTP = combCompareRuleNameTP.Text.Trim() ;//对比类型
@@ -604,9 +573,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 			{
 				btnOK.Enabled = true ;
 				btnOK.Text ="保存";
-				//设置控件清空，并且可用
-				txtId.ReadOnly = false ;//序号
-				txtId.Text = string.Empty  ; 
+				//设置控件清空，并且可用			
 				txtSchemeId.ReadOnly = false ;//方案编号
 				txtSchemeId.Text = string.Empty  ; 
 				combIndexSelectorNameTP.Enabled = true ; //指标函数	
@@ -632,7 +599,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 				btnOK.Text =" 保存";
 				//控件除主键外都可读
                 
-				txtId.ReadOnly = true;//序号txtSchemeId.ReadOnly = false ;//方案编号
+				txtSchemeId.ReadOnly = false ;//方案编号
 				combIndexSelectorNameTP.Enabled = true ;//指标函数
 				combCompareRuleNameTP.Enabled = true ;//对比类型
 				txtRuleCompareParams.ReadOnly = false ;//比较参数
@@ -654,7 +621,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 			if (CutShowMode == FormShowMode.ReadOnlyForOne || CutShowMode== FormShowMode.ReadOnlyForAll ){
 				btnOK.Enabled = false ;
 			}
-			txtId.ReadOnly = true  ;//序号
+			
 			txtSchemeId.ReadOnly = true  ;//方案编号
 			combIndexSelectorNameTP.Enabled = false ;//指标函数
 			combCompareRuleNameTP.Enabled = false ;//对比类型
@@ -673,9 +640,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		/// 加载子窗口:if(Field.PrimaryKey) continue;
 		/// </summary>
 		private void BandingData()
-		{
-			txtId.DataBindings.Clear();//序号
-			txtId.DataBindings.Add ("Text",CutModel,"Id");
+		{			
 			txtSchemeId.DataBindings.Clear();//方案编号
 			txtSchemeId.DataBindings.Add ("Text",CutModel,"SchemeId");
 			combIndexSelectorNameTP.DataBindings.Clear () ;//指标函数

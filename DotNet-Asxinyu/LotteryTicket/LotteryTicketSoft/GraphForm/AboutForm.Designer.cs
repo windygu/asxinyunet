@@ -38,7 +38,7 @@
             this.txtAbout.Location = new System.Drawing.Point(0, 0);
             this.txtAbout.Multiline = true;
             this.txtAbout.Name = "txtAbout";
-            this.txtAbout.Size = new System.Drawing.Size(478, 346);
+            this.txtAbout.Size = new System.Drawing.Size(413, 282);
             this.txtAbout.TabIndex = 0;
             this.txtAbout.Text = "\r\n开发进度:\r\n\r\n\r\n2012.04.03 基本完成主体功能,增加About窗体,记录开发进度\r\n2012.04.02 增加双色球历史开奖数据查看窗体,修正分" +
                 "页Bug\r\n";
@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 346);
+            this.ClientSize = new System.Drawing.Size(413, 282);
             this.Controls.Add(this.txtAbout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;

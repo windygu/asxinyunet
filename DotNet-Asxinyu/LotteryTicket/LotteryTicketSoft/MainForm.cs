@@ -15,10 +15,6 @@ using DotNet.WinForm.Controls;
 using DotNet.WinForm;
 using System.Threading.Tasks;
 using LotteryTicketSoft.GraphForm;
-using System.Drawing;
-using System.Linq;
-using XCode;
-using System.Collections;
 
 namespace LotteryTicketSoft
 {
@@ -133,7 +129,7 @@ namespace LotteryTicketSoft
         }
         #endregion
 
-        #region 其他功能--数据更新，关于
+        #region 其他功能--数据更新，关于本软件
         /// <summary>
         /// 异步调用，更新数据
         /// </summary>        
