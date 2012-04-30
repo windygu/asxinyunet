@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LotteryTicketSoft.GraphForm
+namespace LottAnalysis.GraphForm
 {
     public partial class AboutForm : Form
     {

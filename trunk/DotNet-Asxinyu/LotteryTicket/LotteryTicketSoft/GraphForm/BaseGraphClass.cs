@@ -9,7 +9,7 @@
  */
 using ZedGraph;
 
-namespace LotteryTicketSoft.GraphForm
+namespace LottAnalysis.GraphForm
 {
 	/// <summary>
 	/// 绘图程序

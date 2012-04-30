@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using XCode;
 using LotTick;
 
-namespace LotteryTicketSoft.GraphForm
+namespace LottAnalysis.GraphForm
 {
     public partial class TestForm : Form
     {
