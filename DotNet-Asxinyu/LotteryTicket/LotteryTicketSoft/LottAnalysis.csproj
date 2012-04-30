@@ -5,8 +5,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>LotteryTicketSoft</RootNamespace>
-    <AssemblyName>LotteryTicketSoft</AssemblyName>
+    <RootNamespace>LottAnalysis</RootNamespace>
+    <AssemblyName>LottAnalysis</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SccProjectName>Svn</SccProjectName>

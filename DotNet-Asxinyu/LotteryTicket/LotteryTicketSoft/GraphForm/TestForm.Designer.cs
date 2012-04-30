@@ -1,4 +1,4 @@
-﻿namespace LotteryTicketSoft.GraphForm
+﻿namespace LottAnalysis.GraphForm
 {
     partial class TestForm
     {

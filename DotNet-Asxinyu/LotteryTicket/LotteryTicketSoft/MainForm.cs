@@ -14,9 +14,10 @@ using NewLife.Configuration;
 using DotNet.WinForm.Controls;
 using DotNet.WinForm;
 using System.Threading.Tasks;
-using LotteryTicketSoft.GraphForm;
+using LottAnalysis.GraphForm;
 
-namespace LotteryTicketSoft
+
+namespace LottAnalysis
 {
     /// <summary>
     /// 主程序

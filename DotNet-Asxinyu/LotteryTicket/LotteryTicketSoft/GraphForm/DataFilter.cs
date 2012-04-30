@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using XCode;
 
-namespace LotteryTicketSoft.GraphForm
+namespace LottAnalysis.GraphForm
 {
     /// <summary>
     /// 过滤控件，过滤会有相关设置，和保存，做到一个界面，方便

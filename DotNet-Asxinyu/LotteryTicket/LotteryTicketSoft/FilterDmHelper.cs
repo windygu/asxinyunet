@@ -12,12 +12,12 @@ using System.Windows.Forms;
 using LotTick;
 using NewLife.Configuration;
 using System.Threading.Tasks;
-using LotteryTicketSoft.GraphForm;
 using System.Linq;
 using XCode;
+using LottAnalysis.GraphForm;
 using System.Collections;
 
-namespace LotteryTicketSoft
+namespace LottAnalysis
 {
     /// <summary>
     /// 验证过滤菜单辅助方法

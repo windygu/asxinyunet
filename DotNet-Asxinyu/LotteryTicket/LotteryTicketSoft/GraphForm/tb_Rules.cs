@@ -26,7 +26,7 @@ using DotNet.WinForm.Controls;
 using DotNet.WinForm;
 using LotTick;
 
-namespace LotteryTicketSoft.GraphForm
+namespace LottAnalysis.GraphForm
 {	
 	public class AddRules: UserControl 
 	{

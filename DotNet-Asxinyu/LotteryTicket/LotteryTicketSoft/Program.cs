@@ -78,7 +78,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace LotteryTicketSoft
+namespace LottAnalysis
 {
 	/// <summary>
 	/// Class with program entry point.
