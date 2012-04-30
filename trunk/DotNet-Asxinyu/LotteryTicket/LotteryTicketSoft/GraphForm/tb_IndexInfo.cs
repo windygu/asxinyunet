@@ -49,8 +49,7 @@ namespace LotteryTicketSoft.GraphForm
 		#endregion		
 
 		#region 控件定义
-		private System.Windows.Forms.TextBox txtId ;
-        private System.Windows.Forms.Label lblId;
+
         private System.Windows.Forms.Label lblIndexName;
 private System.Windows.Forms.TextBox txtPriorLevel ;
 private System.Windows.Forms.Label lblPriorLevel;
@@ -75,14 +74,12 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddIndexInfo));
             this.FormPager = new DotNet.WinForm.Controls.EntityFormPager();
-            this.lblId = new System.Windows.Forms.Label();
             this.lblIndexName = new System.Windows.Forms.Label();
             this.lblPriorLevel = new System.Windows.Forms.Label();
             this.lblUseExplain = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblUpdateTime = new System.Windows.Forms.Label();
             this.lblRemark = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtPriorLevel = new System.Windows.Forms.TextBox();
             this.txtUseExplain = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -107,25 +104,15 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.FormPager.Location = new System.Drawing.Point(37, 330);
             this.FormPager.Name = "FormPager";
             this.FormPager.RecordCount = 0;
-            this.FormPager.Size = new System.Drawing.Size(238, 29);
+            this.FormPager.Size = new System.Drawing.Size(242, 29);
             this.FormPager.TabIndex = 100;
             this.FormPager.PageIndexChanged += new DotNet.WinForm.Controls.EntityFormPager.EventHandler(this.FormPager_PageIndexChanged);
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblId.Location = new System.Drawing.Point(6, 10);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(63, 14);
-            this.lblId.TabIndex = 200;
-            this.lblId.Text = "指标编号";
             // 
             // lblIndexName
             // 
             this.lblIndexName.AutoSize = true;
             this.lblIndexName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblIndexName.Location = new System.Drawing.Point(6, 37);
+            this.lblIndexName.Location = new System.Drawing.Point(5, 12);
             this.lblIndexName.Name = "lblIndexName";
             this.lblIndexName.Size = new System.Drawing.Size(63, 14);
             this.lblIndexName.TabIndex = 200;
@@ -135,7 +122,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblPriorLevel.AutoSize = true;
             this.lblPriorLevel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblPriorLevel.Location = new System.Drawing.Point(20, 65);
+            this.lblPriorLevel.Location = new System.Drawing.Point(19, 40);
             this.lblPriorLevel.Name = "lblPriorLevel";
             this.lblPriorLevel.Size = new System.Drawing.Size(49, 14);
             this.lblPriorLevel.TabIndex = 200;
@@ -145,7 +132,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblUseExplain.AutoSize = true;
             this.lblUseExplain.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUseExplain.Location = new System.Drawing.Point(6, 96);
+            this.lblUseExplain.Location = new System.Drawing.Point(5, 71);
             this.lblUseExplain.Name = "lblUseExplain";
             this.lblUseExplain.Size = new System.Drawing.Size(63, 14);
             this.lblUseExplain.TabIndex = 200;
@@ -155,7 +142,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDescription.Location = new System.Drawing.Point(6, 144);
+            this.lblDescription.Location = new System.Drawing.Point(5, 119);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(63, 14);
             this.lblDescription.TabIndex = 200;
@@ -165,7 +152,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblUpdateTime.AutoSize = true;
             this.lblUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUpdateTime.Location = new System.Drawing.Point(6, 197);
+            this.lblUpdateTime.Location = new System.Drawing.Point(5, 172);
             this.lblUpdateTime.Name = "lblUpdateTime";
             this.lblUpdateTime.Size = new System.Drawing.Size(63, 14);
             this.lblUpdateTime.TabIndex = 200;
@@ -175,25 +162,16 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.lblRemark.AutoSize = true;
             this.lblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblRemark.Location = new System.Drawing.Point(34, 224);
+            this.lblRemark.Location = new System.Drawing.Point(33, 199);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(35, 14);
             this.lblRemark.TabIndex = 200;
             this.lblRemark.Text = "备注";
             // 
-            // txtId
-            // 
-            this.txtId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtId.Location = new System.Drawing.Point(70, 6);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(230, 23);
-            this.txtId.TabIndex = 0;
-            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
-            // 
             // txtPriorLevel
             // 
             this.txtPriorLevel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtPriorLevel.Location = new System.Drawing.Point(70, 61);
+            this.txtPriorLevel.Location = new System.Drawing.Point(69, 36);
             this.txtPriorLevel.Name = "txtPriorLevel";
             this.txtPriorLevel.Size = new System.Drawing.Size(230, 23);
             this.txtPriorLevel.TabIndex = 6;
@@ -203,7 +181,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtUseExplain
             // 
             this.txtUseExplain.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtUseExplain.Location = new System.Drawing.Point(70, 92);
+            this.txtUseExplain.Location = new System.Drawing.Point(69, 67);
             this.txtUseExplain.Multiline = true;
             this.txtUseExplain.Name = "txtUseExplain";
             this.txtUseExplain.Size = new System.Drawing.Size(230, 42);
@@ -212,7 +190,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDescription.Location = new System.Drawing.Point(70, 140);
+            this.txtDescription.Location = new System.Drawing.Point(69, 115);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(230, 47);
@@ -222,7 +200,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.dtUpdateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.dtUpdateTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dtUpdateTime.Location = new System.Drawing.Point(70, 193);
+            this.dtUpdateTime.Location = new System.Drawing.Point(69, 168);
             this.dtUpdateTime.Name = "dtUpdateTime";
             this.dtUpdateTime.Size = new System.Drawing.Size(230, 23);
             this.dtUpdateTime.TabIndex = 14;
@@ -230,7 +208,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // txtRemark
             // 
             this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtRemark.Location = new System.Drawing.Point(70, 220);
+            this.txtRemark.Location = new System.Drawing.Point(69, 195);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(230, 23);
             this.txtRemark.TabIndex = 16;
@@ -238,7 +216,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOK.Location = new System.Drawing.Point(140, 249);
+            this.btnOK.Location = new System.Drawing.Point(139, 224);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 27);
             this.btnOK.TabIndex = 18;
@@ -249,7 +227,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancle.Location = new System.Drawing.Point(220, 249);
+            this.btnCancle.Location = new System.Drawing.Point(219, 224);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(78, 27);
             this.btnCancle.TabIndex = 20;
@@ -265,7 +243,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             // 
             this.txtIndexName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtIndexName.FormattingEnabled = true;
-            this.txtIndexName.Location = new System.Drawing.Point(70, 33);
+            this.txtIndexName.Location = new System.Drawing.Point(69, 8);
             this.txtIndexName.Name = "txtIndexName";
             this.txtIndexName.Size = new System.Drawing.Size(230, 22);
             this.txtIndexName.TabIndex = 201;
@@ -275,14 +253,12 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtIndexName);
-            this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblIndexName);
             this.Controls.Add(this.lblPriorLevel);
             this.Controls.Add(this.lblUseExplain);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblUpdateTime);
             this.Controls.Add(this.lblRemark);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtPriorLevel);
             this.Controls.Add(this.txtUseExplain);
             this.Controls.Add(this.txtDescription);
@@ -292,7 +268,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.FormPager);
             this.Name = "AddIndexInfo";
-            this.Size = new System.Drawing.Size(316, 294);
+            this.Size = new System.Drawing.Size(317, 256);
             this.Load += new System.EventHandler(this.AddAddIndexInfoLoad);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -375,12 +351,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 
 		#region 验证事件
 		bool ValidateControls()
-		{
-			if(txtId.Text.Trim()=="")//指标编号
-			{
-				errorProvider1.SetError(txtId,"必填项目");
-				return false ;
-			}
+		{			
 			if(txtIndexName.Text.Trim()=="")//指标名称
 			{
 				errorProvider1.SetError(txtIndexName,"必填项目");
@@ -406,7 +377,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 				if(((CutShowMode!= FormShowMode.ReadOnlyForAll) || (CutShowMode != FormShowMode.ReadOnlyForOne)) && ValidateControls() )
 				{
 					tb_IndexInfo model = new tb_IndexInfo();//定义当前实体 
-					if(txtId.Text.Trim()!="")	model.Id =Convert.ToInt32(txtId.Text.Trim()) ;//指标编号
+					
 					if(txtIndexName.Text.Trim()!="")  model.IndexName = txtIndexName.Text.Trim()  ;//指标名称             
 					if(txtPriorLevel.Text.Trim()!="")	model.PriorLevel =Convert.ToInt32(txtPriorLevel.Text.Trim()) ;//优先级                    
 					if(txtUseExplain.Text.Trim()!="")  model.UseExplain = txtUseExplain.Text.Trim()  ;//使用说明
@@ -490,9 +461,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 			{
 				btnOK.Enabled = true ;
 				btnOK.Text ="保存";
-				//设置控件清空，并且可用
-				txtId.ReadOnly = false ;//指标编号
-				txtId.Text = string.Empty  ; 
+				//设置控件清空，并且可用			
 				txtIndexName.Enabled = true  ;//指标名称
 				txtIndexName.Text = string.Empty  ; 				
 				txtPriorLevel.ReadOnly = false ;//优先级
@@ -503,15 +472,14 @@ private System.Windows.Forms.TextBox txtRemark ;
 				txtDescription.Text = string.Empty  ; 
 				txtRemark.ReadOnly = false ;//备注
 				txtRemark.Text = string.Empty  ; 
-				}
+            }
 		}
 		private void SetControlEdit()
 		{
 			if (CutShowMode== FormShowMode.ContinueDisplay || CutShowMode== FormShowMode.DisplayCurrent ) {
 				btnOK .Enabled = true ;
 				btnOK.Text =" 保存";
-				//控件除主键外都可读
-				txtId.ReadOnly = true;//指标编号txtIndexName.ReadOnly = false ;//指标名称							
+				//控件除主键外都可读								
 				txtUseExplain.ReadOnly = false ;//使用说明	
 				txtRemark.ReadOnly = false ;//备注
 				}
@@ -525,8 +493,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 			}
 			if (CutShowMode == FormShowMode.ReadOnlyForOne || CutShowMode== FormShowMode.ReadOnlyForAll ){
 				btnOK.Enabled = false ;
-			}
-			txtId.ReadOnly = true  ;//指标编号
+			}		
 			txtIndexName.Enabled  = false   ;//指标名称			
 			txtPriorLevel.ReadOnly = true  ;//优先级			
 			txtUseExplain.ReadOnly = true  ;//使用说明
@@ -541,9 +508,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		/// 加载子窗口:if(Field.PrimaryKey) continue;
 		/// </summary>
 		private void BandingData()
-		{
-			txtId.DataBindings.Clear();//指标编号
-			txtId.DataBindings.Add ("Text",CutModel,"Id");
+		{		
 			txtIndexName.DataBindings.Clear();//指标名称
 			txtIndexName.DataBindings.Add ("Text",CutModel,"IndexName");			
 			txtPriorLevel.DataBindings.Clear();//优先级
