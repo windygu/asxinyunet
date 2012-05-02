@@ -279,7 +279,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		#endregion
         
         #region 构造函数 及初始化
-        public AddIndexInfo()	{InitializeComponent();CustomerSettings(); }
+        public AddIndexInfo()	{InitializeComponent();}
 		//控件加载事件,完成数据绑定和相关基本设置
 		void AddAddIndexInfoLoad(object sender, EventArgs e){}
 		/// <summary>

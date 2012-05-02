@@ -53,6 +53,7 @@ namespace LottAnalysis
             CP.ColumnsBandingList = bandingSource ;
             CP.ControlName = "LottAnalysis.GraphForm.AddIndexInfo";
             FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            frm.Text = "指标信息管理";
             frm.MdiParent = this;
             frm.Show();
         }
@@ -91,6 +92,7 @@ namespace LottAnalysis
             SetFilterDM(CP);//设置控件,
             FormModel fm = WinFormHelper.GetControlForm(FilterDM, "");//
             fm.MdiParent = this;
+            fm.Text = "规则列表管理";
             fm.Show();
         }
         /// <summary>
@@ -116,9 +118,9 @@ namespace LottAnalysis
         /// 获取窗体中数据管理控件的配置信息
         /// </summary>        
         private static DataControlParams GetFilterControlParams()
-        {            
+        {
             Dictionary<string, string[]> bandingSource = new Dictionary<string, string[]>();
-            bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
+            bandingSource.Add(tb_Rules._.IndexSelectorNameTP , LotTickHelper.GetAllIndexFuncNames());
             bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules));
             CP.IsEnablePaging = false;
