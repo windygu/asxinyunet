@@ -235,6 +235,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtSchemeId.Name = "txtSchemeId";
             this.txtSchemeId.Size = new System.Drawing.Size(172, 23);
             this.txtSchemeId.TabIndex = 2;
+            this.txtSchemeId.Text = "Scheme-01";
             // 
             // combIndexSelectorNameTP
             // 
@@ -295,6 +296,7 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtEnable.Name = "txtEnable";
             this.txtEnable.Size = new System.Drawing.Size(172, 23);
             this.txtEnable.TabIndex = 16;
+            this.txtEnable.Text = "True";
             this.txtEnable.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
             // dtUpdateTime
