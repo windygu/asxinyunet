@@ -381,7 +381,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 		#endregion
 	
 		#region 构造函数 及初始化
-		public AddRules()	{InitializeComponent(); CustomerSettings(); }	
+		public AddRules()	{InitializeComponent(); }	
 		//控件加载事件,完成数据绑定和相关基本设置
 		void AddAddRulesLoad(object sender, EventArgs e){}
 		/// <summary>
@@ -413,6 +413,8 @@ private System.Windows.Forms.TextBox txtRemark ;
         private void CustomerSettings()
         {
             //控件的特殊设置，如格式，显示,控件的绑定           
+            combIndexSelectorNameTP.Items.AddRange(LotTick.LotTickHelper.GetAllIndexFuncNames ());
+            combCompareRuleNameTP.Items.AddRange(LotTick.LotTickHelper.GetAllEnumNames<ECompareType>());
         }
 
         #region 获取控件的窗体
