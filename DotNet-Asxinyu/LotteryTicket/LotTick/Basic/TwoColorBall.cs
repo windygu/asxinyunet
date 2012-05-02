@@ -82,7 +82,7 @@ namespace LotTick
                 //首先获取计算的数据,直接从data中获取              
                 ruleList[i].IndexSelector.RuleInfoParams = ruleList[i];
                 res[i] = ruleList[i].IndexSelector.GetValidateResult
-                    (GetNeedDataByCache(ruleList[i].CalcuteRows + ruleList[i].NeedRows));
+                    (GetNeedDataByCache(ruleList[i].CalcuteRows + ruleList[i].NeedRows));//已经考虑多期指标
             }
             return res;
         }
