@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\指标基类.cs" />
     <Compile Include="Basic\基本信息类接口.cs" />
     <Compile Include="Basic\错误信息.cs" />
     <Compile Include="Basic\常用扩展方法.cs" />
