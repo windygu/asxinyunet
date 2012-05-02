@@ -30,7 +30,7 @@ namespace LottAnalysis
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;//运行其他线程访问主线程定义的控件
         }
-        static string LabAssemblyName = "LotteryTicketSoft.exe";
+        static string LabAssemblyName = "LottAnalysis.exe";
 
         void MainFormLoad(object sender, EventArgs e)
         {
@@ -51,7 +51,7 @@ namespace LottAnalysis
             CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
             CP.IsEnablePaging = false;
             CP.ColumnsBandingList = bandingSource ;
-            CP.ControlName = "LotteryTicketSoft.GraphForm.AddIndexInfo";
+            CP.ControlName = "LottAnalysis.GraphForm.AddIndexInfo";
             FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
             frm.MdiParent = this;
             frm.Show();
@@ -124,7 +124,7 @@ namespace LottAnalysis
             CP.IsEnablePaging = false;
             CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
             CP.ColumnsBandingList = bandingSource;
-            CP.ControlName = "LotteryTicketSoft.GraphForm.AddRules";
+            CP.ControlName = "LottAnalysis.GraphForm.AddRules";
             //TODO:需要把菜单、名称、都包括进去，省略SetFilterDM方法，直接初始化得到窗体
             return CP;
         }
