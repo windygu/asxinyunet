@@ -23,7 +23,7 @@ namespace LotTick
             }
             else
             {
-                L = 18;
+                L = 17;
             }
         }
         public override int GetOneResult(LotTickData data)

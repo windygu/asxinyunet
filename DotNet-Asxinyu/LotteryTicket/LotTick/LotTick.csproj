@@ -98,11 +98,10 @@
     <Compile Include="指标计算\单期指标\Index_红质数个数.cs" />
     <Compile Include="指标计算\单期指标\Index_红跨度和值.cs" />
     <Compile Include="指标计算\单期指标\Index_红连号个数.cs" />
-    <Compile Include="指标计算\单期指标\Index_红连号组数.cs" />
-    <Compile Include="指标计算\单期指标\Index_红邻号出现数.cs" />
+    <Compile Include="指标计算\多期指标\Index_红邻号出现数.cs" />
     <Compile Include="指标计算\单期指标\Index_红最大跨度.cs" />
     <Compile Include="指标计算\单期指标\Index_红杀号.cs" />
-    <Compile Include="指标计算\单期指标\Index_红多期重复数.cs" />
+    <Compile Include="指标计算\多期指标\Index_红多期重复数.cs" />
     <Compile Include="指标计算\单期指标\Index_红跨度列表.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +123,7 @@
       <Name>DotNet.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="指标计算\多期指标\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
