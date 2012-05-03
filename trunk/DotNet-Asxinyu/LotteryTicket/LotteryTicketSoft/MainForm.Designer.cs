@@ -60,9 +60,9 @@ namespace LottAnalysis
             // StausShow
             // 
             this.StausShow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StausShow.Location = new System.Drawing.Point(0, 787);
+            this.StausShow.Location = new System.Drawing.Point(0, 515);
             this.StausShow.Name = "StausShow";
-            this.StausShow.Size = new System.Drawing.Size(1254, 32);
+            this.StausShow.Size = new System.Drawing.Size(870, 32);
             this.StausShow.TabIndex = 0;
             // 
             // menuStrip1
@@ -77,7 +77,7 @@ namespace LottAnalysis
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1254, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(870, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -203,7 +203,7 @@ namespace LottAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 819);
+            this.ClientSize = new System.Drawing.Size(870, 547);
             this.Controls.Add(this.StausShow);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
