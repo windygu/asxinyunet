@@ -101,10 +101,12 @@ namespace LottAnalysis
         /// <param name="CP"></param>
         private void SetFilterDM(DataControlParams CP)
         {
-            //增加菜单的相关代码
-            string[] menuNames = { "CrossValidate", "Filter", "Remove", "SaveProject" };
-            string[] dispTexts = { "交叉验证", "过滤", "移除记录", "保存方案" };
-            EventHandler[] eventNames ={ FilterDmHelper.toolStripCrossValidate_Click,
+            //增加菜单的相关代码,
+            //TODO:增加单独记录的验证功能
+            string[] menuNames = {"ValidateCurrent", "CrossValidate", "Filter", "Remove", "SaveProject" };
+            string[] dispTexts = { "验证当前","交叉验证", "过滤", "移除记录", "保存方案" };
+            EventHandler[] eventNames ={ FilterDmHelper .toolStripValidateOneRule,
+                                           FilterDmHelper.toolStripCrossValidate_Click,
                         FilterDmHelper.toolStripFilter_Click,
                         FilterDmHelper.toolStripRemove_Click,
                         FilterDmHelper.toolStripSaveProject_Click}; //保存方案

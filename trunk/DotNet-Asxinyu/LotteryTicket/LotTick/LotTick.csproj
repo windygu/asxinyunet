@@ -71,6 +71,7 @@
     <Compile Include="Basic\错误信息.cs" />
     <Compile Include="Basic\常用扩展方法.cs" />
     <Compile Include="Basic\LotTickHelper.cs" />
+    <Compile Include="指标计算\方法测试\TestClass.cs" />
     <Compile Include="指标计算\方法测试\测试方法.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

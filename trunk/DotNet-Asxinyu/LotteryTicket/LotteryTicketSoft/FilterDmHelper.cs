@@ -23,7 +23,28 @@ namespace LottAnalysis
     /// 验证过滤菜单辅助方法
     /// </summary>
     public class FilterDmHelper
-    {     
+    {
+
+        #region 单独规则的验证
+        public static RuleInfo GetCurrentRule()
+        {
+            tb_Rules ruleMode = tb_Rules.FindById((int)MainForm.FilterDM.dgv.CurrentRow.Cells[0].Value);
+            CompareParams ruleParams = new CompareParams(ruleMode.RuleCompareParams);//参数
+            return new RuleInfo(ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,
+                        ruleParams, ruleMode.Id, Config.GetConfig<int>("CalculateRows"), ruleMode.NeedRows);
+        }
+        public static void toolStripValidateOneRule(object sender, EventArgs e)
+        {
+            var t = Task.Factory.StartNew(() =>
+            {
+                TwoColorBall twoColorBall = new TwoColorBall(Config.GetConfig<int>("CalculateRows"));
+                bool[] res = twoColorBall.ValidateRuleList(new RuleInfo[] { GetCurrentRule() })[0];
+                double rate = ((double )res.Where(n => n).Count()) /(double )res.Length;
+                MainForm.FilterDM.dgv.CurrentRow.Cells[6].Value = rate.ToString("F4");
+            });
+        }
+        #endregion
+
         #region 交叉验证
         public static  RuleInfo[] GetRuleList(object sender, EventArgs e)
         {
