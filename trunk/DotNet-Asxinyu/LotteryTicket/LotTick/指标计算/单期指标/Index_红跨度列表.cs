@@ -3,7 +3,7 @@
 namespace LotTick
 {
     /// <summary>
-    /// 多期重复数
+    /// 红跨度列表：有问题
     /// </summary>
     public class Index_红跨度列表 : LotIndex
     {

@@ -16,13 +16,10 @@ namespace LotTick
                 for (int j = i + 1; j < data.NormalData .Length; j++)
                 {
                     temp = data.NormalData [j] - data.NormalData [i];
-                    if (!list.Contains(temp))
-                    {
-                        list.Add(temp);
-                    }
+                    if (!list.Contains(temp))  list.Add(temp);//不存在即添加
                 }
             }
             return list.Count - (data.NormalData .Length - 1);
-        }       
+        }
     }
 }
