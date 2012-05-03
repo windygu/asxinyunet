@@ -1,4 +1,4 @@
-﻿namespace InfoSecurity.PublicResources
+﻿namespace DotNet.WMI
 {
     using Microsoft.VisualBasic.Devices;
     using System;
