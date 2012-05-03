@@ -28,13 +28,13 @@ namespace LotTick
     {
         static void Main(string[] args)
         {
-            //object e = ConfigurationManager.AppSettings["MySection111"];
-            //Console.WriteLine();            
-            //Console.WriteLine(Config.GetConfig<string>("url"));
-            //TwoColorBall t = new TwoColorBall(22); 
-            //int[][] data = TwoColorBall.GetInitiaData();
-
-           
+            LotTickData lot1 = new LotTickData(new int[] { 1, 2, 3, 6, 7, 10, 12, 16 });
+            LotTickData lot2 = new LotTickData(new int[] { 1, 2, 3, 6, 7, 8,9, 12, 16 });
+            LotTickData lot3 = new LotTickData(new int[] { 1, 2, 5, 6, 9, 10, 11, 12 });
+            Index_红最长连续数 model = new Index_红最长连续数();
+            Console.WriteLine (model.GetOneResult (lot1 ).ToString ());
+            Console.WriteLine(model.GetOneResult(lot2).ToString());
+            Console.WriteLine(model.GetOneResult(lot3).ToString());
             Console.ReadKey();
         }
     }

@@ -1,31 +1,35 @@
-﻿
+﻿using System;
+using System.Linq;
+
 namespace LotTick
 {
     /// <summary>
-    /// Index_红最长连续数
+    /// Index_红最长连续数,
     /// </summary>
     public class Index_红最长连续数 : LotIndex
     {
-        //有错误，需改正
+        //测试通过
         public override int GetOneResult(LotTickData data)
         {
-            int count = 0;
-            int maxCount = 0;
-            for (int i = data.NormalData .Length - 1; i > 0; i--)
+            int[] spanList = new int[data.NormalData.Length -1 ];
+            for (int i = 0; i < spanList.Length ; i++)
             {
-                for (int j = i - 1; j >= 0; j--)
+                spanList[i] = data.NormalData[i + 1] - data.NormalData[i];
+            }
+            bool[] res = spanList.Select(n => n == 1).ToArray();
+            //寻找连续的True的个数           
+            int max = 0;
+            int count = 0;
+            foreach (var item in res )
+            {   //为True，说明2个相连,个数相加
+                if (item)  count++;
+                else //说明不连,重置个数
                 {
-                    if (data.NormalData[i] - data.NormalData[j] == 1) count++;
-                    else
-                    {
-                        if (maxCount < count) { maxCount = count; }
-                        count = 0;
-                    }
+                    max = count > max ? count : max;                   
+                    count = 0;
                 }
             }
-            //可能最后一次循环很大
-            if (maxCount < count) { maxCount = count; }
-            return maxCount;
+            return (count >max ? count :max) +1 ;//可能最后一次最大，但没有计算进去
         }
     }
 }
