@@ -1,4 +1,4 @@
-﻿namespace InfoSecurity.PublicResources
+﻿namespace DotNet.WMI
 {
     using System;
     using System.Collections;
