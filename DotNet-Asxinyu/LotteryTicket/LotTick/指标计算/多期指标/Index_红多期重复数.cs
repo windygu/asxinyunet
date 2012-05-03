@@ -1,25 +1,34 @@
 ﻿using System.Linq;
-
+using System.Collections.Generic;
 namespace LotTick
 {
     /// <summary>
-    /// 多期重复数
+    /// 前几期的号码 在本期中出现的个数
     /// </summary>
     public class Index_红多期重复数 : LotIndex
     {
         public override int[] GetAllValue(LotTickData[] data)
-        {         
-            int[] res = new int[data.Length  - this.RuleInfoParams.NeedRows]; 
+        {               
+            int[] res = new int[data.Length  - this.RuleInfoParams.NeedRows];             
             for (int i = 0; i < res.Length ; i++)
             {
-                res[i] = data[i + 1].NormalData.Index_S邻号出现个数(data[i].NormalData );
+                List<int> temp = new List<int>();
+                for (int j = 0; j < i + this.RuleInfoParams.NeedRows ; j++)
+                {
+                    temp.AddRange(data[j].NormalData);//多期的号码添加到一起后再计算比较
+                }
+                res[i] = data[i + this.RuleInfoParams.NeedRows ].NormalData.Index_S序列重复个数(temp);
             }
             return res;
         }
         public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
-        {            
-            LotTickData lastData = NeedData[data.Length - 1];
-            return data.Where(n => (n.NormalData.Index_S邻号出现个数(lastData.NormalData)).
+        {
+            List<int> temp = new List<int>();
+            for (int i = 0; i < this.RuleInfoParams.NeedRows ; i++)
+            {
+                temp.AddRange(NeedData[i].NormalData );
+            }
+            return data.Where(n => (n.NormalData.Index_S序列重复个数(temp )).
                 GetCompareResult(this.RuleInfoParams)).ToArray();
         }
         public override bool[] GetValidateResult(LotTickData[] data)
