@@ -545,8 +545,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
-            this.模型ToolStripMenuItem,
-            this.关于ToolStripMenuItem});
+            this.关于ToolStripMenuItem,
+            this.模型ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(730, 24);
@@ -564,7 +564,7 @@
             // 退出XToolStripMenuItem
             // 
             this.退出XToolStripMenuItem.Name = "退出XToolStripMenuItem";
-            this.退出XToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.退出XToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.退出XToolStripMenuItem.Text = "退出(&X)";
             this.退出XToolStripMenuItem.Click += new System.EventHandler(this.退出XToolStripMenuItem_Click);
             // 
@@ -576,28 +576,28 @@
             this.架构管理SToolStripMenuItem,
             this.sQL查询器QToolStripMenuItem});
             this.模型ToolStripMenuItem.Name = "模型ToolStripMenuItem";
-            this.模型ToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
+            this.模型ToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.模型ToolStripMenuItem.Text = "模型(&M)";
             this.模型ToolStripMenuItem.Visible = false;
             // 
             // 模型管理MToolStripMenuItem
             // 
             this.模型管理MToolStripMenuItem.Name = "模型管理MToolStripMenuItem";
-            this.模型管理MToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.模型管理MToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.模型管理MToolStripMenuItem.Text = "模型管理(&M)";
             this.模型管理MToolStripMenuItem.Click += new System.EventHandler(this.模型管理MToolStripMenuItem_Click);
             // 
             // 导出模型EToolStripMenuItem
             // 
             this.导出模型EToolStripMenuItem.Name = "导出模型EToolStripMenuItem";
-            this.导出模型EToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.导出模型EToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.导出模型EToolStripMenuItem.Text = "导出模型(&E)";
             this.导出模型EToolStripMenuItem.Click += new System.EventHandler(this.导出模型EToolStripMenuItem_Click);
             // 
             // 架构管理SToolStripMenuItem
             // 
             this.架构管理SToolStripMenuItem.Name = "架构管理SToolStripMenuItem";
-            this.架构管理SToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.架构管理SToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.架构管理SToolStripMenuItem.Text = "架构管理(&S)";
             this.架构管理SToolStripMenuItem.Visible = false;
             this.架构管理SToolStripMenuItem.Click += new System.EventHandler(this.架构管理SToolStripMenuItem_Click);
@@ -605,7 +605,7 @@
             // sQL查询器QToolStripMenuItem
             // 
             this.sQL查询器QToolStripMenuItem.Name = "sQL查询器QToolStripMenuItem";
-            this.sQL查询器QToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.sQL查询器QToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sQL查询器QToolStripMenuItem.Text = "SQL查询器(&Q)";
             this.sQL查询器QToolStripMenuItem.Click += new System.EventHandler(this.sQL查询器QToolStripMenuItem_Click);
             // 

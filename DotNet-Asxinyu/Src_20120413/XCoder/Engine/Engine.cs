@@ -466,7 +466,7 @@ namespace XCoder
             foreach (TemplateItem item in tt.Templates)
             {
                 if (item.Included) continue;
-
+                                
                 String content = tt.Render(item.Name, data);
 
                 // 计算输出文件名
