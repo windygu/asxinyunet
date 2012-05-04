@@ -74,6 +74,7 @@ namespace LottAnalysis
             var t = Task.Factory.StartNew(() =>
             {
                 bool[][] result = twoColorBall.ValidateRuleList(GetRuleList(sender, e));
+                //TODO:交叉验证算法有问题
                 double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
                 for (int i = 0; i < res.Length; i++) MainForm.FilterDM.dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
                 MainForm.FilterDM.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
