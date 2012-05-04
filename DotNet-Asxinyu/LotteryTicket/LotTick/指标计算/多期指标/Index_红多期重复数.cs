@@ -5,7 +5,7 @@ namespace LotTick
     /// <summary>
     /// 前几期的号码 在本期中出现的个数
     /// </summary>
-    public class Index_红多期重复数 : LotIndex
+    public class Index_红多期重复数 : Index_红多期基类
     {
         public override int[] GetAllValue(LotTickData[] data)
         {               
@@ -13,9 +13,9 @@ namespace LotTick
             for (int i = 0; i < res.Length ; i++)
             {
                 List<int> temp = new List<int>();
-                for (int j = 0; j < i + this.RuleInfoParams.NeedRows ; j++)
+                for (int j = i ; j < i + this.RuleInfoParams.NeedRows ; j++)
                 {
-                    temp.AddRange(data[j].NormalData);//多期的号码添加到一起后再计算比较
+                    temp.AddRange(data[j ].NormalData);//多期的号码添加到一起后再计算比较
                 }
                 res[i] = data[i + this.RuleInfoParams.NeedRows ].NormalData.Index_S序列重复个数(temp);
             }
@@ -30,10 +30,6 @@ namespace LotTick
             }
             return data.Where(n => (n.NormalData.Index_S序列重复个数(temp )).
                 GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            return GetAllValue(data).Select(n => n.GetCompareResult(this.RuleInfoParams)).ToArray();
-        }
+        }     
     }
 }
