@@ -38,7 +38,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -46,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DotWMITemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotWMITemplate.Designer.cs">
+      <DependentUpon>DotWMITemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DotWMITemplate.resx">
+      <DependentUpon>DotWMITemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
