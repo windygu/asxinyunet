@@ -8,8 +8,12 @@ namespace <#=Data["NameSpace"]#>
     public class <#=Data["ClassName"]#>:WMIBase
     {
 	    #region 字段定义
-        <#foreach(KeyValuePair<string,object> item in Data){if((!item.Key.Contains("NameSpace"))||(!item.Key.Contains("ClassName"))){#>
-        private <#=item.Value#> _<#=item.Key.ToLower()#> ;<#}}#>
+        <# foreach(KeyValuePair<string,object> item in Data)
+        {if((!item.Key.Contains("NameSpace"))||(!item.Key.Contains("ClassName")))
+        {#>
+        private <#=item.Value#> _<#=item.Key.ToLower()#> ;
+       <#}
+        }#>
 		private ManagementObject _mo;
 		#endregion
         

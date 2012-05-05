@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LotteryTicketMIS", "LotteryTicketMIS", "{06FA9225-D628-49D1-8929-0A54CACFC90C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SoftMIS", "SoftMIS", "{06FA9225-D628-49D1-8929-0A54CACFC90C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottAnalysis", "LotteryTicket\LotteryTicketSoft\LottAnalysis.csproj", "{ED0CA2E7-8790-4A29-86E9-7BC854C981D8}"
 EndProject
