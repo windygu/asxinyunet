@@ -73,6 +73,37 @@ namespace LotTick
         }
         #endregion
 
+        #region 获取奇偶序列 0 1
+        /// <summary>
+        /// 获取奇偶序列 奇数为1，偶数为0
+        /// </summary>     
+        public static string ParitySequence(this int[] source)
+        {
+            string res = string.Empty;
+            for (int i = 0; i < source.Length ; i++)
+            {
+                res += (source[i ] %2 ==0 ? 0:1).ToString ();
+            }
+            return res;
+        }
+        #endregion
+
+        #region 获取素和集合
+        public static readonly List<int > PrimeNumbers =new List<int> () { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 };
+        /// <summary>
+        /// 获取素和集合,素数为1，合数为0
+        /// </summary>        
+        public static string PrimesSequence(this int[] source)
+        {            
+            string res = string.Empty;
+            for (int i = 0; i < source.Length; i++)
+            {
+                res += (PrimeNumbers.Exists (n=>n ==source [i ])? 1:0).ToString();
+            }
+            return res;
+        }
+        #endregion
+
         #region 比较2个序列是否相等
         public static bool IsEqual<T>(this IEnumerable<T> source, IEnumerable<T> compList) where T : IComparable
         {

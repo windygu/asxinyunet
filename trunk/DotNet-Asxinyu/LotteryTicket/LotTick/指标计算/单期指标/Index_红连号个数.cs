@@ -1,6 +1,9 @@
 ﻿
 namespace LotTick
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     ///连号个数-修改完成
     /// </summary>
