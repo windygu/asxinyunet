@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -53,6 +55,21 @@ namespace LotTick
                 dtReturn.Rows.Add(dr);
             }
             return dtReturn;
+        }
+        #endregion
+
+        #region 将int数组转换为字符串
+        /// <summary>
+        /// 将int数组转换为字符串
+        /// </summary>        
+        public static string ListToString(this int[] source)
+        {
+            string res = source [0].ToString () ;
+            for (int i = 1; i < source.Length ; i++)
+            {
+                res += ("-" + source[i].ToString());
+            }
+            return res;
         }
         #endregion
 
@@ -146,7 +163,7 @@ namespace LotTick
         }
         #endregion
 
-        #region 跨度列表-1对多--验证和过滤已完成
+        #region 跨度列表
         /// <summary>
         /// 计算跨度列表
         /// </summary>
@@ -158,6 +175,21 @@ namespace LotTick
                 res[i] = source[i + 1] - source[i];
             }
             return res;
+        }
+        #endregion
+
+        #region 比较2个序列是不是一样的
+        /// <summary>
+        /// 比较2个序列是不是一样的
+        /// </summary>        
+        public static bool Index_SP比较序列(this int[] source,int[] compareList)
+        {
+            if (source.Length != compareList.Length) return false;
+            for (int i = 0; i < source.Length ; i++)
+            {
+                if (source[i] != compareList[i]) return false;
+            }
+            return true;
         }
         #endregion
     }
