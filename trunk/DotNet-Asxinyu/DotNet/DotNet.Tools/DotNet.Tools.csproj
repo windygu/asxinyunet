@@ -50,6 +50,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="XCode">
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
+    </Reference>
     <Reference Include="XTemplate">
       <HintPath>..\..\ResouceFiles\Lib\XTemplate.dll</HintPath>
     </Reference>
@@ -95,6 +98,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNet.WinForm\DotNet.WinForm.csproj">
+      <Project>{C33A4523-C093-4901-BF6B-73B6AB1AB688}</Project>
+      <Name>DotNet.WinForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
