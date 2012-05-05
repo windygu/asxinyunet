@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringBuildor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StringBuildor.Designer.cs">
+      <DependentUpon>StringBuildor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DotWMITemplate.resx">
       <DependentUpon>DotWMITemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +94,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StringBuildor.resx">
+      <DependentUpon>StringBuildor.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -104,6 +113,11 @@
       <Project>{C33A4523-C093-4901-BF6B-73B6AB1AB688}</Project>
       <Name>DotNet.WinForm</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WMI模板.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

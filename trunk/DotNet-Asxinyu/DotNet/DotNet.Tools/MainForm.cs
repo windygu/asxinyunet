@@ -15,5 +15,15 @@ namespace DotNet.Tools
         {
             InitializeComponent();
         }
+
+        private void wMI代码生成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DotWMITemplate.CreateForm().Show();
+        }
+
+        private void stringBuilder转换ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuildor.CreateForm().Show();
+        }
     }
 }
