@@ -3,9 +3,9 @@
 namespace LotTick
 {
     /// <summary>
-    /// 上期的邻号出现个数（红球）
+    /// 红奇偶序列 是否与以前相同
     /// </summary>
-    public class Index_红邻号出现数: Index_红多期基类 
+    public class Index_红奇偶序列: Index_红多期基类 
     {
         //根据需要计算的行数来循环计算,输入数据已经考虑了所需行
         public override int[] GetAllValue(LotTickData[] data)

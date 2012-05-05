@@ -7,6 +7,8 @@ namespace LotTick
 {
     public class TestClass
     {
-
+        //跨度序列重复的数目
+        //奇偶序列重复的数目
+        //
     }
 }
