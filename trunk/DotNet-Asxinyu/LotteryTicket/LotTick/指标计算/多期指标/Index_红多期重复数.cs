@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 namespace LotTick
 {
+    #region Index_红多期重复数
     /// <summary>
     /// 前几期的号码 在本期中出现的个数
     /// </summary>
@@ -30,6 +31,8 @@ namespace LotTick
             }
             return data.Where(n => (n.NormalData.Index_S序列重复个数(temp )).
                 GetCompareResult(this.RuleInfoParams)).ToArray();
-        }     
+        }
     }
+    #endregion
+    
 }
