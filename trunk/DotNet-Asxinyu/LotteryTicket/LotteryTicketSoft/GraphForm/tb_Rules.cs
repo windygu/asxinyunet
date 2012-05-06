@@ -297,7 +297,6 @@ private System.Windows.Forms.TextBox txtRemark ;
             this.txtEnable.Size = new System.Drawing.Size(172, 23);
             this.txtEnable.TabIndex = 16;
             this.txtEnable.Text = "True";
-            this.txtEnable.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressForOnlyData);
             // 
             // dtUpdateTime
             // 
@@ -579,7 +578,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 				btnOK.Text ="保存";
 				//设置控件清空，并且可用			
 				txtSchemeId.ReadOnly = false ;//方案编号
-				txtSchemeId.Text = string.Empty  ; 
+                txtSchemeId.Text = "Scheme-01"; 
 				combIndexSelectorNameTP.Enabled = true ; //指标函数	
 				combCompareRuleNameTP.Enabled = true ; //对比类型	
 				txtRuleCompareParams.ReadOnly = false ;//比较参数
@@ -591,7 +590,7 @@ private System.Windows.Forms.TextBox txtRemark ;
 				txtFilterInfo.ReadOnly = false ;//过滤信息
 				txtFilterInfo.Text = string.Empty  ; 
 				txtEnable.ReadOnly = false ;//有效
-				txtEnable.Text = string.Empty  ; 
+				txtEnable.Text ="True"  ; 
 				txtRemark.ReadOnly = false ;//备注
 				txtRemark.Text = string.Empty  ; 
 				}
