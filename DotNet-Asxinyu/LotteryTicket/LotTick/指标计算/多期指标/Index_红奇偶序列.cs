@@ -3,120 +3,108 @@ using System.Collections.Generic;
 
 namespace LotTick
 {
-    #region 红奇偶序列  不需要比较参数
+    #region 红奇偶序列  需要比较参数
     /// <summary>
-    /// 红奇偶序列 最近几期不相同的概率
+    /// 红奇偶序列 最近几期相同的个数
     /// </summary>
     public class Index_红奇偶序列: Index_红多期基类 
     {
-        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
+        public override int[] GetAllValue(LotTickData[] data)
         {
-            //过滤的时候，要针对All，把所有的数据都传入进来,向构造序列
-            Dictionary<string, string> cur = new Dictionary<string, string>();
-            foreach (var item in NeedData)
+            int[] res = new int[data.Length - this.RuleInfoParams.NeedRows];
+            string[] str = data.Select(n => n.NormalData.ParitySequence()).ToArray();
+            for (int i = 0; i < res.Length; i++)
             {
-                string s = item.NormalData.ParitySequence() ;
-                if (!cur.ContainsKey(s)) cur.Add(s, string.Empty);
-            }
-            return data.Where(n => !cur.ContainsKey(n.NormalData.ParitySequence())).ToArray();
-        }
-        //验证，直接单独进行
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            //一边计算，一边插入，一边统计
-            List<string> list = new List<string>();
-            bool[] res = new bool[data.Length];
-            for (int i = 0; i < data.Length; i++)
-            {
-                string s = data[i].NormalData.ParitySequence();
-                bool have = list.Exists(n => n == s);
-                if (have) res[i] = false;
-                else
+                List<string> temp = new List<string>();
+                for (int j = i; j < i + this.RuleInfoParams.NeedRows; j++)
                 {
-                    list.Add(s);
-                    res[i] = true;
+                    temp.Add (str[j]);//多期的号码添加到一起后再计算比较
                 }
+                res[i] = temp.FindAll(n => n == str[i + this.RuleInfoParams.NeedRows]).Count();
             }
             return res;
         }
+
+        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
+        {
+            //过滤的时候，要针对All，把所有的数据都传入进来,向构造序列
+            List<string> cur = new List<string>();            
+            foreach (var item in NeedData)
+            {                
+                cur.Add(item.NormalData.ParitySequence());
+            }
+            return data.Where(n =>cur.FindAll(k=>k==n.NormalData.ParitySequence()).Count().GetCompareResult(this.RuleInfoParams)).ToArray();
+        }        
     }
     #endregion
 
-    #region 红素合序列  不需要比较参数
+    #region 红素合序列  需要比较参数
     /// <summary>
-    /// 红素合序列 是否与以前所有的相同
+    /// 红素合序列 与前几期相同的个数
     /// </summary>
     public class Index_红素合序列 : Index_红多期基类
     {
+        public override int[] GetAllValue(LotTickData[] data)
+        {
+            int[] res = new int[data.Length - this.RuleInfoParams.NeedRows];
+            string[] str = data.Select(n => n.NormalData.PrimesSequence()).ToArray();
+            for (int i = 0; i < res.Length; i++)
+            {
+                List<string> temp = new List<string>();
+                for (int j = i; j < i + this.RuleInfoParams.NeedRows; j++)
+                {
+                    temp.Add(str[j]);//多期的号码添加到一起后再计算比较
+                }
+                res[i] = temp.FindAll(n => n == str[i + this.RuleInfoParams.NeedRows]).Count();
+            }
+            return res;
+        }
+
         public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
         {
             //过滤的时候，要针对All，把所有的数据都传入进来,向构造序列
-            Dictionary<string, string> cur = new Dictionary<string, string>();
+            List<string> cur = new List<string>();
             foreach (var item in NeedData)
             {
-                string s = item.NormalData.PrimesSequence();
-                if (!cur.ContainsKey(s)) cur.Add(s, string.Empty);
+                cur.Add(item.NormalData.PrimesSequence());
             }
-            return data.Where(n => !cur.ContainsKey(n.NormalData.PrimesSequence())).ToArray();
-        }
-        //验证，直接单独进行
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            //一边计算，一边插入，一边统计
-            List<string> list = new List<string>();
-            bool[] res = new bool[data.Length];
-            for (int i = 0; i < data.Length; i++)
-            {
-                string s = data[i].NormalData.PrimesSequence();
-                bool have = list.Exists(n => n == s);
-                if (have) res[i] = false;
-                else
-                {
-                    list.Add(s);
-                    res[i] = true;
-                }
-            }
-            return res;
-        }    
+            return data.Where(n => cur.FindAll(k => k == n.NormalData.PrimesSequence()).Count().GetCompareResult(this.RuleInfoParams)).ToArray();
+        }     
     }
     #endregion
 
-    #region 红奇偶素合序列,不需要比较参数
+    #region 红奇偶素合序列,需要比较参数
     /// <summary>
-    /// 红奇偶素合序列 最近几期 是否与以前所有的相同
+    /// 红奇偶素合序列 最近几期 相同的个数
     /// </summary>
-    public class Index_红奇偶素合序列All : Index_红多期基类
+    public class Index_红奇偶素合序列 : Index_红多期基类
     {
+        public override int[] GetAllValue(LotTickData[] data)
+        {
+            int[] res = new int[data.Length - this.RuleInfoParams.NeedRows];
+            string[] str = data.Select(n => n.NormalData.ParitySequence ()+ n.NormalData.PrimesSequence()).ToArray();
+            for (int i = 0; i < res.Length; i++)
+            {
+                List<string> temp = new List<string>();
+                for (int j = i; j < i + this.RuleInfoParams.NeedRows; j++)
+                {
+                    temp.Add(str[j]);//多期的号码添加到一起后再计算比较
+                }
+                res[i] = temp.FindAll(n => n == str[i + this.RuleInfoParams.NeedRows]).Count();
+            }
+            return res;
+        }
+
         public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
         {
             //过滤的时候，要针对All，把所有的数据都传入进来,向构造序列
-            Dictionary<string, string> cur = new Dictionary<string, string>();
+            List<string> cur = new List<string>();
             foreach (var item in NeedData)
             {
-                string s = item.NormalData.ParitySequence() + item.NormalData.PrimesSequence();
-                if (!cur.ContainsKey(s)) cur.Add(s, string.Empty);
+                cur.Add(item.NormalData.PrimesSequence());
             }
-            return data.Where(n => !cur.ContainsKey(n.NormalData.ParitySequence() +
-                n.NormalData.PrimesSequence())).ToArray();
-        }
-        //验证，直接单独进行
-        public override bool[] GetValidateResult(LotTickData[] data)
-        {
-            //一边计算，一边插入，一边统计
-            List<string> list = new List<string>();
-            bool[] res = new bool[data.Length];
-            for (int i = 0; i < data.Length; i++)
-            {
-                string s = data[i].NormalData.ParitySequence() + data[i].NormalData.PrimesSequence();
-                bool have = list.Exists(n => n == s);
-                if (have) res[i] = false;
-                else
-                {
-                    list.Add(s);
-                    res[i] = true;
-                }
-            }
-            return res;
+            return data.Where(n => cur.FindAll(k => k == (n.NormalData.ParitySequence ()+n.NormalData.PrimesSequence()))
+                .Count().GetCompareResult(this.RuleInfoParams)).ToArray();
         }
     }
     #endregion
