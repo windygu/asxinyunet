@@ -71,10 +71,9 @@
     <Compile Include="Basic\错误信息.cs" />
     <Compile Include="Basic\常用扩展方法.cs" />
     <Compile Include="Basic\LotTickHelper.cs" />
-    <Compile Include="指标计算\多期指标\Index_红多期_基类.cs" />
-    <Compile Include="指标计算\多期指标\Index_红多期相同.cs" />
-    <Compile Include="指标计算\所有期\Index_红奇偶序列All.cs" />
-    <Compile Include="指标计算\所有期\Index_红跨度序列All.cs" />
+    <Compile Include="指标计算\Index_红多期_基类.cs" />
+    <Compile Include="指标计算\Index_红多期_相同.cs" />
+    <Compile Include="指标计算\Index_红所有序列All.cs" />
     <Compile Include="指标计算\方法测试\TestClass.cs" />
     <Compile Include="指标计算\方法测试\测试方法.cs" />
     <Compile Include="Program.cs" />
@@ -88,16 +87,13 @@
     <Compile Include="实体\tb_Rules.cs" />
     <Compile Include="实体\tb_Ssq.Biz.cs" />
     <Compile Include="实体\tb_Ssq.cs" />
-    <Compile Include="指标计算\单期指标\Index_红单期指标.cs" />
-    <Compile Include="指标计算\多期指标\Index_红邻号出现数.cs" />
-    <Compile Include="指标计算\单期指标\Index_红杀号_基类.cs" />
-    <Compile Include="指标计算\多期指标\Index_红多期重复数.cs" />
+    <Compile Include="指标计算\Index_红单期指标.cs" />
+    <Compile Include="指标计算\Index_红多期_序列.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <Compile Include="指标计算\多期指标\Index_红奇偶序列.cs" />
     <None Include="设计.cd" />
   </ItemGroup>
   <ItemGroup>
