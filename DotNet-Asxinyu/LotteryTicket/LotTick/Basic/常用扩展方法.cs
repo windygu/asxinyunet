@@ -118,6 +118,22 @@ namespace LotTick
         }
         #endregion
 
+        #region 奇号连续数
+        /// <summary>
+        /// 奇号连续数
+        /// </summary>
+        public static int GetContinuesOddCount(this int[] data)
+        {
+            bool[] res = data.Select(n => n % 2 == 1).ToArray();//是否是奇数
+            int count = 0;
+            for (int i = 0; i < res.Length - 1; i++)
+            {
+                if (res[i + 1] && res[i]) count++;
+            }
+            return count;
+        }
+        #endregion
+
         #region 最大邻号间距
         public static int GetMaxSpan(this int[] data)
         {
