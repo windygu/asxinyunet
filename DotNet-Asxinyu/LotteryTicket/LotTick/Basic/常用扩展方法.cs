@@ -58,6 +58,26 @@ namespace LotTick
         }
         #endregion
 
+        #region Ac值
+        /// <summary>
+        /// 计算序列Ac值
+        /// </summary>       
+        public static int GetAcValue(this int[] data)
+        {
+            ArrayList list = new ArrayList();
+            int temp;
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                for (int j = i + 1; j < data.Length; j++)
+                {
+                    temp = data[j] - data[i];
+                    if (!list.Contains(temp)) list.Add(temp);//不存在即添加
+                }
+            }
+            return list.Count - (data.Length - 1);
+        }
+        #endregion
+
         #region 将int数组转换为字符串
         /// <summary>
         /// 将int数组转换为字符串
