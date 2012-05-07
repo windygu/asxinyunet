@@ -4,6 +4,7 @@ namespace LotTick
     using System;
     using System.Linq;
 
+    #region 红连号个数
     /// <summary>
     ///连号个数-修改完成
     /// </summary>
@@ -14,7 +15,9 @@ namespace LotTick
             return data.NormalData.ContinuesNoCount();
         }       
     }
+    #endregion
 
+    #region 红求余覆盖数
     /// <summary>
     /// Index_红求余覆盖数
     /// </summary>
@@ -43,4 +46,5 @@ namespace LotTick
             return data.NormalData.Select(n => ((int)n) % L).Distinct().Count();
         }
     }
+    #endregion
 }

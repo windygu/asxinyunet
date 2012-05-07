@@ -80,5 +80,4 @@ namespace LotTick
         }
     }
     #endregion
-
 }

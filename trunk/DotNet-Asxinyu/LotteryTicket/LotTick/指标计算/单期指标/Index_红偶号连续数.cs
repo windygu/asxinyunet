@@ -2,6 +2,7 @@
 
 namespace LotTick
 {
+    #region 偶号连续数
     /// <summary>
     /// 偶号连续数,修改完成
     /// </summary>
@@ -18,7 +19,9 @@ namespace LotTick
             return count;
         }       
     }
+    #endregion
 
+    #region 红偶数个数
     /// <summary>
     /// Index_红偶数个数，修改完成
     /// </summary>
@@ -29,7 +32,9 @@ namespace LotTick
             return data.NormalData.Where(n => ((int)n) % 2 == 0).Count();
         }
     }
+    #endregion
 
+    #region 红奇号连续数
     /// <summary>
     /// Index_红奇号连续数
     /// </summary>
@@ -46,4 +51,5 @@ namespace LotTick
             return count;
         }
     }
+    #endregion
 }
