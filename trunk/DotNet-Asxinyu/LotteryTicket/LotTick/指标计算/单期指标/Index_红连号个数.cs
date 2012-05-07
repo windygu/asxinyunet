@@ -11,12 +11,7 @@ namespace LotTick
     {
         public override int GetOneResult(LotTickData data)
         {
-            int count = 0;
-            for (int i = 0; i < data.NormalData .Length - 1; i++)
-            {
-                if (data.NormalData [i + 1] - data.NormalData [i] == 1) count++;
-            }
-            return count;
+            return data.NormalData.ContinuesNoCount();
         }       
     }
 

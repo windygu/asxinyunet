@@ -73,6 +73,21 @@ namespace LotTick
         }
         #endregion
 
+        #region 序列中连号个数
+        /// <summary>
+        /// 序列中连号个数
+        /// </summary>        
+        public static int ContinuesNoCount(this int[] data)
+        {
+            int count = 0;
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                if (data[i + 1] - data[i] == 1) count++;
+            }
+            return count;
+        }
+        #endregion 
+
         #region 获取奇偶序列 0 1
         /// <summary>
         /// 获取奇偶序列 奇数为1，偶数为0
