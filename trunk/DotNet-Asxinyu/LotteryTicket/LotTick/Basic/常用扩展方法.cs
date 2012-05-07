@@ -93,6 +93,55 @@ namespace LotTick
         }
         #endregion
 
+        #region 红最长连续数
+        public static int GetMaxContinuesCount(this int[] data)
+        {
+            int[] spanList = new int[data.Length - 1];
+            for (int i = 0; i < spanList.Length; i++)
+            {
+                spanList[i] = data[i + 1] - data[i];
+            }
+            bool[] res = spanList.Select(n => n == 1).ToArray();
+            //寻找连续的True的个数           
+            int max = 0;
+            int count = 0;
+            foreach (var item in res)
+            {   //为True，说明2个相连,个数相加
+                if (item) count++;
+                else //说明不连,重置个数
+                {
+                    max = count > max ? count : max;
+                    count = 0;
+                }
+            }
+            return (count > max ? count : max) + 1;//可能最后一次最大，但没有计算进去
+        }
+        #endregion
+
+        #region 最大邻号间距
+        public static int GetMaxSpan(this int[] data)
+        {
+            List<int> res = new List<int>();
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                res.Add(data[i + 1] - data[i]);
+            }
+            return res.Max();
+        }
+        #endregion
+
+        #region 最小邻号间距
+        public static int GetMinSpan(this int[] data)
+        {
+            List<int> res = new List<int>();
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                res.Add(data[i + 1] - data[i]);
+            }
+            return res.Min();
+        }
+        #endregion
+
         #region 序列中连号个数
         /// <summary>
         /// 序列中连号个数
