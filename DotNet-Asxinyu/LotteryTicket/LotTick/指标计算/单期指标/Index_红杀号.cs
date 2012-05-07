@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace LotTick
 {
+    #region 杀号基类
     /// <summary>
     /// 杀号基类:杀号直接进行过滤和验证操作，不需要进行单个的计算
     /// 1.计算要杀的号码列表
@@ -24,14 +25,6 @@ namespace LotTick
         {
             return base.GetFilterResult(data, NeedData);
         }
-        //public override List<int> DeleteNumbers(List<int> initialList, LotTickData[] data)
-        //{
-        //    List<int> delete = GetDeleteNumberList(data);
-        //    return initialList.Except(delete).ToList ();
-        //}
-        //private List<int> GetDeleteNumberList(LotTickData[] data)
-        //{
-        //    return data[data.Length -1].NormalData.ToList (); 
-        //}
     }
+    #endregion
 }
