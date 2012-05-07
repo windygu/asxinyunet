@@ -72,6 +72,7 @@
     <Compile Include="Basic\常用扩展方法.cs" />
     <Compile Include="Basic\LotTickHelper.cs" />
     <Compile Include="指标计算\多期指标\Index_红多期基类.cs" />
+    <Compile Include="指标计算\多期指标\Index_红多期相同.cs" />
     <Compile Include="指标计算\所有期\Index_红奇偶序列All.cs" />
     <Compile Include="指标计算\所有期\Index_红跨度序列All.cs" />
     <Compile Include="指标计算\方法测试\TestClass.cs" />
