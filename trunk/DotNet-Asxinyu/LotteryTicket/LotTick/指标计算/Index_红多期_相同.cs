@@ -79,20 +79,7 @@ namespace LotTick
             return data.NormalData.Where(n => ((int)n) % 2 == 0).Count();
         }
     }
-    #endregion
-
-    #region 最近几期 红偶数个数相同的个数
-    /// <summary>
-    /// 红偶数个数 与前几期相同的个数
-    /// </summary>
-    public class Index_红多期相同_偶数个数 : Index_红多期相同数基类
-    {
-        public override int GetValue(LotTickData data)
-        {
-            return data.NormalData.Where(n => ((int)n) % 2 == 0).Count();
-        }
-    }
-    #endregion
+    #endregion      
 
     #region 最近几期 红大号个数相同的个数
     /// <summary>
@@ -120,24 +107,24 @@ namespace LotTick
     }
     #endregion
 
-    #region 最近几期 红偶数个数相同的个数
+    #region 最近几期 奇号连续数相同的个数
     /// <summary>
-    /// 红偶数个数 与前几期相同的个数
+    /// 红奇号连续数 与前几期相同的个数
     /// </summary>
-    public class Index_红多期相同_偶数个数 : Index_红多期相同数基类
+    public class Index_红多期相同_奇号连续数 : Index_红多期相同数基类
     {
         public override int GetValue(LotTickData data)
         {
-            return data.NormalData.Where(n => ((int)n) % 2 == 0).Count();
+            return data.NormalData.GetContinuesOddCount();
         }
     }
     #endregion
 
-    #region 最近几期 红偶数个数相同的个数
+    #region 最近几期 红偶号连续数相同的个数
     /// <summary>
-    /// 红偶数个数 与前几期相同的个数
+    /// 红偶号连续数 与前几期相同的个数
     /// </summary>
-    public class Index_红多期相同_偶数个数 : Index_红多期相同数基类
+    public class Index_红多期相同_偶号连续数 : Index_红多期相同数基类
     {
         public override int GetValue(LotTickData data)
         {
