@@ -2,6 +2,48 @@
 using System.Collections.Generic;
 namespace LotTick
 {
+    #region Index_红多期_相同数基类
+    /// <summary> 
+    /// 前几期的号码 在本期中出现的个数
+    /// </summary>
+    public class Index_红多期相同数基类 : Index_红多期基类
+    {
+        public override int[] GetAllValue(LotTickData[] data)
+        {
+            int[] res = new int[data.Length - this.RuleInfoParams.NeedRows];
+            int[] str = data.Select(n => GetValue(n)).ToArray();
+            for (int i = 0; i < res.Length; i++)
+            {
+                List<int> temp = new List<int>();
+                for (int j = i; j < i + this.RuleInfoParams.NeedRows; j++)
+                {
+                    temp.Add(str[j]);//添加到一起后再计算比较
+                }
+                res[i] = temp.FindAll(n => n == str[i + this.RuleInfoParams.NeedRows]).Count();
+            }
+            return res;
+        }
+        /// <summary>
+        /// 获取指标的值，需要在子类重写
+        /// </summary>        
+        public virtual int GetValue(LotTickData data)
+        {
+            return -1;
+        }
+        public override LotTickData[] GetFilterResult(LotTickData[] data, LotTickData[] NeedData = null)
+        {
+            //过滤的时候，要针对All，把所有的数据都传入进来,向构造序列
+            List<int> cur = new List<int>();
+            foreach (var item in NeedData)
+            {
+                cur.Add(GetValue(item));
+            }
+            return data.Where(n => cur.FindAll(k => k == GetValue(n))
+                .Count().GetCompareResult(this.RuleInfoParams)).ToArray();
+        }
+    }
+    #endregion
+
     #region 红多期基类
     /// <summary>
     /// 红多期基类
@@ -41,7 +83,7 @@ namespace LotTick
             }
             return res;
         }
-        //获取序列的方法
+        //获取序列的方法,需要在子类中重载才行
         public virtual string GetSequence(LotTickData data)
         {
             return data.NormalData.ToString();

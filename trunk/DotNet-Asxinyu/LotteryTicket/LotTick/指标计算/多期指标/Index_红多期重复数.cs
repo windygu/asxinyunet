@@ -33,6 +33,5 @@ namespace LotTick
                 GetCompareResult(this.RuleInfoParams)).ToArray();
         }
     }
-    #endregion
-    
+    #endregion    
 }
