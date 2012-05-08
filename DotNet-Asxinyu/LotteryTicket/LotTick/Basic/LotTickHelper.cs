@@ -28,7 +28,7 @@ namespace LotTick
             switch (ruleInfo.CompareRule)
             {
                 case ECompareType.Equal://相等比较第一个
-                    return data.Select(n => n == ruleInfo.CondtionParams.FloorLimit).Where(n => n).ToArray();
+                    return data.Select(n => n == ruleInfo.CondtionParams.FloorLimit).ToArray();
                 case ECompareType.RangeLimite:
                     return data.Select(n => (n >= ruleInfo.CondtionParams.FloorLimit) && (n <= ruleInfo.CondtionParams.CeilLimit)).ToArray();
                 case ECompareType.LessThanLimite:
