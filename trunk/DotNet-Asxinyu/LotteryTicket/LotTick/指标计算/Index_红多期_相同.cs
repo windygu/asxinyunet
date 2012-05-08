@@ -128,7 +128,7 @@ namespace LotTick
     {
         public override int GetValue(LotTickData data)
         {
-            return data.NormalData.Where(n => ((int)n) % 2 == 0).Count();
+            return data.NormalData.GetContinuesEvenCount();
         }
     }
     #endregion
