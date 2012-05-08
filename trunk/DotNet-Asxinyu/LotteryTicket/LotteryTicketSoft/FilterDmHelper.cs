@@ -74,12 +74,28 @@ namespace LottAnalysis
             var t = Task.Factory.StartNew(() =>
             {
                 bool[][] result = twoColorBall.ValidateRuleList(GetRuleList(sender, e));
-                //TODO:交叉验证算法有问题
+                //TODO:通过得到的结果，计算每一期中满足条件的个数
+                int[] resa = GetValue(result);
                 double[] res = result.Select(n => ((double)n.Where(k => k).Count() / (double)n.Count())).ToArray();
                 for (int i = 0; i < res.Length; i++) MainForm.FilterDM.dgv.Rows[i].Cells[6].Value = res[i].ToString("F4");
                 MainForm.FilterDM.stausInfoShow1.SetToolInfo2("交叉验证概率(%):" +
                     (TwoColorBall.CrossValidate(result) * 100).ToString("F4"));
             });
+        }
+
+        public static int[] GetValue(bool[][] result)
+        {
+            int[] res = new int[result[0].Length];            
+            for (int i = 0; i <result [0].Length ; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < result.GetLength (0); j++)
+                {
+                    if (result[j][i]) count++;
+                }
+                res[i] = count;
+            }
+            return res;
         }
         #endregion
 
