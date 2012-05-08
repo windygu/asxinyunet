@@ -25,14 +25,11 @@ namespace DesignPattern
     public class Test
     {       
         static void Main(string[] args)
-        {
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Console.WriteLine(SequenceTest.GetSequence());
-            //}
+        {            
             //DbHelper.FillDataForDb("Common", 50);
-            //DbHelper.CopyDataBase("Common", "CommonMysql", 20);
-            DbHelper.CopyDataBase("CommonMysql", "CommonSqlite", 50);
+            DbHelper.CopyDataBase("CommonMSSQL", "CommonMysql", 20);
+            DbHelper.CopyDataBase("CommonMysql", "CommonMSSQL2", 20);
+            //DbHelper.CopyDataBase("CommonAccess", "CommonSqlite", 50);
             //DbHelper.CopyDataBase("CommonSqlite", "Common", 50);
             Console.ReadKey();
             

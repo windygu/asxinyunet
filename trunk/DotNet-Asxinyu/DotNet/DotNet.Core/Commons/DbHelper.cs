@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using XCode;
 using XCode.DataAccessLayer;
-using NewLife.Security;
 using XCode.Configuration;
 
 
@@ -147,18 +141,12 @@ namespace DotNet.Core.Commons
                 while (curPage *perCount <allCount )//改用while循环分页获取数据
                 {
                     Factory.ConnName = originConn;
+                    //Factory.AllowInsertIdentity = true;
                     IEntityList modelList = Factory.FindAll("","","",curPage*perCount , perCount);
                     Factory.ConnName = desConn;
                     modelList.Insert(true);
                     curPage++;
-                }
-                //for (int i = 0; i < pages ; i++)
-                //{
-                //    Factory.ConnName = originConn;
-                //    IEntityList modelList = Factory.FindAll("","","",i * perCount, perCount);
-                //    Factory.ConnName = desConn;
-                //    modelList.Insert(true);
-                //}
+                }             
                 Console.WriteLine("数据库{0} 数据转移完成！",item.Name );
             }
         }
