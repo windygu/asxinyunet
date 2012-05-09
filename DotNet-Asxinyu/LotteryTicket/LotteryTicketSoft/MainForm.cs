@@ -48,7 +48,7 @@ namespace LottAnalysis
             bandingSource.Add(tb_Rules._.IndexSelectorNameTP, LotTickHelper.GetAllIndexFuncNames());
             bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_IndexInfo));
-            CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
+            //CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
             CP.IsEnablePaging = false;
             CP.ColumnsBandingList = bandingSource ;
             CP.ControlName = "LottAnalysis.GraphForm.AddIndexInfo";
@@ -126,7 +126,7 @@ namespace LottAnalysis
             bandingSource.Add(tb_Rules._.CompareRuleNameTP, LotTickHelper.GetAllEnumNames<ECompareType>());
             DataControlParams CP = new DataControlParams(LabAssemblyName, typeof(tb_Rules));
             CP.IsEnablePaging = false;
-            CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
+            //CP.DeleteColumnsName = new string[] { tb_Rules._.Remark.Description };
             CP.ColumnsBandingList = bandingSource;
             CP.ControlName = "LottAnalysis.GraphForm.AddRules";
             //TODO:需要把菜单、名称、都包括进去，省略SetFilterDM方法，直接初始化得到窗体
