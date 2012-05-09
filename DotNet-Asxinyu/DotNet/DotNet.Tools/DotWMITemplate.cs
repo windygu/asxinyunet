@@ -21,14 +21,18 @@ namespace DotNet.Tools
         private void btnGeneration_Click(object sender, EventArgs e)
         {
             Dictionary<String, Object> data = GetData();
-            data.Add("NameSpace", txtNameSpace.Text);
-            data.Add("ClassName", txtClassName.Text);           
             //将元数据添加到data中去,字段名称作为key，字段类型为 value
+            //添加命名空间
+            data.Add("NameSpace", txtNameSpace.Text);
+            //添加类名称
+            data.Add("ClassName", txtClassName.Text);                       
             //需要读入模板内容
             string tempContent = File.ReadAllText("WMI模板.cs");
+            //调用生成代码，传入模板名称和数据信息Dictionary
             string content = Template.ProcessTemplate(tempContent, data);
-            String dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, txtOutputFolder.Text.Trim (),
-                txtClassName.Text .Trim ()+".cs");
+            //获取生成文件的存储地址
+            String dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                txtOutputFolder.Text.Trim (),txtClassName.Text .Trim ()+".cs");
             StreamWriter fs = File.CreateText(dir );
             fs.Write(content);
             fs.Close();
@@ -48,8 +52,7 @@ namespace DotNet.Tools
                 {
                     data.Add(element[1].Trim(), GetNewType (element[0].Trim()));
                 }
-            }        
-             
+            }
             return data;
         }
         /// <summary>
