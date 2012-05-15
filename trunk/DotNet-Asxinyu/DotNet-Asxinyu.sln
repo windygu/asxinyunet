@@ -65,6 +65,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "efs", "Efs Source .Net\efs\", "{F5B88E7B-F35A-4905-A689-002F667BFF9D}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}|ResourceEnties.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/efs"
 		Debug.AspNetCompiler.PhysicalPath = "Efs Source .Net\efs\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\efs\"
@@ -82,6 +83,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "efs", "Efs Source .Net\efs\
 		VWDPort = "2146"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceEnties", "ResourceEnties\ResourceEnties.csproj", "{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -544,6 +547,24 @@ Global
 		{F5B88E7B-F35A-4905-A689-002F667BFF9D}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{F5B88E7B-F35A-4905-A689-002F667BFF9D}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{F5B88E7B-F35A-4905-A689-002F667BFF9D}.Release|x86.ActiveCfg = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}..Net 2.0|.NET.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}..Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}..Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}..Net 2.0|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}..Net 2.0|Mixed Platforms.Build.0 = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}..Net 2.0|x86.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Release|.NET.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -573,6 +594,7 @@ Global
 		{EEBFC213-5D6D-4C8B-9314-F2679A69EDD0} = {876B6FC2-9964-490B-8E73-722B28BD8819}
 		{B5A0BF4E-34FA-4E69-B948-BD676654DD2F} = {876B6FC2-9964-490B-8E73-722B28BD8819}
 		{F5B88E7B-F35A-4905-A689-002F667BFF9D} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
+		{5D05A059-90DE-420A-9C79-1B2A0A89A9E8} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
 	EndGlobalSection
 	GlobalSection(PowerDesigner) = preSolution
 		HasSWS = 1
