@@ -16,6 +16,7 @@ using System.Linq;
 using XCode;
 using LottAnalysis.GraphForm;
 using System.Collections;
+using XCode.Accessors;
 
 namespace LottAnalysis
 {
@@ -27,8 +28,9 @@ namespace LottAnalysis
 
         #region 单独规则的验证
         public static RuleInfo GetCurrentRule()
-        {
-            tb_Rules ruleMode = tb_Rules.FindById((int)MainForm.FilterDM.dgv.CurrentRow.Cells[0].Value);
+        {           
+            tb_Rules ruleMode = tb_Rules.FindById((int)MainForm.FilterDM.dgv.CurrentRow.Cells[0].Value);  
+            
             CompareParams ruleParams = new CompareParams(ruleMode.RuleCompareParams);//参数
             return new RuleInfo(ruleMode.IndexSelectorNameTP, ruleMode.CompareRuleNameTP,
                         ruleParams, ruleMode.Id, Config.GetConfig<int>("CalculateRows"), ruleMode.NeedRows);

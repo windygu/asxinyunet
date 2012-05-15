@@ -16,6 +16,7 @@ namespace Test
             //CopyDataBase("Common", "Common3");
             //CopyDataBase("CommonSqlite", "Common3");
             CopyDataBase("Common3", "CommonSqlite");
+            
         }
         #region 拷贝数据库
         /// <summary>
