@@ -14,6 +14,7 @@ using Efsframe.cn.baseManage;
 
 public partial class person_psnAdd : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         string strXml = Request["txtXML"];
@@ -45,6 +46,5 @@ public partial class person_psnAdd : System.Web.UI.Page
                 Response.End();
             }
         }
-
     }
 }

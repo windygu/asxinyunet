@@ -33,7 +33,6 @@ public class person
 
           //      创建插入数据的XML
           string str_SQL = SQLAnalyse.analyseXMLSQL(ele_Temp);
-
           obj_Storage.addSQL(str_SQL);
         }
     

@@ -156,6 +156,8 @@ namespace LottAnalysis
         }
         private void 指标信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LotTick.tb_IndexInfo tb = tb_IndexInfo.FindAll()[0];
+            string s = tb.ToXml();
             DotNet.WinForm.Controls.ConfigSetting.CreateForm("test.xml").Show();
         }
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
