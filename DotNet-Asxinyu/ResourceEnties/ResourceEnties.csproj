@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PERSON.Biz.cs" />
+    <Compile Include="PERSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="资源基本信息.Biz.cs" />
     <Compile Include="资源基本信息.cs" />

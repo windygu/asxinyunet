@@ -2,19 +2,26 @@
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System;
+using System.Xml;
+using System.Data;
+using Efsframe.cn.db;
+using Efsframe.cn.declare;
+using Efsframe.cn.func;
+using Efsframe.cn.baseCls;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using Efsframe.cn.func;
 using Efsframe.cn.person;
 using Efsframe.cn.baseManage;
+using XCode;
+using XCode.DataAccessLayer;
 
 public partial class person_psnAdd : System.Web.UI.Page
-{
-
+{    
     protected void Page_Load(object sender, EventArgs e)
     {
         string strXml = Request["txtXML"];
