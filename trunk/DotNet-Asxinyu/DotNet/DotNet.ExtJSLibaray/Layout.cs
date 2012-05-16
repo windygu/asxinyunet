@@ -48,9 +48,9 @@ namespace DotNet.ExtJSLibaray
 				if (element !="") sb.Append(element);
 			}
 			sb.Append (">");
+			if(text !="") sb.Append (text);
+			sb.Append ("</div>");
 			return sb.ToString ();
-//			return string.Format ("<div region=\"{0}\" height=\"{1}\" title=\"{3}\">{4}</div>",
-//				                      regionCode[position],heigth,width,title,text );
 		}		
 	}
 }
