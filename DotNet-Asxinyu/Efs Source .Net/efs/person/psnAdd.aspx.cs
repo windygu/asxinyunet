@@ -26,13 +26,14 @@ public partial class person_psnAdd : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         string strXml = Request["txtXML"];
+        //Response.Write(PageCommon.showMsg(strXml, "back"));
         if (!General.empty(strXml))
         {
             try
             {
                 //UserSession userSession = ((UserSession)Session["RoleUser"]);
                 //strXml = PageCommon.setOpDocXML(strXml, userSession);
-                //string strRetXml = person.addNew(strXml);
+                string strRetXml = person.addNew(strXml);
                 //if (PageCommon.IsSucceed(strRetXml))
                 //{
                 //    Response.Write(PageCommon.showMsg("添加成功!", "../task.aspx"));
@@ -42,13 +43,13 @@ public partial class person_psnAdd : System.Web.UI.Page
                 //{
                 //    Response.Write(PageCommon.showMsg("添加失败,错误原因是：" + PageCommon.getErrInfo(strRetXml), "back"));
                 //    Response.End();
-                //}
-                
+                //} PERSON/NAME
                 UserSession userSession = ((UserSession)Session["RoleUser"]);
                 strXml = PageCommon.setOpDocXML(strXml, userSession);
                 //string strRetXml = person.addNew(strXml);
                 XmlDocument obj_Doc = XmlFun.CreateNewDoc(strXml);
                 XmlNodeList nodeLst = obj_Doc.SelectNodes("//*[@operation][@operation!='']");
+                IEntityOperate io = EntityFactory.CreateOperate(typeof(PERSON));
                 for (int i = 0; i < nodeLst.Count; i++)
                 {
                     XmlElement ele_Temp = (XmlElement)nodeLst.Item(i);
@@ -58,7 +59,8 @@ public partial class person_psnAdd : System.Web.UI.Page
                     string stT = ele_Temp.InnerXml;
 
                     XmlNodeList it_Temp = ele_Temp.ChildNodes;
-                    IEntity CurrentEntity = DAL.Create("StudentConn").CreateOperate("PERSON").Create();
+                    IEntity CurrentEntity = io.Create();
+                    //DAL.Create("StudentConn").CreateOperate("PERSON").Create();
                     for (int k = 0; k < it_Temp.Count; k++)
                     {
                         XmlNode ele_Field = it_Temp[k];
@@ -69,6 +71,9 @@ public partial class person_psnAdd : System.Web.UI.Page
 
                         if (str_State.Equals(Common.ST_NORMAL))
                         {
+                            string str_DataType = XmlFun.getAttributValue(ele_Field, Common.XML_PROP_DATATYPE);
+                            if (General.empty(str_DataType)) continue;
+                            int int_DataType = Convert.ToInt32(str_DataType);
                             CurrentEntity.SetItem(str_FieldName, str_FieldValue);                            
                         }                        
                     }
