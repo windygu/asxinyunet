@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.wMI代码生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stringBuilder转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.字符串转换为常量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +39,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wMI代码生成ToolStripMenuItem,
-            this.stringBuilder转换ToolStripMenuItem});
+            this.stringBuilder转换ToolStripMenuItem,
+            this.字符串转换为常量ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(684, 24);
@@ -58,6 +60,13 @@
             this.stringBuilder转换ToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
             this.stringBuilder转换ToolStripMenuItem.Text = "StringBuilder转换";
             this.stringBuilder转换ToolStripMenuItem.Click += new System.EventHandler(this.stringBuilder转换ToolStripMenuItem_Click);
+            // 
+            // 字符串转换为常量ToolStripMenuItem
+            // 
+            this.字符串转换为常量ToolStripMenuItem.Name = "字符串转换为常量ToolStripMenuItem";
+            this.字符串转换为常量ToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.字符串转换为常量ToolStripMenuItem.Text = "字符串转换为常量";
+            this.字符串转换为常量ToolStripMenuItem.Click += new System.EventHandler(this.字符串转换为常量ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -81,6 +90,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem wMI代码生成ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stringBuilder转换ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 字符串转换为常量ToolStripMenuItem;
     }
 }
 

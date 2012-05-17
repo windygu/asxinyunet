@@ -25,5 +25,10 @@ namespace DotNet.Tools
         {
             StringBuildor.CreateForm().Show();
         }
+
+        private void 字符串转换为常量ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringToConst.CreateForm().Show();
+        }
     }
 }
