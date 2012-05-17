@@ -78,6 +78,12 @@
     <Compile Include="StringBuildor.Designer.cs">
       <DependentUpon>StringBuildor.cs</DependentUpon>
     </Compile>
+    <Compile Include="字符转换为常量.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="字符转换为常量.Designer.cs">
+      <DependentUpon>字符转换为常量.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DotWMITemplate.resx">
       <DependentUpon>DotWMITemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
     </Compile>
     <EmbeddedResource Include="StringBuildor.resx">
       <DependentUpon>StringBuildor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="字符转换为常量.resx">
+      <DependentUpon>字符转换为常量.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
