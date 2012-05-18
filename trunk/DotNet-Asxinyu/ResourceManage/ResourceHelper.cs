@@ -12,6 +12,7 @@ namespace ResourceManage
     /// </summary>
     public class ResourceHelper
     {
+        #region 扫描目录获取文件信息并更新到数据库
         public static void ScanFolder(string folderName)
         {
             //扫描指定目录下的所有文件,并添加到数据库
@@ -67,5 +68,8 @@ namespace ResourceManage
                 return BitConverter.ToString(md5.ComputeHash(fs)).Replace("-", "");
             }
         }
+        #endregion
     }
+
+
 }
