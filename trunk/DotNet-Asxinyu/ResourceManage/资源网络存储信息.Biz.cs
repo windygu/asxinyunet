@@ -7,7 +7,7 @@ using NewLife.Log;
 using XCode;
 using XCode.Configuration;
 
-namespace ResourceEnties
+namespace ResourceManage
 {
     /// <summary>资源网络存储信息</summary>
     public partial class WebUrlInfo : Entity<WebUrlInfo>

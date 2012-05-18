@@ -7,7 +7,7 @@ using NewLife.Log;
 using XCode;
 using XCode.Configuration;
 
-namespace ResourceEnties
+namespace ResourceManage
 {
     /// <summary>资源基本信息</summary>
     public partial class ResourceInfo : Entity<ResourceInfo>

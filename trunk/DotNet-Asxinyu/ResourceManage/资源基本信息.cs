@@ -6,7 +6,7 @@ using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
 
-namespace ResourceEnties
+namespace ResourceManage
 {
     /// <summary>资源基本信息</summary>
     [Serializable]
