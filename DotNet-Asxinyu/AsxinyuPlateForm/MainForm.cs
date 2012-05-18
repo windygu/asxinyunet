@@ -15,5 +15,10 @@ namespace AsxinyuPlateForm
         {
             InitializeComponent();
         }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
