@@ -34,7 +34,7 @@ namespace ResourceManage
         {
             ResourceInfo model = new ResourceInfo();            
             model.Md5 = MD5Hash(fileName);
-            if (ResourceInfo.FindAllByName(ResourceInfo._.Md5, model.Md5, "", 0, 0).Count > 0)
+            if (ResourceInfo.FindAllByName(ResourceInfo._.Md5, model.Md5, "", 0, 0).Count <1)
             {
                 model.PublishingCompany = "暂无";
                 FileInfo fi = new FileInfo(fileName);
