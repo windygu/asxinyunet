@@ -34,12 +34,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\ResouceFiles\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="NewLife.Core">
       <HintPath>..\ResouceFiles\Lib\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +63,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResouceHelper.cs" />
+    <Compile Include="VeryCdResouce.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -67,6 +73,12 @@
     <EmbeddedResource Include="ConvertWebInfo.resx">
       <DependentUpon>ConvertWebInfo.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ResouceCollector\ResouceEntity\ResouceEntity.csproj">
+      <Project>{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}</Project>
+      <Name>ResouceEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
