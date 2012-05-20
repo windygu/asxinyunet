@@ -39,9 +39,22 @@ namespace ResouceCollector
 		public static Encoding VerycdEncoding = Encoding.UTF8 ;
 		
 		#endregion
-		
-		#region 根据大类资源网址获取资源集合列表网址
-		//根据大类资源网址获取资源集合列表网址
+
+        #region 采集页面的所有ed2k链接
+        public static void GetAllEd2kLink(string url)
+        {
+            HtmlDocument doc = CaptureWebSite.GetHtmlDocument(url , VerycdEncoding);
+            HtmlNodeCollection hc = doc.DocumentNode.SelectNodes("//@ed2k");
+            foreach (var item in hc )
+            {
+                Console.Write(item.InnerText);
+                Console.WriteLine(":"+item.Attributes["ed2k"].Value.ToString ());
+            }
+        }
+        #endregion
+
+        #region 根据大类资源网址获取资源集合列表网址
+        //根据大类资源网址获取资源集合列表网址
 		public static void GetTypePageList(string URL,string FirName,string SubClassName,ResouceType resType)
 		{
 			HtmlDocument doc = CaptureWebSite.GetHtmlDocument (URL ,VerycdEncoding ) ;
@@ -109,7 +122,7 @@ namespace ResouceCollector
 		//根据页面链接获取页面的资源下的信息 详细信息，即名称和下载链接,介绍等
 		public static void GetResoucePageInfo(tb_resoucepageslist respageListModel)
 		{
-			string xpath =@"td[1]/a[1] "; //属性 ed2k
+            //string xpath =@"td[1]/a[1] "; //属性 ed2k
 			HtmlDocument doc = CaptureWebSite.GetHtmlDocument (respageListModel.PageURL ,VerycdEncoding ) ;
 			HtmlNodeCollection hc = doc.DocumentNode.SelectNodes ("//@ed2k") ;
 			respageListModel.CollectionMark = 1 ;
@@ -161,9 +174,9 @@ namespace ResouceCollector
 			ht.Add ("http://www.verycd.com/archives/book/others/","其它图书");
 			foreach (DictionaryEntry element in ht) {
 //				GetTypePageList( element.Key.ToString().Trim (),firClassName,element.Value.ToString (),resType) ;
-//				Console.WriteLine ("完成:"+element.Value.ToString ()) ;
+                Console.WriteLine("完成:" + element.Value.ToString());
 				tb_typelist model = new tb_typelist () ;
-				model.URL = element.Key.ToString ().Trim () ;
+				model.URL = element.Key.ToString ().Trim () ;                
 				model.Remark = string.Empty ;
 				model.SubClassName = element.Value.ToString().Trim () ;
 				model.TypeName = firClassName ;
