@@ -71,8 +71,9 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="XCode">
-      <HintPath>..\ResouceCollector\Lib\XCode.dll</HintPath>
+    <Reference Include="XCode, Version=7.13.4210.21100, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResouceFiles\Lib\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -82,8 +83,12 @@
     <Compile Include="一级资源大类列表.cs" />
     <Compile Include="资源列表.Biz.cs" />
     <Compile Include="资源列表.cs" />
+    <Compile Include="资源基本信息.Biz.cs" />
+    <Compile Include="资源基本信息.cs" />
     <Compile Include="资源类别列表.Biz.cs" />
     <Compile Include="资源类别列表.cs" />
+    <Compile Include="资源网络存储信息.Biz.cs" />
+    <Compile Include="资源网络存储信息.cs" />
     <Compile Include="资源链接表.Biz.cs" />
     <Compile Include="资源链接表.cs" />
   </ItemGroup>
