@@ -35,6 +35,7 @@
             this.资源管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +83,8 @@
             // 
             // 系统工具ToolStripMenuItem
             // 
+            this.系统工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.数据转换ToolStripMenuItem});
             this.系统工具ToolStripMenuItem.Name = "系统工具ToolStripMenuItem";
             this.系统工具ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.系统工具ToolStripMenuItem.Text = "系统工具";
@@ -92,6 +95,13 @@
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            // 
+            // 数据转换ToolStripMenuItem
+            // 
+            this.数据转换ToolStripMenuItem.Name = "数据转换ToolStripMenuItem";
+            this.数据转换ToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.数据转换ToolStripMenuItem.Text = "数据库转换";
+            this.数据转换ToolStripMenuItem.Click += new System.EventHandler(this.数据转换ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -122,6 +132,7 @@
         private System.Windows.Forms.ToolStripMenuItem 资源管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统工具ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据转换ToolStripMenuItem;
     }
 }
 

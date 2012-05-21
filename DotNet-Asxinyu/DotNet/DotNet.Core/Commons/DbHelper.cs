@@ -29,10 +29,10 @@ namespace DotNet.Core.Commons
             DAL dal = DAL.Create(connStr);//根据数据库连接字符串创建数据访问对象
             List<IDataTable> tableList = dal.Tables;//获取数据库的所有表和架构信息
             tableList.RemoveAll(t => t.IsView);//过滤掉视图
-            for (int t = 0; t < tableList.Count ; t++)//然后注意循环
+            for (int t = 0; t < tableList.Count; t++)//然后注意循环
             {
                 //首先根据表名称获取当前表的实体操作接口
-                IEntityOperate entity = dal.CreateOperate(tableList[t].Name );
+                IEntityOperate entity = dal.CreateOperate(tableList[t].Name);
                 for (int i = 0; i < NeedCount; i++)
                 {
                     IEntity model = entity.Create();//创建数据实体接口
@@ -43,10 +43,10 @@ namespace DotNet.Core.Commons
                     {
                         if (!filds[j].IsIdentity)
                         {
-                            model.SetItem(filds[j].Name,GetRandomValue (filds [j]));
+                            model.SetItem(filds[j].Name, GetRandomValue(filds[j]));
                         }
                     }
-                    model.Save();                   
+                    model.Save();
                     //
                 }
             }
@@ -76,10 +76,10 @@ namespace DotNet.Core.Commons
                     {
                         if (!fild.IsIdentity)
                             model.SetItem(fild.Name, GetRandomValue(fild));
-                    }                    
+                    }
                     model.Save();//保存数据
                 }
-                Console.WriteLine("数据表{0} 数据插入完成！",item.Name );
+                Console.WriteLine("数据表{0} 数据插入完成！", item.Name);
             }
         }
 
@@ -89,24 +89,24 @@ namespace DotNet.Core.Commons
         /// <param name="fild">字段对象</param>
         /// <returns>对应的随机数据</returns>
         private static object GetRandomValue(FieldItem fild)
-        {            
+        {
             switch (Type.GetTypeCode(fild.Field.DataType))
             {
                 case TypeCode.Boolean: return RandomHelper.GetRandomBool();
-                case TypeCode.Byte:return RandomHelper.GetRandomByte();
-                case TypeCode.Char:return RandomHelper.GetRandomChar();                
-                case TypeCode.DateTime:return RandomHelper.GetRandomDateTime();
-                case TypeCode.Decimal:return RandomHelper.GetRandomDouble(0, NeedCount*10.1);
-                case TypeCode.Double:return RandomHelper.GetRandomDouble(0, NeedCount*10.1);               
-                case TypeCode.Int16:return RandomHelper.GetRandomInt(1,UInt16.MaxValue );                   
-                case TypeCode.Int32:return RandomHelper.GetRandomInt(1,NeedCount *50);      
-                case TypeCode.Int64:return RandomHelper.GetRandomInt(1,NeedCount*100);                                    
-                case TypeCode.SByte:return RandomHelper.GetRandomInt(1,127); 
-                case TypeCode.Single:return RandomHelper.GetRandomDouble(0, NeedCount*10.1);
-                case TypeCode.String:return RandomHelper.GetRandomString((int )(fild.Length*RandomHelper.GetRandomDouble (0.2,0.7)));
-                case TypeCode.UInt16:return RandomHelper.GetRandomInt(1,UInt16.MaxValue );                     
-                case TypeCode.UInt32:return RandomHelper.GetRandomInt(1,NeedCount *50);                          
-                case TypeCode.UInt64:return RandomHelper.GetRandomInt(1,NeedCount*100);
+                case TypeCode.Byte: return RandomHelper.GetRandomByte();
+                case TypeCode.Char: return RandomHelper.GetRandomChar();
+                case TypeCode.DateTime: return RandomHelper.GetRandomDateTime();
+                case TypeCode.Decimal: return RandomHelper.GetRandomDouble(0, NeedCount * 10.1);
+                case TypeCode.Double: return RandomHelper.GetRandomDouble(0, NeedCount * 10.1);
+                case TypeCode.Int16: return RandomHelper.GetRandomInt(1, UInt16.MaxValue);
+                case TypeCode.Int32: return RandomHelper.GetRandomInt(1, NeedCount * 50);
+                case TypeCode.Int64: return RandomHelper.GetRandomInt(1, NeedCount * 100);
+                case TypeCode.SByte: return RandomHelper.GetRandomInt(1, 127);
+                case TypeCode.Single: return RandomHelper.GetRandomDouble(0, NeedCount * 10.1);
+                case TypeCode.String: return RandomHelper.GetRandomString((int)(fild.Length * RandomHelper.GetRandomDouble(0.2, 0.7)));
+                case TypeCode.UInt16: return RandomHelper.GetRandomInt(1, UInt16.MaxValue);
+                case TypeCode.UInt32: return RandomHelper.GetRandomInt(1, NeedCount * 50);
+                case TypeCode.UInt64: return RandomHelper.GetRandomInt(1, NeedCount * 100);
                 default:
                     return string.Empty;
             }
@@ -128,27 +128,27 @@ namespace DotNet.Core.Commons
             tableList.RemoveAll(t => t.IsView);//过滤掉视图
             //首先拷贝数据库架构            
             DAL desDal = DAL.Create(desConn);//要在配置文件中启用数据库架构才行 
-            desDal.Db.CreateMetaData().SetTables(tableList.ToArray());               
+            desDal.Db.CreateMetaData().SetTables(tableList.ToArray());
             //然后依次拷贝每个表中的数据
             foreach (var item in tableList)
             {
                 //首先根据表名称获取当前表的实体操作接口
                 IEntityOperate Factory = dal.CreateOperate(item.Name);
                 //分页获取数据，并更新到新的数据库，通过更改数据库连接来完成
-                int allCount = Factory.FindCount ();
-                if (perCount < 0) perCount = GetDataRowsPerConvert (allCount );
+                int allCount = Factory.FindCount();
+                if (perCount < 0) perCount = GetDataRowsPerConvert(allCount);
                 //int pages = (int)Math.Ceiling ((double)((double )allCount/(double )perCount));
-                int curPage = 0 ;
-                while (curPage *perCount <allCount )//改用while循环分页获取数据
+                int curPage = 0;
+                while (curPage * perCount < allCount)//改用while循环分页获取数据
                 {
                     Factory.ConnName = originConn;
                     //Factory.AllowInsertIdentity = true;
-                    IEntityList modelList = Factory.FindAll("","","",curPage*perCount , perCount);
+                    IEntityList modelList = Factory.FindAll("", "", "", curPage * perCount, perCount);
                     Factory.ConnName = desConn;
                     modelList.Insert(true);
                     curPage++;
-                }             
-                Console.WriteLine("数据库{0} 数据转移完成！",item.Name );
+                }
+                Console.WriteLine("数据库{0} 数据转移完成！", item.Name);
             }
         }
 
@@ -167,28 +167,50 @@ namespace DotNet.Core.Commons
         #endregion
 
         #region 备份数据库
-        public static void BackupDataBase(string connStr, string fileName, bool isOnlyDbSchema = true )
+        public static void BackupDataBase(string connStr, string fileName, bool isOnlyDbSchema = true)
         {
             //思路：利用拷贝数据库功能,将数据库拷贝到Sqlite中，因为这是一个文件，方便
-            
+
         }
         #endregion
 
         #region 拷贝数据库及数据表-Xcode内部实现方法
-        public static void CopyDbData(string origConn, string desConn,bool isAllowIndentity = true )
+        public static int CopyDbData(string origConn,string origDb, string desConn,string desDb ,bool isAllowIndentity = true,List<string > tables = null )
         {
             //DAL.AddConnStr("xxgk", "Data Source=192.168.1.21;Initial Catalog=信息公开;user id=sa;password=Pass@word", null, "mssql");
             //var dal = DAL.Create("xxgk"); DAL.AddConnStr("xxgk2", "Data Source=XXGK.db;Version=3;", null, "sqlite"); 
             //File.Delete("XXGK.db");
             //DAL.ShowSQL = false; 
+            string origName = "Origin";
+            string desName = "Des";
+            DAL.AddConnStr(origName , origConn, null, origDb);
+            var dal = DAL.Create("Origin");
+            DAL.AddConnStr(desName , desConn, null, desDb);
+
             var etf = new EntityTransform();
-            etf.SrcConn = origConn;
-            etf.DesConn = desConn;
+            etf.SrcConn = origName;
+            etf.DesConn = desName;
             etf.AllowInsertIdentity = true;
-            //etf.TableNames.Remove("PubInfoLog");
+            if (tables !=null ) etf.TableNames = tables;
+            else etf.TableNames = DAL.Create(origName).Tables.Select(n => n.Name).ToList();           
             //etf.OnTransformTable += (s, e) => { if (e.Arg.Name == "")e.Arg = null; };
-            var rs = etf.Transform(); 
-            Console.WriteLine("共转移：{0}", rs);
+            int rs = -2;
+            try
+            {
+                rs = etf.Transform();
+                Console.WriteLine("共转移：{0}", rs);
+                return rs;
+            }
+            catch (Exception err)
+            {
+                rs = -1;
+                throw new Exception(err.Message );
+            }
+        }
+        public static List<string> GetAllTableByConn(string Conn, string Db)
+        {
+            DAL.AddConnStr("TempConn", Conn, null, Db);
+            return DAL.Create("TempConn").Tables.Select(n => n.Name).ToList();
         }
         #endregion
     }

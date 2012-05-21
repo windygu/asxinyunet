@@ -58,6 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertDB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConvertDB.Designer.cs">
+      <DependentUpon>ConvertDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="DotWMITemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="字符转换为常量.Designer.cs">
       <DependentUpon>字符转换为常量.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConvertDB.resx">
+      <DependentUpon>ConvertDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DotWMITemplate.resx">
       <DependentUpon>DotWMITemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +127,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DotNet.Core\DotNet.Core.csproj">
+      <Project>{A98FC0A3-8242-452C-92B3-02220C8A3E48}</Project>
+      <Name>DotNet.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotNet.WinForm\DotNet.WinForm.csproj">
       <Project>{C33A4523-C093-4901-BF6B-73B6AB1AB688}</Project>
       <Name>DotNet.WinForm</Name>
