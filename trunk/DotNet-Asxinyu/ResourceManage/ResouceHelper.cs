@@ -101,27 +101,7 @@ namespace ResouceCollector
 		epub
 	}
 	#endregion
-	
-	public class ParseHtmlHelper
-	{
-		// 根据Xpath获取指定节点的值InnerText
-		public static string GetNodeValueByXpath(string htmlText , string xPath )
-		{
-			return string.Empty ;
-		}
 		
-		//获取属性值
-		public static string GetAttributeValueByXpath(string htmlText,string xPath , string attributeName)
-		{
-			return string .Empty ;
-		}
-		//获取节点列表的值
-		public static List<string >  GetNodeListValueByXpath(string htmlText ,string firPath,
-		                                                     string secPath,string attributeName)
-		{
-			return new List <string >() ;
-		}
-	}
 	
 	/// <summary>
 	///资源工具帮助类
@@ -200,9 +180,9 @@ namespace ResouceCollector
 
         public static void GetFileInfo(string fileName)
         {
-            ResourceInfo model = new ResourceInfo();
+            tb_resourceinfo model = new tb_resourceinfo();
             model.Md5 = MD5Hash(fileName);
-            if (ResourceInfo.FindAllByName(ResourceInfo._.Md5, model.Md5, "", 0, 0).Count < 1)
+            if (tb_resourceinfo.FindAllByName(tb_resourceinfo._.Md5, model.Md5, "", 0, 0).Count < 1)
             {
                 model.PublishingCompany = "暂无";
                 FileInfo fi = new FileInfo(fileName);
