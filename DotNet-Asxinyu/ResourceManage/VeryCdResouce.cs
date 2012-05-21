@@ -18,19 +18,16 @@ namespace ResouceCollector
 {
 	/// <summary>
 	/// Verycd.com 资源网工具类
+    /// 1.根据资源列表页面URL-->得到资源列表页面，采集页面及URL（一级资源大类列表） 
+    ///                      -->根据资源页面，采集资源页面链接URL，（资源列表）
+    ///                      -->循环资源列表，采集每个资源页面的ed2k链接
+    /// 2.根据资源页面，直接获取资源页面链接，然后采集每个页面的ed2k链接
+    /// 
+    /// tb_typelist表存储2种数据，都是URL，一种是大类资源的列表页面入口，一种是浏览资源页面的入口
+    /// 任务调度，是从这个表开始，进行处理，根据URL关键字来区分处理的类型
 	/// </summary>
 	public class VeryCdResouce
-	{
-		public static void Test()
-		{
-			string url = @"http://www.verycd.com/topics/2900979/";
-			HtmlDocument doc = CaptureWebSite.GetHtmlDocument (url ,VerycdEncoding ) ;
-			HtmlNodeCollection hc = doc.DocumentNode.SelectNodes ("//@ed2k" ) ;
-			for (int i = 0; i < hc.Count ; i++) {
-				Console.WriteLine (hc[i ].InnerText.Trim ()) ;
-			}
-		}
-		
+	{	
 		#region 静态变量
 		public static string xPath_TypePageList = @"/html[1]/body[1]/div[4]/div[2]/div[3]/div[2]/dl[1]/dd" ;
 		public static string xPath_ResouceList  = @"/html[1]/body[1]/div[4]/div[2]/div[3]/div[2]/div[2]/ol[1]/li";
@@ -41,6 +38,10 @@ namespace ResouceCollector
 		#endregion
 
         #region 采集页面的所有ed2k链接
+        /// <summary>
+        /// 采集URL页面所有的ed2k链接，并添加到数据库
+        /// </summary>
+        /// <param name="url"></param>
         public static void GetAllEd2kLink(string url)
         {
             HtmlDocument doc = CaptureWebSite.GetHtmlDocument(url , VerycdEncoding);
@@ -217,7 +218,7 @@ namespace ResouceCollector
 				{
 					tb_resoucepageslist pageModel = tb_resoucepageslist.Find (tb_resoucepageslist._.CollectionMark,0) ;
 					GetResoucePageInfo(pageModel ) ;//采集此列表
-				}
+				}   
 				catch (Exception err)
 				{
 					continue ;
