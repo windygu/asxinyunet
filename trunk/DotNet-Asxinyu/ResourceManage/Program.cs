@@ -31,7 +31,7 @@ namespace ResourceManage
 
             //string url = @"http://www.verycd.com/topics/2900979/";
             //VeryCdResouce.GetAllEd2kLink(url);
-            //VeryCdResouce.Test();
+            VeryCdResouce.Test();
             //			for (int i = 0; i <20; i++)
             //			{		
             //				Thread.Sleep (1000) ;
