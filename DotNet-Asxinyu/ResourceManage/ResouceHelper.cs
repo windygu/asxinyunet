@@ -17,7 +17,7 @@ using System.IO;
 using HtmlAgilityPack;
 using ResouceEntity;
 
-namespace ResouceCollector
+namespace ResourceManage
 {
 	#region 资源类别 ResouceType
 	/// <summary>
