@@ -47,8 +47,9 @@ namespace ResouceCollector
             HtmlNodeCollection hc = doc.DocumentNode.SelectNodes("//@ed2k");
             foreach (var item in hc )
             {
-                Console.Write(item.InnerText);
-                Console.WriteLine(":"+item.Attributes["ed2k"].Value.ToString ());
+                //分析链接，没有重复，则加入数据库
+                //Console.Write(item.InnerText);
+                //Console.WriteLine(":"+item.Attributes["ed2k"].Value.ToString ());
             }
         }
         #endregion
