@@ -10,7 +10,7 @@ using XCode.Configuration;
 namespace ResouceEntity
 {
     /// <summary>资源基本信息</summary>
-    public partial class ResourceInfo : Entity<ResourceInfo>
+    public partial class tb_resourceinfo : Entity<tb_resourceinfo>
     {
         #region 对象操作﻿
 
@@ -57,7 +57,7 @@ namespace ResouceEntity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}资源基本信息数据……", typeof(ResourceInfo).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}资源基本信息数据……", typeof(tb_resourceinfo).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -67,7 +67,7 @@ namespace ResouceEntity
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}资源基本信息数据！", typeof(ResourceInfo).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}资源基本信息数据！", typeof(tb_resourceinfo).Name);
         //}
         #endregion
 
@@ -75,11 +75,25 @@ namespace ResouceEntity
         #endregion
 
         #region 扩展查询﻿
+        /// <summary>根据编号查找</summary>
+        /// <param name="id">编号</param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static tb_resourceinfo FindById(Int32 id)
+        {
+            if (Meta.Count >= 1000)
+                return Find(_.Id, id);
+            else // 实体缓存
+                return Meta.Cache.Entities.Find(_.Id, id);
+            // 单对象缓存
+            //return Meta.SingleCache[id];
+        }
+
         /// <summary>根据资源名称查找</summary>
         /// <param name="resourcename">资源名称</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<ResourceInfo> FindAllByResourceName(String resourcename)
+        public static EntityList<tb_resourceinfo> FindAllByResourceName(String resourcename)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.ResourceName, resourcename);
@@ -91,26 +105,12 @@ namespace ResouceEntity
         /// <param name="keywords">关键词</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<ResourceInfo> FindAllByKeywords(String keywords)
+        public static EntityList<tb_resourceinfo> FindAllByKeywords(String keywords)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.Keywords, keywords);
             else // 实体缓存
                 return Meta.Cache.Entities.FindAll(_.Keywords, keywords);
-        }
-
-        /// <summary>根据编号查找</summary>
-        /// <param name="id">编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static ResourceInfo FindById(Int32 id)
-        {
-            if (Meta.Count >= 1000)
-                return Find(_.Id, id);
-            else // 实体缓存
-                return Meta.Cache.Entities.Find(_.Id, id);
-            // 单对象缓存
-            //return Meta.SingleCache[id];
         }
         #endregion
 
@@ -126,7 +126,7 @@ namespace ResouceEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<ResourceInfo> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<tb_resourceinfo> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

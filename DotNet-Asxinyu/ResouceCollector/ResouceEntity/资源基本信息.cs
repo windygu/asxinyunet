@@ -12,11 +12,11 @@ namespace ResouceEntity
     [Serializable]
     [DataObject]
     [Description("资源基本信息")]
+    [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("IX_ResourceInfo", false, "ResourceName")]
     [BindIndex("IX_ResourceInfo_keywords", false, "Keywords")]
-    [BindIndex("PK_ResourceInfo", true, "Id")]
-    [BindTable("ResourceInfo", Description = "资源基本信息", ConnName = "ResouceCollector", DbType = DatabaseType.SqlServer)]
-    public partial class ResourceInfo : IResourceInfo
+    [BindTable("tb_resourceinfo", Description = "资源基本信息", ConnName = "ResourceConn", DbType = DatabaseType.MySql)]
+    public partial class tb_resourceinfo : Itb_resourceinfo
     {
         #region 属性
         private Int32 _Id;
@@ -24,7 +24,7 @@ namespace ResouceEntity
         [DisplayName("编号")]
         [Description("编号")]
         [DataObjectField(true, true, false, 10)]
-        [BindColumn(1, "Id", "编号", null, "int", 10, 0, false)]
+        [BindColumn(1, "Id", "编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 Id
         {
             get { return _Id; }
@@ -36,7 +36,7 @@ namespace ResouceEntity
         [DisplayName("类别名称")]
         [Description("类别名称")]
         [DataObjectField(false, false, true, 30)]
-        [BindColumn(2, "BigCategory", "类别名称", "未分类", "nvarchar(30)", 0, 0, true)]
+        [BindColumn(2, "BigCategory", "类别名称", "未分类", "varchar(30)", 0, 0, false)]
         public virtual String BigCategory
         {
             get { return _BigCategory; }
@@ -48,7 +48,7 @@ namespace ResouceEntity
         [DisplayName("小类名称")]
         [Description("小类名称")]
         [DataObjectField(false, false, true, 30)]
-        [BindColumn(3, "SmallCategory", "小类名称", "未分类", "nvarchar(30)", 0, 0, true)]
+        [BindColumn(3, "SmallCategory", "小类名称", "未分类", "varchar(30)", 0, 0, false)]
         public virtual String SmallCategory
         {
             get { return _SmallCategory; }
@@ -59,8 +59,8 @@ namespace ResouceEntity
         /// <summary>资源名称</summary>
         [DisplayName("资源名称")]
         [Description("资源名称")]
-        [DataObjectField(false, false, false, 150)]
-        [BindColumn(4, "ResourceName", "资源名称", null, "nvarchar(150)", 0, 0, true)]
+        [DataObjectField(false, false, false, 250)]
+        [BindColumn(4, "ResourceName", "资源名称", null, "varchar(250)", 0, 0, false)]
         public virtual String ResourceName
         {
             get { return _ResourceName; }
@@ -71,8 +71,8 @@ namespace ResouceEntity
         /// <summary>内容介绍</summary>
         [DisplayName("内容介绍")]
         [Description("内容介绍")]
-        [DataObjectField(false, false, true, 1073741823)]
-        [BindColumn(5, "ContentIntroduce", "内容介绍", null, "ntext", 0, 0, true)]
+        [DataObjectField(false, false, true, 65535)]
+        [BindColumn(5, "ContentIntroduce", "内容介绍", null, "text", 0, 0, false)]
         public virtual String ContentIntroduce
         {
             get { return _ContentIntroduce; }
@@ -84,7 +84,7 @@ namespace ResouceEntity
         [DisplayName("作者")]
         [Description("作者")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(6, "Author", "作者", null, "nvarchar(50)", 0, 0, true)]
+        [BindColumn(6, "Author", "作者", null, "varchar(50)", 0, 0, false)]
         public virtual String Author
         {
             get { return _Author; }
@@ -96,7 +96,7 @@ namespace ResouceEntity
         [DisplayName("出版社")]
         [Description("出版社")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(7, "PublishingCompany", "出版社", null, "nvarchar(50)", 0, 0, true)]
+        [BindColumn(7, "PublishingCompany", "出版社", null, "varchar(50)", 0, 0, false)]
         public virtual String PublishingCompany
         {
             get { return _PublishingCompany; }
@@ -108,7 +108,7 @@ namespace ResouceEntity
         [DisplayName("资源大小")]
         [Description("资源大小")]
         [DataObjectField(false, false, false, 19)]
-        [BindColumn(8, "Size", "资源大小", "1", "bigint", 19, 0, false)]
+        [BindColumn(8, "Size", "资源大小", "1", "bigint(20)", 19, 0, false)]
         public virtual Int64 Size
         {
             get { return _Size; }
@@ -120,7 +120,7 @@ namespace ResouceEntity
         [DisplayName("资源格式")]
         [Description("资源格式")]
         [DataObjectField(false, false, false, 15)]
-        [BindColumn(9, "Format", "资源格式", null, "nvarchar(15)", 0, 0, true)]
+        [BindColumn(9, "Format", "资源格式", null, "varchar(15)", 0, 0, false)]
         public virtual String Format
         {
             get { return _Format; }
@@ -131,8 +131,8 @@ namespace ResouceEntity
         /// <summary>关键词</summary>
         [DisplayName("关键词")]
         [Description("关键词")]
-        [DataObjectField(false, false, true, 80)]
-        [BindColumn(10, "Keywords", "关键词", null, "nvarchar(80)", 0, 0, true)]
+        [DataObjectField(false, false, true, 150)]
+        [BindColumn(10, "Keywords", "关键词", null, "varchar(150)", 0, 0, false)]
         public virtual String Keywords
         {
             get { return _Keywords; }
@@ -144,7 +144,7 @@ namespace ResouceEntity
         [DisplayName("MD5值")]
         [Description("MD5值")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(11, "Md5", "MD5值", null, "nvarchar(50)", 0, 0, true)]
+        [BindColumn(11, "Md5", "MD5值", null, "varchar(50)", 0, 0, false)]
         public virtual String Md5
         {
             get { return _Md5; }
@@ -156,7 +156,7 @@ namespace ResouceEntity
         [DisplayName("ISBN号")]
         [Description("ISBN号")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(12, "ISBN", "ISBN号", null, "nvarchar(50)", 0, 0, true)]
+        [BindColumn(12, "ISBN", "ISBN号", null, "varchar(50)", 0, 0, false)]
         public virtual String ISBN
         {
             get { return _ISBN; }
@@ -167,8 +167,8 @@ namespace ResouceEntity
         /// <summary>出版时间</summary>
         [DisplayName("出版时间")]
         [Description("出版时间")]
-        [DataObjectField(false, false, true, 3)]
-        [BindColumn(13, "PublishingDate", "出版时间", "(2010)-(1))-(1", "datetime", 3, 0, false)]
+        [DataObjectField(false, false, false, 0)]
+        [BindColumn(13, "PublishingDate", "出版时间", "CURRENT_TIMESTAMP", "timestamp", 0, 0, false)]
         public virtual DateTime PublishingDate
         {
             get { return _PublishingDate; }
@@ -180,7 +180,7 @@ namespace ResouceEntity
         [DisplayName("来源地")]
         [Description("来源地")]
         [DataObjectField(false, false, true, 150)]
-        [BindColumn(14, "Source", "来源地", null, "nvarchar(150)", 0, 0, true)]
+        [BindColumn(14, "Source", "来源地", null, "varchar(150)", 0, 0, false)]
         public virtual String Source
         {
             get { return _Source; }
@@ -192,7 +192,7 @@ namespace ResouceEntity
         [DisplayName("资源评分")]
         [Description("资源评分")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(15, "ResourceScore", "资源评分", "7", "int", 10, 0, false)]
+        [BindColumn(15, "ResourceScore", "资源评分", "7", "int(11)", 10, 0, false)]
         public virtual Int32 ResourceScore
         {
             get { return _ResourceScore; }
@@ -203,8 +203,8 @@ namespace ResouceEntity
         /// <summary>存储位置</summary>
         [DisplayName("存储位置")]
         [Description("存储位置")]
-        [DataObjectField(false, false, true, 1073741823)]
-        [BindColumn(16, "StorageLocation", "存储位置", null, "ntext", 0, 0, true)]
+        [DataObjectField(false, false, true, 65535)]
+        [BindColumn(16, "StorageLocation", "存储位置", null, "text", 0, 0, false)]
         public virtual String StorageLocation
         {
             get { return _StorageLocation; }
@@ -215,8 +215,8 @@ namespace ResouceEntity
         /// <summary>备注</summary>
         [DisplayName("备注")]
         [Description("备注")]
-        [DataObjectField(false, false, true, 1073741823)]
-        [BindColumn(17, "Remark", "备注", null, "ntext", 0, 0, true)]
+        [DataObjectField(false, false, true, 65535)]
+        [BindColumn(17, "Remark", "备注", null, "text", 0, 0, false)]
         public virtual String Remark
         {
             get { return _Remark; }
@@ -346,7 +346,7 @@ namespace ResouceEntity
     }
 
     /// <summary>资源基本信息接口</summary>
-    public partial interface IResourceInfo
+    public partial interface Itb_resourceinfo
     {
         #region 属性
         /// <summary>编号</summary>

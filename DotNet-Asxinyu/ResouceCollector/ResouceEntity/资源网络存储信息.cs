@@ -12,11 +12,11 @@ namespace ResouceEntity
     [Serializable]
     [DataObject]
     [Description("资源网络存储信息")]
+    [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("IX_WebUrlInfo", false, "Name")]
     [BindIndex("IX_WebUrlInfo_Md5", false, "Md5")]
-    [BindIndex("PK_WebUrlInfo", true, "Id")]
-    [BindTable("WebUrlInfo", Description = "资源网络存储信息", ConnName = "ResouceCollector", DbType = DatabaseType.SqlServer)]
-    public partial class WebUrlInfo : IWebUrlInfo
+    [BindTable("tb_weburlinfo", Description = "资源网络存储信息", ConnName = "ResourceConn", DbType = DatabaseType.MySql)]
+    public partial class tb_weburlinfo : Itb_weburlinfo
     {
         #region 属性
         private Int32 _Id;
@@ -24,7 +24,7 @@ namespace ResouceEntity
         [DisplayName("编号")]
         [Description("编号")]
         [DataObjectField(true, true, false, 10)]
-        [BindColumn(1, "Id", "编号", null, "int", 10, 0, false)]
+        [BindColumn(1, "Id", "编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 Id
         {
             get { return _Id; }
@@ -36,7 +36,7 @@ namespace ResouceEntity
         [DisplayName("资源编号")]
         [Description("资源编号")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(2, "ResourceId", "资源编号", null, "int", 10, 0, false)]
+        [BindColumn(2, "ResourceId", "资源编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 ResourceId
         {
             get { return _ResourceId; }
@@ -48,7 +48,7 @@ namespace ResouceEntity
         [DisplayName("资源名称")]
         [Description("资源名称")]
         [DataObjectField(false, false, false, 150)]
-        [BindColumn(3, "Name", "资源名称", null, "nvarchar(150)", 0, 0, true)]
+        [BindColumn(3, "Name", "资源名称", null, "varchar(150)", 0, 0, false)]
         public virtual String Name
         {
             get { return _Name; }
@@ -60,7 +60,7 @@ namespace ResouceEntity
         [DisplayName("Md5值")]
         [Description("Md5值")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(4, "Md5", "Md5值", null, "nvarchar(50)", 0, 0, true)]
+        [BindColumn(4, "Md5", "Md5值", null, "varchar(50)", 0, 0, false)]
         public virtual String Md5
         {
             get { return _Md5; }
@@ -72,7 +72,7 @@ namespace ResouceEntity
         [DisplayName("网盘名称")]
         [Description("网盘名称")]
         [DataObjectField(false, false, false, 20)]
-        [BindColumn(5, "Website", "网盘名称", null, "nvarchar(20)", 0, 0, true)]
+        [BindColumn(5, "Website", "网盘名称", null, "varchar(20)", 0, 0, false)]
         public virtual String Website
         {
             get { return _Website; }
@@ -84,7 +84,7 @@ namespace ResouceEntity
         [DisplayName("下载地址")]
         [Description("下载地址")]
         [DataObjectField(false, false, false, 100)]
-        [BindColumn(6, "DownloadURL", "下载地址", null, "nvarchar(100)", 0, 0, true)]
+        [BindColumn(6, "DownloadURL", "下载地址", null, "varchar(100)", 0, 0, false)]
         public virtual String DownloadURL
         {
             get { return _DownloadURL; }
@@ -96,7 +96,7 @@ namespace ResouceEntity
         [DisplayName("提取码")]
         [Description("提取码")]
         [DataObjectField(false, false, true, 20)]
-        [BindColumn(7, "DownloadCode", "提取码", null, "nvarchar(20)", 0, 0, true)]
+        [BindColumn(7, "DownloadCode", "提取码", null, "varchar(20)", 0, 0, false)]
         public virtual String DownloadCode
         {
             get { return _DownloadCode; }
@@ -108,7 +108,7 @@ namespace ResouceEntity
         [DisplayName("更新时间")]
         [Description("更新时间")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(8, "UpdateTime", "更新时间", null, "nchar(10)", 0, 0, true)]
+        [BindColumn(8, "UpdateTime", "更新时间", null, "char(10)", 0, 0, false)]
         public virtual String UpdateTime
         {
             get { return _UpdateTime; }
@@ -120,7 +120,7 @@ namespace ResouceEntity
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(9, "Remark", "备注", null, "nchar(10)", 0, 0, true)]
+        [BindColumn(9, "Remark", "备注", null, "char(10)", 0, 0, false)]
         public virtual String Remark
         {
             get { return _Remark; }
@@ -210,7 +210,7 @@ namespace ResouceEntity
     }
 
     /// <summary>资源网络存储信息接口</summary>
-    public partial interface IWebUrlInfo
+    public partial interface Itb_weburlinfo
     {
         #region 属性
         /// <summary>编号</summary>
