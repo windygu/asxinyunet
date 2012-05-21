@@ -2645,22 +2645,24 @@
             <summary>实现 <seealso cref="T:NewLife.Model.IObjectContainer"/> 接口的对象容器</summary>
             <remarks>
             1，如果容器里面没有这个类型，则返回空；
-            2，如果容器里面包含这个类型，并且指向的实例不为空，则返回，单例；
-            3，如果容器里面包含这个类型，并且指向的实例为空，则创建对象返回，多实例；
+            2，如果容器里面包含这个类型，<see cref="M:NewLife.Model.ObjectContainer.ResolveInstance(System.Type,System.Object,System.Boolean)"/>返回单例；
+            3，如果容器里面包含这个类型，<see cref="M:NewLife.Model.ObjectContainer.Resolve(System.Type,System.Object,System.Boolean)"/>创建对象返回多实例；
             4，如果有带参数构造函数，则从容器内获取各个参数的实例，最后创建对象返回。
             
-            这里有一点跟我们以往的想法非常不同，我们都习惯没有对象的时候，创建并加入字典。
-            这里采用两种方式，注册类型的时候，如果指定了实例，则表示这个类型对应单一的实例；
-            如果不指定实例，则表示支持该类型，每次创建。
+            这里有一点跟大多数对象容器非常不同，其它对象容器会控制对象的生命周期，在对象不再使用时收回到容器里面。
+            这里的对象容器主要是为了用于解耦，所以只有最简单的功能实现。
             </remarks>
         </member>
         <member name="T:NewLife.Model.IObjectContainer">
             <summary>对象容器接口</summary>
             <remarks>
             1，如果容器里面没有这个类型，则返回空；
-            2，如果容器里面包含这个类型，并且指向的实例不为空，则返回，单例；
-            3，如果容器里面包含这个类型，并且指向的实例为空，则创建对象返回，多实例；
+            2，如果容器里面包含这个类型，<see cref="M:NewLife.Model.IObjectContainer.ResolveInstance(System.Type,System.Object,System.Boolean)"/>返回单例；
+            3，如果容器里面包含这个类型，<see cref="M:NewLife.Model.IObjectContainer.Resolve(System.Type,System.Object,System.Boolean)"/>创建对象返回多实例；
             4，如果有带参数构造函数，则从容器内获取各个参数的实例，最后创建对象返回。
+            
+            这里有一点跟大多数对象容器非常不同，其它对象容器会控制对象的生命周期，在对象不再使用时收回到容器里面。
+            这里的对象容器主要是为了用于解耦，所以只有最简单的功能实现。
             </remarks>
         </member>
         <member name="M:NewLife.Model.IObjectContainer.Register(System.Type,System.Type,System.Object,System.Object,System.Int32)">
@@ -2688,6 +2690,20 @@
             <param name="priority">优先级</param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.Model.IObjectContainer.AutoRegister(System.Type,System.Type[])">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
+            <param name="from">接口或基类</param>
+            <param name="excludeTypes">要排除的类型，一般是内部默认实现</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.IObjectContainer.AutoRegister``2">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <typeparam name="TImplement">要排除的类型，一般是内部默认实现</typeparam>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Model.IObjectContainer.Resolve(System.Type,System.Object,System.Boolean)">
             <summary>解析类型指定名称的实例</summary>
             <param name="from">接口类型</param>
@@ -2696,6 +2712,20 @@
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.IObjectContainer.Resolve``1(System.Object,System.Boolean)">
+            <summary>解析类型指定名称的实例</summary>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <param name="id">标识</param>
+            <param name="extend">扩展。若为ture，id为null而找不到时，采用第一个注册项；id不为null而找不到时，采用null注册项</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.IObjectContainer.ResolveInstance(System.Type,System.Object,System.Boolean)">
+            <summary>解析类型指定名称的实例</summary>
+            <param name="from">接口类型</param>
+            <param name="id">标识</param>
+            <param name="extend">扩展。若为ture，id为null而找不到时，采用第一个注册项；id不为null而找不到时，采用null注册项</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.IObjectContainer.ResolveInstance``1(System.Object,System.Boolean)">
             <summary>解析类型指定名称的实例</summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="id">标识</param>
@@ -2770,14 +2800,42 @@
             <param name="priority">优先级</param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.Model.ObjectContainer.AutoRegister(System.Type,System.Type[])">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
+            <param name="from">接口或基类</param>
+            <param name="excludeTypes">要排除的类型，一般是内部默认实现</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.ObjectContainer.AutoRegister``2">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <typeparam name="TImplement">要排除的类型，一般是内部默认实现</typeparam>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Model.ObjectContainer.Resolve(System.Type,System.Object,System.Boolean)">
             <summary>解析类型指定名称的实例</summary>
             <param name="from">接口类型</param>
             <param name="id">标识</param>
-            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
+            <param name="extend">扩展。若为ture，id为null而找不到时，采用第一个注册项；id不为null而找不到时，采用null注册项</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.ObjectContainer.Resolve``1(System.Object,System.Boolean)">
+            <summary>解析类型指定名称的实例</summary>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <param name="id">标识</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.ObjectContainer.ResolveInstance(System.Type,System.Object,System.Boolean)">
+            <summary>解析类型指定名称的实例</summary>
+            <param name="from">接口类型</param>
+            <param name="id">标识</param>
+            <param name="extend">扩展。若为ture，id为null而找不到时，采用第一个注册项；id不为null而找不到时，采用null注册项</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.ObjectContainer.ResolveInstance``1(System.Object,System.Boolean)">
             <summary>解析类型指定名称的实例</summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="id">标识</param>
@@ -2846,9 +2904,6 @@
         <member name="P:NewLife.Model.IObjectMap.Instance">
             <summary>对象实例</summary>
         </member>
-        <member name="P:NewLife.Model.IObjectMap.Singleton">
-            <summary>单一实例</summary>
-        </member>
         <member name="P:NewLife.Model.ObjectContainer.Map.Identity">
             <summary>名称</summary>
         </member>
@@ -2857,9 +2912,6 @@
         </member>
         <member name="P:NewLife.Model.ObjectContainer.Map.ImplementType">
             <summary>实现类型</summary>
-        </member>
-        <member name="P:NewLife.Model.ObjectContainer.Map.Singleton">
-            <summary>单一实例</summary>
         </member>
         <member name="P:NewLife.Model.ObjectContainer.Map.Priority">
             <summary>优先级</summary>
@@ -3325,6 +3377,12 @@
         <member name="P:NewLife.Reflection.MethodInfoX.Handler">
             <summary>快速调用委托，延迟到首次使用才创建</summary>
         </member>
+        <member name="P:NewLife.Reflection.MethodInfoX.Name">
+            <summary>类型名称。主要处理泛型</summary>
+        </member>
+        <member name="P:NewLife.Reflection.MethodInfoX.FullName">
+            <summary>完整类型名称。包含命名空间，但是不包含程序集信息</summary>
+        </member>
         <member name="T:NewLife.Reflection.MethodInfoX.FastInvokeHandler">
             <summary>快速调用委托</summary>
             <param name="obj"></param>
@@ -3486,17 +3544,18 @@
             <param name="parameters"></param>
             <returns></returns>
         </member>
-        <member name="T:NewLife.Model.ModelHelper">
-            <summary>模型扩展</summary>
-        </member>
-        <member name="M:NewLife.Model.ModelHelper.GetService``1(System.IServiceProvider)">
-            <summary>获取指定类型的服务对象</summary>
-            <typeparam name="T"></typeparam>
-            <param name="provider"></param>
-            <returns></returns>
-        </member>
         <member name="T:NewLife.Log.XTrace">
             <summary>日志类，包含跟踪调试功能</summary>
+            <remarks>
+            该静态类包括写日志、写调用栈和Dump进程内存等调试功能。
+            
+            默认写日志到文本文件，可通过挂接<see cref="E:NewLife.Log.XTrace.OnWriteLog"/>事件来增加日志输出方式。
+            改变日志输出方式后，可通过<see cref="P:NewLife.Log.XTrace.UseFileLog"/>不再向文本文件输出日志。
+            对于控制台工程，可以直接通过<see cref="M:NewLife.Log.XTrace.UseConsole(System.Boolean)"/>方法，把日志输出重定向为控制台输出，并且可以为不同线程使用不同颜色。
+            </remarks>
+        </member>
+        <member name="F:NewLife.Log.XTrace.Log">
+            <summary>文本文件日志</summary>
         </member>
         <member name="M:NewLife.Log.XTrace.WriteLine(System.String)">
             <summary>输出日志</summary>
@@ -3511,8 +3570,7 @@
             <param name="ex">异常信息</param>
         </member>
         <member name="M:NewLife.Log.XTrace.DebugStack">
-            <summary>
-            堆栈调试。
+            <summary>堆栈调试。
             输出堆栈信息，用于调试时处理调用上下文。
             本方法会造成大量日志，请慎用。
             </summary>
@@ -3538,6 +3596,9 @@
         <member name="M:NewLife.Log.XTrace.WriteMiniDump(System.String)">
             <summary>写当前线程的MiniDump</summary>
             <param name="dumpFile">如果不指定，则自动写入日志目录</param>
+        </member>
+        <member name="P:NewLife.Log.XTrace.UseFileLog">
+            <summary>使用文件日志</summary>
         </member>
         <member name="P:NewLife.Log.XTrace.LogPath">
             <summary>日志路径</summary>
@@ -4450,6 +4511,8 @@
             因为挂载在静态列表上，必须从外部主动调用<see cref="M:System.IDisposable.Dispose"/>才能销毁定时器。
             
             该定时器不能放入太多任务，否则适得其反！
+            
+            TimerX必须维持对象，否则很容易被GC回收。
             </remarks>
         </member>
         <member name="M:NewLife.Threading.TimerX.#ctor(System.Threading.WaitCallback,System.Object,System.Int32,System.Int32)">
@@ -4466,6 +4529,10 @@
             <param name="dueTime">多久之后开始</param>
             <param name="period">间隔周期</param>
             <param name="usethreadpool">是否使用线程池。对于耗时短小且比较频繁的操作，不好使用线程池，减少线程切换。</param>
+        </member>
+        <member name="M:NewLife.Threading.TimerX.ToString">
+            <summary>已重载</summary>
+            <returns></returns>
         </member>
         <member name="P:NewLife.Threading.TimerX.Callback">
             <summary>回调</summary>
@@ -4487,6 +4554,9 @@
         </member>
         <member name="P:NewLife.Threading.TimerX.Calling">
             <summary>调用中</summary>
+        </member>
+        <member name="P:NewLife.Threading.TimerX.Debug">
+            <summary>是否开启调试，输出更多信息</summary>
         </member>
         <member name="T:NewLife.Threading.ThreadX">
             <summary>线程扩展</summary>
@@ -4767,22 +4837,20 @@
         <member name="M:NewLife.Messaging.Message.Init">
             <summary>初始化</summary>
         </member>
-        <member name="M:NewLife.Messaging.Message.Write(System.IO.Stream)">
+        <member name="M:NewLife.Messaging.Message.Write(System.IO.Stream,NewLife.Serialization.RWKinds)">
             <summary>序列化当前消息到流中</summary>
             <param name="stream"></param>
+            <param name="rwkind"></param>
         </member>
-        <member name="M:NewLife.Messaging.Message.GetStream">
+        <member name="M:NewLife.Messaging.Message.GetStream(NewLife.Serialization.RWKinds)">
             <summary>序列化为数据流</summary>
+            <param name="rwkind"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Messaging.Message.Read(System.IO.Stream)">
+        <member name="M:NewLife.Messaging.Message.Read(System.IO.Stream,NewLife.Serialization.RWKinds,System.Boolean)">
             <summary>从流中读取消息</summary>
             <param name="stream">数据流</param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Messaging.Message.Read(System.IO.Stream,System.Boolean)">
-            <summary>从流中读取消息</summary>
-            <param name="stream">数据流</param>
+            <param name="rwkind"></param>
             <param name="ignoreException">忽略异常。如果忽略异常，读取失败时将返回空，并还原数据流位置</param>
             <returns></returns>
         </member>
@@ -4832,6 +4900,9 @@
         </member>
         <member name="P:NewLife.Messaging.Message.Debug">
             <summary>是否调试，输出序列化过程</summary>
+        </member>
+        <member name="P:NewLife.Messaging.Message.DumpStreamWhenError">
+            <summary>出错时Dump数据流到文件中</summary>
         </member>
         <member name="M:NewLife.Messaging.EntityMessage.ToString">
             <summary>已重载。</summary>
@@ -5804,68 +5875,6 @@
         <member name="T:NewLife.Reflection.AssemblyX">
             <summary>程序集辅助类。使用Create创建，保证每个程序集只有一个辅助类</summary>
         </member>
-        <member name="T:NewLife.Reflection.FastIndexAccessor">
-            <summary>快速索引器接口的默认实现</summary>
-        </member>
-        <member name="T:NewLife.Reflection.IIndexAccessor">
-            <summary>
-            索引器接访问口。
-            该接口用于通过名称快速访问对象属性或字段（属性优先）。
-            </summary>
-        </member>
-        <member name="P:NewLife.Reflection.IIndexAccessor.Item(System.String)">
-            <summary>获取/设置 指定名称的属性或字段的值</summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Reflection.FastIndexAccessor.GetValue(System.Object,System.String)">
-            <summary>获取目标对象指定属性字段的值</summary>
-            <param name="target">目标对象</param>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Reflection.FastIndexAccessor.TryGetValue(System.Object,System.String,System.Object@)">
-            <summary>尝试获取目标对象指定属性字段的值，返回是否成功</summary>
-            <param name="target">目标对象</param>
-            <param name="name"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Reflection.FastIndexAccessor.GetValue``1(System.String)">
-            <summary>获取目标对象指定属性字段的值</summary>
-            <typeparam name="T"></typeparam>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Reflection.FastIndexAccessor.TryGetValue``1(System.String,``0@)">
-            <summary>尝试获取目标对象指定属性字段的值，返回是否成功</summary>
-            <typeparam name="T"></typeparam>
-            <param name="name"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.Reflection.FastIndexAccessor.SetValue(System.Object,System.String,System.Object)">
-            <summary>设置目标对象指定属性字段的值</summary>
-            <param name="target">目标对象</param>
-            <param name="name"></param>
-            <param name="value"></param>
-        </member>
-        <member name="M:NewLife.Reflection.FastIndexAccessor.TrySetValue(System.Object,System.String,System.Object)">
-            <summary>尝试设置目标对象指定属性字段的值，返回是否成功</summary>
-            <param name="target">目标对象</param>
-            <param name="name"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="P:NewLife.Reflection.FastIndexAccessor.Item(System.String)">
-            <summary>
-            获取/设置 字段值。
-            一个索引，反射实现。
-            派生实体类可重写该索引，以避免发射带来的性能损耗
-            </summary>
-            <param name="name">字段名</param>
-            <returns></returns>
-        </member>
         <member name="M:NewLife.Reflection.AssemblyX.Create(System.Reflection.Assembly)">
             <summary>创建程序集辅助对象</summary>
             <param name="asm"></param>
@@ -5938,7 +5947,7 @@
             <returns></returns>
         </member>
         <member name="M:NewLife.Reflection.AssemblyX.ReflectionOnlyGetAssemblies">
-            <summary>获取当前程序域所有程序集的辅助类</summary>
+            <summary>获取当前程序域所有只反射程序集的辅助类</summary>
             <returns></returns>
         </member>
         <member name="M:NewLife.Reflection.AssemblyX.ReflectionOnlyLoad(System.String)">
@@ -5994,6 +6003,18 @@
         </member>
         <member name="P:NewLife.Reflection.AssemblyX.IsSystemAssembly">
             <summary>是否系统程序集</summary>
+        </member>
+        <member name="P:NewLife.Reflection.AssemblyX.Executing">
+            <summary>当前执行代码程序集</summary>
+        </member>
+        <member name="P:NewLife.Reflection.AssemblyX.Entry">
+            <summary>入口程序集</summary>
+        </member>
+        <member name="P:NewLife.Reflection.AssemblyX.Calling">
+            <summary>调用者</summary>
+        </member>
+        <member name="P:NewLife.Reflection.AssemblyX.AssemblyPaths">
+            <summary>程序集目录集合</summary>
         </member>
         <member name="T:NewLife.Serialization.WriteObjectCallback">
             <summary>数据写入方法</summary>
@@ -6108,6 +6129,10 @@
         <member name="M:NewLife.WeakAction`1.op_Implicit(NewLife.WeakAction{`0})~System.Action{`0}">
             <summary>把弱引用事件处理器转换为普通事件处理器</summary>
             <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.WeakAction`1.ToString">
+            <summary>已重载</summary>
             <returns></returns>
         </member>
         <member name="P:NewLife.WeakAction`1.IsAlive">
@@ -7092,6 +7117,17 @@
         <member name="P:NewLife.Reflection.PropertyInfoX.SetHandler">
             <summary>快速调用委托，延迟到首次使用才创建</summary>
         </member>
+        <member name="T:NewLife.Reflection.IIndexAccessor">
+            <summary>
+            索引器接访问口。
+            该接口用于通过名称快速访问对象属性或字段（属性优先）。
+            </summary>
+        </member>
+        <member name="P:NewLife.Reflection.IIndexAccessor.Item(System.String)">
+            <summary>获取/设置 指定名称的属性或字段的值</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="T:NewLife.Reflection.TypeX">
             <summary>类型辅助类</summary>
         </member>
@@ -7797,6 +7833,20 @@
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.ServiceContainer`1.Resolve``1(System.Object,System.Boolean)">
+            <summary>解析类型指定名称的实例</summary>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <param name="id">标识</param>
+            <param name="extend">扩展。若为ture，name为null而找不到时，采用第一个注册项；name不为null而找不到时，采用null注册项</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.ServiceContainer`1.ResolveInstance(System.Type,System.Object,System.Boolean)">
+            <summary>解析类型指定名称的实例</summary>
+            <param name="type"></param>
+            <param name="id">标识</param>
+            <param name="extend"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.ServiceContainer`1.ResolveInstance``1(System.Object,System.Boolean)">
             <summary>解析类型指定名称的实例</summary>
             <typeparam name="TInterface">接口类型</typeparam>
             <param name="id">标识</param>
@@ -8749,6 +8799,57 @@
             <summary>保存到文件中</summary>
             <param name="filename">若为空，则默认为类名加xml后缀</param>
         </member>
+        <member name="T:NewLife.Reflection.FastIndexAccessor">
+            <summary>快速索引器接口的默认实现</summary>
+        </member>
+        <member name="M:NewLife.Reflection.FastIndexAccessor.GetValue(System.Object,System.String)">
+            <summary>获取目标对象指定属性字段的值</summary>
+            <param name="target">目标对象</param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Reflection.FastIndexAccessor.TryGetValue(System.Object,System.String,System.Object@)">
+            <summary>尝试获取目标对象指定属性字段的值，返回是否成功</summary>
+            <param name="target">目标对象</param>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Reflection.FastIndexAccessor.GetValue``1(System.String)">
+            <summary>获取目标对象指定属性字段的值</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Reflection.FastIndexAccessor.TryGetValue``1(System.String,``0@)">
+            <summary>尝试获取目标对象指定属性字段的值，返回是否成功</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Reflection.FastIndexAccessor.SetValue(System.Object,System.String,System.Object)">
+            <summary>设置目标对象指定属性字段的值</summary>
+            <param name="target">目标对象</param>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:NewLife.Reflection.FastIndexAccessor.TrySetValue(System.Object,System.String,System.Object)">
+            <summary>尝试设置目标对象指定属性字段的值，返回是否成功</summary>
+            <param name="target">目标对象</param>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Reflection.FastIndexAccessor.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，反射实现。
+            派生实体类可重写该索引，以避免发射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
         <member name="T:NewLife.Log.CodeTimer">
             <summary>代码性能计时器</summary>
             <remarks>参考了老赵（http://www.cnblogs.com/jeffreyzhao/archive/2009/03/10/codetimer.html）和eaglet（http://www.cnblogs.com/eaglet/archive/2009/03/10/1407791.html）两位的作品</remarks>
@@ -8874,9 +8975,6 @@
         </member>
         <member name="P:NewLife.Log.TextFileLog.LogPath">
             <summary>日志目录</summary>
-        </member>
-        <member name="E:NewLife.Log.TextFileLog.OnWriteLog">
-            <summary>写日志事件。绑定该事件后，XTrace将不再把日志写到日志文件中去。</summary>
         </member>
         <member name="T:NewLife.WeakEventHandler`1">
             <summary>弱引用事件</summary>
@@ -9323,6 +9421,21 @@
         <member name="P:NewLife.IO.ReadWriteMemoryStream.AvailableData">
             <summary>可用数据</summary>
         </member>
+        <member name="T:NewLife.Serialization.RWService">
+            <summary>读写器服务。将来可以改为对象容器支持</summary>
+        </member>
+        <member name="T:NewLife.Serialization.RWKinds">
+            <summary>序列化种类</summary>
+        </member>
+        <member name="F:NewLife.Serialization.RWKinds.Binary">
+            <summary>二进制</summary>
+        </member>
+        <member name="F:NewLife.Serialization.RWKinds.Xml">
+            <summary>Xml</summary>
+        </member>
+        <member name="F:NewLife.Serialization.RWKinds.Json">
+            <summary>Json</summary>
+        </member>
         <member name="T:NewLife.Serialization.ReflectMemberInfo">
             <summary>反射成员信息</summary>
         </member>
@@ -9553,6 +9666,15 @@
             <summary>一个数组是否以另一个数组结尾</summary>
             <param name="source"></param>
             <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Model.ModelExtension">
+            <summary>模型扩展</summary>
+        </member>
+        <member name="M:NewLife.Model.ModelExtension.GetService``1(System.IServiceProvider)">
+            <summary>获取指定类型的服务对象</summary>
+            <typeparam name="T"></typeparam>
+            <param name="provider"></param>
             <returns></returns>
         </member>
         <member name="T:NewLife.Compression.ZipException">

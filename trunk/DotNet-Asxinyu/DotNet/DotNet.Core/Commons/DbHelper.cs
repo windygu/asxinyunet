@@ -4,6 +4,7 @@ using System.Linq;
 using XCode;
 using XCode.DataAccessLayer;
 using XCode.Configuration;
+using XCode.Transform;
 
 
 namespace DotNet.Core.Commons
@@ -87,7 +88,7 @@ namespace DotNet.Core.Commons
         /// </summary>
         /// <param name="fild">字段对象</param>
         /// <returns>对应的随机数据</returns>
-        public static object GetRandomValue(FieldItem fild)
+        private static object GetRandomValue(FieldItem fild)
         {            
             switch (Type.GetTypeCode(fild.Field.DataType))
             {
@@ -119,7 +120,7 @@ namespace DotNet.Core.Commons
         /// <param name="originConn">源数据库连接字符串</param>
         /// <param name="desConn">目的数据库连接字符串</param>
         /// <param name="perCount">每次获取的记录数目，如果默认-1则会自动调用函数计算一个合理值</param>
-        public static void CopyDataBase(string originConn,string desConn,int perCount = -1)
+        private static void CopyDataBase(string originConn, string desConn, int perCount = -1)
         {
             //思路：通过源数据库获取架构信息，然后反向工程,然后导出数据            
             DAL dal = DAL.Create(originConn);
@@ -173,8 +174,22 @@ namespace DotNet.Core.Commons
         }
         #endregion
 
-        #region 还原数据库
-
+        #region 拷贝数据库及数据表-Xcode内部实现方法
+        public static void CopyDbData(string origConn, string desConn,bool isAllowIndentity = true )
+        {
+            //DAL.AddConnStr("xxgk", "Data Source=192.168.1.21;Initial Catalog=信息公开;user id=sa;password=Pass@word", null, "mssql");
+            //var dal = DAL.Create("xxgk"); DAL.AddConnStr("xxgk2", "Data Source=XXGK.db;Version=3;", null, "sqlite"); 
+            //File.Delete("XXGK.db");
+            //DAL.ShowSQL = false; 
+            var etf = new EntityTransform();
+            etf.SrcConn = origConn;
+            etf.DesConn = desConn;
+            etf.AllowInsertIdentity = true;
+            //etf.TableNames.Remove("PubInfoLog");
+            //etf.OnTransformTable += (s, e) => { if (e.Arg.Name == "")e.Arg = null; };
+            var rs = etf.Transform(); 
+            Console.WriteLine("共转移：{0}", rs);
+        }
         #endregion
     }
 }

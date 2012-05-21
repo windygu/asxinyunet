@@ -460,6 +460,10 @@
         <member name="T:XCode.DataAccessLayer.IDataColumn">
             <summary>数据列</summary>
         </member>
+        <member name="M:XCode.DataAccessLayer.IDataColumn.Fix">
+            <summary>重新计算修正别名。避免与其它字段名或表名相同，避免关键字</summary>
+            <returns></returns>
+        </member>
         <member name="M:XCode.DataAccessLayer.IDataColumn.Clone(XCode.DataAccessLayer.IDataTable)">
             <summary>克隆到指定的数据表</summary>
             <param name="table"></param>
@@ -518,9 +522,8 @@
         <member name="P:XCode.DataAccessLayer.IDataColumn.DisplayName">
             <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
         </member>
-        <member name="M:XCode.DataAccessLayer.XField.Create(XCode.DataAccessLayer.IDataTable)">
-            <summary>为制定表创建字段</summary>
-            <param name="table"></param>
+        <member name="M:XCode.DataAccessLayer.XField.Fix">
+            <summary>重新计算修正别名。避免与其它字段名或表名相同，避免关键字</summary>
             <returns></returns>
         </member>
         <member name="M:XCode.DataAccessLayer.XField.ToString">
@@ -799,6 +802,171 @@
         </member>
         <member name="P:XCode.DataAccessLayer.XRelation.Table">
             <summary>表</summary>
+        </member>
+        <member name="T:XCode.DataAccessLayer.Model.IModelResolver">
+            <summary>模型解析器接口。解决名称大小写、去前缀、关键字等多个问题</summary>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.GetAlias(XCode.DataAccessLayer.IDataColumn)">
+            <summary>获取别名。过滤特殊符号，过滤_之类的前缀。另外，避免一个表中的字段别名重名</summary>
+            <param name="dc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.GetAlias(System.String)">
+            <summary>获取别名。过滤特殊符号，过滤_之类的前缀。</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.CutPrefix(System.String)">
+            <summary>去除前缀。默认去除第一个_前面部分，去除tbl和table前缀</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.FixWord(System.String)">
+            <summary>自动处理大小写</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.GetDisplayName(System.String,System.String)">
+            <summary>获取显示名，如果描述不存在，则使用名称，否则使用描述前面部分，句号（中英文皆可）、换行分隔</summary>
+            <param name="name"></param>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.Connect(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
+            <summary>连接两个表。
+            实际上是猜测它们之间的关系，根据一个字段名是否等于另一个表的表名加某个字段名来判断是否存在关系。</summary>
+            <param name="table"></param>
+            <param name="rtable"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.GuessRelation(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable,System.String,XCode.DataAccessLayer.IDataColumn,System.String)">
+            <summary>猜测表间关系</summary>
+            <param name="table"></param>
+            <param name="rtable"></param>
+            <param name="rname"></param>
+            <param name="column"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.Fix(XCode.DataAccessLayer.IDataTable)">
+            <summary>修正数据</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.IModelResolver.Fix(XCode.DataAccessLayer.IDataColumn)">
+            <summary>修正数据列</summary>
+            <param name="column"></param>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.IModelResolver.UseID">
+            <summary>是否ID作为id的格式化，否则使用原名。默认使用ID</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.IModelResolver.AutoCutPrefix">
+            <summary>是否自动去除前缀。默认启用</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.IModelResolver.AutoCutTableName">
+            <summary>是否自动去除字段前面的表名。默认启用</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.IModelResolver.AutoFixWord">
+            <summary>是否自动纠正大小写。默认启用</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.IModelResolver.FilterPrefixs">
+            <summary>要过滤的前缀</summary>
+        </member>
+        <member name="T:XCode.DataAccessLayer.Model.ModelResolver">
+            <summary>模型解析器。解决名称大小写、去前缀、关键字等多个问题</summary>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.GetAlias(XCode.DataAccessLayer.IDataColumn)">
+            <summary>获取别名。过滤特殊符号，过滤_之类的前缀。另外，避免一个表中的字段别名重名</summary>
+            <param name="dc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.GetAlias(System.String)">
+            <summary>获取别名。过滤特殊符号，过滤_之类的前缀。</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.CutPrefix(System.String)">
+            <summary>去除前缀。默认去除第一个_前面部分，去除tbl和table前缀</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.FixWord(System.String)">
+            <summary>自动处理大小写</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="F:XCode.DataAccessLayer.Model.ModelResolver._CG">
+            <summary>代码生成器</summary>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.IsKeyWord(System.String)">
+            <summary>是否关键字</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.GetDisplayName(System.String,System.String)">
+            <summary>获取显示名，如果描述不存在，则使用名称，否则使用描述前面部分，句号（中英文皆可）、换行分隔</summary>
+            <param name="name"></param>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.Connect(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
+            <summary>连接两个表。
+            实际上是猜测它们之间的关系，根据一个字段名是否等于另一个表的表名加某个字段名来判断是否存在关系。</summary>
+            <param name="table"></param>
+            <param name="rtable"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.GuessRelation(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable,System.String,XCode.DataAccessLayer.IDataColumn,System.String)">
+            <summary>猜测表间关系</summary>
+            <param name="table"></param>
+            <param name="rtable"></param>
+            <param name="rname"></param>
+            <param name="column"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.Fix(XCode.DataAccessLayer.IDataTable)">
+            <summary>修正数据</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.FixRelationBySingleIndex(XCode.DataAccessLayer.IDataTable)">
+            <summary>根据单字段索引修正对应的关系</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.CreateIndexForRelation(XCode.DataAccessLayer.IDataTable)">
+            <summary>给所有关系字段建立索引</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.FixPrimaryByIndex(XCode.DataAccessLayer.IDataTable)">
+            <summary>从索引中修正主键</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.CreateUniqueIndexForIdentity(XCode.DataAccessLayer.IDataTable)">
+            <summary>给非主键的自增字段建立唯一索引</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.FixIndex(XCode.DataAccessLayer.IDataTable)">
+            <summary>索引应该具有跟字段一样的唯一和主键约束</summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.Model.ModelResolver.Fix(XCode.DataAccessLayer.IDataColumn)">
+            <summary>修正数据列</summary>
+            <param name="column"></param>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.ModelResolver.Current">
+            <summary>当前名称解析器</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.ModelResolver.UseID">
+            <summary>是否ID作为id的格式化，否则使用原名。默认使用ID</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.ModelResolver.AutoCutPrefix">
+            <summary>是否自动去除前缀。默认启用</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.ModelResolver.AutoCutTableName">
+            <summary>是否自动去除字段前面的表名。默认启用</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.ModelResolver.AutoFixWord">
+            <summary>是否自动纠正大小写。默认启用</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.Model.ModelResolver.FilterPrefixs">
+            <summary>要过滤的前缀</summary>
         </member>
         <member name="F:XCode.Cache.CacheItem._TableNames">
             <summary>所依赖的表的表名</summary>
@@ -2154,14 +2322,27 @@
             <param name="rcolumnName"></param>
             <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.Connect(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
-            <summary>连接两个表，实际上是猜测它们之间的关系，根据一个字段名是否等于另一个表的表名加某个字段名来判断是否存在关系。</summary>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.ReadXml(XCode.DataAccessLayer.IDataTable,System.Xml.XmlReader)">
+            <summary>读取</summary>
             <param name="table"></param>
-            <param name="rtable"></param>
+            <param name="reader"></param>
+            <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.Fix(XCode.DataAccessLayer.IDataTable)">
-            <summary>修正数据</summary>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.WriteXml(XCode.DataAccessLayer.IDataTable,System.Xml.XmlWriter)">
+            <summary>写入</summary>
             <param name="table"></param>
+            <param name="writer"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.ReadXml(System.Xml.XmlReader,System.Object)">
+            <summary>读取</summary>
+            <param name="reader"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.WriteXml(System.Xml.XmlWriter,System.Object,System.Boolean)">
+            <summary>写入</summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="writeDefaultValueMember">是否写数值为默认值的成员。为了节省空间，默认不写。</param>
         </member>
         <member name="M:XCode.DataAccessLayer.ModelHelper.CopyFrom(XCode.DataAccessLayer.IDataTable,XCode.DataAccessLayer.IDataTable)">
             <summary>复制数据表到另一个数据表，不复制数据列、索引和关系</summary>
@@ -2194,29 +2375,9 @@
             <param name="des"></param>
             <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetAlias(XCode.DataAccessLayer.IDataColumn)">
-            <summary>获取别名。过滤特殊符号，过滤_之类的前缀。另外，避免一个表中的字段别名重名</summary>
-            <param name="dc"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetAlias(System.String)">
-            <summary>获取别名。过滤特殊符号，过滤_之类的前缀。</summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.FixWord(System.String)">
-            <summary>自动处理大小写</summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.ModelHelper.GetDisplayName(System.String,System.String)">
-            <summary>获取显示名，如果描述不存在，则使用名称，否则使用描述前面部分，句号（中英文皆可）分隔</summary>
-            <param name="name"></param>
-            <param name="description"></param>
-            <returns></returns>
-        </member>
-        <member name="P:XCode.DataAccessLayer.ModelHelper.CGS">
-            <summary>代码生成器</summary>
+        <member name="M:XCode.DataAccessLayer.ModelHelper.Connect(System.Collections.Generic.IEnumerable{XCode.DataAccessLayer.IDataTable})">
+            <summary>表间连接，猜测关系</summary>
+            <param name="tables"></param>
         </member>
         <member name="T:XCode.DataAccessLayer.FileDbBase">
             <summary>文件型数据库</summary>
@@ -5995,6 +6156,43 @@
         <member name="P:XCode.BindColumnAttribute.IsUnicode">
             <summary>是否Unicode</summary>
         </member>
+        <member name="T:XCode.Transform.EntityTransform">
+            <summary>实体转换</summary>
+        </member>
+        <member name="M:XCode.Transform.EntityTransform.Transform">
+            <summary>把一个链接的数据全部导入到另一个链接</summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCode.Transform.EntityTransform.TransformTable(XCode.IEntityOperate,System.Func{System.Int32,System.Int32,XCode.IEntityList})">
+            <summary>把一个表的数据全部导入到另一个表</summary>
+            <param name="eop">实体操作者。</param>
+            <param name="getData">用于获取数据的委托</param>
+            <returns></returns>
+        </member>
+        <member name="P:XCode.Transform.EntityTransform.SrcConn">
+            <summary>源</summary>
+        </member>
+        <member name="P:XCode.Transform.EntityTransform.DesConn">
+            <summary>目的</summary>
+        </member>
+        <member name="P:XCode.Transform.EntityTransform.TableNames">
+            <summary>要导数据的表，为空表示全部</summary>
+        </member>
+        <member name="P:XCode.Transform.EntityTransform.BatchSize">
+            <summary>每批处理多少行数据，默认1000</summary>
+        </member>
+        <member name="P:XCode.Transform.EntityTransform.AllowInsertIdentity">
+            <summary>是否允许插入自增列</summary>
+        </member>
+        <member name="P:XCode.Transform.EntityTransform.OnlyTransformToEmptyTable">
+            <summary>仅迁移到空表。对于已有数据的表，不执行迁移。</summary>
+        </member>
+        <member name="E:XCode.Transform.EntityTransform.OnTransformTable">
+            <summary>转换表时触发。如果参数被置空，表示不转换该表</summary>
+        </member>
+        <member name="E:XCode.Transform.EntityTransform.OnTransformEntity">
+            <summary>转换实体时触发</summary>
+        </member>
         <member name="T:XCode.Cache.SingleEntityCache`2">
             <summary>单对象缓存</summary>
             <remarks>
@@ -6429,11 +6627,11 @@
             <summary>获取架构</summary>
             <returns></returns>
         </member>
-        <member name="M:XCode.DataAccessLayer.XTable.ReadXml(System.Xml.XmlReader)">
+        <member name="M:XCode.DataAccessLayer.XTable.System#Xml#Serialization#IXmlSerializable#ReadXml(System.Xml.XmlReader)">
             <summary>读取</summary>
             <param name="reader"></param>
         </member>
-        <member name="M:XCode.DataAccessLayer.XTable.WriteXml(System.Xml.XmlWriter)">
+        <member name="M:XCode.DataAccessLayer.XTable.System#Xml#Serialization#IXmlSerializable#WriteXml(System.Xml.XmlWriter)">
             <summary>写入</summary>
             <param name="writer"></param>
         </member>
@@ -6521,11 +6719,6 @@
         </member>
         <member name="M:XCode.DataAccessLayer.DbFactory.Create(XCode.DataAccessLayer.DatabaseType)">
             <summary>根据数据库类型创建提供者</summary>
-            <param name="dbType"></param>
-            <returns></returns>
-        </member>
-        <member name="M:XCode.DataAccessLayer.DbFactory.GetDefault(XCode.DataAccessLayer.DatabaseType)">
-            <summary>根据名称获取默认提供者</summary>
             <param name="dbType"></param>
             <returns></returns>
         </member>
@@ -6687,6 +6880,9 @@
         </member>
         <member name="P:XCode.DataAccessLayer.SQLite.DateTimeMin">
             <summary>最小时间</summary>
+        </member>
+        <member name="P:XCode.DataAccessLayer.SQLite.NewGuid">
+            <summary>获取Guid的函数，@老树 说SQLite没有这个函数</summary>
         </member>
         <member name="T:XCode.DataAccessLayer.SQLiteSession">
             <summary>SQLite数据库</summary>
