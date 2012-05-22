@@ -67,21 +67,19 @@ namespace ResourceManage
         public static void ScanPageContent()
         {
             //从tb_typelist类型列表中取出所有的列表地址数据
+            //每个子类更新的页面数，给tb_typelist表增加一个默认更新页数的字段
             var typeListUrl = tb_typelist.FindAll();
-            foreach (var item in typeListUrl)
-            {
-                try
+            int count = 0;
+            try
+            {                
+                foreach (var item in typeListUrl)
                 {
                     AnalyNormalPage(item);
-                }
-                catch (Exception err)
-                {
-                }
-                finally
-                {
-                    //日志
+                    count++;
                 }
             }
+            catch (Exception err) {XTrace.WriteException(err);}
+            finally { XTrace.WriteLine("扫描{0}个常规资源子类的页面完成",count ); }
         }
         //分析常规页面
         private static void AnalyNormalPage(tb_typelist item)
@@ -94,37 +92,25 @@ namespace ResourceManage
                 HtmlNodeCollection hc = doc.DocumentNode.SelectNodes("//@herf");
                 foreach (var s in hc)
                 {
-                    string urls = s.Attributes["href"].Value.ToString();
                     int count = 0;
-                    if (Regex.IsMatch(urls, pagePatten))
-                    {
-                        #region 数据库操作
-                        //不包括“全文”字样
-                        string name = s.InnerText.Replace("\r\n", "").Trim();
-                        string url = verycdWebSite + urls;
-                        if (name != "" && !name.Contains("全文"))
+                    string urls = s.Attributes["href"].Value.ToString();
+                    string url = verycdWebSite + urls;
+                    try
+                    {                       
+                        if (Regex.IsMatch(urls, pagePatten))
                         {
-                            //写入加入到页面数据库，如果页面已经存在，则检查更新时间，如更新时间>10天，则更新状态                            
-                            if (tb_resoucepageslist.FindCount(tb_resoucepageslist._.PageURL, url) < 1)
+                            #region 数据库操作
+                            //不包括“全文”字样
+                            string name = s.InnerText.Replace("\r\n", "").Trim();
+
+                            if (name != "" && !name.Contains("全文"))
                             {
-                                //直接插入
-                                tb_resoucepageslist model = new tb_resoucepageslist();
-                                model.PageURL = url;
-                                model.ClassName = item.TypeName;
-                                model.CollectionMark = 0;
-                                model.InfoOrigin = item.URL;
-                                model.PageTitle = name;
-                                model.ResouceType = item.ResType;
-                                model.SubClassName = item.SubClassName;
-                                model.UpdateTime = DateTime.Now;
-                                count++;
-                            }
-                            else
-                            {
-                                //更新状态
-                                tb_resoucepageslist model = tb_resoucepageslist.FindByPageURL(url);
-                                if ((DateTime.Now - model.UpdateTime).TotalDays > 5)
+                                //写入加入到页面数据库，如果页面已经存在，则检查更新时间，如更新时间>10天，则更新状态                            
+                                if (tb_resoucepageslist.FindCount(tb_resoucepageslist._.PageURL, url) < 1)
                                 {
+                                    //直接插入
+                                    tb_resoucepageslist model = new tb_resoucepageslist();
+                                    model.PageURL = url;
                                     model.ClassName = item.TypeName;
                                     model.CollectionMark = 0;
                                     model.InfoOrigin = item.URL;
@@ -132,13 +118,31 @@ namespace ResourceManage
                                     model.ResouceType = item.ResType;
                                     model.SubClassName = item.SubClassName;
                                     model.UpdateTime = DateTime.Now;
-                                    model.Update();
                                     count++;
                                 }
+                                else
+                                {
+                                    //更新状态
+                                    tb_resoucepageslist model = tb_resoucepageslist.FindByPageURL(url);
+                                    if ((DateTime.Now - model.UpdateTime).TotalDays > 5)
+                                    {
+                                        model.ClassName = item.TypeName;
+                                        model.CollectionMark = 0;
+                                        model.InfoOrigin = item.URL;
+                                        model.PageTitle = name;
+                                        model.ResouceType = item.ResType;
+                                        model.SubClassName = item.SubClassName;
+                                        model.UpdateTime = DateTime.Now;
+                                        model.Update();
+                                        count++;
+                                    }
+                                }
                             }
-                        }
-                        #endregion
+                            #endregion
+                        }                        
                     }
+                    catch (Exception err) {XTrace.WriteException(err);}
+                    finally { XTrace.WriteLine("通过网页:{0},获取到更新记录页面{1}条", url, count); }
                 }
             }
         }
