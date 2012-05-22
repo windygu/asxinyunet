@@ -50,10 +50,11 @@ namespace ResourceManage
         {
             //从tb_typelist类型列表中取出所有的列表地址数据
             var typeListUrl = tb_typelist.FindAll().FindAll(n => n.URL.Contains("archives"));
-            Parallel.For(0, typeListUrl.Count, (i) => {
+            Parallel.For(0, typeListUrl.Count, (i) =>
+            {
                 GetTypePageList(typeListUrl[i].URL, typeListUrl[i].TypeName, typeListUrl[i].SubClassName,
-                    (ResouceType)Enum.Parse(typeof(ResouceType), typeListUrl[i].ResType, true));            
-            });           
+                    (ResouceType)Enum.Parse(typeof(ResouceType), typeListUrl[i].ResType, true));
+            });
         }
         #endregion
 
@@ -65,15 +66,15 @@ namespace ResourceManage
         {
             //从tb_typelist类型列表中取出所有的列表地址数据
             //每个子类更新的页面数，给tb_typelist表增加一个默认更新页数的字段
-            var typeListUrl = tb_typelist.FindAll();
+            var typeListUrl = tb_typelist.FindAll().FindAll(n => n.URL.Contains("sto")); ;
             int count = 0;
             try
             {
-                foreach (var item in typeListUrl)
+                Parallel.For(0, typeListUrl.Count, (i) =>
                 {
-                    AnalyNormalPage(item);
+                    AnalyNormalPage(typeListUrl[i]);
                     count++;
-                }
+                });
             }
             catch (Exception err) { XTrace.WriteException(err); }
             finally { XTrace.WriteLine("扫描{0}个常规资源子类的页面完成", count); }
@@ -81,16 +82,11 @@ namespace ResourceManage
         //分析常规页面
         private static void AnalyNormalPage(tb_typelist item)
         {
-            //循环进行
-            if (item.URL.Contains("sto"))//只扫描子类首页内容更新的页面
+            for (int i = 1; i <= 10; i++)
             {
-                //TODO:处理逻辑，只匹配固定模式的,正则匹配 \d{1,10} 
-                for (int i = 1; i <= 10; i++)
+                if (GetPageContentHerf(item, item.URL + "page" + i.ToString()) > 0.85)
                 {
-                    if (GetPageContentHerf(item, item.URL + "page" + i.ToString()) > 0.85)
-                    {
-                        return;
-                    }
+                    return;
                 }
             }
         }
@@ -160,18 +156,17 @@ namespace ResourceManage
         //对资源集合数据库中的资源逐一获取下载链接
         public static void StartCollectResoucePages()
         {
-            while (tb_fistclasslist.FindCount(tb_fistclasslist._.CollectionMark, 0) > 0)//还有未采集的
+            try
             {
-                try
+                var list = tb_fistclasslist.FindAll(tb_fistclasslist._.CollectionMark, 0);
+                Parallel.For(0, list.Count, (i) =>
                 {
-                    tb_fistclasslist pageModel = tb_fistclasslist.Find(tb_fistclasslist._.CollectionMark, 0);
-                    GetPageResouceList(pageModel);//采集此列表                    
-                }
-                catch (Exception err)
-                {
-                    XTrace.WriteException(err);
-                    continue;
-                }
+                    GetPageResouceList(list[i]);
+                });
+            }
+            catch (Exception err)
+            {
+                XTrace.WriteException(err);
             }
         }
         #endregion
@@ -179,12 +174,16 @@ namespace ResourceManage
         #region 开始采集每个页面的链接信息
         public static void StartCollectResouceDownLoadLink()
         {
+            //数据量比较大一点，因此要分组进行            
             while (tb_resoucepageslist.FindCount(tb_resoucepageslist._.CollectionMark, 0) > 0)//还有未采集的
-            {
+            {   //每次先取15条
                 try
                 {
-                    tb_resoucepageslist pageModel = tb_resoucepageslist.Find(tb_resoucepageslist._.CollectionMark, 0);
-                    GetResoucePageInfo(pageModel);//采集此列表
+                    var list = tb_resoucepageslist.FindAllByName(tb_resoucepageslist._.CollectionMark, 0,"", 0, 15);
+                    Parallel.For(0, list.Count, (i) =>
+                    {
+                        GetResoucePageInfo(list[i]);
+                    });
                 }
                 catch (Exception err)
                 {
