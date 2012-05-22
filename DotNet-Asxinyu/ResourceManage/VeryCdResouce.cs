@@ -188,7 +188,7 @@ namespace ResourceManage
         }
         #endregion
 
-        public static void Test()
+        protected static void Test()
         {
             string url = @"http://www.verycd.com/sto/book/eco/";
             HtmlDocument doc = CaptureWebSite.GetHtmlDocument(url, VerycdEncoding);
@@ -337,7 +337,7 @@ namespace ResourceManage
 
         #region 初始化获取资源页面
         //根据大类资源集合网址来提取资源页面集合
-        public static void StartCollectResouceList()
+        protected static void StartCollectResouceList()
         {
             string firClassName = "图书";
             ResouceType resType = ResouceType.EBook;
@@ -375,8 +375,6 @@ namespace ResourceManage
                 }
             }
         }
-        #endregion
-
-        
+        #endregion        
     }
 }
