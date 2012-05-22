@@ -27,7 +27,7 @@ namespace DotNet.WinForm.Controls
     /// <summary>
     /// 通用数据管理控件
     /// //TODO:还需要考虑一种外部数据加载进来,只单纯的显示和分页的情况，即数据显示用
-    /// 2012-05-21 发现分页和查询的bug,向分页记录显示有问题
+    /// 2012-05-21 发现分页和查询的bug,向分页记录显示有问题,已经修复
     /// 2012-04-14 增加右键菜单属性，进一步重构与精简
     /// 2012-04-11 开始借鉴WHC控件的功能，增加打印，并优化菜单生成方式，数据行显示
     /// 2012-03-05 可以在此基础上，对控件进行集成，以完成更多的综合操作功能。特别是对dgv中数据的操作
@@ -225,6 +225,9 @@ namespace DotNet.WinForm.Controls
                 this.splitContainer1.SplitterDistance = this.Size.Height - toolStrip1.Height - stausInfoShow1.Height;
             }
             this.cutSql = "";
+            this.toolAdd.Enabled = ControlParams.IsEnableAddBtn;
+            this.toolStripSetting.Enabled = ControlParams.IsEnableSettingBtn;
+            this.toolPrint.Enabled = ControlParams.IsEnablePrintBtn;
         }
         #endregion
 
@@ -237,9 +240,11 @@ namespace DotNet.WinForm.Controls
             //开启分页的情况下
             if (ControlParams.IsEnablePaging)
             {
-                winPage.RecordCount = EntityOper.FindCount();
+                winPage.RecordCount = EntityOper.FindCount(cutSql, "", "", 0, 0);//获取当前查询的记录总数
                 btList = EntityOper.FindAll(cutSql, "", "", (winPage.PageIndex - 1) * winPage.PageSize,
                                             winPage.PageSize);
+                //更新分页显示数据
+
             }
             else //不需要分页的情况下
                 btList = EntityOper.FindAll(cutSql, "", "", 0, 0);           
