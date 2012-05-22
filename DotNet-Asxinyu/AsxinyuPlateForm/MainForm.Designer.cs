@@ -33,12 +33,12 @@
             this.基础数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lottickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.资源管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.页面管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ed2k链接管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.资源管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.系统工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.资源管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.页面管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ed2k链接管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +88,26 @@
             this.资源管理ToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.资源管理ToolStripMenuItem.Text = "资源采集";
             // 
+            // 页面管理ToolStripMenuItem
+            // 
+            this.页面管理ToolStripMenuItem.Name = "页面管理ToolStripMenuItem";
+            this.页面管理ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.页面管理ToolStripMenuItem.Text = "页面管理";
+            this.页面管理ToolStripMenuItem.Click += new System.EventHandler(this.页面管理ToolStripMenuItem_Click);
+            // 
+            // ed2k链接管理ToolStripMenuItem
+            // 
+            this.ed2k链接管理ToolStripMenuItem.Name = "ed2k链接管理ToolStripMenuItem";
+            this.ed2k链接管理ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.ed2k链接管理ToolStripMenuItem.Text = "Ed2k链接管理";
+            this.ed2k链接管理ToolStripMenuItem.Click += new System.EventHandler(this.ed2k链接管理ToolStripMenuItem_Click);
+            // 
+            // 资源管理ToolStripMenuItem1
+            // 
+            this.资源管理ToolStripMenuItem1.Name = "资源管理ToolStripMenuItem1";
+            this.资源管理ToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
+            this.资源管理ToolStripMenuItem1.Text = "资源管理";
+            // 
             // 系统工具ToolStripMenuItem
             // 
             this.系统工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -109,26 +129,6 @@
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
-            // 
-            // 资源管理ToolStripMenuItem1
-            // 
-            this.资源管理ToolStripMenuItem1.Name = "资源管理ToolStripMenuItem1";
-            this.资源管理ToolStripMenuItem1.Size = new System.Drawing.Size(84, 20);
-            this.资源管理ToolStripMenuItem1.Text = "资源管理";
-            // 
-            // 页面管理ToolStripMenuItem
-            // 
-            this.页面管理ToolStripMenuItem.Name = "页面管理ToolStripMenuItem";
-            this.页面管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.页面管理ToolStripMenuItem.Text = "页面管理";
-            this.页面管理ToolStripMenuItem.Click += new System.EventHandler(this.页面管理ToolStripMenuItem_Click);
-            // 
-            // ed2k链接管理ToolStripMenuItem
-            // 
-            this.ed2k链接管理ToolStripMenuItem.Name = "ed2k链接管理ToolStripMenuItem";
-            this.ed2k链接管理ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.ed2k链接管理ToolStripMenuItem.Text = "Ed2k链接管理";
-            this.ed2k链接管理ToolStripMenuItem.Click += new System.EventHandler(this.ed2k链接管理ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
