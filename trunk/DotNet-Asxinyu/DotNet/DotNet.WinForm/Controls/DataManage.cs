@@ -27,6 +27,7 @@ namespace DotNet.WinForm.Controls
     /// <summary>
     /// 通用数据管理控件
     /// //TODO:还需要考虑一种外部数据加载进来,只单纯的显示和分页的情况，即数据显示用
+    /// 2012-05-21 发现分页和查询的bug,向分页记录显示有问题
     /// 2012-04-14 增加右键菜单属性，进一步重构与精简
     /// 2012-04-11 开始借鉴WHC控件的功能，增加打印，并优化菜单生成方式，数据行显示
     /// 2012-03-05 可以在此基础上，对控件进行集成，以完成更多的综合操作功能。特别是对dgv中数据的操作
@@ -374,6 +375,10 @@ namespace DotNet.WinForm.Controls
         protected virtual void InitialDgvColumns(Dictionary<string,string[]> NamesAndBangdingSource)
         {
             //根据实体的信息,来添加列,并除去不必要的列removeColumnsName
+            if (NamesAndBangdingSource ==null )
+            {
+                return;
+            }
             foreach (var item in EntityOper.Table.Fields )
             {
                 //if (removeColumnsName.Contains(item.Name)) continue;//是删除对象则继续下一条

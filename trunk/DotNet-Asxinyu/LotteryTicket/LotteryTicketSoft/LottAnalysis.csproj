@@ -139,6 +139,14 @@
       <Project>{C33A4523-C093-4901-BF6B-73B6AB1AB688}</Project>
       <Name>DotNet.WinForm</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ResouceCollector\ResouceEntity\ResouceEntity.csproj">
+      <Project>{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}</Project>
+      <Name>ResouceEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ResourceManage\ResourceManage.csproj">
+      <Project>{BD3AC3DC-3E77-4CA5-910D-10A70C37849B}</Project>
+      <Name>ResourceManage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LotTick\LotTick.csproj">
       <Project>{1A822656-0ABF-407D-A184-7CA95CF32BF9}</Project>
       <Name>LotTick</Name>

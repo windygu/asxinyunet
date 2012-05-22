@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,12 @@ using System.Windows.Forms;
 using DotNet.Tools;
 using DotNet.Core;
 using DotNet.WinForm.Controls;
+using DotNet.WinForm;
+using ResourceManage;
+using XCode;
+using XCode.DataAccessLayer;
+using ResouceEntity;
+#endregion
 
 namespace AsxinyuPlateForm
 {
@@ -18,7 +25,7 @@ namespace AsxinyuPlateForm
         {
             InitializeComponent();
         }
-
+        string AssemblyName = "";
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -28,5 +35,21 @@ namespace AsxinyuPlateForm
         {
             ConvertDB.CreateForm().Show();
         }
+
+        private void 页面管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+        }
+
+        private void ed2k链接管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataControlParams CP = new DataControlParams("", typeof(tb_resoucelink));
+            CP.IsEnableAddBtn = false;
+            CP.IsEnablePaging = true;
+            CP.IsEnableAddBtn = false;
+            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
     }
 }
