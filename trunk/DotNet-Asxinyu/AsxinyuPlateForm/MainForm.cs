@@ -37,7 +37,14 @@ namespace AsxinyuPlateForm
         }
 
         private void 页面管理ToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
+        {
+            DataControlParams CP = new DataControlParams("", typeof(tb_resoucepageslist));
+            CP.IsEnableAddBtn = false;
+            CP.IsEnablePaging = true;
+            CP.IsEnableAddBtn = false;
+            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void ed2k链接管理ToolStripMenuItem_Click(object sender, EventArgs e)
