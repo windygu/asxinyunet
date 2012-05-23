@@ -89,8 +89,8 @@ namespace ResouceEntity
             //return Meta.SingleCache[id];
         }
 
-        /// <summary>根据资源网址查找</summary>
-        /// <param name="resoucename">资源网址</param>
+        /// <summary>根据资源名称查找</summary>
+        /// <param name="resoucename">资源名称</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public static EntityList<tb_resoucelink> FindAllByResouceName(String resoucename)

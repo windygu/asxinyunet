@@ -23,7 +23,7 @@ namespace ResouceEntity
         /// <summary>编号</summary>
         [DisplayName("编号")]
         [Description("编号")]
-        [DataObjectField(true, true, false, 10)]
+        [DataObjectField(true, false, false, 10)]
         [BindColumn(1, "Id", "编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 Id
         {
@@ -44,11 +44,11 @@ namespace ResouceEntity
         }
 
         private String _ResouceName;
-        /// <summary>资源网址</summary>
-        [DisplayName("资源网址")]
-        [Description("资源网址")]
+        /// <summary>资源名称</summary>
+        [DisplayName("资源名称")]
+        [Description("资源名称")]
         [DataObjectField(false, false, true, 250)]
-        [BindColumn(3, "ResouceName", "资源网址", null, "varchar(250)", 0, 0, false)]
+        [BindColumn(3, "ResouceName", "资源名称", null, "varchar(250)", 0, 0, false)]
         public virtual String ResouceName
         {
             get { return _ResouceName; }
@@ -67,13 +67,13 @@ namespace ResouceEntity
             set { if (OnPropertyChanging("ResouceLink", value)) { _ResouceLink = value; OnPropertyChanged("ResouceLink"); } }
         }
 
-        private Int32 _Size;
+        private UInt64 _Size;
         /// <summary>文件大小</summary>
         [DisplayName("文件大小")]
         [Description("文件大小")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(5, "Size", "文件大小", null, "int(11)", 10, 0, false)]
-        public virtual Int32 Size
+        [DataObjectField(false, false, true, 19)]
+        [BindColumn(5, "Size", "文件大小", null, "bigint(20) unsigned", 19, 0, false)]
+        public virtual UInt64 Size
         {
             get { return _Size; }
             set { if (OnPropertyChanging("Size", value)) { _Size = value; OnPropertyChanged("Size"); } }
@@ -214,7 +214,7 @@ namespace ResouceEntity
                     case "ResouceMD5" : _ResouceMD5 = Convert.ToString(value); break;
                     case "ResouceName" : _ResouceName = Convert.ToString(value); break;
                     case "ResouceLink" : _ResouceLink = Convert.ToString(value); break;
-                    case "Size" : _Size = Convert.ToInt32(value); break;
+                    case "Size" : _Size = Convert.ToUInt64(value); break;
                     case "ClassName" : _ClassName = Convert.ToString(value); break;
                     case "SubClassName" : _SubClassName = Convert.ToString(value); break;
                     case "ResouceType" : _ResouceType = Convert.ToString(value); break;
@@ -239,7 +239,7 @@ namespace ResouceEntity
             ///<summary>资源MD5值</summary>
             public static readonly Field ResouceMD5 = FindByName("ResouceMD5");
 
-            ///<summary>资源网址</summary>
+            ///<summary>资源名称</summary>
             public static readonly Field ResouceName = FindByName("ResouceName");
 
             ///<summary>下载链接</summary>
@@ -287,14 +287,14 @@ namespace ResouceEntity
         /// <summary>资源MD5值</summary>
         String ResouceMD5 { get; set; }
 
-        /// <summary>资源网址</summary>
+        /// <summary>资源名称</summary>
         String ResouceName { get; set; }
 
         /// <summary>下载链接</summary>
         String ResouceLink { get; set; }
 
         /// <summary>文件大小</summary>
-        Int32 Size { get; set; }
+        UInt64 Size { get; set; }
 
         /// <summary>一级大类名称</summary>
         String ClassName { get; set; }
