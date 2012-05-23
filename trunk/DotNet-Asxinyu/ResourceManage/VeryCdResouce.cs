@@ -40,6 +40,7 @@ namespace ResourceManage
         public static string verycdWebSite = @"http://www.verycd.com";
         public static Encoding VerycdEncoding = Encoding.UTF8;
         public static string pagePatten = @"/topics/\d{1,12}/";//匹配资源页面链接的正则表达式
+        public static string Href = "href";
         #endregion
 
         #region 扫描常规资源列表区
@@ -50,6 +51,7 @@ namespace ResourceManage
         {
             //从tb_typelist类型列表中取出所有的列表地址数据
             var typeListUrl = tb_typelist.FindAll().FindAll(n => n.URL.Contains("archives"));
+            if (typeListUrl.Count < 1) return;
             Parallel.For(0, typeListUrl.Count, (i) =>
             {
                 GetTypePageList(typeListUrl[i].URL, typeListUrl[i].TypeName, typeListUrl[i].SubClassName,
@@ -66,7 +68,8 @@ namespace ResourceManage
         {
             //从tb_typelist类型列表中取出所有的列表地址数据
             //每个子类更新的页面数，给tb_typelist表增加一个默认更新页数的字段
-            var typeListUrl = tb_typelist.FindAll().FindAll(n => n.URL.Contains("sto")); ;
+            var typeListUrl = tb_typelist.FindAll().FindAll(n => n.URL.Contains("sto"));
+            if (typeListUrl.Count < 1) return;
             int count = 0;
             try
             {
@@ -94,7 +97,8 @@ namespace ResourceManage
         private static double GetPageContentHerf(tb_typelist item, string curUrl)
         {
             HtmlDocument doc = CaptureWebSite.GetHtmlDocument(curUrl, VerycdEncoding);
-            HtmlNodeCollection hc = doc.DocumentNode.SelectNodes("//@herf");
+            HtmlNodeCollection hc = doc.DocumentNode.SelectNodes("//@href");
+            if (hc == null || hc.Count == 0) return 0;
             int count = 0;
             try
             {
@@ -117,11 +121,12 @@ namespace ResourceManage
                                 model.PageURL = url;
                                 model.ClassName = item.TypeName;
                                 model.CollectionMark = 0;
-                                model.InfoOrigin = item.URL;
+                                model.InfoOrigin = "VeryCd";
                                 model.PageTitle = name;
                                 model.ResouceType = item.ResType;
                                 model.SubClassName = item.SubClassName;
                                 model.UpdateTime = DateTime.Now;
+                                model.Insert();
                                 count++;
                             }
                             else
@@ -159,6 +164,7 @@ namespace ResourceManage
             try
             {
                 var list = tb_fistclasslist.FindAll(tb_fistclasslist._.CollectionMark, 0);
+                if (list.Count < 1) return;
                 Parallel.For(0, list.Count, (i) =>
                 {
                     GetPageResouceList(list[i]);
@@ -180,6 +186,7 @@ namespace ResourceManage
                 try
                 {
                     var list = tb_resoucepageslist.FindAllByName(tb_resoucepageslist._.CollectionMark, 0,"", 0, 15);
+                    if (list.Count < 1) return;
                     Parallel.For(0, list.Count, (i) =>
                     {
                         GetResoucePageInfo(list[i]);
