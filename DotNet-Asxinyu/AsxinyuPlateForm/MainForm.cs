@@ -25,8 +25,7 @@ namespace AsxinyuPlateForm
         public MainForm()
         {
             InitializeComponent();
-        }
-        string AssemblyName = "";
+        }       
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -37,15 +36,44 @@ namespace AsxinyuPlateForm
             ConvertDB.CreateForm().Show();
         }
 
+        private static DataManage _linkDM;
+        //过滤管理窗体
+        public static DataManage LinkDM
+        {
+            get
+            {
+                if (_linkDM == null)
+                    _linkDM = new DataManage();
+                _linkDM.Disposed += new EventHandler(link_Disposed);//单例模式解决无法访问的问题
+                return _linkDM;
+            }
+            set {_linkDM = value; }
+        }
+        public static void link_Disposed(object sender, EventArgs e)
+        {
+            _linkDM = null;
+        }
         private void ed2k链接管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataControlParams CP = new DataControlParams("", typeof(tb_resoucelink));
             CP.IsEnableAddBtn = false;
             CP.IsEnablePaging = true;
             CP.IsEnableAddBtn = false;
-            FormModel frm = DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            SetEd2kFormDM(CP);//DotNet.WinForm.Controls.DataManage.CreateForm(CP);
+            FormModel frm = WinFormHelper.GetControlForm(LinkDM, "Ed2k链接管理");
             frm.MdiParent = this;
             frm.Show();
+        }
+        void SetEd2kFormDM(DataControlParams CP)
+        {          
+            string[] menuNames = {"OutPutDownLink"};
+            string[] dispTexts = {"导出链接" };
+            EventHandler[] eventNames = { (object sender, EventArgs e) => { VeryCdResouce.ScanPageContent();}}; //保存方案
+            //默认的集成不能完成，需要修改生成的主窗体
+            LinkDM.InitializeSettings(CP);
+            LinkDM.Name = "ed2kdm";
+            LinkDM.Dock = DockStyle.Fill;
+            LinkDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
         }
         #endregion
 
@@ -85,18 +113,18 @@ namespace AsxinyuPlateForm
         {
             //增加菜单的相关代码,
             //TODO:增加单独记录的验证功能
-            string[] menuNames = { "ValidateCurrent", "CrossValidate", "Filter", "Remove", "SaveProject" };
-            string[] dispTexts = { "验证当前", "交叉验证", "过滤", "移除记录", "保存方案" };
-            //EventHandler[] eventNames ={ FilterDmHelper .toolStripValidateOneRule,
-            //                               FilterDmHelper.toolStripCrossValidate_Click,
-            //            FilterDmHelper.toolStripFilter_Click,
-            //            FilterDmHelper.toolStripRemove_Click,
-            //            FilterDmHelper.toolStripSaveProject_Click}; //保存方案
+            string[] menuNames = { "ScanContentPage", "ScanListPage", "AnalysisPageList", "AnalysisPage"};
+            string[] dispTexts = { "扫描内容首页", "扫描列表页面", "分析列表页面", "扫描页面链接"};
+            EventHandler[] eventNames ={ (object sender, EventArgs e)=>{VeryCdResouce.ScanPageContent();},
+                                         (object sender, EventArgs e)=>{VeryCdResouce.ScanPageList();},
+                                         (object sender, EventArgs e)=>{VeryCdResouce.StartCollectResoucePages();},
+                                         (object sender, EventArgs e)=>{VeryCdResouce.StartCollectResouceDownLoadLink();},
+                                       };
             //默认的集成不能完成，需要修改生成的主窗体
             FilterDM.InitializeSettings(CP);
             FilterDM.Name = "dm";
             FilterDM.Dock = DockStyle.Fill;
-            //FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
+            FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
         }
         #endregion
     }

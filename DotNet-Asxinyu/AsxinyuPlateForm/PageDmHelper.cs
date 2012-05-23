@@ -7,5 +7,6 @@ namespace AsxinyuPlateForm
 {
     public class PageDmHelper
     {
+
     }
 }
