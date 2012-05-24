@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using NewLife.Log;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ResourceManage
 {
@@ -137,7 +138,7 @@ namespace ResourceManage
                                 {
                                     model.ClassName = item.TypeName;
                                     model.CollectionMark = 0;
-                                    model.InfoOrigin = item.URL;
+                                    model.InfoOrigin = "VeryCd";
                                     model.PageTitle = name;
                                     model.ResouceType = item.ResType;
                                     model.SubClassName = item.SubClassName;
@@ -185,7 +186,7 @@ namespace ResourceManage
             {   //每次先取15条
                 try
                 {
-                    var list = tb_resoucepageslist.FindAllByName(tb_resoucepageslist._.CollectionMark, 0,"", 0, 15);
+                    var list = tb_resoucepageslist.FindAllByName(tb_resoucepageslist._.CollectionMark, 0, "", 0, 15);
                     if (list.Count < 1) return;
                     Parallel.For(0, list.Count, (i) =>
                     {
@@ -198,6 +199,69 @@ namespace ResourceManage
                     continue;
                 }
             }
+        }
+        #endregion
+
+        #region 重置页面表中出错的记录,以便重新采集
+        public static void ResetPageCollectionMark()
+        {
+            int preCount = tb_resoucepageslist.FindCount(tb_resoucepageslist._.CollectionMark, "1");
+            tb_resoucepageslist.Update(tb_resoucepageslist._.CollectionMark + "=0", tb_resoucepageslist._.CollectionMark + "=1");
+            int lastCount = tb_resoucepageslist.FindCount(tb_resoucepageslist._.CollectionMark, "1");
+            XTrace.WriteLine("成功重置{0}条页面记录,CollectionMark 重置为0", preCount - lastCount);
+        }
+        #endregion
+
+        #region 更新链接表中文件的大小数据，便于下载后的文件进行对比
+        private static void SetPageLinkSize()
+        {
+            //先全部设置为0  
+            //UPDATE `resourcecollector`.`tb_resoucelink` SET size = 0            
+            Console.WriteLine(tb_resoucelink.FindCount(tb_resoucelink._.Size, 0).ToString());
+            while (tb_resoucelink.FindCount(tb_resoucelink._.Size, 0) > 0)//还有未采集的
+            {   //每次先取15条
+                try
+                {
+                    var list = tb_resoucelink.FindAllByName(tb_resoucelink._.Size, 0, "", 0,100);
+                    if (list.Count < 1) return;
+                    Parallel.For(0, list.Count, (i)=>{
+                        string[] linkFields = list[i].ResouceLink.Split('|');
+                        long size;
+                        if (long.TryParse(linkFields[3], out size)) list[i].Size = (ulong)size;
+                        else list[i].Size = 0;
+                        list[i].Update();
+                    });
+                    Console.WriteLine("完成100条");
+                }
+                catch (Exception err)
+                {
+                    XTrace.WriteException(err);
+                    continue;
+                }
+            }
+            Console.WriteLine(tb_resoucelink.FindCount(tb_resoucelink._.Size, 0).ToString());
+        }
+        #endregion
+
+        #region 导出页面链接到下载列表
+        public static void ExportLinkToLst(string folder="",int count = 100)
+        {
+            if (folder == "") folder = System.Environment.CurrentDirectory+@"\Lst";
+
+           string fileName = folder+@"\"+DateTime.Now.ToString ("yyMMddhhmmss")+".lst";
+           using (FileStream fs = File.Create(fileName))
+           {
+               StreamWriter sw = new StreamWriter(fs);
+               var list = tb_resoucelink.FindAllByName (tb_resoucelink._.IsDownload, 0,"", 0, count);
+               foreach (var item in list )
+               {
+                   sw.WriteLine(HttpUtility.UrlEncode(item.ResouceLink));
+                   //item.IsDownload = 1;
+                   item.Update();
+               }
+               sw.Close();
+               XTrace.WriteLine("成功导出{0}数据到下载列表{1}",list.Count, fileName );
+           }
         }
         #endregion
 
@@ -220,6 +284,7 @@ namespace ResourceManage
         }
 
         //以下为基本采集功能方法
+
         #region 根据大类资源网址获取资源集合列表网址
         //根据大类资源网址获取资源集合列表网址
         public static void GetTypePageList(string URL, string FirName, string SubClassName, ResouceType resType)
@@ -322,9 +387,12 @@ namespace ResourceManage
                     string[] linkFields = urlLink.Split('|');
                     if (tb_resoucelink.FindCount(tb_resoucelink._.ResouceMD5, linkFields[4]) < 1)
                     {
-                        tb_resoucelink model = new tb_resoucelink();
+                        tb_resoucelink model = new tb_resoucelink();                        
                         model.ResouceMD5 = linkFields[4];
                         model.ResouceName = linkFields[2];
+                        long size;
+                        if (long.TryParse(linkFields[3], out size)) model.Size = (ulong)size;
+                        else model.Size = 0;
                         model.ResouceLink = urlLink;
                         model.FromURL = respageListModel.PageURL;
                         model.ClassName = respageListModel.ClassName;
@@ -333,6 +401,7 @@ namespace ResourceManage
                         model.Remark = string.Empty;
                         model.ResouceType = respageListModel.ResouceType;
                         model.UpdateTime = DateTime.Now;
+                        model.IsDownload = 0;
                         model.Insert();
                         count++;
                     }
@@ -389,5 +458,7 @@ namespace ResourceManage
             }
         }
         #endregion
+
+
     }
 }
