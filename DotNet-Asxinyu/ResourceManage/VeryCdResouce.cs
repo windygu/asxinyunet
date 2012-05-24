@@ -262,9 +262,9 @@ namespace ResourceManage
                {
                    var list = tb_resoucelink.FindAllByName(tb_resoucelink._.IsDownload, 0, "", 0, count);
                    foreach (var item in list)
-                   {
-                       sw.WriteLine(HttpUtility.UrlEncode(item.ResouceLink));
-                       //item.IsDownload = 1;
+                   {                      
+                       sw.WriteLine(GetOriginURL(item.ResouceLink));
+                       item.IsDownload = 1;
                        item.Update();
                    }                   
                    XTrace.WriteLine("成功导出{0}条数据到下载列表{1}", list.Count, fileName);
@@ -276,8 +276,8 @@ namespace ResourceManage
                        tb_resoucelink model = tb_resoucelink.FindById(item);
                        if (model != null)
                        {
-                           sw.WriteLine(HttpUtility.UrlEncode(model.ResouceLink));
-                           //model.IsDownload = 1;
+                           sw.WriteLine(GetOriginURL(model.ResouceLink));
+                           model.IsDownload = 1;
                            model.Update();
                        }
                    }
@@ -285,6 +285,18 @@ namespace ResourceManage
                }
                sw.Close();
            }
+        }
+        //得到原始的URL下载链接，解码
+        static string GetOriginURL(string ed2kLink)
+        {
+            string[] linkFields = ed2kLink.Split('|');
+            linkFields [2] = HttpUtility.UrlEncode (linkFields [2],Encoding.UTF8 );
+            string res = linkFields [0];
+            for (int i = 1; i < linkFields.Length ; i++)
+            {
+                res += ("|" + linkFields[i]);
+            }            
+            return res;
         }
         #endregion
 
