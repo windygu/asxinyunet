@@ -15,6 +15,7 @@ using ResourceManage;
 using XCode;
 using XCode.DataAccessLayer;
 using ResouceEntity;
+using System.Threading.Tasks;
 #endregion
 
 namespace AsxinyuPlateForm
@@ -113,12 +114,13 @@ namespace AsxinyuPlateForm
         {
             //增加菜单的相关代码,
             //TODO:增加单独记录的验证功能
-            string[] menuNames = { "ScanContentPage", "ScanListPage", "AnalysisPageList", "AnalysisPage"};
-            string[] dispTexts = { "扫描内容首页", "扫描列表页面", "分析列表页面", "扫描页面链接"};
-            EventHandler[] eventNames ={ (object sender, EventArgs e)=>{VeryCdResouce.ScanPageContent();},
-                                         (object sender, EventArgs e)=>{VeryCdResouce.ScanPageList();},
-                                         (object sender, EventArgs e)=>{VeryCdResouce.StartCollectResoucePages();},
-                                         (object sender, EventArgs e)=>{VeryCdResouce.StartCollectResouceDownLoadLink();},
+            string[] menuNames = { "ScanContentPage", "ScanListPage", "AnalysisPageList", "AnalysisPage", "ResetCollectionMark" };
+            string[] dispTexts = { "扫描内容首页", "扫描列表页面", "分析列表页面", "扫描页面链接","重置错误页面"};
+            EventHandler[] eventNames ={(object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.ScanPageContent();});},
+                                        (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.ScanPageList();});},    
+                                        (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.StartCollectResoucePages();});},    
+                                        (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.StartCollectResouceDownLoadLink();});},                                       
+                                        (object sender, EventArgs e)=>{VeryCdResouce.ResetPageCollectionMark ();}
                                        };
             //默认的集成不能完成，需要修改生成的主窗体
             FilterDM.InitializeSettings(CP);
