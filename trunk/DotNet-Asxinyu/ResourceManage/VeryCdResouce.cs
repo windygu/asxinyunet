@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using NewLife.Log;
 using System.Threading.Tasks;
 using System.IO;
+using XCode ;
 
 namespace ResourceManage
 {
@@ -55,8 +56,7 @@ namespace ResourceManage
             if (typeListUrl.Count < 1) return;
             Parallel.For(0, typeListUrl.Count, (i) =>
             {
-                GetTypePageList(typeListUrl[i].URL, typeListUrl[i].TypeName, typeListUrl[i].SubClassName,
-                    (ResouceType)Enum.Parse(typeof(ResouceType), typeListUrl[i].ResType, true));
+                GetTypePageList(typeListUrl[i]);
             });
         }
         #endregion
@@ -244,52 +244,58 @@ namespace ResourceManage
         #endregion
 
         #region 导出页面链接到下载列表
-        public static void ExportLinkToLst(string folder="",int count = 100)
+        /// <summary>
+        /// 导出下载链接到迅雷下载列表文件
+        /// </summary>
+        /// <param name="folder">导出的文件夹名称</param>
+        /// <param name="linkId">要导出的链接Id</param>
+        /// <param name="count">默认导出的数量为30,当linkId时有效</param>
+        public static void ExportLinkToLst(string folder="",List<int> linkId = null,int count = 30)
         {
-            if (folder == "") folder = System.Environment.CurrentDirectory+@"\Lst";
-
+           if (folder == "") folder = System.Environment.CurrentDirectory+@"\Lst";
+           if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);           
            string fileName = folder+@"\"+DateTime.Now.ToString ("yyMMddhhmmss")+".lst";
            using (FileStream fs = File.Create(fileName))
            {
                StreamWriter sw = new StreamWriter(fs);
-               var list = tb_resoucelink.FindAllByName (tb_resoucelink._.IsDownload, 0,"", 0, count);
-               foreach (var item in list )
+               if (linkId == null)
                {
-                   sw.WriteLine(HttpUtility.UrlEncode(item.ResouceLink));
-                   //item.IsDownload = 1;
-                   item.Update();
+                   var list = tb_resoucelink.FindAllByName(tb_resoucelink._.IsDownload, 0, "", 0, count);
+                   foreach (var item in list)
+                   {
+                       sw.WriteLine(HttpUtility.UrlEncode(item.ResouceLink));
+                       //item.IsDownload = 1;
+                       item.Update();
+                   }                   
+                   XTrace.WriteLine("成功导出{0}条数据到下载列表{1}", list.Count, fileName);
+               }
+               else
+               {
+                   foreach (var item in linkId )
+                   {
+                       tb_resoucelink model = tb_resoucelink.FindById(item);
+                       if (model != null)
+                       {
+                           sw.WriteLine(HttpUtility.UrlEncode(model.ResouceLink));
+                           //model.IsDownload = 1;
+                           model.Update();
+                       }
+                   }
+                   XTrace.WriteLine("成功导出{0}条数据到下载列表{1}", linkId .Count , fileName);
                }
                sw.Close();
-               XTrace.WriteLine("成功导出{0}数据到下载列表{1}",list.Count, fileName );
            }
         }
         #endregion
-
-        protected static void Test()
-        {
-            string url = @"http://www.verycd.com/sto/book/eco/";
-            HtmlDocument doc = CaptureWebSite.GetHtmlDocument(url, VerycdEncoding);
-            HtmlNodeCollection hc = doc.DocumentNode.SelectNodes("//@href");
-
-            foreach (var s in hc)
-            {
-                string urls = s.Attributes["href"].Value.ToString();
-                if (Regex.IsMatch(urls, pagePatten))
-                { //不包括“全文”字样
-                    string name = s.InnerText.Replace("\r\n", "").Trim();
-                    if (name != "" && !name.Contains("全文"))
-                        Console.WriteLine(name + ":" + urls);//Attributes["href"].Value.ToString ()
-                }
-            }
-        }
 
         //以下为基本采集功能方法
 
         #region 根据大类资源网址获取资源集合列表网址
         //根据大类资源网址获取资源集合列表网址
-        public static void GetTypePageList(string URL, string FirName, string SubClassName, ResouceType resType)
+        public static void GetTypePageList(tb_typelist typelist)
         {
-            HtmlDocument doc = CaptureWebSite.GetHtmlDocument(URL, VerycdEncoding);
+            //string URL, string FirName, string SubClassName, ResouceType resType
+            HtmlDocument doc = CaptureWebSite.GetHtmlDocument(typelist.URL, VerycdEncoding);
             HtmlNodeCollection hc = doc.DocumentNode.SelectNodes(xPath_TypePageList);
             int count = 0;//计数器
             for (int i = 0; i < hc.Count; i++)
@@ -301,12 +307,12 @@ namespace ResourceManage
                     {
                         tb_fistclasslist model = new tb_fistclasslist();
                         model.WebURL = url;
-                        model.ClassName = FirName;
-                        model.SubClassName = SubClassName;
+                        model.ClassName = typelist.TypeName ;
+                        model.SubClassName = typelist.SubClassName ;
                         model.CollectionMark = 0;
                         model.InfoOrigin = "VeryCd";
                         model.Remark = string.Empty;
-                        model.ResouceType = resType.ToString();
+                        model.ResouceType = typelist.ResType.ToString ();
                         model.UpdateTime = DateTime.Now;
                         model.Insert();
                         count++;
@@ -319,7 +325,7 @@ namespace ResourceManage
                 }
                 finally
                 {
-                    XTrace.WriteLine("通过大类资源列表{0},获取到更新记录{1}条", URL, count);
+                    XTrace.WriteLine("通过大类资源列表{0},获取到更新记录{1}条", typelist.URL , count);
                 }
             }
         }
@@ -458,7 +464,5 @@ namespace ResourceManage
             }
         }
         #endregion
-
-
     }
 }

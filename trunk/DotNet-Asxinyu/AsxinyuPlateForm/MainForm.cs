@@ -60,6 +60,8 @@ namespace AsxinyuPlateForm
             CP.IsEnableAddBtn = false;
             CP.IsEnablePaging = true;
             CP.IsEnableAddBtn = false;
+            CP.DeleteColumnsName = new string[] {tb_resoucelink._.FromURL,tb_resoucelink._.ResouceLink ,
+                tb_resoucelink._.ResouceMD5,tb_resoucelink._.ClassName };
             SetEd2kFormDM(CP);//DotNet.WinForm.Controls.DataManage.CreateForm(CP);
             FormModel frm = WinFormHelper.GetControlForm(LinkDM, "Ed2k链接管理");
             frm.MdiParent = this;
@@ -69,7 +71,15 @@ namespace AsxinyuPlateForm
         {          
             string[] menuNames = {"OutPutDownLink"};
             string[] dispTexts = {"导出链接" };
-            EventHandler[] eventNames = { (object sender, EventArgs e) => { VeryCdResouce.ScanPageContent();}}; //保存方案
+            EventHandler[] eventNames = {(object sender, EventArgs e)=>{
+                                            List<int> Ids = new List<int>();
+                                            for (int i = 0; i < LinkDM.dgv.Rows.Count; i++)
+                                            {
+                                                Ids.Add(Convert.ToInt32(LinkDM.dgv.Rows[i].Cells[0].Value.ToString()));
+                                            }
+                                            VeryCdResouce.ExportLinkToLst("",Ids);
+                                            MessageBox.Show("导出列表成功!");}
+                                        }; 
             //默认的集成不能完成，需要修改生成的主窗体
             LinkDM.InitializeSettings(CP);
             LinkDM.Name = "ed2kdm";
@@ -100,10 +110,12 @@ namespace AsxinyuPlateForm
         {
             DataControlParams CP = new DataControlParams("", typeof(tb_resoucepageslist));
             CP.IsEnableAddBtn = false;
-            CP.IsEnablePaging = true;            
+            CP.IsEnablePaging = true;
+            CP.DeleteColumnsName = new string[] {tb_resoucepageslist._.PageURL ,tb_resoucepageslist._.ResouceType,
+            tb_resoucelink._.ClassName };
             SetFilterDM(CP);//设置控件
             FormModel frm = WinFormHelper.GetControlForm(FilterDM, "资源页面管理");// DotNet.WinForm.Controls.DataManage.CreateForm(CP);
-            frm.MdiParent = this;
+            frm.MdiParent = this;            
             frm.Show();
         }
         /// <summary>
@@ -114,19 +126,19 @@ namespace AsxinyuPlateForm
         {
             //增加菜单的相关代码,
             //TODO:增加单独记录的验证功能
-            string[] menuNames = { "ScanContentPage", "ScanListPage", "AnalysisPageList", "AnalysisPage", "ResetCollectionMark" };
+            string[] menuNames = { "ScanContentPage", "ScanListPage", "AnalysisPageList", "AnalysisPage", "ResetCollectionMark"};
             string[] dispTexts = { "扫描内容首页", "扫描列表页面", "分析列表页面", "扫描页面链接","重置错误页面"};
             EventHandler[] eventNames ={(object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.ScanPageContent();});},
-                                        (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.ScanPageList();});},    
+                                        (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.ScanPageList();});},
                                         (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.StartCollectResoucePages();});},    
                                         (object sender, EventArgs e)=>{ Task.Factory.StartNew(() =>{VeryCdResouce.StartCollectResouceDownLoadLink();});},                                       
-                                        (object sender, EventArgs e)=>{VeryCdResouce.ResetPageCollectionMark ();}
+                                        (object sender, EventArgs e)=>{VeryCdResouce.ResetPageCollectionMark ();}                                                                             
                                        };
             //默认的集成不能完成，需要修改生成的主窗体
             FilterDM.InitializeSettings(CP);
             FilterDM.Name = "dm";
-            FilterDM.Dock = DockStyle.Fill;
-            FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);
+            FilterDM.Dock = DockStyle.Fill;            
+            FilterDM.AppendedMenu = WinFormHelper.GetContextMenuStrip(menuNames, dispTexts, eventNames);            
         }
         #endregion
     }

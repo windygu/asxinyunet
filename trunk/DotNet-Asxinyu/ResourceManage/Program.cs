@@ -28,7 +28,7 @@ namespace ResourceManage
             //        status = false;
             //    }
             //}
-            VeryCdResouce.ExportLinkToLst();
+            //VeryCdResouce.ExportLinkToLst();
            
             //string url = @"http://www.verycd.com/topics/2900979/";
             //VeryCdResouce.StartCollectResouceList();
