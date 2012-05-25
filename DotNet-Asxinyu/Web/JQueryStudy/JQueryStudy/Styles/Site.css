@@ -18,7 +18,7 @@ a:link, a:visited
 
 a:hover
 {
-    color: #1d60ff;
+    color: #1d60ff;    
     text-decoration: none;
 }
 
@@ -27,12 +27,20 @@ a:active
     color: #034af3;
 }
 
-p
+p.Test
 {
+    color:Blue;
+    font-size:50px;
     margin-bottom: 10px;
     line-height: 1.6em;
 }
-
+p
+{
+    color:Black;
+    font-size:=50px;
+    margin-bottom: 20px;
+    line-height: 2.6em;
+}
 
 /* HEADINGS   
 ----------------------------------------------------------*/
