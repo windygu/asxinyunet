@@ -60,6 +60,7 @@ namespace AsxinyuPlateForm
             CP.IsEnableAddBtn = false;
             CP.IsEnablePaging = true;
             CP.IsEnableAddBtn = false;
+            CP.PageSize = 50;
             CP.DeleteColumnsName = new string[] {tb_resoucelink._.FromURL,tb_resoucelink._.ResouceLink ,
                 tb_resoucelink._.ResouceMD5,tb_resoucelink._.ClassName };
             SetEd2kFormDM(CP);//DotNet.WinForm.Controls.DataManage.CreateForm(CP);
@@ -111,6 +112,7 @@ namespace AsxinyuPlateForm
             DataControlParams CP = new DataControlParams("", typeof(tb_resoucepageslist));
             CP.IsEnableAddBtn = false;
             CP.IsEnablePaging = true;
+            CP.PageSize = 50;
             CP.DeleteColumnsName = new string[] {tb_resoucepageslist._.PageURL ,tb_resoucepageslist._.ResouceType,
             tb_resoucelink._.ClassName };
             SetFilterDM(CP);//设置控件

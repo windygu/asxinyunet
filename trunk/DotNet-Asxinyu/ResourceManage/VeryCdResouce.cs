@@ -274,7 +274,7 @@ namespace ResourceManage
                    foreach (var item in linkId )
                    {
                        tb_resoucelink model = tb_resoucelink.FindById(item);
-                       if (model != null)
+                       if (model != null && model.IsDownload == 0)
                        {
                            sw.WriteLine(GetOriginURL(model.ResouceLink));
                            model.IsDownload = 1;
