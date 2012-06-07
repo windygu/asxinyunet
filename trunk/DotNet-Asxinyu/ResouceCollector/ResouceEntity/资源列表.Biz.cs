@@ -6,6 +6,10 @@ using System.Xml.Serialization;
 using NewLife.Log;
 using XCode;
 using XCode.Configuration;
+using XCode.Web;
+using NewLife.Serialization;
+using NewLife.IO;
+using System.Web.Script.Serialization;
 
 namespace ResouceEntity
 {
@@ -161,6 +165,32 @@ namespace ResouceEntity
         #endregion
 
         #region 业务
+        public static string GetColunmsData()
+        {
+            return @"[
+                { display: '编号', name: 'Id', type: 'int', width: 70, align: 'left' },
+                { display: '网址', name: 'PageURL', width: 250, type: 'int', align: 'left' },
+                { display: '页面标题', name: 'PageTitle', width: 300, align: 'left' },
+                { display: '一级大类名称', name: 'ClassName', width: 100, align: 'left' },
+                { display: '子类名称', name: 'SubClassName', width: 100, align: 'left' },
+                { display: '资源类型', name: 'ResouceType', width: 100, align: 'left' },
+                { display: '采集标志', name: 'CollectionMark', type: 'int', width: 60, align: 'left' },
+                { display: '更新时间', name: 'UpdateTime', type: 'date', width: 100, align: 'left' },
+                { display: '资料来源', name: 'InfoOrigin', width: 100, align: 'left' },
+                { display: '备注', name: 'remark', width: 50, align: 'left' }
+                ]";
+        }
+
+        public static string GetPageEntityList()
+        { 
+             //int page = 2 ;
+             //int pagesize = 5 ;
+            int page1 = 2;// Convert.ToInt32(page);
+            int pagesize1 = 5;//Convert.ToInt32(pagesize);
+             EntityList<tb_resoucepageslist> reslist = tb_resoucepageslist.FindAll("", "", null, pagesize1*(page1 - 1), pagesize1);        
+            var griddata = new { Rows = reslist, Total = tb_resoucepageslist.FindCount() };
+            return new JavaScriptSerializer().Serialize(griddata);
+        }
         #endregion
     }
 }

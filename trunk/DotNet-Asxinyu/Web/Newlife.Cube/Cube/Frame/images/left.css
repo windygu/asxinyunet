@@ -1,0 +1,96 @@
+﻿body
+{
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-size: 13px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+#menu
+{
+    width: 147px;
+    line-height: 25px;
+}
+#menu li
+{
+    float: left;
+    width: 100%;
+    line-height: 25px;
+}
+
+
+#menu h3
+{
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#menu div
+{
+    float: left;
+    height: 25px;
+}
+
+#menu h3 .dir-open
+{
+    width: 16px;
+    padding-right: 5px;
+    background: url(dir-open.gif) no-repeat 0px 5px;
+}
+
+#menu h3 .dir-close
+{
+    width: 16px;
+    padding-right: 5px;
+    background: url(dir-close.gif) no-repeat 0px 5px;
+}
+
+#menu h3 .icon-open
+{
+    width: 10px;
+    margin-left: 10px;
+    background: url(icon-open.gif) no-repeat 0px 9px;
+}
+
+#menu h3 .icon-close
+{
+    width: 10px;
+    margin-left: 10px;
+    background: url(icon-close.gif) no-repeat 0px 7px;
+}
+
+#menu .item
+{
+    width: 20px;
+    margin-left: 20px;
+    background: url(icon1.gif) no-repeat 0px 2px;
+}
+
+#menu ul
+{
+    width: 100%;
+}
+
+.tdonmouseover
+{
+    background-color: #eeeeee;
+}
+
+.tdselect
+{
+    background-color: #d9e8fb;
+}
+
+.toolbar
+{
+    background-image: url(toolbar.gif);
+    line-height: 25px;
+    height: 25px;
+    padding: 3px;
+}

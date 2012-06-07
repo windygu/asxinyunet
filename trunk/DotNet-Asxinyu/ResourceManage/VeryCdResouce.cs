@@ -264,8 +264,12 @@ namespace ResourceManage
                    foreach (var item in list)
                    {                      
                        sw.WriteLine(GetOriginURL(item.ResouceLink));
-                       item.IsDownload = 1;
-                       item.Update();
+                       if (item.Size <120000000)
+                       {
+                           item.IsDownload = 1;
+                           item.Update();
+                       }
+                       
                    }                   
                    XTrace.WriteLine("成功导出{0}条数据到下载列表{1}", list.Count, fileName);
                }
@@ -274,7 +278,7 @@ namespace ResourceManage
                    foreach (var item in linkId )
                    {
                        tb_resoucelink model = tb_resoucelink.FindById(item);
-                       if (model != null && model.IsDownload == 0)
+                       if (model != null && model.IsDownload == 0 && model.Size < 120000000 )
                        {
                            sw.WriteLine(GetOriginURL(model.ResouceLink));
                            model.IsDownload = 1;

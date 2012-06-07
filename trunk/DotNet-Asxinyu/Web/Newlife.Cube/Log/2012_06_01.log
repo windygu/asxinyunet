@@ -1,0 +1,629 @@
+﻿08:28:26.009 535 W - 实体缓存<Setting>总次数35，一级命中15（42.86%）
+08:28:26.009 535 W - 更新实体缓存（第21次）：NewLife.CommonEntity.Setting 原因：60秒过期
+08:28:26.010 535 W - Select * From Setting
+08:28:26.010 535 W - 完成更新缓存（第21次）：NewLife.CommonEntity.Setting
+08:28:26.010 535 W - Select * From Administrator Order By ID Desc limit 1
+08:28:26.011 549 Y - Select Count(*) From Administrator
+08:28:29.000 550 W - 实体缓存<Administrator>总次数21，一级命中14（66.67%）
+08:28:29.000 550 W - 更新实体缓存（第8次）：NewLife.CommonEntity.Administrator 原因：无缓存数据
+08:28:29.000 550 W - Select * From Administrator
+08:28:29.000 550 W - 完成更新缓存（第8次）：NewLife.CommonEntity.Administrator
+08:28:29.000 550 W - Update Administrator Set Logins=8, LastLogin='2012-06-01 08:28:29' Where ID=1
+08:28:29.000 550 W - 清空实体缓存：NewLife.CommonEntity.Administrator
+08:28:29.000 550 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('管理员', '登录', 0, null, '127.0.0.1', '2012-06-01 08:28:29', 'admin');Select last_insert_rowid() newid
+08:28:29.000 550 W - System.Threading.ThreadAbortException: 正在中止线程。
+   在 System.Threading.Thread.AbortInternal()
+   在 System.Threading.Thread.Abort(Object stateInfo)
+   在 System.Web.HttpResponse.End()
+   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   在 System.Web.HttpResponse.Redirect(String url)
+   在 Login.LoginButton_Click(Object sender, EventArgs e) 位置 d:\Develop\DotNet-Asxinyu\Web\Newlife.Cube\Admin\Login.aspx.cs:行号 71
+08:28:29.272 535 W - 实体缓存<Role>总次数90，一级命中75（83.33%）
+08:28:29.272 535 W - 更新实体缓存（第16次）：NewLife.CommonEntity.Role 原因：60秒过期
+08:28:29.272 535 W - Select * From Role
+08:28:29.272 535 W - 完成更新缓存（第16次）：NewLife.CommonEntity.Role
+08:28:29.272 535 W - 实体缓存<RoleMenu>总次数3379，一级命中3360（99.44%）
+08:28:29.272 535 W - 更新实体缓存（第20次）：NewLife.CommonEntity.RoleMenu 原因：60秒过期
+08:28:29.272 535 W - Select * From RoleMenu
+08:28:29.273 535 W - 完成更新缓存（第20次）：NewLife.CommonEntity.RoleMenu
+08:28:29.273 535 W - 实体缓存<Menu>总次数1779，一级命中1727（97.08%）
+08:28:29.273 535 W - 更新实体缓存（第53次）：NewLife.CommonEntity.Menu 原因：60秒过期
+08:28:29.273 535 W - Select * From Menu
+08:28:29.273 535 W - 完成更新缓存（第53次）：NewLife.CommonEntity.Menu
+08:28:29.588 548 W - Select * From Menu Where ID=2
+08:28:29.589 548 W - Select * From Menu Where ID=7
+08:28:29.896 535 W - Select * From Menu Where ID=1
+08:28:29.896 535 W - Select * From Menu Where ID=1
+08:28:29.897 535 W - Select * From Menu Where ID=2
+08:28:29.897 535 W - Select * From Menu Where ID=7
+08:28:31.041 535 W - Select * From Menu Where ID=1
+08:28:31.041 535 W - Select * From Menu Where ID=1
+08:28:31.041 535 W - Select * From Menu Where ID=2
+08:28:31.041 535 W - Select * From Menu Where ID=7
+08:28:31.997 535 W - Select * From Menu Where ID=1
+08:28:31.997 535 W - Select * From Menu Where ID=1
+08:28:31.998 535 W - Select * From Menu Where ID=2
+08:28:31.999 535 W - Select * From Menu Where ID=7
+08:28:32.156 548 W - Select * From Menu Where ID=1
+08:28:32.156 548 W - Select * From Menu Where ID=1
+08:28:32.157 548 W - Select * From Menu Where ID=2
+08:28:32.158 548 W - Select * From Menu Where ID=7
+08:28:33.157 535 W - Select * From Menu Where ID=1
+08:28:33.157 535 W - Select * From Menu Where ID=1
+08:28:33.157 535 W - Select * From Menu Where ID=2
+08:28:33.157 535 W - Select * From Menu Where ID=7
+08:28:34.118 549 W - Select * From Menu Where ID=1
+08:28:34.118 549 W - Select * From Menu Where ID=1
+08:28:34.119 549 W - Select * From Menu Where ID=2
+08:28:34.119 549 W - Select * From Menu Where ID=7
+08:28:34.262 552 W - Select * From Menu Where ID=1
+08:28:34.262 552 W - Select * From Menu Where ID=1
+08:28:34.263 552 W - Select * From Menu Where ID=2
+08:28:34.264 552 W - Select * From Menu Where ID=7
+08:28:35.271 549 W - Select * From Menu Where ID=1
+08:28:35.272 549 W - Select * From Menu Where ID=1
+08:28:35.272 549 W - Select * From Menu Where ID=2
+08:28:35.273 549 W - Select * From Menu Where ID=7
+08:28:35.604 535 W - Select * From Menu Where ID=2
+08:28:35.606 535 W - Select * From Menu Where ID=7
+08:28:36.274 548 W - Select * From Menu Where ID=1
+08:28:36.274 548 W - Select * From Menu Where ID=1
+08:28:36.274 548 W - Select * From Menu Where ID=2
+08:28:36.274 548 W - Select * From Menu Where ID=7
+08:28:37.370 548 W - Select * From Menu Where ID=1
+08:28:37.371 548 W - Select * From Menu Where ID=1
+08:28:37.371 548 W - Select * From Menu Where ID=2
+08:28:37.372 548 W - Select * From Menu Where ID=7
+08:28:37.563 549 W - Select * From Menu Where ID=1
+08:28:37.563 549 W - Select * From Menu Where ID=1
+08:28:37.564 549 W - Select * From Menu Where ID=2
+08:28:37.565 549 W - Select * From Menu Where ID=7
+08:28:37.990 549 W - Select * From Menu Where ID=1
+08:28:37.991 549 W - Select * From Menu Where ID=1
+08:28:37.991 549 W - Select * From Menu Where ID=2
+08:28:37.992 549 W - Select * From Menu Where ID=7
+08:28:38.187 550 W - Select * From Menu Where ID=1
+08:28:38.188 550 W - Select * From Menu Where ID=1
+08:28:38.188 550 W - Select * From Menu Where ID=2
+08:28:38.189 550 W - Select * From Menu Where ID=7
+08:28:38.614 535 W - Select * From Menu Where ID=1
+08:28:38.615 535 W - Select * From Menu Where ID=1
+08:28:38.615 535 W - Select * From Menu Where ID=2
+08:28:38.616 535 W - Select * From Menu Where ID=7
+08:28:38.952 535 W - Select * From Menu Where ID=1
+08:28:38.952 535 W - Select * From Menu Where ID=1
+08:28:38.953 535 W - Select * From Menu Where ID=2
+08:28:38.954 535 W - Select * From Menu Where ID=7
+08:28:39.760 552 W - Select * From Menu Where ID=2
+08:28:39.761 552 W - Select * From Menu Where ID=7
+08:28:39.992 549 W - Select * From Menu Where ID=1
+08:28:39.993 549 W - Select * From Menu Where ID=1
+08:28:39.993 549 W - Select * From Menu Where ID=2
+08:28:39.994 549 W - Select * From Menu Where ID=7
+08:28:40.405 552 W - Select * From Menu Where ID=2
+08:28:40.406 552 W - Select * From Menu Where ID=7
+08:28:40.611 535 W - Select * From Menu Where ID=1
+08:28:40.612 535 W - Select * From Menu Where ID=1
+08:28:40.612 535 W - Select * From Menu Where ID=2
+08:28:40.613 535 W - Select * From Menu Where ID=7
+08:28:40.807 550 W - Select * From Menu Where ID=1
+08:28:40.808 550 W - Select * From Menu Where ID=1
+08:28:40.808 550 W - Select * From Menu Where ID=2
+08:28:40.809 550 W - Select * From Menu Where ID=7
+08:28:41.234 548 W - Select * From Menu Where ID=1
+08:28:41.234 548 W - Select * From Menu Where ID=1
+08:28:41.235 548 W - Select * From Menu Where ID=2
+08:28:41.236 548 W - Select * From Menu Where ID=7
+08:28:41.432 550 W - Select * From Menu Where ID=1
+08:28:41.432 550 W - Select * From Menu Where ID=1
+08:28:41.433 550 W - Select * From Menu Where ID=2
+08:28:41.434 550 W - Select * From Menu Where ID=7
+08:28:41.875 535 W - Select * From Menu Where ID=1
+08:28:41.875 535 W - Select * From Menu Where ID=1
+08:28:41.876 535 W - Select * From Menu Where ID=2
+08:28:41.877 535 W - Select * From Menu Where ID=7
+08:28:42.056 549 W - Select * From Menu Where ID=1
+08:28:42.056 549 W - Select * From Menu Where ID=1
+08:28:42.057 549 W - Select * From Menu Where ID=2
+08:28:42.058 549 W - Select * From Menu Where ID=7
+08:28:42.518 549 W - Select * From Menu Where ID=1
+08:28:42.519 549 W - Select * From Menu Where ID=1
+08:28:42.519 549 W - Select * From Menu Where ID=2
+08:28:42.520 549 W - Select * From Menu Where ID=7
+08:28:42.695 550 W - Select * From Menu Where ID=1
+08:28:42.695 550 W - Select * From Menu Where ID=1
+08:28:42.696 550 W - Select * From Menu Where ID=2
+08:28:42.697 550 W - Select * From Menu Where ID=7
+08:28:43.144 535 W - Select * From Menu Where ID=1
+08:28:43.145 535 W - Select * From Menu Where ID=1
+08:28:43.145 535 W - Select * From Menu Where ID=2
+08:28:43.146 535 W - Select * From Menu Where ID=7
+08:28:43.335 548 W - Select * From Menu Where ID=1
+08:28:43.335 548 W - Select * From Menu Where ID=1
+08:28:43.336 548 W - Select * From Menu Where ID=2
+08:28:43.337 548 W - Select * From Menu Where ID=7
+08:28:43.726 535 W - Select * From Menu Where ID=2
+08:28:43.727 535 W - Select * From Menu Where ID=7
+08:28:43.766 548 W - Select * From Menu Where ID=1
+08:28:43.766 548 W - Select * From Menu Where ID=1
+08:28:43.767 548 W - Select * From Menu Where ID=2
+08:28:43.768 548 W - Select * From Menu Where ID=7
+08:28:43.959 552 W - Select * From Menu Where ID=1
+08:28:43.959 552 W - Select * From Menu Where ID=1
+08:28:43.960 552 W - Select * From Menu Where ID=2
+08:28:43.961 552 W - Select * From Menu Where ID=7
+08:28:44.387 552 W - Select * From Menu Where ID=1
+08:28:44.387 552 W - Select * From Menu Where ID=1
+08:28:44.387 552 W - Select * From Menu Where ID=2
+08:28:44.388 552 W - Select * From Menu Where ID=7
+08:28:44.583 549 W - Select * From Menu Where ID=1
+08:28:44.583 549 W - Select * From Menu Where ID=1
+08:28:44.584 549 W - Select * From Menu Where ID=2
+08:28:44.585 549 W - Select * From Menu Where ID=7
+08:28:45.528 549 W - Select * From Menu Where ID=1
+08:28:45.528 549 W - Select * From Menu Where ID=1
+08:28:45.528 549 W - Select * From Menu Where ID=2
+08:28:45.528 549 W - Select * From Menu Where ID=7
+08:28:46.488 535 W - Select * From Menu Where ID=1
+08:28:46.489 535 W - Select * From Menu Where ID=1
+08:28:46.489 535 W - Select * From Menu Where ID=2
+08:28:46.490 535 W - Select * From Menu Where ID=7
+08:28:46.657 550 W - Select * From Menu Where ID=1
+08:28:46.658 550 W - Select * From Menu Where ID=1
+08:28:46.658 550 W - Select * From Menu Where ID=2
+08:28:46.659 550 W - Select * From Menu Where ID=7
+08:28:47.640 550 W - Select * From Menu Where ID=1
+08:28:47.640 550 W - Select * From Menu Where ID=1
+08:28:47.641 550 W - Select * From Menu Where ID=2
+08:28:47.643 550 W - Select * From Menu Where ID=7
+08:28:47.828 550 W - Select * From Menu Where ID=1
+08:28:47.829 550 W - Select * From Menu Where ID=1
+08:28:47.830 550 W - Select * From Menu Where ID=2
+08:28:47.831 550 W - Select * From Menu Where ID=7
+08:28:48.272 549 W - Select * From Menu Where ID=1
+08:28:48.273 549 W - Select * From Menu Where ID=1
+08:28:48.274 549 W - Select * From Menu Where ID=2
+08:28:48.275 549 W - Select * From Menu Where ID=7
+08:28:48.467 550 W - Select * From Menu Where ID=1
+08:28:48.468 550 W - Select * From Menu Where ID=1
+08:28:48.469 550 W - Select * From Menu Where ID=2
+08:28:48.472 550 W - Select * From Menu Where ID=7
+08:28:49.215 535 W - Select * From Menu Where ID=1
+08:28:49.216 535 W - Select * From Menu Where ID=1
+08:28:49.216 535 W - Select * From Menu Where ID=2
+08:28:49.217 535 W - Select * From Menu Where ID=7
+08:28:50.352 535 W - Select * From Menu Where ID=1
+08:28:50.352 535 W - Select * From Menu Where ID=1
+08:28:50.353 535 W - Select * From Menu Where ID=2
+08:28:50.354 535 W - Select * From Menu Where ID=7
+08:28:50.542 550 W - Select * From Menu Where ID=1
+08:28:50.542 550 W - Select * From Menu Where ID=1
+08:28:50.543 550 W - Select * From Menu Where ID=2
+08:28:50.544 550 W - Select * From Menu Where ID=7
+08:28:50.988 548 W - Select * From Menu Where ID=1
+08:28:50.989 548 W - Select * From Menu Where ID=1
+08:28:50.990 548 W - Select * From Menu Where ID=2
+08:28:50.990 548 W - Select * From Menu Where ID=7
+08:28:51.182 535 W - Select * From Menu Where ID=1
+08:28:51.182 535 W - Select * From Menu Where ID=1
+08:28:51.183 535 W - Select * From Menu Where ID=2
+08:28:51.184 535 W - Select * From Menu Where ID=7
+08:28:51.612 550 W - Select * From Menu Where ID=1
+08:28:51.612 550 W - Select * From Menu Where ID=1
+08:28:51.612 550 W - Select * From Menu Where ID=2
+08:28:51.613 550 W - Select * From Menu Where ID=7
+08:28:51.806 550 W - Select * From Menu Where ID=1
+08:28:51.806 550 W - Select * From Menu Where ID=1
+08:28:51.807 550 W - Select * From Menu Where ID=2
+08:28:51.808 550 W - Select * From Menu Where ID=7
+08:28:52.546 550 W - Select * From Menu Where ID=1
+08:28:52.547 550 W - Select * From Menu Where ID=1
+08:28:52.547 550 W - Select * From Menu Where ID=2
+08:28:52.548 550 W - Select * From Menu Where ID=7
+08:28:52.868 548 W - Select * From Menu Where ID=2
+08:28:52.869 548 W - Select * From Menu Where ID=7
+08:28:53.502 535 W - Select * From Menu Where ID=1
+08:28:53.502 535 W - Select * From Menu Where ID=1
+08:28:53.503 535 W - Select * From Menu Where ID=2
+08:28:53.504 535 W - Select * From Menu Where ID=7
+08:28:54.636 548 W - Select * From Menu Where ID=1
+08:28:54.636 548 W - Select * From Menu Where ID=1
+08:28:54.637 548 W - Select * From Menu Where ID=2
+08:28:54.638 548 W - Select * From Menu Where ID=7
+08:28:54.826 548 W - Select * From Menu Where ID=1
+08:28:54.827 548 W - Select * From Menu Where ID=1
+08:28:54.828 548 W - Select * From Menu Where ID=2
+08:28:54.829 548 W - Select * From Menu Where ID=7
+08:28:55.262 549 W - Select * From Menu Where ID=1
+08:28:55.263 549 W - Select * From Menu Where ID=1
+08:28:55.264 549 W - Select * From Menu Where ID=2
+08:28:55.265 549 W - Select * From Menu Where ID=7
+08:28:55.595 548 W - Select * From Menu Where ID=1
+08:28:55.595 548 W - Select * From Menu Where ID=1
+08:28:55.596 548 W - Select * From Menu Where ID=2
+08:28:55.597 548 W - Select * From Menu Where ID=7
+08:28:55.886 535 W - Select * From Menu Where ID=1
+08:28:55.887 535 W - Select * From Menu Where ID=1
+08:28:55.887 535 W - Select * From Menu Where ID=2
+08:28:55.890 535 W - Select * From Menu Where ID=7
+08:28:56.226 552 W - Select * From Menu Where ID=2
+08:28:56.227 552 W - Select * From Menu Where ID=7
+08:28:56.886 549 W - Select * From Menu Where ID=1
+08:28:56.886 549 W - Select * From Menu Where ID=1
+08:28:56.887 549 W - Select * From Menu Where ID=2
+08:28:56.887 549 W - Select * From Menu Where ID=7
+08:28:58.028 550 W - Select * From Menu Where ID=1
+08:28:58.028 550 W - Select * From Menu Where ID=1
+08:28:58.028 550 W - Select * From Menu Where ID=2
+08:28:58.029 550 W - Select * From Menu Where ID=7
+08:28:58.996 552 W - Select * From Menu Where ID=1
+08:28:58.997 552 W - Select * From Menu Where ID=1
+08:28:58.997 552 W - Select * From Menu Where ID=2
+08:28:58.998 552 W - Select * From Menu Where ID=7
+08:28:59.168 535 W - Select * From Menu Where ID=1
+08:28:59.168 535 W - Select * From Menu Where ID=1
+08:28:59.169 535 W - Select * From Menu Where ID=2
+08:28:59.170 535 W - Select * From Menu Where ID=7
+08:29:00.141 549 W - Select * From Menu Where ID=1
+08:29:00.141 549 W - Select * From Menu Where ID=1
+08:29:00.142 549 W - Select * From Menu Where ID=2
+08:29:00.143 549 W - Select * From Menu Where ID=7
+08:29:00.338 535 W - Select * From Menu Where ID=1
+08:29:00.338 535 W - Select * From Menu Where ID=1
+08:29:00.339 535 W - Select * From Menu Where ID=2
+08:29:00.340 535 W - Select * From Menu Where ID=7
+08:29:00.962 535 W - Select * From Menu Where ID=1
+08:29:00.962 535 W - Select * From Menu Where ID=1
+08:29:00.963 535 W - Select * From Menu Where ID=2
+08:29:00.964 535 W - Select * From Menu Where ID=7
+08:29:05.084 552 W - Select * From Menu Where ID=1
+08:29:05.084 552 W - Select * From Menu Where ID=1
+08:29:05.085 552 W - Select * From Menu Where ID=2
+08:29:05.085 552 W - Select * From Menu Where ID=7
+08:29:06.211 550 W - Select * From Menu Where ID=1
+08:29:06.211 550 W - Select * From Menu Where ID=1
+08:29:06.212 550 W - Select * From Menu Where ID=2
+08:29:06.213 550 W - Select * From Menu Where ID=7
+08:29:06.406 549 W - Select * From Menu Where ID=1
+08:29:06.406 549 W - Select * From Menu Where ID=1
+08:29:06.407 549 W - Select * From Menu Where ID=2
+08:29:06.408 549 W - Select * From Menu Where ID=7
+08:29:07.179 552 W - Select * From Menu Where ID=1
+08:29:07.179 552 W - Select * From Menu Where ID=1
+08:29:07.180 552 W - Select * From Menu Where ID=2
+08:29:07.181 552 W - Select * From Menu Where ID=7
+08:29:08.337 548 W - Select * From Menu Where ID=1
+08:29:08.337 548 W - Select * From Menu Where ID=1
+08:29:08.337 548 W - Select * From Menu Where ID=2
+08:29:08.337 548 W - Select * From Menu Where ID=7
+08:29:08.498 552 W - Select * From Menu Where ID=1
+08:29:08.498 552 W - Select * From Menu Where ID=1
+08:29:08.499 552 W - Select * From Menu Where ID=2
+08:29:08.500 552 W - Select * From Menu Where ID=7
+08:29:08.931 535 W - Select * From Menu Where ID=1
+08:29:08.932 535 W - Select * From Menu Where ID=1
+08:29:08.932 535 W - Select * From Menu Where ID=2
+08:29:08.934 535 W - Select * From Menu Where ID=7
+08:29:09.292 535 W - Select * From Menu Where ID=1
+08:29:09.293 535 W - Select * From Menu Where ID=1
+08:29:09.293 535 W - Select * From Menu Where ID=2
+08:29:09.295 535 W - Select * From Menu Where ID=7
+08:29:10.063 548 W - Select * From Menu Where ID=1
+08:29:10.063 548 W - Select * From Menu Where ID=1
+08:29:10.064 548 W - Select * From Menu Where ID=2
+08:29:10.066 548 W - Select * From Menu Where ID=7
+08:29:11.088 549 W - Select * From Menu Where ID=1
+08:29:11.089 549 W - Select * From Menu Where ID=1
+08:29:11.090 549 W - Select * From Menu Where ID=2
+08:29:11.091 549 W - Select * From Menu Where ID=7
+08:29:11.242 548 W - Select * From Menu Where ID=1
+08:29:11.243 548 W - Select * From Menu Where ID=1
+08:29:11.244 548 W - Select * From Menu Where ID=2
+08:29:11.245 548 W - Select * From Menu Where ID=7
+08:29:12.236 549 W - Select * From Menu Where ID=1
+08:29:12.237 549 W - Select * From Menu Where ID=1
+08:29:12.237 549 W - Select * From Menu Where ID=2
+08:29:12.239 549 W - Select * From Menu Where ID=7
+08:29:12.965 535 W - Select * From Menu Where ID=2
+08:29:12.967 535 W - Select * From Menu Where ID=7
+08:29:13.277 550 W - Select * From Menu Where ID=1
+08:29:13.278 550 W - Select * From Menu Where ID=1
+08:29:13.279 550 W - Select * From Menu Where ID=2
+08:29:13.280 550 W - Select * From Menu Where ID=7
+08:29:13.426 548 W - Select * From Menu Where ID=1
+08:29:13.427 548 W - Select * From Menu Where ID=1
+08:29:13.428 548 W - Select * From Menu Where ID=2
+08:29:13.429 548 W - Select * From Menu Where ID=7
+08:29:15.113 551 W - Select * From Menu Where ID=1
+08:29:15.113 551 W - Select * From Menu Where ID=1
+08:29:15.113 551 W - Select * From Menu Where ID=2
+08:29:15.113 551 W - Select * From Menu Where ID=7
+08:29:21.828 552 W - Select * From Menu Where ID=1
+08:29:21.829 552 W - Select * From Menu Where ID=1
+08:29:21.829 552 W - Select * From Menu Where ID=2
+08:29:21.830 552 W - Select * From Menu Where ID=7
+08:29:22.448 548 W - Select * From Menu Where ID=1
+08:29:22.448 548 W - Select * From Menu Where ID=1
+08:29:22.449 548 W - Select * From Menu Where ID=2
+08:29:22.449 548 W - Select * From Menu Where ID=7
+08:29:22.637 550 W - Select * From Menu Where ID=1
+08:29:22.637 550 W - Select * From Menu Where ID=1
+08:29:22.638 550 W - Select * From Menu Where ID=2
+08:29:22.639 550 W - Select * From Menu Where ID=7
+08:29:23.070 552 W - Select * From Menu Where ID=1
+08:29:23.070 552 W - Select * From Menu Where ID=1
+08:29:23.071 552 W - Select * From Menu Where ID=2
+08:29:23.072 552 W - Select * From Menu Where ID=7
+08:29:23.260 551 W - Select * From Menu Where ID=1
+08:29:23.261 551 W - Select * From Menu Where ID=1
+08:29:23.261 551 W - Select * From Menu Where ID=2
+08:29:23.262 551 W - Select * From Menu Where ID=7
+08:29:23.696 548 W - Select * From Menu Where ID=1
+08:29:23.697 548 W - Select * From Menu Where ID=1
+08:29:23.697 548 W - Select * From Menu Where ID=2
+08:29:23.698 548 W - Select * From Menu Where ID=7
+08:29:23.986 548 W - Select * From Menu Where ID=1
+08:29:23.986 548 W - Select * From Menu Where ID=1
+08:29:23.987 548 W - Select * From Menu Where ID=2
+08:29:23.988 548 W - Select * From Menu Where ID=7
+08:29:25.077 549 W - Select * From Menu Where ID=1
+08:29:25.077 549 W - Select * From Menu Where ID=1
+08:29:25.078 549 W - Select * From Menu Where ID=2
+08:29:25.078 549 W - Select * From Menu Where ID=7
+08:29:26.049 535 W - Select * From Menu Where ID=1
+08:29:26.049 535 W - Select * From Menu Where ID=1
+08:29:26.050 535 W - Select * From Menu Where ID=2
+08:29:26.051 535 W - Select * From Menu Where ID=7
+08:29:26.217 550 W - Select * From Menu Where ID=1
+08:29:26.217 550 W - Select * From Menu Where ID=1
+08:29:26.218 550 W - Select * From Menu Where ID=2
+08:29:26.219 550 W - Select * From Menu Where ID=7
+08:29:26.561 535 W - 更新实体缓存（第22次）：NewLife.CommonEntity.Setting 原因：60秒过期
+08:29:26.562 535 W - Select * From Setting
+08:29:26.562 535 W - 完成更新缓存（第22次）：NewLife.CommonEntity.Setting
+08:29:27.199 549 W - Select * From Menu Where ID=1
+08:29:27.200 549 W - Select * From Menu Where ID=1
+08:29:27.200 549 W - Select * From Menu Where ID=2
+08:29:27.201 549 W - Select * From Menu Where ID=7
+08:29:27.387 548 W - Select * From Menu Where ID=1
+08:29:27.387 548 W - Select * From Menu Where ID=1
+08:29:27.388 548 W - Select * From Menu Where ID=2
+08:29:27.389 548 W - Select * From Menu Where ID=7
+08:29:27.819 535 W - Select * From Menu Where ID=1
+08:29:27.820 535 W - Select * From Menu Where ID=1
+08:29:27.820 535 W - Select * From Menu Where ID=2
+08:29:27.821 535 W - Select * From Menu Where ID=7
+08:29:28.012 552 W - Select * From Menu Where ID=1
+08:29:28.012 552 W - Select * From Menu Where ID=1
+08:29:28.013 552 W - Select * From Menu Where ID=2
+08:29:28.014 552 W - Select * From Menu Where ID=7
+08:29:28.440 551 W - Select * From Menu Where ID=1
+08:29:28.441 551 W - Select * From Menu Where ID=1
+08:29:28.441 551 W - Select * From Menu Where ID=2
+08:29:28.442 551 W - Select * From Menu Where ID=7
+08:29:28.636 549 W - Select * From Menu Where ID=1
+08:29:28.636 549 W - Select * From Menu Where ID=1
+08:29:28.637 549 W - Select * From Menu Where ID=2
+08:29:28.638 549 W - Select * From Menu Where ID=7
+08:29:29.076 552 W - Select * From Menu Where ID=1
+08:29:29.076 552 W - Select * From Menu Where ID=1
+08:29:29.077 552 W - Select * From Menu Where ID=2
+08:29:29.078 552 W - Select * From Menu Where ID=7
+08:29:29.400 535 W - Select * From Menu Where ID=1
+08:29:29.400 535 W - Select * From Menu Where ID=1
+08:29:29.401 535 W - Select * From Menu Where ID=2
+08:29:29.402 535 W - Select * From Menu Where ID=7
+08:29:30.442 549 W - Select * From Menu Where ID=1
+08:29:30.443 549 W - Select * From Menu Where ID=1
+08:29:30.443 549 W - Select * From Menu Where ID=2
+08:29:30.444 549 W - Select * From Menu Where ID=7
+08:29:31.583 535 W - Select * From Menu Where ID=1
+08:29:31.584 535 W - Select * From Menu Where ID=1
+08:29:31.584 535 W - Select * From Menu Where ID=2
+08:29:31.585 535 W - Select * From Menu Where ID=7
+08:29:31.912 552 W - Select * From Menu Where ID=1
+08:29:31.912 552 W - Select * From Menu Where ID=1
+08:29:31.913 552 W - Select * From Menu Where ID=2
+08:29:31.914 552 W - Select * From Menu Where ID=7
+08:29:32.368 550 W - Select * From Menu Where ID=1
+08:29:32.369 550 W - Select * From Menu Where ID=1
+08:29:32.369 550 W - Select * From Menu Where ID=2
+08:29:32.371 550 W - Select * From Menu Where ID=7
+08:29:38.778 550 W - Select * From Menu Where ID=2
+08:29:38.780 550 W - Select * From Menu Where ID=7
+08:29:39.086 551 W - Select * From Menu Where ID=1
+08:29:39.086 551 W - Select * From Menu Where ID=1
+08:29:39.087 551 W - Select * From Menu Where ID=2
+08:29:39.088 551 W - Select * From Menu Where ID=7
+08:29:40.249 552 W - Select * From Menu Where ID=1
+08:29:40.249 552 W - Select * From Menu Where ID=1
+08:29:40.249 552 W - Select * From Menu Where ID=2
+08:29:40.249 552 W - Select * From Menu Where ID=7
+08:29:40.413 548 W - Select * From Menu Where ID=1
+08:29:40.413 548 W - Select * From Menu Where ID=1
+08:29:40.414 548 W - Select * From Menu Where ID=2
+08:29:40.415 548 W - Select * From Menu Where ID=7
+08:29:40.838 551 W - Select * From Menu Where ID=1
+08:29:40.839 551 W - Select * From Menu Where ID=1
+08:29:40.839 551 W - Select * From Menu Where ID=2
+08:29:40.840 551 W - Select * From Menu Where ID=7
+08:29:41.037 552 W - Select * From Menu Where ID=1
+08:29:41.038 552 W - Select * From Menu Where ID=1
+08:29:41.038 552 W - Select * From Menu Where ID=2
+08:29:41.039 552 W - Select * From Menu Where ID=7
+08:29:41.472 551 W - Select * From Menu Where ID=1
+08:29:41.473 551 W - Select * From Menu Where ID=1
+08:29:41.473 551 W - Select * From Menu Where ID=2
+08:29:41.474 551 W - Select * From Menu Where ID=7
+08:29:41.661 549 W - Select * From Menu Where ID=1
+08:29:41.661 549 W - Select * From Menu Where ID=1
+08:29:41.662 549 W - Select * From Menu Where ID=2
+08:29:41.663 549 W - Select * From Menu Where ID=7
+08:29:42.111 548 W - Select * From Menu Where ID=1
+08:29:42.112 548 W - Select * From Menu Where ID=1
+08:29:42.112 548 W - Select * From Menu Where ID=2
+08:29:42.113 548 W - Select * From Menu Where ID=7
+08:29:42.285 535 W - Select * From Menu Where ID=1
+08:29:42.286 535 W - Select * From Menu Where ID=1
+08:29:42.286 535 W - Select * From Menu Where ID=2
+08:29:42.287 535 W - Select * From Menu Where ID=7
+08:29:48.693 552 W - Select * From Menu Where ID=2
+08:29:48.694 552 W - Select * From Menu Where ID=7
+08:29:48.712 549 W - Select * From Menu Where ID=1
+08:29:48.713 549 W - Select * From Menu Where ID=1
+08:29:48.713 549 W - Select * From Menu Where ID=2
+08:29:48.714 549 W - Select * From Menu Where ID=7
+08:29:49.845 552 W - Select * From Menu Where ID=1
+08:29:49.845 552 W - Select * From Menu Where ID=1
+08:29:49.846 552 W - Select * From Menu Where ID=2
+08:29:49.846 552 W - Select * From Menu Where ID=7
+08:29:50.813 535 W - Select * From Menu Where ID=1
+08:29:50.813 535 W - Select * From Menu Where ID=1
+08:29:50.814 535 W - Select * From Menu Where ID=2
+08:29:50.815 535 W - Select * From Menu Where ID=7
+08:29:50.989 547 W - Select * From Menu Where ID=1
+08:29:50.989 547 W - Select * From Menu Where ID=1
+08:29:50.990 547 W - Select * From Menu Where ID=2
+08:29:50.991 547 W - Select * From Menu Where ID=7
+08:30:07.625 551 W - Select * From Menu Where ID=1
+08:30:07.626 551 W - Select * From Menu Where ID=1
+08:30:07.626 551 W - Select * From Menu Where ID=2
+08:30:07.627 551 W - Select * From Menu Where ID=7
+08:30:09.006 535 W - Select * From Menu Where ID=1
+08:30:09.006 535 W - Select * From Menu Where ID=1
+08:30:09.007 535 W - Select * From Menu Where ID=2
+08:30:09.008 535 W - Select * From Menu Where ID=7
+08:30:10.000 535 W - Select * From Menu Where ID=1
+08:30:10.000 535 W - Select * From Menu Where ID=1
+08:30:10.001 535 W - Select * From Menu Where ID=2
+08:30:10.002 535 W - Select * From Menu Where ID=7
+08:30:10.161 547 W - Select * From Menu Where ID=1
+08:30:10.162 547 W - Select * From Menu Where ID=1
+08:30:10.162 547 W - Select * From Menu Where ID=2
+08:30:10.163 547 W - Select * From Menu Where ID=7
+08:30:11.138 548 W - Select * From Menu Where ID=1
+08:30:11.139 548 W - Select * From Menu Where ID=1
+08:30:11.140 548 W - Select * From Menu Where ID=2
+08:30:11.141 548 W - Select * From Menu Where ID=7
+08:30:11.333 548 W - Select * From Menu Where ID=1
+08:30:11.334 548 W - Select * From Menu Where ID=1
+08:30:11.335 548 W - Select * From Menu Where ID=2
+08:30:11.336 548 W - Select * From Menu Where ID=7
+08:30:11.772 552 W - Select * From Menu Where ID=1
+08:30:11.773 552 W - Select * From Menu Where ID=1
+08:30:11.774 552 W - Select * From Menu Where ID=2
+08:30:11.775 552 W - Select * From Menu Where ID=7
+08:30:11.955 549 W - Select * From Menu Where ID=1
+08:30:11.956 549 W - Select * From Menu Where ID=1
+08:30:11.957 549 W - Select * From Menu Where ID=2
+08:30:11.958 549 W - Select * From Menu Where ID=7
+08:30:12.397 535 W - Select * From Menu Where ID=1
+08:30:12.398 535 W - Select * From Menu Where ID=1
+08:30:12.399 535 W - Select * From Menu Where ID=2
+08:30:12.400 535 W - Select * From Menu Where ID=7
+08:30:13.399 550 W - Select * From Menu Where ID=1
+08:30:13.399 550 W - Select * From Menu Where ID=1
+08:30:13.400 550 W - Select * From Menu Where ID=2
+08:30:13.401 550 W - Select * From Menu Where ID=7
+08:30:13.577 535 W - Select * From Menu Where ID=1
+08:30:13.577 535 W - Select * From Menu Where ID=1
+08:30:13.578 535 W - Select * From Menu Where ID=2
+08:30:13.579 535 W - Select * From Menu Where ID=7
+08:30:14.787 552 W - Select * From Menu Where ID=1
+08:30:14.787 552 W - Select * From Menu Where ID=1
+08:30:14.788 552 W - Select * From Menu Where ID=2
+08:30:14.789 552 W - Select * From Menu Where ID=7
+08:30:15.633 551 W - Select * From Menu Where ID=1
+08:30:15.634 551 W - Select * From Menu Where ID=1
+08:30:15.634 551 W - Select * From Menu Where ID=2
+08:30:15.635 551 W - Select * From Menu Where ID=7
+08:30:15.808 550 W - Select * From Menu Where ID=1
+08:30:15.808 550 W - Select * From Menu Where ID=1
+08:30:15.809 550 W - Select * From Menu Where ID=2
+08:30:15.810 550 W - Select * From Menu Where ID=7
+08:30:16.607 548 W - Select * From Menu Where ID=1
+08:30:16.607 548 W - Select * From Menu Where ID=1
+08:30:16.608 548 W - Select * From Menu Where ID=2
+08:30:16.609 548 W - Select * From Menu Where ID=7
+08:30:17.759 550 W - Select * From Menu Where ID=2
+08:30:17.760 550 W - Select * From Menu Where ID=7
+08:30:17.989 547 W - Select * From Menu Where ID=1
+08:30:17.990 547 W - Select * From Menu Where ID=1
+08:30:17.991 547 W - Select * From Menu Where ID=2
+08:30:17.992 547 W - Select * From Menu Where ID=7
+08:30:18.394 552 W - Select * From Menu Where ID=1
+08:30:18.394 552 W - Select * From Menu Where ID=1
+08:30:18.395 552 W - Select * From Menu Where ID=2
+08:30:18.395 552 W - Select * From Menu Where ID=7
+08:30:18.647 551 W - Select * From Menu Where ID=1
+08:30:18.647 551 W - Select * From Menu Where ID=1
+08:30:18.648 551 W - Select * From Menu Where ID=2
+08:30:18.649 551 W - Select * From Menu Where ID=7
+08:30:19.244 550 W - Select * From Menu Where ID=1
+08:30:19.244 550 W - Select * From Menu Where ID=1
+08:30:19.246 550 W - Select * From Menu Where ID=2
+08:30:19.247 550 W - Select * From Menu Where ID=7
+08:30:19.630 551 W - Select * From Menu Where ID=1
+08:30:19.630 551 W - Select * From Menu Where ID=1
+08:30:19.631 551 W - Select * From Menu Where ID=2
+08:30:19.632 551 W - Select * From Menu Where ID=7
+08:30:20.360 552 W - Select * From Menu Where ID=1
+08:30:20.360 552 W - Select * From Menu Where ID=1
+08:30:20.361 552 W - Select * From Menu Where ID=2
+08:30:20.362 552 W - Select * From Menu Where ID=7
+08:30:20.691 552 W - Select * From Menu Where ID=2
+08:30:20.692 552 W - Select * From Menu Where ID=7
+08:30:20.994 549 W - Select * From Menu Where ID=1
+08:30:20.995 549 W - Select * From Menu Where ID=1
+08:30:20.995 549 W - Select * From Menu Where ID=2
+08:30:20.996 549 W - Select * From Menu Where ID=7
+08:30:21.322 552 W - Select * From Menu Where ID=1
+08:30:21.322 552 W - Select * From Menu Where ID=1
+08:30:21.323 552 W - Select * From Menu Where ID=2
+08:30:21.323 552 W - Select * From Menu Where ID=7
+08:30:33.044 549 W - 更新实体缓存（第23次）：NewLife.CommonEntity.Setting 原因：60秒过期
+08:30:33.044 549 W - Select * From Setting
+08:30:33.045 549 W - 完成更新缓存（第23次）：NewLife.CommonEntity.Setting
+08:30:33.045 549 W - Select * From Administrator Order By ID Desc limit 1
+08:30:33.045 548 Y - Select Count(*) From Administrator
+08:30:34.541 550 W - 更新实体缓存（第9次）：NewLife.CommonEntity.Administrator 原因：无缓存数据
+08:30:34.541 550 W - Select * From Administrator
+08:30:34.542 550 W - 完成更新缓存（第9次）：NewLife.CommonEntity.Administrator
+08:30:34.542 550 W - Update Administrator Set Logins=9, LastLogin='2012-06-01 08:30:34' Where ID=1
+08:30:34.542 550 W - 清空实体缓存：NewLife.CommonEntity.Administrator
+08:30:34.543 550 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('管理员', '登录', 0, null, '127.0.0.1', '2012-06-01 08:30:34', 'admin');Select last_insert_rowid() newid
+08:30:34.543 550 W - System.Threading.ThreadAbortException: 正在中止线程。
+   在 System.Threading.Thread.AbortInternal()
+   在 System.Threading.Thread.Abort(Object stateInfo)
+   在 System.Web.HttpResponse.End()
+   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   在 System.Web.HttpResponse.Redirect(String url)
+   在 Login.LoginButton_Click(Object sender, EventArgs e) 位置 d:\Develop\DotNet-Asxinyu\Web\Newlife.Cube\Admin\Login.aspx.cs:行号 71
+08:30:34.549 551 W - 更新实体缓存（第17次）：NewLife.CommonEntity.Role 原因：60秒过期
+08:30:34.549 551 W - Select * From Role
+08:30:34.549 551 W - 完成更新缓存（第17次）：NewLife.CommonEntity.Role
+08:30:34.549 551 W - 更新实体缓存（第21次）：NewLife.CommonEntity.RoleMenu 原因：60秒过期
+08:30:34.549 551 W - Select * From RoleMenu
+08:30:34.550 551 W - 完成更新缓存（第21次）：NewLife.CommonEntity.RoleMenu
+08:30:34.550 551 W - 更新实体缓存（第54次）：NewLife.CommonEntity.Menu 原因：60秒过期
+08:30:34.550 551 W - Select * From Menu
+08:30:34.551 551 W - 完成更新缓存（第54次）：NewLife.CommonEntity.Menu
+08:30:34.592 552 W - Select * From Menu Where ID=2
+08:30:34.593 552 W - Select * From Menu Where ID=7
+08:30:34.596 549 W - Select * From Menu Where ID=1
+08:30:34.596 549 W - Select * From Menu Where ID=1
+08:30:34.596 549 W - Select * From Menu Where ID=2
+08:30:34.597 549 W - Select * From Menu Where ID=7
+08:30:40.139 550 W - Select * From Administrator Where ID=1
+08:30:41.066 552 W - 实体缓存<Log>总次数7，一级命中4（57.14%）
+08:30:41.066 552 W - 异步更新实体缓存（第4次）：NewLife.CommonEntity.Log 原因：600秒过期
+08:30:41.066 548 Y - Select Category From Log Group By Category
+08:30:41.066 548 Y - 完成更新缓存（第4次）：NewLife.CommonEntity.Log
+08:30:41.066 552 W - Select * From Administrator
+08:30:41.066 552 W - Select * From Log Order By ID Desc limit 20
+08:30:41.066 552 W - Select Count(*) From Log
+08:30:46.224 547 W - Select * From Administrator
+08:30:46.226 547 W - Select * From Log Order By ID Desc limit 20
+08:30:46.227 547 W - Select Count(*) From Log
+08:30:57.393 551 W - Select * From Log Order By ID Desc limit 20, 20
+08:30:57.394 551 W - Select Count(*) From Log

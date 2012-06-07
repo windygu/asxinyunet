@@ -170,7 +170,7 @@ namespace ResouceEntity
         #region 扩展操作
         #endregion
 
-        #region 业务
+        #region 业务      
         #endregion
     }
 }

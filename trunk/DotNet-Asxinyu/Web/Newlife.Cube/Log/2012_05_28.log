@@ -1,0 +1,140 @@
+﻿15:22:18.913 729 W - Select * From Menu Where ID=27
+15:22:18.913 729 W - 实体缓存<Administrator>总次数18，一级命中12（66.67%）
+15:22:18.914 729 W - 更新实体缓存（第7次）：NewLife.CommonEntity.Administrator 原因：无缓存数据
+15:22:18.914 729 W - Select * From Administrator
+15:22:18.914 729 W - 完成更新缓存（第7次）：NewLife.CommonEntity.Administrator
+15:22:18.915 729 W - Update Administrator Set Logins=7, LastLogin='2012-05-28 15:22:18' Where ID=1
+15:22:18.915 729 W - 清空实体缓存：NewLife.CommonEntity.Administrator
+15:22:18.916 729 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('管理员', '自动登录', 0, null, '127.0.0.1', '2012-05-28 15:22:18', 'admin');Select last_insert_rowid() newid
+15:22:18.916 729 W - 实体缓存<Role>总次数87，一级命中73（83.91%）
+15:22:18.916 729 W - 更新实体缓存（第15次）：NewLife.CommonEntity.Role 原因：60秒过期
+15:22:18.916 729 W - Select * From Role
+15:22:18.916 729 W - 完成更新缓存（第15次）：NewLife.CommonEntity.Role
+15:22:18.917 729 W - Select * From Menu Where ID=27
+15:22:18.917 729 W - 实体缓存<RoleMenu>总次数3376，一级命中3358（99.47%）
+15:22:18.917 729 W - 更新实体缓存（第19次）：NewLife.CommonEntity.RoleMenu 原因：60秒过期
+15:22:18.917 729 W - Select * From RoleMenu
+15:22:18.918 729 W - 完成更新缓存（第19次）：NewLife.CommonEntity.RoleMenu
+15:22:18.918 729 W - 实体缓存<Menu>总次数1656，一级命中1607（97.04%）
+15:22:18.918 729 W - 更新实体缓存（第50次）：NewLife.CommonEntity.Menu 原因：60秒过期
+15:22:18.918 729 W - Select * From Menu
+15:22:18.919 729 W - 完成更新缓存（第50次）：NewLife.CommonEntity.Menu
+15:22:18.920 729 W - Select * From Menu Where ID=28
+15:22:19.422 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:19', '模型列管理');Select last_insert_rowid() newid
+15:22:19.423 741 W - Select Count(*) From Menu Where ID=28
+15:22:19.423 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:19', '表单数据');Select last_insert_rowid() newid
+15:22:19.423 741 W - Select Count(*) From Menu Where ID=28
+15:22:19.424 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:19', '表单管理');Select last_insert_rowid() newid
+15:22:19.424 741 W - Select Count(*) From Menu Where ID=28
+15:22:19.424 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:19', '表单数据');Select last_insert_rowid() newid
+15:22:19.425 741 W - Select Count(*) From Menu Where ID=28
+15:22:19.425 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:19', '表单预览');Select last_insert_rowid() newid
+15:22:19.425 741 W - Select Count(*) From Menu Where ID=28
+15:22:19.445 741 W - 实体缓存<DataModel>总次数496，一级命中468（94.35%），二级命中2（0.40%）
+15:22:19.445 741 W - 更新实体缓存（第27次）：NewLife.Cube.Entities.DataModel 原因：60秒过期
+15:22:19.446 741 W - Select * From DataModel
+15:22:19.446 741 W - 完成更新缓存（第27次）：NewLife.Cube.Entities.DataModel
+15:22:19.447 741 W - Select * From Menu Where ID=27
+15:22:19.448 741 W - Select * From Menu Where ID=28
+15:22:19.448 741 W - Select * From DataModel Where IsStatic=0 And IsEnable=1
+15:22:19.456 737 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+15:22:19.749 737 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+15:22:19.750 737 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+15:22:21.559 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:21', '模型列管理');Select last_insert_rowid() newid
+15:22:21.560 741 W - Select Count(*) From Menu Where ID=28
+15:22:21.560 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:21', '表单数据');Select last_insert_rowid() newid
+15:22:21.561 741 W - Select Count(*) From Menu Where ID=28
+15:22:21.561 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:21', '表单管理');Select last_insert_rowid() newid
+15:22:21.561 741 W - Select Count(*) From Menu Where ID=28
+15:22:21.562 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:21', '表单数据');Select last_insert_rowid() newid
+15:22:21.562 741 W - Select Count(*) From Menu Where ID=28
+15:22:21.563 741 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-28 15:22:21', '表单预览');Select last_insert_rowid() newid
+15:22:21.563 741 W - Select Count(*) From Menu Where ID=28
+15:22:21.589 741 W - Select * From Menu Where ID=27
+15:22:21.590 741 W - Select * From Menu Where ID=28
+15:22:21.590 741 W - Select * From DataModel Where IsStatic=0 And IsEnable=1
+15:22:21.604 741 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+15:22:21.606 741 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+15:22:21.606 741 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+15:22:22.074 737 W - Select * From Menu Where ID=27
+15:22:22.075 737 W - Select * From Menu Where ID=27
+15:22:22.075 737 W - Select * From Menu Where ID=28
+15:22:24.463 737 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+15:22:24.464 737 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+15:22:24.465 737 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+15:22:25.720 729 W - Select * From ModelTable Where DataModelID=4 And Name='DataModelForm'
+15:22:25.723 729 W - Select Count(*) From DataModel Where Name='Model1'
+15:22:30.110 729 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+15:22:30.112 729 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+15:22:30.112 729 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+15:22:32.712 741 W - Select * From Menu Where ID=15
+15:22:32.712 741 W - Select * From Menu Where ID=15
+15:22:32.712 741 W - Select * From Menu Where ID=16
+15:22:32.713 741 W - Select * From Menu Where ID=21
+15:22:32.732 737 W - Select * From Menu Where ID=27
+15:22:32.733 737 W - Select * From Menu Where ID=28
+15:22:32.734 737 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+15:22:32.735 737 W - 实体缓存<ModelTable>总次数1720，一级命中1692（98.37%）
+15:22:32.735 737 W - 更新实体缓存（第29次）：NewLife.Cube.Entities.ModelTable 原因：60秒过期
+15:22:32.735 737 W - Select * From ModelTable
+15:22:32.736 737 W - 完成更新缓存（第29次）：NewLife.Cube.Entities.ModelTable
+15:22:32.750 737 W - Select * From DataModel Order By ID Desc limit 20
+15:22:32.751 737 W - Select Count(*) From DataModel
+15:22:35.743 737 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+15:22:35.745 737 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+15:22:35.745 737 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+15:22:37.649 729 W - Select * From ModelTable Where DataModelID=1 Order By Sort limit 20
+15:22:37.649 729 W - Select Count(*) From ModelTable Where DataModelID=1
+15:22:41.668 737 W - Select * From ModelTable Where DataModelID=3 Order By Sort limit 20
+15:22:41.669 737 W - Select Count(*) From ModelTable Where DataModelID=3
+15:22:45.107 729 W - Select * From ModelTable Where ID=24
+15:22:52.123 741 W - Select * From ModelColumn Where ModelTableID=21 Order By Sort limit 20
+15:22:52.124 741 W - Select Count(*) From ModelColumn Where ModelTableID=21
+15:22:54.519 737 W - Select * From ModelRelation Where ModelTableID=21 Order By ID Desc limit 20
+15:22:54.520 737 W - Select Count(*) From ModelRelation Where ModelTableID=21
+15:22:55.471 737 W - Select * From ModelIndex Where ModelTableID=21 Order By ID Desc limit 20
+15:22:55.472 737 W - Select Count(*) From ModelIndex Where ModelTableID=21
+15:22:56.360 729 W - Select * From ModelColumn Where ModelTableID=21 Order By Sort limit 20
+15:22:56.361 729 W - Select Count(*) From ModelColumn Where ModelTableID=21
+15:22:56.786 737 W - Select * From ModelTable Where ID=21
+15:23:01.160 741 W - Select * From ModelTable Where DataModelID=4 Order By Sort limit 20
+15:23:01.161 741 W - Select Count(*) From ModelTable Where DataModelID=4
+15:23:04.879 741 W - Select * From ModelTable Where DataModelID=5 Order By Sort limit 20
+15:23:04.880 741 W - Select Count(*) From ModelTable Where DataModelID=5
+15:23:08.685 741 W - Select * From ModelColumn Where ModelTableID=27 Order By Sort limit 20
+15:23:08.686 741 W - Select Count(*) From ModelColumn Where ModelTableID=27
+15:23:11.242 729 W - Select * From ModelColumn Where ID=208
+15:23:19.714 729 W - 更新实体缓存（第51次）：NewLife.CommonEntity.Menu 原因：60秒过期
+15:23:19.715 729 W - Select * From Menu
+15:23:19.716 729 W - 完成更新缓存（第51次）：NewLife.CommonEntity.Menu
+15:23:19.718 729 W - Select * From ModelColumn Where ModelTableID=24 Order By Sort limit 20
+15:23:19.720 729 W - Select Count(*) From ModelColumn Where ModelTableID=24
+15:23:25.532 741 W - Select * From ModelColumn Where ModelTableID=23 Order By Sort limit 20
+15:23:25.534 741 W - Select Count(*) From ModelColumn Where ModelTableID=23
+15:23:26.318 737 W - Select * From ModelColumn Where ModelTableID=22 Order By Sort limit 20
+15:23:26.321 737 W - Select Count(*) From ModelColumn Where ModelTableID=22
+15:23:27.326 729 W - Select * From ModelColumn Where ModelTableID=21 Order By Sort limit 20
+15:23:27.327 729 W - Select Count(*) From ModelColumn Where ModelTableID=21
+15:23:29.439 729 W - Select * From ModelColumn Where ModelTableID=20 Order By Sort limit 20
+15:23:29.440 729 W - Select Count(*) From ModelColumn Where ModelTableID=20
+15:23:35.275 729 W - Select * From ModelColumn Where ModelTableID=26 Order By Sort limit 20
+15:23:35.277 729 W - Select Count(*) From ModelColumn Where ModelTableID=26
+15:23:35.278 729 W - 更新实体缓存（第30次）：NewLife.Cube.Entities.ModelTable 原因：60秒过期
+15:23:35.278 729 W - Select * From ModelTable
+15:23:35.279 729 W - 完成更新缓存（第30次）：NewLife.Cube.Entities.ModelTable
+15:23:36.214 741 W - Select * From ModelColumn Where ModelTableID=25 Order By Sort limit 20
+15:23:36.214 741 W - Select Count(*) From ModelColumn Where ModelTableID=25
+15:23:38.766 741 W - Select * From ModelColumn Where ModelTableID=26 Order By Sort limit 20
+15:23:38.767 741 W - Select Count(*) From ModelColumn Where ModelTableID=26
+15:23:50.935 741 W - Select * From ModelColumn Where ModelTableID=25 Order By Sort limit 20
+15:23:50.936 741 W - Select Count(*) From ModelColumn Where ModelTableID=25
+15:24:08.818 741 W - Select * From ModelColumn Where ID=180
+15:24:18.286 741 W - Select * From ModelRelation Where ModelTableID=25 Order By ID Desc limit 20
+15:24:18.288 741 W - Select Count(*) From ModelRelation Where ModelTableID=25
+15:24:18.859 737 W - Select * From ModelIndex Where ModelTableID=25 Order By ID Desc limit 20
+15:24:18.860 737 W - Select Count(*) From ModelIndex Where ModelTableID=25
+15:24:19.474 741 W - Select * From ModelColumn Where ModelTableID=25 Order By Sort limit 20
+15:24:19.475 741 W - Select Count(*) From ModelColumn Where ModelTableID=25
+15:24:21.671 729 W - 更新实体缓存（第52次）：NewLife.CommonEntity.Menu 原因：60秒过期
+15:24:21.671 729 W - Select * From Menu
+15:24:21.672 729 W - 完成更新缓存（第52次）：NewLife.CommonEntity.Menu

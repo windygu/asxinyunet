@@ -22,11 +22,8 @@ public partial class developer_affairtypeAdd : System.Web.UI.Page
         {
 
           UserSession userSession = ((UserSession)Session["RoleUser"]);
-
           strXml = PageCommon.setOpDocXML(strXml, userSession);
-
           string strRetXml = AffairType.addOrEdit(strXml);
-
           if (PageCommon.IsSucceed(strRetXml))
           {
             Response.Write(PageCommon.showMsg("添加事务类型成功,请重新生成字典文件！", "affairtypelist.aspx"));
