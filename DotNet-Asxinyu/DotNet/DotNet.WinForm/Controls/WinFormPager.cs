@@ -73,6 +73,7 @@ namespace DotNet.WinForm.Controls
             set
             {
                 this._RecordCount = value;
+                SetPagerText();
             }
         }
         #endregion
@@ -96,6 +97,7 @@ namespace DotNet.WinForm.Controls
                 if (value <= 0) value = 10;
                 this._PageSize = value;
                 SetLabelLocation();
+                SetPagerText();
             }
         }
         #endregion
