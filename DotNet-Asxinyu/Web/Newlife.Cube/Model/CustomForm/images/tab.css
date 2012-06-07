@@ -1,0 +1,31 @@
+﻿.tag
+{
+    background-image: url(tab1.gif);
+    height: 29px; /*padding-left: 50px;*/
+}
+.tag ul
+{
+    overflow: auto;
+    margin: 0;
+}
+.tag li
+{
+    float: left;
+    background-image: url(tab2.gif);
+    height: 26px;
+    line-height: 25px;
+    border-left: 1px solid #8db2e3;
+    border-top: 1px solid #8db2e3;
+    border-right: 1px solid #8db2e3;
+    margin-right: 6px;
+    display: inline;
+    margin-top: 2px;
+    padding: 0px 8px;
+    color: #6087bb;
+    cursor: pointer;
+}
+.tag li.current
+{
+    background-image: url(tab3.gif);
+    font-weight: bold;
+}

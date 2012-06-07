@@ -1,0 +1,1747 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NewLife.Cube</name>
+    </assembly>
+    <members>
+        <member name="T:NewLife.Cube.Templating.DynamicTempBase">
+            <summary>动态模版基类</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.TempBase">
+            <summary>魔方模版基类</summary>
+            <remarks>
+            关于内嵌资源，可以采用 Model/Table.axd?f=images/logo.png 的形式。
+            等号前面这一截由模版基类提供，同时也方便将来更改为模版绝对路径 ~/XT/Model/Table/images/logo.png，而模版不需要改变。
+            </remarks>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TempBase.Initialize">
+            <summary>初始化</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TempBase.FindTable(System.String)">
+            <summary>根据指定名称查找表</summary>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TempBase.Model">
+            <summary>数据模型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TempBase.ModelTable">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TempBase.Table">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TempBase.Tables">
+            <summary>模型表集合。允许访问同一个模型下的其它模型表</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.DynamicTempBase.JoinKeys(XCode.IEntity,System.String,System.String)">
+            <summary>合并</summary>
+            <param name="entity"></param>
+            <param name="splitNameValue"></param>
+            <param name="splitJoin"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Context">
+            <summary>上下文</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Request">
+            <summary>请求</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Response">
+            <summary>响应</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Session">
+            <summary>会话</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Server">
+            <summary>服务</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Dal">
+            <summary>数据层</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.Factory">
+            <summary>实体操作工厂</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.EntityType">
+            <summary>实体类</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.ResourcePath">
+            <summary>模版资源路径</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.DynamicTempBase.StylePath">
+            <summary>样式路径</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelTable">
+            <summary>模型表</summary>
+            <summary>模型表</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.IModelTable">
+            <summary>模型表接口</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.DataModelID">
+            <summary>数据模型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.TableName">
+            <summary>表名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.Owner">
+            <summary>所有者</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.DbType">
+            <summary>数据库类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.IsView">
+            <summary>视图</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.TemplatePath">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.StylePath">
+            <summary>样式</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.Description">
+            <summary>注释</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.Template">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelTable.Item(System.String)">
+            <summary>获取/设置 字段值。</summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.FindByDataModelIDAndName(System.Int32,System.String)">
+            <summary>
+            根据数据模型、名称查找
+            </summary>
+            <param name="datamodelid">数据模型</param>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.FindAllByDataModelID(System.Int32)">
+            <summary>
+            根据数据模型查找
+            </summary>
+            <param name="datamodelid">数据模型</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.Valid(System.Boolean)">
+            <summary>验证数据，通过抛出异常的方式提示验证失败。</summary>
+            <param name="isNew"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.OnDelete">
+            <summary>
+            已重载。删除关联数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.Search(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录集，分页、排序
+            </summary>
+            <param name="modelid">模型编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体集</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.SearchCount(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
+            </summary>
+            <param name="modelid">模型编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.SearchWhere(System.Int32,System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="modelid">模型编号</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.CreateOperate">
+            <summary>创建匹配的实体操作者</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.SaveForm(System.Web.UI.Control)">
+            <summary>保存表单</summary>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.MakeGridView(System.Web.UI.WebControls.GridView)">
+            <summary>生成GridView列</summary>
+            <param name="gv"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.Import(System.Int32,XCode.DataAccessLayer.IDataTable)">
+            <summary>导入</summary>
+            <param name="modelid"></param>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#GetColumn(System.String)">
+            <summary>
+            根据字段名获取字段
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#GetColumns(System.String[])">
+            <summary>
+            根据字段名数组获取字段数组
+            </summary>
+            <param name="names"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.System#Xml#Serialization#IXmlSerializable#GetSchema">
+            <summary>获取架构</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.System#Xml#Serialization#IXmlSerializable#ReadXml(System.Xml.XmlReader)">
+            <summary>读取</summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.System#Xml#Serialization#IXmlSerializable#WriteXml(System.Xml.XmlWriter)">
+            <summary>写入</summary>
+            <param name="writer"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.GetTemplates">
+            <summary>获取模版集合。T4模版需要打包一起编译，否则有包含文件就麻烦了</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.GetResource(System.String)">
+            <summary>获取模版里面的资源文件。因为编写模版时可能不区分大小写，所以内部需要注意</summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.GetTemplateEngine">
+            <summary>获取模版引擎</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.Up">
+            <summary>排序上升</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.Down">
+            <summary>排序下降</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelTable.RenderTempate">
+            <summary>更新前端模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.DataModelID">
+            <summary>数据模型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.TableName">
+            <summary>表名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.Owner">
+            <summary>所有者</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.DbType">
+            <summary>数据库类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.IsView">
+            <summary>视图</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.TemplatePath">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.StylePath">
+            <summary>样式</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.Description">
+            <summary>注释</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.Template">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.DataModel">
+            <summary>该模型表所对应的数据模型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.DataModelName">
+            <summary>该模型表所对应的数据模型名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.ModelColumns">
+            <summary>该模型表所拥有的模型列集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.ModelIndexs">
+            <summary>该模型表所拥有的模型索引集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.ModelRelations">
+            <summary>该模型表所拥有的模型关系集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.DatabaseType">
+            <summary>数据库类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.StylePathEx">
+            <summary>样式路径</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#Name">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#Alias">
+            <summary>别名。IDataTable的别名不能为空</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#Columns">
+            <summary>索引集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#Indexes">
+            <summary>索引集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#Relations">
+            <summary>关系集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#PrimaryKeys">
+            <summary>主键集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.XCode#DataAccessLayer#IDataTable#DbType">
+            <summary>数据库类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.DisplayName">
+            <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelTable._">
+            <summary>取得模型表字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.DataModelID">
+            <summary>数据模型</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.TableName">
+            <summary>表名</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.Owner">
+            <summary>所有者</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.DbType">
+            <summary>数据库类型</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.IsView">
+            <summary>视图</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.TemplatePath">
+            <summary>模版</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.StylePath">
+            <summary>样式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.Description">
+            <summary>注释</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelTable._.Template">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelTable.BooleanTemplate.DataField">
+            <summary>数据字段</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelRelation">
+            <summary>模型关系</summary>
+            <summary>模型关系</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.IModelRelation">
+            <summary>模型关系接口</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.Column">
+            <summary>数据列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.RelationTable">
+            <summary>引用表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.RelationColumn">
+            <summary>引用列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.Unique">
+            <summary>唯一</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.Computed">
+            <summary>是否计算产生</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelRelation.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.FindAllByModelTableID(System.Int32)">
+            <summary>
+            根据模型表查找
+            </summary>
+            <param name="modeltableid">模型表</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.FindByModelTableIDAndColumnAndRelationTableAndRelationColumn(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            根据模型表、数据列、引用表、引用列查找
+            </summary>
+            <param name="modeltableid">模型表</param>
+            <param name="column">数据列</param>
+            <param name="relationtable">引用表</param>
+            <param name="relationcolumn">引用列</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.Search(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录集，分页、排序
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体集</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.SearchCount(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.SearchWhere(System.Int32,System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.Import(System.Int32,XCode.DataAccessLayer.IDataRelation)">
+            <summary>导入</summary>
+            <param name="tableid"></param>
+            <param name="relation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelRelation.XCode#DataAccessLayer#IDataRelation#Clone(XCode.DataAccessLayer.IDataTable)">
+            <summary>
+            克隆
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.ModelTable">
+            <summary>该模型关系所对应的模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.ModelTableName">
+            <summary>该模型索引所对应的模型表名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.XCode#DataAccessLayer#IDataRelation#Table">
+            <summary>数据表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.Column">
+            <summary>数据列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.RelationTable">
+            <summary>引用表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.RelationColumn">
+            <summary>引用列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.Unique">
+            <summary>唯一</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.Computed">
+            <summary>是否计算产生</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelRelation.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelRelation._">
+            <summary>取得模型关系字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.Column">
+            <summary>数据列</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.RelationTable">
+            <summary>引用表</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.RelationColumn">
+            <summary>引用列</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.Unique">
+            <summary>唯一</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelRelation._.Computed">
+            <summary>是否计算产生</summary>
+        </member>
+        <member name="T:NewLife.Cube.Handlers.FormHandler">
+            <summary>表单处理器</summary>
+        </member>
+        <member name="T:NewLife.Cube.Handlers.ModelHandlerBase">
+            <summary>模型处理器基类</summary>
+        </member>
+        <member name="M:NewLife.Cube.Handlers.ModelHandlerBase.ProcessRequest(System.Web.HttpContext)">
+            <summary>通过实现 System.Web.IHttpHandler 接口的自定义 HttpHandler 启用 HTTP Web 请求的处理。</summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:NewLife.Cube.Handlers.ModelHandlerBase.IsReusable">
+            <summary>获取一个值，该值指示其他请求是否可以使用 System.Web.IHttpHandler 实例。</summary>
+        </member>
+        <member name="P:NewLife.Cube.Handlers.ModelHandlerBase.Table">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Handlers.ModelHandlerBase.Request">
+            <summary>请求</summary>
+        </member>
+        <member name="P:NewLife.Cube.Handlers.ModelHandlerBase.Response">
+            <summary>响应</summary>
+        </member>
+        <member name="M:NewLife.Cube.Handlers.FormHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>通过实现 System.Web.IHttpHandler 接口的自定义 HttpHandler 启用 HTTP Web 请求的处理。</summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelIndex">
+            <summary>模型索引</summary>
+            <summary>模型索引</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.IModelIndex">
+            <summary>模型索引接口</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.Columns">
+            <summary>数据列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.Unique">
+            <summary>唯一</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.PrimaryKey">
+            <summary>是否主键</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.Computed">
+            <summary>是否计算产生</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelIndex.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.FindByModelTableIDAndColumns(System.Int32,System.String)">
+            <summary>
+            根据模型表、数据列查找
+            </summary>
+            <param name="modeltableid">模型表</param>
+            <param name="columns">数据列</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.FindAllByModelTableID(System.Int32)">
+            <summary>
+            根据模型表查找
+            </summary>
+            <param name="modeltableid">模型表</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.Search(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录集，分页、排序
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体集</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.SearchCount(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.SearchWhere(System.Int32,System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.Import(System.Int32,XCode.DataAccessLayer.IDataIndex)">
+            <summary>导入</summary>
+            <param name="tableid"></param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelIndex.XCode#DataAccessLayer#IDataIndex#Clone(XCode.DataAccessLayer.IDataTable)">
+            <summary>
+            克隆
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.ModelTable">
+            <summary>该模型索引所对应的模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.ModelTableName">
+            <summary>该模型索引所对应的模型表名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.XCode#DataAccessLayer#IDataIndex#Columns">
+            <summary>数据列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.XCode#DataAccessLayer#IDataIndex#Table">
+            <summary>数据表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.Columns">
+            <summary>数据列</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.Unique">
+            <summary>唯一</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.PrimaryKey">
+            <summary>是否主键</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.Computed">
+            <summary>是否计算产生</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelIndex.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelIndex._">
+            <summary>取得模型索引字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.Columns">
+            <summary>数据列</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.Unique">
+            <summary>唯一</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.PrimaryKey">
+            <summary>是否主键</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelIndex._.Computed">
+            <summary>是否计算产生</summary>
+        </member>
+        <member name="T:NewLife.Cube.Controllers.ModelController">
+            <summary>模型控制器</summary>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ModelController.ProcessRequest(NewLife.Mvc.IRouteContext)">
+            <summary>通过实现 <see cref="T:NewLife.Mvc.IController" /> 接口的自定义 Controller 启用 HTTP Web 请求的处理。</summary>
+            <param name="context"><see cref="T:NewLife.Mvc.IRouteContext" /> 对象，它提供对用于为 HTTP 请求提供服务的内部服务器对象的引用。</param>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ModelController.OnProcessRequest(NewLife.Mvc.IRouteContext)">
+            <summary>处理请求</summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ModelController.WriteScript(System.String)">
+            <summary>输出脚本</summary>
+            <param name="script"></param>
+        </member>
+        <member name="P:NewLife.Cube.Controllers.ModelController.IsReusable">
+            <summary>获取一个值，该值指示其他请求是否可以使用 <see cref="T:NewLife.Mvc.IController" /> 实例。</summary>
+            <returns>如果 <see cref="T:NewLife.Mvc.IController" /> 实例可再次使用，则为 true；否则为 false。</returns>
+        </member>
+        <member name="P:NewLife.Cube.Controllers.ModelController.Path">
+            <summary>路径</summary>
+        </member>
+        <member name="P:NewLife.Cube.Controllers.ModelController.Table">
+            <summary>模型表</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.ITemplateProvider">
+            <summary>模版提供者接口</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.ITemplateProvider.GetTemplate(System.String)">
+            <summary>获取模版</summary>
+            <param name="path">完整的模版文件路径，最后一级是模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.ITemplateProvider.GetTemplates(System.String)">
+            <summary>获取指定路径的模版集合，只取当前层次</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.ITemplateProvider.Save(System.String,System.String)">
+            <summary>保存模版</summary>
+            <param name="path"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.ITemplateProvider.GetTemplateEngine(System.String)">
+            <summary>获取模版引擎</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.ITemplateProvider.Exists(System.String)">
+            <summary>指定路径的模版是否存在</summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.ITemplateProvider.Copy(System.String,System.String)">
+            <summary>复制模版</summary>
+            <param name="src"></param>
+            <param name="des"></param>
+        </member>
+        <member name="T:NewLife.Cube.Templating.TemplateProvider`1">
+            <summary>模版提供者基类</summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.GetTemplate(System.String)">
+            <summary>获取模版</summary>
+            <param name="path">完整的模版文件路径，最后一级是模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.GetTemplates(System.String)">
+            <summary>获取指定路径的模版集合，只取当前层次</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.Save(System.String,System.String)">
+            <summary>保存模版</summary>
+            <param name="path"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.GetTemplateEngine(System.String)">
+            <summary>获取模版引擎</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.Exists(System.String)">
+            <summary>指定路径的模版是否存在</summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.Copy(System.String,System.String)">
+            <summary>复制模版</summary>
+            <param name="src"></param>
+            <param name="des"></param>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.OnGetTemplate(System.String,System.Web.Caching.CacheDependency@)">
+            <summary>获取模版</summary>
+            <param name="path">完整的模版文件路径，最后一级是模版文件</param>
+            <param name="depend">缓存依赖</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.OnGetTemplates(System.String,System.Web.Caching.CacheDependency@)">
+            <summary>获取指定路径的模版集合，只取当前层次</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <param name="depend">缓存依赖</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateProvider`1.GetTemplateObject(System.String)">
+            <summary>获取模版对象</summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateProvider`1.Instance">
+            <summary>实例</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.Engine">
+            <summary>代码生成器</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.Engine.#ctor(NewLife.Cube.Templating.TemplateConfig)">
+            <summary>构造函数</summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:NewLife.Cube.Templating.Engine.Render(XCode.DataAccessLayer.IDataTable)">
+            <summary>生成代码，参数由Config传入</summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Templating.Engine.Templates">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.Engine.Config">
+            <summary>配置</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.Engine.Model">
+            <summary>模型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.Engine.OuputPath">
+            <summary>输出路径</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ControlTypes">
+            <summary>简单数据类型</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.文本">
+            <summary>字符串</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.整数">
+            <summary>整数</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.小数">
+            <summary>小数</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.货币">
+            <summary>货币</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.是否">
+            <summary>是否</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.时间日期">
+            <summary>时间日期</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.大段文字">
+            <summary>大段文字</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ControlTypes.附件">
+            <summary>附件</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelColumn">
+            <summary>模型列</summary>
+            <summary>模型列</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.IModelColumn">
+            <summary>模型列接口</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Alias">
+            <summary>别名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.DataType">
+            <summary>数据类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.RawType">
+            <summary>原始类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Identity">
+            <summary>标识</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.PrimaryKey">
+            <summary>主键</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.ControlType">
+            <summary>控件类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Length">
+            <summary>长度</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.NumOfByte">
+            <summary>字节数</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Precision">
+            <summary>精度</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Scale">
+            <summary>位数</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Nullable">
+            <summary>允许空</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.IsUnicode">
+            <summary>Unicode</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Selects">
+            <summary>选项</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Default">
+            <summary>默认值</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Description">
+            <summary>注释</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IModelColumn.Item(System.String)">
+            <summary>获取/设置 字段值。</summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.FindByModelTableIDAndName(System.Int32,System.String)">
+            <summary>
+            根据模型表、名称查找
+            </summary>
+            <param name="modeltableid">模型表</param>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.FindAllByModelTableID(System.Int32)">
+            <summary>
+            根据模型表查找
+            </summary>
+            <param name="modeltableid">模型表</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.FindCountByTableIDAndName(System.Int32,System.String)">
+            <summary>查找指定表指定名称的列是否存在。主要用于确认名字是否被使用</summary>
+            <param name="tableid"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.Valid(System.Boolean)">
+            <summary>
+            验证数据，通过抛出异常的方式提示验证失败。
+            </summary>
+            <param name="isNew"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.Search(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录集，分页、排序
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体集</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.SearchCount(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.SearchWhere(System.Int32,System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="tableid">模型表编号</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.CreateIdentity">
+            <summary>创建一个自增列</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.InitDefault">
+            <summary>初始化一个默认值</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.Import(System.Int32,XCode.DataAccessLayer.IDataColumn)">
+            <summary>导入</summary>
+            <param name="tableid"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.OnPropertyChanging(System.String,System.Object)">
+            <summary></summary>
+            <param name="fieldName"></param>
+            <param name="newValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.XCode#DataAccessLayer#IDataColumn#Clone(XCode.DataAccessLayer.IDataTable)">
+            <summary>
+            克隆
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.XCode#DataAccessLayer#IDataColumn#Fix">
+            <summary>重新计算修正别名。避免与其它字段名或表名相同，避免关键字</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.Up">
+            <summary>排序上升</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.ModelColumn.Down">
+            <summary>排序下降</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.ModelTable">
+            <summary>该模型列所对应的模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.ModelTableName">
+            <summary>该模型索引所对应的模型表名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Control">
+            <summary>简单类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.XCode#DataAccessLayer#IDataColumn#ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.XCode#DataAccessLayer#IDataColumn#Alias">
+            <summary>别名。IDataTable的别名不能为空</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.XCode#DataAccessLayer#IDataColumn#DataType">
+            <summary>数据类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.XCode#DataAccessLayer#IDataColumn#Table">
+            <summary>数据表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.DisplayName">
+            <summary>显示名。如果有Description则使用Description，否则使用Name</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Alias">
+            <summary>别名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.DataType">
+            <summary>数据类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.RawType">
+            <summary>原始类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Identity">
+            <summary>标识</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.PrimaryKey">
+            <summary>主键</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.ControlType">
+            <summary>控件类型</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Length">
+            <summary>长度</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.NumOfByte">
+            <summary>字节数</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Precision">
+            <summary>精度</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Scale">
+            <summary>位数</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Nullable">
+            <summary>允许空</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.IsUnicode">
+            <summary>Unicode</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Selects">
+            <summary>选项</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Default">
+            <summary>默认值</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Description">
+            <summary>注释</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.ModelColumn.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Cube.Entities.ModelColumn._">
+            <summary>取得模型列字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.ModelTableID">
+            <summary>模型表</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Alias">
+            <summary>别名</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.DataType">
+            <summary>数据类型</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.RawType">
+            <summary>原始类型</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Identity">
+            <summary>标识</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.PrimaryKey">
+            <summary>主键</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.ControlType">
+            <summary>控件类型</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Length">
+            <summary>长度</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.NumOfByte">
+            <summary>字节数</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Precision">
+            <summary>精度</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Scale">
+            <summary>位数</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Nullable">
+            <summary>允许空</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.IsUnicode">
+            <summary>Unicode</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Selects">
+            <summary>选项</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Default">
+            <summary>默认值</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.ModelColumn._.Description">
+            <summary>注释</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.DataModel">
+            <summary>数据模型</summary>
+            <summary>数据模型</summary>
+        </member>
+        <member name="T:NewLife.Cube.Entities.IDataModel">
+            <summary>数据模型接口</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.IsStatic">
+            <summary>是否静态</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.IsEnable">
+            <summary>是否启用</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.ConnName">
+            <summary>连接名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.NameSpace">
+            <summary>命名空间</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.TablePrefix">
+            <summary>表前缀</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.TemplatePath">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.StylePath">
+            <summary>样式</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.RenderConfig">
+            <summary>生成配置</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.LastModify">
+            <summary>最后修改</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.Description">
+            <summary>描述</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.IDataModel.Item(System.String)">
+            <summary>获取/设置 字段值。</summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.Valid(System.Boolean)">
+            <summary>
+            验证数据，通过抛出异常的方式提示验证失败。
+            </summary>
+            <param name="isNew"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.OnDelete">
+            <summary>
+            已重载。删除关联数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.InitData">
+            <summary>
+            首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法
+            </summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.FindByName(System.String)">
+            <summary>
+            根据名称查找
+            </summary>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.FindByID(System.Int32)">
+            <summary>
+            根据编号查找
+            </summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.Search(System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录集，分页、排序
+            </summary>
+            <param name="isEnable">是否启用</param>
+            <param name="isStatic">是否静态</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>实体集</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.SearchCount(System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
+            </summary>
+            <param name="isEnable">是否启用</param>
+            <param name="isStatic">是否静态</param>
+            <param name="key">关键字</param>
+            <param name="orderClause">排序，不带Order By</param>
+            <param name="startRowIndex">开始行，0表示第一行</param>
+            <param name="maximumRows">最大返回行数，0表示所有行</param>
+            <returns>记录数</returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.SearchWhere(System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String)">
+            <summary>
+            构造搜索条件
+            </summary>
+            <param name="isEnable">是否启用</param>
+            <param name="isStatic">是否静态</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.Import(System.String,System.Collections.Generic.List{XCode.DataAccessLayer.IDataTable})">
+            <summary>导入数据模型</summary>
+            <param name="name"></param>
+            <param name="tables"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.Import(System.String,System.String)">
+            <summary>从Xml导入模型</summary>
+            <param name="name"></param>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.Import(System.Byte[])">
+            <summary>从二进制数据流导入模型</summary>
+            <param name="bts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.ImportEntity">
+            <summary>导入当前所有实体</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.ExportXml">
+            <summary>导出Xml</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.ExportZip(System.IO.Stream)">
+            <summary>导出压缩包</summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.GetTemplates">
+            <summary>获取模版集合。T4模版需要打包一起编译，否则有包含文件就麻烦了</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.CopyTemplate">
+            <summary>复制模版。包括数据库模版和文件模版</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.ExportTemplate">
+            <summary>导出模版。数据库模版导出到文件中</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.ImportTemplate">
+            <summary>导入模版。文件模版导入到数据库中</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.RebuildAssembly">
+            <summary>重建程序集</summary>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.CreateOperate(System.String)">
+            <summary>创建实体操作接口</summary>
+            <remarks>
+            这里独立控制程序集缓存，而不是采用DAL的方式，主要是因为DAL里是针对连接名的，而可能多个数据模型共用连接名，从而不方便管理（重建）
+            </remarks>
+            <param name="tableName">模型表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Entities.DataModel.RebuildTables">
+            <summary>检查数据表结构，反向工程</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.ModelTables">
+            <summary>该数据模型所拥有的模型表集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.Tables">
+            <summary>该数据模型所拥有的模型表集合</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.TablesCount">
+            <summary>模型表数</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.DisplayName">
+            <summary>显示名，优先采用备注</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.TemplatePathEx">
+            <summary>模版路径扩展，如果未指定，则返回全局模版路径</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.StylePathEx">
+            <summary>样式路径</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.ConnNameEx">
+            <summary>连接名扩展。如果没有设置，则采用默认的。</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.Assembly">
+            <summary>根据数据模型动态创建的程序集。</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.IsStatic">
+            <summary>是否静态</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.IsEnable">
+            <summary>是否启用</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.ConnName">
+            <summary>连接名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.NameSpace">
+            <summary>命名空间</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.TablePrefix">
+            <summary>表前缀</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.TemplatePath">
+            <summary>模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.StylePath">
+            <summary>样式</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.RenderConfig">
+            <summary>生成配置</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.LastModify">
+            <summary>最后修改</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.Description">
+            <summary>描述</summary>
+        </member>
+        <member name="P:NewLife.Cube.Entities.DataModel.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Cube.Entities.DataModel._">
+            <summary>取得数据模型字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.IsStatic">
+            <summary>是否静态</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.IsEnable">
+            <summary>是否启用</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.ConnName">
+            <summary>连接名</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.NameSpace">
+            <summary>命名空间</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.TablePrefix">
+            <summary>表前缀</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.TemplatePath">
+            <summary>模版</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.StylePath">
+            <summary>样式</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.RenderConfig">
+            <summary>生成配置</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.LastModify">
+            <summary>最后修改</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.CreateTime">
+            <summary>创建时间</summary>
+        </member>
+        <member name="F:NewLife.Cube.Entities.DataModel._.Description">
+            <summary>描述</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.StaticTempBase">
+            <summary>静态模版基类</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.StaticTempBase.Initialize">
+            <summary>初始化</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.StaticTempBase.Config">
+            <summary>配置</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.StaticTempBase.Version">
+            <summary>文件版本</summary>
+        </member>
+        <member name="T:NewLife.Cube.TemplateHelper">
+            <summary>模版助手</summary>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.CheckAndImportDefault">
+            <summary>检查并导入默认模版</summary>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetStaticTemplates">
+            <summary>获取内置模版文件</summary>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetStaticFileTemplates">
+            <summary>获取静态模版文件</summary>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetStaticEmbedTemplates">
+            <summary>获取内置模版文件</summary>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.ReleaseEmbedTemplates">
+            <summary>释放内置模版文件</summary>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetFullPath(System.String)">
+            <summary>获取完整的模版路径</summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetTemplates(System.String)">
+            <summary>获取指定路径的模版集合，只取当前层次</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetTemplateEngine(System.String)">
+            <summary>获取模版引擎</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.Copy(System.String,System.String)">
+            <summary>复制模版。包括数据库模版和文件模版</summary>
+            <param name="src"></param>
+            <param name="des"></param>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.Export(System.String,System.String)">
+            <summary>导出模版。数据库模版导出到文件中</summary>
+            <param name="src"></param>
+            <param name="des"></param>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.Import(System.String,System.String)">
+            <summary>导入模版。文件模版导入到数据库中</summary>
+            <param name="src"></param>
+            <param name="des"></param>
+        </member>
+        <member name="M:NewLife.Cube.TemplateHelper.GetResource(System.String)">
+            <summary>获取模版里面的资源文件。因为编写模版时可能不区分大小写，所以内部需要注意</summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.TemplateHelper.TemplatePath">
+            <summary>模版目录。</summary>
+        </member>
+        <member name="P:NewLife.Cube.TemplateHelper.StylePath">
+            <summary>样式目录。</summary>
+        </member>
+        <member name="T:NewLife.Cube.Handlers.ListHandler">
+            <summary>列表处理器</summary>
+        </member>
+        <member name="M:NewLife.Cube.Handlers.ListHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>通过实现 System.Web.IHttpHandler 接口的自定义 HttpHandler 启用 HTTP Web 请求的处理。</summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:NewLife.Cube.Common.UrlPath">
+            <summary>Url路径</summary>
+        </member>
+        <member name="M:NewLife.Cube.Common.UrlPath.ResolveUrl(System.String)">
+            <summary>将 URL 转换为在请求客户端可用的 URL。</summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Common.UrlPath.IsRelativeUrl(System.String)">
+            <summary>是否相对路径</summary>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Common.UrlPath.IsRooted(System.String)">
+            <summary>是否根路径</summary>
+            <param name="basepath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Cube.Controllers.ResourceController">
+            <summary>模型控制器</summary>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ResourceController.ProcessRequest(NewLife.Mvc.IRouteContext)">
+            <summary>通过实现 <see cref="T:NewLife.Mvc.IController" /> 接口的自定义 Controller 启用 HTTP Web 请求的处理。</summary>
+            <param name="context"><see cref="T:NewLife.Mvc.IRouteContext" /> 对象，它提供对用于为 HTTP 请求提供服务的内部服务器对象的引用。</param>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ResourceController.OnProcessRequest(NewLife.Mvc.IRouteContext)">
+            <summary>处理请求</summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Controllers.ResourceController.IsReusable">
+            <summary>获取一个值，该值指示其他请求是否可以使用 <see cref="T:NewLife.Mvc.IController" /> 实例。</summary>
+            <returns>如果 <see cref="T:NewLife.Mvc.IController" /> 实例可再次使用，则为 true；否则为 false。</returns>
+        </member>
+        <member name="P:NewLife.Cube.Controllers.ResourceController.Path">
+            <summary>路径</summary>
+        </member>
+        <member name="P:NewLife.Cube.Controllers.ResourceController.Table">
+            <summary>模型表</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.ListTempBase">
+            <summary>列表页模版基类</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.FormTempBase">
+            <summary>表单页模版基类</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.FormTempBase.FillEntityWithRequest(XCode.IEntity)">
+            <summary>使用Request参数填充entity</summary>
+            <param name="entity"></param>
+        </member>
+        <member name="P:NewLife.Cube.Templating.FormTempBase.KeyName">
+            <summary>键名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.FormTempBase.EntityID">
+            <summary>主键</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.FormTempBase.Entity">
+            <summary>数据实体</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.TemplateConfig">
+            <summary>配置</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateConfig.Create">
+            <summary>创建一个默认配置</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.TemplateConfig.LoadOrDefault(System.String)">
+            <summary>
+            加载或者返回一个默认设置
+            </summary>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.NameSpace">
+            <summary>命名空间</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.EntityConnName">
+            <summary>实体链接名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.TemplateName">
+            <summary>模板名</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.BaseClass">
+            <summary>实体基类</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.RenderGenEntity">
+            <summary>生成泛型实体类</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.OutputPath">
+            <summary>输出目录</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.UseHeadTemplate">
+            <summary>使用头部模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.HeadTemplate">
+            <summary>头部模版</summary>
+        </member>
+        <member name="P:NewLife.Cube.Templating.TemplateConfig.Debug">
+            <summary>调试</summary>
+        </member>
+        <member name="T:NewLife.Cube.Templating.FileTemplateProvider">
+            <summary>文件模版提供者</summary>
+        </member>
+        <member name="M:NewLife.Cube.Templating.FileTemplateProvider.OnGetTemplate(System.String,System.Web.Caching.CacheDependency@)">
+            <summary>获取模版</summary>
+            <param name="path">完整的模版文件路径，最后一级是模版文件</param>
+            <param name="depend">缓存依赖</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.FileTemplateProvider.OnGetTemplates(System.String,System.Web.Caching.CacheDependency@)">
+            <summary>获取指定路径的模版集合，只取当前层次</summary>
+            <param name="path">完整的模版目录路径，返回该目录下模版文件</param>
+            <param name="depend">缓存依赖</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.FileTemplateProvider.Save(System.String,System.String)">
+            <summary>保存模版</summary>
+            <param name="path"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.FileTemplateProvider.GetTemplateObject(System.String)">
+            <summary>获取路径所指定的模版，如果是模版目录，则返回Template，否则返回TemplateItem</summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Cube.Templating.FileTemplateProvider.Copy(System.String,System.String)">
+            <summary>复制模版</summary>
+            <param name="src"></param>
+            <param name="des"></param>
+        </member>
+        <member name="T:NewLife.Cube.Controllers.ModelControllerFactory">
+            <summary>模型控制器工厂</summary>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ModelControllerFactory.GetController(NewLife.Mvc.IRouteContext)">
+            <summary>返回实现 <see cref="T:NewLife.Mvc.IController" /> 接口的类的实例。</summary>
+            <returns>处理请求的新的 <see cref="T:NewLife.Mvc.IController" /> 对象。</returns>
+            <param name="context"><see cref="T:NewLife.Mvc.IRouteContext" /> 类的实例，它提供对用于为 HTTP 请求提供服务的内部服务器对象的引用。</param>
+        </member>
+        <member name="M:NewLife.Cube.Controllers.ModelControllerFactory.ReleaseController(NewLife.Mvc.IController)">
+            <summary>使工厂可以重用现有的处理程序实例。</summary>
+            <param name="handler">要重用的 <see cref="T:NewLife.Mvc.IController" /> 对象。</param>
+        </member>
+        <member name="T:NewLife.Cube.CubeDownloadFile">
+            <summary>魔方下载。方便换库</summary>
+        </member>
+        <member name="M:NewLife.Cube.CubeDownloadFile.GetAttachment">
+            <summary>获取附件对象</summary>
+            <returns></returns>
+        </member>
+        <member name="T:NewLife.Cube.CubeAttachment">
+            <summary>魔方附件。方便换库</summary>
+        </member>
+        <member name="T:NewLife.Cube.CubeStatistics">
+            <summary>魔方统计。方便换库</summary>
+        </member>
+    </members>
+</doc>

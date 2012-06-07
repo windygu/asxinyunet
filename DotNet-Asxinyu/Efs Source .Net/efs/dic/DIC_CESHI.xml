@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <data>
-  <row DIC_CODE="01" DIC_TEXT="AF" DIC_SPELL="" DIC_ASPELL="" />
+  <row DIC_CODE="01" DIC_TEXT="测试1112" DIC_SPELL="cs1112" DIC_ASPELL="ceshi1112" />
+  <row DIC_CODE="02" DIC_TEXT="再次测试" DIC_SPELL="zccs" DIC_ASPELL="zaiciceshi" />
 </data>

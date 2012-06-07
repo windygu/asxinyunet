@@ -1,0 +1,19 @@
+﻿#Software: .
+#ProcessID: 7200
+#AppDomain: 9a0f0a71-4-129829010704470000
+#BaseDirectory: D:\Develop\DotNet-Asxinyu\Web\LigerUIDemo\
+#Date: 2012-05-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+09:29:05.003 221 W - XCode 文件版本8.6.2012.0515 编译时间2012-05-21 00:03:06
+09:29:05.006 221 W - 准备从http://j.nnhy.org/?id=3&f=MySql.Data.zip下载文件到D:\Develop\DotNet-Asxinyu\Web\LigerUIDemo\bin\MySql.Data.zip！
+09:29:05.860 221 W - 下载完成，准备解压到D:\Develop\DotNet-Asxinyu\Web\LigerUIDemo\bin！
+09:29:05.930 221 W - 解压完成！
+
+#Software: .
+#ProcessID: 7200
+#AppDomain: 9a0f0a71-7-129829028089316000
+#BaseDirectory: D:\Develop\DotNet-Asxinyu\Web\LigerUIDemo\
+#Date: 2012-05-31
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+09:56:14.589 17 W - 20,23323
+09:57:40.126 17 W - 当前记录数20,总记录数23323

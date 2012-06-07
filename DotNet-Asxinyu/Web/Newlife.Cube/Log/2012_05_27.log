@@ -1,0 +1,291 @@
+﻿20:17:44.192 42 W - 更新实体缓存（第42次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:17:44.193 42 W - Select * From Menu
+20:17:44.194 42 W - 完成更新缓存（第42次）：NewLife.CommonEntity.Menu
+20:17:44.593 44 W - GetSchema
+20:17:44.593 38 Y - GetSchema("Tables")
+20:17:44.593 38 Y - GetSchema("Columns")
+20:17:44.622 38 Y - GetSchema("Indexes")
+20:17:44.624 38 Y - GetSchema("IndexColumns")
+20:17:51.968 44 W - Select * From Role Order By ID Desc limit 20
+20:17:51.968 44 W - Select Count(*) From Role
+20:17:52.513 43 W - Select * From Role
+20:17:52.514 43 W - 更新实体缓存（第15次）：NewLife.CommonEntity.RoleMenu 原因：60秒过期
+20:17:52.514 43 W - Select * From RoleMenu
+20:17:52.515 43 W - 完成更新缓存（第15次）：NewLife.CommonEntity.RoleMenu
+20:17:52.960 36 W - 实体缓存<Menu>总次数1455，一级命中1413（97.11%）
+20:17:52.961 36 W - Select * From Setting Order By ID Desc limit 20
+20:17:52.962 36 W - Select Count(*) From Setting
+20:17:54.184 38 W - Select * From Role
+20:17:54.185 38 W - 实体缓存<RoleMenu>总次数2367，一级命中2352（99.37%）
+20:17:57.833 42 W - Select * From Role Order By ID Desc limit 20
+20:17:57.834 42 W - Select Count(*) From Role
+20:17:59.601 36 W - Select * From Role
+20:18:02.771 42 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('角色和菜单', '删除', 1, '管理员', '127.0.0.1', '2012-05-27 20:18:02', 'Role=1,Menu=1,Permission=All');Select last_insert_rowid() newid
+20:18:02.772 42 W - Delete From RoleMenu Where ID=1
+20:18:02.772 42 W - 清空实体缓存：NewLife.CommonEntity.RoleMenu
+20:18:02.773 42 W - 更新实体缓存（第16次）：NewLife.CommonEntity.RoleMenu 原因：无缓存数据
+20:18:02.773 42 W - Select * From RoleMenu
+20:18:02.774 42 W - 完成更新缓存（第16次）：NewLife.CommonEntity.RoleMenu
+20:18:03.602 41 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('角色和菜单', '添加', 1, '管理员', '127.0.0.1', '2012-05-27 20:18:03', 'Role=1,Menu=1,Permission=All');Select last_insert_rowid() newid
+20:18:03.602 41 W - Select Count(*) From RoleMenu Where RoleID=1 And MenuID=1
+20:18:03.603 41 W - Insert Into RoleMenu(RoleID, MenuID, Permission) Values(1, 1, 1);Select last_insert_rowid() newid
+20:18:03.603 41 W - 清空实体缓存：NewLife.CommonEntity.RoleMenu
+20:18:03.604 41 W - 更新实体缓存（第17次）：NewLife.CommonEntity.RoleMenu 原因：无缓存数据
+20:18:03.604 41 W - Select * From RoleMenu
+20:18:03.604 41 W - 完成更新缓存（第17次）：NewLife.CommonEntity.RoleMenu
+20:18:21.928 38 W - Select * From Role Order By ID Desc limit 20
+20:18:21.929 38 W - Select Count(*) From Role
+20:18:24.757 43 W - Select * From Menu Where ID=3
+20:18:42.412 36 W - 实体缓存<Log>总次数2
+20:18:42.413 36 W - 异步更新实体缓存（第3次）：NewLife.CommonEntity.Log 原因：600秒过期
+20:18:42.413 44 Y - Select Category From Log Group By Category
+20:18:42.413 44 Y - 完成更新缓存（第3次）：NewLife.CommonEntity.Log
+20:18:42.413 36 W - Select * From Administrator
+20:18:42.414 36 W - Select * From Log Order By ID Desc limit 20
+20:18:42.416 36 W - Select Count(*) From Log
+20:18:43.785 42 W - Select * From Administrator Where ID=1
+20:18:43.786 42 W - 实体缓存<Role>总次数49，一级命中40（81.63%）
+20:18:43.786 42 W - 更新实体缓存（第10次）：NewLife.CommonEntity.Role 原因：60秒过期
+20:18:43.786 42 W - Select * From Role
+20:18:43.786 42 W - 完成更新缓存（第10次）：NewLife.CommonEntity.Role
+20:18:46.010 43 W - 更新实体缓存（第43次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:18:46.010 43 W - Select * From Menu
+20:18:46.011 43 W - 完成更新缓存（第43次）：NewLife.CommonEntity.Menu
+20:18:46.012 43 W - Select * From Role
+20:18:46.013 43 W - Select * From Administrator Order By ID Desc limit 2000
+20:18:53.352 43 W - Select * From Administrator Where ID=1
+20:18:58.340 45 W - Select * From Role
+20:18:58.342 45 W - Select * From Administrator Order By ID Desc limit 2000
+20:19:01.460 41 W - Select * From Administrator Where ID=1
+20:19:05.824 45 W - Select * From Administrator Where ID=1
+20:19:08.251 38 W - Select * From Administrator Where ID=1
+20:19:23.445 43 W - Select * From Administrator
+20:19:23.446 43 W - Select * From Log Order By ID Desc limit 20
+20:19:23.447 43 W - Select Count(*) From Log
+20:19:28.938 38 W - Select * From Log Where (Category='管理员') Order By ID Desc limit 20
+20:19:28.940 38 W - Select Count(*) From Log Where (Category='管理员')
+20:19:53.481 41 W - 更新实体缓存（第44次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:19:53.481 41 W - Select * From Menu
+20:19:53.483 41 W - 完成更新缓存（第44次）：NewLife.CommonEntity.Menu
+20:19:56.831 36 W - Select * From Role Order By ID Desc limit 20
+20:19:56.832 36 W - Select Count(*) From Role
+20:19:59.637 41 W - Select * From Role Order By ID Desc limit 20
+20:19:59.638 41 W - Select Count(*) From Role
+20:20:02.914 42 W - Select * From Administrator Where ID=1
+20:20:02.915 42 W - 更新实体缓存（第11次）：NewLife.CommonEntity.Role 原因：60秒过期
+20:20:02.915 42 W - Select * From Role
+20:20:02.915 42 W - 完成更新缓存（第11次）：NewLife.CommonEntity.Role
+20:20:04.401 38 W - Select * From Administrator
+20:20:04.402 38 W - Select * From Log Order By ID Desc limit 20
+20:20:04.403 38 W - Select Count(*) From Log
+20:20:04.798 43 W - Select * From Role
+20:20:04.799 43 W - Select * From Administrator Order By ID Desc limit 2000
+20:20:07.902 41 W - Select * From Administrator
+20:20:07.903 41 W - Select * From Log Order By ID Desc limit 20
+20:20:07.904 41 W - Select Count(*) From Log
+20:20:08.930 36 W - Select * From Administrator Where ID=1
+20:20:10.175 36 W - Select * From Administrator
+20:20:10.175 36 W - Select * From Log Order By ID Desc limit 20
+20:20:10.176 36 W - Select Count(*) From Log
+20:24:20.796 45 W - 更新实体缓存（第45次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:24:20.797 45 W - Select * From Menu
+20:24:20.798 45 W - 完成更新缓存（第45次）：NewLife.CommonEntity.Menu
+20:24:20.811 44 W - Select * From Administrator Where ID=1
+20:24:20.812 44 W - 更新实体缓存（第12次）：NewLife.CommonEntity.Role 原因：60秒过期
+20:24:20.813 44 W - Select * From Role
+20:24:20.813 44 W - 完成更新缓存（第12次）：NewLife.CommonEntity.Role
+20:24:24.729 45 W - Select * From Administrator Where ID=1
+20:24:25.375 45 W - Select * From Menu Where ID=15
+20:24:25.375 45 W - Select * From Menu Where ID=15
+20:24:25.376 45 W - Select * From Menu Where ID=16
+20:24:25.378 45 W - Select * From Menu Where ID=21
+20:24:25.413 44 W - Select * From Menu Where ID=1
+20:24:25.414 44 W - Select * From Menu Where ID=2
+20:24:25.416 44 W - Select * From Menu Where ID=7
+20:24:25.419 44 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+20:24:25.420 44 W - 实体缓存<ModelTable>总次数1573，一级命中1549（98.47%）
+20:24:25.420 44 W - 更新实体缓存（第25次）：NewLife.Cube.Entities.ModelTable 原因：60秒过期
+20:24:25.420 44 W - Select * From ModelTable
+20:24:25.421 44 W - 完成更新缓存（第25次）：NewLife.Cube.Entities.ModelTable
+20:24:25.433 40 W - Select * From DataModel Order By ID Desc limit 20
+20:24:25.434 40 W - Select Count(*) From DataModel
+20:24:26.242 44 W - Select * From Menu Where ID=15
+20:24:26.243 44 W - Select * From Menu Where ID=15
+20:24:26.243 44 W - Select * From Menu Where ID=16
+20:24:26.244 44 W - Select * From Menu Where ID=21
+20:24:26.262 34 W - Select * From Menu Where ID=1
+20:24:26.262 34 W - Select * From Menu Where ID=2
+20:24:26.263 34 W - Select * From Menu Where ID=7
+20:24:26.264 34 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+20:24:26.273 38 W - Select * From DataModel Order By ID Desc limit 20
+20:24:26.273 38 W - Select Count(*) From DataModel
+20:24:26.753 34 W - Select * From Menu Where ID=1
+20:24:26.753 34 W - Select * From Menu Where ID=1
+20:24:26.754 34 W - Select * From Menu Where ID=2
+20:24:26.755 34 W - Select * From Menu Where ID=7
+20:24:27.832 38 W - Select * From Menu Where ID=15
+20:24:27.833 38 W - Select * From Menu Where ID=15
+20:24:27.833 38 W - Select * From Menu Where ID=16
+20:24:27.835 38 W - Select * From Menu Where ID=21
+20:24:27.865 45 W - Select * From Menu Where ID=15
+20:24:27.866 45 W - Select * From Menu Where ID=16
+20:24:27.867 45 W - Select * From Menu Where ID=21
+20:24:27.868 45 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+20:24:27.876 34 W - Select * From DataModel Order By ID Desc limit 20
+20:24:27.877 34 W - Select Count(*) From DataModel
+20:24:28.416 45 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:24:28', '模型列管理');Select last_insert_rowid() newid
+20:24:28.416 45 W - Select Count(*) From Menu Where ID=28
+20:24:28.417 45 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:24:28', '表单数据');Select last_insert_rowid() newid
+20:24:28.417 45 W - Select Count(*) From Menu Where ID=28
+20:24:28.417 45 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:24:28', '表单管理');Select last_insert_rowid() newid
+20:24:28.418 45 W - Select Count(*) From Menu Where ID=28
+20:24:28.418 45 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:24:28', '表单数据');Select last_insert_rowid() newid
+20:24:28.418 45 W - Select Count(*) From Menu Where ID=28
+20:24:28.419 45 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:24:28', '表单预览');Select last_insert_rowid() newid
+20:24:28.419 45 W - Select Count(*) From Menu Where ID=28
+20:24:28.439 38 W - 实体缓存<DataModel>总次数436，一级命中412（94.50%），二级命中2（0.46%）
+20:24:28.439 38 W - 更新实体缓存（第23次）：NewLife.Cube.Entities.DataModel 原因：60秒过期
+20:24:28.440 38 W - Select * From DataModel
+20:24:28.440 38 W - 完成更新缓存（第23次）：NewLife.Cube.Entities.DataModel
+20:24:28.441 38 W - Select * From Menu Where ID=15
+20:24:28.441 38 W - Select * From Menu Where ID=16
+20:24:28.442 38 W - Select * From Menu Where ID=21
+20:24:28.443 38 W - Select * From DataModel Where IsStatic=0 And IsEnable=1
+20:24:28.454 45 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+20:24:28.456 45 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+20:24:28.457 45 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+20:24:28.930 34 W - Select * From Menu Where ID=27
+20:24:28.931 34 W - Select * From Menu Where ID=27
+20:24:28.931 34 W - Select * From Menu Where ID=28
+20:24:31.385 9 W - Select * From Menu Where ID=1
+20:24:31.385 9 W - Select * From Menu Where ID=1
+20:24:31.386 9 W - Select * From Menu Where ID=2
+20:24:31.387 9 W - Select * From Menu Where ID=7
+20:24:31.745 38 W - Select * From Menu Where ID=15
+20:24:31.745 38 W - Select * From Menu Where ID=15
+20:24:31.746 38 W - Select * From Menu Where ID=16
+20:24:31.747 38 W - Select * From Menu Where ID=21
+20:24:31.776 40 W - Select * From Menu Where ID=15
+20:24:31.777 40 W - Select * From Menu Where ID=16
+20:24:31.778 40 W - Select * From Menu Where ID=21
+20:24:31.780 40 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+20:24:31.797 45 W - Select * From DataModel Order By ID Desc limit 20
+20:24:31.800 45 W - Select Count(*) From DataModel
+20:24:33.771 34 W - Select * From ModelColumn Order By Sort limit 20
+20:24:33.773 34 W - Select Count(*) From ModelColumn
+20:24:42.658 40 W - Select * From ModelRelation Order By ID Desc limit 20
+20:24:42.660 40 W - Select Count(*) From ModelRelation
+20:24:43.230 38 W - Select * From ModelIndex Order By ID Desc limit 20
+20:24:43.231 38 W - Select Count(*) From ModelIndex
+20:24:43.940 45 W - Select * From ModelTable Order By Sort limit 20
+20:24:43.941 45 W - Select Count(*) From ModelTable
+20:24:46.845 44 W - Select * From ModelTable Where ID=1
+20:24:53.802 44 W - Select * From ModelTable Where ID=10
+20:40:43.323 42 W - 实体缓存<Menu>总次数1576，一级命中1531（97.14%）
+20:40:43.323 42 W - 更新实体缓存（第46次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:40:43.324 42 W - Select * From Menu
+20:40:43.325 42 W - 完成更新缓存（第46次）：NewLife.CommonEntity.Menu
+20:40:43.325 42 W - Select * From ModelTable Where ID=14
+20:40:43.326 42 W - 实体缓存<DataModel>总次数467，一级命中442（94.65%），二级命中2（0.43%）
+20:40:43.326 42 W - 更新实体缓存（第24次）：NewLife.Cube.Entities.DataModel 原因：60秒过期
+20:40:43.326 42 W - Select * From DataModel
+20:40:43.326 42 W - 完成更新缓存（第24次）：NewLife.Cube.Entities.DataModel
+20:40:47.948 39 W - Select * From ModelIndex Order By ID Desc limit 20
+20:40:47.950 39 W - Select Count(*) From ModelIndex
+20:40:47.951 39 W - 实体缓存<ModelTable>总次数1651，一级命中1626（98.49%）
+20:40:47.951 39 W - 更新实体缓存（第26次）：NewLife.Cube.Entities.ModelTable 原因：60秒过期
+20:40:47.951 39 W - Select * From ModelTable
+20:40:47.952 39 W - 完成更新缓存（第26次）：NewLife.Cube.Entities.ModelTable
+20:40:48.487 43 W - Select * From ModelColumn Order By Sort limit 20
+20:40:48.489 43 W - Select Count(*) From ModelColumn
+20:41:50.289 39 W - Select * From Menu Where ID=1
+20:41:50.290 39 W - Select * From Menu Where ID=1
+20:41:50.291 39 W - Select * From Menu Where ID=2
+20:41:50.292 39 W - Select * From Menu Where ID=7
+20:41:50.971 43 W - Select * From Menu Where ID=15
+20:41:50.972 43 W - Select * From Menu Where ID=15
+20:41:50.973 43 W - Select * From Menu Where ID=16
+20:41:50.975 43 W - Select * From Menu Where ID=21
+20:41:51.026 39 W - Select * From Menu Where ID=15
+20:41:51.027 39 W - Select * From Menu Where ID=16
+20:41:51.028 39 W - Select * From Menu Where ID=21
+20:41:51.031 39 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+20:41:51.032 39 W - 更新实体缓存（第27次）：NewLife.Cube.Entities.ModelTable 原因：60秒过期
+20:41:51.032 39 W - Select * From ModelTable
+20:41:51.034 39 W - 完成更新缓存（第27次）：NewLife.Cube.Entities.ModelTable
+20:41:51.047 43 W - 更新实体缓存（第47次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:41:51.047 43 W - Select * From Menu
+20:41:51.048 43 W - 完成更新缓存（第47次）：NewLife.CommonEntity.Menu
+20:41:51.050 43 W - Select * From DataModel Order By ID Desc limit 20
+20:41:51.051 43 W - Select Count(*) From DataModel
+20:41:51.279 43 W - Select * From Menu Where ID=15
+20:41:51.279 43 W - Select * From Menu Where ID=15
+20:41:51.280 43 W - Select * From Menu Where ID=16
+20:41:51.281 43 W - Select * From Menu Where ID=21
+20:41:51.310 39 W - Select * From Menu Where ID=15
+20:41:51.310 39 W - Select * From Menu Where ID=16
+20:41:51.311 39 W - Select * From Menu Where ID=21
+20:41:51.312 39 W - Select * From DataModel Where IsEnable=1 Order By LastModify
+20:41:51.327 39 W - Select * From DataModel Order By ID Desc limit 20
+20:41:51.328 39 W - Select Count(*) From DataModel
+20:41:51.574 39 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:41:51', '模型列管理');Select last_insert_rowid() newid
+20:41:51.575 39 W - Select Count(*) From Menu Where ID=28
+20:41:51.575 39 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:41:51', '表单数据');Select last_insert_rowid() newid
+20:41:51.575 39 W - Select Count(*) From Menu Where ID=28
+20:41:51.576 39 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:41:51', '表单管理');Select last_insert_rowid() newid
+20:41:51.576 39 W - Select Count(*) From Menu Where ID=28
+20:41:51.577 39 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:41:51', '表单数据');Select last_insert_rowid() newid
+20:41:51.577 39 W - Select Count(*) From Menu Where ID=28
+20:41:51.577 39 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('菜单', '修改', 1, '管理员', '127.0.0.1', '2012-05-27 20:41:51', '表单预览');Select last_insert_rowid() newid
+20:41:51.577 39 W - Select Count(*) From Menu Where ID=28
+20:41:51.598 39 W - 更新实体缓存（第25次）：NewLife.Cube.Entities.DataModel 原因：60秒过期
+20:41:51.598 39 W - Select * From DataModel
+20:41:51.599 39 W - 完成更新缓存（第25次）：NewLife.Cube.Entities.DataModel
+20:41:51.599 39 W - Select * From Menu Where ID=15
+20:41:51.600 39 W - Select * From Menu Where ID=16
+20:41:51.601 39 W - Select * From Menu Where ID=21
+20:41:51.604 39 W - Select * From DataModel Where IsStatic=0 And IsEnable=1
+20:41:51.616 39 W - Select * From ModelTable Where DataModelID=4 And Name='DataModel'
+20:41:51.617 39 W - Select * From DataModel Where IsStatic=0 And IsEnable=1 Order By ID Desc limit 20
+20:41:51.618 39 W - Select Count(*) From DataModel Where IsStatic=0 And IsEnable=1
+20:41:51.927 42 W - Select * From Administrator Where ID=1
+20:41:51.929 42 W - 实体缓存<Role>总次数81，一级命中69（85.19%）
+20:41:51.929 42 W - 更新实体缓存（第13次）：NewLife.CommonEntity.Role 原因：60秒过期
+20:41:51.929 42 W - Select * From Role
+20:41:51.929 42 W - 完成更新缓存（第13次）：NewLife.CommonEntity.Role
+20:41:52.080 43 W - Select * From Menu Where ID=27
+20:41:52.080 43 W - Select * From Menu Where ID=27
+20:41:52.081 43 W - Select * From Menu Where ID=28
+20:44:21.223 35 W - 更新实体缓存（第26次）：NewLife.Cube.Entities.DataModel 原因：60秒过期
+20:44:21.223 35 W - Select * From DataModel
+20:44:21.224 35 W - 完成更新缓存（第26次）：NewLife.Cube.Entities.DataModel
+20:44:22.864 140 W - 更新实体缓存（第48次）：NewLife.CommonEntity.Menu 原因：60秒过期
+20:44:22.864 140 W - Select * From Menu
+20:44:22.866 140 W - 完成更新缓存（第48次）：NewLife.CommonEntity.Menu
+20:44:22.867 140 W - Select * From ModelTable Order By Sort limit 20
+20:44:22.869 140 W - Select Count(*) From ModelTable
+20:44:23.192 35 W - Select * From ModelRelation Order By ID Desc limit 20
+20:44:23.192 35 W - Select Count(*) From ModelRelation
+20:44:23.193 35 W - 更新实体缓存（第28次）：NewLife.Cube.Entities.ModelTable 原因：60秒过期
+20:44:23.193 35 W - Select * From ModelTable
+20:44:23.194 35 W - 完成更新缓存（第28次）：NewLife.Cube.Entities.ModelTable
+20:44:25.200 140 W - Select * From ModelRelation Where ID=15
+22:37:19.105 83 W - 实体缓存<Administrator>总次数15，一级命中10（66.67%）
+22:37:19.106 83 W - 更新实体缓存（第6次）：NewLife.CommonEntity.Administrator 原因：无缓存数据
+22:37:19.107 83 W - Select * From Administrator
+22:37:19.107 83 W - 完成更新缓存（第6次）：NewLife.CommonEntity.Administrator
+22:37:19.108 83 W - Update Administrator Set Logins=6, LastLogin='2012-05-27 22:37:19' Where ID=1
+22:37:19.108 83 W - 清空实体缓存：NewLife.CommonEntity.Administrator
+22:37:19.109 83 W - Insert Into Log(Category, Action, UserID, UserName, IP, OccurTime, Remark) Values('管理员', '自动登录', 0, null, '127.0.0.1', '2012-05-27 22:37:19', 'admin');Select last_insert_rowid() newid
+22:37:19.109 83 W - 实体缓存<Menu>总次数1612，一级命中1564（97.02%）
+22:37:19.109 83 W - 更新实体缓存（第49次）：NewLife.CommonEntity.Menu 原因：60秒过期
+22:37:19.110 83 W - Select * From Menu
+22:37:19.111 83 W - 完成更新缓存（第49次）：NewLife.CommonEntity.Menu
+22:37:19.111 83 W - 实体缓存<Role>总次数84，一级命中71（84.52%）
+22:37:19.111 83 W - 更新实体缓存（第14次）：NewLife.CommonEntity.Role 原因：60秒过期
+22:37:19.111 83 W - Select * From Role
+22:37:19.112 83 W - 完成更新缓存（第14次）：NewLife.CommonEntity.Role
+22:37:19.112 83 W - 实体缓存<RoleMenu>总次数3373，一级命中3356（99.50%）
+22:37:19.112 83 W - 更新实体缓存（第18次）：NewLife.CommonEntity.RoleMenu 原因：60秒过期
+22:37:19.112 83 W - Select * From RoleMenu
+22:37:19.113 83 W - 完成更新缓存（第18次）：NewLife.CommonEntity.RoleMenu

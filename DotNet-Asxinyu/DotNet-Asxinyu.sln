@@ -88,6 +88,49 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.ExtJSLibaray", "DotN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResouceEntity", "ResouceCollector\ResouceEntity\ResouceEntity.csproj", "{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Newlife.Cube", "Web\Newlife.Cube\", "{9C76FA22-990F-4B6B-864E-98450B8EA406}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/Newlife.Cube"
+		Debug.AspNetCompiler.PhysicalPath = "Web\Newlife.Cube\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Newlife.Cube\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Newlife.Cube"
+		Release.AspNetCompiler.PhysicalPath = "Web\Newlife.Cube\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Newlife.Cube\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "15496"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LigerUIDemo", "Web\LigerUIDemo\", "{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{A98FC0A3-8242-452C-92B3-02220C8A3E48}|DotNet.Core.dll;{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}|ResouceEntity.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/LigerUIDemo"
+		Debug.AspNetCompiler.PhysicalPath = "Web\LigerUIDemo\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\LigerUIDemo\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/LigerUIDemo"
+		Release.AspNetCompiler.PhysicalPath = "Web\LigerUIDemo\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\LigerUIDemo\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "20072"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -585,6 +628,42 @@ Global
 		{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}.Release|Mixed Platforms.Build.0 = Release|x86
 		{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}.Release|x86.ActiveCfg = Release|x86
 		{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}.Release|x86.Build.0 = Release|x86
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}..Net 2.0|.NET.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}..Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}..Net 2.0|Any CPU.Build.0 = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}..Net 2.0|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}..Net 2.0|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}..Net 2.0|x86.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Release|.NET.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9C76FA22-990F-4B6B-864E-98450B8EA406}.Release|x86.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}..Net 2.0|.NET.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}..Net 2.0|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}..Net 2.0|Any CPU.Build.0 = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}..Net 2.0|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}..Net 2.0|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}..Net 2.0|x86.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|.NET.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -616,6 +695,8 @@ Global
 		{EEBFC213-5D6D-4C8B-9314-F2679A69EDD0} = {876B6FC2-9964-490B-8E73-722B28BD8819}
 		{B5A0BF4E-34FA-4E69-B948-BD676654DD2F} = {876B6FC2-9964-490B-8E73-722B28BD8819}
 		{F5B88E7B-F35A-4905-A689-002F667BFF9D} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
+		{9C76FA22-990F-4B6B-864E-98450B8EA406} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
+		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
 	EndGlobalSection
 	GlobalSection(PowerDesigner) = preSolution
 		HasSWS = 1
