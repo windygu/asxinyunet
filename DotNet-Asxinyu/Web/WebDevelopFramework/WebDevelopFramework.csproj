@@ -71,8 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Docs\" />
+    <Folder Include="Libaray\css\" />
     <Folder Include="Libaray\dll\" />
     <Folder Include="Libaray\extendjs\" />
+    <Folder Include="Libaray\icons\" />
     <Folder Include="Libaray\images\" />
     <Folder Include="Libaray\skins\" />
   </ItemGroup>
