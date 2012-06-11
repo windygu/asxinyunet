@@ -168,25 +168,25 @@ namespace ResouceEntity
         public static string GetColunmsData()
         {
             return @"[
-                { display: '编号', name: 'Id', type: 'int', width: 70, align: 'left' },
-                { display: '网址', name: 'PageURL', width: 250, type: 'int', align: 'left' },
-                { display: '页面标题', name: 'PageTitle', width: 300, align: 'left' },
-                { display: '一级大类名称', name: 'ClassName', width: 100, align: 'left' },
-                { display: '子类名称', name: 'SubClassName', width: 100, align: 'left' },
-                { display: '资源类型', name: 'ResouceType', width: 100, align: 'left' },
-                { display: '采集标志', name: 'CollectionMark', type: 'int', width: 60, align: 'left' },
-                { display: '更新时间', name: 'UpdateTime', type: 'date', width: 100, align: 'left' },
-                { display: '资料来源', name: 'InfoOrigin', width: 100, align: 'left' },
-                { display: '备注', name: 'remark', width: 50, align: 'left' }
+                { display: '编号', name: 'Id', type: 'int', width: 70, align: 'left' ,editor: { type: 'int' }},
+                { display: '网址', name: 'PageURL', width: 250, type: 'int', align: 'left',editor: { type: 'text' } },
+                { display: '页面标题', name: 'PageTitle', width: 300, align: 'left',editor: { type: 'text' } },
+                { display: '一级大类名称', name: 'ClassName', width: 100, align: 'left' ,editor: { type: 'text' }},
+                { display: '子类名称', name: 'SubClassName', width: 100, align: 'left',editor: { type: 'text' } },
+                { display: '资源类型', name: 'ResouceType', width: 100, align: 'left',editor: { type: 'text' } },
+                { display: '采集标志', name: 'CollectionMark', type: 'int', width: 60, align: 'left',editor: { type: 'text' } },
+                { display: '更新时间', name: 'UpdateTime', type: 'date', width: 100, align: 'left',editor: { type: 'date' } },
+                { display: '资料来源', name: 'InfoOrigin', width: 100, align: 'left' ,editor: { type: 'text' }},
+                { display: '备注', name: 'remark', width: 50, align: 'left' ,editor: { type: 'text' }}
                 ]";
         }
 
-        public static string GetPageEntityList()
+        public static string GetPageEntityList(string page, string pagesize)
         { 
              //int page = 2 ;
              //int pagesize = 5 ;
-            int page1 = 2;// Convert.ToInt32(page);
-            int pagesize1 = 5;//Convert.ToInt32(pagesize);
+            int page1 = Convert.ToInt32(page);
+            int pagesize1 =Convert.ToInt32(pagesize);
              EntityList<tb_resoucepageslist> reslist = tb_resoucepageslist.FindAll("", "", null, pagesize1*(page1 - 1), pagesize1);        
             var griddata = new { Rows = reslist, Total = tb_resoucepageslist.FindCount() };
             return new JavaScriptSerializer().Serialize(griddata);
