@@ -50,6 +50,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="实体业务\员工信息表.Biz.cs" />
+    <Compile Include="实体业务\数据库基本信息表.Biz.cs" />
+    <Compile Include="实体业务\日志信息.Biz.cs" />
+    <Compile Include="实体业务\权限表.Biz.cs" />
+    <Compile Include="实体业务\用户信息.Biz.cs" />
+    <Compile Include="实体业务\用户权限表.Biz.cs" />
+    <Compile Include="实体业务\用户角色表.Biz.cs" />
+    <Compile Include="实体业务\用户配置信息表.Biz.cs" />
+    <Compile Include="实体业务\类别信息.Biz.cs" />
+    <Compile Include="实体业务\系统设置表.Biz.cs" />
+    <Compile Include="实体业务\组织部门信息表.Biz.cs" />
+    <Compile Include="实体业务\菜单表.Biz.cs" />
+    <Compile Include="实体业务\角色权限表.Biz.cs" />
+    <Compile Include="实体业务\角色表.Biz.cs" />
+    <Compile Include="实体数据\员工信息表.cs" />
+    <Compile Include="实体数据\数据库基本信息表.cs" />
+    <Compile Include="实体数据\日志信息.cs" />
+    <Compile Include="实体数据\权限表.cs" />
+    <Compile Include="实体数据\用户信息.cs" />
+    <Compile Include="实体数据\用户权限表.cs" />
+    <Compile Include="实体数据\用户角色表.cs" />
+    <Compile Include="实体数据\用户配置信息表.cs" />
+    <Compile Include="实体数据\类别信息.cs" />
+    <Compile Include="实体数据\系统设置表.cs" />
+    <Compile Include="实体数据\组织部门信息表.cs" />
+    <Compile Include="实体数据\菜单表.cs" />
+    <Compile Include="实体数据\角色权限表.cs" />
+    <Compile Include="实体数据\角色表.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="自定义业务\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
