@@ -10,9 +10,18 @@ using XCode.Configuration;
 namespace DotNet.CommonEntity
 {
     /// <summary>组织部门信息表</summary>
-    public partial class Organize : Entity<Organize>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
+    public class Organize : Organize<Organize> { }
+    
+    /// <summary>组织部门信息表</summary>
+    public partial class Organize<TEntity> : Entity<TEntity> where TEntity : Organize<TEntity>, new()
     {
         #region 对象操作﻿
+        static Organize()
+        {
+            // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
+            TEntity entity = new TEntity();
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>
@@ -66,7 +75,7 @@ namespace DotNet.CommonEntity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}组织部门信息表数据……", typeof(Organize).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}组织部门信息表数据……", typeof(TEntity).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -76,7 +85,7 @@ namespace DotNet.CommonEntity
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}组织部门信息表数据！", typeof(Organize).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}组织部门信息表数据！", typeof(TEntity).Name);
         //}
         #endregion
 
@@ -123,7 +132,7 @@ namespace DotNet.CommonEntity
         /// <param name="id">编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Organize FindById(Int32 id)
+        public static TEntity FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(_.Id, id);
@@ -137,7 +146,7 @@ namespace DotNet.CommonEntity
         /// <param name="organizecode">组织代码</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Organize> FindAllByOrganizeCode(String organizecode)
+        public static EntityList<TEntity> FindAllByOrganizeCode(String organizecode)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.OrganizeCode, organizecode);
@@ -149,7 +158,7 @@ namespace DotNet.CommonEntity
         /// <param name="shortname">简称</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Organize> FindAllByShortName(String shortname)
+        public static EntityList<TEntity> FindAllByShortName(String shortname)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.ShortName, shortname);
@@ -161,7 +170,7 @@ namespace DotNet.CommonEntity
         /// <param name="fullname">组织名称</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Organize> FindAllByFullName(String fullname)
+        public static EntityList<TEntity> FindAllByFullName(String fullname)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.FullName, fullname);
@@ -182,7 +191,7 @@ namespace DotNet.CommonEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Organize> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<TEntity> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

@@ -20,7 +20,7 @@ namespace DotNet.CommonEntity
     [BindRelation("Id", true, "Menu", "SystemDbId")]
     [BindRelation("Id", true, "Permission", "SystemDbId")]
     [BindTable("SystemDb", Description = "数据库基本信息表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class SystemDb : ISystemDb
+    public partial class SystemDb<TEntity> : ISystemDb
     {
         #region 属性
         private Int32 _Id;

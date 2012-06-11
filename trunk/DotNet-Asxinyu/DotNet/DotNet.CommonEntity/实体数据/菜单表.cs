@@ -17,7 +17,7 @@ namespace DotNet.CommonEntity
     [BindIndex("MenuName", false, "SystemDbId,MenuName")]
     [BindRelation("SystemDbId", false, "SystemDb", "Id")]
     [BindTable("Menu", Description = "菜单表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Menu : IMenu
+    public partial class Menu<TEntity> : IMenu
     {
         #region 属性
         private Int32 _Id;

@@ -16,7 +16,7 @@ namespace DotNet.CommonEntity
     [BindIndex("SystemId", false, "SystemId")]
     [BindIndex("Name", false, "SystemId,Name")]
     [BindTable("Setting", Description = "系统设置表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Setting : ISetting
+    public partial class Setting<TEntity> : ISetting
     {
         #region 属性
         private Int32 _Id;

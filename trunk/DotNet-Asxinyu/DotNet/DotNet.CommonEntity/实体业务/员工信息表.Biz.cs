@@ -10,9 +10,18 @@ using XCode.Configuration;
 namespace DotNet.CommonEntity
 {
     /// <summary>员工信息表</summary>
-    public partial class Staff : Entity<Staff>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
+    public class Staff : Staff<Staff> { }
+    
+    /// <summary>员工信息表</summary>
+    public partial class Staff<TEntity> : Entity<TEntity> where TEntity : Staff<TEntity>, new()
     {
         #region 对象操作﻿
+        static Staff()
+        {
+            // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
+            TEntity entity = new TEntity();
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>
@@ -65,7 +74,7 @@ namespace DotNet.CommonEntity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}员工信息表数据……", typeof(Staff).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}员工信息表数据……", typeof(TEntity).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -75,7 +84,7 @@ namespace DotNet.CommonEntity
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}员工信息表数据！", typeof(Staff).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}员工信息表数据！", typeof(TEntity).Name);
         //}
         #endregion
 
@@ -122,7 +131,7 @@ namespace DotNet.CommonEntity
         /// <param name="id">编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Staff FindById(Int32 id)
+        public static TEntity FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(_.Id, id);
@@ -136,7 +145,7 @@ namespace DotNet.CommonEntity
         /// <param name="organizeid">组织编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Staff> FindAllByOrganizeId(Int32 organizeid)
+        public static EntityList<TEntity> FindAllByOrganizeId(Int32 organizeid)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.OrganizeId, organizeid);
@@ -148,7 +157,7 @@ namespace DotNet.CommonEntity
         /// <param name="username">用户名</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Staff> FindAllByUserName(String username)
+        public static EntityList<TEntity> FindAllByUserName(String username)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.UserName, username);
@@ -160,7 +169,7 @@ namespace DotNet.CommonEntity
         /// <param name="code">工号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Staff> FindAllByCode(String code)
+        public static EntityList<TEntity> FindAllByCode(String code)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.Code, code);
@@ -172,7 +181,7 @@ namespace DotNet.CommonEntity
         /// <param name="idcard">身份证号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Staff> FindAllByIdCard(String idcard)
+        public static EntityList<TEntity> FindAllByIdCard(String idcard)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.IdCard, idcard);
@@ -193,7 +202,7 @@ namespace DotNet.CommonEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Staff> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<TEntity> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

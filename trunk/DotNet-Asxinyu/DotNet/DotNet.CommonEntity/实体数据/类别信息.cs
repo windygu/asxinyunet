@@ -16,7 +16,7 @@ namespace DotNet.CommonEntity
     [BindIndex("SystemId", false, "SystemId")]
     [BindIndex("Name", false, "SystemId,Name")]
     [BindTable("Category", Description = "类别信息", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Category : ICategory
+    public partial class Category<TEntity> : ICategory
     {
         #region 属性
         private Int32 _Id;
