@@ -131,6 +131,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LigerUIDemo", "Web\LigerUID
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDevelopFramework", "Web\WebDevelopFramework\WebDevelopFramework.csproj", "{CF2EE283-89E3-4946-8B6C-CDA72E44D992}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -664,6 +666,24 @@ Global
 		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735}.Release|x86.ActiveCfg = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}..Net 2.0|.NET.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}..Net 2.0|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}..Net 2.0|Any CPU.Build.0 = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}..Net 2.0|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}..Net 2.0|Mixed Platforms.Build.0 = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}..Net 2.0|x86.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Release|.NET.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -697,6 +717,7 @@ Global
 		{F5B88E7B-F35A-4905-A689-002F667BFF9D} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
 		{9C76FA22-990F-4B6B-864E-98450B8EA406} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
 		{4D38D2E1-A320-4A65-9EE7-B55C0ADA6735} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
+		{CF2EE283-89E3-4946-8B6C-CDA72E44D992} = {05B23B35-8ABE-43F1-8456-5DAF64FFABE7}
 	EndGlobalSection
 	GlobalSection(PowerDesigner) = preSolution
 		HasSWS = 1
