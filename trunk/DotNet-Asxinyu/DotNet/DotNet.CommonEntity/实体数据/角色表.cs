@@ -18,7 +18,6 @@ namespace DotNet.CommonEntity
     [BindIndex("SysetmOrganize", false, "SystemId,OrganizeId")]
     [BindRelation("OrganizeId", false, "Organize", "Id")]
     [BindRelation("Id", true, "RolePermission", "RoleId")]
-    [BindRelation("Id", true, "User", "RoleId")]
     [BindRelation("Id", true, "UserRole", "RoleId")]
     [BindTable("Role", Description = "角色表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
     public partial class Role<TEntity> : IRole

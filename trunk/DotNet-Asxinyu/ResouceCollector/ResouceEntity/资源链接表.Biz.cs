@@ -115,35 +115,6 @@ namespace ResouceEntity
         #endregion
 
         #region 高级查询
-        // 以下为自定义高级查询的例子
-
-        ///// <summary>
-        ///// 查询满足条件的记录集，分页、排序
-        ///// </summary>
-        ///// <param name="key">关键字</param>
-        ///// <param name="orderClause">排序，不带Order By</param>
-        ///// <param name="startRowIndex">开始行，0表示第一行</param>
-        ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
-        ///// <returns>实体集</returns>
-        //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<tb_resoucelink> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
-        //{
-        //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
-        //}
-
-        ///// <summary>
-        ///// 查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
-        ///// </summary>
-        ///// <param name="key">关键字</param>
-        ///// <param name="orderClause">排序，不带Order By</param>
-        ///// <param name="startRowIndex">开始行，0表示第一行</param>
-        ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
-        ///// <returns>记录数</returns>
-        //public static Int32 SearchCount(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
-        //{
-        //    return FindCount(SearchWhere(key), null, null, 0, 0);
-        //}
-
         /// <summary>
         /// 构造搜索条件
         /// </summary>
@@ -164,6 +135,20 @@ namespace ResouceEntity
             //    | _.ID > 0;
 
             return exp;
+        }
+        //获取分页数据
+        public static EntityList<tb_resoucelink> GetPageEntityList(int pageIndex, int pageSize)
+        {
+            return FindAllByName("", "", "", pageSize * (pageIndex - 1), pageSize);
+        }
+        public static EntityList<tb_resoucelink> GetPageEntityList(string name, object value, int pageIndex, int pageSize)
+        {
+            return FindAllByName(name, value, "", pageSize * (pageIndex - 1), pageSize);
+        }
+        public static EntityList<tb_resoucelink> GetPageEntityList(string whereClause, string orderClause, string selects,
+            int pageIndex, int pageSize)
+        {
+            return FindAll(whereClause, orderClause, selects, pageSize * (pageIndex - 1), pageSize);
         }
         #endregion
 

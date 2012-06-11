@@ -83,11 +83,11 @@ namespace DotNet.CommonEntity
         }
 
         private String _Category;
-        /// <summary>组织内部</summary>
-        [DisplayName("组织内部")]
-        [Description("组织内部")]
+        /// <summary>组织类别</summary>
+        [DisplayName("组织类别")]
+        [Description("组织类别")]
         [DataObjectField(false, false, true, 30)]
-        [BindColumn(6, "Category", "组织内部", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(6, "Category", "组织类别", null, "varchar(30)", 0, 0, false)]
         public virtual String Category
         {
             get { return _Category; }
@@ -209,7 +209,7 @@ namespace DotNet.CommonEntity
             ///<summary>组织名称</summary>
             public static readonly Field FullName = FindByName("FullName");
 
-            ///<summary>组织内部</summary>
+            ///<summary>组织类别</summary>
             public static readonly Field Category = FindByName("Category");
 
             ///<summary>排序码</summary>
@@ -248,7 +248,7 @@ namespace DotNet.CommonEntity
         /// <summary>组织名称</summary>
         String FullName { get; set; }
 
-        /// <summary>组织内部</summary>
+        /// <summary>组织类别</summary>
         String Category { get; set; }
 
         /// <summary>排序码</summary>

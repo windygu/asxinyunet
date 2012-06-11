@@ -35,11 +35,11 @@ namespace DotNet.CommonEntity
         }
 
         private Int32 _RoleId;
-        /// <summary>用户编号</summary>
-        [DisplayName("用户编号")]
-        [Description("用户编号")]
+        /// <summary>角色编号</summary>
+        [DisplayName("角色编号")]
+        [Description("角色编号")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(2, "RoleId", "用户编号", null, "int(11)", 10, 0, false)]
+        [BindColumn(2, "RoleId", "角色编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 RoleId
         {
             get { return _RoleId; }
@@ -141,7 +141,7 @@ namespace DotNet.CommonEntity
             ///<summary>编号</summary>
             public static readonly Field Id = FindByName("Id");
 
-            ///<summary>用户编号</summary>
+            ///<summary>角色编号</summary>
             public static readonly Field RoleId = FindByName("RoleId");
 
             ///<summary>权限编号</summary>
@@ -168,7 +168,7 @@ namespace DotNet.CommonEntity
         /// <summary>编号</summary>
         Int32 Id { get; set; }
 
-        /// <summary>用户编号</summary>
+        /// <summary>角色编号</summary>
         Int32 RoleId { get; set; }
 
         /// <summary>权限编号</summary>

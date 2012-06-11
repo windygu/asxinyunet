@@ -112,6 +112,20 @@ namespace DotNet.CommonEntity
             if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);            
             return exp;
         }
+        //获取分页数据
+        public static EntityList<TEntity> GetPageEntityList(int pageIndex,int pageSize)
+        {
+            return FindAllByName("", "", "",pageSize * (pageIndex - 1), pageSize);
+        }
+        public static EntityList<TEntity> GetPageEntityList(string name,object value, int pageIndex, int pageSize)
+        {            
+            return FindAllByName(name ,value ,"", pageSize * (pageIndex - 1), pageSize);
+        }
+        public static EntityList<TEntity> GetPageEntityList(string whereClause,string orderClause,string selects, 
+            int pageIndex, int pageSize)
+        {            
+            return FindAll(whereClause, orderClause, selects, pageSize * (pageIndex - 1), pageSize);
+        }
         #endregion
 
         #region 扩展操作

@@ -180,17 +180,30 @@ namespace ResouceEntity
                 { display: '备注', name: 'remark', width: 50, align: 'left' ,editor: { type: 'text' }}
                 ]";
         }
-
-        public static string GetPageEntityList(string page, string pagesize)
-        { 
-             //int page = 2 ;
-             //int pagesize = 5 ;
-            int page1 = Convert.ToInt32(page);
-            int pagesize1 =Convert.ToInt32(pagesize);
-             EntityList<tb_resoucepageslist> reslist = tb_resoucepageslist.FindAll("", "", null, pagesize1*(page1 - 1), pagesize1);        
-            var griddata = new { Rows = reslist, Total = tb_resoucepageslist.FindCount() };
-            return new JavaScriptSerializer().Serialize(griddata);
+        //获取分页数据
+        public static EntityList<tb_resoucepageslist> GetPageEntityList(int pageIndex, int pageSize)
+        {
+            return FindAllByName("", "", "", pageSize * (pageIndex - 1), pageSize);
         }
+        public static EntityList<tb_resoucepageslist> GetPageEntityList(string name, object value, int pageIndex, int pageSize)
+        {
+            return FindAllByName(name, value, "", pageSize * (pageIndex - 1), pageSize);
+        }
+        public static EntityList<tb_resoucepageslist> GetPageEntityList(string whereClause, string orderClause, string selects,
+            int pageIndex, int pageSize)
+        {
+            return FindAll(whereClause, orderClause, selects, pageSize * (pageIndex - 1), pageSize);
+        }
+        //public static string GetPageEntityList(string page, string pagesize)
+        //{ 
+        //     //int page = 2 ;
+        //     //int pagesize = 5 ;
+        //    int page1 = Convert.ToInt32(page);
+        //    int pagesize1 =Convert.ToInt32(pagesize);
+        //     EntityList<tb_resoucepageslist> reslist = tb_resoucepageslist.FindAll("", "", null, pagesize1*(page1 - 1), pagesize1);        
+        //    var griddata = new { Rows = reslist, Total = tb_resoucepageslist.FindCount() };
+        //    return new JavaScriptSerializer().Serialize(griddata);
+        //}
         #endregion
     }
 }
