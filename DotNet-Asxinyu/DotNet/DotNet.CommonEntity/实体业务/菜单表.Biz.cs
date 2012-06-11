@@ -8,7 +8,6 @@ using System.Linq;
  using XCode;
 using XCode.Configuration;
 using System.Web;
-using System.Web.UI;
 
 namespace DotNet.CommonEntity
 {
