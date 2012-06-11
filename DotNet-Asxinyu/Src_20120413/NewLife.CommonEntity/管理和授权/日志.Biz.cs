@@ -9,7 +9,7 @@ using XCode.Cache;
 
 namespace NewLife.CommonEntity
 {
-    /// <summary>日志</summary>
+     /// <summary>日志</summary>
     [BindIndex("IX_Log_Category", false, "Category")]
     [BindIndex("PK__Log__3214EC271DE57479", true, "ID")]
     public partial class Log<TEntity> : Entity<TEntity> where TEntity : Log<TEntity>, new()
