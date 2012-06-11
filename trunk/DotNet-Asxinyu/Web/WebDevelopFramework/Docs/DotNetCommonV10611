@@ -119,7 +119,7 @@ CREATE TABLE `Organize` (
   `OrganizeCode` varchar(50) DEFAULT NULL COMMENT '组织代码',
   `ShortName` varchar(50) DEFAULT NULL COMMENT '简称',
   `FullName` varchar(100) DEFAULT NULL COMMENT '组织名称',
-  `Category` varchar(30) DEFAULT NULL COMMENT '组织内部',
+  `Category` varchar(30) DEFAULT NULL COMMENT '组织类别',
   `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
   `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
@@ -203,7 +203,7 @@ CREATE TABLE `Role` (
 DROP TABLE IF EXISTS `RolePermission`;
 CREATE TABLE `RolePermission` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `RoleId` int(11) NOT NULL COMMENT '用户编号',
+  `RoleId` int(11) NOT NULL COMMENT '角色编号',
   `PermissionId` int(11) NOT NULL COMMENT '权限编号',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
   `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
@@ -258,7 +258,7 @@ CREATE TABLE `Staff` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `OrganizeId` int(11) NOT NULL COMMENT '组织编号',
   `UserName` varchar(50) NOT NULL COMMENT '用户名',
-  `RealName` varchar(30) NOT NULL COMMENT '用户名',
+  `RealName` varchar(30) NOT NULL COMMENT '姓名',
   `Code` varchar(50) DEFAULT NULL COMMENT '工号',
   `Sex` tinyint(4) NOT NULL COMMENT '性别',
   `IdCard` varchar(30) DEFAULT '' COMMENT '身份证号',
