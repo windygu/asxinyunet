@@ -14,11 +14,9 @@ namespace DotNet.CommonEntity
     [Description("用户信息")]
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("StaffId", false, "StaffId")]
-    [BindIndex("UserRole", false, "UserName,RoleId")]
-    [BindIndex("StaffRole", false, "StaffId,RoleId")]
-    [BindIndex("IX_User_RoleId", false, "RoleId")]
+    [BindIndex("UserRole", false, "UserName")]
+    [BindIndex("StaffRole", false, "StaffId")]
     [BindRelation("Id", true, "Log", "UserId")]
-    [BindRelation("RoleId", false, "Role", "Id")]
     [BindRelation("StaffId", false, "Staff", "Id")]
     [BindRelation("Id", true, "UserPermission", "UserId")]
     [BindRelation("Id", true, "UserProfile", "UserId")]
@@ -75,24 +73,12 @@ namespace DotNet.CommonEntity
             set { if (OnPropertyChanging("Password", value)) { _Password = value; OnPropertyChanged("Password"); } }
         }
 
-        private Int32 _RoleId;
-        /// <summary>角色编号</summary>
-        [DisplayName("角色编号")]
-        [Description("角色编号")]
-        [DataObjectField(false, false, false, 10)]
-        [BindColumn(5, "RoleId", "角色编号", null, "int(20)", 10, 0, false)]
-        public virtual Int32 RoleId
-        {
-            get { return _RoleId; }
-            set { if (OnPropertyChanging("RoleId", value)) { _RoleId = value; OnPropertyChanged("RoleId"); } }
-        }
-
         private Int32 _SortCode;
         /// <summary>排序码</summary>
         [DisplayName("排序码")]
         [Description("排序码")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(6, "SortCode", "排序码", null, "int(10)", 10, 0, false)]
+        [BindColumn(5, "SortCode", "排序码", null, "int(10)", 10, 0, false)]
         public virtual Int32 SortCode
         {
             get { return _SortCode; }
@@ -104,7 +90,7 @@ namespace DotNet.CommonEntity
         [DisplayName("是否有效")]
         [Description("是否有效")]
         [DataObjectField(false, false, true, 3)]
-        [BindColumn(7, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
+        [BindColumn(6, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
         public virtual SByte IsEnable
         {
             get { return _IsEnable; }
@@ -116,7 +102,7 @@ namespace DotNet.CommonEntity
         [DisplayName("删除标志")]
         [Description("删除标志")]
         [DataObjectField(false, false, true, 3)]
-        [BindColumn(8, "DeletionStatusCode", "删除标志", "0", "tinyint(4)", 3, 0, false)]
+        [BindColumn(7, "DeletionStatusCode", "删除标志", "0", "tinyint(4)", 3, 0, false)]
         public virtual SByte DeletionStatusCode
         {
             get { return _DeletionStatusCode; }
@@ -128,7 +114,7 @@ namespace DotNet.CommonEntity
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(9, "Description", "备注", "", "varchar(50)", 0, 0, false)]
+        [BindColumn(8, "Description", "备注", "", "varchar(50)", 0, 0, false)]
         public virtual String Description
         {
             get { return _Description; }
@@ -154,7 +140,6 @@ namespace DotNet.CommonEntity
                     case "StaffId" : return _StaffId;
                     case "UserName" : return _UserName;
                     case "Password" : return _Password;
-                    case "RoleId" : return _RoleId;
                     case "SortCode" : return _SortCode;
                     case "IsEnable" : return _IsEnable;
                     case "DeletionStatusCode" : return _DeletionStatusCode;
@@ -170,7 +155,6 @@ namespace DotNet.CommonEntity
                     case "StaffId" : _StaffId = Convert.ToInt32(value); break;
                     case "UserName" : _UserName = Convert.ToString(value); break;
                     case "Password" : _Password = Convert.ToString(value); break;
-                    case "RoleId" : _RoleId = Convert.ToInt32(value); break;
                     case "SortCode" : _SortCode = Convert.ToInt32(value); break;
                     case "IsEnable" : _IsEnable = Convert.ToSByte(value); break;
                     case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
@@ -196,9 +180,6 @@ namespace DotNet.CommonEntity
 
             ///<summary>密码</summary>
             public static readonly Field Password = FindByName("Password");
-
-            ///<summary>角色编号</summary>
-            public static readonly Field RoleId = FindByName("RoleId");
 
             ///<summary>排序码</summary>
             public static readonly Field SortCode = FindByName("SortCode");
@@ -232,9 +213,6 @@ namespace DotNet.CommonEntity
 
         /// <summary>密码</summary>
         String Password { get; set; }
-
-        /// <summary>角色编号</summary>
-        Int32 RoleId { get; set; }
 
         /// <summary>排序码</summary>
         Int32 SortCode { get; set; }

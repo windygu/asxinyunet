@@ -60,11 +60,11 @@ namespace DotNet.CommonEntity
         }
 
         private String _RealName;
-        /// <summary>用户名</summary>
-        [DisplayName("用户名")]
-        [Description("用户名")]
+        /// <summary>姓名</summary>
+        [DisplayName("姓名")]
+        [Description("姓名")]
         [DataObjectField(false, false, false, 30)]
-        [BindColumn(4, "RealName", "用户名", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(4, "RealName", "姓名", null, "varchar(30)", 0, 0, false)]
         public virtual String RealName
         {
             get { return _RealName; }
@@ -218,7 +218,7 @@ namespace DotNet.CommonEntity
             ///<summary>用户名</summary>
             public static readonly Field UserName = FindByName("UserName");
 
-            ///<summary>用户名</summary>
+            ///<summary>姓名</summary>
             public static readonly Field RealName = FindByName("RealName");
 
             ///<summary>工号</summary>
@@ -260,7 +260,7 @@ namespace DotNet.CommonEntity
         /// <summary>用户名</summary>
         String UserName { get; set; }
 
-        /// <summary>用户名</summary>
+        /// <summary>姓名</summary>
         String RealName { get; set; }
 
         /// <summary>工号</summary>

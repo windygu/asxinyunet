@@ -63,7 +63,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "efs", "Efs Source .Net\efs\", "{F5B88E7B-F35A-4905-A689-002F667BFF9D}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{BD3AC3DC-3E77-4CA5-910D-10A70C37849B}|ResourceManage.dll;{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}|ResouceEntity.dll;"
+		ProjectReferences = "{BD3AC3DC-3E77-4CA5-910D-10A70C37849B}|ResourceManage.exe;{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}|ResouceEntity.dll;{804B0499-5B7F-4471-8F42-848ECEB6C82D}|DotNet.CommonEntity.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/efs"
 		Debug.AspNetCompiler.PhysicalPath = "Efs Source .Net\efs\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\efs\"
@@ -134,8 +134,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDevelopFramework", "Web\WebDevelopFramework\WebDevelopFramework.csproj", "{CF2EE283-89E3-4946-8B6C-CDA72E44D992}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.CommonEntity", "DotNet\DotNet.CommonEntity\DotNet.CommonEntity.csproj", "{804B0499-5B7F-4471-8F42-848ECEB6C82D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Test", "DotNet\DotNet.Test\DotNet.Test.csproj", "{BF2E4022-5253-4F51-8788-87122CB05A1B}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -706,24 +704,6 @@ Global
 		{804B0499-5B7F-4471-8F42-848ECEB6C82D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{804B0499-5B7F-4471-8F42-848ECEB6C82D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{804B0499-5B7F-4471-8F42-848ECEB6C82D}.Release|x86.ActiveCfg = Release|Any CPU
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}..Net 2.0|.NET.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}..Net 2.0|Any CPU.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}..Net 2.0|Mixed Platforms.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}..Net 2.0|Mixed Platforms.Build.0 = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}..Net 2.0|x86.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}..Net 2.0|x86.Build.0 = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Debug|.NET.ActiveCfg = Debug|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Debug|x86.ActiveCfg = Debug|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Debug|x86.Build.0 = Debug|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Release|.NET.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Release|Any CPU.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Release|Mixed Platforms.Build.0 = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Release|x86.ActiveCfg = Release|x86
-		{BF2E4022-5253-4F51-8788-87122CB05A1B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -746,7 +726,6 @@ Global
 		{F7BC9D00-3067-4B46-981B-FA813C13C2B6} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{6C5BDEBC-A301-44BE-A676-80CD55873A40} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{804B0499-5B7F-4471-8F42-848ECEB6C82D} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
-		{BF2E4022-5253-4F51-8788-87122CB05A1B} = {16B825C3-8AEB-4DAC-821B-2A2B12AF641F}
 		{562FD83D-BDFF-40A8-8B2F-BF8304F4FE54} = {567AC4C6-4805-4036-8112-CFD8D85C8FB2}
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710} = {876B6FC2-9964-490B-8E73-722B28BD8819}
 		{50D7FAE5-2304-4395-A6FA-7D35279D9D84} = {876B6FC2-9964-490B-8E73-722B28BD8819}

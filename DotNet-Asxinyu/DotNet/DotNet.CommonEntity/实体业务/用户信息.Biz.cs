@@ -77,25 +77,7 @@ namespace DotNet.CommonEntity
 			}
 			set { _Logs = value; }
 		}
-
-        [NonSerialized]
-        private Role _Role;
-        /// <summary>该用户信息所对应的角色表</summary>
-        [XmlIgnore]
-        public Role Role
-        {
-            get
-            {
-                if (_Role == null && RoleId > 0 && !Dirtys.ContainsKey("Role"))
-                {
-                    _Role = Role.FindById(RoleId);
-                    Dirtys["Role"] = true;
-                }
-                return _Role;
-            }
-            set { _Role = value; }
-        }
-
+       
         [NonSerialized]
         private Staff _Staff;
         /// <summary>该用户信息所对应的员工信息表</summary>
@@ -192,33 +174,7 @@ namespace DotNet.CommonEntity
                 return FindAll(_.StaffId, staffid);
             else // 实体缓存
                 return Meta.Cache.Entities.FindAll(_.StaffId, staffid);
-        }
-
-        /// <summary>根据用户名、角色编号查找</summary>
-        /// <param name="username">用户名</param>
-        /// <param name="roleid">角色编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<TEntity> FindAllByUserNameAndRoleId(String username, Int32 roleid)
-        {
-            if (Meta.Count >= 1000)
-                return FindAll(new String[] { _.UserName, _.RoleId }, new Object[] { username, roleid });
-            else // 实体缓存
-                return Meta.Cache.Entities.FindAll(e => e.UserName == username && e.RoleId == roleid);
-        }
-
-        /// <summary>根据员工编号、角色编号查找</summary>
-        /// <param name="staffid">员工编号</param>
-        /// <param name="roleid">角色编号</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static TEntity FindByStaffIdAndRoleId(Int32 staffid, Int32 roleid)
-        {
-            if (Meta.Count >= 1000)
-                return Find(new String[] { _.StaffId, _.RoleId }, new Object[] { staffid, roleid });
-            else // 实体缓存
-                return Meta.Cache.Entities.Find(e => e.StaffId == staffid && e.RoleId == roleid);
-        }     
+        }          
         #endregion
 
         #region 高级查询

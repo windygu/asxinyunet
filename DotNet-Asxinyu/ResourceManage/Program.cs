@@ -8,6 +8,8 @@ using ResouceEntity;
 using NewLife.Log;
 using NewLife.Reflection;
 using System.Web;
+using XCode;
+using DotNet.CommonEntity;
 using System.Web.SessionState;
 
 namespace ResourceManage
@@ -16,20 +18,24 @@ namespace ResourceManage
     {     
         static void Main()
         {
-            //测试调用任意方法，特别是带参数  GetPageEntityList  GetColunmsData
-            //tb_resoucepageslist a = new tb_resoucepageslist();
-            //string typeName = "tb_resoucepageslist";
-            //string methodName = "GetPageEntityList";
-            //var type = TypeX.GetType(typeName);
-            //var method = TypeX.GetMethod(type, methodName, null);
-
+            //EntityList<tb_resoucepageslist> list = tb_resoucepageslist.GetPageEntityList(2, 20);
+            //Console.WriteLine(list.Count);
+            //Menu e = new Menu();
+            //var t = Menu.FindAll();
+            //Role r = new Role();
+            //EntityList<Role> list = Role.FindAll();
             Console.WriteLine("OK!");
             Console.ReadKey();
         }
     }
 }
 
-
+//测试调用任意方法，特别是带参数  GetPageEntityList  GetColunmsData
+//tb_resoucepageslist a = new tb_resoucepageslist();
+//string typeName = "tb_resoucepageslist";
+//string methodName = "GetPageEntityList";
+//var type = TypeX.GetType(typeName);
+//var method = TypeX.GetMethod(type, methodName, null);
 public class AjaxTest 
 {
     private HttpContext context;
