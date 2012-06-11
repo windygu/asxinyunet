@@ -24,6 +24,7 @@ namespace ResourceManage
             //var t = Menu.FindAll();
             //Role r = new Role();
             //EntityList<Role> list = Role.FindAll();
+            CommonEntityHelper.InitData();
             Console.WriteLine("OK!");
             Console.ReadKey();
         }
