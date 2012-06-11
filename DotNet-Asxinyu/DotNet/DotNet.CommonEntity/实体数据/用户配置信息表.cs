@@ -18,7 +18,7 @@ namespace DotNet.CommonEntity
     [BindIndex("Name", false, "SystemId,UserId,Name")]
     [BindRelation("UserId", false, "User", "Id")]
     [BindTable("UserProfile", Description = "用户配置信息表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class UserProfile : IUserProfile
+    public partial class UserProfile<TEntity> : IUserProfile
     {
         #region 属性
         private Int32 _Id;

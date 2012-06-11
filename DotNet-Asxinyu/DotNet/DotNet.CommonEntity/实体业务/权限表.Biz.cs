@@ -10,9 +10,18 @@ using XCode.Configuration;
 namespace DotNet.CommonEntity
 {
     /// <summary>权限表</summary>
-    public partial class Permission : Entity<Permission>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
+    public class Permission : Permission<Permission> { }
+    
+    /// <summary>权限表</summary>
+    public partial class Permission<TEntity> : Entity<TEntity> where TEntity : Permission<TEntity>, new()
     {
         #region 对象操作﻿
+        static Permission()
+        {
+            // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
+            TEntity entity = new TEntity();
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>
@@ -66,7 +75,7 @@ namespace DotNet.CommonEntity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}权限表数据……", typeof(Permission).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}权限表数据……", typeof(TEntity).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -76,7 +85,7 @@ namespace DotNet.CommonEntity
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}权限表数据！", typeof(Permission).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}权限表数据！", typeof(TEntity).Name);
         //}
         #endregion
 
@@ -141,7 +150,7 @@ namespace DotNet.CommonEntity
         /// <param name="id">编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Permission FindById(Int32 id)
+        public static TEntity FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(_.Id, id);
@@ -155,7 +164,7 @@ namespace DotNet.CommonEntity
         /// <param name="systemdbid">表编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Permission> FindAllBySystemDbId(Int32 systemdbid)
+        public static EntityList<TEntity> FindAllBySystemDbId(Int32 systemdbid)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.SystemDbId, systemdbid);
@@ -167,7 +176,7 @@ namespace DotNet.CommonEntity
         /// <param name="name">权限名称</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Permission> FindAllByName(String name)
+        public static EntityList<TEntity> FindAllByName(String name)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.Name, name);
@@ -188,7 +197,7 @@ namespace DotNet.CommonEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Permission> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<TEntity> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

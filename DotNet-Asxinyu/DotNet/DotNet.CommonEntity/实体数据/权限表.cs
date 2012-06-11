@@ -19,7 +19,7 @@ namespace DotNet.CommonEntity
     [BindRelation("Id", true, "RolePermission", "PermissionId")]
     [BindRelation("Id", true, "UserPermission", "PermissionId")]
     [BindTable("Permission", Description = "权限表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Permission : IPermission
+    public partial class Permission<TEntity> : IPermission
     {
         #region 属性
         private Int32 _Id;

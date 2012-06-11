@@ -20,7 +20,7 @@ namespace DotNet.CommonEntity
     [BindRelation("OrganizeId", false, "Organize", "Id")]
     [BindRelation("Id", true, "User", "StaffId")]
     [BindTable("Staff", Description = "员工信息表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Staff : IStaff
+    public partial class Staff<TEntity> : IStaff
     {
         #region 属性
         private Int32 _Id;

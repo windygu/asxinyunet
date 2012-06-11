@@ -19,7 +19,7 @@ namespace DotNet.CommonEntity
     [BindRelation("SystemDbId", false, "SystemDb", "Id")]
     [BindRelation("UserId", false, "User", "Id")]
     [BindTable("Log", Description = "日志信息", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Log : ILog
+    public partial class Log<TEntity> : ILog
     {
         #region 属性
         private Int32 _Id;

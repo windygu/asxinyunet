@@ -4,71 +4,33 @@ using System.ComponentModel;
 using System.Text;
 using System.Xml.Serialization;
 using NewLife.Log;
-using XCode;
+using System.Linq;
+ using XCode;
 using XCode.Configuration;
+using System.Web;
+using System.Web.UI;
 
 namespace DotNet.CommonEntity
 {
     /// <summary>菜单表</summary>
-    public partial class Menu : Entity<Menu>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
+    public class Menu : Menu<Menu> { }
+    
+    /// <summary>菜单表</summary>
+    public partial class Menu<TEntity> : EntityTree<TEntity> where TEntity : Menu<TEntity>, new()
     {
         #region 对象操作﻿
+        static Menu()
+        {
+            // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
+            TEntity entity = new TEntity();
+        }       
+        #endregion
 
-        ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
-        ///// <returns></returns>
-        //public override Int32 Insert()
-        //{
-        //    return base.Insert();
-        //}
-
-        ///// <summary>已重载。在事务保护范围内处理业务，位于Valid之后</summary>
-        ///// <returns></returns>
-        //protected override Int32 OnInsert()
-        //{
-        //    return base.OnInsert();
-        //}
-
-        ///// <summary>验证数据，通过抛出异常的方式提示验证失败。</summary>
-        ///// <param name="isNew"></param>
-        //public override void Valid(Boolean isNew)
-        //{
-        //    // 建议先调用基类方法，基类方法会对唯一索引的数据进行验证
-        //    base.Valid(isNew);
-
-        //    // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
-        //    if (String.IsNullOrEmpty(Name)) throw new ArgumentNullException(_.Name, _.Name.Description + "无效！");
-        //    if (!isNew && ID < 1) throw new ArgumentOutOfRangeException(_.ID, _.ID.Description + "必须大于0！");
-
-        //    // 在新插入数据或者修改了指定字段时进行唯一性验证，CheckExist内部抛出参数异常
-        //    if (isNew || Dirtys[_.Name]) CheckExist(_.Name);
-        //    if (isNew || Dirtys[_.Name] || Dirtys[_.DbType]) CheckExist(_.Name, _.DbType);
-        //    if ((isNew || Dirtys[_.Name]) && Exist(_.Name)) throw new ArgumentException(_.Name, "值为" + Name + "的" + _.Name.Description + "已存在！");
-        //}
-
-
-        ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
-        //[EditorBrowsable(EditorBrowsableState.Never)]
-        //protected override void InitData()
-        //{
-        //    base.InitData();
-
-        //    // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
-        //    // Meta.Count是快速取得表记录数
-        //    if (Meta.Count > 0) return;
-
-        //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}菜单表数据……", typeof(Menu).Name);
-
-        //    TEntity user = new TEntity();
-        //    user.Name = "admin";
-        //    user.Password = DataHelper.Hash("admin");
-        //    user.DisplayName = "管理员";
-        //    user.RoleID = 1;
-        //    user.IsEnable = true;
-        //    user.Insert();
-
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}菜单表数据！", typeof(Menu).Name);
-        //}
+        #region 扩展属性
+        /// <summary>父菜单名</summary>
+        [XmlIgnore]
+        public virtual String ParentMenuName { get { return Parent == null ? null : Parent.MenuName; } set { } }
         #endregion
 
         #region 扩展属性﻿
@@ -93,24 +55,21 @@ namespace DotNet.CommonEntity
 
         #region 扩展查询﻿
         /// <summary>根据编号查找</summary>
-        /// <param name="id">编号</param>
-        /// <returns></returns>
+        /// <param name="id">编号</param>       
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Menu FindById(Int32 id)
+        public static TEntity FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(_.Id, id);
             else // 实体缓存
-                return Meta.Cache.Entities.Find(_.Id, id);
-            // 单对象缓存
-            //return Meta.SingleCache[id];
+                return Meta.Cache.Entities.Find(_.Id, id);           
         }
 
-        /// <summary>根据表编号查找</summary>
+        /// <summary>根据表编号查找：查找某一个表的所有相关页面</summary>
         /// <param name="systemdbid">表编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Menu> FindAllBySystemDbId(Int32 systemdbid)
+        public static EntityList<TEntity> FindAllBySystemDbId(Int32 systemdbid)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.SystemDbId, systemdbid);
@@ -118,50 +77,29 @@ namespace DotNet.CommonEntity
                 return Meta.Cache.Entities.FindAll(_.SystemDbId, systemdbid);
         }
 
-        /// <summary>根据表编号、菜单名称查找</summary>
+        /// <summary>根据表编号和菜单名称查找单个菜单</summary>
         /// <param name="systemdbid">表编号</param>
-        /// <param name="menuname">菜单名称</param>
-        /// <returns></returns>
+        /// <param name="menuname">菜单名称</param>        
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Menu> FindAllBySystemDbIdAndMenuName(Int32 systemdbid, String menuname)
+        public static TEntity FindBySystemDbIdAndMenuName(Int32 systemdbid, String menuname)
         {
             if (Meta.Count >= 1000)
-                return FindAll(new String[] { _.SystemDbId, _.MenuName }, new Object[] { systemdbid, menuname });
+                return Find(new String[] { _.SystemDbId, _.MenuName }, new Object[] { systemdbid, menuname });
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(e => e.SystemDbId == systemdbid && e.MenuName == menuname);
+                return Meta.Cache.Entities.Find(e => e.SystemDbId == systemdbid && e.MenuName == menuname);
+        }
+        /// <summary>查找指定菜单的子菜单</summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static EntityList<TEntity> FindAllByParentID(Int32 id)
+        {
+            EntityList<TEntity> list = Meta.Cache.Entities.FindAll(_.ParentId, id);
+            if (list != null && list.Count > 0) list.Sort(new String[] { _.SortCode , _.Id }, new Boolean[] { true, false });
+            return list;
         }
         #endregion
 
         #region 高级查询
-        // 以下为自定义高级查询的例子
-
-        ///// <summary>
-        ///// 查询满足条件的记录集，分页、排序
-        ///// </summary>
-        ///// <param name="key">关键字</param>
-        ///// <param name="orderClause">排序，不带Order By</param>
-        ///// <param name="startRowIndex">开始行，0表示第一行</param>
-        ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
-        ///// <returns>实体集</returns>
-        //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Menu> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
-        //{
-        //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
-        //}
-
-        ///// <summary>
-        ///// 查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
-        ///// </summary>
-        ///// <param name="key">关键字</param>
-        ///// <param name="orderClause">排序，不带Order By</param>
-        ///// <param name="startRowIndex">开始行，0表示第一行</param>
-        ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
-        ///// <returns>记录数</returns>
-        //public static Int32 SearchCount(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
-        //{
-        //    return FindCount(SearchWhere(key), null, null, 0, 0);
-        //}
-
         /// <summary>
         /// 构造搜索条件
         /// </summary>
@@ -171,24 +109,101 @@ namespace DotNet.CommonEntity
         {
             // WhereExpression重载&和|运算符，作为And和Or的替代
             WhereExpression exp = new WhereExpression();
-
             // SearchWhereByKeys系列方法用于构建针对字符串字段的模糊搜索
-            if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);
-
-            // 以下仅为演示，2、3行是同一个意思的不同写法，Field（继承自FieldItem）重载了==、!=、>、<、>=、<=等运算符（第4行）
-            //exp &= _.Name == "testName"
-            //    & !String.IsNullOrEmpty(key) & _.Name == key
-            //    .AndIf(!String.IsNullOrEmpty(key), _.Name == key)
-            //    | _.ID > 0;
-
+            if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);            
             return exp;
         }
         #endregion
 
         #region 扩展操作
+        /// <summary>已重载。</summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            var path = FullPath;
+            if (!String.IsNullOrEmpty(path))
+                return path;
+            return base.ToString();
+        }
         #endregion
 
         #region 业务
+        /// <summary>添加子菜单</summary>
+        public virtual TEntity AddChild(String menuName, String url,string displayName="",string iconUrl="")
+        {
+            TEntity entity = new TEntity();
+            entity.ParentId = Id;
+            entity.MenuName  = menuName ;
+            entity.Url = url;
+            entity.DisplayName = (displayName==""? DisplayName:displayName);
+            entity.IconsUrl = (iconUrl == "" ? IconsUrl : iconUrl);
+            entity.Category = Category;
+            entity.IsEnable = 1 ;
+            entity.DeletionStatusCode = 0;
+            entity.Save();
+            return entity;
+        }
+        /// <summary>取得全路径的实体，由上向下排序</summary>
+        /// <param name="includeSelf">是否包含自己</param>
+        /// <param name="separator">分隔符</param>
+        /// <param name="func">回调</param>
+        /// <returns></returns>
+        string IMenu.GetFullPath(bool includeSelf, string separator, Func<IMenu, string> func)
+        {
+            Func<TEntity, String> d = null;
+            if (func != null) d = item => func(item);
+            return GetFullPath(includeSelf, separator, d);
+        }       
+
+        /// <summary>父菜单</summary>
+        IMenu IMenu.Parent { get { return Parent; } }
+
+        /// <summary>子菜单</summary>
+        IList<IMenu> IMenu.Childs { get { return Childs.OfType<IMenu>().ToList(); } }
+
+        /// <summary>子孙菜单</summary>
+        IList<IMenu> IMenu.AllChilds { get { return AllChilds.OfType<IMenu>().ToList(); } }
+
+        /// <summary>根据层次路径查找</summary>
+        /// <param name="path">层次路径</param>
+        /// <returns></returns>
+        IMenu IMenu.FindByPath(String path) { return FindByPath(path, _.MenuName,_.Description); }        
+
         #endregion
     }
+
+    public partial interface IMenu
+    {
+        /// <summary>取得全路径的实体，由上向下排序</summary>
+        /// <param name="includeSelf">是否包含自己</param>
+        /// <param name="separator">分隔符</param>
+        /// <param name="func">回调</param>
+        /// <returns></returns>
+        String GetFullPath(Boolean includeSelf, String separator, Func<IMenu, String> func);
+
+        /// <summary>检查菜单名称，修改为新名称。返回自身，支持链式写法</summary>
+        /// <param name="oldName"></param>
+        /// <param name="newName"></param>
+        //IMenu CheckMenuName(String oldName, String newName);
+
+        /// <summary>父菜单</summary>
+        IMenu Parent { get; }
+
+        /// <summary>子菜单</summary>
+        IList<IMenu> Childs { get; }
+
+        /// <summary>子孙菜单</summary>
+        IList<IMenu> AllChilds { get; }
+
+        /// <summary>深度</summary>
+        Int32 Deepth { get; }
+
+        /// <summary>根据层次路径查找</summary>
+        /// <param name="path">层次路径</param>
+        /// <returns></returns>
+        IMenu FindByPath(String path);
+    }
 }
+
+
+   

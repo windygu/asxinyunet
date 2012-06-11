@@ -21,7 +21,7 @@ namespace DotNet.CommonEntity
     [BindRelation("Id", true, "User", "RoleId")]
     [BindRelation("Id", true, "UserRole", "RoleId")]
     [BindTable("Role", Description = "角色表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
-    public partial class Role : IRole
+    public partial class Role<TEntity> : IRole
     {
         #region 属性
         private Int32 _Id;

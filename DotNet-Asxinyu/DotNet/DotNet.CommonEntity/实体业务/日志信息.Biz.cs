@@ -10,9 +10,18 @@ using XCode.Configuration;
 namespace DotNet.CommonEntity
 {
     /// <summary>日志信息</summary>
-    public partial class Log : Entity<Log>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
+    public class Log : Log<Log> { }
+    
+    /// <summary>日志信息</summary>
+    public partial class Log<TEntity> : Entity<TEntity> where TEntity : Log<TEntity>, new()
     {
         #region 对象操作﻿
+        static Log()
+        {
+            // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
+            TEntity entity = new TEntity();
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>
@@ -57,7 +66,7 @@ namespace DotNet.CommonEntity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}日志信息数据……", typeof(Log).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}日志信息数据……", typeof(TEntity).Name);
 
         //    TEntity user = new TEntity();
         //    user.Name = "admin";
@@ -67,7 +76,7 @@ namespace DotNet.CommonEntity
         //    user.IsEnable = true;
         //    user.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}日志信息数据！", typeof(Log).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}日志信息数据！", typeof(TEntity).Name);
         //}
         #endregion
 
@@ -114,7 +123,7 @@ namespace DotNet.CommonEntity
         /// <param name="id">编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Log FindById(Int32 id)
+        public static TEntity FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(_.Id, id);
@@ -128,7 +137,7 @@ namespace DotNet.CommonEntity
         /// <param name="userid">用户编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Log> FindAllByUserId(Int32 userid)
+        public static EntityList<TEntity> FindAllByUserId(Int32 userid)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.UserId, userid);
@@ -140,7 +149,7 @@ namespace DotNet.CommonEntity
         /// <param name="systemdbid">表编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Log> FindAllBySystemDbId(Int32 systemdbid)
+        public static EntityList<TEntity> FindAllBySystemDbId(Int32 systemdbid)
         {
             if (Meta.Count >= 1000)
                 return FindAll(_.SystemDbId, systemdbid);
@@ -153,7 +162,7 @@ namespace DotNet.CommonEntity
         /// <param name="userid">用户编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Log> FindAllBySystemDbIdAndUserId(Int32 systemdbid, Int32 userid)
+        public static EntityList<TEntity> FindAllBySystemDbIdAndUserId(Int32 systemdbid, Int32 userid)
         {
             if (Meta.Count >= 1000)
                 return FindAll(new String[] { _.SystemDbId, _.UserId }, new Object[] { systemdbid, userid });
@@ -174,7 +183,7 @@ namespace DotNet.CommonEntity
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Log> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<TEntity> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}
