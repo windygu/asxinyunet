@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?><XConfig><ConnName>DotNetCommon</ConnName><Prefix></Prefix><NameSpace>ConnName</NameSpace><TemplateName></TemplateName><OutputPath>ConnName</OutputPath><EntityConnName>ConnName</EntityConnName><BaseClass>Entity</BaseClass><RenderGenEntity>false</RenderGenEntity><AutoCutPrefix>false</AutoCutPrefix><AutoCutTableName>false</AutoCutTableName><AutoFixWord>false</AutoFixWord><UseCNFileName>false</UseCNFileName><UseID>false</UseID><UseHeadTemplate>false</UseHeadTemplate><HeadTemplate>/*
+ * XCoder v&lt;#=Version#&gt;
+ * 作者：&lt;#=Environment.UserName + "/" + Environment.MachineName#&gt;
+ * 时间：&lt;#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#&gt;
+ * 版权：版权所有 (C) 新生命开发团队 &lt;#=DateTime.Now.ToString("yyyy")#&gt;
+*/
+</HeadTemplate><Debug>false</Debug><LastUpdate>2012-06-12 16:26:06</LastUpdate><Items /></XConfig>
