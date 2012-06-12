@@ -22,51 +22,24 @@ CREATE DATABASE IF NOT EXISTS CommonV1;
 USE CommonV1;
 
 --
--- Definition of table `Category`
---
-
-DROP TABLE IF EXISTS `Category`;
-CREATE TABLE `Category` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemId` int(11) NOT NULL COMMENT '系统编号',
-  `ParentId` int(11) NOT NULL COMMENT '父编号',
-  `Name` varchar(50) NOT NULL COMMENT '类名称',
-  `DisplayName` varchar(30) DEFAULT NULL COMMENT '显示名称',
-  `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
-  `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
-  `Description` varchar(50) DEFAULT NULL COMMENT '显示名称',
-  PRIMARY KEY (`Id`) USING BTREE,
-  KEY `SystemId` (`SystemId`) USING BTREE,
-  KEY `Name` (`SystemId`,`Name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='类别信息';
-
---
--- Dumping data for table `Category`
---
-
-/*!40000 ALTER TABLE `Category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Category` ENABLE KEYS */;
-
-
---
 -- Definition of table `Log`
 --
 
 DROP TABLE IF EXISTS `Log`;
 CREATE TABLE `Log` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemDbId` int(11) DEFAULT NULL COMMENT '表编号',
+  `DbName` varchar(20) NOT NULL COMMENT '数据库名称',
+  `TableName` varchar(30) NOT NULL COMMENT '表名称',
   `UserId` int(11) NOT NULL COMMENT '用户编号',
   `Category` varchar(30) NOT NULL COMMENT '日志类别',
   `Action` varchar(80) DEFAULT NULL COMMENT '操作行为',
   `Content` varchar(200) DEFAULT NULL COMMENT '操作内容',
   `OccurTime` datetime DEFAULT NULL COMMENT '发生时间',
-  `DeletionStatusCode` tinyint(4) DEFAULT '0' COMMENT '删除标志',
   PRIMARY KEY (`Id`),
   KEY `UserId` (`UserId`),
-  KEY `SystemDbId` (`SystemDbId`) USING BTREE,
-  KEY `UserSystem` (`SystemDbId`,`UserId`)
+  KEY `TableName` (`TableName`),
+  KEY `DbName` (`DbName`) USING BTREE,
+  KEY `Category` (`Category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日志信息';
 
 --
@@ -84,20 +57,19 @@ CREATE TABLE `Log` (
 DROP TABLE IF EXISTS `Menu`;
 CREATE TABLE `Menu` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemDbId` int(11) DEFAULT NULL COMMENT '表编号',
   `ParentId` int(11) NOT NULL COMMENT '父编号',
+  `DbName` varchar(20) NOT NULL COMMENT '数据库名称',
+  `TableName` varchar(30) NOT NULL COMMENT '表名称',
   `MenuName` varchar(50) NOT NULL COMMENT '菜单名称',
-  `DisplayName` varchar(50) DEFAULT NULL COMMENT '显示名称',
   `Url` varchar(100) DEFAULT NULL COMMENT '链接',
-  `Category` varchar(30) DEFAULT NULL COMMENT '菜单类别',
   `IconsUrl` varchar(100) DEFAULT NULL COMMENT ' 图标链接',
   `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
   `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `SystemDbId` (`SystemDbId`) USING BTREE,
-  KEY `MenuName` (`SystemDbId`,`MenuName`) USING BTREE
+  KEY `MenuName` (`MenuName`) USING BTREE,
+  KEY `DbName` (`DbName`),
+  KEY `TableName` (`TableName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 --
@@ -121,13 +93,13 @@ CREATE TABLE `Organize` (
   `FullName` varchar(100) DEFAULT NULL COMMENT '组织名称',
   `Category` varchar(30) DEFAULT NULL COMMENT '组织类别',
   `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
-  `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
   `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
   KEY `OrganizeCode` (`OrganizeCode`) USING BTREE,
   KEY `ShortName` (`ShortName`) USING BTREE,
-  KEY `FullName` (`FullName`) USING BTREE
+  KEY `FullName` (`FullName`) USING BTREE,
+  KEY `ParentId` (`ParentId`),
+  KEY `Category` (`Category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组织部门信息表';
 
 --
@@ -145,8 +117,9 @@ CREATE TABLE `Organize` (
 DROP TABLE IF EXISTS `Permission`;
 CREATE TABLE `Permission` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemDbId` int(11) NOT NULL COMMENT '表编号',
   `ParentId` int(11) NOT NULL COMMENT '父编号',
+  `DbName` varchar(20) DEFAULT NULL COMMENT '数据库名称',
+  `TableName` varchar(30) DEFAULT NULL COMMENT '表名',
   `Name` varchar(30) NOT NULL COMMENT '权限名称',
   `IsDataPermission` tinyint(4) DEFAULT '0' COMMENT '是否开启数据权限',
   `Constraint` varchar(100) DEFAULT NULL COMMENT '数据条件',
@@ -155,8 +128,11 @@ CREATE TABLE `Permission` (
   `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
   `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `SystemDbId` (`SystemDbId`) USING BTREE,
-  KEY `Name` (`Name`) USING BTREE
+  KEY `Name` (`Name`) USING BTREE,
+  KEY `DbName` (`DbName`),
+  KEY `TableName` (`TableName`),
+  KEY `ParentId` (`ParentId`),
+  KEY `DbTable` (`DbName`,`TableName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 --
@@ -174,18 +150,14 @@ CREATE TABLE `Permission` (
 DROP TABLE IF EXISTS `Role`;
 CREATE TABLE `Role` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemId` int(11) DEFAULT NULL COMMENT '系统编号',
-  `OrganizeId` int(11) DEFAULT NULL COMMENT '部门编号',
   `RoleName` varchar(20) NOT NULL DEFAULT '' COMMENT '角色名称',
   `Category` varchar(30) DEFAULT '' COMMENT '角色分类',
   `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
   `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `SystemId` (`SystemId`) USING BTREE,
-  KEY `OrganizeId` (`OrganizeId`) USING BTREE,
-  KEY `SysetmOrganize` (`SystemId`,`OrganizeId`) USING BTREE
+  KEY `RoleName` (`RoleName`),
+  KEY `Category` (`Category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 --
@@ -206,10 +178,10 @@ CREATE TABLE `RolePermission` (
   `RoleId` int(11) NOT NULL COMMENT '角色编号',
   `PermissionId` int(11) NOT NULL COMMENT '权限编号',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
-  `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `RolePermission` (`RoleId`,`PermissionId`) USING BTREE
+  KEY `RolePermission` (`RoleId`,`PermissionId`) USING BTREE,
+  KEY `RoleId` (`RoleId`),
+  KEY `PermissionId` (`PermissionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='角色权限表';
 
 --
@@ -227,18 +199,15 @@ CREATE TABLE `RolePermission` (
 DROP TABLE IF EXISTS `Setting`;
 CREATE TABLE `Setting` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemId` int(11) DEFAULT NULL COMMENT '系统编号',
   `ParentId` int(11) NOT NULL COMMENT '父编号',
   `Name` varchar(50) NOT NULL COMMENT '名称',
-  `DisplayName` varchar(30) DEFAULT NULL COMMENT '显示名称',
   `Value` varchar(100) DEFAULT '' COMMENT '值',
   `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
-  `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
-  `Description` varchar(50) DEFAULT '' COMMENT '备注',
+  `Description` varchar(50) DEFAULT '' COMMENT '描述',
   PRIMARY KEY (`Id`),
-  KEY `SystemId` (`SystemId`) USING BTREE,
-  KEY `Name` (`SystemId`,`Name`) USING BTREE
+  KEY `Name` (`Name`) USING BTREE,
+  KEY `ParentId` (`ParentId`),
+  KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统设置表';
 
 --
@@ -256,6 +225,7 @@ CREATE TABLE `Setting` (
 DROP TABLE IF EXISTS `Staff`;
 CREATE TABLE `Staff` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `UserId` int(11) DEFAULT NULL COMMENT '用户编号',
   `OrganizeId` int(11) NOT NULL COMMENT '组织编号',
   `UserName` varchar(50) NOT NULL COMMENT '用户名',
   `RealName` varchar(30) NOT NULL COMMENT '姓名',
@@ -264,13 +234,14 @@ CREATE TABLE `Staff` (
   `IdCard` varchar(30) DEFAULT '' COMMENT '身份证号',
   `SortCode` int(10) DEFAULT NULL COMMENT '排序码',
   `IsEnable` tinyint(4) DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) DEFAULT '0' COMMENT '删除标志',
   `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
   KEY `OrganizeId` (`OrganizeId`) USING BTREE,
   KEY `UserName` (`UserName`) USING BTREE,
   KEY `Code` (`Code`) USING BTREE,
-  KEY `IdCard` (`IdCard`) USING BTREE
+  KEY `IdCard` (`IdCard`) USING BTREE,
+  KEY `UserId` (`UserId`),
+  KEY `RealName` (`RealName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='员工信息表';
 
 --
@@ -282,49 +253,18 @@ CREATE TABLE `Staff` (
 
 
 --
--- Definition of table `SystemDb`
---
-
-DROP TABLE IF EXISTS `SystemDb`;
-CREATE TABLE `SystemDb` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemId` int(11) NOT NULL COMMENT '系统编号',
-  `DataBaseName` varchar(20) NOT NULL COMMENT '数据库名称',
-  `TableName` varchar(30) NOT NULL COMMENT '表名称',
-  `Description` varchar(30) DEFAULT NULL COMMENT '描述',
-  PRIMARY KEY (`Id`),
-  KEY `SystemId` (`SystemId`),
-  KEY `DataBaseName` (`DataBaseName`),
-  KEY `TableName` (`DataBaseName`,`TableName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据库基本信息表';
-
---
--- Dumping data for table `SystemDb`
---
-
-/*!40000 ALTER TABLE `SystemDb` DISABLE KEYS */;
-/*!40000 ALTER TABLE `SystemDb` ENABLE KEYS */;
-
-
---
 -- Definition of table `User`
 --
 
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `StaffId` int(11) DEFAULT NULL COMMENT '员工编号',
   `UserName` varchar(30) NOT NULL COMMENT '用户名',
   `Password` varchar(50) NOT NULL COMMENT '密码',
-  `RoleId` int(20) NOT NULL COMMENT '角色编号',
   `SortCode` int(10) DEFAULT NULL COMMENT '排序码',
   `IsEnable` tinyint(4) DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) DEFAULT '0' COMMENT '删除标志',
-  `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `StaffId` (`StaffId`) USING BTREE,
-  KEY `UserRole` (`UserName`,`RoleId`),
-  KEY `StaffRole` (`StaffId`,`RoleId`)
+  KEY `UserName` (`UserName`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息';
 
 --
@@ -345,10 +285,10 @@ CREATE TABLE `UserPermission` (
   `PermissionId` int(11) NOT NULL COMMENT '权限编号',
   `UserId` int(11) NOT NULL COMMENT '用户编号',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
-  `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `UserPermission` (`PermissionId`,`UserId`) USING BTREE
+  KEY `UserPermission` (`PermissionId`,`UserId`) USING BTREE,
+  KEY `UserId` (`UserId`),
+  KEY `PermissionId` (`PermissionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户权限表';
 
 --
@@ -366,18 +306,16 @@ CREATE TABLE `UserPermission` (
 DROP TABLE IF EXISTS `UserProfile`;
 CREATE TABLE `UserProfile` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `SystemId` int(11) DEFAULT NULL COMMENT '系统编号',
   `UserId` int(11) NOT NULL COMMENT '用户编号',
   `Name` varchar(50) NOT NULL COMMENT '名称',
   `Value` varchar(100) DEFAULT '' COMMENT '值',
   `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
-  `Description` varchar(50) DEFAULT '' COMMENT '备注',
+  `Description` varchar(50) DEFAULT '' COMMENT '描述',
   PRIMARY KEY (`Id`),
-  KEY `SystemId` (`SystemId`),
   KEY `UserId` (`UserId`),
-  KEY `Name` (`SystemId`,`UserId`,`Name`)
+  KEY `Name` (`UserId`,`Name`),
+  KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户配置信息表';
 
 --
@@ -397,12 +335,11 @@ CREATE TABLE `UserRole` (
   `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `UserId` int(11) NOT NULL COMMENT '用户编号',
   `RoleId` int(11) NOT NULL COMMENT '角色编号',
-  `SortCode` int(11) DEFAULT '9999' COMMENT '排序码',
   `IsEnable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否有效',
-  `DeletionStatusCode` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除状态',
-  `Description` varchar(50) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`Id`),
-  KEY `UserRole` (`UserId`,`RoleId`)
+  KEY `UserRole` (`UserId`,`RoleId`),
+  KEY `UserId` (`UserId`),
+  KEY `RoleId` (`RoleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户角色表';
 
 --
