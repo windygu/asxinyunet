@@ -60,28 +60,6 @@
     <Compile Include="Lib\Template\董斌辉-窗体\添加类名.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\AddCtl类名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\AddCtl类名.Designer.cs">
-      <DependentUpon>AddCtl类名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\Ctl类名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\WinForm\Ctl类名.Designer.cs">
-      <DependentUpon>Ctl类名.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XCoder v4.6_20120229103751\Template\实体业务\中文名.Biz.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\实体数据\中文名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\纯属性\I中文名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\纯属性\中文名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\董斌辉控件\类名.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\页面\类名.aspx.cs">
-      <DependentUpon>类名.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="XCoder v4.6_20120229103751\Template\页面\类名Form.aspx.cs">
-      <DependentUpon>类名Form.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="XCoder v4.6_20120229103751\Template\页面基类\MyEntityForm.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\页面基类\MyEntityList.cs" />
-    <Compile Include="XCoder v4.6_20120229103751\Template\页面基类\MyEntityUserControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -109,8 +87,6 @@
     <None Include="Images\yes.ico" />
     <None Include="Lib\HtmlAgilityPack.dll" />
     <None Include="Lib\HtmlAgilityPack.XML" />
-    <None Include="Lib\Lephone.CodeGen.exe.config" />
-    <None Include="Lib\Lephone.Processor.exe.config" />
     <None Include="Lib\Log.ico" />
     <None Include="Lib\NewLife.CommonEntity.dll" />
     <None Include="Lib\NewLife.CommonEntity.XML" />
@@ -122,11 +98,8 @@
     <None Include="Lib\obj\Debug\GenerateResource.write.434.tlog" />
     <None Include="Lib\XCode.dll" />
     <None Include="Lib\XCode.xml" />
-    <None Include="XCoder v4.6_20120229103751\Template\实体业务\对象操作.xt" />
-    <None Include="XCoder v4.6_20120229103751\Template\实体业务\扩展属性.xt" />
-    <None Include="XCoder v4.6_20120229103751\Template\实体业务\扩展查询.xt" />
+    <None Include="XCoder v4.6_20120229103751\MySql.Data.zip" />
     <None Include="XCoder v4.6_20120229103751\XCoder.exe.config" />
-    <None Include="XCoder v4.6_20120229103751\XCoder.exe.重命名" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Print.ico" />
@@ -136,45 +109,22 @@
     <Content Include="Lib\Interop.ADODB.dll" />
     <Content Include="Lib\Interop.ADOX.dll" />
     <Content Include="Lib\Interop.DAO.dll" />
-    <Content Include="Lib\KwCombinatorics.dll" />
-    <Content Include="Lib\Lephone.CodeGen.exe" />
-    <Content Include="Lib\Lephone.Core.dll" />
-    <Content Include="Lib\Lephone.Data.dll" />
-    <Content Include="Lib\Lephone.Data.Oracle8.dll" />
-    <Content Include="Lib\Lephone.Extra.dll" />
-    <Content Include="Lib\Lephone.MSBuild.dll" />
-    <Content Include="Lib\Lephone.Processor.exe" />
-    <Content Include="Lib\Lephone.Web.dll" />
-    <Content Include="Lib\Mono.Cecil.dll" />
-    <Content Include="Lib\Mono.Cecil.Mdb.dll" />
-    <Content Include="Lib\Mono.Cecil.Pdb.dll" />
     <Content Include="Lib\mssql_Common.xml" />
     <Content Include="Lib\MySql.Data.dll" />
     <Content Include="Lib\nunit.framework.dll" />
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\System.Data.SQLite.dll" />
-    <Content Include="Lib\WHC.OrderWater.Commons.dll" />
-    <Content Include="Lib\WHC.OrderWater.Commons.XML" />
-    <Content Include="Lib\WHC.Pager.Entity.dll" />
-    <Content Include="Lib\WHC.Pager.WinControl.dll" />
     <Content Include="Lib\XTemplate.dll" />
     <Content Include="Lib\ZedGraph.dll" />
-    <Content Include="XCoder v4.6_20120229103751\LotTick.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="XCoder v4.6_20120229103751\MySql.Data.dll" />
     <Content Include="XCoder v4.6_20120229103751\NewLife.Core.dll" />
-    <Content Include="XCoder v4.6_20120229103751\Template\数据字典\连接名数据字典.htm" />
-    <Content Include="XCoder v4.6_20120229103751\Template\页面\类名.aspx" />
-    <Content Include="XCoder v4.6_20120229103751\Template\页面\类名Form.aspx" />
     <Content Include="XCoder v4.6_20120229103751\XCode.dll" />
     <Content Include="XCoder v4.6_20120229103751\XCoder.exe" />
+    <Content Include="XCoder v4.6_20120229103751\XCoder.xml" />
     <Content Include="XCoder v4.6_20120229103751\XTemplate.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Lib\Template\董斌辉-控件\类名.resx">
-      <DependentUpon>类名.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XCoder v4.6_20120229103751\Template\董斌辉控件\类名.resx">
       <DependentUpon>类名.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
