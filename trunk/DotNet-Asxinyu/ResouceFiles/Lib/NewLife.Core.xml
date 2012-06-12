@@ -2524,6 +2524,11 @@
         <member name="T:NewLife.Web.WebDownload">
             <summary>提供网页下载支持，在服务端把一个数据流作为附件传给浏览器，带有断点续传和限速的功能</summary>
         </member>
+        <member name="M:NewLife.Web.WebDownload.ParseMode(System.String)">
+            <summary>分析模式</summary>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Web.WebDownload.Render">
             <summary>输出数据流</summary>
         </member>
@@ -2651,6 +2656,11 @@
             
             这里有一点跟大多数对象容器非常不同，其它对象容器会控制对象的生命周期，在对象不再使用时收回到容器里面。
             这里的对象容器主要是为了用于解耦，所以只有最简单的功能实现。
+            
+            代码注册的默认优先级是0；
+            配置注册的默认优先级是1；
+            自动注册的外部实现（非排除项）的默认优先级是1，排除项的优先级是0；
+            所以，配置注册的优先级最高
             </remarks>
         </member>
         <member name="T:NewLife.Model.IObjectContainer">
@@ -2663,6 +2673,11 @@
             
             这里有一点跟大多数对象容器非常不同，其它对象容器会控制对象的生命周期，在对象不再使用时收回到容器里面。
             这里的对象容器主要是为了用于解耦，所以只有最简单的功能实现。
+            
+            代码注册的默认优先级是0；
+            配置注册的默认优先级是1；
+            自动注册的外部实现（非排除项）的默认优先级是1，排除项的优先级是0；
+            所以，配置注册的优先级最高
             </remarks>
         </member>
         <member name="M:NewLife.Model.IObjectContainer.Register(System.Type,System.Type,System.Object,System.Object,System.Int32)">
@@ -2697,11 +2712,30 @@
             <param name="excludeTypes">要排除的类型，一般是内部默认实现</param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.Model.IObjectContainer.AutoRegister(System.Type,System.Func{System.Object,System.Object},System.Object,System.Int32,System.Type[])">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <param name="from">接口或基类</param>
+            <param name="getidCallback">用于从外部类型对象中获取标识的委托</param>
+            <param name="id">标识</param>
+            <param name="priority">优先级</param>
+            <param name="excludeTypes">要排除的类型，一般是内部默认实现</param>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Model.IObjectContainer.AutoRegister``2">
             <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
             <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
             <typeparam name="TInterface">接口类型</typeparam>
             <typeparam name="TImplement">要排除的类型，一般是内部默认实现</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.IObjectContainer.AutoRegister``2(System.Func{System.Object,System.Object},System.Object,System.Int32)">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <typeparam name="TImplement">要排除的类型，一般是内部默认实现</typeparam>
+            <param name="getidCallback">用于从外部类型对象中获取标识的委托</param>
+            <param name="id">标识</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.IObjectContainer.Resolve(System.Type,System.Object,System.Boolean)">
@@ -2807,11 +2841,30 @@
             <param name="excludeTypes">要排除的类型，一般是内部默认实现</param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.Model.ObjectContainer.AutoRegister(System.Type,System.Func{System.Object,System.Object},System.Object,System.Int32,System.Type[])">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <param name="from">接口或基类</param>
+            <param name="getidCallback">用于从外部类型对象中获取标识的委托</param>
+            <param name="id">标识</param>
+            <param name="priority">优先级</param>
+            <param name="excludeTypes">要排除的类型，一般是内部默认实现</param>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Model.ObjectContainer.AutoRegister``2">
             <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
             <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
             <typeparam name="TInterface">接口类型</typeparam>
             <typeparam name="TImplement">要排除的类型，一般是内部默认实现</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.Model.ObjectContainer.AutoRegister``2(System.Func{System.Object,System.Object},System.Object,System.Int32)">
+            <summary>遍历所有程序集的所有类型，自动注册实现了指定接口或基类的类型。如果没有注册任何实现，则默认注册第一个排除类型</summary>
+            <remarks>自动注册一般用于单实例功能扩展型接口</remarks>
+            <typeparam name="TInterface">接口类型</typeparam>
+            <typeparam name="TImplement">要排除的类型，一般是内部默认实现</typeparam>
+            <param name="getidCallback">用于从外部类型对象中获取标识的委托</param>
+            <param name="id">标识</param>
+            <param name="priority">优先级</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.Model.ObjectContainer.Resolve(System.Type,System.Object,System.Boolean)">
@@ -3517,12 +3570,19 @@
         <member name="T:NewLife.Scripting.ScriptEngine">
             <summary>脚本引擎</summary>
         </member>
+        <member name="M:NewLife.Scripting.ScriptEngine.DynamicCompile(System.String)">
+            <summary>
+            动态编译
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
         <member name="M:NewLife.Scripting.ScriptEngine.CreateScriptSourceFromString(System.String)">
             <summary>从字符串创建脚本</summary>
             <param name="expression"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.Scripting.ScriptEngine.CreateScriptSourceFromFile(System.String)">
+        <member name="M:NewLife.Scripting.ScriptEngine.CreateScriptSourceFromFile(System.String,System.Text.Encoding)">
             <summary>从文件创建脚本</summary>
             <param name="file"></param>
             <returns></returns>
@@ -3543,6 +3603,11 @@
             <param name="parameterTypes"></param>
             <param name="parameters"></param>
             <returns></returns>
+        </member>
+        <member name="P:NewLife.Scripting.ScriptEngine.Expression">
+            <summary>
+            源码脚本
+            </summary>
         </member>
         <member name="T:NewLife.Log.XTrace">
             <summary>日志类，包含跟踪调试功能</summary>
@@ -3569,6 +3634,23 @@
             <summary>输出异常日志</summary>
             <param name="ex">异常信息</param>
         </member>
+        <member name="M:NewLife.Log.XTrace.WriteLine(System.String,System.Object[])">
+            <summary>写日志</summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:NewLife.Log.XTrace.UseConsole(System.Boolean)">
+            <summary>使用控制台输出日志，只能调用一次</summary>
+            <param name="useColor"></param>
+        </member>
+        <member name="M:NewLife.Log.XTrace.UseWinForm(System.Boolean)">
+            <summary>拦截WinForm异常并记录日志，可指定是否用<see cref="T:System.Windows.Forms.MessageBox"/>显示。</summary>
+            <param name="showErrorMessage">发为捕获异常时，是否显示提示，默认显示</param>
+        </member>
+        <member name="M:NewLife.Log.XTrace.WriteMiniDump(System.String)">
+            <summary>写当前线程的MiniDump</summary>
+            <param name="dumpFile">如果不指定，则自动写入日志目录</param>
+        </member>
         <member name="M:NewLife.Log.XTrace.DebugStack">
             <summary>堆栈调试。
             输出堆栈信息，用于调试时处理调用上下文。
@@ -3584,18 +3666,12 @@
             <param name="start">开始方法数，0是DebugStack的直接调用者</param>
             <param name="maxNum">最大捕获堆栈方法数</param>
         </member>
-        <member name="M:NewLife.Log.XTrace.WriteLine(System.String,System.Object[])">
-            <summary>写日志</summary>
-            <param name="format"></param>
-            <param name="args"></param>
-        </member>
-        <member name="M:NewLife.Log.XTrace.UseConsole(System.Boolean)">
-            <summary>使用控制台输出日志，只能调用一次</summary>
-            <param name="useColor"></param>
-        </member>
-        <member name="M:NewLife.Log.XTrace.WriteMiniDump(System.String)">
-            <summary>写当前线程的MiniDump</summary>
-            <param name="dumpFile">如果不指定，则自动写入日志目录</param>
+        <member name="M:NewLife.Log.XTrace.GetCaller(System.Int32,System.Int32,System.String)">
+            <summary>获取调用栈</summary>
+            <param name="start"></param>
+            <param name="maxNum"></param>
+            <param name="split"></param>
+            <returns></returns>
         </member>
         <member name="P:NewLife.Log.XTrace.UseFileLog">
             <summary>使用文件日志</summary>
@@ -6004,14 +6080,8 @@
         <member name="P:NewLife.Reflection.AssemblyX.IsSystemAssembly">
             <summary>是否系统程序集</summary>
         </member>
-        <member name="P:NewLife.Reflection.AssemblyX.Executing">
-            <summary>当前执行代码程序集</summary>
-        </member>
         <member name="P:NewLife.Reflection.AssemblyX.Entry">
             <summary>入口程序集</summary>
-        </member>
-        <member name="P:NewLife.Reflection.AssemblyX.Calling">
-            <summary>调用者</summary>
         </member>
         <member name="P:NewLife.Reflection.AssemblyX.AssemblyPaths">
             <summary>程序集目录集合</summary>
@@ -8948,22 +9018,6 @@
         <member name="M:NewLife.Log.TextFileLog.WriteException(System.Exception)">
             <summary>输出异常日志</summary>
             <param name="ex">异常信息</param>
-        </member>
-        <member name="M:NewLife.Log.TextFileLog.DebugStack">
-            <summary>
-            堆栈调试。
-            输出堆栈信息，用于调试时处理调用上下文。
-            本方法会造成大量日志，请慎用。
-            </summary>
-        </member>
-        <member name="M:NewLife.Log.TextFileLog.DebugStack(System.Int32)">
-            <summary>堆栈调试。</summary>
-            <param name="maxNum">最大捕获堆栈方法数</param>
-        </member>
-        <member name="M:NewLife.Log.TextFileLog.DebugStack(System.Int32,System.Int32)">
-            <summary>堆栈调试</summary>
-            <param name="start">开始方法数，0是DebugStack的直接调用者</param>
-            <param name="maxNum">最大捕获堆栈方法数</param>
         </member>
         <member name="M:NewLife.Log.TextFileLog.WriteLine(System.String,System.Object[])">
             <summary>写日志</summary>
