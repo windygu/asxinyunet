@@ -116,6 +116,7 @@
     <Content Include="Lib\System.Data.SQLite.dll" />
     <Content Include="Lib\XTemplate.dll" />
     <Content Include="Lib\ZedGraph.dll" />
+    <Content Include="XCoder v4.6_20120229103751\MySql.Data.dll" />
     <Content Include="XCoder v4.6_20120229103751\NewLife.Core.dll" />
     <Content Include="XCoder v4.6_20120229103751\XCode.dll" />
     <Content Include="XCoder v4.6_20120229103751\XCoder.exe" />
