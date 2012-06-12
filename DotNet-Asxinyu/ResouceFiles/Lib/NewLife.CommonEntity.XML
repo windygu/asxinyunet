@@ -4,221 +4,43 @@
         <name>NewLife.CommonEntity</name>
     </assembly>
     <members>
-        <member name="T:NewLife.CommonEntity.Attachment`1">
-            <summary>附件</summary>
-            <summary>附件</summary>
-            <remarks>
-            对于文件的存放，可以考虑同一个文件只存放一份，方法就是通过名称、大小、散列三个同时比较
-            </remarks>
+        <member name="T:NewLife.CommonEntity.Web.AttachmentHttpHandler">
+            <summary>附件处理器</summary>
         </member>
-        <member name="T:NewLife.CommonEntity.IAttachment">
-            <summary>附件接口</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.ID">
-            <summary>编号</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.FileName">
-            <summary>文件名</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.Size">
-            <summary>大小</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.Extension">
-            <summary>扩展名</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.Category">
-            <summary>分类</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.FilePath">
-            <summary>文件路径</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.UserName">
-            <summary>上传者</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.UploadTime">
-            <summary>上传时间</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.ContentType">
-            <summary>内容类型</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.StatID">
-            <summary>访问统计</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.IsEnable">
-            <summary>是否启用</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.IAttachment.Item(System.String)">
-            <summary>
-            获取/设置 字段值。
-            一个索引，基类使用反射实现。
-            派生实体类可重写该索引，以避免反射带来的性能损耗
-            </summary>
-            <param name="name">字段名</param>
+        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.GetStream(System.Web.HttpContext,NewLife.CommonEntity.IAttachment)">
+            <summary>获取文件数据流。这里可以实现小文件缓存进入内容以减少磁盘IO</summary>
+            <param name="context"></param>
+            <param name="attachment"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.Delete">
-            <summary>已重载。</summary>
+        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.OnProcess(System.Web.HttpContext)">
+            <summary>处理</summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.GetAttachment">
+            <summary>取得附件对象</summary>
             <returns></returns>
         </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1.IsFindhttpHandler">
-            <summary>是否进行过查询</summary>
+        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.OnNotFound(System.Web.HttpContext)">
+            <summary>没找到附件</summary>
+            <param name="context"></param>
         </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.FindAllByCmdType(System.String)">
-            <summary>根据分类找附件</summary>
-            <param name="catetory"></param>
+        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.OnResponse(System.Web.HttpContext,NewLife.CommonEntity.IAttachment,System.IO.Stream,System.String)">
+            <summary>响应</summary>
+            <param name="context"></param>
+            <param name="attachment"></param>
+            <param name="stream"></param>
+            <param name="dispositionMode"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.AttachmentHttpHandler.ID">
+            <summary>文件编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.AttachmentHttpHandler.MaxFileSize">
+            <summary>小于指定大小才缓存文件</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.AttachmentHttpHandler.CacheTime">
+            <summary>小文件缓存时间，默认10分钟</summary>
             <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.FindByKeyForEdit(System.Int32)">
-            <summary>根据主键查询一个附件实体对象用于表单编辑</summary>
-            <param name="id">编号</param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.FindByID(System.Int32)">
-            <summary>根据编号查找</summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.FindAllByCategory(System.String)">
-            <summary>根据分类查找</summary>
-            <param name="category">分类</param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.SearchWhere(System.String)">
-            <summary>构造搜索条件</summary>
-            <param name="key">关键字</param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.GetConfigPath(System.String)">
-            <summary>根据类别获取相应的存放路径设置，如果不存在，则返回顶级设置路径后加上类别作为目录名</summary>
-            <param name="category"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.GetFormatPath">
-            <summary>取得时间格式化的路径</summary>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.GetFilePath">
-            <summary>检查并设置文件存放名称，先尝试以原名存放，若有同名文件，则删除</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1.Category_Image">
-            <summary>图片分类</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1.Category_File">
-            <summary>文件分类</summary>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.SaveFile(System.Web.UI.WebControls.FileUpload,System.String,System.String)">
-            <summary>保存上传文件</summary>
-            <param name="fileUpload"></param>
-            <param name="category"></param>
-            <param name="userName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.SaveFile(System.Web.HttpPostedFile,System.String,System.String)">
-            <summary>保存上传文件</summary>
-            <param name="file"></param>
-            <param name="category"></param>
-            <param name="userName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Attachment`1.SaveFile(System.Web.HttpFileCollection,System.String,System.String)">
-            <summary>保存上传文件</summary>
-            <param name="fileUploads"></param>
-            <param name="category"></param>
-            <param name="userName"></param>
-            <returns></returns>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.ID">
-            <summary>编号</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.FileName">
-            <summary>文件名</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.Size">
-            <summary>大小</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.Extension">
-            <summary>扩展名</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.Category">
-            <summary>分类</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.FilePath">
-            <summary>文件路径</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.UserName">
-            <summary>上传者</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.UploadTime">
-            <summary>上传时间</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.ContentType">
-            <summary>内容类型</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.StatID">
-            <summary>访问统计</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.IsEnable">
-            <summary>是否启用</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.Item(System.String)">
-            <summary>
-            获取/设置 字段值。
-            一个索引，基类使用反射实现。
-            派生实体类可重写该索引，以避免反射带来的性能损耗
-            </summary>
-            <param name="name">字段名</param>
-            <returns></returns>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.httpHandler">
-            <summary>Att httpHandler</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.HenderUrl">
-            <summary>获取Config中Handler设置</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.HandlerUrl">
-            <summary>获取Config中Handler设置的用于访问当前附件的Url</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.FullFilePath">
-            <summary>完全文件路径</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Attachment`1.FileStream">
-            <summary>文件流</summary>
-        </member>
-        <member name="T:NewLife.CommonEntity.Attachment`1._">
-            <summary>取得附件字段信息的快捷方式</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.ID">
-            <summary>编号</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.FileName">
-            <summary>文件名</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.Size">
-            <summary>大小</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.Extension">
-            <summary>扩展名</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.Category">
-            <summary>分类</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.FilePath">
-            <summary>文件路径</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.UserName">
-            <summary>上传者</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.UploadTime">
-            <summary>上传时间</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.ContentType">
-            <summary>内容类型</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.StatID">
-            <summary>访问统计</summary>
-        </member>
-        <member name="F:NewLife.CommonEntity.Attachment`1._.IsEnable">
-            <summary>是否启用</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Log`1">
             <summary>日志</summary>
@@ -269,6 +91,10 @@
         <member name="M:NewLife.CommonEntity.Log`1.Insert">
             <summary>已重载。把该对象插入到数据库。这里可以做数据插入前的检查</summary>
             <returns>影响的行数</returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Log`1.Valid(System.Boolean)">
+            <summary>已重载。记录当前管理员</summary>
+            <param name="isNew"></param>
         </member>
         <member name="M:NewLife.CommonEntity.Log`1.FindByKeyForEdit(System.Int32)">
             <summary>根据主键查询一个日志实体对象用于表单编辑</summary>
@@ -398,54 +224,6 @@
         <member name="F:NewLife.CommonEntity.Log`1._.Remark">
             <summary>详细信息</summary>
         </member>
-        <member name="T:NewLife.CommonEntity.Web.DownloadFile">
-            <summary>文件下载处理器，可以直接使用，也可以继承</summary>
-        </member>
-        <member name="T:NewLife.CommonEntity.Web.AttachmentHttpHandler">
-            <summary>附件处理器</summary>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.GetStream(System.Web.HttpContext,NewLife.CommonEntity.Attachment)">
-            <summary>获取文件数据流。这里可以实现小文件缓存进入内容以减少磁盘IO</summary>
-            <param name="context"></param>
-            <param name="attachment"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.OnProcess(System.Web.HttpContext)">
-            <summary>处理</summary>
-            <param name="context"></param>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.GetAttachment">
-            <summary>取得附件对象</summary>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.OnNotFound(System.Web.HttpContext)">
-            <summary>没找到附件</summary>
-            <param name="context"></param>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.AttachmentHttpHandler.OnResponse(System.Web.HttpContext,NewLife.CommonEntity.Attachment,System.IO.Stream,System.String)">
-            <summary>响应</summary>
-            <param name="context"></param>
-            <param name="attachment"></param>
-            <param name="stream"></param>
-            <param name="dispositionMode"></param>
-        </member>
-        <member name="P:NewLife.CommonEntity.Web.AttachmentHttpHandler.ID">
-            <summary>文件编号</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Web.AttachmentHttpHandler.MaxFileSize">
-            <summary>小于指定大小才缓存文件</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Web.AttachmentHttpHandler.CacheTime">
-            <summary>小文件缓存时间，默认10分钟</summary>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.DownloadFile.OnResponse(System.Web.HttpContext,NewLife.CommonEntity.Attachment,System.IO.Stream,System.String)">
-            <summary>响应</summary>
-            <param name="context"></param>
-            <param name="attachment"></param>
-            <param name="stream"></param>
-            <param name="dispositionMode"></param>
-        </member>
         <member name="T:NewLife.CommonEntity.SequenceKinds">
             <summary>序列种类</summary>
         </member>
@@ -560,6 +338,16 @@
         <member name="F:NewLife.CommonEntity.Sequence`1._.LastUpdate">
             <summary>最后更新</summary>
         </member>
+        <member name="T:NewLife.CommonEntity.Web.DownloadFile">
+            <summary>文件下载处理器，可以直接使用，也可以继承</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.DownloadFile.OnResponse(System.Web.HttpContext,NewLife.CommonEntity.IAttachment,System.IO.Stream,System.String)">
+            <summary>响应</summary>
+            <param name="context"></param>
+            <param name="attachment"></param>
+            <param name="stream"></param>
+            <param name="dispositionMode"></param>
+        </member>
         <member name="T:NewLife.CommonEntity.RoleMenu`1">
             <summary>角色和菜单</summary>
             <summary>角色和菜单</summary>
@@ -597,6 +385,9 @@
             <param name="name">字段名</param>
             <returns></returns>
         </member>
+        <member name="P:NewLife.CommonEntity.IRoleMenu.PermissionFlag">
+            <summary>操作权限</summary>
+        </member>
         <member name="M:NewLife.CommonEntity.RoleMenu`1.Save">
             <summary>已重载。调用Save时写日志，而调用Insert和Update时不写日志</summary>
             <returns></returns>
@@ -611,11 +402,6 @@
         </member>
         <member name="M:NewLife.CommonEntity.RoleMenu`1.ToString">
             <summary>已重载。</summary>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.RoleMenu`1.FindByKeyForEdit(System.Int32)">
-            <summary>根据主键查询一个角色和菜单实体对象用于表单编辑</summary>
-            <param name="__ID">编号</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.CommonEntity.RoleMenu`1.FindAllByRoleID(System.Int32)">
@@ -633,6 +419,12 @@
             <param name="roleID">编号</param>
             <param name="menuID">编号</param>
             <returns>角色和菜单 实体对象</returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.RoleMenu`1.FindAllInvalid(System.String,System.String)">
+            <summary>查找所有无效的对应关系</summary>
+            <param name="roleSql"></param>
+            <param name="menuSql"></param>
+            <returns></returns>
         </member>
         <member name="M:NewLife.CommonEntity.RoleMenu`1.Create(System.Int32,System.Int32)">
             <summary>根据角色编号和菜单编号创建一个角色菜单实体，默认授予完全控制权限</summary>
@@ -654,6 +446,11 @@
             <summary>删除权限</summary>
             <param name="flag"></param>
             <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.RoleMenu`1.GrantAll(System.Int32,System.Collections.Generic.List{System.Int32})">
+            <summary>授权指定角色访问所有菜单的权限</summary>
+            <param name="roleID"></param>
+            <param name="menuIDs"></param>
         </member>
         <member name="P:NewLife.CommonEntity.RoleMenu`1.ID">
             <summary>编号</summary>
@@ -1525,6 +1322,51 @@
         <member name="F:NewLife.CommonEntity.TemplateContent`1._.CreateTime">
             <summary>创建时间</summary>
         </member>
+        <member name="T:NewLife.CommonEntity.SysSetting">
+            <summary>系统设置。提供系统名称、版本等基本设置。</summary>
+            <remarks>
+            由<see cref="T:NewLife.CommonEntity.Setting"/>支撑，也可自己扩展<see cref="T:NewLife.CommonEntity.Setting"/>，然后修改这里的<see cref="P:NewLife.CommonEntity.SysSetting.Sys"/>。
+            </remarks>
+        </member>
+        <member name="M:NewLife.CommonEntity.SysSetting.Get``1(System.String)">
+            <summary>获取设置</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.SysSetting.Set``1(System.String,``0)">
+            <summary>设置设定项</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="val"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Sys">
+            <summary>系统设置</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Name">
+            <summary>系统名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Version">
+            <summary>系统版本</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.DisplayName">
+            <summary>显示名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Company">
+            <summary>公司</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Address">
+            <summary>地址</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Tel">
+            <summary>电话</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.Fax">
+            <summary>传真</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.SysSetting.EMail">
+            <summary>电子邮件</summary>
+        </member>
         <member name="T:NewLife.CommonEntity.Administrator`1">
             <summary>管理员</summary>
             <summary>管理员</summary>
@@ -2166,6 +2008,12 @@
             <param name="path">层次路径</param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.CommonEntity.IMenu.Up">
+            <summary>排序上升</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.IMenu.Down">
+            <summary>排序下降</summary>
+        </member>
         <member name="P:NewLife.CommonEntity.IMenu.ID">
             <summary>编号</summary>
         </member>
@@ -2297,9 +2145,10 @@
             <param name="dir"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.CommonEntity.Menu`1.GetPathForScan(System.String)">
+        <member name="M:NewLife.CommonEntity.Menu`1.GetPathForScan(System.String,System.Boolean)">
             <summary>获取目录层级</summary>
             <param name="dir"></param>
+            <param name="isTop">是否顶级目录</param>
             <returns></returns>
         </member>
         <member name="M:NewLife.CommonEntity.Menu`1.ScanAndAdd(System.String,`0,System.Collections.Generic.List{System.String},System.Boolean)">
@@ -2322,6 +2171,20 @@
             <summary>写日志</summary>
             <param name="action">操作</param>
             <param name="remark">备注</param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Menu`1.Export(System.Collections.Generic.IList{NewLife.CommonEntity.IMenu})">
+            <summary>导出</summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Menu`1.Export(XCode.EntityList{`0})">
+            <summary>导出</summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Menu`1.Import(System.String)">
+            <summary>导入</summary>
+            <param name="xml"></param>
         </member>
         <member name="M:NewLife.CommonEntity.Menu`1.NewLife#CommonEntity#IMenu#GetFullPath(System.Boolean,System.String,System.Func{NewLife.CommonEntity.IMenu,System.String})">
             <summary>取得全路径的实体，由上向下排序</summary>
@@ -2461,6 +2324,10 @@
         <member name="M:NewLife.CommonEntity.Role`1.InitData">
             <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
         </member>
+        <member name="M:NewLife.CommonEntity.Role`1.Valid(System.Boolean)">
+            <summary>验证数据，通过抛出异常的方式提示验证失败。建议重写者调用基类的实现，因为将来可能根据数据字段的特性进行数据验证。</summary>
+            <param name="isNew">是否新数据</param>
+        </member>
         <member name="M:NewLife.CommonEntity.Role`1.Save">
             <summary>已重载。调用Save时写日志，而调用Insert和Update时不写日志</summary>
             <returns></returns>
@@ -2559,6 +2426,245 @@
         </member>
         <member name="T:NewLife.CommonEntity.Area">
             <summary>地区</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Attachment`1">
+            <summary>附件</summary>
+            <summary>附件</summary>
+            <remarks>
+            对于文件的存放，可以考虑同一个文件只存放一份，方法就是通过名称、大小、散列三个同时比较
+            </remarks>
+        </member>
+        <member name="T:NewLife.CommonEntity.IAttachment">
+            <summary>附件接口</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.IAttachment.Increment(System.String)">
+            <summary>增加统计</summary>
+            <param name="remark"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.FileName">
+            <summary>文件名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.Size">
+            <summary>大小</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.Extension">
+            <summary>扩展名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.Category">
+            <summary>分类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.FilePath">
+            <summary>文件路径</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.UserName">
+            <summary>上传者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.UploadTime">
+            <summary>上传时间</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.ContentType">
+            <summary>内容类型</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.StatID">
+            <summary>访问统计</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.IsEnable">
+            <summary>是否启用</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.IAttachment.FullFilePath">
+            <summary>完全文件路径</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.OnInsert">
+            <summary>重载插入操作，在此保存附件，保存异常时自动回滚</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.Delete">
+            <summary>已重载。</summary>
+            <returns></returns>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1.IsFindhttpHandler">
+            <summary>是否进行过查询</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.FindAllByCmdType(System.String)">
+            <summary>根据分类找附件</summary>
+            <param name="catetory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.FindByKeyForEdit(System.Int32)">
+            <summary>根据主键查询一个附件实体对象用于表单编辑</summary>
+            <param name="id">编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.FindByID(System.Int32)">
+            <summary>根据编号查找</summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.FindAllByCategory(System.String)">
+            <summary>根据分类查找</summary>
+            <param name="category">分类</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.SearchWhere(System.String)">
+            <summary>构造搜索条件</summary>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.GetConfigPath(System.String)">
+            <summary>根据类别获取相应的存放路径设置，如果不存在，则返回顶级设置路径后加上类别作为目录名</summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.GetFormatPath">
+            <summary>取得时间格式化的路径</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.GetFilePath">
+            <summary>检查并设置文件存放名称，先尝试以原名存放，若有同名文件，则删除</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.Increment(System.String)">
+            <summary>增加统计</summary>
+            <param name="remark"></param>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1.Category_Image">
+            <summary>图片分类</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1.Category_File">
+            <summary>文件分类</summary>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.SaveFile(System.Web.UI.WebControls.FileUpload,System.String,System.String)">
+            <summary>保存上传文件</summary>
+            <param name="fileUpload"></param>
+            <param name="category"></param>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.SaveFile(System.Web.HttpPostedFile,System.String,System.String)">
+            <summary>保存上传文件</summary>
+            <param name="file"></param>
+            <param name="category"></param>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.SaveFile(System.Web.HttpFileCollection,System.String,System.String)">
+            <summary>保存上传文件</summary>
+            <param name="fileUploads"></param>
+            <param name="category"></param>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`1.Create(System.Web.HttpPostedFile)">
+            <summary>为上传文件创建附件实体对象。根据附件对象准备各种信息填充到附件对象中</summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.FileName">
+            <summary>文件名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.Size">
+            <summary>大小</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.Extension">
+            <summary>扩展名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.Category">
+            <summary>分类</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.FilePath">
+            <summary>文件路径</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.UserName">
+            <summary>上传者</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.UploadTime">
+            <summary>上传时间</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.ContentType">
+            <summary>内容类型</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.StatID">
+            <summary>访问统计</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.IsEnable">
+            <summary>是否启用</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.Item(System.String)">
+            <summary>
+            获取/设置 字段值。
+            一个索引，基类使用反射实现。
+            派生实体类可重写该索引，以避免反射带来的性能损耗
+            </summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.PostedFile">
+            <summary>上传文件</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.httpHandler">
+            <summary>Att httpHandler</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.HenderUrl">
+            <summary>获取Config中Handler设置</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.HandlerUrl">
+            <summary>获取Config中Handler设置的用于访问当前附件的Url</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.FullFilePath">
+            <summary>完全文件路径</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`1.FileStream">
+            <summary>文件流</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Attachment`1._">
+            <summary>取得附件字段信息的快捷方式</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.FileName">
+            <summary>文件名</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.Size">
+            <summary>大小</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.Extension">
+            <summary>扩展名</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.Category">
+            <summary>分类</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.FilePath">
+            <summary>文件路径</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.UserName">
+            <summary>上传者</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.UploadTime">
+            <summary>上传时间</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.ContentType">
+            <summary>内容类型</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.StatID">
+            <summary>访问统计</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Attachment`1._.IsEnable">
+            <summary>是否启用</summary>
         </member>
         <member name="T:NewLife.CommonEntity.User">
             <summary>用户</summary>
@@ -2732,20 +2838,32 @@
         <member name="F:NewLife.CommonEntity.Simple`1._.Name">
             <summary>信息名称</summary>
         </member>
-        <member name="T:NewLife.CommonEntity.Attachment">
-            <summary>附件</summary>
+        <member name="T:NewLife.CommonEntity.Web.ShowPicture">
+            <summary>显示图片</summary>
         </member>
-        <member name="T:NewLife.CommonEntity.Attachment`2">
-            <summary>附件</summary>
-            <typeparam name="TEntity"></typeparam>
-            <typeparam name="TStatistics"></typeparam>
+        <member name="M:NewLife.CommonEntity.Web.ShowPicture.OnNotFound(System.Web.HttpContext)">
+            <summary>未找到</summary>
+            <param name="context"></param>
         </member>
-        <member name="M:NewLife.CommonEntity.Attachment`2.Increment(System.String)">
-            <summary>增加统计</summary>
-            <param name="remark"></param>
+        <member name="M:NewLife.CommonEntity.Web.ShowPicture.GetStream(System.Web.HttpContext,NewLife.CommonEntity.IAttachment)">
+            <summary>取得文件流，判断是否小图片，特殊处理</summary>
+            <param name="context"></param>
+            <param name="attachment"></param>
+            <returns></returns>
         </member>
-        <member name="P:NewLife.CommonEntity.Attachment`2.Stat">
-            <summary>统计</summary>
+        <member name="M:NewLife.CommonEntity.Web.ShowPicture.MakeThumbnail(System.IO.Stream,System.Int32,System.Int32,System.String)">
+            <summary>生成缩略图</summary>
+            <param name="stream">源图</param>
+            <param name="width">缩略图宽度</param>
+            <param name="height">缩略图高度</param>
+            <param name="mode">生成缩略图的方式</param>    
+            <returns>缩略图</returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.ShowPicture.Width">
+            <summary>宽度</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Web.ShowPicture.Height">
+            <summary>高度</summary>
         </member>
         <member name="T:NewLife.CommonEntity.PermissionFlags">
             <summary>操作权限</summary>
@@ -2801,16 +2919,16 @@
             <summary>简单分类接口</summary>
         </member>
         <member name="P:NewLife.CommonEntity.ISimpleTree.ID">
-            <summary></summary>
+            <summary>编号</summary>
         </member>
         <member name="P:NewLife.CommonEntity.ISimpleTree.Name">
             <summary>名称索引</summary>
         </member>
         <member name="P:NewLife.CommonEntity.ISimpleTree.ParentID">
-            <summary></summary>
+            <summary>父编号</summary>
         </member>
         <member name="P:NewLife.CommonEntity.ISimpleTree.Sort">
-            <summary></summary>
+            <summary>序号</summary>
         </member>
         <member name="P:NewLife.CommonEntity.ISimpleTree.Item(System.String)">
             <summary>获取/设置 字段值。</summary>
@@ -2838,16 +2956,16 @@
             <returns></returns>
         </member>
         <member name="P:NewLife.CommonEntity.SimpleTree`1.ID">
-            <summary></summary>
+            <summary>编号</summary>
         </member>
         <member name="P:NewLife.CommonEntity.SimpleTree`1.Name">
             <summary>名称索引</summary>
         </member>
         <member name="P:NewLife.CommonEntity.SimpleTree`1.ParentID">
-            <summary></summary>
+            <summary>父编号</summary>
         </member>
         <member name="P:NewLife.CommonEntity.SimpleTree`1.Sort">
-            <summary></summary>
+            <summary>序号</summary>
         </member>
         <member name="P:NewLife.CommonEntity.SimpleTree`1.Item(System.String)">
             <summary>
@@ -2862,16 +2980,16 @@
             <summary>取得简单分类字段信息的快捷方式</summary>
         </member>
         <member name="F:NewLife.CommonEntity.SimpleTree`1._.ID">
-            <summary></summary>
+            <summary>编号</summary>
         </member>
         <member name="F:NewLife.CommonEntity.SimpleTree`1._.Name">
             <summary>名称索引</summary>
         </member>
         <member name="F:NewLife.CommonEntity.SimpleTree`1._.ParentID">
-            <summary></summary>
+            <summary>父编号</summary>
         </member>
         <member name="F:NewLife.CommonEntity.SimpleTree`1._.Sort">
-            <summary></summary>
+            <summary>序号</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Setting">
             <summary>设置</summary>
@@ -2880,40 +2998,120 @@
             <summary>设置</summary>
             <summary>设置</summary>
         </member>
-        <member name="M:NewLife.CommonEntity.Setting`1.FindByKeyForEdit(System.Int32)">
-             <summary>根据主键查询一个设置实体对象用于表单编辑</summary>
-            <param name="__ID">编号</param>
-             <returns></returns>
+        <member name="T:NewLife.CommonEntity.ISetting">
+            <summary>设置接口</summary>
         </member>
-        <member name="M:NewLife.CommonEntity.Setting`1.FindByID(System.Int32)">
-            <summary>根据编号查找</summary>
-            <param name="__ID"></param>
+        <member name="M:NewLife.CommonEntity.ISetting.Create(System.String)">
+            <summary>若不存在则创建指定名称的子级</summary>
+            <param name="name"></param>
             <returns></returns>
         </member>
-        <member name="M:NewLife.CommonEntity.Setting`1.FindByName(System.String)">
-            <summary>根据名称查找</summary>
-            <param name="__Name"></param>
+        <member name="M:NewLife.CommonEntity.ISetting.Get``1">
+            <summary>取值</summary>
+            <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:NewLife.CommonEntity.Setting`1.SearchWhere(System.String)">
-            <summary>构造搜索条件</summary>
-            <param name="key">关键字</param>
+        <member name="M:NewLife.CommonEntity.ISetting.Set``1(``0)">
+            <summary>设置值</summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.ISetting.Ensure``1(System.String,``0,System.String)">
+            <summary>确保设置项存在</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="defval"></param>
+            <param name="displayName"></param>
             <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.ParentID">
+            <summary>父编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.Kind">
+            <summary>值类型</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.Value">
+            <summary>值</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.DisplayName">
+            <summary>显示名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.ISetting.Item(System.String)">
+            <summary>获取/设置 字段值。</summary>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Valid(System.Boolean)">
+            <summary>验证数据，通过抛出异常的方式提示验证失败。</summary>
+            <param name="isNew"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.FindByParentIDAndName(System.Int32,System.String)">
+            <summary>根据父编号、名称查找</summary>
+            <param name="parentid">父编号</param>
+            <param name="name">名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Create(System.String)">
+            <summary>若不存在则创建指定名称的子级</summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Get``1">
+            <summary>取值</summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Get">
+            <summary>取值</summary>
+            <returns></returns>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Set``1(``0)">
+            <summary>设置值</summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Set(System.Object)">
+            <summary>设置值</summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Setting`1.Ensure``1(System.String,``0,System.String)">
+            <summary>确保设置项存在</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="defval"></param>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.CommonEntity.Setting`1.KindCode">
+            <summary>类型编码</summary>
         </member>
         <member name="P:NewLife.CommonEntity.Setting`1.ID">
             <summary>编号</summary>
         </member>
-        <member name="P:NewLife.CommonEntity.Setting`1.Name">
-            <summary>名称</summary>
-        </member>
         <member name="P:NewLife.CommonEntity.Setting`1.ParentID">
             <summary>父编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Setting`1.Name">
+            <summary>名称</summary>
         </member>
         <member name="P:NewLife.CommonEntity.Setting`1.Kind">
             <summary>值类型</summary>
         </member>
         <member name="P:NewLife.CommonEntity.Setting`1.Value">
             <summary>值</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Setting`1.DisplayName">
+            <summary>显示名</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.Setting`1.Sort">
+            <summary>排序</summary>
         </member>
         <member name="P:NewLife.CommonEntity.Setting`1.Item(System.String)">
             <summary>
@@ -2925,22 +3123,28 @@
             <returns></returns>
         </member>
         <member name="T:NewLife.CommonEntity.Setting`1._">
-            <summary>取得设置字段名的快捷方式</summary>
+            <summary>取得设置字段信息的快捷方式</summary>
         </member>
         <member name="F:NewLife.CommonEntity.Setting`1._.ID">
             <summary>编号</summary>
         </member>
-        <member name="F:NewLife.CommonEntity.Setting`1._.Name">
-            <summary>名称</summary>
-        </member>
         <member name="F:NewLife.CommonEntity.Setting`1._.ParentID">
             <summary>父编号</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Setting`1._.Name">
+            <summary>名称</summary>
         </member>
         <member name="F:NewLife.CommonEntity.Setting`1._.Kind">
             <summary>值类型</summary>
         </member>
         <member name="F:NewLife.CommonEntity.Setting`1._.Value">
             <summary>值</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Setting`1._.DisplayName">
+            <summary>显示名</summary>
+        </member>
+        <member name="F:NewLife.CommonEntity.Setting`1._.Sort">
+            <summary>排序</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Statistics">
             <summary>统计</summary>
@@ -2951,6 +3155,29 @@
         <member name="T:NewLife.CommonEntity.UserProfile`1">
             <summary>用户配置</summary>
             <summary>用户配置</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.IUserProfile">
+            <summary>用户配置接口</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUserProfile.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUserProfile.UserID">
+            <summary>父编号</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUserProfile.Name">
+            <summary>名称</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUserProfile.Kind">
+            <summary>值类型</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUserProfile.Value">
+            <summary>值</summary>
+        </member>
+        <member name="P:NewLife.CommonEntity.IUserProfile.Item(System.String)">
+            <summary>获取/设置 字段值。</summary>
+            <param name="name">字段名</param>
+            <returns></returns>
         </member>
         <member name="M:NewLife.CommonEntity.UserProfile`1.FindByKeyForEdit(System.Int32)">
             <summary>根据主键查询一个用户配置实体对象用于表单编辑</summary>
@@ -3019,6 +3246,21 @@
         </member>
         <member name="F:NewLife.CommonEntity.UserProfile`1._.Value">
             <summary>值</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Attachment">
+            <summary>附件</summary>
+        </member>
+        <member name="T:NewLife.CommonEntity.Attachment`2">
+            <summary>附件</summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TStatistics"></typeparam>
+        </member>
+        <member name="M:NewLife.CommonEntity.Attachment`2.Increment(System.String)">
+            <summary>增加统计</summary>
+            <param name="remark"></param>
+        </member>
+        <member name="P:NewLife.CommonEntity.Attachment`2.Stat">
+            <summary>统计</summary>
         </member>
         <member name="T:NewLife.CommonEntity.Template">
             <summary>模版</summary>
@@ -3299,6 +3541,12 @@
             <param name="serviceType"></param>
             <returns></returns>
         </member>
+        <member name="M:NewLife.CommonEntity.ManageProvider.GetHttpCache(System.Object,System.Func{System.Object,System.Object})">
+            <summary>获取Http缓存，如果不存在，则调用func去计算</summary>
+            <param name="key"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
         <member name="P:NewLife.CommonEntity.ManageProvider.Provider">
             <summary>当前提供者</summary>
         </member>
@@ -3461,48 +3709,21 @@
         <member name="P:NewLife.CommonEntity.Web.WebPageBase`1.Current">
             <summary>当前管理员</summary>
         </member>
-        <member name="T:NewLife.CommonEntity.Web.ShowPicture">
-            <summary>显示图片</summary>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.ShowPicture.OnNotFound(System.Web.HttpContext)">
-            <summary>未找到</summary>
-            <param name="context"></param>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.ShowPicture.GetStream(System.Web.HttpContext,NewLife.CommonEntity.Attachment)">
-            <summary>取得文件流，判断是否小图片，特殊处理</summary>
-            <param name="context"></param>
-            <param name="attachment"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NewLife.CommonEntity.Web.ShowPicture.MakeThumbnail(System.IO.Stream,System.Int32,System.Int32,System.String)">
-            <summary>生成缩略图</summary>
-            <param name="stream">源图</param>
-            <param name="width">缩略图宽度</param>
-            <param name="height">缩略图高度</param>
-            <param name="mode">生成缩略图的方式</param>    
-            <returns>缩略图</returns>
-        </member>
-        <member name="P:NewLife.CommonEntity.Web.ShowPicture.Width">
-            <summary>宽度</summary>
-        </member>
-        <member name="P:NewLife.CommonEntity.Web.ShowPicture.Height">
-            <summary>高度</summary>
-        </member>
         <member name="T:NewLife.CommonEntity.Web.EntityForm2">
-            <summary>第二代实体表单，在Page_Load之前给表单控件赋值，在Page_Load之后从表单控件取值并保存</summary>
-            <remarks>
-            在PreLoad阶段处理表单，SetForm把实体对象的字段数据设置到表单控件上，GetForm把表单控件的数据取回到实体字段中。
-            之所以选择PreLoad阶段，是因为这是在Page_Load之前最早能拿到Request等数据的阶段，这样子使用者就可以在Page_Load中处理已经赋值完成的表单。
-            保存表单时，PreLoad阶段仅仅是给保存按钮设置点击事件，真正的保存动作在点击事件里面，因为在保存表单之前，使用者可能在Page_Load里面对控件进行处理。
-            所以，在Page_Load之前给表单控件赋值，在Page_Load之后从表单控件取值并保存。
+             <summary>第二代实体表单，在Page_Load之前给表单控件赋值，在Page_Load之后从表单控件取值并保存</summary>
+             <remarks>
+             在PreLoad阶段处理表单，SetForm把实体对象的字段数据设置到表单控件上，GetForm把表单控件的数据取回到实体字段中。
+             之所以选择PreLoad阶段，是因为这是在Page_Load之前最早能拿到Request等数据的阶段，这样子使用者就可以在Page_Load中处理已经赋值完成的表单。
+             保存表单时，PreLoad阶段仅仅是给保存按钮设置点击事件，真正的保存动作在点击事件里面，因为在保存表单之前，使用者可能在Page_Load里面对控件进行处理。
+             所以，在Page_Load之前给表单控件赋值，在Page_Load之后从表单控件取值并保存。
             
-            另外，DropDownList等数据绑定控件绑定ObjectDataSource时，会在OnPreRender阶段执行绑定，其中的开关是RequiresDataBinding。
-            绑定方法DataBind会导致RequiresDataBinding=false，这样子人工DataBind之后，控件就不会在OnPreRender阶段自动绑定了。
-            实体表单在SetForm时有个机制，如果遇到数据绑定的列表控件，会调用一次DataBind，取得列表值，然后再赋值，本以为这样子可以避免OnPreRender阶段的自动绑定。
-            经查实，数据绑定控件会在PreLoad时间里面检查页面，如果页面不是回发或者关闭了ViewState，都会导致RequiresDataBinding=true。
-            数据绑定控件在OnInit阶段绑定PreLoad事件，而EntityForm在OnPreInit阶段绑定，比数据绑定控件更早，导致了EntityForm的PreLoad先执行，先DataBind，而后控件还是会设置RequiresDataBinding=true。
-            因此，EntityForm调整为在InitComplete阶段绑定PreLoad事件。
-            </remarks>
+             另外，DropDownList等数据绑定控件绑定ObjectDataSource时，会在OnPreRender阶段执行绑定，其中的开关是RequiresDataBinding。
+             绑定方法DataBind会导致RequiresDataBinding=false，这样子人工DataBind之后，控件就不会在OnPreRender阶段自动绑定了。
+             实体表单在SetForm时有个机制，如果遇到数据绑定的列表控件，会调用一次DataBind，取得列表值，然后再赋值，本以为这样子可以避免OnPreRender阶段的自动绑定。
+             经查实，数据绑定控件会在PreLoad时间里面检查页面，如果页面不是回发或者关闭了ViewState，都会导致RequiresDataBinding=true。
+             数据绑定控件在OnInit阶段绑定PreLoad事件，而EntityForm在OnPreInit阶段绑定，比数据绑定控件更早，导致了EntityForm的PreLoad先执行，先DataBind，而后控件还是会设置RequiresDataBinding=true。
+             因此，EntityForm调整为在InitComplete阶段绑定PreLoad事件。
+             </remarks>
         </member>
         <member name="M:NewLife.CommonEntity.Web.EntityForm2.#ctor">
             <summary>实例化一个实体表单</summary>
@@ -3515,6 +3736,11 @@
         <member name="M:NewLife.CommonEntity.Web.EntityForm2.FillEntityWithRequest(XCode.IEntity)">
             <summary>使用Request参数填充entity</summary>
             <param name="entity"></param>
+        </member>
+        <member name="M:NewLife.CommonEntity.Web.EntityForm2.OnPreLoad(System.Object,System.EventArgs)">
+            <summary></summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:NewLife.CommonEntity.Web.EntityForm2.SetForm">
             <summary>把实体的属性设置到控件上</summary>
