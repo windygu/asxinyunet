@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -13,9 +13,11 @@ namespace DotNet.CommonEntity
     [DataObject]
     [Description("权限表")]
     [BindIndex("PRIMARY", true, "Id")]
-    [BindIndex("SystemDbId", false, "SystemDbId")]
     [BindIndex("Name", false, "Name")]
-    [BindRelation("SystemDbId", false, "SystemDb", "Id")]
+    [BindIndex("DbName", false, "DbName")]
+    [BindIndex("TableName", false, "TableName")]
+    [BindIndex("ParentId", false, "ParentId")]
+    [BindIndex("DbTable", false, "DbName,TableName")]
     [BindRelation("Id", true, "RolePermission", "PermissionId")]
     [BindRelation("Id", true, "UserPermission", "PermissionId")]
     [BindTable("Permission", Description = "权限表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
@@ -34,28 +36,40 @@ namespace DotNet.CommonEntity
             set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } }
         }
 
-        private Int32 _SystemDbId;
-        /// <summary>表编号</summary>
-        [DisplayName("表编号")]
-        [Description("表编号")]
-        [DataObjectField(false, false, false, 10)]
-        [BindColumn(2, "SystemDbId", "表编号", null, "int(11)", 10, 0, false)]
-        public virtual Int32 SystemDbId
-        {
-            get { return _SystemDbId; }
-            set { if (OnPropertyChanging("SystemDbId", value)) { _SystemDbId = value; OnPropertyChanged("SystemDbId"); } }
-        }
-
         private Int32 _ParentId;
         /// <summary>父编号</summary>
         [DisplayName("父编号")]
         [Description("父编号")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(3, "ParentId", "父编号", null, "int(11)", 10, 0, false)]
+        [BindColumn(2, "ParentId", "父编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 ParentId
         {
             get { return _ParentId; }
             set { if (OnPropertyChanging("ParentId", value)) { _ParentId = value; OnPropertyChanged("ParentId"); } }
+        }
+
+        private String _DbName;
+        /// <summary>数据库名称</summary>
+        [DisplayName("数据库名称")]
+        [Description("数据库名称")]
+        [DataObjectField(false, false, true, 20)]
+        [BindColumn(3, "DbName", "数据库名称", null, "varchar(20)", 0, 0, false)]
+        public virtual String DbName
+        {
+            get { return _DbName; }
+            set { if (OnPropertyChanging("DbName", value)) { _DbName = value; OnPropertyChanged("DbName"); } }
+        }
+
+        private String _TableName;
+        /// <summary>表名</summary>
+        [DisplayName("表名")]
+        [Description("表名")]
+        [DataObjectField(false, false, true, 30)]
+        [BindColumn(4, "TableName", "表名", null, "varchar(30)", 0, 0, false)]
+        public virtual String TableName
+        {
+            get { return _TableName; }
+            set { if (OnPropertyChanging("TableName", value)) { _TableName = value; OnPropertyChanged("TableName"); } }
         }
 
         private String _Name;
@@ -63,7 +77,7 @@ namespace DotNet.CommonEntity
         [DisplayName("权限名称")]
         [Description("权限名称")]
         [DataObjectField(false, false, false, 30)]
-        [BindColumn(4, "Name", "权限名称", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(5, "Name", "权限名称", null, "varchar(30)", 0, 0, false)]
         public virtual String Name
         {
             get { return _Name; }
@@ -75,7 +89,7 @@ namespace DotNet.CommonEntity
         [DisplayName("是否开启数据权限")]
         [Description("是否开启数据权限")]
         [DataObjectField(false, false, true, 3)]
-        [BindColumn(5, "IsDataPermission", "是否开启数据权限", "0", "tinyint(4)", 3, 0, false)]
+        [BindColumn(6, "IsDataPermission", "是否开启数据权限", "0", "tinyint(4)", 3, 0, false)]
         public virtual SByte IsDataPermission
         {
             get { return _IsDataPermission; }
@@ -87,7 +101,7 @@ namespace DotNet.CommonEntity
         [DisplayName("数据条件")]
         [Description("数据条件")]
         [DataObjectField(false, false, true, 100)]
-        [BindColumn(6, "Constraint", "数据条件", null, "varchar(100)", 0, 0, false)]
+        [BindColumn(7, "Constraint", "数据条件", null, "varchar(100)", 0, 0, false)]
         public virtual String Constraint
         {
             get { return _Constraint; }
@@ -99,7 +113,7 @@ namespace DotNet.CommonEntity
         [DisplayName("排序码")]
         [Description("排序码")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(7, "SortCode", "排序码", "9999", "int(11)", 10, 0, false)]
+        [BindColumn(8, "SortCode", "排序码", "9999", "int(11)", 10, 0, false)]
         public virtual Int32 SortCode
         {
             get { return _SortCode; }
@@ -111,23 +125,11 @@ namespace DotNet.CommonEntity
         [DisplayName("是否有效")]
         [Description("是否有效")]
         [DataObjectField(false, false, false, 3)]
-        [BindColumn(8, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
+        [BindColumn(9, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
         public virtual SByte IsEnable
         {
             get { return _IsEnable; }
             set { if (OnPropertyChanging("IsEnable", value)) { _IsEnable = value; OnPropertyChanged("IsEnable"); } }
-        }
-
-        private SByte _DeletionStatusCode;
-        /// <summary>删除状态</summary>
-        [DisplayName("删除状态")]
-        [Description("删除状态")]
-        [DataObjectField(false, false, false, 3)]
-        [BindColumn(9, "DeletionStatusCode", "删除状态", "0", "tinyint(4)", 3, 0, false)]
-        public virtual SByte DeletionStatusCode
-        {
-            get { return _DeletionStatusCode; }
-            set { if (OnPropertyChanging("DeletionStatusCode", value)) { _DeletionStatusCode = value; OnPropertyChanged("DeletionStatusCode"); } }
         }
 
         private String _Description;
@@ -158,14 +160,14 @@ namespace DotNet.CommonEntity
                 switch (name)
                 {
                     case "Id" : return _Id;
-                    case "SystemDbId" : return _SystemDbId;
                     case "ParentId" : return _ParentId;
+                    case "DbName" : return _DbName;
+                    case "TableName" : return _TableName;
                     case "Name" : return _Name;
                     case "IsDataPermission" : return _IsDataPermission;
                     case "Constraint" : return _Constraint;
                     case "SortCode" : return _SortCode;
                     case "IsEnable" : return _IsEnable;
-                    case "DeletionStatusCode" : return _DeletionStatusCode;
                     case "Description" : return _Description;
                     default: return base[name];
                 }
@@ -175,14 +177,14 @@ namespace DotNet.CommonEntity
                 switch (name)
                 {
                     case "Id" : _Id = Convert.ToInt32(value); break;
-                    case "SystemDbId" : _SystemDbId = Convert.ToInt32(value); break;
                     case "ParentId" : _ParentId = Convert.ToInt32(value); break;
+                    case "DbName" : _DbName = Convert.ToString(value); break;
+                    case "TableName" : _TableName = Convert.ToString(value); break;
                     case "Name" : _Name = Convert.ToString(value); break;
                     case "IsDataPermission" : _IsDataPermission = Convert.ToSByte(value); break;
                     case "Constraint" : _Constraint = Convert.ToString(value); break;
                     case "SortCode" : _SortCode = Convert.ToInt32(value); break;
                     case "IsEnable" : _IsEnable = Convert.ToSByte(value); break;
-                    case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
                     case "Description" : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
@@ -197,11 +199,14 @@ namespace DotNet.CommonEntity
             ///<summary>编号</summary>
             public static readonly Field Id = FindByName("Id");
 
-            ///<summary>表编号</summary>
-            public static readonly Field SystemDbId = FindByName("SystemDbId");
-
             ///<summary>父编号</summary>
             public static readonly Field ParentId = FindByName("ParentId");
+
+            ///<summary>数据库名称</summary>
+            public static readonly Field DbName = FindByName("DbName");
+
+            ///<summary>表名</summary>
+            public static readonly Field TableName = FindByName("TableName");
 
             ///<summary>权限名称</summary>
             public static readonly Field Name = FindByName("Name");
@@ -218,9 +223,6 @@ namespace DotNet.CommonEntity
             ///<summary>是否有效</summary>
             public static readonly Field IsEnable = FindByName("IsEnable");
 
-            ///<summary>删除状态</summary>
-            public static readonly Field DeletionStatusCode = FindByName("DeletionStatusCode");
-
             ///<summary>备注</summary>
             public static readonly Field Description = FindByName("Description");
 
@@ -236,11 +238,14 @@ namespace DotNet.CommonEntity
         /// <summary>编号</summary>
         Int32 Id { get; set; }
 
-        /// <summary>表编号</summary>
-        Int32 SystemDbId { get; set; }
-
         /// <summary>父编号</summary>
         Int32 ParentId { get; set; }
+
+        /// <summary>数据库名称</summary>
+        String DbName { get; set; }
+
+        /// <summary>表名</summary>
+        String TableName { get; set; }
 
         /// <summary>权限名称</summary>
         String Name { get; set; }
@@ -257,17 +262,12 @@ namespace DotNet.CommonEntity
         /// <summary>是否有效</summary>
         SByte IsEnable { get; set; }
 
-        /// <summary>删除状态</summary>
-        SByte DeletionStatusCode { get; set; }
-
         /// <summary>备注</summary>
         String Description { get; set; }
         #endregion
 
         #region 获取/设置 字段值
-        /// <summary>
-        /// 获取/设置 字段值。
-        /// </summary>
+        /// <summary>获取/设置 字段值。</summary>
         /// <param name="name">字段名</param>
         /// <returns></returns>
         Object this[String name] { get; set; }

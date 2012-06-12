@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -16,7 +16,8 @@ namespace DotNet.CommonEntity
     [BindIndex("OrganizeCode", false, "OrganizeCode")]
     [BindIndex("ShortName", false, "ShortName")]
     [BindIndex("FullName", false, "FullName")]
-    [BindRelation("Id", true, "Role", "OrganizeId")]
+    [BindIndex("ParentId", false, "ParentId")]
+    [BindIndex("Category", false, "Category")]
     [BindRelation("Id", true, "Staff", "OrganizeId")]
     [BindTable("Organize", Description = "组织部门信息表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
     public partial class Organize<TEntity> : IOrganize
@@ -106,36 +107,12 @@ namespace DotNet.CommonEntity
             set { if (OnPropertyChanging("SortCode", value)) { _SortCode = value; OnPropertyChanged("SortCode"); } }
         }
 
-        private SByte _IsEnable;
-        /// <summary>是否有效</summary>
-        [DisplayName("是否有效")]
-        [Description("是否有效")]
-        [DataObjectField(false, false, false, 3)]
-        [BindColumn(8, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
-        public virtual SByte IsEnable
-        {
-            get { return _IsEnable; }
-            set { if (OnPropertyChanging("IsEnable", value)) { _IsEnable = value; OnPropertyChanged("IsEnable"); } }
-        }
-
-        private SByte _DeletionStatusCode;
-        /// <summary>删除状态</summary>
-        [DisplayName("删除状态")]
-        [Description("删除状态")]
-        [DataObjectField(false, false, false, 3)]
-        [BindColumn(9, "DeletionStatusCode", "删除状态", "0", "tinyint(4)", 3, 0, false)]
-        public virtual SByte DeletionStatusCode
-        {
-            get { return _DeletionStatusCode; }
-            set { if (OnPropertyChanging("DeletionStatusCode", value)) { _DeletionStatusCode = value; OnPropertyChanged("DeletionStatusCode"); } }
-        }
-
         private String _Description;
         /// <summary>备注</summary>
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(10, "Description", "备注", "", "varchar(50)", 0, 0, false)]
+        [BindColumn(8, "Description", "备注", "", "varchar(50)", 0, 0, false)]
         public virtual String Description
         {
             get { return _Description; }
@@ -164,8 +141,6 @@ namespace DotNet.CommonEntity
                     case "FullName" : return _FullName;
                     case "Category" : return _Category;
                     case "SortCode" : return _SortCode;
-                    case "IsEnable" : return _IsEnable;
-                    case "DeletionStatusCode" : return _DeletionStatusCode;
                     case "Description" : return _Description;
                     default: return base[name];
                 }
@@ -181,8 +156,6 @@ namespace DotNet.CommonEntity
                     case "FullName" : _FullName = Convert.ToString(value); break;
                     case "Category" : _Category = Convert.ToString(value); break;
                     case "SortCode" : _SortCode = Convert.ToInt32(value); break;
-                    case "IsEnable" : _IsEnable = Convert.ToSByte(value); break;
-                    case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
                     case "Description" : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
@@ -214,12 +187,6 @@ namespace DotNet.CommonEntity
 
             ///<summary>排序码</summary>
             public static readonly Field SortCode = FindByName("SortCode");
-
-            ///<summary>是否有效</summary>
-            public static readonly Field IsEnable = FindByName("IsEnable");
-
-            ///<summary>删除状态</summary>
-            public static readonly Field DeletionStatusCode = FindByName("DeletionStatusCode");
 
             ///<summary>备注</summary>
             public static readonly Field Description = FindByName("Description");
@@ -254,20 +221,12 @@ namespace DotNet.CommonEntity
         /// <summary>排序码</summary>
         Int32 SortCode { get; set; }
 
-        /// <summary>是否有效</summary>
-        SByte IsEnable { get; set; }
-
-        /// <summary>删除状态</summary>
-        SByte DeletionStatusCode { get; set; }
-
         /// <summary>备注</summary>
         String Description { get; set; }
         #endregion
 
         #region 获取/设置 字段值
-        /// <summary>
-        /// 获取/设置 字段值。
-        /// </summary>
+        /// <summary>获取/设置 字段值。</summary>
         /// <param name="name">字段名</param>
         /// <returns></returns>
         Object this[String name] { get; set; }

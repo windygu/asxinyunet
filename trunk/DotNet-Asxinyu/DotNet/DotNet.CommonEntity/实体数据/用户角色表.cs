@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -14,8 +14,10 @@ namespace DotNet.CommonEntity
     [Description("用户角色表")]
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("UserRole", false, "UserId,RoleId")]
-    [BindIndex("IX_UserRole_RoleId", false, "RoleId")]
-    [BindIndex("IX_UserRole_UserId", false, "UserId")]
+    [BindIndex("UserId", false, "UserId")]
+    [BindIndex("RoleId", false, "RoleId")]
+    [BindRelation("RoleId", false, "Role", "Id")]
+    [BindRelation("UserId", false, "User", "Id")]
     [BindRelation("RoleId", false, "Role", "Id")]
     [BindRelation("UserId", false, "User", "Id")]
     [BindTable("UserRole", Description = "用户角色表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
@@ -58,52 +60,16 @@ namespace DotNet.CommonEntity
             set { if (OnPropertyChanging("RoleId", value)) { _RoleId = value; OnPropertyChanged("RoleId"); } }
         }
 
-        private Int32 _SortCode;
-        /// <summary>排序码</summary>
-        [DisplayName("排序码")]
-        [Description("排序码")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(4, "SortCode", "排序码", "9999", "int(11)", 10, 0, false)]
-        public virtual Int32 SortCode
-        {
-            get { return _SortCode; }
-            set { if (OnPropertyChanging("SortCode", value)) { _SortCode = value; OnPropertyChanged("SortCode"); } }
-        }
-
         private SByte _IsEnable;
         /// <summary>是否有效</summary>
         [DisplayName("是否有效")]
         [Description("是否有效")]
         [DataObjectField(false, false, false, 3)]
-        [BindColumn(5, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
+        [BindColumn(4, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
         public virtual SByte IsEnable
         {
             get { return _IsEnable; }
             set { if (OnPropertyChanging("IsEnable", value)) { _IsEnable = value; OnPropertyChanged("IsEnable"); } }
-        }
-
-        private SByte _DeletionStatusCode;
-        /// <summary>删除状态</summary>
-        [DisplayName("删除状态")]
-        [Description("删除状态")]
-        [DataObjectField(false, false, false, 3)]
-        [BindColumn(6, "DeletionStatusCode", "删除状态", "0", "tinyint(4)", 3, 0, false)]
-        public virtual SByte DeletionStatusCode
-        {
-            get { return _DeletionStatusCode; }
-            set { if (OnPropertyChanging("DeletionStatusCode", value)) { _DeletionStatusCode = value; OnPropertyChanged("DeletionStatusCode"); } }
-        }
-
-        private String _Description;
-        /// <summary>备注</summary>
-        [DisplayName("备注")]
-        [Description("备注")]
-        [DataObjectField(false, false, true, 50)]
-        [BindColumn(7, "Description", "备注", "", "varchar(50)", 0, 0, false)]
-        public virtual String Description
-        {
-            get { return _Description; }
-            set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } }
         }
 		#endregion
 
@@ -124,10 +90,7 @@ namespace DotNet.CommonEntity
                     case "Id" : return _Id;
                     case "UserId" : return _UserId;
                     case "RoleId" : return _RoleId;
-                    case "SortCode" : return _SortCode;
                     case "IsEnable" : return _IsEnable;
-                    case "DeletionStatusCode" : return _DeletionStatusCode;
-                    case "Description" : return _Description;
                     default: return base[name];
                 }
             }
@@ -138,10 +101,7 @@ namespace DotNet.CommonEntity
                     case "Id" : _Id = Convert.ToInt32(value); break;
                     case "UserId" : _UserId = Convert.ToInt32(value); break;
                     case "RoleId" : _RoleId = Convert.ToInt32(value); break;
-                    case "SortCode" : _SortCode = Convert.ToInt32(value); break;
                     case "IsEnable" : _IsEnable = Convert.ToSByte(value); break;
-                    case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
-                    case "Description" : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -161,17 +121,8 @@ namespace DotNet.CommonEntity
             ///<summary>角色编号</summary>
             public static readonly Field RoleId = FindByName("RoleId");
 
-            ///<summary>排序码</summary>
-            public static readonly Field SortCode = FindByName("SortCode");
-
             ///<summary>是否有效</summary>
             public static readonly Field IsEnable = FindByName("IsEnable");
-
-            ///<summary>删除状态</summary>
-            public static readonly Field DeletionStatusCode = FindByName("DeletionStatusCode");
-
-            ///<summary>备注</summary>
-            public static readonly Field Description = FindByName("Description");
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
@@ -191,23 +142,12 @@ namespace DotNet.CommonEntity
         /// <summary>角色编号</summary>
         Int32 RoleId { get; set; }
 
-        /// <summary>排序码</summary>
-        Int32 SortCode { get; set; }
-
         /// <summary>是否有效</summary>
         SByte IsEnable { get; set; }
-
-        /// <summary>删除状态</summary>
-        SByte DeletionStatusCode { get; set; }
-
-        /// <summary>备注</summary>
-        String Description { get; set; }
         #endregion
 
         #region 获取/设置 字段值
-        /// <summary>
-        /// 获取/设置 字段值。
-        /// </summary>
+        /// <summary>获取/设置 字段值。</summary>
         /// <param name="name">字段名</param>
         /// <returns></returns>
         Object this[String name] { get; set; }
