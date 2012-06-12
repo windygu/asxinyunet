@@ -75,10 +75,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotNet\DotNet.CommonEntity\DotNet.CommonEntity.csproj">
-      <Project>{804B0499-5B7F-4471-8F42-848ECEB6C82D}</Project>
-      <Name>DotNet.CommonEntity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ResouceCollector\ResouceEntity\ResouceEntity.csproj">
       <Project>{114E0E8B-8A6C-4AB8-B6CB-3CD8CECA86CD}</Project>
       <Name>ResouceEntity</Name>
