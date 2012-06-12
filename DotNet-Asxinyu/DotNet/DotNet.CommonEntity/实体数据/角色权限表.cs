@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -14,8 +14,10 @@ namespace DotNet.CommonEntity
     [Description("角色权限表")]
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("RolePermission", false, "RoleId,PermissionId")]
-    [BindIndex("IX_RolePermission_PermissionId", false, "PermissionId")]
-    [BindIndex("IX_RolePermission_RoleId", false, "RoleId")]
+    [BindIndex("RoleId", false, "RoleId")]
+    [BindIndex("PermissionId", false, "PermissionId")]
+    [BindRelation("PermissionId", false, "Permission", "Id")]
+    [BindRelation("RoleId", false, "Role", "Id")]
     [BindRelation("PermissionId", false, "Permission", "Id")]
     [BindRelation("RoleId", false, "Role", "Id")]
     [BindTable("RolePermission", Description = "角色权限表", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
@@ -69,30 +71,6 @@ namespace DotNet.CommonEntity
             get { return _IsEnable; }
             set { if (OnPropertyChanging("IsEnable", value)) { _IsEnable = value; OnPropertyChanged("IsEnable"); } }
         }
-
-        private SByte _DeletionStatusCode;
-        /// <summary>删除状态</summary>
-        [DisplayName("删除状态")]
-        [Description("删除状态")]
-        [DataObjectField(false, false, false, 3)]
-        [BindColumn(5, "DeletionStatusCode", "删除状态", "0", "tinyint(4)", 3, 0, false)]
-        public virtual SByte DeletionStatusCode
-        {
-            get { return _DeletionStatusCode; }
-            set { if (OnPropertyChanging("DeletionStatusCode", value)) { _DeletionStatusCode = value; OnPropertyChanged("DeletionStatusCode"); } }
-        }
-
-        private String _Description;
-        /// <summary>备注</summary>
-        [DisplayName("备注")]
-        [Description("备注")]
-        [DataObjectField(false, false, true, 50)]
-        [BindColumn(6, "Description", "备注", "", "varchar(50)", 0, 0, false)]
-        public virtual String Description
-        {
-            get { return _Description; }
-            set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } }
-        }
 		#endregion
 
         #region 获取/设置 字段值
@@ -113,8 +91,6 @@ namespace DotNet.CommonEntity
                     case "RoleId" : return _RoleId;
                     case "PermissionId" : return _PermissionId;
                     case "IsEnable" : return _IsEnable;
-                    case "DeletionStatusCode" : return _DeletionStatusCode;
-                    case "Description" : return _Description;
                     default: return base[name];
                 }
             }
@@ -126,8 +102,6 @@ namespace DotNet.CommonEntity
                     case "RoleId" : _RoleId = Convert.ToInt32(value); break;
                     case "PermissionId" : _PermissionId = Convert.ToInt32(value); break;
                     case "IsEnable" : _IsEnable = Convert.ToSByte(value); break;
-                    case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
-                    case "Description" : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -150,12 +124,6 @@ namespace DotNet.CommonEntity
             ///<summary>是否有效</summary>
             public static readonly Field IsEnable = FindByName("IsEnable");
 
-            ///<summary>删除状态</summary>
-            public static readonly Field DeletionStatusCode = FindByName("DeletionStatusCode");
-
-            ///<summary>备注</summary>
-            public static readonly Field Description = FindByName("Description");
-
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
         #endregion
@@ -176,18 +144,10 @@ namespace DotNet.CommonEntity
 
         /// <summary>是否有效</summary>
         SByte IsEnable { get; set; }
-
-        /// <summary>删除状态</summary>
-        SByte DeletionStatusCode { get; set; }
-
-        /// <summary>备注</summary>
-        String Description { get; set; }
         #endregion
 
         #region 获取/设置 字段值
-        /// <summary>
-        /// 获取/设置 字段值。
-        /// </summary>
+        /// <summary>获取/设置 字段值。</summary>
         /// <param name="name">字段名</param>
         /// <returns></returns>
         Object this[String name] { get; set; }

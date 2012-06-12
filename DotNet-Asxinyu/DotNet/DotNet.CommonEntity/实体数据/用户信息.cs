@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -13,11 +13,10 @@ namespace DotNet.CommonEntity
     [DataObject]
     [Description("用户信息")]
     [BindIndex("PRIMARY", true, "Id")]
-    [BindIndex("StaffId", false, "StaffId")]
-    [BindIndex("UserRole", false, "UserName")]
-    [BindIndex("StaffRole", false, "StaffId")]
+    [BindIndex("UserName", false, "UserName")]
     [BindRelation("Id", true, "Log", "UserId")]
-    [BindRelation("StaffId", false, "Staff", "Id")]
+    [BindRelation("Id", true, "Staff", "UserId")]
+    [BindRelation("UserName", false, "Staff", "UserName")]
     [BindRelation("Id", true, "UserPermission", "UserId")]
     [BindRelation("Id", true, "UserProfile", "UserId")]
     [BindRelation("Id", true, "UserRole", "UserId")]
@@ -37,24 +36,12 @@ namespace DotNet.CommonEntity
             set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } }
         }
 
-        private Int32 _StaffId;
-        /// <summary>员工编号</summary>
-        [DisplayName("员工编号")]
-        [Description("员工编号")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(2, "StaffId", "员工编号", null, "int(11)", 10, 0, false)]
-        public virtual Int32 StaffId
-        {
-            get { return _StaffId; }
-            set { if (OnPropertyChanging("StaffId", value)) { _StaffId = value; OnPropertyChanged("StaffId"); } }
-        }
-
         private String _UserName;
         /// <summary>用户名</summary>
         [DisplayName("用户名")]
         [Description("用户名")]
         [DataObjectField(false, false, false, 30)]
-        [BindColumn(3, "UserName", "用户名", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(2, "UserName", "用户名", null, "varchar(30)", 0, 0, false)]
         public virtual String UserName
         {
             get { return _UserName; }
@@ -66,7 +53,7 @@ namespace DotNet.CommonEntity
         [DisplayName("密码")]
         [Description("密码")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(4, "Password", "密码", null, "varchar(50)", 0, 0, false)]
+        [BindColumn(3, "Password", "密码", null, "varchar(50)", 0, 0, false)]
         public virtual String Password
         {
             get { return _Password; }
@@ -78,7 +65,7 @@ namespace DotNet.CommonEntity
         [DisplayName("排序码")]
         [Description("排序码")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(5, "SortCode", "排序码", null, "int(10)", 10, 0, false)]
+        [BindColumn(4, "SortCode", "排序码", null, "int(10)", 10, 0, false)]
         public virtual Int32 SortCode
         {
             get { return _SortCode; }
@@ -90,35 +77,11 @@ namespace DotNet.CommonEntity
         [DisplayName("是否有效")]
         [Description("是否有效")]
         [DataObjectField(false, false, true, 3)]
-        [BindColumn(6, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
+        [BindColumn(5, "IsEnable", "是否有效", "1", "tinyint(4)", 3, 0, false)]
         public virtual SByte IsEnable
         {
             get { return _IsEnable; }
             set { if (OnPropertyChanging("IsEnable", value)) { _IsEnable = value; OnPropertyChanged("IsEnable"); } }
-        }
-
-        private SByte _DeletionStatusCode;
-        /// <summary>删除标志</summary>
-        [DisplayName("删除标志")]
-        [Description("删除标志")]
-        [DataObjectField(false, false, true, 3)]
-        [BindColumn(7, "DeletionStatusCode", "删除标志", "0", "tinyint(4)", 3, 0, false)]
-        public virtual SByte DeletionStatusCode
-        {
-            get { return _DeletionStatusCode; }
-            set { if (OnPropertyChanging("DeletionStatusCode", value)) { _DeletionStatusCode = value; OnPropertyChanged("DeletionStatusCode"); } }
-        }
-
-        private String _Description;
-        /// <summary>备注</summary>
-        [DisplayName("备注")]
-        [Description("备注")]
-        [DataObjectField(false, false, true, 50)]
-        [BindColumn(8, "Description", "备注", "", "varchar(50)", 0, 0, false)]
-        public virtual String Description
-        {
-            get { return _Description; }
-            set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } }
         }
 		#endregion
 
@@ -137,13 +100,10 @@ namespace DotNet.CommonEntity
                 switch (name)
                 {
                     case "Id" : return _Id;
-                    case "StaffId" : return _StaffId;
                     case "UserName" : return _UserName;
                     case "Password" : return _Password;
                     case "SortCode" : return _SortCode;
                     case "IsEnable" : return _IsEnable;
-                    case "DeletionStatusCode" : return _DeletionStatusCode;
-                    case "Description" : return _Description;
                     default: return base[name];
                 }
             }
@@ -152,13 +112,10 @@ namespace DotNet.CommonEntity
                 switch (name)
                 {
                     case "Id" : _Id = Convert.ToInt32(value); break;
-                    case "StaffId" : _StaffId = Convert.ToInt32(value); break;
                     case "UserName" : _UserName = Convert.ToString(value); break;
                     case "Password" : _Password = Convert.ToString(value); break;
                     case "SortCode" : _SortCode = Convert.ToInt32(value); break;
                     case "IsEnable" : _IsEnable = Convert.ToSByte(value); break;
-                    case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
-                    case "Description" : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -172,9 +129,6 @@ namespace DotNet.CommonEntity
             ///<summary>编号</summary>
             public static readonly Field Id = FindByName("Id");
 
-            ///<summary>员工编号</summary>
-            public static readonly Field StaffId = FindByName("StaffId");
-
             ///<summary>用户名</summary>
             public static readonly Field UserName = FindByName("UserName");
 
@@ -186,12 +140,6 @@ namespace DotNet.CommonEntity
 
             ///<summary>是否有效</summary>
             public static readonly Field IsEnable = FindByName("IsEnable");
-
-            ///<summary>删除标志</summary>
-            public static readonly Field DeletionStatusCode = FindByName("DeletionStatusCode");
-
-            ///<summary>备注</summary>
-            public static readonly Field Description = FindByName("Description");
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
@@ -205,9 +153,6 @@ namespace DotNet.CommonEntity
         /// <summary>编号</summary>
         Int32 Id { get; set; }
 
-        /// <summary>员工编号</summary>
-        Int32 StaffId { get; set; }
-
         /// <summary>用户名</summary>
         String UserName { get; set; }
 
@@ -219,18 +164,10 @@ namespace DotNet.CommonEntity
 
         /// <summary>是否有效</summary>
         SByte IsEnable { get; set; }
-
-        /// <summary>删除标志</summary>
-        SByte DeletionStatusCode { get; set; }
-
-        /// <summary>备注</summary>
-        String Description { get; set; }
         #endregion
 
         #region 获取/设置 字段值
-        /// <summary>
-        /// 获取/设置 字段值。
-        /// </summary>
+        /// <summary>获取/设置 字段值。</summary>
         /// <param name="name">字段名</param>
         /// <returns></returns>
         Object this[String name] { get; set; }

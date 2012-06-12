@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -14,9 +14,10 @@ namespace DotNet.CommonEntity
     [Description("日志信息")]
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("UserId", false, "UserId")]
-    [BindIndex("SystemDbId", false, "SystemDbId")]
-    [BindIndex("UserSystem", false, "SystemDbId,UserId")]
-    [BindRelation("SystemDbId", false, "SystemDb", "Id")]
+    [BindIndex("TableName", false, "TableName")]
+    [BindIndex("DbName", false, "DbName")]
+    [BindIndex("Category", false, "Category")]
+    [BindRelation("UserId", false, "User", "Id")]
     [BindRelation("UserId", false, "User", "Id")]
     [BindTable("Log", Description = "日志信息", ConnName = "DotNetCommon", DbType = DatabaseType.MySql)]
     public partial class Log<TEntity> : ILog
@@ -34,16 +35,28 @@ namespace DotNet.CommonEntity
             set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } }
         }
 
-        private Int32 _SystemDbId;
-        /// <summary>表编号</summary>
-        [DisplayName("表编号")]
-        [Description("表编号")]
-        [DataObjectField(false, false, true, 10)]
-        [BindColumn(2, "SystemDbId", "表编号", null, "int(11)", 10, 0, false)]
-        public virtual Int32 SystemDbId
+        private String _DbName;
+        /// <summary>数据库名称</summary>
+        [DisplayName("数据库名称")]
+        [Description("数据库名称")]
+        [DataObjectField(false, false, false, 20)]
+        [BindColumn(2, "DbName", "数据库名称", null, "varchar(20)", 0, 0, false)]
+        public virtual String DbName
         {
-            get { return _SystemDbId; }
-            set { if (OnPropertyChanging("SystemDbId", value)) { _SystemDbId = value; OnPropertyChanged("SystemDbId"); } }
+            get { return _DbName; }
+            set { if (OnPropertyChanging("DbName", value)) { _DbName = value; OnPropertyChanged("DbName"); } }
+        }
+
+        private String _TableName;
+        /// <summary>表名称</summary>
+        [DisplayName("表名称")]
+        [Description("表名称")]
+        [DataObjectField(false, false, false, 30)]
+        [BindColumn(3, "TableName", "表名称", null, "varchar(30)", 0, 0, false)]
+        public virtual String TableName
+        {
+            get { return _TableName; }
+            set { if (OnPropertyChanging("TableName", value)) { _TableName = value; OnPropertyChanged("TableName"); } }
         }
 
         private Int32 _UserId;
@@ -51,7 +64,7 @@ namespace DotNet.CommonEntity
         [DisplayName("用户编号")]
         [Description("用户编号")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(3, "UserId", "用户编号", null, "int(11)", 10, 0, false)]
+        [BindColumn(4, "UserId", "用户编号", null, "int(11)", 10, 0, false)]
         public virtual Int32 UserId
         {
             get { return _UserId; }
@@ -63,7 +76,7 @@ namespace DotNet.CommonEntity
         [DisplayName("日志类别")]
         [Description("日志类别")]
         [DataObjectField(false, false, false, 30)]
-        [BindColumn(4, "Category", "日志类别", null, "varchar(30)", 0, 0, false)]
+        [BindColumn(5, "Category", "日志类别", null, "varchar(30)", 0, 0, false)]
         public virtual String Category
         {
             get { return _Category; }
@@ -75,7 +88,7 @@ namespace DotNet.CommonEntity
         [DisplayName("操作行为")]
         [Description("操作行为")]
         [DataObjectField(false, false, true, 80)]
-        [BindColumn(5, "Action", "操作行为", null, "varchar(80)", 0, 0, false)]
+        [BindColumn(6, "Action", "操作行为", null, "varchar(80)", 0, 0, false)]
         public virtual String Action
         {
             get { return _Action; }
@@ -87,7 +100,7 @@ namespace DotNet.CommonEntity
         [DisplayName("操作内容")]
         [Description("操作内容")]
         [DataObjectField(false, false, true, 200)]
-        [BindColumn(6, "Content", "操作内容", null, "varchar(200)", 0, 0, false)]
+        [BindColumn(7, "Content", "操作内容", null, "varchar(200)", 0, 0, false)]
         public virtual String Content
         {
             get { return _Content; }
@@ -99,23 +112,35 @@ namespace DotNet.CommonEntity
         [DisplayName("发生时间")]
         [Description("发生时间")]
         [DataObjectField(false, false, true, 0)]
-        [BindColumn(7, "OccurTime", "发生时间", null, "datetime", 0, 0, false)]
+        [BindColumn(8, "OccurTime", "发生时间", null, "datetime", 0, 0, false)]
         public virtual DateTime OccurTime
         {
             get { return _OccurTime; }
             set { if (OnPropertyChanging("OccurTime", value)) { _OccurTime = value; OnPropertyChanged("OccurTime"); } }
         }
 
-        private SByte _DeletionStatusCode;
-        /// <summary>删除标志</summary>
-        [DisplayName("删除标志")]
-        [Description("删除标志")]
-        [DataObjectField(false, false, true, 3)]
-        [BindColumn(8, "DeletionStatusCode", "删除标志", "0", "tinyint(4)", 3, 0, false)]
-        public virtual SByte DeletionStatusCode
+        private String _IpAddress;
+        /// <summary>IP地址</summary>
+        [DisplayName("IP地址")]
+        [Description("IP地址")]
+        [DataObjectField(false, false, true, 20)]
+        [BindColumn(9, "IpAddress", "IP地址", "", "varchar(20)", 0, 0, false)]
+        public virtual String IpAddress
         {
-            get { return _DeletionStatusCode; }
-            set { if (OnPropertyChanging("DeletionStatusCode", value)) { _DeletionStatusCode = value; OnPropertyChanged("DeletionStatusCode"); } }
+            get { return _IpAddress; }
+            set { if (OnPropertyChanging("IpAddress", value)) { _IpAddress = value; OnPropertyChanged("IpAddress"); } }
+        }
+
+        private String _Mac;
+        /// <summary>Mac地址</summary>
+        [DisplayName("Mac地址")]
+        [Description("Mac地址")]
+        [DataObjectField(false, false, true, 20)]
+        [BindColumn(10, "Mac", "Mac地址", "", "varchar(20)", 0, 0, false)]
+        public virtual String Mac
+        {
+            get { return _Mac; }
+            set { if (OnPropertyChanging("Mac", value)) { _Mac = value; OnPropertyChanged("Mac"); } }
         }
 		#endregion
 
@@ -134,13 +159,15 @@ namespace DotNet.CommonEntity
                 switch (name)
                 {
                     case "Id" : return _Id;
-                    case "SystemDbId" : return _SystemDbId;
+                    case "DbName" : return _DbName;
+                    case "TableName" : return _TableName;
                     case "UserId" : return _UserId;
                     case "Category" : return _Category;
                     case "Action" : return _Action;
                     case "Content" : return _Content;
                     case "OccurTime" : return _OccurTime;
-                    case "DeletionStatusCode" : return _DeletionStatusCode;
+                    case "IpAddress" : return _IpAddress;
+                    case "Mac" : return _Mac;
                     default: return base[name];
                 }
             }
@@ -149,13 +176,15 @@ namespace DotNet.CommonEntity
                 switch (name)
                 {
                     case "Id" : _Id = Convert.ToInt32(value); break;
-                    case "SystemDbId" : _SystemDbId = Convert.ToInt32(value); break;
+                    case "DbName" : _DbName = Convert.ToString(value); break;
+                    case "TableName" : _TableName = Convert.ToString(value); break;
                     case "UserId" : _UserId = Convert.ToInt32(value); break;
                     case "Category" : _Category = Convert.ToString(value); break;
                     case "Action" : _Action = Convert.ToString(value); break;
                     case "Content" : _Content = Convert.ToString(value); break;
                     case "OccurTime" : _OccurTime = Convert.ToDateTime(value); break;
-                    case "DeletionStatusCode" : _DeletionStatusCode = Convert.ToSByte(value); break;
+                    case "IpAddress" : _IpAddress = Convert.ToString(value); break;
+                    case "Mac" : _Mac = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -169,8 +198,11 @@ namespace DotNet.CommonEntity
             ///<summary>编号</summary>
             public static readonly Field Id = FindByName("Id");
 
-            ///<summary>表编号</summary>
-            public static readonly Field SystemDbId = FindByName("SystemDbId");
+            ///<summary>数据库名称</summary>
+            public static readonly Field DbName = FindByName("DbName");
+
+            ///<summary>表名称</summary>
+            public static readonly Field TableName = FindByName("TableName");
 
             ///<summary>用户编号</summary>
             public static readonly Field UserId = FindByName("UserId");
@@ -187,8 +219,11 @@ namespace DotNet.CommonEntity
             ///<summary>发生时间</summary>
             public static readonly Field OccurTime = FindByName("OccurTime");
 
-            ///<summary>删除标志</summary>
-            public static readonly Field DeletionStatusCode = FindByName("DeletionStatusCode");
+            ///<summary>IP地址</summary>
+            public static readonly Field IpAddress = FindByName("IpAddress");
+
+            ///<summary>Mac地址</summary>
+            public static readonly Field Mac = FindByName("Mac");
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
@@ -202,8 +237,11 @@ namespace DotNet.CommonEntity
         /// <summary>编号</summary>
         Int32 Id { get; set; }
 
-        /// <summary>表编号</summary>
-        Int32 SystemDbId { get; set; }
+        /// <summary>数据库名称</summary>
+        String DbName { get; set; }
+
+        /// <summary>表名称</summary>
+        String TableName { get; set; }
 
         /// <summary>用户编号</summary>
         Int32 UserId { get; set; }
@@ -220,14 +258,15 @@ namespace DotNet.CommonEntity
         /// <summary>发生时间</summary>
         DateTime OccurTime { get; set; }
 
-        /// <summary>删除标志</summary>
-        SByte DeletionStatusCode { get; set; }
+        /// <summary>IP地址</summary>
+        String IpAddress { get; set; }
+
+        /// <summary>Mac地址</summary>
+        String Mac { get; set; }
         #endregion
 
         #region 获取/设置 字段值
-        /// <summary>
-        /// 获取/设置 字段值。
-        /// </summary>
+        /// <summary>获取/设置 字段值。</summary>
         /// <param name="name">字段名</param>
         /// <returns></returns>
         Object this[String name] { get; set; }
