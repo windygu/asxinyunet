@@ -28,7 +28,10 @@ namespace ResourceManage
             Stopwatch sw = new Stopwatch();
             sw.Reset();
             sw.Start();
-            InitSystemData.InitAllData();
+            //InitSystemData.InitAllData();
+            Role a = new Role() { RoleName = "超级管理员", Category = "管理员", SortCode = 1, IsEnable = 1, Description = "系统内置" };
+                        
+            Console.WriteLine(a.Id);
             sw.Stop();
 
             Console.WriteLine("完成，耗时{0}",sw.Elapsed.ToString ());
