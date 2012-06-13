@@ -10,9 +10,7 @@ using XCode.Configuration;
 
 namespace DotNet.CommonEntity
 {
-    /// <summary>菜单表</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit )]
-    public class Menu : Menu<Menu> { }
+  
     
     /// <summary>菜单表</summary>
     public partial class Menu<TEntity> : EntityTree<TEntity> where TEntity : Menu<TEntity>, new()

@@ -9,10 +9,7 @@ using XCode.Configuration;
 
 namespace DotNet.CommonEntity
 {
-    /// <summary>类别信息</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit)]
-    public class Category : Category<Category> { }
-    
+   
     /// <summary>类别信息</summary>
     public partial class Category<TEntity> : EntityTree<TEntity> where TEntity : Category<TEntity>, new()
     {

@@ -10,10 +10,6 @@ using XCode.Configuration;
 namespace DotNet.CommonEntity
 {
     /// <summary>角色权限表</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit)]
-    public class RolePermission : RolePermission<RolePermission> { }
-    
-    /// <summary>角色权限表</summary>
     public partial class RolePermission<TEntity> : Entity<TEntity> where TEntity : RolePermission<TEntity>, new()
     {
         #region 对象操作

@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using ResouceEntity;
 using NewLife.Log;
+using System.Diagnostics;
 using NewLife.Reflection;
 using System.Web;
 using XCode;
@@ -24,8 +25,13 @@ namespace ResourceManage
             //var t = Menu.FindAll();
             //Role r = new Role();
             //EntityList<Role> list = Role.FindAll();
-            CommonEntityHelper.InitData();
-            Console.WriteLine("OK!");
+            Stopwatch sw = new Stopwatch();
+            sw.Reset();
+            sw.Start();
+            InitSystemData.InitAllData();
+            sw.Stop();
+
+            Console.WriteLine("完成，耗时{0}",sw.Elapsed.ToString ());
             Console.ReadKey();
         }
     }

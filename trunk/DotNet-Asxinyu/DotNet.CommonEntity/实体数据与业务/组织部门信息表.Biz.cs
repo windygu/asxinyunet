@@ -9,10 +9,7 @@ using XCode.Configuration;
 
 namespace DotNet.CommonEntity
 {
-    /// <summary>组织部门信息表</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit)]
-    public class Organize : Organize<Organize> { }
-    
+  
     /// <summary>组织部门信息表</summary>
     public partial class Organize<TEntity> : EntityTree<TEntity> where TEntity : Organize<TEntity>, new()
     {

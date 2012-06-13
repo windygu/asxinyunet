@@ -9,10 +9,7 @@ using XCode.Configuration;
 
 namespace DotNet.CommonEntity
 {
-    /// <summary>用户角色表</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit)]
-    public class UserRole : UserRole<UserRole> { }
-    
+   
     /// <summary>用户角色表</summary>
     public partial class UserRole<TEntity> : Entity<TEntity> where TEntity : UserRole<TEntity>, new()
     {

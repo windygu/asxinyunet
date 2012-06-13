@@ -30,7 +30,7 @@ namespace DotNet.CommonEntity
             new Organize<Organize> { ParentId = 0, OrganizeCode = "ZB-12-01", ShortName = "公司总部", FullName = "**科技有限公司", Category = "有限责任公司", SortCode = 1 }.Insert();
             new Organize<Organize> { ParentId = 1, OrganizeCode = "ZB-12-0101", ShortName = "浙江分公司1", FullName = "浙江**科技有限公司", Category = "有限责任公司", SortCode = 2 }.Insert();
             new Organize<Organize> { ParentId = 2, OrganizeCode = "ZB-12-010101", ShortName = "公司高层", FullName = "董事会", Category = "公司部门", SortCode = 5 }.Insert();
-            new Organize<Organize> { ParentId = 2, OrganizeCode = "ZB-12-010102", ShortName = "生产部", FullName = "生产部", Category = "司部门", SortCode = 7 }.Insert();
+            new Organize<Organize> { ParentId = 2, OrganizeCode = "ZB-12-010102", ShortName = "生产部", FullName = "生产部", Category = "公司部门", SortCode = 7 }.Insert();
             new Organize<Organize> { ParentId = 2, OrganizeCode = "ZB-12-010103", ShortName = "技术部", FullName = "技术部", Category = "公司部门", SortCode = 9 }.Insert();
             new Organize<Organize> { ParentId = 2, OrganizeCode = "ZB-12-010104", ShortName = "行政部", FullName = "行政部", Category = "公司部门", SortCode = 11 }.Insert();
             new Organize<Organize> { ParentId = 2, OrganizeCode = "ZB-12-010105", ShortName = "财务部", FullName = "董事会", Category = "财务部", SortCode = 5 }.Insert();
