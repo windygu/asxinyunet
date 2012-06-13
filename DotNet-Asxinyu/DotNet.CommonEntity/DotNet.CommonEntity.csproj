@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonEntityHelper.cs" />
+    <Compile Include="InitSystemData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="实体数据与业务\组织部门信息表.ct.cs">
       <DependentUpon>组织部门信息表.cs</DependentUpon>

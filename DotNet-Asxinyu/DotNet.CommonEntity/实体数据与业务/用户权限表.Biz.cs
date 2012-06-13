@@ -9,9 +9,6 @@ using XCode.Configuration;
 
 namespace DotNet.CommonEntity
 {
-    /// <summary>用户权限表</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit)]
-    public class UserPermission : UserPermission<UserPermission> { }
     
     /// <summary>用户权限表</summary>
     public partial class UserPermission<TEntity> : Entity<TEntity> where TEntity : UserPermission<TEntity>, new()

@@ -8,11 +8,7 @@ using XCode;
 using XCode.Configuration;
 
 namespace DotNet.CommonEntity
-{
-    /// <summary>角色表</summary>
-    [ModelCheckMode(ModelCheckModes.CheckAllTablesWhenInit)]
-    public class Role : Role<Role> { }
-    
+{   
     /// <summary>角色表</summary>
     public partial class Role<TEntity> : Entity<TEntity> where TEntity : Role<TEntity>, new()
     {
