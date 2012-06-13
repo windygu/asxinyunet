@@ -64,14 +64,7 @@ namespace DotNet.CommonEntity
     /// 封装一些常用的实体类的方法，比如初始化数据等
     /// </summary>
     public class CommonEntityHelper
-    {
-        /// <summary>
-        /// 初始化实体类的所有数据
-        /// </summary>
-        public static void InitData()
-        {
-            //var a = Role.FindAll();
-            var b = Organize.FindAll();
-        }       
+    {   
+        //实现权限的各类接口供外部调用
     }
 }
