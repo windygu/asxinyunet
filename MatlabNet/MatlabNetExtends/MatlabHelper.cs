@@ -20,38 +20,26 @@ namespace MathWorks.MATLAB.NET.Extends
 {
     /// <summary>
     /// 注意此类方法下的所有方法名，均以Mh_开头，便于区分和使用
+    /// 
+    /// TODO:将Matlab中的内置函数名做成枚举类型
     /// </summary>
     public static class MatlabHelper
     {
         /// <summary>
         /// 将MWNumericArray类型的数组转换为.NET下的数组
-        /// 1.如果是1*N，则转换为单一数组，如果是M*N ，则转换为多维数组
-        /// 2.暂时只支持常见的 整形,长整形，双精度型，单精度（后续继续支持 布尔型，字符串）
-        /// 3.
+        /// 不需要任何方法，直接进行转换即可
+        /// 比如(double[,])mw.ToArray(MWArrayComponent.Real);
         /// </summary>
         /// <param name="mw">MWNumericArray数组</param>
-        public static T[] Mh_ConvertToArray<T>(this MWNumericArray mw)
+        static void Mh_ConvertToArray<T>(this MWNumericArray mw)
         {
             if ((mw.Dimensions[0] == 1) || (mw.Dimensions[1] == 1))
-            {
-                ArrayList al = new ArrayList(mw.Dimensions[0] * mw.Dimensions[1]);
-                al.AddRange(mw.ToString().Split(' '));
-                return (T[])al.ToArray(typeof(T));
+            {               
+                var t = (T[])mw.ToArray(MWArrayComponent.Real );
             }
-            else
+            else //多维情况
             {
-                object[][] res = new object[mw.Dimensions[0]][];
-                ArrayList temp = new ArrayList();
-                for (int i = 0; i <= res.GetLength (1); i++)
-                {
-                    //temp.Clear();
-                    //temp.AddRange (
-                    //for (int j = 0; j <mw.Dimensions [1] ; j++)
-                    //{
-                    //    temp.a
-                    //}
-                }
-                return (T[])new object();
+                var t = (T[,])mw.ToArray(MWArrayComponent.Real);
             }
         }
     }
