@@ -37,18 +37,17 @@ namespace Demo_2
 	{
 		public static void Main(string[] args)
 		{
-            MWNumericArray a = new double[] { 1,2,3,4,5,6};
-            MWArray x1 = (MWNumericArray)(new double[]{ 2.3, 1.6, 5.6, 7.8, 0.6, 6.3 });
-            MWNumericArray x = new MWNumericArray(2, 3, new double[] { 2.3, 1.6, 5.6, 7.8, 0.6, 6.3 });
-            //double[] y = new double []{2.3,1.6,5.6,7.8,0.6,6.3};
-            MWNumericArray t = (MWNumericArray)TestDemo.Mcr.EvaluateFunction("sort", x);
-            Array k = x.ToArray();            
-            foreach (var item in k )
-            {
-                Console.WriteLine (item.GetType ().ToString ()) ;
-            }
+            int[,] a = new int[1, 3] { { 1, 2, 3 } };
+            Array b = a;
+            int[] k = (int[])b;
+            //MWNumericArray a = new double[] { 1, 2, 3, 4, 5, 6 };
+            //MWArray x1 = (MWNumericArray)(new double[] { 2.3, 1.6, 5.6, 7.8, 0.6, 6.3 });
+            //MWNumericArray x = new MWNumericArray(2, 3, new double[] { 2.3, 1.6, 5.6, 7.8, 0.6, 6.3 });
+            ////double[] y = new double []{2.3,1.6,5.6,7.8,0.6,6.3};
+            //MWNumericArray t = (MWNumericArray)TestDemo.Mcr.EvaluateFunction("sort", x);//直接调用函数
+            //Array k = x.ToArray();        
             //double[,] a = (double[,]) t.ToArray (MWArrayComponent.Real);			
-		//	Array b =(double[])((MWNumericArray)t).ToVector (MWArrayComponent.Real);//不能转换的原因			
+		    //Array b =(double[])((MWNumericArray)t).ToVector (MWArrayComponent.Real);//不能转换的原因			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
