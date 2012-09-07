@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBE7FB21-9A13-4236-A63B-A41275BE7361}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>MWArray</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>bin\Debug\MWArray.XML</DocumentationFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\MWArray.XML</DocumentationFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWArray.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWIndexArray.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWLogicalArray.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWMCR.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWMarshal.cs" />
+    <Compile Include="MATLAB\NET\Utility\PlatformInfo.cs" />
+    <Compile Include="MATLAB\NET\Utility\NativeGCAttribute.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWMCRVersion.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWCellArray.cs" />
+    <Compile Include="MATLAB\NET\Arrays\native\MWArrayType.cs" />
+    <Compile Include="MATLAB\NET\Arrays\native\MWArray.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWSafeHandle.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWObjectArray.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWCTFStreamReader.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWArrayComponent.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWArrayComplexity.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWNumericType.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWNumericArray.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWArrayType.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWStructArray.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWResources.cs" />
+    <Compile Include="MATLAB\NET\Arrays\native\MWStructArray.cs" />
+    <Compile Include="MATLAB\NET\Utility\Images.cs" />
+    <Compile Include="MATLAB\NET\Arrays\MWCharArray.cs" />
+    <Compile Include="MATLAB\NET\Utility\JaggedArray.cs" />
+    <Compile Include="MATLAB\NET\Arrays\native\MWCellArray.cs" />
+    <Compile Include="MATLAB\NET\Utility\NOJVMAttribute.cs" />
+    <Compile Include="MATLAB\NET\Utility\LOGFILEAttribute.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWMCROptionAttribute.cs" />
+    <Compile Include="MATLAB\NET\Utility\MCRVersion.cs" />
+    <Compile Include="MATLAB\NET\Utility\MATLABSignature.cs" />
+    <Compile Include="MATLAB\NET\Utility\MWException.cs" />
+    <EmbeddedResource Include="MWResources" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <RootNamespace>MathWorks</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+</Project>
