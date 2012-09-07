@@ -30,6 +30,10 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MWArray.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,9 +60,9 @@
     <None Include="MWArray.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\工具\MWArray\MWArray.csproj">
-      <Project>{FBE7FB21-9A13-4236-A63B-A41275BE7361}</Project>
-      <Name>MWArray</Name>
+    <ProjectReference Include="..\MatlabNetExtends\MatlabNetExtends.csproj">
+      <Project>{23A87875-A176-4910-962C-C501246F19A9}</Project>
+      <Name>MatlabNetExtends</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />

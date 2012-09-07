@@ -33,8 +33,9 @@
     <Reference Include="Demo1">
       <HintPath>Demo1.dll</HintPath>
     </Reference>
-    <Reference Include="MWArray2">
-      <HintPath>.\MWArray2.dll</HintPath>
+    <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
