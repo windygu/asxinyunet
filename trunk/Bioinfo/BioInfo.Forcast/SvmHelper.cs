@@ -24,14 +24,14 @@ namespace BioInfo.Forcast
             libSVM_Problem Problem = libSVM_Problem.Load(trainFileName );
             //配置参数
             libSVM_Parameter Parameter = new libSVM_Parameter();
-            Parameter.kernel_type = KERNEL_TYPE.SIGMOID;//3
+            Parameter.kernel_type = KERNEL_TYPE.RBF ;//3 SIGMOID
             Parameter.gamma = 0.01;
             Parameter.C = 8;
             Parameter.probability = true ;
             //训练模型,可以动态保存，下次直接使用
             svm.Train(Problem, Parameter);            
             libSVM_Problem test = libSVM_Problem.Load(testFileName);            
-            //double result = svm.Predict(test.samples[0]);
+            //double result = svm.Predict(test.samples[0]);           
             var result = test.samples.Select(n => svm.Predict(n)).ToList();
         }
         #endregion
