@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Bioinfo.Entites;
 
 namespace BioInfo.Forcast
 {
@@ -11,7 +12,9 @@ namespace BioInfo.Forcast
         static void Main(string[] args)
         {
             //TestKDH();
-            SvmHelper.Test("train.txt", "test.txt");
+            //EntityHelper.InitialDb();
+            //SvmHelper.Test("train.txt", "test.txt");
+            Console.WriteLine(Setting.FindById(1).Value);
             Console.ReadLine();
         }
 
