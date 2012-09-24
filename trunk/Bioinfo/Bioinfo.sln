@@ -31,6 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BioinfoWeb", "BioinfoWeb", 
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BioInfoWeb", "BioInfoWeb\", "{17FA589B-493F-4D10-A20B-BBE7B012245B}"
 	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "Svn"
+		SccAuxPath = "Svn"
+		SccLocalPath = "Svn"
+		SccProvider = "SubversionScc"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/BioInfoWeb"
 		Debug.AspNetCompiler.PhysicalPath = "BioInfoWeb\"
