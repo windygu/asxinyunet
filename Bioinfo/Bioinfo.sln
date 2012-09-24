@@ -50,7 +50,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BioInfoWeb", "BioInfoWeb\",
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "6582"
+		VWDPort = "5323"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bioinfo.Entites", "Bioinfo.Entites\Bioinfo.Entites.csproj", "{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}"
