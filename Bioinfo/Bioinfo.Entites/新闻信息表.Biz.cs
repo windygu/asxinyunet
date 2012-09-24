@@ -9,8 +9,8 @@ using XCode.Configuration;
 
 namespace Bioinfo.Entites
 {
-    /// <summary>設置</summary>
-    public partial class Setting : Entity<Setting>
+    /// <summary>新闻信息表</summary>
+    public partial class News : Entity<News>
     {
         #region 对象操作﻿
 
@@ -57,9 +57,9 @@ namespace Bioinfo.Entites
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}設置数据……", typeof(Setting).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}新闻信息表数据……", typeof(News).Name);
 
-        //    var entity = new Setting();
+        //    var entity = new News();
         //    entity.Name = "admin";
         //    entity.Password = DataHelper.Hash("admin");
         //    entity.DisplayName = "管理员";
@@ -67,7 +67,7 @@ namespace Bioinfo.Entites
         //    entity.IsEnable = true;
         //    entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}設置数据！", typeof(Setting).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}新闻信息表数据！", typeof(News).Name);
         //}
         #endregion
 
@@ -79,7 +79,7 @@ namespace Bioinfo.Entites
         /// <param name="id">编号</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static Setting FindById(Int32 id)
+        public static News FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
                 return Find(_.Id, id);
@@ -87,19 +87,6 @@ namespace Bioinfo.Entites
                 return Meta.Cache.Entities.Find(_.Id, id);
             // 单对象缓存
             //return Meta.SingleCache[id];
-        }
-
-        /// <summary>根据名称、编码类型查找</summary>
-        /// <param name="name">名称</param>
-        /// <param name="codetype">编码类型</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<Setting> FindAllByNameAndCodeType(String name, Int32 codetype)
-        {
-            if (Meta.Count >= 1000)
-                return FindAll(new String[] { _.Name, _.CodeType }, new Object[] { name, codetype });
-            else // 实体缓存
-                return Meta.Cache.Entities.FindAll(e => e.Name == name && e.CodeType == codetype);
         }
         #endregion
 
@@ -115,7 +102,7 @@ namespace Bioinfo.Entites
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>实体集</returns>
         //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static EntityList<Setting> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //public static EntityList<News> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}

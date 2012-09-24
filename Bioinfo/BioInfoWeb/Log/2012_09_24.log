@@ -1,0 +1,87 @@
+﻿#Software: .
+#ProcessID: 5780
+#AppDomain: 1897f84e-1-129929205114710646
+#BaseDirectory: C:\DevelopMent\Bioinfo\BioInfoWeb\
+#Date: 2012-09-24
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+08:35:12.594 4 W - NewLife.Core v3.8.2012.0803 Build 2012-09-21 14:26:00
+08:35:12.609 4 W - NewLife.XCode v8.8.2012.0828 Build 2012-09-21 14:26:08
+08:35:12.609 4 W - 开始初始化实体类Setting
+08:35:12.609 4 W - 完成初始化实体类Setting
+08:35:12.906 8 Y - 为NewLife.CommonEntity.IManageProvider配置注册YWSManageProvider，标识Identity=，优先级Priority=5！
+08:35:13.795 4 W - 检查实体NewLife.CommonEntity.Setting的数据表架构，模式：CheckTableWhenFirstUse，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll(String[] names,Object[] values)<-.FindAll(String name,Object value)<-Setting<>.get_Childs()<-.FindByName(String name)<-.Ensure(String name,Setting<>.T defval,String displayName)<-SysSetting.get_Sys()
+08:35:13.795 4 W - 开始同步检查表[Setting/SQLite]的数据表架构……
+08:35:13.889 8 Y - 开始初始化实体类Admin
+08:35:13.889 8 Y - 完成初始化实体类Admin
+08:35:13.904 8 Y - 检查实体NewLife.YWS.Entities.Admin的数据表架构，模式：CheckAllTablesWhenInit，调用栈：Entity<>.Meta.CheckModel()<-.get_LongCount()<-.get_Count()<-Entity<>.FindCount(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindCount()<-Entity<>.EntityOperate.FindCount()<-QueueUserWorkItemCallback.WaitCallback_Context(Object state)<-ExecutionContext.runTryCode(Object userData)
+08:35:13.904 8 Y - 集中初始化表架构时没赶上，现在补上！
+08:35:13.904 8 Y - 开始同步检查表[Admin/SQLite]的数据表架构……
+08:35:13.982 8 Y - 检查表[Admin/SQLite]的数据表架构耗时00:00:00.0775288
+08:35:13.982 4 W - 检查表[Setting/SQLite]的数据表架构耗时00:00:00.1743446
+08:35:13.982 4 W - 初始化NewLife.CommonEntity.Setting数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll(String[] names,Object[] values)<-.FindAll(String name,Object value)<-Setting<>.get_Childs()<-.FindByName(String name)<-.Ensure(String name,Setting<>.T defval,String displayName)<-SysSetting.get_Sys()<-..cctor()
+08:35:13.982 8 Y - 初始化NewLife.YWS.Entities.Admin数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.get_LongCount()<-.get_Count()<-Entity<>.FindCount(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindCount()<-Entity<>.EntityOperate.FindCount()<-QueueUserWorkItemCallback.WaitCallback_Context(Object state)<-ExecutionContext.runTryCode(Object userData)
+08:35:13.982 4 W - 开始检查连接[Common/SQLite]的数据库架构……
+08:35:13.982 8 Y - 一级缓存：关闭缓存
+08:35:14.060 4 W - [Common]的所有实体类（18个）：SimpleTree,Category,UserProfile,User,Sequence,Administrator,Menu,Role,RoleMenu,Log,Area,GuidCategory,Setting,Simple,Attachment,Statistics,MyRole,Admin
+08:35:14.060 4 W - [Common]需要检查架构的实体类（2个）：MyRole,Admin
+08:35:14.060 4 W - Common待检查表架构的实体个数：2
+08:35:14.060 4 W - 检查连接[Common/SQLite]的数据库架构耗时00:00:00.0744652
+08:35:15.854 4 W - 更新实体缓存（第1次）：NewLife.YWS.Entities.Admin 原因：第一次 Administrator<>.FindByName(String name)<-.Login(String username,String password,Int32 hashTimes)
+08:35:15.854 4 W - 完成更新缓存（第1次）：NewLife.YWS.Entities.Admin
+08:35:15.854 4 W - 清空实体缓存：NewLife.YWS.Entities.Admin 原因：修改数据后提交事务
+08:35:15.870 4 W - 开始初始化实体类Log
+08:35:15.870 4 W - 完成初始化实体类Log
+08:35:15.885 4 W - 检查实体NewLife.CommonEntity.Log的数据表架构，模式：CheckTableWhenFirstUse，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.InsertAndGetIdentity(String sql)<-Entity<>.EntityOperate.InsertAndGetIdentity(String sql)<-EntityPersistence.Insert(IEntity entity)<-Entity<>.OnInsert()<-.DoAction(Func<Int32> func,Nullable<Boolean> isnew)<-.Insert()<-.Save()<-Administrator<>.WriteLog(Type type,String action,String remark)
+08:35:15.885 4 W - 开始同步检查表[Log/SQLite]的数据表架构……
+08:35:15.885 4 W - 检查表[Log/SQLite]的数据表架构耗时00:00:00.0011423
+08:35:15.885 4 W - 初始化NewLife.CommonEntity.Log数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.InsertAndGetIdentity(String sql)<-Entity<>.EntityOperate.InsertAndGetIdentity(String sql)<-EntityPersistence.Insert(IEntity entity)<-Entity<>.OnInsert()<-.DoAction(Func<Int32> func,Nullable<Boolean> isnew)<-.Insert()<-.Save()<-Administrator<>.WriteLog(Type type,String action,String remark)<-.WriteLog(String action,String remark)
+08:35:15.919 8 W - 开始初始化实体类Menu
+08:35:15.919 8 W - 完成初始化实体类Menu
+08:35:15.939 8 W - 开始初始化实体类MyRole
+08:35:15.939 8 W - 完成初始化实体类MyRole
+08:35:15.939 8 W - 更新实体缓存（第1次）：NewLife.YWS.Entities.MyRole 原因：第一次 Role<>.FindByID(Int32 id)<-
+08:35:15.939 8 W - 检查实体NewLife.YWS.Entities.MyRole的数据表架构，模式：CheckAllTablesWhenInit，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)<-EntityCache<>.FillWaper(Object state)<-.get_Entities()<-Role<>.FindByID(Int32 id)
+08:35:15.939 8 W - 初始化NewLife.YWS.Entities.MyRole数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)<-EntityCache<>.FillWaper(Object state)<-.get_Entities()<-Role<>.FindByID(Int32 id)<-
+08:35:15.949 8 W - 检查实体NewLife.CommonEntity.RoleMenu的数据表架构，模式：CheckTableWhenFirstUse，调用栈：Entity<>.Meta.CheckModel()<-.get_LongCount()<-.get_Count()<-Role<,,>.InitData()<-Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)
+08:35:15.949 8 W - 开始同步检查表[RoleMenu/SQLite]的数据表架构……
+08:35:15.949 8 W - 检查表[RoleMenu/SQLite]的数据表架构耗时00:00:00.0005229
+08:35:15.959 8 W - 初始化NewLife.CommonEntity.RoleMenu数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.get_LongCount()<-.get_Count()<-Role<,,>.InitData()<-Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)
+08:35:15.959 8 W - 开始初始化实体类RoleMenu
+08:35:15.959 8 W - 完成初始化实体类RoleMenu
+08:35:15.959 8 W - 如果某一个菜单对应的RoleMenu（角色菜单对应关系）为空或者只有一个，则授权第一个角色访问所有菜单！
+08:35:15.969 8 W - 更新实体缓存（第1次）：NewLife.CommonEntity.Menu 原因：第一次 EntityTree<,>.FindAllByParent(EntityTree<,>.TKey parentKey)<-.FindChilds()
+08:35:15.969 8 W - 检查实体NewLife.CommonEntity.Menu的数据表架构，模式：CheckTableWhenFirstUse，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)<-EntityCache<>.FillWaper(Object state)<-.get_Entities()<-EntityTree<,>.FindAllByParent(EntityTree<,>.TKey parentKey)
+08:35:15.969 8 W - 开始同步检查表[Menu/SQLite]的数据表架构……
+08:35:15.969 8 W - 检查表[Menu/SQLite]的数据表架构耗时00:00:00.0007103
+08:35:15.969 8 W - 初始化NewLife.CommonEntity.Menu数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)<-EntityCache<>.FillWaper(Object state)<-.get_Entities()<-EntityTree<,>.FindAllByParent(EntityTree<,>.TKey parentKey)<-.FindChilds()
+08:35:15.969 8 W - 完成更新缓存（第1次）：NewLife.CommonEntity.Menu
+08:35:15.989 8 W - 更新实体缓存（第1次）：NewLife.CommonEntity.RoleMenu 原因：第一次 RoleMenu<>.CheckNonePerssion(Int32 menuID)<-Role<,,>.InitData()
+08:35:15.989 8 W - 完成更新缓存（第1次）：NewLife.CommonEntity.RoleMenu
+08:35:15.999 8 W - 完成更新缓存（第1次）：NewLife.YWS.Entities.MyRole
+08:35:18.991 4 W - 开始初始化实体类Customer
+08:35:18.991 4 W - 完成初始化实体类Customer
+08:35:19.007 4 W - 检查实体NewLife.YWS.Entities.Customer的数据表架构，模式：CheckAllTablesWhenInit，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.Search(String key,String orderClause,Int32 startRowIndex,Int32 maximumRows)<-RuntimeMethodHandle._InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,SignatureStruct& sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-.InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,Signature sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-RuntimeMethodInfo.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture,Boolean skipVisibilityChecks)<-.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture)<-ObjectDataSourceView.InvokeMethod(ObjectDataSourceView.ObjectDataSourceMethod method,Boolean disposeInstance,Object& instance)
+08:35:19.007 4 W - 集中初始化表架构时没赶上，现在补上！
+08:35:19.007 4 W - 开始同步检查表[Customer/SQLite]的数据表架构……
+08:35:19.147 4 W - 检查表[Customer/SQLite]的数据表架构耗时00:00:00.1379965
+08:35:19.147 4 W - 初始化NewLife.YWS.Entities.Customer数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.Search(String key,String orderClause,Int32 startRowIndex,Int32 maximumRows)<-RuntimeMethodHandle._InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,SignatureStruct& sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-.InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,Signature sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-RuntimeMethodInfo.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture,Boolean skipVisibilityChecks)<-.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture)<-ObjectDataSourceView.InvokeMethod(ObjectDataSourceView.ObjectDataSourceMethod method,Boolean disposeInstance,Object& instance)<-.ExecuteSelect(DataSourceSelectArguments arguments)
+08:35:19.147 4 W - 开始检查连接[YWS/SQLite]的数据库架构……
+08:35:19.147 4 W - [YWS]的所有实体类（6个）：Feedliquor,Customer,CustomerType,Maintenance,Machine,Record
+08:35:19.147 4 W - [YWS]需要检查架构的实体类（6个）：Feedliquor,Customer,CustomerType,Maintenance,Machine,Record
+08:35:19.147 4 W - YWS待检查表架构的实体个数：6
+08:35:19.163 4 W - 检查连接[YWS/SQLite]的数据库架构耗时00:00:00.0098894
+08:35:19.959 8 W - 更新实体缓存（第1次）：NewLife.YWS.Entities.CustomerType 原因：第一次 EntityTree<,>.FindByKeyWithCache(EntityTree<,>.TKey key)<-.FindAllChildsNoParent(EntityTree<,>.TKey parentKey)
+08:35:19.959 8 W - 开始初始化实体类CustomerType
+08:35:19.959 8 W - 完成初始化实体类CustomerType
+08:35:19.959 8 W - 检查实体NewLife.YWS.Entities.CustomerType的数据表架构，模式：CheckAllTablesWhenInit，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)<-EntityCache<>.FillWaper(Object state)<-.get_Entities()<-EntityTree<,>.FindByKeyWithCache(EntityTree<,>.TKey key)
+08:35:19.959 8 W - 初始化NewLife.YWS.Entities.CustomerType数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-.FindAll()<-CacheBase<>.InvokeFill(Func callback)<-EntityCache<>.FillWaper(Object state)<-.get_Entities()<-EntityTree<,>.FindByKeyWithCache(EntityTree<,>.TKey key)<-.FindAllChildsNoParent(EntityTree<,>.TKey parentKey)
+08:35:19.974 8 W - 完成更新缓存（第1次）：NewLife.YWS.Entities.CustomerType
+08:35:19.974 8 W - 更新实体缓存（第2次）：NewLife.YWS.Entities.CustomerType 原因：无缓存数据 EntityTree<,>.FindAllByParent(EntityTree<,>.TKey parentKey)<-.FindChilds()
+08:35:19.974 8 W - 完成更新缓存（第2次）：NewLife.YWS.Entities.CustomerType
+08:35:19.974 8 W - 更新实体缓存（第3次）：NewLife.YWS.Entities.CustomerType 原因：无缓存数据 EntityTree<,>.FindAllNoParent()<-.FindAllByParent(EntityTree<,>.TKey parentKey)
+08:35:19.974 8 W - 完成更新缓存（第3次）：NewLife.YWS.Entities.CustomerType
+08:35:22.596 12 W - 开始初始化实体类Feedliquor
+08:35:22.596 12 W - 完成初始化实体类Feedliquor
+08:35:22.596 12 W - 检查实体NewLife.YWS.Entities.Feedliquor的数据表架构，模式：CheckAllTablesWhenInit，调用栈：Entity<>.Meta.CheckModel()<-.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-Feedliquor.Search(String name,String cementGroup,String orderClause,Int32 startRowIndex,Int32 maximumRows)<-RuntimeMethodHandle._InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,SignatureStruct& sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-.InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,Signature sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-RuntimeMethodInfo.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture,Boolean skipVisibilityChecks)<-.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture)<-ObjectDataSourceView.InvokeMethod(ObjectDataSourceView.ObjectDataSourceMethod method,Boolean disposeInstance,Object& instance)
+08:35:22.596 12 W - 初始化NewLife.YWS.Entities.Feedliquor数据，调用栈：Entity<>.Meta.WaitForInitData(Int32 millisecondsTimeout)<-.Query(SelectBuilder builder,Int32 startRowIndex,Int32 maximumRows)<-Entity<>.FindAll(String whereClause,String orderClause,String selects,Int32 startRowIndex,Int32 maximumRows)<-Feedliquor.Search(String name,String cementGroup,String orderClause,Int32 startRowIndex,Int32 maximumRows)<-RuntimeMethodHandle._InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,SignatureStruct& sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-.InvokeMethodFast(IRuntimeMethodInfo method,Object target,Object[] arguments,Signature sig,MethodAttributes methodAttributes,RuntimeType typeOwner)<-RuntimeMethodInfo.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture,Boolean skipVisibilityChecks)<-.Invoke(Object obj,BindingFlags invokeAttr,Binder binder,Object[] parameters,CultureInfo culture)<-ObjectDataSourceView.InvokeMethod(ObjectDataSourceView.ObjectDataSourceMethod method,Boolean disposeInstance,Object& instance)<-.ExecuteSelect(DataSourceSelectArguments arguments)
+08:52:10.003 2 N - 清空单对象缓存：NewLife.CommonEntity.Setting
