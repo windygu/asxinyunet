@@ -16,7 +16,7 @@ namespace Bioinfo.Entites
     [BindIndex("Name", false, "Name,CodeType")]
     [BindIndex("IX_Setting_CategoryId", false, "CategoryId")]
     [BindRelation("CategoryId", false, "Category", "Id")]
-    [BindTable("Setting", Description = "系统设置表", ConnName = "Common", DbType = DatabaseType.MySql)]
+    [BindTable("WebSetting", Description = "系统设置表", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class Setting : ISetting
     {
         #region 属性

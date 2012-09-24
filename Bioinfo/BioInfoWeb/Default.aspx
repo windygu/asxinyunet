@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="false" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head id="Head1" runat="server">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>计算系统生物学平台研究组</title>
 	<meta name="Robots" content="index,follow" />
@@ -22,6 +22,7 @@
 	<![endif]-->
 </head>
 <body>
+	<form id="form1" runat="server">
 	<div id="wrapper">
 		<div id="logo">
 			<h1><a href="Default.aspx">Computational Systems Biology Research Platform</span></a></h1>
@@ -52,11 +53,9 @@
 			
 			<!-- search form -->
 			<div id="search">
-				<form method="post" action="Default.aspx">
 					<input type="text" class="text" name="query" value="Search..." onfocus="this.value='';" onblur="this.value='Search...'" />
 					<input type="submit" class="submit" name="search" value="" />
-				</form>
-			</div>
+				</div>
 			
 			<div class="x"></div>
 			
@@ -87,7 +86,9 @@
 			<!-- main content -->
 			<div id="left">
 				<h1><a href="SubHQ/inner.aspx">So who are we?</a></h1>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+				<p>
+                    <asp:Label ID="lbl_Home_p1" runat="server"></asp:Label>
+                </p>
 				<p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
 				<a href="SubHQ/inner.aspx" class="read-more">Read more</a>
 			</div>
@@ -150,5 +151,6 @@
 	        $("a[rel^='prettyPhoto']").prettyPhoto();
 	    });
 	</script>
+    </form>
 </body>
 </html>

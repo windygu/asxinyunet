@@ -8,13 +8,19 @@ namespace Bioinfo.Entites
 
     public class EntityHelper
     {
+        public static string GetName()
+        {
+            string s = Setting.FindById(1).Value;
+            return s;
+        }
+
         /// <summary>
         /// 初始化数据库
         /// </summary>
         public static void InitialDb()
         {
             Initial_Category();
-            Initial_Setting();
+            //Initial_Setting();
         }
         /// <summary>
         /// 设置类别表
