@@ -90,7 +90,7 @@ namespace libSVMWrapper
         {
             StreamReader sr = new StreamReader(File.Open(_filename, FileMode.Open));
 
-            int nr_samples = 0;            
+            int nr_samples = 0;
 
             samples = null;
             labels = null;
@@ -114,7 +114,7 @@ namespace libSVMWrapper
 
                 string[] comment = line.Split('#');
                 string line_values = comment[0];
-                string[] values = line_values.Split(" \t".ToCharArray());
+                string[] values = line_values.Split("\t".ToCharArray());
 
                 if (values.Length == 0) throw new Exception("no values in line"); 
                 

@@ -30,8 +30,9 @@ namespace BioInfo.Forcast
             Parameter.probability = true ;
             //训练模型,可以动态保存，下次直接使用
             svm.Train(Problem, Parameter);            
-            libSVM_Problem test = libSVM_Problem.Load(testFileName);
-            double result = svm.Predict(test.samples[0]);
+            libSVM_Problem test = libSVM_Problem.Load(testFileName);            
+            //double result = svm.Predict(test.samples[0]);
+            var result = test.samples.Select(n => svm.Predict(n)).ToList();
         }
         #endregion
 
