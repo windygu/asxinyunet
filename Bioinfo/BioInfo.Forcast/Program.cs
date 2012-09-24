@@ -10,7 +10,8 @@ namespace BioInfo.Forcast
     {
         static void Main(string[] args)
         {
-            TestKDH();
+            //TestKDH();
+            SvmHelper.Test("train.txt","test.txt");
             Console.ReadLine();
         }
 
