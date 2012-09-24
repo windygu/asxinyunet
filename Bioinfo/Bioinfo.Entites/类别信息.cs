@@ -15,6 +15,9 @@ namespace Bioinfo.Entites
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("Name", false, "Name")]
     [BindIndex("ParentId", false, "ParentId")]
+    [BindRelation("Id", true, "Messages", "CategoryId")]
+    [BindRelation("Id", true, "News", "CategoryId")]
+    [BindRelation("Id", true, "Setting", "CategoryId")]
     [BindTable("Category", Description = "类别信息", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class Category : ICategory
     {

@@ -14,6 +14,8 @@ namespace Bioinfo.Entites
     [Description("系统设置表")]
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("Name", false, "Name,CodeType")]
+    [BindIndex("IX_Setting_CategoryId", false, "CategoryId")]
+    [BindRelation("CategoryId", false, "Category", "Id")]
     [BindTable("Setting", Description = "系统设置表", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class Setting : ISetting
     {
@@ -54,16 +56,16 @@ namespace Bioinfo.Entites
             set { if (OnPropertyChanging("Value", value)) { _Value = value; OnPropertyChanged("Value"); } }
         }
 
-        private String _Category;
+        private Int32 _CategoryId;
         /// <summary>类别</summary>
         [DisplayName("类别")]
         [Description("类别")]
-        [DataObjectField(false, false, true, 65535)]
-        [BindColumn(4, "Category", "类别", null, "text", 0, 0, false)]
-        public virtual String Category
+        [DataObjectField(false, false, true, 10)]
+        [BindColumn(4, "CategoryId", "类别", null, "int(11)", 10, 0, false)]
+        public virtual Int32 CategoryId
         {
-            get { return _Category; }
-            set { if (OnPropertyChanging("Category", value)) { _Category = value; OnPropertyChanged("Category"); } }
+            get { return _CategoryId; }
+            set { if (OnPropertyChanging("CategoryId", value)) { _CategoryId = value; OnPropertyChanged("CategoryId"); } }
         }
 
         private Int32 _CodeType;
@@ -120,7 +122,7 @@ namespace Bioinfo.Entites
                     case "Id" : return _Id;
                     case "Name" : return _Name;
                     case "Value" : return _Value;
-                    case "Category" : return _Category;
+                    case "CategoryId" : return _CategoryId;
                     case "CodeType" : return _CodeType;
                     case "Sort" : return _Sort;
                     case "Remark" : return _Remark;
@@ -134,7 +136,7 @@ namespace Bioinfo.Entites
                     case "Id" : _Id = Convert.ToInt32(value); break;
                     case "Name" : _Name = Convert.ToString(value); break;
                     case "Value" : _Value = Convert.ToString(value); break;
-                    case "Category" : _Category = Convert.ToString(value); break;
+                    case "CategoryId" : _CategoryId = Convert.ToInt32(value); break;
                     case "CodeType" : _CodeType = Convert.ToInt32(value); break;
                     case "Sort" : _Sort = Convert.ToInt32(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
@@ -158,7 +160,7 @@ namespace Bioinfo.Entites
             public static readonly Field Value = FindByName("Value");
 
             ///<summary>类别</summary>
-            public static readonly Field Category = FindByName("Category");
+            public static readonly Field CategoryId = FindByName("CategoryId");
 
             ///<summary>编码类型</summary>
             public static readonly Field CodeType = FindByName("CodeType");
@@ -188,7 +190,7 @@ namespace Bioinfo.Entites
         String Value { get; set; }
 
         /// <summary>类别</summary>
-        String Category { get; set; }
+        Int32 CategoryId { get; set; }
 
         /// <summary>编码类型</summary>
         Int32 CodeType { get; set; }

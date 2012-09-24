@@ -36,6 +36,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BioInfoWeb", "BioInfoWeb\",
 		SccLocalPath = "Svn"
 		SccProvider = "SubversionScc"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}|Bioinfo.Entites.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/BioInfoWeb"
 		Debug.AspNetCompiler.PhysicalPath = "BioInfoWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\BioInfoWeb\"

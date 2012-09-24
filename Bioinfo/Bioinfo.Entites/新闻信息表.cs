@@ -13,6 +13,8 @@ namespace Bioinfo.Entites
     [DataObject]
     [Description("新闻信息表")]
     [BindIndex("PRIMARY", true, "Id")]
+    [BindIndex("IX_News_CategoryId", false, "CategoryId")]
+    [BindRelation("CategoryId", false, "Category", "Id")]
     [BindTable("News", Description = "新闻信息表", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class News : INews
     {
@@ -29,16 +31,16 @@ namespace Bioinfo.Entites
             set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } }
         }
 
-        private Int32 _TypeId;
-        /// <summary>新闻类别编号</summary>
-        [DisplayName("新闻类别编号")]
-        [Description("新闻类别编号")]
+        private Int32 _CategoryId;
+        /// <summary>类别编号</summary>
+        [DisplayName("类别编号")]
+        [Description("类别编号")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(2, "TypeId", "新闻类别编号", null, "int(11)", 10, 0, false)]
-        public virtual Int32 TypeId
+        [BindColumn(2, "CategoryId", "类别编号", null, "int(11)", 10, 0, false)]
+        public virtual Int32 CategoryId
         {
-            get { return _TypeId; }
-            set { if (OnPropertyChanging("TypeId", value)) { _TypeId = value; OnPropertyChanged("TypeId"); } }
+            get { return _CategoryId; }
+            set { if (OnPropertyChanging("CategoryId", value)) { _CategoryId = value; OnPropertyChanged("CategoryId"); } }
         }
 
         private String _Title;
@@ -189,7 +191,7 @@ namespace Bioinfo.Entites
                 switch (name)
                 {
                     case "Id" : return _Id;
-                    case "TypeId" : return _TypeId;
+                    case "CategoryId" : return _CategoryId;
                     case "Title" : return _Title;
                     case "Author" : return _Author;
                     case "Origin" : return _Origin;
@@ -209,7 +211,7 @@ namespace Bioinfo.Entites
                 switch (name)
                 {
                     case "Id" : _Id = Convert.ToInt32(value); break;
-                    case "TypeId" : _TypeId = Convert.ToInt32(value); break;
+                    case "CategoryId" : _CategoryId = Convert.ToInt32(value); break;
                     case "Title" : _Title = Convert.ToString(value); break;
                     case "Author" : _Author = Convert.ToString(value); break;
                     case "Origin" : _Origin = Convert.ToString(value); break;
@@ -234,8 +236,8 @@ namespace Bioinfo.Entites
             ///<summary>编号</summary>
             public static readonly Field Id = FindByName("Id");
 
-            ///<summary>新闻类别编号</summary>
-            public static readonly Field TypeId = FindByName("TypeId");
+            ///<summary>类别编号</summary>
+            public static readonly Field CategoryId = FindByName("CategoryId");
 
             ///<summary>新闻标题</summary>
             public static readonly Field Title = FindByName("Title");
@@ -282,8 +284,8 @@ namespace Bioinfo.Entites
         /// <summary>编号</summary>
         Int32 Id { get; set; }
 
-        /// <summary>新闻类别编号</summary>
-        Int32 TypeId { get; set; }
+        /// <summary>类别编号</summary>
+        Int32 CategoryId { get; set; }
 
         /// <summary>新闻标题</summary>
         String Title { get; set; }
