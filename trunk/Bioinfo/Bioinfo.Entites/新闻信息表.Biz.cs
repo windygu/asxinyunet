@@ -72,6 +72,27 @@ namespace Bioinfo.Entites
         #endregion
 
         #region 扩展属性﻿
+        [NonSerialized]
+        private Category _Category;
+        /// <summary>该新闻信息表所对应的类别信息</summary>
+        [XmlIgnore]
+        public Category Category
+        {
+            get
+            {
+                if (_Category == null && CategoryId > 0 && !Dirtys.ContainsKey("Category"))
+                {
+                    _Category = Category.FindById(CategoryId);
+                    Dirtys["Category"] = true;
+                }
+                return _Category;
+            }
+            set { _Category = value; }
+        }
+
+        /// <summary>该新闻信息表所对应的类别信息类名称</summary>
+        [XmlIgnore]
+        public String CategoryName { get { return Category != null ? Category.Name : null; } }
         #endregion
 
         #region 扩展查询﻿
@@ -87,6 +108,18 @@ namespace Bioinfo.Entites
                 return Meta.Cache.Entities.Find(_.Id, id);
             // 单对象缓存
             //return Meta.SingleCache[id];
+        }
+
+        /// <summary>根据类别编号查找</summary>
+        /// <param name="categoryid">类别编号</param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static EntityList<News> FindAllByCategoryId(Int32 categoryid)
+        {
+            if (Meta.Count >= 1000)
+                return FindAll(_.CategoryId, categoryid);
+            else // 实体缓存
+                return Meta.Cache.Entities.FindAll(_.CategoryId, categoryid);
         }
         #endregion
 

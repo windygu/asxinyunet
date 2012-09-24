@@ -45,6 +45,16 @@ namespace Bioinfo.Entites
         //    if ((isNew || Dirtys[_.Name]) && Exist(_.Name)) throw new ArgumentException(_.Name, "值为" + Name + "的" + _.Name.DisplayName + "已存在！");
         //}
 
+        /// <summary>已重载。删除关联数据</summary>
+        /// <returns></returns>
+        protected override int OnDelete()
+        {
+			if (Messagess != null) Messagess.Delete();
+			if (Newss != null) Newss.Delete();
+			if (Settings != null) Settings.Delete();
+
+            return base.OnDelete();
+        }
 
         ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
         //[EditorBrowsable(EditorBrowsableState.Never)]
@@ -72,6 +82,59 @@ namespace Bioinfo.Entites
         #endregion
 
         #region 扩展属性﻿
+        [NonSerialized]
+		private EntityList<Messages> _Messagess;
+		/// <summary>该类别信息所拥有的消息集合</summary>
+		[XmlIgnore]
+		public EntityList<Messages> Messagess
+		{
+			get
+			{
+				if (_Messagess == null && Id > 0 && !Dirtys.ContainsKey("Messagess"))
+                {
+					_Messagess = Messages.FindAllByCategoryId(Id);
+					Dirtys["Messagess"] = true;
+				}
+				return _Messagess;
+			}
+			set { _Messagess = value; }
+		}
+
+        [NonSerialized]
+		private EntityList<News> _Newss;
+		/// <summary>该类别信息所拥有的新闻信息表集合</summary>
+		[XmlIgnore]
+		public EntityList<News> Newss
+		{
+			get
+			{
+				if (_Newss == null && Id > 0 && !Dirtys.ContainsKey("Newss"))
+                {
+					_Newss = News.FindAllByCategoryId(Id);
+					Dirtys["Newss"] = true;
+				}
+				return _Newss;
+			}
+			set { _Newss = value; }
+		}
+
+        [NonSerialized]
+		private EntityList<Setting> _Settings;
+		/// <summary>该类别信息所拥有的系统设置表集合</summary>
+		[XmlIgnore]
+		public EntityList<Setting> Settings
+		{
+			get
+			{
+				if (_Settings == null && Id > 0 && !Dirtys.ContainsKey("Settings"))
+                {
+					_Settings = Setting.FindAllByCategoryId(Id);
+					Dirtys["Settings"] = true;
+				}
+				return _Settings;
+			}
+			set { _Settings = value; }
+		}
         #endregion
 
         #region 扩展查询﻿

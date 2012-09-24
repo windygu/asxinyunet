@@ -13,6 +13,8 @@ namespace Bioinfo.Entites
     [DataObject]
     [Description("消息")]
     [BindIndex("PRIMARY", true, "Id")]
+    [BindIndex("IX_Messages_CategoryId", false, "CategoryId")]
+    [BindRelation("CategoryId", false, "Category", "Id")]
     [BindTable("Messages", Description = "消息", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class Messages : IMessages
     {
@@ -53,16 +55,16 @@ namespace Bioinfo.Entites
             set { if (OnPropertyChanging("Email", value)) { _Email = value; OnPropertyChanged("Email"); } }
         }
 
-        private String _Category;
+        private Int32 _CategoryId;
         /// <summary>问题类别</summary>
         [DisplayName("问题类别")]
         [Description("问题类别")]
-        [DataObjectField(false, false, true, 30)]
-        [BindColumn(4, "Category", "问题类别", null, "varchar(30)", 0, 0, false)]
-        public virtual String Category
+        [DataObjectField(false, false, true, 10)]
+        [BindColumn(4, "CategoryId", "问题类别", null, "int(11)", 10, 0, false)]
+        public virtual Int32 CategoryId
         {
-            get { return _Category; }
-            set { if (OnPropertyChanging("Category", value)) { _Category = value; OnPropertyChanged("Category"); } }
+            get { return _CategoryId; }
+            set { if (OnPropertyChanging("CategoryId", value)) { _CategoryId = value; OnPropertyChanged("CategoryId"); } }
         }
 
         private String _Message;
@@ -107,7 +109,7 @@ namespace Bioinfo.Entites
                     case "Id" : return _Id;
                     case "FullName" : return _FullName;
                     case "Email" : return _Email;
-                    case "Category" : return _Category;
+                    case "CategoryId" : return _CategoryId;
                     case "Message" : return _Message;
                     case "Remark" : return _Remark;
                     default: return base[name];
@@ -120,7 +122,7 @@ namespace Bioinfo.Entites
                     case "Id" : _Id = Convert.ToInt32(value); break;
                     case "FullName" : _FullName = Convert.ToString(value); break;
                     case "Email" : _Email = Convert.ToString(value); break;
-                    case "Category" : _Category = Convert.ToString(value); break;
+                    case "CategoryId" : _CategoryId = Convert.ToInt32(value); break;
                     case "Message" : _Message = Convert.ToString(value); break;
                     case "Remark" : _Remark = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -143,7 +145,7 @@ namespace Bioinfo.Entites
             public static readonly Field Email = FindByName("Email");
 
             ///<summary>问题类别</summary>
-            public static readonly Field Category = FindByName("Category");
+            public static readonly Field CategoryId = FindByName("CategoryId");
 
             ///<summary>留言</summary>
             public static readonly Field Message = FindByName("Message");
@@ -170,7 +172,7 @@ namespace Bioinfo.Entites
         String Email { get; set; }
 
         /// <summary>问题类别</summary>
-        String Category { get; set; }
+        Int32 CategoryId { get; set; }
 
         /// <summary>留言</summary>
         String Message { get; set; }
