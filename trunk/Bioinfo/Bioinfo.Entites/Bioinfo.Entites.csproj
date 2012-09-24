@@ -50,6 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="新闻信息表.Biz.cs" />
     <Compile Include="新闻信息表.cs" />
+    <Compile Include="消息.Biz.cs" />
+    <Compile Include="消息.cs" />
     <Compile Include="类别信息.Biz.cs" />
     <Compile Include="类别信息.cs" />
     <Compile Include="系统设置表.Biz.cs" />

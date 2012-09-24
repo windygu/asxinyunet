@@ -55,24 +55,12 @@ namespace Bioinfo.Entites
             set { if (OnPropertyChanging("Name", value)) { _Name = value; OnPropertyChanged("Name"); } }
         }
 
-        private Int32 _CodeType;
-        /// <summary>编码类型</summary>
-        [DisplayName("编码类型")]
-        [Description("编码类型")]
-        [DataObjectField(false, false, false, 10)]
-        [BindColumn(4, "CodeType", "编码类型", "1", "int(11)", 10, 0, false)]
-        public virtual Int32 CodeType
-        {
-            get { return _CodeType; }
-            set { if (OnPropertyChanging("CodeType", value)) { _CodeType = value; OnPropertyChanged("CodeType"); } }
-        }
-
         private Int32 _Sort;
         /// <summary>排序码</summary>
         [DisplayName("排序码")]
         [Description("排序码")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(5, "Sort", "排序码", "9999", "int(11)", 10, 0, false)]
+        [BindColumn(4, "Sort", "排序码", "9999", "int(11)", 10, 0, false)]
         public virtual Int32 Sort
         {
             get { return _Sort; }
@@ -84,7 +72,7 @@ namespace Bioinfo.Entites
         [DisplayName("备注")]
         [Description("备注")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(6, "Description", "备注", null, "varchar(50)", 0, 0, false)]
+        [BindColumn(5, "Description", "备注", null, "varchar(50)", 0, 0, false)]
         public virtual String Description
         {
             get { return _Description; }
@@ -109,7 +97,6 @@ namespace Bioinfo.Entites
                     case "Id" : return _Id;
                     case "ParentId" : return _ParentId;
                     case "Name" : return _Name;
-                    case "CodeType" : return _CodeType;
                     case "Sort" : return _Sort;
                     case "Description" : return _Description;
                     default: return base[name];
@@ -122,7 +109,6 @@ namespace Bioinfo.Entites
                     case "Id" : _Id = Convert.ToInt32(value); break;
                     case "ParentId" : _ParentId = Convert.ToInt32(value); break;
                     case "Name" : _Name = Convert.ToString(value); break;
-                    case "CodeType" : _CodeType = Convert.ToInt32(value); break;
                     case "Sort" : _Sort = Convert.ToInt32(value); break;
                     case "Description" : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -143,9 +129,6 @@ namespace Bioinfo.Entites
 
             ///<summary>类名称</summary>
             public static readonly Field Name = FindByName("Name");
-
-            ///<summary>编码类型</summary>
-            public static readonly Field CodeType = FindByName("CodeType");
 
             ///<summary>排序码</summary>
             public static readonly Field Sort = FindByName("Sort");
@@ -170,9 +153,6 @@ namespace Bioinfo.Entites
 
         /// <summary>类名称</summary>
         String Name { get; set; }
-
-        /// <summary>编码类型</summary>
-        Int32 CodeType { get; set; }
 
         /// <summary>排序码</summary>
         Int32 Sort { get; set; }
