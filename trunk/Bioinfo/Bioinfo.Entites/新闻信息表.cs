@@ -8,12 +8,12 @@ using XCode.DataAccessLayer;
 
 namespace Bioinfo.Entites
 {
-    /// <summary>新闻表</summary>
+    /// <summary>新闻信息表</summary>
     [Serializable]
     [DataObject]
-    [Description("新闻表")]
+    [Description("新闻信息表")]
     [BindIndex("PRIMARY", true, "Id")]
-    [BindTable("News", Description = "新闻表", ConnName = "Bioinfo", DbType = DatabaseType.MySql)]
+    [BindTable("News", Description = "新闻信息表", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class News : INews
     {
         #region 属性
@@ -228,7 +228,7 @@ namespace Bioinfo.Entites
         #endregion
 
         #region 字段名
-        /// <summary>取得新闻表字段信息的快捷方式</summary>
+        /// <summary>取得新闻信息表字段信息的快捷方式</summary>
         public class _
         {
             ///<summary>编号</summary>
@@ -275,7 +275,7 @@ namespace Bioinfo.Entites
         #endregion
     }
 
-    /// <summary>新闻表接口</summary>
+    /// <summary>新闻信息表接口</summary>
     public partial interface INews
     {
         #region 属性

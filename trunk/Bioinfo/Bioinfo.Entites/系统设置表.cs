@@ -8,13 +8,13 @@ using XCode.DataAccessLayer;
 
 namespace Bioinfo.Entites
 {
-    /// <summary>設置</summary>
+    /// <summary>系统设置表</summary>
     [Serializable]
     [DataObject]
-    [Description("設置")]
+    [Description("系统设置表")]
     [BindIndex("PRIMARY", true, "Id")]
     [BindIndex("Name", false, "Name,CodeType")]
-    [BindTable("Setting", Description = "設置", ConnName = "Bioinfo", DbType = DatabaseType.MySql)]
+    [BindTable("Setting", Description = "系统设置表", ConnName = "Common", DbType = DatabaseType.MySql)]
     public partial class Setting : ISetting
     {
         #region 属性
@@ -131,7 +131,7 @@ namespace Bioinfo.Entites
         #endregion
 
         #region 字段名
-        /// <summary>取得設置字段信息的快捷方式</summary>
+        /// <summary>取得系统设置表字段信息的快捷方式</summary>
         public class _
         {
             ///<summary>编号</summary>
@@ -157,7 +157,7 @@ namespace Bioinfo.Entites
         #endregion
     }
 
-    /// <summary>設置接口</summary>
+    /// <summary>系统设置表接口</summary>
     public partial interface ISetting
     {
         #region 属性
