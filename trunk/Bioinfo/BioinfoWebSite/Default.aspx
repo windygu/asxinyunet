@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="prettyphoto/css/prettyPhoto.css" media="screen" />
 	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 	<script type="text/javascript" src="js/core.js"></script>
-	<script type="text/javascript" src="pngFix/jquery.pngFix.js"></script>
+	<script type="text/javascript" src="js/jquery.pngFix.js"></script>
 	<script type="text/javascript" src="prettyphoto/js/jquery.prettyPhoto.js"></script>
 	<!--[if IE 6]>
 	<style>
