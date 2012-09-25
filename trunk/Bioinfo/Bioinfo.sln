@@ -29,31 +29,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioInfo.Web", "BioInfo.Web\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BioinfoWeb", "BioinfoWeb", "{64EC2154-2080-438C-9D04-7BDB1EB81941}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BioInfoWeb", "BioInfoWeb\", "{17FA589B-493F-4D10-A20B-BBE7B012245B}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "Svn"
-		SccAuxPath = "Svn"
-		SccLocalPath = "Svn"
-		SccProvider = "SubversionScc"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}|Bioinfo.Entites.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/BioInfoWeb"
-		Debug.AspNetCompiler.PhysicalPath = "BioInfoWeb\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\BioInfoWeb\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/BioInfoWeb"
-		Release.AspNetCompiler.PhysicalPath = "BioInfoWeb\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\BioInfoWeb\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "5323"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bioinfo.Entites", "Bioinfo.Entites\Bioinfo.Entites.csproj", "{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Loachs.Web", "..\Loachs1.3_src\src\Loachs.Web\", "{BE052837-13C7-4EF7-9643-39A784D11E6F}"
@@ -404,31 +379,6 @@ Global
 		{6A1C6839-8B18-442D-9AC5-865BEAA8D04E}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6A1C6839-8B18-442D-9AC5-865BEAA8D04E}.Release|x86.ActiveCfg = Release|x86
 		{6A1C6839-8B18-442D-9AC5-865BEAA8D04E}.Release|x86.Build.0 = Release|x86
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.cutDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.cutDebug|Any CPU.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.cutDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.cutDebug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.cutDebug|x86.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewBug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewBug|Any CPU.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewBug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewBug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewBug|x86.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewDebug|Any CPU.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewDebug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.NewDebug|x86.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{17FA589B-493F-4D10-A20B-BBE7B012245B}.Release|x86.ActiveCfg = Debug|Any CPU
 		{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}.cutDebug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}.cutDebug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}.cutDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -489,7 +439,6 @@ Global
 		{676DD950-3E17-4F44-ABF6-8BFA400B5799} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{6A1C6839-8B18-442D-9AC5-865BEAA8D04E} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{6F80BD39-3CBA-4C1F-9A38-10E4169A226F} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
-		{17FA589B-493F-4D10-A20B-BBE7B012245B} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{CC63219E-4F62-4F5A-8658-17DD2EB60071} = {157B249B-D12C-4507-BCF6-13688C89D2F1}
 		{73F82F07-D85B-4636-BDF7-5C66C4E41577} = {157B249B-D12C-4507-BCF6-13688C89D2F1}
