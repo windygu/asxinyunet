@@ -56,6 +56,27 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Loachs.Web", "..\Loachs1.3_
 		VWDVirtualPath = "/"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BioinfoWebSite", "BioinfoWebSite\", "{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57}|Bioinfo.Entites.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/BioinfoWebSite"
+		Debug.AspNetCompiler.PhysicalPath = "BioinfoWebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\BioinfoWebSite\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/BioinfoWebSite"
+		Release.AspNetCompiler.PhysicalPath = "BioinfoWebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\BioinfoWebSite\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "5767"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		cutDebug|Any CPU = cutDebug|Any CPU
@@ -429,6 +450,31 @@ Global
 		{BE052837-13C7-4EF7-9643-39A784D11E6F}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{BE052837-13C7-4EF7-9643-39A784D11E6F}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{BE052837-13C7-4EF7-9643-39A784D11E6F}.Release|x86.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.cutDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.cutDebug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.cutDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.cutDebug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.cutDebug|x86.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewBug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewBug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewBug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewBug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewBug|x86.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewDebug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewDebug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.NewDebug|x86.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -440,6 +486,7 @@ Global
 		{6A1C6839-8B18-442D-9AC5-865BEAA8D04E} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{6F80BD39-3CBA-4C1F-9A38-10E4169A226F} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{0AEB6EC5-ADAB-4A2A-AD82-633E980A4A57} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
+		{ADD6B96B-7AC4-43CC-9AFB-74B6C02411DB} = {64EC2154-2080-438C-9D04-7BDB1EB81941}
 		{CC63219E-4F62-4F5A-8658-17DD2EB60071} = {157B249B-D12C-4507-BCF6-13688C89D2F1}
 		{73F82F07-D85B-4636-BDF7-5C66C4E41577} = {157B249B-D12C-4507-BCF6-13688C89D2F1}
 		{80BEB472-2C33-40F9-8FA8-9C7C263C0498} = {157B249B-D12C-4507-BCF6-13688C89D2F1}
