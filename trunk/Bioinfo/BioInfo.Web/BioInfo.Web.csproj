@@ -48,6 +48,7 @@
     <Compile Include="CacheHelp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSiteHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
