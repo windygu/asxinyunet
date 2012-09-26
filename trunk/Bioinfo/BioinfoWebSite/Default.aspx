@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>计算系统生物学平台研究组</title>
+	<title>测试网站</title>
 	<meta name="Robots" content="index,follow" />
 	<meta name="author" content="Borut Jegrišnik (www.solucija.com)" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
@@ -25,7 +25,7 @@
 	<form id="form1" runat="server">
 	<div id="wrapper">
 		<div id="logo">
-			<h1><a href="Default.aspx">Computational Systems Biology Research Platform</span></a></h1>
+			<h1><a href="Default.aspx">Test WebSite</span></a></h1>
 		</div>
 		
 		<div id="content">
