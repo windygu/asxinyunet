@@ -69,7 +69,7 @@
     <table border="0" align="Center" width="100%">
         <tr>
             <td align="center">
-                <asp:Button ID="btnSave" runat="server" CausesValidation="True" Text='保存' />
+                <asp:Button ID="btnSave" runat="server" CausesValidation="True" Text='保存'/>
                 &nbsp;<asp:Button ID="btnReturn" runat="server" OnClientClick="parent.Dialog.CloseSelfDialog(frameElement);return false;" Text="返回" />
             </td>
         </tr>
