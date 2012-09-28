@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="C">
     <div class="toolbar">
-        <XCL:LinkBox ID="lbAdd" runat="server" BoxHeight="553px" BoxWidth="440px" Url="NewsForm.aspx"
+        <XCL:LinkBox ID="lbAdd" runat="server" BoxHeight="600px" BoxWidth="980px" Url="NewsForm.aspx"
             IconLeft="~/Admin/images/icons/new.gif" EnableViewState="false"><b>添加新闻信息表</b></XCL:LinkBox>
         关键字：<asp:TextBox ID="txtKey" runat="server"></asp:TextBox>
         <asp:Button ID="btnSearch" runat="server" Text="查询" />
@@ -38,7 +38,7 @@
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="120px" />
             </asp:BoundField>
             <asp:BoundField DataField="Remark" HeaderText="备注" SortExpression="Remark" />
-            <XCL:LinkBoxField HeaderText="编辑" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="NewsForm.aspx?Id={0}" Height="553px" Text="编辑" Width="440px" Title="编辑新闻信息表">
+            <XCL:LinkBoxField HeaderText="编辑" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="NewsForm.aspx?Id={0}" Height="600px" Text="编辑" Width="980px" Title="编辑新闻信息表">
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="30px" />
             </XCL:LinkBoxField>

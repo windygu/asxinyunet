@@ -36,7 +36,7 @@ public abstract class MyEntityList : Page
     protected override void OnPreLoad(EventArgs e)
     {
         base.OnPreLoad(e);
-
+        
         AutoAddParamForAdd();
     }
 
