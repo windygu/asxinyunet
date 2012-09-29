@@ -10,26 +10,16 @@ using XCode.DataAccessLayer ;
 using XCode;
 using NewLife.CommonEntity.Web ;
 using NewLife.CommonEntity;
+using NewLife.YWS.Entities;
 
 public partial class Common_NewsForm : MyEntityForm<News>
 {
-
-    /// <summary>编号</summary>
-    public Int32 EntityID { get { return WebHelper.RequestInt("ID"); } }
-
-    private Bioinfo.Entites.Category _Entity;
-    /// <summary>客户</summary>
-    public Bioinfo.Entites.Category Entity
-    {
-        get { return _Entity ?? (_Entity = Bioinfo.Entites.Category.FindByKeyForEdit(EntityID)); }
-        set { _Entity = value; }
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             LoadCategoryIdData();
+            LoadAdminNameData();
             frmAddDateTime.Value = DateTime.Now;
         }
     }
@@ -41,39 +31,35 @@ public partial class Common_NewsForm : MyEntityForm<News>
         DataBind();
         frmCategoryId.Items.Clear();
         frmCategoryId.Items.Add(new ListItem("|-选择新闻类型", "0"));
-        List<Bioinfo.Entites.Category> list = Bioinfo.Entites.Category.FindAllByParent(1);
-        if (list != null && list.Count > 0)
-        {
-            foreach (Bioinfo.Entites.Category item in list)
-            {
-                String spaces = new String('　', item.Deepth);
-                frmCategoryId.Items.Add(new ListItem(spaces + "|- " + item.Name, item.Id.ToString()));
-            }
-        }
-        if (Entity != null) frmCategoryId.SelectedValue = Entity.Id.ToString();
+        frmCategoryId.Items.AddRange(EntityHelper.GetCategoryList(1).ToArray());
+        frmCategoryId.SelectedValue = Entity.CategoryId.ToString();     
+        //List<Bioinfo.Entites.Category> list = Bioinfo.Entites.Category.FindAllChildsNoParent (1);
+        //if (list != null && list.Count > 0)
+        //{
+        //    foreach (Bioinfo.Entites.Category item in list)
+        //    {                
+        //        String spaces = new String('　', item.Deepth);
+        //        frmCategoryId.Items.Add(new ListItem(spaces + "|- " + item.Name, item.Id.ToString()));
+                             
+        //    }
+        //}
+          
     }
     /// <summary>
     /// 加载作者名称信息
     /// </summary>
-    //private void LoadAdminNameData()
-    //{
-    //    frmAuthor.Items.Clear();
-    //    List<Administrator> list = Administrator.FindAll();
-    //    if (list != null && list.Count > 0)
-    //    {
-    //        foreach (var item in list)
-    //        {
-    //            String spaces = " ";
-    //            frmCategoryId.Items.Add(new ListItem(spaces + "|- " + item.Name, item.ID.ToString()));
-    //        }
-    //    }
-    //}
-
-    //protected override void OnInitComplete(EventArgs e)
-    //{
-    //    base.OnInitComplete(e);
-    //    //ods.DataObjectTypeName = "Bioinfo.Entites.Category";     
-        
-    //}
-
+    private void LoadAdminNameData()
+    {
+        frmAuthor.Items.Clear();
+        List<Admin> list = Admin.FindAll();
+        if (list != null && list.Count > 0)
+        {
+            foreach (var item in list)
+            {
+                String spaces = " ";
+                frmAuthor.Items.Add(new ListItem(spaces + item.Name, item.Name.ToString()));
+            }
+        }
+        frmAuthor.SelectedValue = Entity.Author;          
+    }
 }

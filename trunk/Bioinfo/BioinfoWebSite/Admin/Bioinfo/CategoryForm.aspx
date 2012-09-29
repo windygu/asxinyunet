@@ -7,7 +7,11 @@
         </tr>
         <tr>
             <td align="right">父编号：</td>
-            <td><XCL:NumberBox ID="frmParentId" runat="server" Width="80px"></XCL:NumberBox></td>
+            <td>
+              <XCL:DropDownList ID="frmParentId" runat="server" DataTextField="Name" DataValueField="ParentId"
+                    AppendDataBoundItems="True" Width="150px" >
+                </XCL:DropDownList>         
+            </td>
         </tr>
 <tr>
             <td align="right">类名称：</td>

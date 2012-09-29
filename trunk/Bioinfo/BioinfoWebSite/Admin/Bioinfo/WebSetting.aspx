@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="C">
     <div class="toolbar">
-        <XCL:LinkBox ID="lbAdd" runat="server" BoxHeight="328px" BoxWidth="440px" Url="WebSettingForm.aspx"
+        <XCL:LinkBox ID="lbAdd" runat="server" BoxHeight="500px" BoxWidth="830px" Url="WebSettingForm.aspx"
             IconLeft="~/Admin/images/icons/new.gif" EnableViewState="false"><b>添加系统设置表</b></XCL:LinkBox>
         关键字：<asp:TextBox ID="txtKey" runat="server"></asp:TextBox>
         <asp:Button ID="btnSearch" runat="server" Text="查询" />
@@ -31,7 +31,7 @@
                 <ItemStyle HorizontalAlign="Right" Font-Bold="True" />
             </asp:BoundField>
             <asp:BoundField DataField="Remark" HeaderText="备注" SortExpression="Remark" />
-            <XCL:LinkBoxField HeaderText="编辑" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="WebSettingForm.aspx?Id={0}" Height="328px" Text="编辑" Width="440px" Title="编辑系统设置表">
+            <XCL:LinkBoxField HeaderText="编辑" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="WebSettingForm.aspx?Id={0}" Height="500px" Text="编辑" Width="830px" Title="编辑系统设置表">
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="30px" />
             </XCL:LinkBoxField>
