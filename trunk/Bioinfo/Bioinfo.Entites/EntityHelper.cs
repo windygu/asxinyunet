@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
+using XCode;
 
 namespace Bioinfo.Entites
 {
@@ -10,9 +12,43 @@ namespace Bioinfo.Entites
     {
         public static string GetName()
         {
+            //Initial_Setting();
             string s = Setting.FindById(1).Value;
             return s;
         }
+
+        public static List<ListItem> GetCategoryList(int parentId)
+        {
+            List<ListItem> lc = new List<ListItem>();
+            var list = Category.FindAllChildsNoParent (parentId );
+            if (list != null && list.Count > 0)
+            {
+                foreach (Bioinfo.Entites.Category item in list)
+                {
+                    String spaces = new String('　', item.Deepth);
+                    lc.Add(new ListItem(spaces + "|- " + item.Name, item.Id.ToString()));
+                }
+            }
+            return lc;
+        }
+
+        #region 废弃代码
+        //public static List<ListItem> GetListCollectionById(int parentId, string typeName, string sortName)
+        //{
+        //    IEntityOperate op = EntityFactory.CreateOperate(typeName);
+        //    List<ListItem> lc = new List<ListItem>();
+        //    var list = op.FindAll("", sortName + " asc", null, 0, 0);
+        //    if (list != null && list.Count > 0)
+        //    {
+        //        foreach (Bioinfo.Entites.Category item in list)
+        //        {
+        //            String spaces = new String('　', item.Deepth);
+        //            lc.Add(new ListItem(spaces + "|- " + item.Name, item.Id.ToString()));
+        //        }
+        //    }
+        //    return lc;
+        //}
+        #endregion
 
         /// <summary>
         /// 初始化数据库
@@ -20,7 +56,7 @@ namespace Bioinfo.Entites
         public static void InitialDb()
         {
             Initial_Category();
-            //Initial_Setting();
+            Initial_Setting();
         }
         /// <summary>
         /// 设置类别表
@@ -38,7 +74,7 @@ namespace Bioinfo.Entites
             new Category { ParentId = 2, Name = "前台文本", Sort = 31 }.Insert();
             new Category { ParentId = 2, Name = "预测平台", Sort = 33 }.Insert();
             new Category { ParentId = 2, Name = "系统配置", Sort = 34 }.Insert();
-        }
+        }   
 
         static void Initial_Setting()
         {

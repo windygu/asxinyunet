@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,8 +53,12 @@
     <Compile Include="新闻信息表.cs" />
     <Compile Include="消息.Biz.cs" />
     <Compile Include="消息.cs" />
-    <Compile Include="类别信息.Biz.cs" />
-    <Compile Include="类别信息.cs" />
+    <Compile Include="类别信息.Biz.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="类别信息.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="系统设置表.Biz.cs" />
     <Compile Include="系统设置表.cs" />
   </ItemGroup>

@@ -10,7 +10,7 @@ using XCode.Configuration;
 namespace Bioinfo.Entites
 {
     /// <summary>类别信息</summary>
-    public partial class Category : Entity<Category>
+    public partial class Category : EntityTree<Category>
     {
         #region 对象操作﻿
 
@@ -145,7 +145,7 @@ namespace Bioinfo.Entites
         public static Category FindById(Int32 id)
         {
             if (Meta.Count >= 1000)
-                return Find(_.Id, id);
+                return Find(_.Id, id);                
             else // 实体缓存
                 return Meta.Cache.Entities.Find(_.Id, id);
             // 单对象缓存
@@ -232,6 +232,7 @@ namespace Bioinfo.Entites
         #endregion
 
         #region 业务
+        
         #endregion
     }
 }
