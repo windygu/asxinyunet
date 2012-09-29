@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using Bioinfo.Entites;
+using System.Web.UI.WebControls;
 
 namespace BioInfo.Forcast
 {
@@ -11,10 +12,11 @@ namespace BioInfo.Forcast
     {
         static void Main(string[] args)
         {
+
             //TestKDH();
             //EntityHelper.InitialDb();
             //SvmHelper.Test("train.txt", "test.txt");
-            Console.WriteLine(Setting.FindById(1).Value);
+            //Console.WriteLine(Setting.FindById(1).Value);            
             Console.ReadLine();
         }
 
