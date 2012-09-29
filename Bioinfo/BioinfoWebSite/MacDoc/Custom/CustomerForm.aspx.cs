@@ -41,8 +41,11 @@ public partial class CustomerForm : PageBase
             {
                 foreach (CustomerType item in list)
                 {
-                    String spaces = new String('　', item.Deepth);
-                    typeList.Items.Add(new ListItem(spaces + "|- " + item.Name, item.ID.ToString()));
+                    if (item.ID !=0)
+                    {
+                        String spaces = new String('　', item.Deepth);
+                        typeList.Items.Add(new ListItem(spaces + "|- " + item.Name, item.ID.ToString()));
+                    }                  
                 }
             }
             if (Entity != null) typeList.SelectedValue = Entity.CustomerTypeID.ToString();

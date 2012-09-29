@@ -12,7 +12,9 @@
            <td><asp:TextBox ID="frmTitle" runat="server" Width="288px"></asp:TextBox></td>
             <td align="right"  class="style6">作者：</td>
             <td>                       
-                <asp:TextBox ID="frmAuthor" runat="server" Width="150px"></asp:TextBox>
+            <XCL:DropDownList ID="frmAuthor" runat="server" DataTextField="Name" DataValueField="ID"
+                    AppendDataBoundItems="True" Width="150px" >
+                </XCL:DropDownList>
             </td>
            <td align="right" class="style3">类别编号：</td>         
            <td class="style2">
@@ -28,7 +30,7 @@
             <td align="right" class="style6">关键字：</td>
             <td colspan="3" class="style6">
                 <asp:TextBox ID="frmKeyWords" runat="server" 
-                    Width="376px"></asp:TextBox></td>
+                    Width="410px"></asp:TextBox></td>
         </tr>
         
         <tr>
@@ -56,12 +58,12 @@
                     <asp:ListItem Value="1">中文</asp:ListItem>
                     <asp:ListItem Value="2">英文</asp:ListItem>                    
         </XCL:DropDownList>
-
             </td>
+
              <td align="right" class="style3">文章状态：</td>
              <td class="style4">
 
-                 <XCL:DropDownList ID="frmStatus" runat="server">                          
+                 <XCL:DropDownList ID="frmStatus" runat="server" Width="150">                          
                     <asp:ListItem Value="草稿">草稿</asp:ListItem>
                     <asp:ListItem Value="已发表">已发表</asp:ListItem>                    
         </XCL:DropDownList>
@@ -73,7 +75,7 @@
             <td align="right" class="style7">添加时间：</td>
             <td><XCL:DateTimePicker ID="frmAddDateTime" runat="server"></XCL:DateTimePicker></td>
             <td align="right" class="style6">备注：</td>
-            <td  colspan="3"><asp:TextBox ID="frmRemark" runat="server" Width="376px"></asp:TextBox></td>
+            <td  colspan="3"><asp:TextBox ID="frmRemark" runat="server" Width="410px"></asp:TextBox></td>
         </tr>           
     </table>
 
